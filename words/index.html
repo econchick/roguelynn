@@ -8,7 +8,6 @@
                 <article>
                     <h3><a href="{{ get_url(post.url) }}">{{ post.title }}</a></h3>
                     <time pubdate datetime="{{ post.timestamp|date('%Y-%m-%d') }}">{{ post.date }}</time>
-                    <br /><br />
                     <p>{{ post.excerpt }} </p> 
                     <p><a href="{{ get_url(post.url) }}" class="more-link">Read more &rarr;</a></p>
                 </article>
