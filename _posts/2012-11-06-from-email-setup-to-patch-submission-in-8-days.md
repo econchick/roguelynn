@@ -4,69 +4,67 @@ title: 'From email setup to patch submission in 8 days.'
 tags: [python, programming]
 ---
 
-Hellz yea, I'm a freaking engineer (sounds more hilarious in my head then it reads). Now who the hell wouldn't want to be an engineer? Fellow PyLady, Julia Grace, [asked][JuliaG] about my expectations of being an engineer versus what I actually experienced.  Here's the basic run down: 
+Hellz yea, I'm a freaking engineer (sounds more hilarious in my head then it reads). Now who the hell wouldn't want to be an engineer? Fellow PyLady, Julia Grace, [asked][JuliaG] about my expectations of being an engineer versus what I actually experienced.  
 
 #### TL;DR: It's awesome.
+
+Here's the basic run down: 
 
 #### Asked advice from Systers & DevChix Mailing List 
 (exact quotes, but leaving anonymous):
 
-<ul>
-<li> Curiosity will keep you from becoming one of the 'not my job' people.</li>
-<li>  Remember that a lot of engineers don't have the best people skills so some 'rude' people are that way unintentionally.</li>
-<li>  If they dont answer questions, it is most likely because they dont know the answers.</li>
-<li> Build relationships if possible. Never miss a happy hour type of thing.</li>
-<li> "Where did you learn that?" is an interesting question
-<li>  Figure out the ways in which you like to work- and others like to work- first.</li>
-<li>  Many guys truly don't think that women can or should be coding as equals.</li>
-<li>  At least 89% of the time, by the time I have really defined my question, I have figured out the answer.</li>
-</ul>
+
+*  Curiosity will keep you from becoming one of the 'not my job' people.
+*  Remember that a lot of engineers don't have the best people skills so some 'rude' people are that way unintentionally.
+*  If they dont answer questions, it is most likely because they dont know the answers.
+*  Build relationships if possible. Never miss a happy hour type of thing.
+*  "Where did you learn that?" is an interesting question
+*  Figure out the ways in which you like to work- and others like to work- first.
+*  Many guys truly don't think that women can or should be coding as equals.
+*  At least 89% of the time, by the time I have really defined my question, I have figured out the answer.
+
 
 #### Expectations and Preformed Thoughts & Concerns: 
 
-<ul>
-<li>  I would have to wind down my community engagements to an 'acceptable' level, e.g. only x amount of non-Red Hat related conferences.</li>
-<li>  Thrown into code to fix a bug/patch/whatever
-<li>  Spend wayyyy too much time thinking over a trivial aspect of said bug/patch/whatever.</li>
-<li>  Many naive questions from me, met with a poor/mean/unadjusted attitude, or worse, lack of any sort of emotional response (I'd rather -know- I annoy you than wonder if you loathe my questions).</li>
-<li>  I'd be restricted from doing certain things; "when you're ready for it" aka "when I'm ready to give this piece of my job up and move on to something better."</li>
-</ul>
+*  I would have to wind down my community engagements to an 'acceptable' level, e.g. only x amount of non-Red Hat related conferences.
+*  Thrown into code to fix a bug/patch/whatever
+*  Spend wayyyy too much time thinking over a trivial aspect of said bug/patch/whatever.
+*  Many naive questions from me, met with a poor/mean/unadjusted attitude, or worse, lack of any sort of emotional response (I'd rather -know- I annoy you than wonder if you loathe my questions).
+*  I'd be restricted from doing certain things; "when you're ready for it" aka "when I'm ready to give this piece of my job up and move on to something better."
 
 #### I set expectations for *myself* too:
-<ul>
-<li>  Learn this shit fast.</li>
-<li>  Be awesome.</li>
-<li>  Make a 'mark' of myself (in terms of fixing bugs, finding errors in code or optimizing, helping users of the project, etc).</li>
-<li>  Learn faster than what is thrown at me.</li>
-<li>  Submit a patch by the end of the 3rd week (end of the 1st full week in Brno).</li>
-<li>  Maintain awesomeness.</li>
-</ul>
+
+*  Learn this shit fast.
+*  Be awesome.
+*  Make a 'mark' of myself (in terms of fixing bugs, finding errors in code or optimizing, helping users of the project, etc).
+*  Learn faster than what is thrown at me.
+*  Submit a patch by the end of the 3rd week (end of the 1st full week in Brno).
+*  Maintain awesomeness.
 
 #### How the first few weeks actually went:
-<ul>
-<li>  Crash course on LDAP & Kerberos, how to create VMs both on my local machine and on remote servers (I feel dangerous now).</li>
-<li>  My last name _is_ awesome.  However, sometimes I misread my terminal prompt:</li></ul>
-<code>
 
-	[lroot @ remote-server] $ vim /accessible/by/root.conf
+*  Crash course on LDAP & Kerberos, how to create VMs both on my local machine and on remote servers (I feel dangerous now).
+*  My last name _is_ awesome.  However, sometimes I misread my terminal prompt:
+
+	`` [lroot @ remote-server] $ vim /accessible/by/root.conf
 	Must be root to setup this server!
-	/me what? I thought I...oh damn
-</code>
-<ul>
-<li>  Learning Linux machines like woah.</li>
-<li>  Sometimes just restarting does work.</li>
-<li>  Have achieved new levels of git-fu. (git rebase, squash & reflog are a n00b's best tools)</li>
-<li>  Realized Macs are only popular for their GUIs and Aluminum casing (not giving mine up anytime soon, though)</li>
-<li>  These folks have a lot of patience for someone just learning like me.  Very comforting.</li>
-<li>  People don't need free meals/fish deliveries/spousal salaries upon death to be happy to work somewhere.</li>
-<li>  It is SO freaking nice not to worry about being in the office during the same time as your manager (precious 'face time'); clocking every minute of every hour that has any relation to work.</li>
-<li>  Engineers are so relaxed and fun to work with. I feel no pressure, and therefore no nerves when asking questions.  Little things like, 'here are the IRC channels we're in...' and 'Thursday's the best because it's breakfast day.'</li>
-<li>  My manager flat out said "I won't read it" when I forwarded him [my post]({{ get_url("2012-10-21-community-ftw-kicking-of-the-pycarolinas-community")}} "Community FTW") about the community talk I gave at PyCarolinas (among other questions & discussion points). Damn that guy is awesome. No nonsense, no bs, no coddling, very helpful, thinks outside the box, and brilliant.</li>
-<li>  My manager also flat out said "That's why we hired you" when I asked him about being invited to speak at conferences. hellz yea.</li>
-<li>  I can surprise a few people with the little Czech knowledge I've retained.  *"jedno velky pivo, prosim."* </li>
-<li>  I was assigned 5 tickets on day \#2 in Brno. This will probably be the only time I will be excited to be assigned tickets. They seem to be the types of tickets that are 'easy pickens' but also give the challenge of making you dig through the whole freaking code base only to find the issue comes from an outside package. /phew </li>
-<li> [I SUBMITTED MY FIRST PATCH](http://www.redhat.com/archives/freeipa-devel/2012-October/msg00556.html) (day \#3 in Brno. 8 days of learning terms/code/git/processes, ignoring travel days, orientation, blah). _Side note: that patch broke everything. I learned a lesson in tests the following day._ </li>
-</ul>
+	/me what? I thought I...oh damn ``
+
+*  Learning Linux machines like woah.
+*  Sometimes just restarting does work.
+*  Have achieved new levels of git-fu. (git rebase, squash & reflog are a n00b's best tools)
+*  Realized Macs are only popular for their GUIs and Aluminum casing (not giving mine up anytime soon, though)
+*  These folks have a lot of patience for someone just learning like me.  Very comforting.
+*  People don't need free meals/fish deliveries/spousal salaries upon death to be happy to work somewhere.
+*  It is SO freaking nice not to worry about being in the office during the same time as your manager (precious 'face time'); clocking every minute of every hour that has any relation to work.
+*  Engineers are so relaxed and fun to work with. I feel no pressure, and therefore no nerves when asking questions.  Little things like, 'here are the IRC channels we're in...' and 'Thursday's the best because it's breakfast day.'
+* My manager flat out said "I won't read it" when I forwarded him [my post]({{ get_url("2012-10-21-community-ftw-kicking-of-the-pycarolinas-community")}} "Community FTW") about the community talk I gave at PyCarolinas (among other questions & discussion points). Damn that guy is awesome. No nonsense, no bs, no coddling, very helpful, thinks outside the box, and brilliant.
+
+*  My manager also flat out said "That's why we hired you" when I asked him about being invited to speak at conferences. hellz yea.
+*  I can surprise a few people with the little Czech knowledge I've retained.  *"jedno velky pivo, prosim."*
+*  I was assigned 5 tickets on day \#2 in Brno. This will probably be the only time I will be excited to be assigned tickets. They seem to be the types of tickets that are 'easy pickens' but also give the challenge of making you dig through the whole freaking code base only to find the issue comes from an outside package. /phew 
+* [I SUBMITTED MY FIRST PATCH](http://www.redhat.com/archives/freeipa-devel/2012-October/msg00556.html) (day \#3 in Brno. 8 days of learning terms/code/git/processes, ignoring travel days, orientation, blah). _Side note: that patch broke everything. I learned a lesson in tests the following day._
+
 
 #### Cultural Differences:
 

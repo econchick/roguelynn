@@ -4,7 +4,7 @@ title: 'NetSec for n00bs, part I: Password Storage'
 tags: [netsec, programming]
 ---
 
-In prepping for my interviews for my [newly acquired position]({{ get_url("2012-09-25-from-n00b-to-engineer-in-one-year")}} "N00b to engineer") with Red Hat for the [FreeIPA][FreeIPA] project, I did my own crash course in studying net security/applied cryptography.  It's a very important subject, and I feel a lot of new developers rely on frameworks or libraries to implement this sort of 'stuff' for them without knowing what's going on.  So for those who are oblivious (like I was) to NetSec topics and concerns, here is some lo-down.
+In prepping for my interviews for my [newly acquired position]({{ get_url("/words/2012-09-25-from-n00b-to-engineer-in-one-year")}} "N00b to engineer") with Red Hat for the [FreeIPA][FreeIPA] project, I did my own crash course in studying net security/applied cryptography.  It's a very important subject, and I feel a lot of new developers rely on frameworks or libraries to implement this sort of 'stuff' for them without knowing what's going on.  So for those who are oblivious (like I was) to NetSec topics and concerns, here is some lo-down.
 
 
 Back when I was in banking, on my local desktop I had a password-protected Excel spreadsheet of logins & passwords.  I thought I was one step above just saving my passwords in a plain-text file.  Since then, the bank has implemented a one-password storage system (although it added about 30 seconds for each system we wanted to log into).  A password-locked file is quite easy to break if someone wanted to.
@@ -30,7 +30,7 @@ In order to combat the ease of creating rainbow tables, a [salt][salt] is added 
 #### Side note 
 If you're interested in the history of cryptography, breaking passwords and frequency analysis as well as a great history on computing, I would highly suggest [The Code Book: The Science of Secrecy from Ancient Egypt to Quantum Cryptography][The Code Book]. 
 
-[Part II - Ciphers]({{ get_url("2012-10-03-netsec-for-n00bs-part-ii-ciphers-symmetric")}} "Symmetric Ciphers")
+[Part II - Ciphers]({{ get_url("/words/2012-10-03-netsec-for-n00bs-part-ii-ciphers-symmetric")}} "Symmetric Ciphers")
 
 
 [FreeIPA]: http://freeipa.org/page/Main_Page "FreeIPA"
@@ -39,6 +39,6 @@ If you're interested in the history of cryptography, breaking passwords and freq
 [SHA-1]: http://en.wikipedia.org/wiki/SHA-1 "Wiki: SHA-1"
 [SHA-2]: http://en.wikipedia.org/wiki/SHA-2 "Wiki: SHA-2"
 [Bcrypt]: http://en.wikipedia.org/wiki/Bcrypt "Wiki: Bcrypt"
-[Rainbow Table]: http://en.wikipedia.org/wiki/Rainbow_table"Wiki: Rainbow table"
+[Rainbow Table]: http://en.wikipedia.org/wiki/Rainbow_table "Wiki: Rainbow table"
 [salt]: http://en.wikipedia.org/wiki/Salt_(cryptography) "Wiki: Salt"
 [The Code Book]: http://www.amazon.com/gp/product/B004IK8PLE/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=B004IK8PLE&linkCode=as2&tag=roglyn-20 "The Code Book"

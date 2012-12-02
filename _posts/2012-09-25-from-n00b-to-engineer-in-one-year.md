@@ -8,7 +8,7 @@ It is my great pleasure (and squee!) to share with my friends, family, PyLadies,
 
 #### I am an Engineer.
 
-<aside>![Joey & Chandler from Friends]({{ get_asset("images/Joey_Chandler.gif")}} "Moving Day") </aside>
+![Joey & Chandler from Friends]({{ get_asset("images/Joey_Chandler.gif")}} "Moving Day")
 
 Yes, the same person that once did not know the difference between a compiler and an interpreter, couldn't explain wtf \_\_init\_\_.py files do, or conceive of generators versus iterators. The same person that took her way too long to admit that you can return more than one item in a function.  This is the same n00b that was once told by Leah Culver that one
 

@@ -45,5 +45,5 @@ It can be pretty demanding.  But it's why posters are great for in-depth and/or
 ** Let's help you give it your best shot. **
 
 
-[Hilary Mason]: http://www.twitter.com/hmason "Hilary Mason's twitter"
+[Hilary]: http://www.twitter.com/hmason "Hilary Mason's twitter"
 [PyLadies]: http://www.roguelynn.com/2012/08/25/pycon-proposal-brainstorming-via-google-hangout/ "PyCon Proposal Brainstorming via Google Hangout"

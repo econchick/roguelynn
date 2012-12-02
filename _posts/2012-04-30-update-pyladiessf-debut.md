@@ -6,8 +6,6 @@ tags: [PyLadies]
 
 Wow, what an event it was! I'd say we had about \~50 attendees for our [first event][event], which is awesome.  There was so much excitement in the room that I couldn't even get a chance to hack on my projects!  
 
-[![PyLadies]({{ get_asset("images/pyladies_logo.png")}} "PyLadies Logo")](http://pyladies)
-
 [Klout][Klout] had a great space for us, and [LinkedIn][LinkedIn] provided [too much] food. And a huge thanks to [Robyn Navarro][photographer] for taking time out of her schedule to come take some [awesome pictures][pics]of the event! 
 
 

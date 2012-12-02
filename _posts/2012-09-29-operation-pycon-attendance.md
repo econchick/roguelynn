@@ -20,13 +20,11 @@ There will be plenty of talks & tutorials on the other side of the spectrum: int
 
 #### You're convinced, but your employer might not be
 
-It's cheap.  Tutorials are \$150/200 each (early bird/on site) for 3 1/2-4 hours of intense learning.  The conference is \$450/\$600/\$700 (corporate prices, early bird/regular/on site).  Comparatively, these huge conferences often go for far more than that. You will learn more in 9 days of tutorials, talks, and sprints than a year of reading books. Not only will you be exposed to trends, new technologies and ideas not yet written about, you have the opportunity to talk with other Python devs.  Another company had the same deployment issues you folks are having?  What about managing real time data? The hall way track presents many opportunities to have those conversations and knowledge transfers.
+It's cheap.  Tutorials are $150/200 each (early bird/on site) for 3 1/2-4 hours of intense learning.  The conference is $450/$600/$700 (corporate prices, early bird/regular/on site).  Comparatively, these huge conferences often go for far more than that. You will learn more in 9 days of tutorials, talks, and sprints than a year of reading books. Not only will you be exposed to trends, new technologies and ideas not yet written about, you have the opportunity to talk with other Python devs.  Another company had the same deployment issues you folks are having?  What about managing real time data? The hall way track presents many opportunities to have those conversations and knowledge transfers.
 
 A relavent tweet to part on:
 
-> CFO to CEO: What happens if we invest in developing our people & then
-> they leave the company? CEO: What happens if we don't and they stay? —
-> Christina Haxton (@ChristinaHaxton) [September 29, 2012][tweet]
+> CFO to CEO: What happens if we invest in developing our people & then  they leave the company? CEO: What happens if we don't and they stay? — Christina Haxton (@ChristinaHaxton) [September 29, 2012][tweet]
 
 
 

@@ -8,24 +8,24 @@ Seeing how my previous [bookmarks post]({{ get_url("2012-05-20-gold-nuggets-my-b
 
 #### Tutorials & How-tos
 
-*[Introduction to Twisted][Twisted]: A thorough introduction to Twisted and Asyncronous programming in Python. 
-*[tryGit][tryGit]: Learn Git with GitHub& Codeschool's new tutorial. 
-*[Django: The Undocumented Settings][Django]: Tricks when writing the settings.py file for Django. 
-*[Getting Started with Django from Heroku][Heroku]: A tutorial using Django and deploying with Heroku.  Assumes some knowledge of virtual environments. 
-*[Online Python Tutor][Tutor]: Learn & Practice programming in your browser.
-*[Protips on Conference Talks][Conf]: Thinking about giving a talk at a conference? Here is some great advice on how to rock it!
+* [Introduction to Twisted][Twisted]: A thorough introduction to Twisted and Asyncronous programming in Python. 
+* [tryGit][tryGit]: Learn Git with GitHub& Codeschool's new tutorial. 
+* [Django: The Undocumented Settings][Django]: Tricks when writing the settings.py file for Django. 
+* [Getting Started with Django from Heroku][Heroku]: A tutorial using Django and deploying with Heroku.  Assumes some knowledge of virtual environments. 
+* [Online Python Tutor][Tutor]: Learn & Practice programming in your browser.
+* [Protips on Conference Talks][Conf]: Thinking about giving a talk at a conference? Here is some great advice on how to rock it!
 
 #### Tools
 
-*[Sublime for Python and Web Developers][Sublime]: How to squeeze more power out of one of the most popular, light weight text editors for Python.
-*[Sublime Short cuts][Short]**: Learn to get more out of the latest text editor. 
-*[Visual Crontab Editor][Visual]: Easily create crontab syntax for your Linux or Unix servers.
+* [Sublime for Python and Web Developers][Sublime]: How to squeeze more power out of one of the most popular, light weight text editors for Python.
+* [Sublime Short cuts][Short]**: Learn to get more out of the latest text editor. 
+* [Visual Crontab Editor][Visual]: Easily create crontab syntax for your Linux or Unix servers.
 
 #### Libraries
 
-*[PEP-8 Style Guide Checker][PEP8]: Are you writing code according to the standard Python guidelines?  Have no idea?  Try out this library.
-*[Logr][Logr]: Simple Python blogger. 
-*[Git Legit][Legit]: Git for Humans.
+* [PEP-8 Style Guide Checker][PEP8]: Are you writing code according to the standard Python guidelines?  Have no idea?  Try out this library.
+* [Logr][Logr]: Simple Python blogger. 
+* [Git Legit][Legit]: Git for Humans.
 
 
 [Twisted]: http://krondo.com/?page_id=1327 "Intro to Twisted"

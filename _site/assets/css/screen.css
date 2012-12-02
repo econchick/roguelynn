@@ -23,7 +23,7 @@ html {
   line-height: 1; }
 
 ol, ul {
-  list-style: none; }
+  list-style: disc; }
 
 table {
   border-collapse: collapse;
