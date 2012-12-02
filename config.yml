@@ -1,0 +1,12 @@
+base_url: /
+title: roguelynn
+author: roguelynn
+domain: roguelynn.com
+date_format: "%B %d, %Y"
+posts_url: /words/<title>/
+social:
+    github: econchick
+    twitter: roguelynn
+jinja:
+    extensions:
+        - jinja2.ext.loopcontrols

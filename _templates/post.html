@@ -1,0 +1,14 @@
+{% extends "site.html" %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block content %}
+    <section id="post">
+        <h3>{{ post.title }}</h2>
+        <header id="meta">
+            <ul>
+                <li><time pubdate datetime="{{ post.timestamp|date('%Y-%m-%d') }}">{{ post.date }}</time>
+            </ul>
+        </header>
+        <article>{{ post.content }}</article>
+    </section>
+    <p><a href="{{ get_url('/words/') }}">&larr; See all posts</a></p>
+{% endblock %}

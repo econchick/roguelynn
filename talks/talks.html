@@ -1,0 +1,24 @@
+{% extends "site.html" %}
+{% block title %}Talks{% endblock %}
+{% block content %}
+    <section id="archive">
+        <section>
+            {% for talk in talks %}
+                {% if confirmed %}
+                    <h2>Confirmed Talks</h2>
+                        <writing>
+                            <h3>{{ talk.title }}</h3>
+                            <p>{{ talk.date}} | <a href="{{ get_url(talk.url)}}">{{ talk.location }}</a></p>
+                        </writing>
+                {% else %}
+                    <h2>Past Talks</h2>
+                        <writing>
+                            <h3>{{ talk.title }}</h3>
+                            <p>{{ talk.date}} | <a href="{{ get_url(talk.url)}}">{{ talk.location }}</a></p>
+                            <p>{{ talk.content }}</p>
+                        </writing>
+                {% endif %}
+            {% endfor %}
+        </section>
+    </section>
+{% endblock %}

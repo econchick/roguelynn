@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+        <title>Sadistic/Masochistic pleasure: Technical Interviews — Lynn Root</title>
+        <meta name="description" content="Homepage and blog of Lynn Root. Python Engineer, PyLadiesSF Founder, Socializer in San Francisco." />
+        <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/ico" />
+        <link rel="alternate" type="application/atom+xml" title="Atom 1.0" href="http://roguelynn.com/feed.xml" />
+
+        <!--Stylesheets-->
+        <link rel="stylesheet" href="/assets/css/lightbox.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/pygments.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/screen.css" media="screen" title="screen">
+        <script src="http://use.edgefonts.net/imprima.js"></script>
+        <script src="http://use.edgefonts.net/andika.js"></script>
+
+
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="nav-wrapper">
+            <nav>
+                <ul class="title">
+                    <li class="name"><a class="current" href="/">Lynn Root</a></li>
+                    <li class="desc">Coder • Writer • Speaker • PyLady</li>
+                </ul>
+                <ul class="contents"> 
+                    <li class="page_item"><a href="/">Home</a></li>
+                    <li class="page_item"><a href="/about/">About</a></li>
+                    <li class="page_item"><a href="/words/">Words</a></li>
+                    <li class="page_item"><a href="/talks/">Talks</a></li>
+                    <li class="page_item"><a href="/pyladies/">PyLadies</a></li>
+
+                </ul>
+            </nav>
+        </div>
+        <div class="page">
+            
+    <section id="post">
+        <h3>Sadistic/Masochistic pleasure: Technical Interviews</h2>
+        <header id="meta">
+            <ul>
+                <li><time pubdate datetime="2012-08-15">August 15, 2012</time>
+            </ul>
+        </header>
+        <article><p>When I was in high school, I was in &quot;IB&quot; math - the international equivalent to AP courses, except harder.  I really, really, <em>really</em> enjoyed math.  My teacher would always mispronounce my name (&quot;Wynn!&quot;), but nonetheless, I loved the challenge.  I was the only one to receive 100% on the final exam, and one of a handful to take the IB exam.  I studied regularly, went over classmates&#39; houses, worked through practice problems of vectors, differentiation, integration, goodness it was awesome.  I&#39;d say that studying for this sort of stuff is very much like (if not the same concept) as the training I did for swimming: 2 hours/day in the pool, 6 days a week, extra hour each day of dry land training (side stepping the fact that right now, the most exercise I get is walking to/from cafes...). </p>
+
+<p>While it&#39;s been years since my crush on high school math, that same feeling comes again when studying for technical interviews.  Few hours/day, every day, until the interview.  I recently had the excitement of having a technical phone screen with Google, and I thought it went pretty well.  Not in terms of I think I can make it to the next round (I don&#39;t need to mention that the bar is set very high with them), but how I felt when comparing my last technical interview experience back in April.  I&#39;d like to share how I prepared myself. I&#39;ll mention that I my CV reflects a lot of PyLadies work, as well as knowledge of Python (natch), SQL, git, and working with different APIs.</p>
+<h4>How I prepared:</h4>
+<p>I had about a week for preparation (contrary to my previous one, where I had about two weeks).  Really, it had all depended on scheduling, but I tried to push it out as far as I could :D. First I read through a couple of Python resources just to become familiar with the &#39;hidden gems&#39; of the language that I may not use regularly or don&#39;t have exposure to:</p>
+
+<ul>
+<li>  memorizing all of the language&#39;s built in functions (easy peasy)</li>
+<li>  magic methods, as well as the difference between __str__ and __repr__</li>
+<li>  built in methods on data types (e.g. my_string.split())</li>
+<li>  difference between New Style &amp; Classic classes</li>
+<li>  range v xrange, generators v iterators, return v yield</li>
+<li>  default dicts w/ default factories, and other container datatypes</li>
+</ul>
+
+<p>I also reviewed some SQL crap too:</p>
+
+<ul>
+<li>  difference between joins and outer left/right/both joins</li>
+<li>  schema design (e.g. pk, fk, indices)</li>
+</ul>
+
+<p>Then I spent a lot of time doing algorithms, graph transversals, data structures (without Python&#39;s help), etc.  I used Gayle Laakmann McDowell&#39;s book: <a href="http://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/098478280X/ref=sr_1_1?ie=UTF8&amp;qid=1344972927&amp;sr=8-1&amp;keywords=cracking+the+coding+interview" title="Amazon link to Cracking the Coding Interview book">Cracking the Coding Interview</a> since it gives a very well laid out path to study for the typical technical interview.  I found that Palantir (a tech/finance/info company that I have a hard crush on) has a great<a href="http://www.palantir.com/2011/09/how-to-rock-an-algorithms-interview/" title="Palantir&#39;s interview advice">how-to</a> on succeeding their technical/algorithm interviews (and I feel that applies to all aggressive tech companies).</p>
+
+<p>My process each day would be to warm up with a couple of easy problems, then go onto a more difficult graph or algorithm problem.  A lot reflects Gayle&#39;s book, and in that book she uses Java (hence some of these problems can be easily implemented in Python with no thought).  I&#39;ll leave you to get her awesome book in order to read best approaches &amp; the answers (literally, every example problem has a solution in the book, it&#39;s great).</p>
+
+<p>In loose order of difficulty, starting with what I&#39;d have for breakfast and ending towards what made me skip meals:</p>
+
+<ul>
+<li><p>Strings/Arrays</p>
+
+<ul>
+<li>  determine a string w/ all unique characters (both w/ and w/o
+additional data structures)</li>
+<li>  write an algo to determine if a string is a palindrome</li>
+<li>  write an algo such that if an element in an MxN matrix is 0, its
+entire row &amp; column are set to 0.</li>
+</ul></li>
+<li><p>Linked Lists (without Python&#39;s awesomesauce)</p>
+
+<ul>
+<li>  creating a linked list</li>
+<li>  find the kth element of a singly linked list</li>
+<li>  remove duplicates from unsorted linked list</li>
+</ul></li>
+<li><p>Stacks &amp; Queues</p>
+
+<ul>
+<li>  implement a stack/queue (and know the diff between each)</li>
+<li>  use a single array to implement three stacks</li>
+<li>  in addition to push/pop for a stack/queue, also design a min
+function to return the min node (operating in o(1) time)</li>
+<li>  towers of Hanoi problem</li>
+</ul></li>
+<li><p>Trees and graphs</p>
+
+<ul>
+<li>  define a function to check if a binary tree is balanced</li>
+<li>  write an algo that creates a binary search tree w/ minimal
+height</li>
+<li>  Breadth/depth-first searches (not too hard esp after stacks &amp;
+queues)</li>
+<li>  implement a suffix tree</li>
+<li>  Dijkstra&#39;s algorithm</li>
+</ul></li>
+<li><p>Sorting &amp; Searching</p>
+
+<ul>
+<li>  you have two sorted arrays, A &amp; B where A is large enough buffer
+at the end to hold B.  write a method to merge B into A in
+sorted order.</li>
+<li>  find the index of a given integer in an array (unsorted)</li>
+</ul></li>
+<li><p>moar graphs, algos and random but good</p>
+
+<ul>
+<li>  write a power function</li>
+<li>  implement an atoi function</li>
+<li>  write a simple caesar cipher (both encoding &amp; decoding)</li>
+<li>  write a greedy algorithm that returns amount of change in coins
+(quarters, dimes, nickels, pennies)</li>
+<li>  write an algorithm/mini program that, given a maze, a start &amp; an
+end point, returns the path(s) needed to exit the maze (this was
+not fun to do at 8pm the night before the interview, but it is a
+damn good problem to attack).</li>
+</ul></li>
+</ul>
+
+<p>For some reason, perhaps someone could enlighten me, I wasn&#39;t able to get <a href="http://community.topcoder.com/tc" title="top coder">TopCoder</a>&#39;s java applet running (although I could months ago). Those algo problems are great, challenging, and appeal to different levels.  TopCoder&#39;s problems would be a fantastic help to those prepping for the in-person technical interview.  Hopefully I&#39;m the only one with the issue. A week or so after my interview, someone posted on <a href="http://www.reddit.com/r/learnprogramming/comments/xwd16/had_a_technical_phone_interview_today_for_an/" title="a self-post on reddit">/r/learnprogramming</a> in reddit what questions s/he was asked during a technical phone interview.  Very helpful (note that the interviewee is a C++ person interviewing for an entry level software engineer position at a mid-sized, well-known company):</p>
+
+<ul>
+<li>  What kind of data structure would you use to hold an arbitrary amount of objects in which retrieval is not an issue?</li>
+<li>  Follow up: what are the advantages and disadvantages of using a linked list over a dynamic array structure? [good time to talk about Big-O performance]</li>
+<li>  Describe the main properties of a binary search tree.</li>
+<li>  What would happen if you inserted a sorted list into a binary search tree?</li>
+<li>  Follow up: how can you avoid this problem?</li>
+<li>  Say you want to retrieve from a data set a person&#39;s name based on an alphanumeric ID number. What kind of data structure would you use?</li>
+<li>  Compare a hash table and a map type structure and their big-O performance on various common functionality (search, insert, etc.).</li>
+<li>  What is the worst case retrieval time for a hash table and how can this happen?</li>
+<li>  Briefly describe object oriented programming and it&#39;s main principles (MAKE SURE TO SAY: encapsulation, inheritance, and  polymorphism, (and abstraction if you want)).</li>
+<li>  He specifically asked me to elaborate more on encapsulation and polymorphism.  Why is polymorphism useful?</li>
+<li>  What is a join and an outer join? (SQL)</li>
+</ul>
+
+<p>Reading through those redditor&#39;s interview questions, I actually felt that I can answer the majority of them.  Actually I didn&#39;t know what encapsulation was, but luckily I wasn&#39;t the one in the hot seat for that interview, and I googled it :D.</p>
+<h4>My weak points that I will work on:</h4>
+<ul>
+<li>  Understanding what can be done to improve runtimes of an algorithm  (not just be able to tell the runtime).</li>
+<li>  Being more confident in my understanding of concepts.  For instance, I know what a RESTful API is, but how do I spit it back coherently? Same with explaining git.</li>
+<li>  Calm the f&amp;ck down.</li>
+</ul>
+<h4>Things I thought I did well in:</h4>
+<ul>
+<li>  Wrote &amp; instantiated a class that would be used to make a graph, using the requested private variables/methods (he seemed a little impressed).  Although I do believe I mixed up new style v classic. /facepalm</li>
+<li>  Talking through each and every damn thing I was saying and writing (was not easy the first time).  And going back through what I coded to test simple cases &amp; fixed typos/errors.</li>
+<li>  My understanding of repr v str (finally...).</li>
+<li>  Simple schema writing (from the first interview).</li>
+<li>  Before coding, switched the font/size to courier 8 (seriously, red flag to them if not using a fixed-width font when gdocs defaults to a variable-width one).</li>
+</ul>
+
+<p>I&#39;m certainly not counting on going further from that interview.  I quite like the set up I have now doing contracting with a friend&#39;s consulting + Harvard&#39;s project, and I seem to walk into new opportunities (then again, this is the Bay Area). Thankfully I&#39;m also able to contribute to open source, give talks &amp; go to conferences, put on workshops and events, etc.</p>
+
+<p>But hey - you&#39;d understand if Google came calling, right?  I actually look forward to the day where I can go in and code on a whiteboard, but that will take a lot more studying, understanding of more complex algorithms, better understanding of runtimes, perhaps systems architecture.  For those PyLadies and Women Who Code&#39;ers in the Bay Area, WWC is hosting a <a href="http://www.meetup.com/Women-Who-Code-SF/events/77224932/" title="Women Who Code tech interviewing event">Technical Interview evening talk/mini-workshop</a> with Gayle Laakmann McDowell next week.  We&#39;re also looking for mentors (and food sponsors!), so hit me up if you&#39;re interested! <strong>Update: </strong>I was told not to divulge what questions I received from the interviewer as it reflects poorly.  So, let me just say: what I studied aligned pretty well with what I was asked :D  I just...wish I had a better memory! Another resource given to me: <a href="https://www.interviewstreet.com/challenges/" title="Interview Street Challenges">Interview Street</a>, and I forgot <a href="http://www.careercup.com/" title="Career Cup: Programming Interview Questions">CareerCup</a>.</p>
+</article>
+    </section>
+    <p><a href="/words/">&larr; See all posts</a></p>
+
+        </div>
+        <div class="footer-wrapper">
+            <footer id="bottom">
+                <ul class="social">
+                    <li><a class="icon twitter" data-icon="&#62217;" href="http://twitter.com/roguelynn" title="Twitter"></a></li>
+                    <li><a class="icon github" data-icon="&#62208;" href="http://github.com/econchick" title="GitHub"></a></li>
+                    <li><a class="icon rss" data-icon="&#59194;" href="http://roguelynn.com/feed.xml" title="RSS"></a></li>
+                    <li>© 2007–2012 Lynn Root <div id="arr">All Rights Reserved</div></li>
+                </ul>
+            </footer>
+        </div>
+        <!--Javascript-->
+        <script src="/assets/js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+    </body>
+</html>
