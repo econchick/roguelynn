@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+        <title>NetSec for n00bs, part II: Ciphers (symmetric) — Lynn Root</title>
+        <meta name="description" content="Homepage and blog of Lynn Root. Python Engineer, PyLadiesSF Founder, Socializer in San Francisco." />
+        <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/ico" />
+        <link rel="alternate" type="application/atom+xml" title="Atom 1.0" href="http://roguelynn.com/feed.xml" />
+
+        <!--Stylesheets-->
+        <link rel="stylesheet" href="/assets/css/lightbox.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/pygments.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/screen.css" media="screen" title="screen">
+        <script src="http://use.edgefonts.net/imprima.js"></script>
+        <script src="http://use.edgefonts.net/andika.js"></script>
+
+
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="nav-wrapper">
+            <nav>
+                <ul class="title">
+                    <li class="name"><a class="current" href="/">Lynn Root</a></li>
+                    <li class="desc">Coder • Writer • Speaker • PyLady</li>
+                </ul>
+                <ul class="contents"> 
+                    <li class="page_item"><a href="/">Home</a></li>
+                    <li class="page_item"><a href="/about/">About</a></li>
+                    <li class="page_item"><a href="/words/">Words</a></li>
+                    <li class="page_item"><a href="/talks/">Talks</a></li>
+                    <li class="page_item"><a href="/pyladies/">PyLadies</a></li>
+
+                </ul>
+            </nav>
+        </div>
+        <div class="page">
+            
+    <section id="post">
+        <h3>NetSec for n00bs, part II: Ciphers (symmetric)</h2>
+            <aside>
+                <time pubdate datetime="2012-10-03">October 03, 2012</time>
+            </aside>
+        <article><p>A continuation of <a href="/words/2012-10-01-netsec-for-n00bs-part-i-password-storage" title="Netsec for n00bs Part I">NetSec for n00bs, part I: Password Storage</a> A cipher is basically an algorithm to perform encryption and decryption. </p>
+
+<p>Important to note: cipher algorithms, as opposed to hash algorithms, go both ways, meaning if you process a plain text to encrypted text using a cipher, you use that same cipher to decrypt the encrypted text back to plain text, aka symmetric key encryption. </p>
+
+<p>A very simple, widely known example (and not at all secure) is called a <a href="http://en.wikipedia.org/wiki/Caesar_cipher" title="Wiki: Caesar Cipher">Caesar Cipher</a>.  Let&#39;s say you are in primary school, and you want to write a note to your neighbor saying &#39;I think Jon is cute.&#39;  But god forbid that either Jonor your teacher intercepts such a note!  Instead you are clever; for each letter in that phrase, you shift it in the alphabet by 3.</p>
+
+<pre>
+    Plain :  ABCDEFGHIJKLMNOPQRSTUVWXYZ
+    Cipher:  DEFGHIJKLMNOPQRSTUVWXYZABC
+</pre>
+
+<p>Your message would read as: &quot;l wklqn mrq lv fxwh.&quot; This would be pretty easy to break, no?  All you&#39;d have to do is try each shift 25 times.  Or you can look at the ciphered text and see &#39;l&#39; is used three times, once alone at the start of the phrase, once in the middle of the second word, and again in the fourth.  </p>
+
+<p>In the English language, A &amp; I are the only letters that can stand by themselves.  Seeing as how we intercepted a primary school girl&#39;s note, one can assume that the message would have herself as the subject of the phrase.  Assuming l = i, you have figured out the shift of the Caesar cipher, and can easily figure out the rest of the message. </p>
+
+<p>Adding some complexity to the Caesar cipher is the <a href="http://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher" title="wiki Vigenere cipher">Vigenère cipher</a>.  This one is very similar, but uses multiple Caesar ciphers based on a keyword. To expound on our example, let&#39;s say our keyword will be &#39;playground.&#39;  We&#39;d then use the (not so) <a href="http://en.wikipedia.org/w/index.php?title=File:Vigen%C3%A8re_square_shading.svg&amp;page=1" title="Vigenere square">super secret decoder ring</a> that Vigenere developed to encode with the keyword.</p>
+
+<pre>
+    PLAINTEXT: ITHINKTHATJONISCUTE
+    KEY WORD : PLAYGROUNDPLAYGROUN
+    ENCRYPTED: XEHGTBHBNWYZNGYTINR
+</pre>
+
+<p>The letter &#39;i&#39; is paired up with &#39;p&#39;, so you&#39;d use column &#39;i&#39; and row &#39;p&#39; in the super secret decoder ring, aka the Vigenere square, to get the ciphered letter.  This way, you&#39;d only have to keep the keyword secret. In symmetric key encryption, the drawback is that both parties, the sender &amp; the (intended) receiver of the message, need to know what the key is, as opposed to public-key encryption (will be part III of this series). </p>
+
+<p>Currently, the <a href="http://en.wikipedia.org/wiki/Advanced_Encryption_Standard" title="Wiki: AES">Advanced Encryption Standard</a> (AES) is a well-respected specification for symmetric-key encryption, and became federal standard in the early 2000s and deemed suitable for &#39;secret&#39; and &#39;top secret&#39; information (with varying degrees of key length needed depending on which level of confidentiality is needed). While the algorithm is itself difficult to break (an attack on the algorithm itself <a href="http://en.wikipedia.org/wiki/Advanced_Encryption_Standard#Known_attacks" title="Wiki: AES known attacks">happened around 2009</a> on certain versions of AES), side-channeling is effectively attacking an implementation of AES with a longer known history of attacks. </p>
+
+<p>Side-channeling is quite cool and devious, if I may say.  Attackers use information that the implemented AES system gives off: timing info, power consumption, etc.   If using a timing attack, one would &#39;listen&#39; for how long it takes the hardware that holds the algorithm to compute cryptographic operations. Using statistical analysis, one can sometimes figure out the whole key. Alright I think that completes the part II of NetSec for n00bs.  Part III will continue on with asymmetric encryption/public key crypto.</p>
+
+<p><a href="/words/2012-10-15-netsec-for-n00bs-part-iii-simple-intro-public-key-crypto" title="Public Key Crypto">Part III - Public Key Crypo</a></p>
+</article>
+    </section>
+    <p><a href="/words/">&larr; See all posts</a></p>
+
+        </div>
+        <div class="footer-wrapper">
+            <footer id="bottom">
+                <ul class="social">
+                    <li><a class="icon twitter" data-icon="&#62217;" href="http://twitter.com/roguelynn" title="Twitter"></a></li>
+                    <li><a class="icon github" data-icon="&#62208;" href="http://github.com/econchick" title="GitHub"></a></li>
+                    <li><a class="icon rss" data-icon="&#59194;" href="http://roguelynn.com/feed.xml" title="RSS"></a></li>
+                    <li>© 2007–2012 Lynn Root. All Rights Reserved.</li>
+                </ul>
+            </footer>
+        </div>
+        <!--Javascript-->
+        <script src="/assets/js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+    </body>
+</html>

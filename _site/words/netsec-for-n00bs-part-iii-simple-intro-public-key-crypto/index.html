@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+        <title>NetSec for n00bs, part III: Simple Intro Public Key Crypto — Lynn Root</title>
+        <meta name="description" content="Homepage and blog of Lynn Root. Python Engineer, PyLadiesSF Founder, Socializer in San Francisco." />
+        <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/ico" />
+        <link rel="alternate" type="application/atom+xml" title="Atom 1.0" href="http://roguelynn.com/feed.xml" />
+
+        <!--Stylesheets-->
+        <link rel="stylesheet" href="/assets/css/lightbox.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/pygments.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/screen.css" media="screen" title="screen">
+        <script src="http://use.edgefonts.net/imprima.js"></script>
+        <script src="http://use.edgefonts.net/andika.js"></script>
+
+
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="nav-wrapper">
+            <nav>
+                <ul class="title">
+                    <li class="name"><a class="current" href="/">Lynn Root</a></li>
+                    <li class="desc">Coder • Writer • Speaker • PyLady</li>
+                </ul>
+                <ul class="contents"> 
+                    <li class="page_item"><a href="/">Home</a></li>
+                    <li class="page_item"><a href="/about/">About</a></li>
+                    <li class="page_item"><a href="/words/">Words</a></li>
+                    <li class="page_item"><a href="/talks/">Talks</a></li>
+                    <li class="page_item"><a href="/pyladies/">PyLadies</a></li>
+
+                </ul>
+            </nav>
+        </div>
+        <div class="page">
+            
+    <section id="post">
+        <h3>NetSec for n00bs, part III: Simple Intro Public Key Crypto</h2>
+            <aside>
+                <time pubdate datetime="2012-10-15">October 15, 2012</time>
+            </aside>
+        <article><p>This is part 3 in a short intro series for netsec.  <a href="/words/2012-10-01-netsec-for-n00bs-part-i-password-storage" title="Password Storage">Part I</a>, <a href="/words/2012-10-03-netsec-for-n00bs-part-ii-ciphers-symmetric" title="Symmetric Ciphers">Part II</a>. <a href="http://www.reddit.com/r/AskReddit/comments/1198on/i_fucking_love_riddles_what_are_your_best_hardest/c6kfncq" title="AskReddit: Riddles">Riddle time</a>:</p>
+
+<blockquote>
+<p>Q: You live in a country with a corrupt mail system. They open every package if they can. You put a lock on the box. You can&#39;t mail a key. How does the receiving person open the box? <br>
+A: Send the box with the lock to this person. He can&#39;t open it, but he can put another lock on this box. This person sends this box with the 2 locks back to you, you unlock your lock and send it back again. So there is just his lock on the box and he can finally open it...</p>
+</blockquote>
+
+<p>This is how public/private key crypto, aka asymmetric encryption (also: remember this riddle for technical interviews). Essentially you have two keys.  One is private, which you can imagine, only your computer knows and has access to.  The other is public, which you can give out to any sort of service that wants to talk to your computer securely. Let&#39;s use GitHub for example - you are working on some code, commit locally, then finally make the decision (after you squash all your messy commits) to push to the remote repo on GitHub.  In order to do so, you need to give GitHub your public key. How do you get your public key? In your terminal:</p>
+
+<p><code><br>
+    $ ssh-keygen -t rsa -C &quot;<a href="mailto:your_email@youremail.com">your_email@youremail.com</a>&quot; <br>
+    # generates a public key, saves it in ~/.ssh<br>
+    # you will be asked for a passphrase to associate with the public key<br>
+    $ pbcopy &lt; ~/.ssh/id_rsa.pub<br>
+    # creates a copy of the public key to your clipboard<br>
+</code></p>
+
+<p>Then you pasted the key into your GitHub account (more solid directions <a href="https://help.github.com/articles/generating-ssh-keys" title="GitHub SSH key gen">here</a>). Now GitHub has your public key, and can communicate with your computer when you want to push code to a GitHub-hosted remote repo. When you push/pull code from the remote repo, GitHub sends a scrambled message that only your private key can decode, and vice versa, your computer sends a message encoded by your private key that can only be decoded by your public key.  </p>
+
+<p>If everything checks out, then the &#39;transaction&#39; happens - push/pull code. The algorithm to compute public/private keys is based on prime numbers and the fact that it is difficult to deduce a private key from its associated public key.  It&#39;s simple to figure out the product of two prime numbers, <a href="http://www.see.ed.ac.uk/it/online/memos/pkey.html" title="Intro to public key encryption">but it is much more difficult to factor a number</a> (e.g. 101 * 113 = x is far more easier to figure out than x * y = 11413). <a href="http://searchsecurity.techtarget.com/definition/PKI" title="What is PKI?">To summarize</a>:</p>
+
+<ul>
+<li>To send an encrypted message, use the receiver&#39;s public key</li>
+<li>To send an encrypted signature, use the sender&#39;s private key</li>
+<li>To decrypt an encrypted message, use the receiver&#39;s private key</li>
+<li>To decrypt an encrypted signature (and authenticate the sender), use the sender&#39;s public key</li>
+</ul>
+</article>
+    </section>
+    <p><a href="/words/">&larr; See all posts</a></p>
+
+        </div>
+        <div class="footer-wrapper">
+            <footer id="bottom">
+                <ul class="social">
+                    <li><a class="icon twitter" data-icon="&#62217;" href="http://twitter.com/roguelynn" title="Twitter"></a></li>
+                    <li><a class="icon github" data-icon="&#62208;" href="http://github.com/econchick" title="GitHub"></a></li>
+                    <li><a class="icon rss" data-icon="&#59194;" href="http://roguelynn.com/feed.xml" title="RSS"></a></li>
+                    <li>© 2007–2012 Lynn Root. All Rights Reserved.</li>
+                </ul>
+            </footer>
+        </div>
+        <!--Javascript-->
+        <script src="/assets/js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+    </body>
+</html>
