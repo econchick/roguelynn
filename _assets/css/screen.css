@@ -605,6 +605,9 @@ h3 a {
   border-bottom: none;
   color: #dd4a38; }
   /* line 430, ../sass/screen.scss */
+  h3 a#article{
+    color:#38a5dd;
+  }
   h3 a:hover {
     border-bottom: none;
     color: #313236; }
