@@ -25,8 +25,6 @@
                 <email>lynn@lynnroot.com</email>
                 <uri>{{ get_url(absolute=true) }}</uri>
             </author>
-
-            <summary type="html">{{ post.excerpt|absolutize|escape }}</summary>
             <content type="html">{{ post.content|absolutize|escape }}</content>
         </entry>
     {% endfor %}
