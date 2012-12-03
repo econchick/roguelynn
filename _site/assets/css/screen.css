@@ -81,7 +81,7 @@ body {
   background-position: top center;
   background-repeat: no-repeat;
   color: #414247;
-  font-family: "maven-pro", serif;
+  font-family: "Myriad Pro", myriad-pro, Verdana, serif;
   line-height: 170%; }
 
 .nav-wrapper, .footer-wrapper {
@@ -172,7 +172,7 @@ nav {
         -moz-transition-property: color;
         -o-transition-property: color;
         transition-property: color;
-        color: #9c9eab; }
+        color: #54555C; }
         /* line 100, ../sass/screen.scss */
         nav .contents li a:hover {
           color: #313236; }
@@ -448,13 +448,17 @@ h1 {
   width: 100%; }
 
 h2 {
-  font-size: 1.4em;
+  font-size: 2em;
+  color: #38a5dd;
+  font-weight: 600;
+  text-transform: uppercase;
   line-height: 100%;
-  margin-top: 1.2em; }
+  margin-top: 1.2em; 
+  margin-bottom: .5em;}
 
 h3 {
-  color: #26ae90;
-  font-size: 1.4em;
+  color: #38a5dd;
+  font-size: 1.2em;
   font-weight: 600;
   margin-bottom: 0.6em;
   margin-top: 2em;
@@ -465,7 +469,7 @@ h3 {
     margin-top: 0; }
 
 h4 {
-  color: #9c9eab;
+  color: #38a5dd;
   font-size: 0.9em;
   font-weight: 600;
   margin-top: 0.4em;
