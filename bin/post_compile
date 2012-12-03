@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
 mynt gen -f _site
-cp _site/feed.xml _site/feed
+mkdir _site/feed
+cp _site/feed.xml _site/feed/index.html
