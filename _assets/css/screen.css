@@ -617,7 +617,7 @@ h3 a {
   h3 a:hover:after {
     color: #dd4a38; }
 
-section#archive article p a.more-link { padding-left: .8em; }
+section#archive article p a.more-link { margin-left: .8em; }
 section#archive h3 a { color: #38a5dd;}
 
 h5 a {
