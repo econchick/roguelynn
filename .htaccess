@@ -2,3 +2,4 @@ RewriteEngine On
 
 # Rewrite wordpress URLs
 RedirectMatch permanent /\d{4}/\d{2}/(.+)/ /words/$1
+RedirectMatch permanent /feed /feed.xml
