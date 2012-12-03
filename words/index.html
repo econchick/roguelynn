@@ -6,10 +6,9 @@
             <h1>Words</h1>
                 <article>
                         {% for post in posts %}
-                        <h3><a href="{{ get_url(post.url) }}">{{ post.title }}</a></h3>
+                        <h2><a href="{{ get_url(post.url) }}">{{ post.title }}</a></h2>
                         <time pubdate datetime="{{ post.timestamp|date('%Y-%m-%d') }}">{{ post.date }}</time>
-                        <p>{{ post.excerpt }} </p> 
-                        <p><a href="{{ get_url(post.url) }}" class="more-link">Read more &rarr;</a></p>
+                        <p>{{ post.excerpt }} <a href="{{ get_url(post.url) }}" class="more-link">Read more &rarr;</a></p>
                     {% endfor %}
                 </article>
         </section>
