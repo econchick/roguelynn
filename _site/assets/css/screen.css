@@ -461,7 +461,7 @@ h3 {
   font-size: 1.2em;
   font-weight: 600;
   margin-bottom: 0.6em;
-  margin-top: 2em;
+  margin-top: 0em;
   line-height: 100%;
   text-transform: uppercase; }
   /* line 294, ../sass/screen.scss */
@@ -481,7 +481,7 @@ aside h4 {
 h5 {
   font-size: 0.9em;
   font-weight: 600;
-  margin-top: 6em;
+  margin-top: 0.4em;
   text-align: right;
   text-transform: uppercase; }
 

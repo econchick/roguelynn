@@ -9,27 +9,20 @@ You just got a notice saying that your talk was accepted to [some huge freaking 
 Oh but wait, now you have to actually _talk_. That entails preparation, and speaking in front of people!
 
 ### Step 1: Let it set in.
-
 Breathe. Maybe pour a glass of wine.
-
 ### Step 2: Find inspiration.
 
 A little research on how to speak well can go a long way.
-
 #### Reading
-
 I can suggest [Confessions of a Public Speaker][Confessions]. The book is easily digestible and pretty humorous. The author offers great practical advice, and while it is more of a how-to book, it reads like a novel.
 
 Another book I recommend is [Presentation Zen][Zen]. Please, if you only get one thing out of this book, it's is that simplicity matters, but black font on a white background sucks.  The main point, though, is that the slides should support you, the speaker, and not detract.  It offers great advice on design tips, planning, and delivery.
-
 #### Watching
-
 There are some fantastic folks that give talks.  One of my absolute favorites is a TED talk from Benjamin Zander on [The transformative power of classical music][TED1]. This dude is so epic, so wrapped up in his own passion that he immediately connects with his audience. He talks about the disconnect between classical music and mainstream society today. But really, he could talk about anything and I'd still watch him.
 
 Another one of my favorite TED talks is by Elizabeth Gilbert, [Your elusive creative genius][TED2]. She talks about everyone having a genius within. But what is remarkable is how much effort she put into practicing this talk.
 
 A technical talk that I thoroughly enjoyed was Jessica McKellar's [Keynote][JMK] at DjangoCon EU in 2012. She was critical in a positive way, and very engaging with the audience because of her spot-on observations about Django's weaknesses.
-
 
 ### Step 3: Write out your talk.
 
@@ -44,7 +37,6 @@ One solid piece of advice is to follow this flow:
 Beginning your talk stating who you are, why you are speaking, and what the audience's take-away will allow the audience to have a good idea of what to expect.
 
 ### Step 4: Practice.
-
 Practice. 
 
 Yep, you knew that was coming. Craig Kerstiens wrote up a great [post][post] containing tips for preparation.
@@ -54,7 +46,6 @@ Essentially, practice at home in front of friends (perhaps entice them with a fr
 This is vital so you can get feedback. Perhaps your message wasn't clear, or your font on your slides are too similar to comic sans. Maybe you fumble and don't notice it with too many "um"s and "whatnot"s.
 
 ### Step 5: Relax.
-
 As a former collegiate athlete, it was known that 'the night before the night before' was the most important. For instance, if your talk is on Saturday, Thursday night's sleep will affect your energy level and stamina (and thus, affecting nerves and confidence) more than Friday. That's not to say rest on Thursday and party on Friday. 
 
 Another tidbit from my athlete days is to ease up on yourself the day before. Relax, tune out, don't stress. Assuming you have practiced your talk beforehand and are comfortable, then ease up the day before. No need to stress about getting one more practice run in.
