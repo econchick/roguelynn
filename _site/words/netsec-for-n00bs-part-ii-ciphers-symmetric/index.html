@@ -42,7 +42,8 @@
             <aside>
                 <time pubdate datetime="2012-10-03">October 03, 2012</time>
             </aside>
-        <article><p>A continuation of <a href="/words/2012-10-01-netsec-for-n00bs-part-i-password-storage" title="Netsec for n00bs Part I">NetSec for n00bs, part I: Password Storage</a> A cipher is basically an algorithm to perform encryption and decryption. </p>
+        <article>
+            <p>A continuation of <a href="/words/2012-10-01-netsec-for-n00bs-part-i-password-storage" title="Netsec for n00bs Part I">NetSec for n00bs, part I: Password Storage</a> A cipher is basically an algorithm to perform encryption and decryption. </p>
 
 <p>Important to note: cipher algorithms, as opposed to hash algorithms, go both ways, meaning if you process a plain text to encrypted text using a cipher, you use that same cipher to decrypt the encrypted text back to plain text, aka symmetric key encryption. </p>
 
@@ -72,7 +73,22 @@
 <p>Side-channeling is quite cool and devious, if I may say.  Attackers use information that the implemented AES system gives off: timing info, power consumption, etc.   If using a timing attack, one would &#39;listen&#39; for how long it takes the hardware that holds the algorithm to compute cryptographic operations. Using statistical analysis, one can sometimes figure out the whole key. Alright I think that completes the part II of NetSec for n00bs.  Part III will continue on with asymmetric encryption/public key crypto.</p>
 
 <p><a href="/words/2012-10-15-netsec-for-n00bs-part-iii-simple-intro-public-key-crypto" title="Public Key Crypto">Part III - Public Key Crypo</a></p>
-</article>
+
+            <div id="disqus_thread"></div>
+                <script type="text/javascript">
+                    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                    var disqus_shortname = 'roguelynn'; // required: replace example with your forum shortname
+
+                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </article>
     </section>
     <p><a href="/words/">&larr; See all posts</a></p>
 
