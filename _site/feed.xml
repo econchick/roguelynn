@@ -2,28 +2,28 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>Blog of Lynn Root</title>
     <subtitle>Homepage and blog of Lynn Root. Coder, writer, speaker, and PyLady of San Francisco.</subtitle>
-    <link rel="alternate" href="http://roguelynn.com/" />
-    <link rel="self" href="http://roguelynn.com/feed.xml" type="application/atom+xml" />
-    <id>http://roguelynn.com/</id>
-    <updated>2012-12-03T17:11:10Z</updated>
+    <link rel="alternate" href="http://www.roguelynn.com/" />
+    <link rel="self" href="http://www.roguelynn.com/feed.xml" type="application/atom+xml" />
+    <id>http://www.roguelynn.com/</id>
+    <updated>2012-12-03T18:41:33Z</updated>
 
     <author>
         <name>Lynn Root</name>
         <email>lynn@lynnroot.com</email>
-        <uri>http://roguelynn.com/</uri>
+        <uri>http://www.roguelynn.com/</uri>
     </author>
 
     
         <entry>
             <title type="html">CR@P I&#39;M SPEAKING AT [insert conference here]! How do I prepare?</title>
-            <link rel="alternate" href="http://roguelynn.com/words/crap-im-speaking/" type="text/html" />
-            <id>http://roguelynn.com/words/crap-im-speaking/</id>
+            <link rel="alternate" href="http://www.roguelynn.com/words/crap-im-speaking/" type="text/html" />
+            <id>http://www.roguelynn.com/words/crap-im-speaking/</id>
             <updated>2012-12-03T12:08:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
-                <uri>http://roguelynn.com/</uri>
+                <uri>http://www.roguelynn.com/</uri>
             </author>
             <content type="html">&lt;p&gt;You just got a notice saying that your talk was accepted to [some huge freaking conference]. Awesome!&lt;/p&gt;
 
@@ -75,14 +75,14 @@
     
         <entry>
             <title type="html">From email setup to patch submission in 8 days.</title>
-            <link rel="alternate" href="http://roguelynn.com/words/from-email-setup-to-patch-submission-in-8-days/" type="text/html" />
-            <id>http://roguelynn.com/words/from-email-setup-to-patch-submission-in-8-days/</id>
+            <link rel="alternate" href="http://www.roguelynn.com/words/from-email-setup-to-patch-submission-in-8-days/" type="text/html" />
+            <id>http://www.roguelynn.com/words/from-email-setup-to-patch-submission-in-8-days/</id>
             <updated>2012-11-06T07:43:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
-                <uri>http://roguelynn.com/</uri>
+                <uri>http://www.roguelynn.com/</uri>
             </author>
             <content type="html">&lt;p&gt;Hellz yea, I&amp;#39;m a freaking engineer (sounds more hilarious in my head then it reads). Now who the hell wouldn&amp;#39;t want to be an engineer? Fellow PyLady, Julia Grace, &lt;a href=&#34;https://twitter.com/jewelia/status/262665853483499520&#34; title=&#34;Tweet from Julia Grace&#34;&gt;asked&lt;/a&gt; about my expectations of being an engineer versus what I actually experienced.  &lt;/p&gt;
 &lt;h4&gt;TL;DR: It&amp;#39;s awesome.&lt;/h4&gt;
@@ -133,7 +133,7 @@ Must be root to setup this server!&lt;br&gt;
 &lt;li&gt;&lt;p&gt;People don&amp;#39;t need free meals/fish deliveries/spousal salaries upon death to be happy to work somewhere.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;It is SO freaking nice not to worry about being in the office during the same time as your manager (precious &amp;#39;face time&amp;#39;); clocking every minute of every hour that has any relation to work.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Engineers are so relaxed and fun to work with. I feel no pressure, and therefore no nerves when asking questions.  Little things like, &amp;#39;here are the IRC channels we&amp;#39;re in...&amp;#39; and &amp;#39;Thursday&amp;#39;s the best because it&amp;#39;s breakfast day.&amp;#39;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;My manager flat out said &amp;quot;I won&amp;#39;t read it&amp;quot; when I forwarded him &lt;a href=&#34;http://roguelynn.com/2012-10-21-community-ftw-kicking-of-the-pycarolinas-community&#34; title=&#34;Community FTW&#34;&gt;my post&lt;/a&gt; about the community talk I gave at PyCarolinas (among other questions &amp;amp; discussion points). Damn that guy is awesome. No nonsense, no bs, no coddling, very helpful, thinks outside the box, and brilliant.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;My manager flat out said &amp;quot;I won&amp;#39;t read it&amp;quot; when I forwarded him &lt;a href=&#34;http://www.roguelynn.com/2012-10-21-community-ftw-kicking-of-the-pycarolinas-community&#34; title=&#34;Community FTW&#34;&gt;my post&lt;/a&gt; about the community talk I gave at PyCarolinas (among other questions &amp;amp; discussion points). Damn that guy is awesome. No nonsense, no bs, no coddling, very helpful, thinks outside the box, and brilliant.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;My manager also flat out said &amp;quot;That&amp;#39;s why we hired you&amp;quot; when I asked him about being invited to speak at conferences. hellz yea.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;I can surprise a few people with the little Czech knowledge I&amp;#39;ve retained.  &lt;em&gt;&amp;quot;jedno velky pivo, prosim.&amp;quot;&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;I was assigned 5 tickets on day #2 in Brno. This will probably be the only time I will be excited to be assigned tickets. They seem to be the types of tickets that are &amp;#39;easy pickens&amp;#39; but also give the challenge of making you dig through the whole freaking code base only to find the issue comes from an outside package. /phew &lt;/p&gt;&lt;/li&gt;
@@ -151,14 +151,14 @@ helped a lot.  I haven&amp;#39;t been approached inappropriately, scoffed at, o
     
         <entry>
             <title type="html">Community FTW: Kicking off the PyCarolinas community</title>
-            <link rel="alternate" href="http://roguelynn.com/words/community-ftw-kicking-of-the-pycarolinas-community/" type="text/html" />
-            <id>http://roguelynn.com/words/community-ftw-kicking-of-the-pycarolinas-community/</id>
+            <link rel="alternate" href="http://www.roguelynn.com/words/community-ftw-kicking-of-the-pycarolinas-community/" type="text/html" />
+            <id>http://www.roguelynn.com/words/community-ftw-kicking-of-the-pycarolinas-community/</id>
             <updated>2012-10-21T07:43:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
-                <uri>http://roguelynn.com/</uri>
+                <uri>http://www.roguelynn.com/</uri>
             </author>
             <content type="html">&lt;p&gt;I had the absolute pleasure attending the first &lt;a href=&#34;http://pycarolinas.org&#34; title=&#34;PyCarolinas Site&#34;&gt;PyCarolinas&lt;/a&gt; conference.  I was honored when &lt;a href=&#34;http://twitter.com/ironfroggy&#34; title=&#34;Calvin&amp;#39;s twitter&#34;&gt;Calvin Spealman&lt;/a&gt; invited me to keynote on the topic of community.  He wanted folks to leave feeling inspired to build up the area&amp;#39;s sense of community.  A lot of pressure, but having a conference is a damn good litmus test to understand a local area&amp;#39;s Python community. When trying to develop my talk, during my procrastination/conference-driven-development, I tried to understand and uncover the inherit qualities of the Python community. But first I had to step back: &lt;em&gt;why&lt;/em&gt; is community important? I took a peek at &lt;a href=&#34;http://www.amazon.com/gp/product/0596156715/ref=as_li_ss_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=390957&amp;amp;creativeASIN=0596156715&amp;amp;linkCode=as2&amp;amp;tag=roglyn-20&#34; title=&#34;Amazon: The Art of Community&#34;&gt;the Art of Community&lt;/a&gt; by Jono Bacon (awesome last name).  It&amp;#39;s a decent book and it had some good thoughts.  Particularly, he states:&lt;/p&gt;
 
@@ -172,9 +172,9 @@ helped a lot.  I haven&amp;#39;t been approached inappropriately, scoffed at, o
 &lt;p&gt;The individual is helpless socially... He comes into contact with his neighbors... and they with other neighbors, there will be the accumulation of social capital. The community as a whole will benefit by the cooperation of its parts, while the individual will find in his associations the advantages of the help, sympathy, and fellowship of his neighbors.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;My efforts in learning how to program stemmed from creating my own community: I started a Python study group in the beginning of the year through &lt;a href=&#34;http://meetup.com/women-who-code-sf&#34; title=&#34;Women Who Code meetup group&#34;&gt;Women Who Code&lt;/a&gt;, I dragged WWC&amp;#39;ers down to PyCon, I started the SF/Bay area chapter of PyLadies, and said &amp;quot;hell, I could speak, let me talk about learning with women.&amp;quot; It&amp;#39;s so amazing the support, the patience, the forgiveness when you learn with folks trying to also learn, those who ask the questions, &amp;quot;ah I see a lightbulb, what did I say to make that go off?&amp;quot; or simply &amp;quot;what do you need help with?&amp;quot; followed by patience and understanding. Mind you, there isn&amp;#39;t a stupid question, just a naive one, on the way to being educated. So a year of learning and studying has landed me &lt;a href=&#34;http://roguelynn.com/2012-09-25-from-n00b-to-engineer-in-one-year&#34; title=&#34;ideal job&#34;&gt;my ideal job&lt;/a&gt;], to which gives credence to learning outside the classroom is just as effective, if not more, in the professional realm. Back to when trying to understand the awesome sauce that coats the Python community, these words kept coming up: &lt;/p&gt;
+&lt;p&gt;My efforts in learning how to program stemmed from creating my own community: I started a Python study group in the beginning of the year through &lt;a href=&#34;http://meetup.com/women-who-code-sf&#34; title=&#34;Women Who Code meetup group&#34;&gt;Women Who Code&lt;/a&gt;, I dragged WWC&amp;#39;ers down to PyCon, I started the SF/Bay area chapter of PyLadies, and said &amp;quot;hell, I could speak, let me talk about learning with women.&amp;quot; It&amp;#39;s so amazing the support, the patience, the forgiveness when you learn with folks trying to also learn, those who ask the questions, &amp;quot;ah I see a lightbulb, what did I say to make that go off?&amp;quot; or simply &amp;quot;what do you need help with?&amp;quot; followed by patience and understanding. Mind you, there isn&amp;#39;t a stupid question, just a naive one, on the way to being educated. So a year of learning and studying has landed me &lt;a href=&#34;http://www.roguelynn.com/2012-09-25-from-n00b-to-engineer-in-one-year&#34; title=&#34;ideal job&#34;&gt;my ideal job&lt;/a&gt;], to which gives credence to learning outside the classroom is just as effective, if not more, in the professional realm. Back to when trying to understand the awesome sauce that coats the Python community, these words kept coming up: &lt;/p&gt;
 
-&lt;p&gt;&lt;img class=&#34;inline&#34; title=&#34;Python Tag Cloud&#34; src=&#34;http://roguelynn.com/assets/images/python_tag_cloud.png&#34; alt=&#34;Tag Cloud&#34; width=&#34;300&#34; height=&#34;225&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img class=&#34;inline&#34; title=&#34;Python Tag Cloud&#34; src=&#34;http://www.roguelynn.com/assets/images/python_tag_cloud.png&#34; alt=&#34;Tag Cloud&#34; width=&#34;300&#34; height=&#34;225&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Of course folks love Python for its documentation; the accepted belief that it&amp;#39;s important and the general consistency is amazing!  Folks go to Haskell for the &lt;del&gt;frustration&lt;/del&gt; challenge; people learn Java because &lt;em&gt;everything&lt;/em&gt; is in Java.  People are attracted to Python because of its community.  Just look at all the positive descriptors (and person!) that&amp;#39;s associated with Python.  Holy crap! My advice to folks wanting to build that within a local community is simple: &lt;em&gt;do not&lt;/em&gt; read the Art of Community book. That will waste your time. &lt;em&gt;Do&lt;/em&gt; something. Here are some suggestions:&lt;/p&gt;
 
@@ -208,16 +208,16 @@ helped a lot.  I haven&amp;#39;t been approached inappropriately, scoffed at, o
     
         <entry>
             <title type="html">NetSec for n00bs, part III: Simple Intro Public Key Crypto</title>
-            <link rel="alternate" href="http://roguelynn.com/words/netsec-for-n00bs-part-iii-simple-intro-public-key-crypto/" type="text/html" />
-            <id>http://roguelynn.com/words/netsec-for-n00bs-part-iii-simple-intro-public-key-crypto/</id>
+            <link rel="alternate" href="http://www.roguelynn.com/words/netsec-for-n00bs-part-iii-simple-intro-public-key-crypto/" type="text/html" />
+            <id>http://www.roguelynn.com/words/netsec-for-n00bs-part-iii-simple-intro-public-key-crypto/</id>
             <updated>2012-10-15T07:43:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
-                <uri>http://roguelynn.com/</uri>
+                <uri>http://www.roguelynn.com/</uri>
             </author>
-            <content type="html">&lt;p&gt;This is part 3 in a short intro series for netsec.  &lt;a href=&#34;http://roguelynn.com/words/2012-10-01-netsec-for-n00bs-part-i-password-storage&#34; title=&#34;Password Storage&#34;&gt;Part I&lt;/a&gt;, &lt;a href=&#34;http://roguelynn.com/words/2012-10-03-netsec-for-n00bs-part-ii-ciphers-symmetric&#34; title=&#34;Symmetric Ciphers&#34;&gt;Part II&lt;/a&gt;. &lt;a href=&#34;http://www.reddit.com/r/AskReddit/comments/1198on/i_fucking_love_riddles_what_are_your_best_hardest/c6kfncq&#34; title=&#34;AskReddit: Riddles&#34;&gt;Riddle time&lt;/a&gt;:&lt;/p&gt;
+            <content type="html">&lt;p&gt;This is part 3 in a short intro series for netsec.  &lt;a href=&#34;http://www.roguelynn.com/words/2012-10-01-netsec-for-n00bs-part-i-password-storage&#34; title=&#34;Password Storage&#34;&gt;Part I&lt;/a&gt;, &lt;a href=&#34;http://www.roguelynn.com/words/2012-10-03-netsec-for-n00bs-part-ii-ciphers-symmetric&#34; title=&#34;Symmetric Ciphers&#34;&gt;Part II&lt;/a&gt;. &lt;a href=&#34;http://www.reddit.com/r/AskReddit/comments/1198on/i_fucking_love_riddles_what_are_your_best_hardest/c6kfncq&#34; title=&#34;AskReddit: Riddles&#34;&gt;Riddle time&lt;/a&gt;:&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;Q: You live in a country with a corrupt mail system. They open every package if they can. You put a lock on the box. You can&amp;#39;t mail a key. How does the receiving person open the box? &lt;br&gt;
@@ -249,16 +249,16 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
     
         <entry>
             <title type="html">NetSec for n00bs, part II: Ciphers (symmetric)</title>
-            <link rel="alternate" href="http://roguelynn.com/words/netsec-for-n00bs-part-ii-ciphers-symmetric/" type="text/html" />
-            <id>http://roguelynn.com/words/netsec-for-n00bs-part-ii-ciphers-symmetric/</id>
+            <link rel="alternate" href="http://www.roguelynn.com/words/netsec-for-n00bs-part-ii-ciphers-symmetric/" type="text/html" />
+            <id>http://www.roguelynn.com/words/netsec-for-n00bs-part-ii-ciphers-symmetric/</id>
             <updated>2012-10-03T07:43:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
-                <uri>http://roguelynn.com/</uri>
+                <uri>http://www.roguelynn.com/</uri>
             </author>
-            <content type="html">&lt;p&gt;A continuation of &lt;a href=&#34;http://roguelynn.com/words/2012-10-01-netsec-for-n00bs-part-i-password-storage&#34; title=&#34;Netsec for n00bs Part I&#34;&gt;NetSec for n00bs, part I: Password Storage&lt;/a&gt; A cipher is basically an algorithm to perform encryption and decryption. &lt;/p&gt;
+            <content type="html">&lt;p&gt;A continuation of &lt;a href=&#34;http://www.roguelynn.com/words/2012-10-01-netsec-for-n00bs-part-i-password-storage&#34; title=&#34;Netsec for n00bs Part I&#34;&gt;NetSec for n00bs, part I: Password Storage&lt;/a&gt; A cipher is basically an algorithm to perform encryption and decryption. &lt;/p&gt;
 
 &lt;p&gt;Important to note: cipher algorithms, as opposed to hash algorithms, go both ways, meaning if you process a plain text to encrypted text using a cipher, you use that same cipher to decrypt the encrypted text back to plain text, aka symmetric key encryption. &lt;/p&gt;
 
@@ -287,22 +287,22 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
 
 &lt;p&gt;Side-channeling is quite cool and devious, if I may say.  Attackers use information that the implemented AES system gives off: timing info, power consumption, etc.   If using a timing attack, one would &amp;#39;listen&amp;#39; for how long it takes the hardware that holds the algorithm to compute cryptographic operations. Using statistical analysis, one can sometimes figure out the whole key. Alright I think that completes the part II of NetSec for n00bs.  Part III will continue on with asymmetric encryption/public key crypto.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://roguelynn.com/words/2012-10-15-netsec-for-n00bs-part-iii-simple-intro-public-key-crypto&#34; title=&#34;Public Key Crypto&#34;&gt;Part III - Public Key Crypo&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.roguelynn.com/words/2012-10-15-netsec-for-n00bs-part-iii-simple-intro-public-key-crypto&#34; title=&#34;Public Key Crypto&#34;&gt;Part III - Public Key Crypo&lt;/a&gt;&lt;/p&gt;
 </content>
         </entry>
     
         <entry>
             <title type="html">NetSec for n00bs, part I: Password Storage</title>
-            <link rel="alternate" href="http://roguelynn.com/words/netsec-for-n00bs-part-i-password-storage/" type="text/html" />
-            <id>http://roguelynn.com/words/netsec-for-n00bs-part-i-password-storage/</id>
+            <link rel="alternate" href="http://www.roguelynn.com/words/netsec-for-n00bs-part-i-password-storage/" type="text/html" />
+            <id>http://www.roguelynn.com/words/netsec-for-n00bs-part-i-password-storage/</id>
             <updated>2012-10-01T07:43:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
-                <uri>http://roguelynn.com/</uri>
+                <uri>http://www.roguelynn.com/</uri>
             </author>
-            <content type="html">&lt;p&gt;In prepping for my interviews for my &lt;a href=&#34;http://roguelynn.com/words/2012-09-25-from-n00b-to-engineer-in-one-year&#34; title=&#34;N00b to engineer&#34;&gt;newly acquired position&lt;/a&gt; with Red Hat for the &lt;a href=&#34;http://freeipa.org/page/Main_Page&#34; title=&#34;FreeIPA&#34;&gt;FreeIPA&lt;/a&gt; project, I did my own crash course in studying net security/applied cryptography.  It&amp;#39;s a very important subject, and I feel a lot of new developers rely on frameworks or libraries to implement this sort of &amp;#39;stuff&amp;#39; for them without knowing what&amp;#39;s going on.  So for those who are oblivious (like I was) to NetSec topics and concerns, here is some lo-down.&lt;/p&gt;
+            <content type="html">&lt;p&gt;In prepping for my interviews for my &lt;a href=&#34;http://www.roguelynn.com/words/2012-09-25-from-n00b-to-engineer-in-one-year&#34; title=&#34;N00b to engineer&#34;&gt;newly acquired position&lt;/a&gt; with Red Hat for the &lt;a href=&#34;http://freeipa.org/page/Main_Page&#34; title=&#34;FreeIPA&#34;&gt;FreeIPA&lt;/a&gt; project, I did my own crash course in studying net security/applied cryptography.  It&amp;#39;s a very important subject, and I feel a lot of new developers rely on frameworks or libraries to implement this sort of &amp;#39;stuff&amp;#39; for them without knowing what&amp;#39;s going on.  So for those who are oblivious (like I was) to NetSec topics and concerns, here is some lo-down.&lt;/p&gt;
 
 &lt;p&gt;Back when I was in banking, on my local desktop I had a password-protected Excel spreadsheet of logins &amp;amp; passwords.  I thought I was one step above just saving my passwords in a plain-text file.  Since then, the bank has implemented a one-password storage system (although it added about 30 seconds for each system we wanted to log into).  A password-locked file is quite easy to break if someone wanted to.&lt;/p&gt;
 
@@ -325,20 +325,20 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
 &lt;h4&gt;Side note&lt;/h4&gt;
 &lt;p&gt;If you&amp;#39;re interested in the history of cryptography, breaking passwords and frequency analysis as well as a great history on computing, I would highly suggest &lt;a href=&#34;http://www.amazon.com/gp/product/B004IK8PLE/ref=as_li_ss_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=390957&amp;amp;creativeASIN=B004IK8PLE&amp;amp;linkCode=as2&amp;amp;tag=roglyn-20&#34; title=&#34;The Code Book&#34;&gt;The Code Book: The Science of Secrecy from Ancient Egypt to Quantum Cryptography&lt;/a&gt;. &lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://roguelynn.com/words/2012-10-03-netsec-for-n00bs-part-ii-ciphers-symmetric&#34; title=&#34;Symmetric Ciphers&#34;&gt;Part II - Ciphers&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.roguelynn.com/words/2012-10-03-netsec-for-n00bs-part-ii-ciphers-symmetric&#34; title=&#34;Symmetric Ciphers&#34;&gt;Part II - Ciphers&lt;/a&gt;&lt;/p&gt;
 </content>
         </entry>
     
         <entry>
             <title type="html">Operation: PyCon attendance</title>
-            <link rel="alternate" href="http://roguelynn.com/words/operation-pycon-attendance/" type="text/html" />
-            <id>http://roguelynn.com/words/operation-pycon-attendance/</id>
+            <link rel="alternate" href="http://www.roguelynn.com/words/operation-pycon-attendance/" type="text/html" />
+            <id>http://www.roguelynn.com/words/operation-pycon-attendance/</id>
             <updated>2012-09-29T07:43:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
-                <uri>http://roguelynn.com/</uri>
+                <uri>http://www.roguelynn.com/</uri>
             </author>
             <content type="html">&lt;p&gt;Thinking about going to &lt;a href=&#34;https://us.pycon.org/2013/&#34; title=&#34;PyCon&#34;&gt;PyCon&lt;/a&gt; for 2013?  Here are arguments to make for yourself and/or for your employer to go to PyCon this year.&lt;/p&gt;
 &lt;h4&gt;Because you&amp;#39;re new to Python&lt;/h4&gt;
@@ -364,18 +364,18 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
     
         <entry>
             <title type="html">From n00b to Engineer in 1 year</title>
-            <link rel="alternate" href="http://roguelynn.com/words/from-n00b-to-engineer-in-one-year/" type="text/html" />
-            <id>http://roguelynn.com/words/from-n00b-to-engineer-in-one-year/</id>
+            <link rel="alternate" href="http://www.roguelynn.com/words/from-n00b-to-engineer-in-one-year/" type="text/html" />
+            <id>http://www.roguelynn.com/words/from-n00b-to-engineer-in-one-year/</id>
             <updated>2012-09-25T07:43:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
-                <uri>http://roguelynn.com/</uri>
+                <uri>http://www.roguelynn.com/</uri>
             </author>
             <content type="html">&lt;p&gt;It is my great pleasure (and squee!) to share with my friends, family, PyLadies, twitter nerds, Women Who Code&amp;#39;rs, DevChixen, Systers, and everyone else that I can now say: &lt;/p&gt;
 &lt;h4&gt;I am an Engineer.&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&#34;http://roguelynn.com/assets/images/Joey_Chandler.gif&#34; alt=&#34;Joey &amp;amp; Chandler from Friends&#34; title=&#34;Moving Day&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.roguelynn.com/assets/images/Joey_Chandler.gif&#34; alt=&#34;Joey &amp;amp; Chandler from Friends&#34; title=&#34;Moving Day&#34;&gt;&lt;/p&gt;
 
 &lt;p&gt;Yes, the same person that once did not know the difference between a compiler and an interpreter, couldn&amp;#39;t explain wtf __init__.py files do, or conceive of generators versus iterators. The same person that took her way too long to admit that you can return more than one item in a function.  This is the same n00b that was once told by Leah Culver that one&lt;/p&gt;
 
@@ -393,14 +393,14 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
     
         <entry>
             <title type="html">Brainstorm: Writing a PyCon proposal</title>
-            <link rel="alternate" href="http://roguelynn.com/words/brainstorm-writing-a-pycon-proposal/" type="text/html" />
-            <id>http://roguelynn.com/words/brainstorm-writing-a-pycon-proposal/</id>
+            <link rel="alternate" href="http://www.roguelynn.com/words/brainstorm-writing-a-pycon-proposal/" type="text/html" />
+            <id>http://www.roguelynn.com/words/brainstorm-writing-a-pycon-proposal/</id>
             <updated>2012-08-27T07:43:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
-                <uri>http://roguelynn.com/</uri>
+                <uri>http://www.roguelynn.com/</uri>
             </author>
             <content type="html">&lt;p&gt;OH MAN PYCON IS SO MUCH FUN.  &lt;em&gt;Right? I know!&lt;/em&gt;  I remember a tweet from &lt;a href=&#34;http://www.twitter.com/hmason&#34; title=&#34;Hilary Mason&amp;#39;s twitter&#34;&gt;Hilary Mason&lt;/a&gt; that it should be &amp;quot;PyCAAHHHNNN&amp;quot; (imagine with a Boston accent while flashing \m/ upon entrance). Ever thought about submitting a proposal? &lt;em&gt;What? oh no, no no no.*Why not? *What would I talk about?  I have nothing to say!&lt;/em&gt; (Oddly, when starting out submitting talks to conferences, I never had that dialogue or PoV.  It was more like &amp;quot;I &amp;lt;3 the Python community. How can I be more involved?&amp;quot; and that&amp;#39;s how my ideation process started) (PS I love the verb &lt;em&gt;to ideate&lt;/em&gt;.  It&amp;#39;s great.)&lt;/p&gt;
 &lt;h4&gt; So how about this:&lt;/h4&gt;
@@ -446,14 +446,14 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
     
         <entry>
             <title type="html">PyCon Proposal Brainstorming via Google Hangout</title>
-            <link rel="alternate" href="http://roguelynn.com/words/pycon-proposal-brainstorming-via-google-hangout/" type="text/html" />
-            <id>http://roguelynn.com/words/pycon-proposal-brainstorming-via-google-hangout/</id>
+            <link rel="alternate" href="http://www.roguelynn.com/words/pycon-proposal-brainstorming-via-google-hangout/" type="text/html" />
+            <id>http://www.roguelynn.com/words/pycon-proposal-brainstorming-via-google-hangout/</id>
             <updated>2012-08-25T07:43:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
-                <uri>http://roguelynn.com/</uri>
+                <uri>http://www.roguelynn.com/</uri>
             </author>
             <content type="html">&lt;p&gt;Ever thought about speaking? Want to give speaking at &lt;a href=&#34;http://us.pycon.org/2013&#34; title=&#34;PyCon 2013&#34;&gt;PyCon&lt;/a&gt; a shot, but not sure what to talk about? Even if you have a tiny inkling that you&amp;#39;d want to speak, beginner level or advanced, come to our workshop to get help brainstorming ideas &amp;amp; learn what makes a good proposal! &lt;a href=&#34;http://pycon2013workshop.eventbrite.com&#34; title=&#34;Eventbrite Link: PyLadies PyCon workshop @Google Hangout&#34;&gt;Join the PyLadies hangout&lt;/a&gt;, open to &lt;strong&gt;PyLadies&lt;/strong&gt; and &lt;strong&gt;PyLaddies&lt;/strong&gt;, with help from PyLadies&amp;#39; leaders, previous years PyCon speakers &amp;amp; current Program Committee members (e.g. the folks that review proposals) to ideate, write, and submit your proposal to speak, give a tutorial, or a poster session at PyCon 2013. Space is limited by the Google Hangout technology. An invite link will be sent out about 15 minutes prior to the start time. For those in the Bay Area, be sure to check out the PyLadies San Francisco meetup, &lt;a href=&#34;http://www.meetup.com/PyLadiesSF/events/76870962/&#34; title=&#34;PyLadies Meetup: Workshop for PyCon Talk Proposals&#34;&gt;Workshop: Talk Proposal Writing for PyCon&lt;/a&gt;, on Tuesday, August 28th. &lt;/p&gt;
 
@@ -484,14 +484,14 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
     
         <entry>
             <title type="html">Sadistic/Masochistic pleasure: Technical Interviews</title>
-            <link rel="alternate" href="http://roguelynn.com/words/sadistic-pleasure-technical-interviews/" type="text/html" />
-            <id>http://roguelynn.com/words/sadistic-pleasure-technical-interviews/</id>
+            <link rel="alternate" href="http://www.roguelynn.com/words/sadistic-pleasure-technical-interviews/" type="text/html" />
+            <id>http://www.roguelynn.com/words/sadistic-pleasure-technical-interviews/</id>
             <updated>2012-08-15T20:35:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
-                <uri>http://roguelynn.com/</uri>
+                <uri>http://www.roguelynn.com/</uri>
             </author>
             <content type="html">&lt;p&gt;When I was in high school, I was in &amp;quot;IB&amp;quot; math - the international equivalent to AP courses, except harder.  I really, really, &lt;em&gt;really&lt;/em&gt; enjoyed math.  My teacher would always mispronounce my name (&amp;quot;Wynn!&amp;quot;), but nonetheless, I loved the challenge.  I was the only one to receive 100% on the final exam, and one of a handful to take the IB exam.  I studied regularly, went over classmates&amp;#39; houses, worked through practice problems of vectors, differentiation, integration, goodness it was awesome.  I&amp;#39;d say that studying for this sort of stuff is very much like (if not the same concept) as the training I did for swimming: 2 hours/day in the pool, 6 days a week, extra hour each day of dry land training (side stepping the fact that right now, the most exercise I get is walking to/from cafes...). &lt;/p&gt;
 
@@ -621,14 +621,14 @@ damn good problem to attack).&lt;/li&gt;
     
         <entry>
             <title type="html">Our generation&#39;s Legos</title>
-            <link rel="alternate" href="http://roguelynn.com/words/our-generations-legos/" type="text/html" />
-            <id>http://roguelynn.com/words/our-generations-legos/</id>
+            <link rel="alternate" href="http://www.roguelynn.com/words/our-generations-legos/" type="text/html" />
+            <id>http://www.roguelynn.com/words/our-generations-legos/</id>
             <updated>2012-07-28T21:00:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
-                <uri>http://roguelynn.com/</uri>
+                <uri>http://www.roguelynn.com/</uri>
             </author>
             <content type="html">&lt;p&gt;First time I heard about raspberry pi was through twitter.  I thought: Oh I bet that&amp;#39;s a cute name for a new python module.  Didn&amp;#39;t look into it. &lt;/p&gt;
 
@@ -670,16 +670,16 @@ damn good problem to attack).&lt;/li&gt;
     
         <entry>
             <title type="html">Moar Bookmarks!</title>
-            <link rel="alternate" href="http://roguelynn.com/words/moar-bookmarks/" type="text/html" />
-            <id>http://roguelynn.com/words/moar-bookmarks/</id>
+            <link rel="alternate" href="http://www.roguelynn.com/words/moar-bookmarks/" type="text/html" />
+            <id>http://www.roguelynn.com/words/moar-bookmarks/</id>
             <updated>2012-07-27T07:43:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
-                <uri>http://roguelynn.com/</uri>
+                <uri>http://www.roguelynn.com/</uri>
             </author>
-            <content type="html">&lt;p&gt;Seeing how my previous &lt;a href=&#34;http://roguelynn.com/2012-05-20-gold-nuggets-my-bookmarks-collection&#34; title=&#34;Gold Nuggets&#34;&gt;bookmarks post&lt;/a&gt; was well-received, here is MOAR!  A collection of helpful tutorials, tools, and libraries for folks learning Python/how to code, or looking to improve and explore their skills.&lt;/p&gt;
+            <content type="html">&lt;p&gt;Seeing how my previous &lt;a href=&#34;http://www.roguelynn.com/2012-05-20-gold-nuggets-my-bookmarks-collection&#34; title=&#34;Gold Nuggets&#34;&gt;bookmarks post&lt;/a&gt; was well-received, here is MOAR!  A collection of helpful tutorials, tools, and libraries for folks learning Python/how to code, or looking to improve and explore their skills.&lt;/p&gt;
 &lt;h4&gt;Tutorials &amp;amp; How-tos&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://krondo.com/?page_id=1327&#34; title=&#34;Intro to Twisted&#34;&gt;Introduction to Twisted&lt;/a&gt;: A thorough introduction to Twisted and Asyncronous programming in Python. &lt;/li&gt;
@@ -706,14 +706,14 @@ damn good problem to attack).&lt;/li&gt;
     
         <entry>
             <title type="html">PyLadies @ OSCON</title>
-            <link rel="alternate" href="http://roguelynn.com/words/pyladies-oscon/" type="text/html" />
-            <id>http://roguelynn.com/words/pyladies-oscon/</id>
+            <link rel="alternate" href="http://www.roguelynn.com/words/pyladies-oscon/" type="text/html" />
+            <id>http://www.roguelynn.com/words/pyladies-oscon/</id>
             <updated>2012-07-26T20:34:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
-                <uri>http://roguelynn.com/</uri>
+                <uri>http://www.roguelynn.com/</uri>
             </author>
             <content type="html">&lt;p&gt;I had the wonderful opportunity to bring up a few fellow PyLadies to Portland, Oregon for O&amp;#39;Reilly&amp;#39;s Open Source Convention.  Thanks to the help of the &lt;a href=&#34;http://www.psf.org&#34; title=&#34;PSF&#34;&gt;Python Software Foundation&lt;/a&gt;, we were able to bring along swag including stickers, postcards of information on how to start a local PyLadies chapter, and a new banner. &lt;/p&gt;
 
@@ -727,14 +727,14 @@ damn good problem to attack).&lt;/li&gt;
     
         <entry>
             <title type="html">Moar Womenz at DjangoCon US!</title>
-            <link rel="alternate" href="http://roguelynn.com/words/moar-womenz-at-djangocon-us/" type="text/html" />
-            <id>http://roguelynn.com/words/moar-womenz-at-djangocon-us/</id>
+            <link rel="alternate" href="http://www.roguelynn.com/words/moar-womenz-at-djangocon-us/" type="text/html" />
+            <id>http://www.roguelynn.com/words/moar-womenz-at-djangocon-us/</id>
             <updated>2012-07-25T20:34:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
-                <uri>http://roguelynn.com/</uri>
+                <uri>http://www.roguelynn.com/</uri>
             </author>
             <content type="html">&lt;h4&gt;Change the Ratio at DjangoCon 2012&lt;/h4&gt;
 &lt;p&gt;If you’d like to go to &lt;a href=&#34;http://www.djangocon.us/&#34; title=&#34;DjangoCon US 2012&#34;&gt;DjangoCon 2012&lt;/a&gt; in Washington, D.C. -- or know a talented developer who does -- but cannot attend due to financial hardship, please &lt;a href=&#34;https://docs.google.com/spreadsheet/viewform?formkey=dDc1X2hrUGJVRGdEWnRjTklxR2tSNFE6MQ#gid=0&#34; title=&#34;FinAid&#34;&gt;apply for financial aid through DjangoCon&lt;/a&gt;. &lt;strong&gt;And&lt;/strong&gt;, if you&amp;#39;re a PyLady (as opposed to a PyLaddie), please indicate that you would like to be considered for a&lt;strong&gt; PyLadies grant&lt;/strong&gt; on that form. This year&amp;#39;s conference goes from Sept. 3 - Sept. 9. The deadline for the PyLadies grant submission is &lt;strong&gt;Friday, August 3rd&lt;/strong&gt;.  We apologize for the short notice, but we know that people need time to make travel plans/request days off from work, etc.  You will hear from us by the end of the week after applications are submitted. If you know of a talented, deserving female developer who might benefit greatly from attending DjangoCon, email &lt;a href=&#34;mailto:info@pyladies.com&#34; title=&#34;Email to Info&#34;&gt;us&lt;/a&gt;.  We&amp;#39;ll do our best to help as many women as possible. &lt;/p&gt;
@@ -747,14 +747,14 @@ damn good problem to attack).&lt;/li&gt;
     
         <entry>
             <title type="html">A memorable EuroPython, for the better</title>
-            <link rel="alternate" href="http://roguelynn.com/words/a-memorable-europython-for-the-better/" type="text/html" />
-            <id>http://roguelynn.com/words/a-memorable-europython-for-the-better/</id>
+            <link rel="alternate" href="http://www.roguelynn.com/words/a-memorable-europython-for-the-better/" type="text/html" />
+            <id>http://www.roguelynn.com/words/a-memorable-europython-for-the-better/</id>
             <updated>2012-07-12T07:43:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
-                <uri>http://roguelynn.com/</uri>
+                <uri>http://www.roguelynn.com/</uri>
             </author>
             <content type="html">&lt;p&gt;EuroPython marked many memorable experiences for me, as a PyLady, as a member of the Python community, and as a newbie to coding &amp;amp; programming. First, it is widely known and very well accepted that the folks at EuroPython did a fantastic job in organizing the whole conference. Every detail was well thought out.  Coming from 7000+ miles away, I did not feel like a foreigner.  Little things, including inviting me to join them in the evening a couple days before the conference; having cordial side conversations; and making connections &amp;amp; introductions, it all really helped me out. &lt;/p&gt;
 
@@ -766,7 +766,7 @@ damn good problem to attack).&lt;/li&gt;
 
 &lt;hr&gt;
 
-&lt;p&gt;The most-talked about event, in my opinion (probably because I was the center of it), was the incident outline in my &lt;a href=&#34;http://roguelynn.com/words/2012-07-05-really&#34; title=&#34;Really&#34;&gt;previous post&lt;/a&gt;. Namely, a conference attendee tweeted something offensive in reference&lt;br&gt;
+&lt;p&gt;The most-talked about event, in my opinion (probably because I was the center of it), was the incident outline in my &lt;a href=&#34;http://www.roguelynn.com/words/2012-07-05-really&#34; title=&#34;Really&#34;&gt;previous post&lt;/a&gt;. Namely, a conference attendee tweeted something offensive in reference&lt;br&gt;
 to #pyladies, I called him out, addressed it with the EuroPython organizers, and allowed a discussion (if you can call it that) happen on my blog. My first thought about that event: The organizers of EuroPython handled it exceptionally well.  I went to the venue early before the conference started for the day, and they were already aware of the tweet (and I assume my reaction to it via twitter or my blog, as well).  They were very diligent in consulting the appropriate people on the EuroPython/Python Italia board.  The result was, I felt, adequate in addressing the situation.  &lt;a href=&#34;https://twitter.com/pwang/status/221172889813131264&#34; title=&#34;Apology 1&#34;&gt;A public apology&lt;/a&gt; (&lt;a href=&#34;https://twitter.com/pwang/status/221196983031963654&#34; title=&#34;Apology 2&#34;&gt;two&lt;/a&gt;, actually) from the attendee via twitter and &lt;a href=&#34;http://www.roguelynn.com/2012/07/05/really/comment-page-1/#comment-5125&#34; title=&#34;Apology Comment&#34;&gt;on my blog&lt;/a&gt;, a &lt;a href=&#34;https://twitter.com/europython/status/221201258424442881&#34; title=&#34;EuroPython Stance&#34;&gt;public stance&lt;/a&gt; on their &lt;a href=&#34;https://ep2012.europython.eu/code-of-conduct&#34; title=&#34;EuroPython CoC&#34;&gt;Code of Conduct&lt;/a&gt; via twitter, and plenty of reassurance in private. I can&amp;#39;t stress enough that the organizers were very respectful, and did exactly what I thought should be done.  This is exactly why there needs to be a CoC at conferences, and why the Python community is very adamant about signing the &lt;a href=&#34;http://letsgetlouder.com/&#34; title=&#34;Lets Get Louder&#34;&gt;Let&amp;#39;s Get Louder campaign&lt;/a&gt;. I&amp;#39;d like to quote a comment on the Let&amp;#39;s Get Louder campaign from someone who I met at EuroPython, but didn&amp;#39;t know at the time of &lt;a href=&#34;http://www.reddit.com/r/Python/comments/vroj4/python_programmers_sign_pledge_to_only/c579eeb&#34; title=&#34;Hynek&amp;#39;s Comment&#34;&gt;when this was posted&lt;/a&gt;:&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -797,14 +797,14 @@ to #pyladies, I called him out, addressed it with the EuroPython organizers, and
     
         <entry>
             <title type="html">You ask why I need to talk about women in the Python community?</title>
-            <link rel="alternate" href="http://roguelynn.com/words/really/" type="text/html" />
-            <id>http://roguelynn.com/words/really/</id>
+            <link rel="alternate" href="http://www.roguelynn.com/words/really/" type="text/html" />
+            <id>http://www.roguelynn.com/words/really/</id>
             <updated>2012-07-05T07:43:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
-                <uri>http://roguelynn.com/</uri>
+                <uri>http://www.roguelynn.com/</uri>
             </author>
             <content type="html">&lt;h4&gt;Update:&lt;/h4&gt;
 &lt;p&gt;With the pseudo/half baked apology from the original offender, I&amp;#39;ve decided to remove any identifying characteristics. &lt;/p&gt;
@@ -813,7 +813,7 @@ to #pyladies, I called him out, addressed it with the EuroPython organizers, and
 
 &lt;p&gt;I had an amazing talk on Wednesday, July 4th at EuroPython.  I maintained my positive attitude; I tried not to alienate the audience (especially the majority being male); I tried to keep the conversation going during the question &amp;amp; answer session and afterwards.  Many men had fantastic questions regarding my subject: increasing female engagement in the Python community. I returned home tonight to find this: &lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://roguelynn.com/assets/images/pwang_tweet.png&#34; alt=&#34;twitter&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.roguelynn.com/assets/images/pwang_tweet.png&#34; alt=&#34;twitter&#34;&gt;&lt;/p&gt;
 
 &lt;p&gt;I JUST gave a talk on yesterday about women &amp;amp; Python. &lt;strong&gt;This dude asked me a question on the things men do unconsciously.&lt;/strong&gt;   WHAT THE HELL I DON&amp;#39;T EVEN! My thoughts are to be continued later after I&amp;#39;ve calmed down and addressed this with the organizers. &lt;/p&gt;
 </content>
@@ -821,18 +821,18 @@ to #pyladies, I called him out, addressed it with the EuroPython organizers, and
     
         <entry>
             <title type="html">EuroPython 2012: Day 1</title>
-            <link rel="alternate" href="http://roguelynn.com/words/europython-2012-day-1/" type="text/html" />
-            <id>http://roguelynn.com/words/europython-2012-day-1/</id>
+            <link rel="alternate" href="http://www.roguelynn.com/words/europython-2012-day-1/" type="text/html" />
+            <id>http://www.roguelynn.com/words/europython-2012-day-1/</id>
             <updated>2012-07-03T20:32:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
-                <uri>http://roguelynn.com/</uri>
+                <uri>http://www.roguelynn.com/</uri>
             </author>
             <content type="html">&lt;p&gt;If you&amp;#39;re a Python enthusiast, and you&amp;#39;re &lt;strong&gt;not&lt;/strong&gt; at EuroPython, you&amp;#39;re missing out, I&amp;#39;m sorry to say.  Not only has the conference organizers put on a near flawless first day, they provided attendees with amazing food for thought with a fantastic program of keynotes to kick off the event.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://roguelynn.com/assets/images/me_europython_slide.jpg&#34; alt=&#34;Me EuroPython Slide&#34; title=&#34;Me!&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.roguelynn.com/assets/images/me_europython_slide.jpg&#34; alt=&#34;Me EuroPython Slide&#34; title=&#34;Me!&#34;&gt;&lt;/p&gt;
 
 &lt;p&gt;Everyone was a bit start struck that Guido van Rossum was here; it&amp;#39;s funny to see folks put him on a little bit of a pedestal when he&amp;#39;s a normal nerd like the rest of us.  And naturally, he was wearing his favorite shirt: Python is for Girls.  (f&amp;amp;ck yea!)&lt;/p&gt;
 
@@ -856,14 +856,14 @@ to #pyladies, I called him out, addressed it with the EuroPython organizers, and
     
         <entry>
             <title type="html">My un-talk at DjangoCon. Warning: rant.</title>
-            <link rel="alternate" href="http://roguelynn.com/words/my-un-talk-at-djangocon/" type="text/html" />
-            <id>http://roguelynn.com/words/my-un-talk-at-djangocon/</id>
+            <link rel="alternate" href="http://www.roguelynn.com/words/my-un-talk-at-djangocon/" type="text/html" />
+            <id>http://www.roguelynn.com/words/my-un-talk-at-djangocon/</id>
             <updated>2012-06-06T20:34:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
-                <uri>http://roguelynn.com/</uri>
+                <uri>http://www.roguelynn.com/</uri>
             </author>
             <content type="html">&lt;p&gt;I woke up the morning of &lt;a href=&#34;http://2012.djangocon.eu/schedule/involving-women-in-the-community/&#34; title=&#34;DjangoCon EU Talk&#34;&gt;my talk&lt;/a&gt; lightly hung over after the awesome Divio after party for DjangoCon Europe/Zurich wanting to completely scrap my whole prepared talk this afternoon about what I&amp;#39;ve done to educate women, and how to make the &lt;a href=&#34;http://prezi.com/kzr7laiqlc-9/revenge-of-the-n00bs/?auth_key=721e5863405e7286309384eda327c2acb0616d42&#34; title=&#34;Prezi&#34;&gt;Django tutorial better&lt;/a&gt; for new folks coming into programming in general.  Not because I&amp;#39;m hung over, or a wimp, or that I didn&amp;#39;t prepare (which I half-ass did, enough to feel fine going up on stage).  But because something else needs to be talked&lt;br&gt;
 about. &lt;/p&gt;
@@ -876,7 +876,7 @@ about. &lt;/p&gt;
 
 &lt;p&gt;What should happen is not conversations about &lt;em&gt;how&lt;/em&gt; to get a minority in an industry to reflect population distribution in a nation. On twitter, a friend from PyCon asked me and two other folks that are here at this conference whether he should use iPython and bpython.  That was a personal win for me: it was pretty much the first time someone in the Python community solicited me for technical advice. &lt;/p&gt;
 
-&lt;p&gt;I passively get women involved by actively pursuing what I&amp;#39;m interested in: learning how to code.  I host workshops &amp;amp; events for &lt;a href=&#34;http://www.meetup.com/pyladiessf&#34; title=&#34;PyLadies Meetup&#34;&gt;PyLadies&lt;/a&gt; and &lt;a href=&#34;http://www.meetup.com/women-who-code-sf&#34; title=&#34;Women Who Code meetup&#34;&gt;Women Who Code&lt;/a&gt;, bring women down to &lt;a href=&#34;http://roguelynn.com/2012-03-22-o-hai-there&#34; title=&#34;O HAI THERE!&#34;&gt;developers&amp;#39; conferences&lt;/a&gt; and local meetups with me, invite &lt;a href=&#34;http://www.meetup.com/Women-Who-Code-SF/events/54634072/&#34; title=&#34;Speaker Event&#34;&gt;female speakers&lt;/a&gt; for events, meet with friends individually to tutor in Python, lots of fun things.  This indirectly creates an environment full of support and excitement, and it feels awesome.&lt;/p&gt;
+&lt;p&gt;I passively get women involved by actively pursuing what I&amp;#39;m interested in: learning how to code.  I host workshops &amp;amp; events for &lt;a href=&#34;http://www.meetup.com/pyladiessf&#34; title=&#34;PyLadies Meetup&#34;&gt;PyLadies&lt;/a&gt; and &lt;a href=&#34;http://www.meetup.com/women-who-code-sf&#34; title=&#34;Women Who Code meetup&#34;&gt;Women Who Code&lt;/a&gt;, bring women down to &lt;a href=&#34;http://www.roguelynn.com/2012-03-22-o-hai-there&#34; title=&#34;O HAI THERE!&#34;&gt;developers&amp;#39; conferences&lt;/a&gt; and local meetups with me, invite &lt;a href=&#34;http://www.meetup.com/Women-Who-Code-SF/events/54634072/&#34; title=&#34;Speaker Event&#34;&gt;female speakers&lt;/a&gt; for events, meet with friends individually to tutor in Python, lots of fun things.  This indirectly creates an environment full of support and excitement, and it feels awesome.&lt;/p&gt;
 
 &lt;p&gt;So I&amp;#39;m telling you here: let&amp;#39;s get women involved by engaging them directly. It takes action, understanding, and doing.&lt;/p&gt;
 </content>
@@ -884,14 +884,14 @@ about. &lt;/p&gt;
     
         <entry>
             <title type="html">Gold Nuggets: My Bookmarks Collection</title>
-            <link rel="alternate" href="http://roguelynn.com/words/gold-nuggets-my-bookmarks-collection/" type="text/html" />
-            <id>http://roguelynn.com/words/gold-nuggets-my-bookmarks-collection/</id>
+            <link rel="alternate" href="http://www.roguelynn.com/words/gold-nuggets-my-bookmarks-collection/" type="text/html" />
+            <id>http://www.roguelynn.com/words/gold-nuggets-my-bookmarks-collection/</id>
             <updated>2012-05-20T20:33:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
-                <uri>http://roguelynn.com/</uri>
+                <uri>http://www.roguelynn.com/</uri>
             </author>
             <content type="html">&lt;p&gt;I&amp;#39;ve collected many bookmarks related to Python, programming, computer science, etc.  It&amp;#39;s time I cleaned it out and organized it better.  In the midst of doing this, I found some really awesome sites, libraries, tutorials, etc that need to be shared.  I still have plenty of bookmarks that are great resources, but I didn&amp;#39;t want to inondate readers :). I&amp;#39;ve loosely divided them up by experience level.  Here goes: &lt;/p&gt;
 &lt;h4&gt;Beginner:&lt;/h4&gt;
@@ -920,14 +920,14 @@ about. &lt;/p&gt;
     
         <entry>
             <title type="html">PyLadies First Workshop: Build your own Blog</title>
-            <link rel="alternate" href="http://roguelynn.com/words/pyladies-first-workshop-build-your-own-blog/" type="text/html" />
-            <id>http://roguelynn.com/words/pyladies-first-workshop-build-your-own-blog/</id>
+            <link rel="alternate" href="http://www.roguelynn.com/words/pyladies-first-workshop-build-your-own-blog/" type="text/html" />
+            <id>http://www.roguelynn.com/words/pyladies-first-workshop-build-your-own-blog/</id>
             <updated>2012-05-16T20:33:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
-                <uri>http://roguelynn.com/</uri>
+                <uri>http://www.roguelynn.com/</uri>
             </author>
             <content type="html">&lt;p&gt;What a blast I had on Saturday!  It was a great learning experience for both the attendees and for us PyLadies org board!  Good lessons learned, such as virtualenv is a beast to install depending on one&amp;#39;s operating system.  Next time, we&amp;#39;ll have a pre-workshop session for installation of dependencies and such. We went through how to build a blog using Django and its class-based views.  We also went over Model-View-Controller concepts, and how they apply to Django.  We wrapped up with a quick overview of how easy it is to deploy an application on Heroku (way too easy!). &lt;/p&gt;
 
@@ -937,14 +937,14 @@ about. &lt;/p&gt;
     
         <entry>
             <title type="html">Update: PyLadiesSF Debut</title>
-            <link rel="alternate" href="http://roguelynn.com/words/update-pyladiessf-debut/" type="text/html" />
-            <id>http://roguelynn.com/words/update-pyladiessf-debut/</id>
+            <link rel="alternate" href="http://www.roguelynn.com/words/update-pyladiessf-debut/" type="text/html" />
+            <id>http://www.roguelynn.com/words/update-pyladiessf-debut/</id>
             <updated>2012-04-30T07:43:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
-                <uri>http://roguelynn.com/</uri>
+                <uri>http://www.roguelynn.com/</uri>
             </author>
             <content type="html">&lt;p&gt;Wow, what an event it was! I&amp;#39;d say we had about ~50 attendees for our &lt;a href=&#34;http://www.meetup.com/pyladiessf&#34; title=&#34;Event Page&#34;&gt;first event&lt;/a&gt;, which is awesome.  There was so much excitement in the room that I couldn&amp;#39;t even get a chance to hack on my projects!  &lt;/p&gt;
 
@@ -952,7 +952,7 @@ about. &lt;/p&gt;
 
 &lt;p&gt;I&amp;#39;ve seen some very positive reviews on the meetup site, and I hope this group continues to grow with such energy.  Many women really appreciated the space and time to either learn Python or to hack on projects with new friends.  I even had the pleasure of meeting folks from the &lt;a href=&#34;http://www.udacity.com&#34; title=&#34;Udacity&#34;&gt;Udacity&lt;/a&gt; team; I think it&amp;#39;s such a great thing they&amp;#39;re doing: free online classes, specifically CS classes taught with Python.  We scored some free t-shirts too! &lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://roguelynn.com/assets/images/2012_04_newbie_corner.jpg&#34; alt=&#34;Newbie Corner&#34; title=&#34;Newbie Corner&#34;&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.roguelynn.com/assets/images/2012_04_newbie_corner.jpg&#34; alt=&#34;Newbie Corner&#34; title=&#34;Newbie Corner&#34;&gt; &lt;/p&gt;
 
 &lt;p&gt;There was about 2/3-ish women with their +1&amp;#39;s. I was really surprised how a few folks stepped up and helped out folks learning Python and Django. For one of the newbie corners, we worked through Learn Python the Hard Way, where people earned stickers for each exercise they completed (cute, huh?). Same theme with learning Django. Who doesn&amp;#39;t like earning gold stars?! PyLadiesSF is hoping to host an event or two in May, including an intro to Python &amp;amp; Django workshop, and perhaps a Speaker Series. Stay tuned! &lt;/p&gt;
 </content>
@@ -960,14 +960,14 @@ about. &lt;/p&gt;
     
         <entry>
             <title type="html">Debut of PyLadiesSF</title>
-            <link rel="alternate" href="http://roguelynn.com/words/debut-of-pyladiessf/" type="text/html" />
-            <id>http://roguelynn.com/words/debut-of-pyladiessf/</id>
+            <link rel="alternate" href="http://www.roguelynn.com/words/debut-of-pyladiessf/" type="text/html" />
+            <id>http://www.roguelynn.com/words/debut-of-pyladiessf/</id>
             <updated>2012-04-25T07:43:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
-                <uri>http://roguelynn.com/</uri>
+                <uri>http://www.roguelynn.com/</uri>
             </author>
             <content type="html">&lt;h4&gt;Before you read on: &lt;/h4&gt;
 &lt;p&gt;We have our first event this &lt;a href=&#34;http://www.meetup.com/PyLadiesSF/events/59189602/&#34; title=&#34;Debut Event&#34;&gt;Saturday, April 28th&lt;/a&gt; from 3p-8pm at &lt;a href=&#34;http://klout.com/home&#34; title=&#34;Klout&#34;&gt;Klout&lt;/a&gt; with an awesome dinner provided by &lt;a href=&#34;http://www.linkedin.com&#34; title=&#34;LinkedIn&#34;&gt;LinkedIn&lt;/a&gt;.  EXCITING!!! &lt;/p&gt;
@@ -984,7 +984,7 @@ about. &lt;/p&gt;
 
 &lt;p&gt;Kaitlyn Trigger of Lovestagram had a &lt;a href=&#34;http://www.slideshare.net/katydint84/the-story-of-lovestagram&#34; title=&#34;Kaitlyn Trigger Lovestagram Slides&#34;&gt;great metaphor for programming&lt;/a&gt;:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://roguelynn.com/assets/images/building_furniture.png&#34; alt=&#34;Furniture&#34; title=&#34;Directions for Building Furniture&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.roguelynn.com/assets/images/building_furniture.png&#34; alt=&#34;Furniture&#34; title=&#34;Directions for Building Furniture&#34;&gt;&lt;/p&gt;
 
 &lt;p&gt;How in the h&amp;amp;ll do you get from step 1 to step 2?  Either a magic wand, or you are a carpenter by nature.  Similar with engineering: talk to development folks, ask for a product and it magically appears all constructed.  I had a hard time grasping how a for loop, classes, and methods can turn into an architecture for a cloud fileshare system, or a social networking site, or even a simple greedy change calculator. I found that having someone that also comes from this &amp;quot;what is this wizardry?!&amp;quot; point of view helps break down the steps to actually create a meaningful program. Enter: ME! I invite anyone who has an interest in Python to &lt;a href=&#34;http://www.meetup.com/pyladiessf&#34; title=&#34;PyLadiesSF Meetup&#34;&gt;come check us out&lt;/a&gt;.&lt;/p&gt;
 </content>
@@ -992,14 +992,14 @@ about. &lt;/p&gt;
     
         <entry>
             <title type="html">O HAI THERE!</title>
-            <link rel="alternate" href="http://roguelynn.com/words/o-hai-there/" type="text/html" />
-            <id>http://roguelynn.com/words/o-hai-there/</id>
+            <link rel="alternate" href="http://www.roguelynn.com/words/o-hai-there/" type="text/html" />
+            <id>http://www.roguelynn.com/words/o-hai-there/</id>
             <updated>2012-03-22T20:32:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
-                <uri>http://roguelynn.com/</uri>
+                <uri>http://www.roguelynn.com/</uri>
             </author>
             <content type="html">&lt;p&gt;Who knew I&amp;#39;d get wrapped into Silicon Valley? I should post more so I don&amp;#39;t have to do such a digest of what&amp;#39;s been going on! :) It all started when I took my first CS class.   Well, it sucked. Learning first in C, I thought, “Well, I know some of these words.” I [re]assure you, C does not come naturally to a (former) financial analyst.  I felt&lt;br&gt;
 I was drowning: I failed both exams. &lt;/p&gt;
@@ -1016,14 +1016,14 @@ I was drowning: I failed both exams. &lt;/p&gt;
     
         <entry>
             <title type="html">It&#39;s for SCIENCE</title>
-            <link rel="alternate" href="http://roguelynn.com/words/its-for-science/" type="text/html" />
-            <id>http://roguelynn.com/words/its-for-science/</id>
+            <link rel="alternate" href="http://www.roguelynn.com/words/its-for-science/" type="text/html" />
+            <id>http://www.roguelynn.com/words/its-for-science/</id>
             <updated>2011-11-14T21:02:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
-                <uri>http://roguelynn.com/</uri>
+                <uri>http://www.roguelynn.com/</uri>
             </author>
             <content type="html">&lt;p&gt;Guten tag, all. I just had an awesome weekend.  I attended &lt;a href=&#34;http://sciencehackday.pbworks.com/w/page/45740104/SFideas&#34; title=&#34;SF Science Hack Day&#34;&gt;San Francisco Science Hack Day&lt;/a&gt; and it was &lt;em&gt;awesome&lt;/em&gt;!  It was two &lt;strong&gt;full days&lt;/strong&gt;, so let me lay it out for you: &lt;strong&gt;about me:&lt;/strong&gt;programming &amp;amp; science n00b &lt;strong&gt;mission:&lt;/strong&gt;to make &amp;amp; hack things with SCIENCE &lt;strong&gt;vision:&lt;/strong&gt;to hack data from Switzerland&amp;#39;s Large Hadron Collider for better accessibility and understanding, esp for enthusiasts but n00bs like me. &lt;strong&gt;results:&lt;/strong&gt;&lt;/p&gt;
 
@@ -1044,14 +1044,14 @@ if it&amp;#39;s on a scale of ...100.&lt;/li&gt;
     
         <entry>
             <title type="html">Studying BitCoin</title>
-            <link rel="alternate" href="http://roguelynn.com/words/studying-bitcoin/" type="text/html" />
-            <id>http://roguelynn.com/words/studying-bitcoin/</id>
+            <link rel="alternate" href="http://www.roguelynn.com/words/studying-bitcoin/" type="text/html" />
+            <id>http://www.roguelynn.com/words/studying-bitcoin/</id>
             <updated>2011-07-07T20:32:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
-                <uri>http://roguelynn.com/</uri>
+                <uri>http://www.roguelynn.com/</uri>
             </author>
             <content type="html">&lt;p&gt;Has anyone else heard of BitCoin, and the incredible inflation it has seen? This &lt;a href=&#34;http://falkvinge.net/2011/05/29/why-im-putting-all-my-savings-into-bitcoin/&#34; title=&#34;Why I&amp;#39;m Putting All my Savings into Bitcoin&#34;&gt;dude&lt;/a&gt; has put &lt;strong&gt;all&lt;/strong&gt;his money into BitCoin - not smart, I would say.  Especially when &lt;a href=&#34;http://www.dailytech.com/article.aspx?newsid=21877&#34; title=&#34;Run on Bitcoin&#34;&gt;news&lt;/a&gt; like a run on BitCoin hits. (If you have no clue on what BitCoin is, &lt;a href=&#34;http://en.wikipedia.org/wiki/Bitcoin&#34; title=&#34;Wiki: Bitcoin&#34;&gt;read&lt;/a&gt;.) So while I laugh at the guy who invested all his money that is now gone, I reflect back on a conversation I had with a friend a few years ago.  Can we use this virtual currency to study monetary economics?  BitCoin has the potential to provide us with an interesting avenue to understand another type of currency. But what I am imagining more is looking at virtual worlds and video games (disclaimer: I have no direct experience with video games) to build scenarios to &amp;quot;test&amp;quot; on live people interacting with the world/game.  Currently, there are trading simulators that follow the market where one can see how his/her virtual portfolio would fair in real life.  Add that aspect to a virtual economy and see how quantitative easing programs could affect it. Just an idea.&lt;/p&gt;
 </content>
@@ -1059,14 +1059,14 @@ if it&amp;#39;s on a scale of ...100.&lt;/li&gt;
     
         <entry>
             <title type="html">Seattle Tech Talk</title>
-            <link rel="alternate" href="http://roguelynn.com/words/seattle-tech-talk/" type="text/html" />
-            <id>http://roguelynn.com/words/seattle-tech-talk/</id>
+            <link rel="alternate" href="http://www.roguelynn.com/words/seattle-tech-talk/" type="text/html" />
+            <id>http://www.roguelynn.com/words/seattle-tech-talk/</id>
             <updated>2011-06-30T07:43:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
-                <uri>http://roguelynn.com/</uri>
+                <uri>http://www.roguelynn.com/</uri>
             </author>
             <content type="html">&lt;p&gt;I had the interesting experience of attending a Seattle tech talk with Facebook&amp;#39;s Mark Zuckerberg. Unfortunately I was too scared to ask him if he felt $70 billion was a fair value for the FB IPO estimate, or if he needed any analysts to help him justify such a number.&lt;/p&gt;
 
@@ -1078,7 +1078,7 @@ if it&amp;#39;s on a scale of ...100.&lt;/li&gt;
 
 &lt;p&gt;Just quick thoughts post-talk. I enjoyed it, plus the free pizza &amp;amp; booze. Although I wish I could have gotten some free swag...  &lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://roguelynn.com/assets/images/mark_zuckerberg.jpg&#34; alt=&#34;the Zuck&#34; title=&#34;Mark Zuckerberg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.roguelynn.com/assets/images/mark_zuckerberg.jpg&#34; alt=&#34;the Zuck&#34; title=&#34;Mark Zuckerberg&#34;&gt;&lt;/p&gt;
 </content>
         </entry>
     
