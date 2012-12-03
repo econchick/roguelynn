@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>Blog of Lynn Root</title>
+    <subtitle>Homepage and blog of Lynn Root. Coder, writer, speaker, and PyLady of San Francisco.</subtitle>
+    <link rel="alternate" href="{{ get_url(absolute=true) }}" />
+    <link rel="self" href="{{ get_url('feed.xml', true) }}" type="application/atom+xml" />
+    <id>{{ get_url(absolute=true) }}</id>
+    <updated>{{ none|date('%Y-%m-%dT%H:%M:%SZ') }}</updated>
+
+    <author>
+        <name>Lynn Root</name>
+        <email>lynn@lynnroot.com</email>
+        <uri>{{ get_url(absolute=true) }}</uri>
+    </author>
+
+    {% for post in posts %}
+        <entry>
+            <title type="html">{{ post.title|escape }}</title>
+            <link rel="alternate" href="{{ get_url(post.url, true) }}" type="text/html" />
+            <id>{{ get_url(post.url, true) }}</id>
+            <updated>{{ post.timestamp|date('%Y-%m-%dT%H:%M:%SZ') }}</updated>
+
+            <author>
+                <name>Lynn Root</name>
+                <email>lynn@lynnroot.com</email>
+                <uri>{{ get_url(absolute=true) }}</uri>
+            </author>
+            <content type="html">{{ post.content|absolutize|escape }}</content>
+        </entry>
+    {% endfor %}
+</feed>
