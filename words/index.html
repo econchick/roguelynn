@@ -2,15 +2,13 @@
 {% block title %}Words{% endblock %}
 {% block content %}
     <section id="archive">
-        <section>
-            <h1>Words</h1>
-                <article>
-                        {% for post in posts %}
-                        <h3><a href="{{ get_url(post.url) }}">{{ post.title }}</a></h3>
-                        <time pubdate datetime="{{ post.timestamp|date('%Y-%m-%d') }}">{{ post.date }}</time>
-                        <p>{{ post.excerpt }} <a href="{{ get_url(post.url) }}">Read more &rarr;</a></p>
-                    {% endfor %}
-                </article>
-        </section>
+        <h1>Words</h1>
+            <article>
+                    {% for post in posts %}
+                    <h3><a href="{{ get_url(post.url) }}">{{ post.title }}</a></h3>
+                    <time pubdate datetime="{{ post.timestamp|date('%Y-%m-%d') }}">{{ post.date }}</time>
+                    <p>{{ post.excerpt }}  <a href="{{ get_url(post.url) }}" class='more-link'>Read more &rarr;</a></p>
+                {% endfor %}
+            </article>
     </section>
 {% endblock %}
