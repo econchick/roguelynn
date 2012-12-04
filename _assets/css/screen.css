@@ -619,7 +619,7 @@ h3 a {
 
 section#archive article p a.more-link { margin-left: .8em; }
 section#archive h3 a { color: #414247;;}
-section#splash h2 span { color: #38a5dd;}
+section#splash h2 abbr { color: #38a5dd;}
 
 h5 a {
   -webkit-transition-duration: 0.4s;
