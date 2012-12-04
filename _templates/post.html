@@ -3,9 +3,9 @@
 {% block content %}
     <section id="post">
         <h2>{{ post.title }}</h2>
-            <aside>
-                <time pubdate datetime="{{ post.timestamp|date('%Y-%m-%d') }}">{{ post.date }}</time>
-            </aside>
+        <aside>
+            <time pubdate datetime="{{ post.timestamp|date('%Y-%m-%d') }}">{{ post.date }}</time>
+        </aside>
         <article>
             {{ post.content }}
             <div id="disqus_thread"></div>

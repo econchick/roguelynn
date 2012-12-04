@@ -639,6 +639,11 @@ time {
   font-style:italic;
   margin-left:-13em;
 }
+section#post aside time {
+  color:#7F808A;
+  font-style:italic;
+  margin-left: 0em;
+}
 
 h5 a {
   -webkit-transition-duration: 0.4s;
