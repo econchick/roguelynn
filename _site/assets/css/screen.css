@@ -624,6 +624,15 @@ section#archive article p {
   margin-top: -1.5em;
   margin-bottom: 3em;
 }
+section#archive article#talks p {
+  margin-top: -1.5em;
+  margin-bottom: 1.4em;
+}
+
+section#archive article#talks p#location {
+  font-style: italic;
+  margin-bottom: 2em;
+}
 
 time {
   color:#7F808A;
