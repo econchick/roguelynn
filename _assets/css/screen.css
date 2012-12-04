@@ -618,8 +618,18 @@ h3 a {
     color: #dd4a38; }
 
 section#archive article p a.more-link { margin-left: .8em; }
-section#archive h3 a { color: #414247;;}
+section#archive h3 a { color: #414247;}
 section#splash h2 abbr { color: #38a5dd;}
+section#archive article p {
+  margin-top: -1.5em;
+  margin-bottom: 3em;
+}
+
+time {
+  color:#7F808A;
+  font-style:italic;
+  margin-left:-13em;
+}
 
 h5 a {
   -webkit-transition-duration: 0.4s;
