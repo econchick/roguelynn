@@ -48,11 +48,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 @font-face {
   font-family: "entypo";
-  src: url('/assets/fonts/entypo.eot') format('embedded-opentype'), url('/assets/fonts/entypo.woff') format('woff'), url('/assets/fonts/entypo.ttf') format('truetype'), url('/assets/fonts/entypo.svg') format('svg'); }
+  src: url("{{ get_asset('fonts/entypo.eot')}}") format('embedded-opentype'), url("{{ get_asset('fonts/entypo.woff')}}") format('woff'), url("{{ get_asset('fonts/entypo.ttf')}}") format('truetype'), url("{{ get_asset('fonts/entypo.svg')}}") format('svg'); }
 
 @font-face {
   font-family: "entypo-social";
-  src: url('/assets/fonts/entypo-social.eot') format('embedded-opentype'), url('/assets/fonts/entypo-social.woff') format('woff'), url('/assets/fonts/entypo-social.ttf') format('truetype'), url('/assets/fonts/entypo-social.svg') format('svg'); }
+  src: url("{{ get_asset('fonts/entypo-social.eot')}}") format('embedded-opentype'), url("{{ get_asset('fonts/entypo-social.woff')}}") format('woff'), url("{{ get_asset('fonts/entypo-social.ttf)}}") format('truetype'), url("{{ get_asset('fonts/entypo-social.svg')}}") format('svg'); }
 
 html, body {
   height: 100%; }
@@ -632,6 +632,11 @@ section#archive article#talks p {
 section#archive article#talks p#location {
   font-style: italic;
   margin-bottom: 2em;
+}
+
+section#archive article#location h4{
+  margin-bottom: 2em;
+  margin-top: 2em;
 }
 
 time {
