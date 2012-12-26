@@ -26,7 +26,7 @@ I had this idea in my head that I would write more than ~15-20 lines of code for
 
 ### What I learned
 
-What I actually ended up learning was the overall Linux file system (naturally), Vim, git, the process of submitting patches for review, public versus private errors, virtual machines (and the many ways to break them), and git blame & [git-by-a-bus][git]. 
+What I actually ended up learning was the overall Linux file system (naturally), Vim, git, the process of submitting patches for review, public versus private errors, virtual machines (and the many ways to break them), and git blame, git reset HEAD@{1 hour ago}, and [git-by-a-bus][git]. 
 
 Other things I'm sure some take for granted like iptables, key-bindings & keyboard shortcuts (using those make me feel like a baller), vimrc, simple bash commands & scripting, and the like.
 
@@ -53,8 +53,8 @@ What scares the sh!t out of me is that there is no one that knows how to do this
 The fear of failure has never been stronger, but it is a great motivator.
 
 
-[map]: http://
-[OpenShift]: http://openshift.rhc.com
-[Puppet]: http://
-[Foreman]: http://
-[git]: http://
+[map]: https://maps.google.com/maps?q=red+hat+czech&ll=49.226623,16.581266&spn=0.007875,0.017424&hq=red+hat+czech&t=m&z=16&iwloc=A "Red Hat Czech"
+[OpenShift]: http://openshift.rhc.com "OpenShift"
+[Puppet]: http://puppetlabs.com/ "Puppet"
+[Foreman]: http://theforeman.org/ "Foreman"
+[git]: https://github.com/tomheon/git_by_a_bus "Git by a Bus"
