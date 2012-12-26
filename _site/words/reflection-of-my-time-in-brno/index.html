@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+        <title>Reflection of my time in Brno — Lynn Root</title>
+        <meta name="description" content="Homepage and blog of Lynn Root. Python Engineer, PyLadiesSF Founder, Socializer in San Francisco." />
+        <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/ico" />
+        <link rel="alternate" type="application/atom+xml" title="Atom 1.0" href="http://www.roguelynn.com/feed.xml" />
+
+        <!--Stylesheets-->
+        <link rel="stylesheet" href="/assets/css/lightbox.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/pygments.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/screen.css" media="screen" title="screen">
+
+
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="nav-wrapper">
+            <nav>
+                <ul class="title">
+                    <li class="name"><a class="current" href="/">Lynn Root</a></li>
+                    <li class="desc">Coder • Writer • Speaker • PyLady</li>
+                </ul>
+                <ul class="contents"> 
+                    <li class="page_item"><a href="/">Home</a></li>
+                    <li class="page_item"><a href="/about/">About</a></li>
+                    <li class="page_item"><a href="/words/">Words</a></li>
+                    <li class="page_item"><a href="/talks/">Talks</a></li>
+                    <li class="page_item"><a href="/pyladies/">PyLadies</a></li>
+
+                </ul>
+            </nav>
+        </div>
+        <div class="page">
+            
+    <section id="post">
+        <h2>Reflection of my time in Brno</h2>
+            <aside>
+                <time pubdate datetime="2012-12-21">December 21, 2012</time>
+            </aside>
+        <article>
+            <p>I&#39;m just returning to San Francisco from spending two months at <a href="https://maps.google.com/maps?q=red+hat+czech&amp;ll=49.226623,16.581266&amp;spn=0.007875,0.017424&amp;hq=red+hat+czech&amp;t=m&amp;z=16&amp;iwloc=A" title="Red Hat Czech">Red Hat Czech</a> in Brno, Czech Republic. It had its ups and downs, but most of all, I found it important and pivotal to my career as I develop into an engineer.</p>
+
+<p>But I need to be honest: throughout 7 of the 8 weeks I spent in Brno, I felt completely and utterly lost. I struggle with the lack of guidance given, especially being brand new into engineering as a profession.  </p>
+
+<p>My job for the next year is to integrate freeIPA into <a href="http://openshift.rhc.com" title="OpenShift">OpenShift</a>, followed by <a href="http://puppetlabs.com/" title="Puppet">Puppet</a>, and <a href="http://theforeman.org/" title="Foreman">Foreman</a>. During my one-on-one phone calls with my manager, he says, literally, &quot;You need to develop a deep understanding of the freeIPA project,&quot; and &quot;You need to figure out what you don&#39;t know, and learn it,&quot; without any further guidance other than that I need to accomplish by end of February: to have a proof of concept of integration of IPA -&gt; OpenShift.</p>
+
+<p>In other words: <br>
+<img src="/assets/images/no_idea_dog.png" alt="no_idea_dog" title="I have no idea what I&#39;m doing"></p>
+<h3>From email setup to patch submission in 8 days, then what?</h3>
+<p>I previously <a href="/words/from-email-setup-to-patch-submission-in-8-days" title="From email setup to patch submission in 8 days">wrote</a> about the progress I was making.  TL;DR - I submitted a patch in the first two weeks of working (mind you, it was immediately NACKed and a lesson was learned in testing).  But not much followed other than a handful of other patches. </p>
+
+<p>Sure, I learned bits of the IPA package in detail in regards to code and moving parts, and on the grand scale of how LDAP, DNS, AD trusts, Kerberos, Daemon, NTP, Certificate Authority, etc, all talk to each other and <em>why</em> it makes freeIPA appealing to sys admins, developers, etc. But it was (and still is) excruciatingly difficult to develop an understanding of what parts need to be integrated, and when I need to take step back and learn the deep, dark corners of DNS, BIND, and Apache. </p>
+
+<p>Thank god for mentors outside of my team as well; stupid questions about the Python language, like &quot;Isn&#39;t it bad to have import *? Why?&quot; were met with impatience at work. That&#39;s not to say my team mates weren&#39;t helpful; I had many ELI5 moments with them.</p>
+<h3>My Expectations</h3>
+<p>I had this idea in my head that I would write more than ~15-20 lines of code for the IPA project. Correction: I assumed I&#39;d write more <em>Python</em> code during this time here in Brno. I wanted to learn how to write good code, the design pattern of the project, maybe write a test or two.</p>
+<h3>What I learned</h3>
+<p>What I actually ended up learning was the overall Linux file system (naturally), Vim, git, the process of submitting patches for review, public versus private errors, virtual machines (and the many ways to break them), and git blame, <a href="http://andyjeffries.co.uk/articles/25-tips-for-intermediate-git-users" title="Tips for intermediate git users">git reset HEAD@{1 hour ago}</a>, and <a href="https://github.com/tomheon/git_by_a_bus" title="Git by a Bus">git-by-a-bus</a>. </p>
+
+<p>Other things I&#39;m sure some take for granted like iptables, key-bindings &amp; keyboard shortcuts (using those make me feel like a baller), vimrc, simple bash commands &amp; scripting, and the like.</p>
+
+<p>And yes, I also learned a bit of Ruby. To be honest, I&#39;ve written more Ruby code for OpenShift than Python code for freeIPA. I&#39;ve started to make a list of grievances of the Ruby language when coming from Python. #snark</p>
+
+<p>I also learned the structure of OpenShift - the two Apache servers it uses, the broken installation scripts, the larger picture of what of freeIPA needs to be integrated where.</p>
+<h3>What I need to learn</h3>
+<p>I still have a ways to go in learning to program in Ruby, but it&#39;s understandably easier when I have an okay grasp on programming in Python.</p>
+
+<p>Apache is still a black hole to me, but I&#39;ve begun to understand what pieces need to be added to OpenShift.</p>
+
+<p>I also have no freaking clue how <em>exactly</em> to integrate a project that&#39;s written in Python into a Ruby-based project.</p>
+
+<p>I also need to develop a better understanding of GSSAPI (supposedly an implementation of an API, written in Python, Ruby, whatever, that appropriately talks to Kerberos, written in C). This understanding will needed for when the DNS dynamically updates hosts (through nsupdate) and there needs to be a Kerberos-based authentication handshake.</p>
+<h3>What troubles me</h3>
+<p>This task I am meant to do is complex; it&#39;s not an application where I can go bug my dev friends for the best library or approach. These are two different projects where the integration happens at a level that folks have experience in either but not both. <em>I</em> am the integration point; <em>I</em> am supposed to have an understanding of these two systems, how they differ and compare in setup. This requires a deep understanding of how the internet works, of Linux systems, and of security implementations, among other things that I can&#39;t even conceive of right now.</p>
+
+<p>What scares the sh!t out of me is that there is no one that knows how to do this better than me. #wat </p>
+
+<p>The fear of failure has never been stronger, but it is a great motivator.</p>
+
+            <div id="disqus_thread"></div>
+                <script type="text/javascript">
+                    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                    var disqus_shortname = 'roguelynn'; // required: replace example with your forum shortname
+
+                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </article>
+    </section>
+    <p><a href="/words/">&larr; See all posts</a></p>
+
+        </div>
+        <div class="footer-wrapper">
+            <footer id="bottom">
+                <ul class="social">
+                    <li><a class="icon twitter" data-icon="&#62217;" href="http://twitter.com/roguelynn" title="Twitter"></a></li>
+                    <li><a class="icon github" data-icon="&#62208;" href="http://github.com/econchick" title="GitHub"></a></li>
+                    <li><a class="icon rss" data-icon="&#59194;" href="http://www.roguelynn.com/feed.xml" title="RSS"></a></li>
+                    <li>© 2007–2012 Lynn Root. All Rights Reserved.</li>
+                </ul>
+            </footer>
+        </div>
+        <!--Javascript-->
+        <script src="/assets/js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <!-- Start of StatCounter Code for Default Guide -->
+        <script type="text/javascript">
+        var sc_project=4334716; 
+        var sc_invisible=1; 
+        var sc_security="d7034a4d"; 
+        </script>
+        <script type="text/javascript"
+        src="http://www.statcounter.com/counter/counter.js"></script>
+        <noscript><div class="statcounter"><a title="web stats"
+        href="http://statcounter.com/free-web-stats/"
+        target="_blank"><img class="statcounter"
+        src="http://c.statcounter.com/4334716/0/d7034a4d/1/"
+        alt="web stats"></a></div></noscript>
+        <!-- End of StatCounter Code for Default Guide -->
+    </body>
+</html>

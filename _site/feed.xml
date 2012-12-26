@@ -5,7 +5,7 @@
     <link rel="alternate" href="http://www.roguelynn.com/" />
     <link rel="self" href="http://www.roguelynn.com/feed.xml" type="application/atom+xml" />
     <id>http://www.roguelynn.com/</id>
-    <updated>2012-12-03T22:58:06Z</updated>
+    <updated>2012-12-26T22:04:26Z</updated>
 
     <author>
         <name>Lynn Root</name>
@@ -13,6 +13,58 @@
         <uri>http://www.roguelynn.com/</uri>
     </author>
 
+    
+        <entry>
+            <title type="html">Reflection of my time in Brno</title>
+            <link rel="alternate" href="http://www.roguelynn.com/words/reflection-of-my-time-in-brno/" type="text/html" />
+            <id>http://www.roguelynn.com/words/reflection-of-my-time-in-brno/</id>
+            <updated>2012-12-21T21:55:00Z</updated>
+
+            <author>
+                <name>Lynn Root</name>
+                <email>lynn@lynnroot.com</email>
+                <uri>http://www.roguelynn.com/</uri>
+            </author>
+            <content type="html">&lt;p&gt;I&amp;#39;m just returning to San Francisco from spending two months at &lt;a href=&#34;https://maps.google.com/maps?q=red+hat+czech&amp;amp;ll=49.226623,16.581266&amp;amp;spn=0.007875,0.017424&amp;amp;hq=red+hat+czech&amp;amp;t=m&amp;amp;z=16&amp;amp;iwloc=A&#34; title=&#34;Red Hat Czech&#34;&gt;Red Hat Czech&lt;/a&gt; in Brno, Czech Republic. It had its ups and downs, but most of all, I found it important and pivotal to my career as I develop into an engineer.&lt;/p&gt;
+
+&lt;p&gt;But I need to be honest: throughout 7 of the 8 weeks I spent in Brno, I felt completely and utterly lost. I struggle with the lack of guidance given, especially being brand new into engineering as a profession.  &lt;/p&gt;
+
+&lt;p&gt;My job for the next year is to integrate freeIPA into &lt;a href=&#34;http://openshift.rhc.com&#34; title=&#34;OpenShift&#34;&gt;OpenShift&lt;/a&gt;, followed by &lt;a href=&#34;http://puppetlabs.com/&#34; title=&#34;Puppet&#34;&gt;Puppet&lt;/a&gt;, and &lt;a href=&#34;http://theforeman.org/&#34; title=&#34;Foreman&#34;&gt;Foreman&lt;/a&gt;. During my one-on-one phone calls with my manager, he says, literally, &amp;quot;You need to develop a deep understanding of the freeIPA project,&amp;quot; and &amp;quot;You need to figure out what you don&amp;#39;t know, and learn it,&amp;quot; without any further guidance other than that I need to accomplish by end of February: to have a proof of concept of integration of IPA -&amp;gt; OpenShift.&lt;/p&gt;
+
+&lt;p&gt;In other words: &lt;br&gt;
+&lt;img src=&#34;http://www.roguelynn.com/assets/images/no_idea_dog.png&#34; alt=&#34;no_idea_dog&#34; title=&#34;I have no idea what I&amp;#39;m doing&#34;&gt;&lt;/p&gt;
+&lt;h3&gt;From email setup to patch submission in 8 days, then what?&lt;/h3&gt;
+&lt;p&gt;I previously &lt;a href=&#34;http://www.roguelynn.com/words/from-email-setup-to-patch-submission-in-8-days&#34; title=&#34;From email setup to patch submission in 8 days&#34;&gt;wrote&lt;/a&gt; about the progress I was making.  TL;DR - I submitted a patch in the first two weeks of working (mind you, it was immediately NACKed and a lesson was learned in testing).  But not much followed other than a handful of other patches. &lt;/p&gt;
+
+&lt;p&gt;Sure, I learned bits of the IPA package in detail in regards to code and moving parts, and on the grand scale of how LDAP, DNS, AD trusts, Kerberos, Daemon, NTP, Certificate Authority, etc, all talk to each other and &lt;em&gt;why&lt;/em&gt; it makes freeIPA appealing to sys admins, developers, etc. But it was (and still is) excruciatingly difficult to develop an understanding of what parts need to be integrated, and when I need to take step back and learn the deep, dark corners of DNS, BIND, and Apache. &lt;/p&gt;
+
+&lt;p&gt;Thank god for mentors outside of my team as well; stupid questions about the Python language, like &amp;quot;Isn&amp;#39;t it bad to have import *? Why?&amp;quot; were met with impatience at work. That&amp;#39;s not to say my team mates weren&amp;#39;t helpful; I had many ELI5 moments with them.&lt;/p&gt;
+&lt;h3&gt;My Expectations&lt;/h3&gt;
+&lt;p&gt;I had this idea in my head that I would write more than ~15-20 lines of code for the IPA project. Correction: I assumed I&amp;#39;d write more &lt;em&gt;Python&lt;/em&gt; code during this time here in Brno. I wanted to learn how to write good code, the design pattern of the project, maybe write a test or two.&lt;/p&gt;
+&lt;h3&gt;What I learned&lt;/h3&gt;
+&lt;p&gt;What I actually ended up learning was the overall Linux file system (naturally), Vim, git, the process of submitting patches for review, public versus private errors, virtual machines (and the many ways to break them), and git blame, &lt;a href=&#34;http://andyjeffries.co.uk/articles/25-tips-for-intermediate-git-users&#34; title=&#34;Tips for intermediate git users&#34;&gt;git reset HEAD@{1 hour ago}&lt;/a&gt;, and &lt;a href=&#34;https://github.com/tomheon/git_by_a_bus&#34; title=&#34;Git by a Bus&#34;&gt;git-by-a-bus&lt;/a&gt;. &lt;/p&gt;
+
+&lt;p&gt;Other things I&amp;#39;m sure some take for granted like iptables, key-bindings &amp;amp; keyboard shortcuts (using those make me feel like a baller), vimrc, simple bash commands &amp;amp; scripting, and the like.&lt;/p&gt;
+
+&lt;p&gt;And yes, I also learned a bit of Ruby. To be honest, I&amp;#39;ve written more Ruby code for OpenShift than Python code for freeIPA. I&amp;#39;ve started to make a list of grievances of the Ruby language when coming from Python. #snark&lt;/p&gt;
+
+&lt;p&gt;I also learned the structure of OpenShift - the two Apache servers it uses, the broken installation scripts, the larger picture of what of freeIPA needs to be integrated where.&lt;/p&gt;
+&lt;h3&gt;What I need to learn&lt;/h3&gt;
+&lt;p&gt;I still have a ways to go in learning to program in Ruby, but it&amp;#39;s understandably easier when I have an okay grasp on programming in Python.&lt;/p&gt;
+
+&lt;p&gt;Apache is still a black hole to me, but I&amp;#39;ve begun to understand what pieces need to be added to OpenShift.&lt;/p&gt;
+
+&lt;p&gt;I also have no freaking clue how &lt;em&gt;exactly&lt;/em&gt; to integrate a project that&amp;#39;s written in Python into a Ruby-based project.&lt;/p&gt;
+
+&lt;p&gt;I also need to develop a better understanding of GSSAPI (supposedly an implementation of an API, written in Python, Ruby, whatever, that appropriately talks to Kerberos, written in C). This understanding will needed for when the DNS dynamically updates hosts (through nsupdate) and there needs to be a Kerberos-based authentication handshake.&lt;/p&gt;
+&lt;h3&gt;What troubles me&lt;/h3&gt;
+&lt;p&gt;This task I am meant to do is complex; it&amp;#39;s not an application where I can go bug my dev friends for the best library or approach. These are two different projects where the integration happens at a level that folks have experience in either but not both. &lt;em&gt;I&lt;/em&gt; am the integration point; &lt;em&gt;I&lt;/em&gt; am supposed to have an understanding of these two systems, how they differ and compare in setup. This requires a deep understanding of how the internet works, of Linux systems, and of security implementations, among other things that I can&amp;#39;t even conceive of right now.&lt;/p&gt;
+
+&lt;p&gt;What scares the sh!t out of me is that there is no one that knows how to do this better than me. #wat &lt;/p&gt;
+
+&lt;p&gt;The fear of failure has never been stronger, but it is a great motivator.&lt;/p&gt;
+</content>
+        </entry>
     
         <entry>
             <title type="html">CR@P I&#39;M SPEAKING AT [insert conference here]! How do I prepare?</title>

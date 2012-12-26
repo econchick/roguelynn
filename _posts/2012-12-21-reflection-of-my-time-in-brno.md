@@ -8,9 +8,10 @@ I'm just returning to San Francisco from spending two months at [Red Hat Czech][
 
 But I need to be honest: throughout 7 of the 8 weeks I spent in Brno, I felt completely and utterly lost. I struggle with the lack of guidance given, especially being brand new into engineering as a profession.  
 
-My job for the next year is to integrate freeIPA into [OpenShift][OpenShift], followed by [Puppet][Puppet], and [Foreman][Foreman]. During my one-on-one phone calls with my manager, he says, literally, "You need to develop a deep understanding of the freeIPA project," and "You need to figure out what you don't know, and learn it," without any further guidance other than that I need to accomplish by end of February: to have a proof of concept of integration of IPA -> OpenShift.
+My job for the next year is to integrate freeIPA into [OpenShift][OpenShift], followed by a few more prominent OSS projects. During my one-on-one phone calls with my manager, he says, literally, "You need to develop a deep understanding of the freeIPA project," and "You need to figure out what you don't know, and learn it," without any further guidance other than that I need to accomplish by end of February: to have a proof of concept of integration of IPA -> OpenShift.
 
-In other words: ![no_idea_dog]({{ get_asset('images/no_idea_dog.png')}} 'I have no idea what I'm doing')
+In other words: 
+![no_idea_dog]({{ get_asset('images/no_idea_dog.png')}} 'I have no idea what I'm doing')
 
 ### From email setup to patch submission in 8 days, then what?
 
@@ -26,7 +27,7 @@ I had this idea in my head that I would write more than ~15-20 lines of code for
 
 ### What I learned
 
-What I actually ended up learning was the overall Linux file system (naturally), Vim, git, the process of submitting patches for review, public versus private errors, virtual machines (and the many ways to break them), and git blame, git reset HEAD@{1 hour ago}, and [git-by-a-bus][git]. 
+What I actually ended up learning was the overall Linux file system (naturally), Vim, git, the process of submitting patches for review, public versus private errors, virtual machines (and the many ways to break them), and git blame, [git reset HEAD@{1 hour ago}][git1], and [git-by-a-bus][git2]. 
 
 Other things I'm sure some take for granted like iptables, key-bindings & keyboard shortcuts (using those make me feel like a baller), vimrc, simple bash commands & scripting, and the like.
 
@@ -57,4 +58,5 @@ The fear of failure has never been stronger, but it is a great motivator.
 [OpenShift]: http://openshift.rhc.com "OpenShift"
 [Puppet]: http://puppetlabs.com/ "Puppet"
 [Foreman]: http://theforeman.org/ "Foreman"
-[git]: https://github.com/tomheon/git_by_a_bus "Git by a Bus"
+[git1]: http://andyjeffries.co.uk/articles/25-tips-for-intermediate-git-users "Tips for intermediate git users"
+[git2]: https://github.com/tomheon/git_by_a_bus "Git by a Bus"
