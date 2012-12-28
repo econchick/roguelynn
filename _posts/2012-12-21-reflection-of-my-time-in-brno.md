@@ -56,7 +56,5 @@ The fear of failure has never been stronger, but it is a great motivator.
 
 [map]: https://maps.google.com/maps?q=red+hat+czech&ll=49.226623,16.581266&spn=0.007875,0.017424&hq=red+hat+czech&t=m&z=16&iwloc=A "Red Hat Czech"
 [OpenShift]: http://openshift.rhc.com "OpenShift"
-[Puppet]: http://puppetlabs.com/ "Puppet"
-[Foreman]: http://theforeman.org/ "Foreman"
 [git1]: http://andyjeffries.co.uk/articles/25-tips-for-intermediate-git-users "Tips for intermediate git users"
 [git2]: https://github.com/tomheon/git_by_a_bus "Git by a Bus"
