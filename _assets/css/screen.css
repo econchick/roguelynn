@@ -48,11 +48,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 @font-face {
   font-family: "entypo";
-  src: url('/assets/fonts/entypo.eot') format('embedded-opentype'), url('/assets/fonts/entypo.woff') format('woff'), url('/assets/fonts/entypo.ttf') format('truetype'), url('/assets/fonts/entypo.svg') format('svg'); }
+  src: url("/assets/fonts/entypo.eot") format('embedded-opentype'), url("/assets/fonts/entypo.woff") format('woff'), url("/assets/fonts/entypo.ttf") format('truetype'), url("/assets/fonts/entypo.svg") format('svg'); }
 
 @font-face {
   font-family: "entypo-social";
-  src: url('/assets/fonts/entypo-social.eot') format('embedded-opentype'), url('/assets/fonts/entypo-social.woff') format('woff'), url('/assets/fonts/entypo-social.ttf') format('truetype'), url('/assets/fonts/entypo-social.svg') format('svg'); }
+  src: url("/assets/fonts/entypo-social.eot") format('embedded-opentype'), url("/assets/fonts/entypo-social.woff") format('woff'), url("/assets/fonts/entypo-social.ttf") format('truetype'), url("/assets/fonts/entypo-social.svg") format('svg'); }
 
 html, body {
   height: 100%; }
@@ -618,7 +618,41 @@ h3 a {
     color: #dd4a38; }
 
 section#archive article p a.more-link { margin-left: .8em; }
+<<<<<<< HEAD
 section#archive h3 a { color: #38a5dd;;}
+=======
+section#archive h3 a { color: #414247;}
+section#splash h2 abbr { color: #38a5dd;}
+section#archive article p {
+  margin-top: -1.5em;
+  margin-bottom: 3em;
+}
+section#archive article#talks p {
+  margin-top: -1.5em;
+  margin-bottom: 1.4em;
+}
+
+section#archive article#talks p#location {
+  font-style: italic;
+  margin-bottom: 2em;
+}
+
+section#archive article#location h4{
+  margin-bottom: 2em;
+  margin-top: 2em;
+}
+
+time {
+  color:#7F808A;
+  font-style:italic;
+  margin-left:-13em;
+}
+section#post aside time {
+  color:#7F808A;
+  font-style:italic;
+  margin-left: 0em;
+}
+>>>>>>> 586625a573a5f7d8f28a72958d2725700ff0e2e8
 
 h5 a {
   -webkit-transition-duration: 0.4s;
