@@ -5,7 +5,7 @@
     <link rel="alternate" href="http://www.roguelynn.com/" />
     <link rel="self" href="http://www.roguelynn.com/feed.xml" type="application/atom+xml" />
     <id>http://www.roguelynn.com/</id>
-    <updated>2012-12-26T22:04:26Z</updated>
+    <updated>2012-12-28T15:36:52Z</updated>
 
     <author>
         <name>Lynn Root</name>
@@ -18,7 +18,7 @@
             <title type="html">Reflection of my time in Brno</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/reflection-of-my-time-in-brno/" type="text/html" />
             <id>http://www.roguelynn.com/words/reflection-of-my-time-in-brno/</id>
-            <updated>2012-12-21T21:55:00Z</updated>
+            <updated>2012-12-21T22:08:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -29,7 +29,7 @@
 
 &lt;p&gt;But I need to be honest: throughout 7 of the 8 weeks I spent in Brno, I felt completely and utterly lost. I struggle with the lack of guidance given, especially being brand new into engineering as a profession.  &lt;/p&gt;
 
-&lt;p&gt;My job for the next year is to integrate freeIPA into &lt;a href=&#34;http://openshift.rhc.com&#34; title=&#34;OpenShift&#34;&gt;OpenShift&lt;/a&gt;, followed by &lt;a href=&#34;http://puppetlabs.com/&#34; title=&#34;Puppet&#34;&gt;Puppet&lt;/a&gt;, and &lt;a href=&#34;http://theforeman.org/&#34; title=&#34;Foreman&#34;&gt;Foreman&lt;/a&gt;. During my one-on-one phone calls with my manager, he says, literally, &amp;quot;You need to develop a deep understanding of the freeIPA project,&amp;quot; and &amp;quot;You need to figure out what you don&amp;#39;t know, and learn it,&amp;quot; without any further guidance other than that I need to accomplish by end of February: to have a proof of concept of integration of IPA -&amp;gt; OpenShift.&lt;/p&gt;
+&lt;p&gt;My job for the next year is to integrate freeIPA into &lt;a href=&#34;http://openshift.rhc.com&#34; title=&#34;OpenShift&#34;&gt;OpenShift&lt;/a&gt;, followed by a few more prominent OSS projects. During my one-on-one phone calls with my manager, he says, literally, &amp;quot;You need to develop a deep understanding of the freeIPA project,&amp;quot; and &amp;quot;You need to figure out what you don&amp;#39;t know, and learn it,&amp;quot; without any further guidance other than that I need to accomplish by end of February: to have a proof of concept of integration of IPA -&amp;gt; OpenShift.&lt;/p&gt;
 
 &lt;p&gt;In other words: &lt;br&gt;
 &lt;img src=&#34;http://www.roguelynn.com/assets/images/no_idea_dog.png&#34; alt=&#34;no_idea_dog&#34; title=&#34;I have no idea what I&amp;#39;m doing&#34;&gt;&lt;/p&gt;
