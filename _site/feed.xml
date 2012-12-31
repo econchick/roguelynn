@@ -5,7 +5,7 @@
     <link rel="alternate" href="http://www.roguelynn.com/" />
     <link rel="self" href="http://www.roguelynn.com/feed.xml" type="application/atom+xml" />
     <id>http://www.roguelynn.com/</id>
-    <updated>2012-12-28T16:14:11Z</updated>
+    <updated>2012-12-31T20:00:33Z</updated>
 
     <author>
         <name>Lynn Root</name>
@@ -13,6 +13,73 @@
         <uri>http://www.roguelynn.com/</uri>
     </author>
 
+    
+        <entry>
+            <title type="html">My New Years Theme</title>
+            <link rel="alternate" href="http://www.roguelynn.com/words/my-new-years-theme/" type="text/html" />
+            <id>http://www.roguelynn.com/words/my-new-years-theme/</id>
+            <updated>2012-12-31T20:00:00Z</updated>
+
+            <author>
+                <name>Lynn Root</name>
+                <email>lynn@lynnroot.com</email>
+                <uri>http://www.roguelynn.com/</uri>
+            </author>
+            <content type="html">&lt;p&gt;I don&amp;#39;t do New Years&amp;#39; resolutions. But I like to take the time and reflect on the past year to declare a theme for next year. &lt;/p&gt;
+&lt;h3&gt;2012&amp;#39;s theme: Be awesome.&lt;/h3&gt;
+&lt;p&gt;I think I accomplished that!&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;em&gt;January - March&lt;/em&gt;: led a Python study group for &lt;a href=&#34;http://meetup.com/women-who-code-sf&#34;&gt;Women Who Code&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;March&lt;/em&gt;: Attended PyCon in Santa Clara&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;March&lt;/em&gt;: Immediately submitted a talk to OSCON after being inspired at PyCon. As well as DjangoCon EU and EuroPython.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;April&lt;/em&gt;: founded the SF chapter of &lt;a href=&#34;http://meetup.com/pyladiessf&#34;&gt;PyLadies&lt;/a&gt; .&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;May&lt;/em&gt;: made the decision to pursue programming as a career and leave finance behind.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;June&lt;/em&gt;: attended my second conference and gave my first &lt;a href=&#34;http://klewel.com/conferences/djangocon-2012/index.php?talkID=43&#34;&gt;talk&lt;/a&gt; at DjangoCon EU.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;July&lt;/em&gt;: &lt;a href=&#34;http://www.youtube.com/watch?v=l2PnVKQJg0I&#34;&gt;keynoted&lt;/a&gt; my third conference! EuroPython!&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;July&lt;/em&gt;: attended OSCON and gave my third talk. Also brought PyLadies to the expo hall of the conference.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;September&lt;/em&gt;: &lt;a href=&#34;http://www.roguelynn.com/words/from-n00b-to-engineer-in-one-year&#34;&gt;Accepted an offer&lt;/a&gt; from Red Hat as a Software Engineer!&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;October&lt;/em&gt;: Started my first engineering job!&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;October&lt;/em&gt;: My second keynote! PyCarolinas!&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;November&lt;/em&gt;: Gave a talk at RuPy - my first not-just-Python conference. Also gave a free Django/Python workshop for women.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;October - December&lt;/em&gt;: &lt;a href=&#34;http://www.roguelynn.com/words/reflection-of-my-time-in-brno&#34;&gt;Mini-bootcamp&lt;/a&gt; at Red Hat Czech in Brno.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;December&lt;/em&gt;: &lt;a href=&#34;http://www.roguelynn.com/words/crap-im-speaking&#34;&gt;Made it to #4&lt;/a&gt; of Hacker News with my new static blog.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;December&lt;/em&gt;: Went to Zagreb, Croatia to &lt;a href=&#34;https://www.facebook.com/photo.php?fbid=450870981637921&amp;amp;set=t.14900117&amp;amp;type=3&amp;amp;theater&#34;&gt;host&lt;/a&gt; a Django + Python workshop!&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br&gt;
+The events I held and/or led for PyLadies were a lot of fun:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Kickoff hackathon&lt;/li&gt;
+&lt;li&gt;git workshop x 2&lt;/li&gt;
+&lt;li&gt;Django workshop&lt;/li&gt;
+&lt;li&gt;Udacity &amp;amp; Coursera study groups&lt;/li&gt;
+&lt;li&gt;Mini-DjangoCon&lt;/li&gt;
+&lt;li&gt;Mini-PyCon&lt;/li&gt;
+&lt;li&gt;Moar hackathons!&lt;/li&gt;
+&lt;li&gt;Contributing to OSS&lt;/li&gt;
+&lt;li&gt;SF Django + PyLadies sprint on Django&lt;/li&gt;
+&lt;li&gt;Writing PyCon proposals&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As well as organizing the DjangoCon US scholarships for PyLadies and for the DSF and helping spread the PyLadies chapters in Atlanta, NYC, Seattle, PDX, and elsewhere. A new PyLadies website that I started should be up soon too that will include a PyLady Events Code of Conduct. &lt;/p&gt;
+&lt;h3&gt;What is the theme for 2013?&lt;/h3&gt;
+&lt;p&gt;I had an epic year: met so many fantastic people in the Python world and in the San Francisco community including Python + Django core devs and community leaders; got the guts to give talks (and actually enjoy giving them!); got a job that I freaking love. &lt;/p&gt;
+
+&lt;p&gt;So, what will the theme be for 2013? &lt;/p&gt;
+
+&lt;p&gt;Be &lt;strong&gt;awesome-&lt;em&gt;r&lt;/em&gt;.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Already lined up is a bunch of talks &amp;amp; conferences: PyCon, DjangoCon EU, EuroPython, and PyCon Ireland.&lt;/p&gt;
+
+&lt;p&gt;I have this awesome task of integrating FreeIPA -&amp;gt; OpenShift that at which I &lt;em&gt;will&lt;/em&gt; freaking succeed.&lt;/p&gt;
+
+&lt;p&gt;Something that I&amp;#39;d like to do more of is commit code to OSS projects. Currently that is the premise of my job, but I&amp;#39;d like to contribute to projects outside of those that pay me.&lt;/p&gt;
+
+&lt;p&gt;2012 paved a great road for me to continue down. How could I not continue to be awesome?!&lt;/p&gt;
+</content>
+        </entry>
     
         <entry>
             <title type="html">Reflection of my time in Brno</title>
