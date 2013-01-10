@@ -5,7 +5,7 @@
     <link rel="alternate" href="http://www.roguelynn.com/" />
     <link rel="self" href="http://www.roguelynn.com/feed.xml" type="application/atom+xml" />
     <id>http://www.roguelynn.com/</id>
-    <updated>2013-01-01T18:40:49Z</updated>
+    <updated>2013-01-10T18:52:10Z</updated>
 
     <author>
         <name>Lynn Root</name>
@@ -13,6 +13,143 @@
         <uri>http://www.roguelynn.com/</uri>
     </author>
 
+    
+        <entry>
+            <title type="html">Avoid Drowning: Swim your way through a new code base</title>
+            <link rel="alternate" href="http://www.roguelynn.com/words/avoid-drowning/" type="text/html" />
+            <id>http://www.roguelynn.com/words/avoid-drowning/</id>
+            <updated>2013-01-10T18:48:00Z</updated>
+
+            <author>
+                <name>Lynn Root</name>
+                <email>lynn@lynnroot.com</email>
+                <uri>http://www.roguelynn.com/</uri>
+            </author>
+            <content type="html">&lt;p&gt;A month or two ago, I signed up for a lightning talk for &lt;a href=&#34;http://www.meetup.com/Women-Who-Code-SF/events/93965402/&#34; title=&#34;WWC Lightning Talk Event&#34;&gt;today&amp;#39;s&lt;/a&gt; Women Who Code event. I didn&amp;#39;t submit a title - I was more, &amp;quot;sure, I could talk!&amp;quot;&lt;/p&gt;
+
+&lt;p&gt;Only on Tuesday did I find out I was actually on the bill to speak! Welp, here&amp;#39;s a just-in-time presentation. My slides are &lt;a href=&#34;http://my-slides-here&#34;&gt;here&lt;/a&gt; - but basically this post flows through what&amp;#39;s presented on.&lt;/p&gt;
+&lt;h2&gt;My experience&lt;/h2&gt;
+&lt;hr&gt;
+
+&lt;p&gt;Coming back from Brno, and having just started a new engineering position, I feel like I knew this topic well: how to swim your way through a new code base. There may be other/better advice, but this was my take away from my first three months at Red Hat.&lt;/p&gt;
+&lt;h2&gt;N&lt;img src=&#34;http://www.roguelynn.com/assets/images/no_diving_small.png&#34; alt=&#34;no_diving&#34;&gt;  Diving!&lt;/h2&gt;
+&lt;hr&gt;
+
+&lt;p&gt;You might feel inclined to jump into the code base. FFS you&amp;#39;re a coder! Why wouldn&amp;#39;t you want to jump in?&lt;/p&gt;
+
+&lt;p&gt;As most lifeguards might say of pools with shallow depths: you&amp;#39;ll break your neck and drown.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;#39;s take a more holistic approach - I&amp;#39;ll walk you through how I am fumbling through getting to know two (!) code bases with questions I asked myself. Mind you, not all these questions are relevant to your situation; it all depends on your code base, naturally.&lt;/p&gt;
+&lt;h2&gt;T&lt;img src=&#34;http://www.roguelynn.com/assets/images/droplets_small.png&#34; alt=&#34;droplet&#34;&gt;  p-down approach&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h3&gt;Overview&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;What is the purpose of this project or product?&lt;/li&gt;
+&lt;li&gt;What problems does it solve for its target audience?&lt;/li&gt;
+&lt;li&gt;What are its overall strengths and weaknesses; its selling points?&lt;/li&gt;
+&lt;li&gt;What competitive projects or products are out there?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Architecture&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;What major components make up the code base?&lt;/li&gt;
+&lt;li&gt;How do they all fit together?&lt;/li&gt;
+&lt;li&gt;How do they communicate with each other?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Break it apart&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;What&amp;#39;s this component or chunks purpose?&lt;/li&gt;
+&lt;li&gt;What problem does it solve for this project?&lt;/li&gt;
+&lt;li&gt;Strength &amp;amp; weaknesses of this chunk or component?&lt;/li&gt;
+&lt;li&gt;How does it fit with another chunk(s)?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Lather, rinse, repe&lt;img src=&#34;http://www.roguelynn.com/assets/images/repeat_small.png&#34; alt=&#34;repeat&#34;&gt;t.&lt;/h2&gt;
+&lt;hr&gt;
+
+&lt;p&gt;Continue on until you drill down to the very lowest component, the lowest before you hit the code to answer your questions.&lt;/p&gt;
+
+&lt;p&gt;You should be reviewing documentation and architecture diagrams &amp;amp; walk-throughs, talking to the architect of the product/project, and your team mates.&lt;/p&gt;
+&lt;h2&gt;Go with the &lt;img src=&#34;http://www.roguelynn.com/assets/images/fish_small.png&#34; alt=&#34;flow&#34;&gt; flow &lt;img src=&#34;http://www.roguelynn.com/assets/images/fish_small.png&#34; alt=&#34;flow&#34;&gt;&lt;/h2&gt;
+&lt;hr&gt;
+
+&lt;p&gt;Now it&amp;#39;s time to figure out the flow of the project or product.&lt;/p&gt;
+&lt;h3&gt;User&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Who is the target audience? Other developers, IT professionals, non-tech folks?&lt;/li&gt;
+&lt;li&gt;How is this project used?&lt;/li&gt;
+&lt;li&gt;What is the learning curve for the user?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Sys Admin&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;How are users set up?&lt;/li&gt;
+&lt;li&gt;How is it maintained, updated, upgraded, supported, etc?&lt;/li&gt;
+&lt;li&gt;How does it work with the existing systems?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Your Manager&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;What are the goals of the project? Future feature implementations? Direction that this product is going?&lt;/li&gt;
+&lt;li&gt;What are the release cycles or pressure dates?&lt;/li&gt;
+&lt;li&gt;What other teams do you need to work with? QE? Support? Other complementary/necessary projects/products?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Developer (YOU)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;How do you submit and fix a bug?&lt;/li&gt;
+&lt;li&gt;How is the code tested?&lt;/li&gt;
+&lt;li&gt;Who are the go-to people for certain aspects of the project?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Ease in  &lt;img src=&#34;http://www.roguelynn.com/assets/images/ease_in_small.png&#34; alt=&#34;ease&#34;&gt;  the water&amp;#39;s a bit cold&lt;/h2&gt;
+&lt;hr&gt;
+
+&lt;p&gt;Alright - git pull that code.&lt;/p&gt;
+&lt;h3&gt;File Hierarchy&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Top-down approach again: how is this project organized? What files/modules depend on what? &lt;/li&gt;
+&lt;li&gt;How does the file structure match up with the architecture you saw earlier?&lt;/li&gt;
+&lt;li&gt;Where is the documentation (both for developer and user/admin)? The source code/moving parts? The test suite? (Who tests the tests!?)&lt;/li&gt;
+&lt;li&gt;What modules are used? Look what&amp;#39;s being used from the language&amp;#39;s standard library, the modules defined in the package itself, and third-party packages.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Dependencies&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;What are the operating system requirements? Hardware reqs?&lt;/li&gt;
+&lt;li&gt;Software requirements: is there an assumption that users have the default database needed? Or other libraries already on your machine?&lt;/li&gt;
+&lt;li&gt;What are the build requirements for the project?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Swim floaties (remember those things around your arms?!)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;#39;&lt;code&gt;$ git log&lt;/code&gt;&amp;#39;  for commit logs (watch out - it could go back years). Check out git&amp;#39;s pretty print documentation for more readable output.&lt;/li&gt;
+&lt;li&gt;&amp;#39;&lt;code&gt;$ git blame&lt;/code&gt;&amp;#39; is, of course, a great tool. Include -L flag for to/from line numbers, and -e flag to see emails of the contributors.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://dev.hubspot.com/blog/bid/57694/Git-by-a-Bus&#34; title=&#34;Git By a bus&#34;&gt;git-by-a-bus&lt;/a&gt; is a great tool goes through the logs of the code and gives you html to visually see who are the biggest contributors to which parts of the library. Highly recommend.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Challenge yourself&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Write up documentation that&amp;#39;s missing.&lt;/li&gt;
+&lt;li&gt;Fix a bug &amp;amp; submit a patch. This really forces you to understand the code, how it was written, conventions of the project, and how small pieces fit together.&lt;/li&gt;
+&lt;li&gt;Write more tests to increase test coverage.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Lifes&lt;img src=&#34;http://www.roguelynn.com/assets/images/life_preserver_small.png&#34; alt=&#34;life&#34;&gt;vers&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h3&gt;Mentors&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Find an internal mentor to bug about package/product questions. It may be your lead, or someone who&amp;#39;s been there for a while.&lt;/li&gt;
+&lt;li&gt;An external mentor is great to have too - perhaps you have a language question and you don&amp;#39;t want to look stupid in front of your coworkers.  It&amp;#39;s also great to get a different point of view for how the development process works elsewhere.&lt;/li&gt;
+&lt;li&gt;Your manager - yep, s/he is by default a mentor, whether good or bad, or absent. Learn how to manage up if you&amp;#39;re not getting what you need at first. Avoid detailed questions and ask bigger questions like &amp;quot;how is my approach in this?&amp;quot;, or &amp;quot;am I learning at an acceptable speed?&amp;quot;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Research&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;I highly recommend keeping a personal/private wiki as you learn new terms, processes, etc.&lt;/li&gt;
+&lt;li&gt;Also - a bookmarking service that helps you organize your research for quick retrieval (I recommend [Pinboard][Pinboard]).&lt;/li&gt;
+&lt;li&gt;Old fashioned post-its, whiteboarding, paper+pen, anything. Physically writing down a piece of information (typically architecture diagrams) helped me solidify concepts better.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Suggested Reading&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://pragprog.com/book/tpp/the-pragmatic-programmer&#34; title=&#34;The Pragmatic Programmer&#34;&gt;The Pragmatic Programmer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;A language-specific cookbook (keep near your work computer)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://pragprog.com/book/jcdeg/new-programmer-s-survival-manual&#34; title=&#34;New Programmer&amp;#39;s Survival Manual&#34;&gt;The New Programmer&amp;#39;s Survival Manual&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://pragprog.com/book/kcdc/the-developer-s-code&#34; title=&#34;Developer&amp;#39;s Code&#34;&gt;The Developer&amp;#39;s Code: What Real Programmers Do&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Swim safely! &lt;img src=&#34;http://www.roguelynn.com/assets/images/scuba_small.png&#34; alt=&#34;scuba&#34;&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+</content>
+        </entry>
     
         <entry>
             <title type="html">My New Years Theme</title>

@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+        <title>Avoid Drowning: Swim your way through a new code base — Lynn Root</title>
+        <meta name="description" content="Homepage and blog of Lynn Root. Python Engineer, PyLadiesSF Founder, Socializer in San Francisco." />
+        <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/ico" />
+        <link rel="alternate" type="application/atom+xml" title="Atom 1.0" href="http://www.roguelynn.com/feed.xml" />
+
+        <!--Stylesheets-->
+        <link rel="stylesheet" href="/assets/css/lightbox.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/pygments.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/screen.css" media="screen" title="screen">
+
+
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="nav-wrapper">
+            <nav>
+                <ul class="title">
+                    <li class="name"><a class="current" href="/">Lynn Root</a></li>
+                    <li class="desc">Coder • Writer • Speaker • PyLady</li>
+                </ul>
+                <ul class="contents"> 
+                    <li class="page_item"><a href="/">Home</a></li>
+                    <li class="page_item"><a href="/about/">About</a></li>
+                    <li class="page_item"><a href="/words/">Words</a></li>
+                    <li class="page_item"><a href="/talks/">Talks</a></li>
+                    <li class="page_item"><a href="/pyladies/">PyLadies</a></li>
+
+                </ul>
+            </nav>
+        </div>
+        <div class="page">
+            
+    <section id="post">
+        <h2>Avoid Drowning: Swim your way through a new code base</h2>
+        <aside>
+            <time pubdate datetime="2013-01-10">January 10, 2013</time>
+        </aside>
+        <article>
+            <p>A month or two ago, I signed up for a lightning talk for <a href="http://www.meetup.com/Women-Who-Code-SF/events/93965402/" title="WWC Lightning Talk Event">today&#39;s</a> Women Who Code event. I didn&#39;t submit a title - I was more, &quot;sure, I could talk!&quot;</p>
+
+<p>Only on Tuesday did I find out I was actually on the bill to speak! Welp, here&#39;s a just-in-time presentation. My slides are <a href="http://my-slides-here">here</a> - but basically this post flows through what&#39;s presented on.</p>
+<h2>My experience</h2>
+<hr>
+
+<p>Coming back from Brno, and having just started a new engineering position, I feel like I knew this topic well: how to swim your way through a new code base. There may be other/better advice, but this was my take away from my first three months at Red Hat.</p>
+<h2>N<img src="/assets/images/no_diving_small.png" alt="no_diving">  Diving!</h2>
+<hr>
+
+<p>You might feel inclined to jump into the code base. FFS you&#39;re a coder! Why wouldn&#39;t you want to jump in?</p>
+
+<p>As most lifeguards might say of pools with shallow depths: you&#39;ll break your neck and drown.</p>
+
+<p>Let&#39;s take a more holistic approach - I&#39;ll walk you through how I am fumbling through getting to know two (!) code bases with questions I asked myself. Mind you, not all these questions are relevant to your situation; it all depends on your code base, naturally.</p>
+<h2>T<img src="/assets/images/droplets_small.png" alt="droplet">  p-down approach</h2>
+<hr>
+<h3>Overview</h3>
+<ul>
+<li>What is the purpose of this project or product?</li>
+<li>What problems does it solve for its target audience?</li>
+<li>What are its overall strengths and weaknesses; its selling points?</li>
+<li>What competitive projects or products are out there?</li>
+</ul>
+<h3>Architecture</h3>
+<ul>
+<li>What major components make up the code base?</li>
+<li>How do they all fit together?</li>
+<li>How do they communicate with each other?</li>
+</ul>
+<h3>Break it apart</h3>
+<ul>
+<li>What&#39;s this component or chunks purpose?</li>
+<li>What problem does it solve for this project?</li>
+<li>Strength &amp; weaknesses of this chunk or component?</li>
+<li>How does it fit with another chunk(s)?</li>
+</ul>
+<h2>Lather, rinse, repe<img src="/assets/images/repeat_small.png" alt="repeat">t.</h2>
+<hr>
+
+<p>Continue on until you drill down to the very lowest component, the lowest before you hit the code to answer your questions.</p>
+
+<p>You should be reviewing documentation and architecture diagrams &amp; walk-throughs, talking to the architect of the product/project, and your team mates.</p>
+<h2>Go with the <img src="/assets/images/fish_small.png" alt="flow"> flow <img src="/assets/images/fish_small.png" alt="flow"></h2>
+<hr>
+
+<p>Now it&#39;s time to figure out the flow of the project or product.</p>
+<h3>User</h3>
+<ul>
+<li>Who is the target audience? Other developers, IT professionals, non-tech folks?</li>
+<li>How is this project used?</li>
+<li>What is the learning curve for the user?</li>
+</ul>
+<h3>Sys Admin</h3>
+<ul>
+<li>How are users set up?</li>
+<li>How is it maintained, updated, upgraded, supported, etc?</li>
+<li>How does it work with the existing systems?</li>
+</ul>
+<h3>Your Manager</h3>
+<ul>
+<li>What are the goals of the project? Future feature implementations? Direction that this product is going?</li>
+<li>What are the release cycles or pressure dates?</li>
+<li>What other teams do you need to work with? QE? Support? Other complementary/necessary projects/products?</li>
+</ul>
+<h3>Developer (YOU)</h3>
+<ul>
+<li>How do you submit and fix a bug?</li>
+<li>How is the code tested?</li>
+<li>Who are the go-to people for certain aspects of the project?</li>
+</ul>
+<h2>Ease in  <img src="/assets/images/ease_in_small.png" alt="ease">  the water&#39;s a bit cold</h2>
+<hr>
+
+<p>Alright - git pull that code.</p>
+<h3>File Hierarchy</h3>
+<ul>
+<li>Top-down approach again: how is this project organized? What files/modules depend on what? </li>
+<li>How does the file structure match up with the architecture you saw earlier?</li>
+<li>Where is the documentation (both for developer and user/admin)? The source code/moving parts? The test suite? (Who tests the tests!?)</li>
+<li>What modules are used? Look what&#39;s being used from the language&#39;s standard library, the modules defined in the package itself, and third-party packages.</li>
+</ul>
+<h3>Dependencies</h3>
+<ul>
+<li>What are the operating system requirements? Hardware reqs?</li>
+<li>Software requirements: is there an assumption that users have the default database needed? Or other libraries already on your machine?</li>
+<li>What are the build requirements for the project?</li>
+</ul>
+<h3>Swim floaties (remember those things around your arms?!)</h3>
+<ul>
+<li>&#39;<code>$ git log</code>&#39;  for commit logs (watch out - it could go back years). Check out git&#39;s pretty print documentation for more readable output.</li>
+<li>&#39;<code>$ git blame</code>&#39; is, of course, a great tool. Include -L flag for to/from line numbers, and -e flag to see emails of the contributors.</li>
+<li><a href="http://dev.hubspot.com/blog/bid/57694/Git-by-a-Bus" title="Git By a bus">git-by-a-bus</a> is a great tool goes through the logs of the code and gives you html to visually see who are the biggest contributors to which parts of the library. Highly recommend.</li>
+</ul>
+<h3>Challenge yourself</h3>
+<ul>
+<li>Write up documentation that&#39;s missing.</li>
+<li>Fix a bug &amp; submit a patch. This really forces you to understand the code, how it was written, conventions of the project, and how small pieces fit together.</li>
+<li>Write more tests to increase test coverage.</li>
+</ul>
+<h2>Lifes<img src="/assets/images/life_preserver_small.png" alt="life">vers</h2>
+<hr>
+<h3>Mentors</h3>
+<ul>
+<li>Find an internal mentor to bug about package/product questions. It may be your lead, or someone who&#39;s been there for a while.</li>
+<li>An external mentor is great to have too - perhaps you have a language question and you don&#39;t want to look stupid in front of your coworkers.  It&#39;s also great to get a different point of view for how the development process works elsewhere.</li>
+<li>Your manager - yep, s/he is by default a mentor, whether good or bad, or absent. Learn how to manage up if you&#39;re not getting what you need at first. Avoid detailed questions and ask bigger questions like &quot;how is my approach in this?&quot;, or &quot;am I learning at an acceptable speed?&quot;</li>
+</ul>
+<h3>Research</h3>
+<ul>
+<li>I highly recommend keeping a personal/private wiki as you learn new terms, processes, etc.</li>
+<li>Also - a bookmarking service that helps you organize your research for quick retrieval (I recommend [Pinboard][Pinboard]).</li>
+<li>Old fashioned post-its, whiteboarding, paper+pen, anything. Physically writing down a piece of information (typically architecture diagrams) helped me solidify concepts better.</li>
+</ul>
+<h3>Suggested Reading</h3>
+<ul>
+<li><a href="http://pragprog.com/book/tpp/the-pragmatic-programmer" title="The Pragmatic Programmer">The Pragmatic Programmer</a></li>
+<li>A language-specific cookbook (keep near your work computer)</li>
+<li><a href="http://pragprog.com/book/jcdeg/new-programmer-s-survival-manual" title="New Programmer&#39;s Survival Manual">The New Programmer&#39;s Survival Manual</a></li>
+<li><a href="http://pragprog.com/book/kcdc/the-developer-s-code" title="Developer&#39;s Code">The Developer&#39;s Code: What Real Programmers Do</a></li>
+</ul>
+<h2>Swim safely! <img src="/assets/images/scuba_small.png" alt="scuba"></h2>
+<p><br /></p>
+
+            <div id="disqus_thread"></div>
+                <script type="text/javascript">
+                    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                    var disqus_shortname = 'roguelynn'; // required: replace example with your forum shortname
+
+                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </article>
+    </section>
+    <p><a href="/words/">&larr; See all posts</a></p>
+    <p><iframe style="border: 0; margin: 0; padding: 0;"
+        src="https://www.gittip.com/roguelynn/widget.html"
+        width="48pt" height="22pt"></iframe></p>
+
+        </div>
+        <div class="footer-wrapper">
+            <footer id="bottom">
+                <ul class="social">
+                    <li><a class="icon twitter" data-icon="&#62217;" href="http://twitter.com/roguelynn" title="Twitter"></a></li>
+                    <li><a class="icon github" data-icon="&#62208;" href="http://github.com/econchick" title="GitHub"></a></li>
+                    <li><a class="icon rss" data-icon="&#59194;" href="http://www.roguelynn.com/feed.xml" title="RSS"></a></li>
+                    <li>© 2007–2013 Lynn Root. All Rights Reserved.</li>
+                </ul>
+            </footer>
+        </div>
+        <!--Javascript-->
+        <script src="/assets/js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <!-- Start of StatCounter Code for Default Guide -->
+        <script type="text/javascript">
+        var sc_project=4334716; 
+        var sc_invisible=1; 
+        var sc_security="d7034a4d"; 
+        </script>
+        <script type="text/javascript"
+        src="http://www.statcounter.com/counter/counter.js"></script>
+        <noscript><div class="statcounter"><a title="web stats"
+        href="http://statcounter.com/free-web-stats/"
+        target="_blank"><img class="statcounter"
+        src="http://c.statcounter.com/4334716/0/d7034a4d/1/"
+        alt="web stats"></a></div></noscript>
+        <!-- End of StatCounter Code for Default Guide -->
+        <script type="text/javascript">
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-6966504-1']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
+        </script>
+    </body>
+</html>
