@@ -132,7 +132,7 @@ Alright - git pull that code.
 <br />
 
 [wwc]: http://www.meetup.com/Women-Who-Code-SF/events/93965402/ "WWC Lightning Talk Event"
-[slides]: http://my-slides-here
+[slides]: http://www.slideshare.net/roguelynn/avoid-drowning
 [git]: http://dev.hubspot.com/blog/bid/57694/Git-by-a-Bus "Git By a bus"
 [Prag]: http://pragprog.com/book/tpp/the-pragmatic-programmer "The Pragmatic Programmer"
 [Manual]: http://pragprog.com/book/jcdeg/new-programmer-s-survival-manual "New Programmer's Survival Manual"
