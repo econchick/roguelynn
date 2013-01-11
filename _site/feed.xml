@@ -5,7 +5,7 @@
     <link rel="alternate" href="http://www.roguelynn.com/" />
     <link rel="self" href="http://www.roguelynn.com/feed.xml" type="application/atom+xml" />
     <id>http://www.roguelynn.com/</id>
-    <updated>2013-01-10T19:04:03Z</updated>
+    <updated>2013-01-11T01:13:47Z</updated>
 
     <author>
         <name>Lynn Root</name>
@@ -18,7 +18,7 @@
             <title type="html">Avoid Drowning: Swim your way through a new code base</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/avoid-drowning/" type="text/html" />
             <id>http://www.roguelynn.com/words/avoid-drowning/</id>
-            <updated>2013-01-10T19:03:00Z</updated>
+            <updated>2013-01-10T01:12:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -57,7 +57,7 @@
 &lt;/ul&gt;
 &lt;h3&gt;Break it apart&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;What&amp;#39;s this component or chunks purpose?&lt;/li&gt;
+&lt;li&gt;What&amp;#39;s this component or chunk&amp;#39;s purpose?&lt;/li&gt;
 &lt;li&gt;What problem does it solve for this project?&lt;/li&gt;
 &lt;li&gt;Strength &amp;amp; weaknesses of this chunk or component?&lt;/li&gt;
 &lt;li&gt;How does it fit with another chunk(s)?&lt;/li&gt;
@@ -136,7 +136,7 @@
 &lt;h3&gt;Research&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;I highly recommend keeping a personal/private wiki as you learn new terms, processes, etc.&lt;/li&gt;
-&lt;li&gt;Also - a bookmarking service that helps you organize your research for quick retrieval (I recommend [Pinboard][Pinboard]).&lt;/li&gt;
+&lt;li&gt;Also - a bookmarking service that helps you organize your research for quick retrieval (I recommend &lt;a href=&#34;http://pinboard.in&#34; title=&#34;Pinboard&#34;&gt;Pinboard&lt;/a&gt;).&lt;/li&gt;
 &lt;li&gt;Old fashioned post-its, whiteboarding, paper+pen, anything. Physically writing down a piece of information (typically architecture diagrams) helped me solidify concepts better.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;Suggested Reading&lt;/h3&gt;

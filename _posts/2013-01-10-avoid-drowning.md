@@ -37,7 +37,7 @@ Let's take a more holistic approach - I'll walk you through how I am fumbling th
 
 
 ### Break it apart
-- What's this component or chunks purpose?
+- What's this component or chunk's purpose?
 - What problem does it solve for this project?
 - Strength & weaknesses of this chunk or component?
 - How does it fit with another chunk(s)?
@@ -134,6 +134,7 @@ Alright - git pull that code.
 [wwc]: http://www.meetup.com/Women-Who-Code-SF/events/93965402/ "WWC Lightning Talk Event"
 [slides]: http://www.slideshare.net/roguelynn/avoid-drowning
 [git]: http://dev.hubspot.com/blog/bid/57694/Git-by-a-Bus "Git By a bus"
+[pinboard]: http://pinboard.in "Pinboard"
 [Prag]: http://pragprog.com/book/tpp/the-pragmatic-programmer "The Pragmatic Programmer"
 [Manual]: http://pragprog.com/book/jcdeg/new-programmer-s-survival-manual "New Programmer's Survival Manual"
 [Code]: http://pragprog.com/book/kcdc/the-developer-s-code "Developer's Code"
