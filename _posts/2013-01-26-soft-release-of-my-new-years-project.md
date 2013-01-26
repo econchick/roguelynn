@@ -16,7 +16,7 @@ I present to you **[Salarly][Salarly]** - a way for you to browse all the intern
 
 Thought your salary was good? Take a look at what a [Financial Analyst][FA] can make on an H-1B visa.  Or maybe you're not convinced of the [wealth][wealth] that makes Silicon Valley so popular.  Thinking of moving somewhere? How about to where all the [engineers][engineers] are?
 
-Don't take my word for it, check it out [yourself][Salarly]. This is all public data from the [US Department of Labor][data], lightly cleaned up for aweful administrative typos, rendered using [d3.js][d3] and [xCharts][xCharts], some async calls with jQuery, with Django under the hood, hosted on Heroku. Mind you, we haven't figured out appropriate memory management - I'm certain it will crash/timeout after 5 people make some queries. We're also not designers - don't judge.
+Don't take my word for it, check it out [yourself][Salarly]. This is all public data from the [US Department of Labor][data], lightly cleaned up for awful administrative typos, rendered using [d3.js][d3] and [xCharts][xCharts], some async calls with jQuery, with Django under the hood, hosted on Heroku. Mind you, we haven't figured out appropriate memory management - I'm certain it will crash/timeout after 5 people make some queries. We're also not designers - don't judge.
 
 
 

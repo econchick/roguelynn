@@ -5,7 +5,7 @@
     <link rel="alternate" href="http://www.roguelynn.com/" />
     <link rel="self" href="http://www.roguelynn.com/feed.xml" type="application/atom+xml" />
     <id>http://www.roguelynn.com/</id>
-    <updated>2013-01-26T22:03:50Z</updated>
+    <updated>2013-01-26T22:16:35Z</updated>
 
     <author>
         <name>Lynn Root</name>
@@ -18,7 +18,7 @@
             <title type="html">Soft release of my New Year&#39;s project: Salarly</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/soft-release-of-my-new-years-project/" type="text/html" />
             <id>http://www.roguelynn.com/words/soft-release-of-my-new-years-project/</id>
-            <updated>2013-01-26T22:03:00Z</updated>
+            <updated>2013-01-26T22:16:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -37,7 +37,7 @@
 
 &lt;p&gt;Thought your salary was good? Take a look at what a &lt;a href=&#34;http://www.salar.ly/salaries/?title=Financial+Analyst&amp;amp;company=&amp;amp;location=&#34; title=&#34;Salarly: Financial Analyst&#34;&gt;Financial Analyst&lt;/a&gt; can make on an H-1B visa.  Or maybe you&amp;#39;re not convinced of the &lt;a href=&#34;http://www.salar.ly/salaries/?title=&amp;amp;company=&amp;amp;location=Mountain+View%2C+CA&#34; title=&#34;Salarly: Mountain View&#34;&gt;wealth&lt;/a&gt; that makes Silicon Valley so popular.  Thinking of moving somewhere? How about to where all the &lt;a href=&#34;http://www.salar.ly/heatmaps/?title=engineer&#34; title=&#34;Salarly: Heatmap of Engineers&#34;&gt;engineers&lt;/a&gt; are?&lt;/p&gt;
 
-&lt;p&gt;Don&amp;#39;t take my word for it, check it out &lt;a href=&#34;http://www.salar.ly&#34; title=&#34;Salar.ly&#34;&gt;yourself&lt;/a&gt;. This is all public data from the &lt;a href=&#34;http://www.foreignlaborcert.doleta.gov/quarterlydata.cfm&#34; title=&#34;US DoL&#34;&gt;US Department of Labor&lt;/a&gt;, lightly cleaned up for aweful administrative typos, rendered using &lt;a href=&#34;http://d3js.org/&#34; title=&#34;d3.js&#34;&gt;d3.js&lt;/a&gt; and &lt;a href=&#34;http://tenxer.github.com/xcharts/&#34; title=&#34;xCharts&#34;&gt;xCharts&lt;/a&gt;, some async calls with jQuery, with Django under the hood, hosted on Heroku. Mind you, we haven&amp;#39;t figured out appropriate memory management - I&amp;#39;m certain it will crash/timeout after 5 people make some queries.&lt;/p&gt;
+&lt;p&gt;Don&amp;#39;t take my word for it, check it out &lt;a href=&#34;http://www.salar.ly&#34; title=&#34;Salar.ly&#34;&gt;yourself&lt;/a&gt;. This is all public data from the &lt;a href=&#34;http://www.foreignlaborcert.doleta.gov/quarterlydata.cfm&#34; title=&#34;US DoL&#34;&gt;US Department of Labor&lt;/a&gt;, lightly cleaned up for awful administrative typos, rendered using &lt;a href=&#34;http://d3js.org/&#34; title=&#34;d3.js&#34;&gt;d3.js&lt;/a&gt; and &lt;a href=&#34;http://tenxer.github.com/xcharts/&#34; title=&#34;xCharts&#34;&gt;xCharts&lt;/a&gt;, some async calls with jQuery, with Django under the hood, hosted on Heroku. Mind you, we haven&amp;#39;t figured out appropriate memory management - I&amp;#39;m certain it will crash/timeout after 5 people make some queries. We&amp;#39;re also not designers - don&amp;#39;t judge.&lt;/p&gt;
 </content>
         </entry>
     
