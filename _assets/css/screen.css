@@ -634,12 +634,16 @@ section#archive article#talks p {
 
 section#archive article#talks p#location {
   font-style: italic;
-  margin-bottom: 2em;
+  margin-bottom: 0em;
 }
 
 section#archive article#location h4{
   margin-bottom: 2em;
   margin-top: 2em;
+}
+
+section#archive article#talks a {
+  color: #38a5dd;
 }
 
 time {
