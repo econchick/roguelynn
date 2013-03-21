@@ -508,9 +508,11 @@ blockquote {
   -o-border-radius: 3px;
   border-radius: 3px;
   background: #fefefe;
-  color: #dd4a38;
-  margin: 20px;
-  padding: 20px; }
+  color: #414247;
+  margin: 10px;
+  font-style: italic;
+  padding: 20px;
+  padding-bottom: 3px; }
 
 article li span {
   color: #636570;
@@ -618,9 +620,6 @@ h3 a {
     color: #dd4a38; }
 
 section#archive article p a.more-link { margin-left: .8em; }
-<<<<<<< HEAD
-section#archive h3 a { color: #38a5dd;;}
-=======
 section#archive h3 a { color: #414247;}
 section#splash h2 abbr { color: #38a5dd;}
 section#archive article p {
@@ -656,7 +655,7 @@ section#post aside time {
   font-style:italic;
   margin-left: 0em;
 }
->>>>>>> 586625a573a5f7d8f28a72958d2725700ff0e2e8
+
 
 h5 a {
   -webkit-transition-duration: 0.4s;
@@ -692,3 +691,9 @@ h5 a {
   /* line 829, ../sass/screen.scss */
   .icon-creative-commons:hover {
     border-bottom: 1px dashed #f2f2f3; }
+
+img.displayed {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
