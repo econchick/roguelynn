@@ -4,7 +4,7 @@ title: "The New Coder: A Path to Software Engineering"
 tags: [tutorials, learning, pycon]
 ---
 
-This post contains all the sources and thoughts behind my PyCon 2013 talk launching [newcoder.io][newcoder]. The [video][PyCon] and [slides][slides] are available
+This post contains all the sources and thoughts behind my PyCon 2013 talk launching [newcoder.io][newcoder]. The [video][PyCon] and [slides][slides] are available.
 
 <img class="displayed" src="{{ get_asset('images/SoS-slide1.png') }}" width="370" height="300")/> 
 
