@@ -5,7 +5,7 @@
     <link rel="alternate" href="http://www.roguelynn.com/" />
     <link rel="self" href="http://www.roguelynn.com/feed.xml" type="application/atom+xml" />
     <id>http://www.roguelynn.com/</id>
-    <updated>2013-03-21T22:19:49Z</updated>
+    <updated>2013-03-21T22:24:37Z</updated>
 
     <author>
         <name>Lynn Root</name>
@@ -18,14 +18,14 @@
             <title type="html">The New Coder: A Path to Software Engineering</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/The-New-Coder-A-path-to-Software-Engineering/" type="text/html" />
             <id>http://www.roguelynn.com/words/The-New-Coder-A-path-to-Software-Engineering/</id>
-            <updated>2013-03-15T22:19:00Z</updated>
+            <updated>2013-03-15T22:20:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
                 <uri>http://www.roguelynn.com/</uri>
             </author>
-            <content type="html">&lt;p&gt;This post contains all the sources and thoughts behind my PyCon 2013 talk launching &lt;a href=&#34;http://newcoder.io&#34;&gt;newcoder.io&lt;/a&gt;. The &lt;a href=&#34;https://www.youtube.com/watch?v=5hBMlTFfOJg&#34;&gt;video&lt;/a&gt; and &lt;a href=&#34;https://speakerdeck.com/pyconslides/sink-or-swim-5-life-jackets-to-throw-to-the-new-coder-by-lynn-root&#34;&gt;slides&lt;/a&gt; are available&lt;/p&gt;
+            <content type="html">&lt;p&gt;This post contains all the sources and thoughts behind my PyCon 2013 talk launching &lt;a href=&#34;http://newcoder.io&#34;&gt;newcoder.io&lt;/a&gt;. The &lt;a href=&#34;https://www.youtube.com/watch?v=5hBMlTFfOJg&#34;&gt;video&lt;/a&gt; and &lt;a href=&#34;https://speakerdeck.com/pyconslides/sink-or-swim-5-life-jackets-to-throw-to-the-new-coder-by-lynn-root&#34;&gt;slides&lt;/a&gt; are available.&lt;/p&gt;
 
 &lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/SoS-slide1.png&#34; width=&#34;370&#34; height=&#34;300&#34;)/&gt; &lt;/p&gt;
 
