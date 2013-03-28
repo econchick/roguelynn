@@ -23,7 +23,9 @@ html {
   line-height: 1; }
 
 ol, ul {
-  list-style: disc; }
+  list-style: disc;
+  padding-left: 20px;
+  padding-bottom: 15px; }
 
 table {
   border-collapse: collapse;
