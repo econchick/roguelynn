@@ -5,67 +5,38 @@
         <h1>Talks</h1>
             <article id="talks">
                 <h2>Upcoming Talks</h2>
-                <time>March, 2013</time>
-                <p id="location">PyCon, Santa Clara</p>
-                <h4><a href="http://us.pycon.org/2013/schedule/presentation/144">Sink or Swim: 5 Life Jackets to Throw to New Coders</a></h4><br/>               
-                <p>Many want to learn to code, and many choose Python as a first language. You direct them to Learn Python the Hard Way, or Dive into Python. Great! But now what? I will present 5 digestible projects to gradually progress the Python learner from near drowning to a decent swimmer. The goal is to have new coders feeling accomplished and to continuing learning.</p>
-
-                <time>May, 2013</time>
-                <p id="location">DjangoCon Europe, Warsaw</p>
-                <h4><a href="https://2013.djangocon.eu">Introduce Django to your old friends</a></h4><br/>
-                <p>Django 1.5 introduced a configurable User model, fantastic! Now what? With the increased flexibility of user models, integrating Django into an existing infrastructure is now easier than ever.</p><br />
-                <p>This talk gives an introduction to the new configurable User model, and then walks through how to integrate Django applications to authenticate against already existing identity management systems like LDAP, Kerberos, etc.</p>
-
-                <time>October, 2013</time>
-                <p id="location">Python Brasilia + Plone Conference, Brasilia, Brazil</p>
-                <h4>Invited Speaker - TBD</a></h4><br/>
-
-                <time>October, 2013</time>
-                <p id="location">PyCon Ireland, Dublin</p>
-                <h4>Keynote - Diversity in the Python Community</a></h4><br />
-                <br />
-
+                {% for post in posts %}
+                    {% if 'upcoming talk' in post.tags %}
+                            <time>{{ post.talk_date }}</time>
+                            <p id="location">{{ post.location }}</p>
+                            <h4><a href="{{ get_url(post.url) }}">{{ post.title }}</a></h4>
+                            <p>{{ post.content }}</p>
+                            <br />
+                    {% endif %}
+                {% endfor %}
                 <h2>Previous Talks</h2>
-                
-                <time>January, 2013</time>
-                <p id="location">Women Who Code, San Francisco</p>
-                <h4>Avoid Drowning: Swim your way through a new code base</h4><br />
-                <h4 class="talk-item"><a href="{{ get_url("/words/avoid-drowning")}}"><span aria-hidden="true" class="icon" data-icon="&#128213;"></span>&nbsp;&nbsp;Full Blog Post</a></h4>
-                <h4 class="talk-item"><a href="http://www.slideshare.net/roguelynn/avoid-drowning"><span aria-hidden="true" class="icon link" data-icon="&#59212;"></span>&nbsp;&nbsp;Slides available</a></h4><br />
-
-                
-                <time>November, 2012</time>
-                <p id="location">RuPy, Brno, Czech Republic</p>
-                <h4>Community FTW: How can we make it better?</h4><br />
-
-                
-                <time>October, 2012</time>
-                <p id="location">PyCarolinas, Chapel Hill, NC</p>
-                <h4>Keynote: Community FTW</h4><br />
-                <p>I was honored when <a href="http://twitter.com/ironfroggy">Calvin Spealman</a> invited me to keynote on the topic of community.  He wanted folks to leave feeling inspired to build up the area's sense of community.  A lot of pressure, but having a conference is a damn good litmus test to understand a local area's Python community. </p>
-                
-                <h4 class="talk-item"><a href="{{ get_url("/words/community-ftw-kicking-of-the-pycarolinas-community")}}"><span aria-hidden="true" class="icon" data-icon="&#128213;"></span>&nbsp;&nbsp;Full Blog Post</a></h4>
-                <h4 class="talk-item"><a href="http://www.slideshare.net/roguelynn/pycarolinas-keynote-community-ftw"><span aria-hidden="true" class="icon link" data-icon="&#59212;"></span>&nbsp;&nbsp;Slides available</a></h4><br />
-                
-                
-                <time>August, 2012</time>
-                <p id="location">Women Who Code, San Francisco</p>
-                <h4>Beating IFTTT with my own Python Script</h4><br />
-
-                <h4 class="talk-item"><a href="http://github.com/econchick/IfMeetThenTweet"><span aria-hidden="true" class="icon" data-icon="&#128213;"></span>&nbsp;&nbsp;Demoed Code</a></h4><br />
-                
-                <time>August, 2012</time>
-                <p id="location">Girl Geek Dinners, San Francisco</p>
-                <h4>Faking it til I'm Making it, How I'm Learning How to Code</h4><br/>
-                <h4 class="talk-item"><a href="http://www.youtube.com/watch?v=CrqLmtDw7K4&feature=g-like"><span aria-hidden="true" class="icon" data-icon="&#127916;"></span>&nbsp;&nbsp;Video available</a></h4>
-                <br />
-                
-                <time>July 2012</time>
-                <p id="location">Florence, Italy</p>
-                <h4>Keynote: Python += Women: Increasing Engagement</h4>
-                <h4 class="talk-item"><a href="{{ get_url("/words/a-memorable-europython-for-the-better/")}}"><span aria-hidden="true" class="icon" data-icon="&#128213;"></span>&nbsp;&nbsp;Full Blog Post</a></h4>
-                <h4 class="talk-item"><a href="http://www.youtube.com/watch?v=l2PnVKQJg0I&feature=plcp"><span aria-hidden="true" class="icon" data-icon="&#127916;"></span>&nbsp;&nbsp;Video available</a></h4>
-                <h4 class="talk-item"><a href="https://www.dropbox.com/s/fa5966efxgooejo/Python%2B%3DWomen.pdf"><span aria-hidden="true" class="icon link" data-icon="&#59212;"></span>&nbsp;&nbsp;Slides available</h4>
-        </article>
+                {% for post in posts %}
+                    {% if 'past talk' in post.tags %}
+                            <time>{{ post.talk_date }}</time>
+                            <p id="location">{{ post.location }}</p>
+                            <h4><a href="{{ get_url(post.url) }}">{{ post.title }}</a></h4>
+                            <br/>
+                            <p>{{ post.content }}</p>
+                            {% if post.blog_post %}
+                            <h4 class="talk-item"><a href="{{ get_url(post.blog_post)}}"><span aria-hidden="true" class="icon" data-icon="&#128213;"></span>&nbsp;&nbsp;Full Blog Post</a></h4>
+                            {% endif %}
+                            {% if post.video %}
+                            <h4 class="talk-item"><a href="{{ get_url(post.video)}}"><span aria-hidden="true" class="icon" data-icon="&#127916;"></span>&nbsp;&nbsp;Video available</a></h4>
+                            {% endif %}
+                            {% if post.slides %}
+                            <h4 class="talk-item"><a href="{{ get_url(post.slides)}}"><span aria-hidden="true" class="icon link" data-icon="&#59212;"></span>&nbsp;&nbsp;Slides available</a></h4>
+                            {% endif %}
+                            {% if post.code %}
+                            <h4 class="talk-item"><a href="{{ get_url(post.code)}}"><span aria-hidden="true" class="icon" data-icon="&#128213;"></span>&nbsp;&nbsp;Demoed Code</a></h4><br />
+                            {% endif %}
+                            <br />
+                    {% endif %}
+                {% endfor %}
+            </article>
     </section>
 {% endblock %}

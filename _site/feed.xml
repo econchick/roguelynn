@@ -5,7 +5,7 @@
     <link rel="alternate" href="http://www.roguelynn.com/" />
     <link rel="self" href="http://www.roguelynn.com/feed.xml" type="application/atom+xml" />
     <id>http://www.roguelynn.com/</id>
-    <updated>2013-03-28T02:38:21Z</updated>
+    <updated>2013-03-28T20:18:52Z</updated>
 
     <author>
         <name>Lynn Root</name>
@@ -15,131 +15,32 @@
 
     
         <entry>
-            <title type="html">Explain like I&#39;m 5: Kerberos</title>
-            <link rel="alternate" href="http://www.roguelynn.com/words/explain-like-im-5-kerberos/" type="text/html" />
-            <id>http://www.roguelynn.com/words/explain-like-im-5-kerberos/</id>
-            <updated>2013-03-26T02:36:00Z</updated>
+            <title type="html">Introduce Django to your old friends</title>
+            <link rel="alternate" href="http://www.roguelynn.com/words/Introduce-Django-to-your-old-friends/" type="text/html" />
+            <id>http://www.roguelynn.com/words/Introduce-Django-to-your-old-friends/</id>
+            <updated>2013-03-28T19:58:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
                 <uri>http://www.roguelynn.com/</uri>
             </author>
-            <content type="html">&lt;p&gt;Explain like I’m 5 years old: Kerberos – what is Kerberos, and why should I care?&lt;/p&gt;
-&lt;h3&gt;In a nutshell&lt;/h3&gt;
-&lt;p&gt;Basically, Kerberos comes down to just this:&lt;/p&gt;
+            <content type="html">&lt;p&gt;Django 1.5 introduced a configurable User model, fantastic! Now what? With the increased flexibility of user models, integrating Django into an existing infrastructure is now easier than ever. This talk gives an introduction to the new configurable User model, and then walks through how to integrate Django applications to authenticate against already existing identity management systems like LDAP, Kerberos, etc.&lt;/p&gt;
+</content>
+        </entry>
+    
+        <entry>
+            <title type="html">Keynote - TBD</title>
+            <link rel="alternate" href="http://www.roguelynn.com/words/Keynote-PyCon-Ireland/" type="text/html" />
+            <id>http://www.roguelynn.com/words/Keynote-PyCon-Ireland/</id>
+            <updated>2013-03-27T20:01:00Z</updated>
 
-&lt;ul&gt;
-&lt;li&gt;a protocol for authentication&lt;/li&gt;
-&lt;li&gt;uses tickets to authenticate&lt;/li&gt;
-&lt;li&gt;involves a trusted 3rd-party&lt;/li&gt;
-&lt;li&gt;built on symetric-key crypto&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;You have a &lt;strong&gt;ticket&lt;/strong&gt; – your username encrypted with the requested service’s key – and so long as it’s valid, you can access the requested service that is within a Kerberos realm.&lt;/p&gt;
-
-&lt;p&gt;Typically, this is used within corporate/internal environments. Perhaps you want to access the internal benefits site. Rather than re-entering your user/password credentials, your ticket (cached on your system) is used to authenticate allowing for single sign-on.&lt;/p&gt;
-
-&lt;p&gt;Your ticket is refreshed when you sign on to your computer, or when you &lt;code&gt;kinit USER&lt;/code&gt; within your terminal.&lt;/p&gt;
-
-&lt;p&gt;For the trivia-loving folks, Kerberos’ name comes from &lt;a href=&#34;%22http://en.wikipedia.org/wiki/Kerberos_(protocol)#History_and_development%22&#34;&gt;Greek mythology&lt;/a&gt;, the three-headed guard dog of &lt;a href=&#34;http://en.wikipedia.org/wiki/Hades&#34;&gt;Hades&lt;/a&gt;. It’s pretty fitting since it takes a third-party (a Key Distribution Center) to authenticate between a client and a service or host machine.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://upload.wikimedia.org/wikipedia/commons/7/71/Hades-et-Cerberus-III.jpg&#34; width=&#34;300&#34; height=&#34;450&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;Now, the gritty details on how it works: &lt;/p&gt;
-&lt;h3&gt;Kerberos Realm&lt;/h3&gt;
-&lt;p&gt;An admin (or two, or many) creates a realm (or multiple) – the Kerberos realm – that will encompass all that is available to access.  Granted, &lt;strong&gt;you&lt;/strong&gt; may not have access to certain services or host machines that is defined within the policy management – developers should not access anything finance related, stuff like that. But the realm(s) define what Kerberos manages in terms of who can access what. &lt;/p&gt;
-
-&lt;p&gt;Your machine, the Client, lives within this realm, as well as the service you want to request and the Key Distribution Center (KDC).  In the example below, I separate out the Authoritative Server and the Ticket Granting Server, but both are within the KDC.&lt;/p&gt;
-
-&lt;p&gt;The example below describes what happens when you request something from an internal HTTP Service – like information on your benefits within your corporate intranet.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.001.jpg&#34; width=&#34;500&#34; height=&#34;400&#34; alt=&#34;Kerberos Realm&#34;/&gt;&lt;/p&gt;
-&lt;h3&gt;You and the Authentication Server&lt;/h3&gt;
-&lt;p&gt;You log into your machine with your username and password. Behind the scenes, your machine has created a secret key, a hash of your username and password.&lt;/p&gt;
-
-&lt;p&gt;You want to access an HTTP Service, so a plaintext request is sent to an Authentication Server, a part of the KDC.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.002.jpg&#34; width=&#34;500&#34; height=&#34;400&#34; alt=&#34;Request&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;The Authentication Server will check if you are in its database (e.g. LDAP) as well as the requested service (the HTTP service).&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.003.jpg&#34; width=&#34;500&#34; height=&#34;400&#34; alt=&#34;DB check&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;If all is good, it will generate your Client Secret Key, based on your username and password, that you can decrypt. This is a shared secret between you and the Authentication Server.&lt;/p&gt;
-
-&lt;p&gt;The Authentiation Server will then send two messages back to you. One message is a Client Session Key for the Ticket Granting Server (also a part of the KDC) that is encrypted with your Client Secret Key.  Because your machine has the Client Secret Key, it can decrypt the Client/Ticket Granting Service Session Key.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.004.jpg&#34; width=&#34;500&#34; height=&#34;400&#34; alt=&#34;Auth2Client&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;The second message is the Ticket Granting Ticket that includes your client ID, network address, validity period of the ticket and the Client/Ticket Granting Server Session Key. This second message is encrypted with the Ticket Granting Server Secret Key.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.005.jpg&#34; width=&#34;500&#34; height=&#34;400&#34; alt=&#34;ClientDecryptAuth&#34;/&gt;&lt;/p&gt;
-&lt;h3&gt;You and the Ticket Granting Server&lt;/h3&gt;
-&lt;p&gt;Your machine can’t decode the second message (the Ticket Granting Ticket), so it sends two messages to the Ticket Granting Server.  One message is Ticket Granting Ticket that is encrypted with the Ticket Granting Server Secret Key, plus the identifier of the service that you want (access to the HTTP Service).&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.006.jpg&#34; width=&#34;500&#34; height=&#34;400&#34; alt=&#34;Client2TGS&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;The other message that is sent to the Ticket Granting Service is an Authenticator that contains your client ID as well as a timestamp that is encrypted with the Client/Ticket Granting Server Session Key from the very first message received from the Authentication Server.&lt;/p&gt;
-
-&lt;p&gt;The Ticket Granting Server decrypts the first message and receives the Ticket Granting Ticket.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.007.jpg&#34; width=&#34;500&#34; height=&#34;400&#34; alt=&#34;TGSDecrypt&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;In order for the Ticket Granting Server to confirm your Client ID, timestamps and validity period of the Ticket, it decrypts the second message you sent, the Authenticator, with your Client/Ticket Granting Server Session Key it got from decrypting the Ticket Granting Ticket. &lt;/p&gt;
-
-&lt;p&gt;The Ticket Granting Server then sends you two messages: the first is a ticket for you to talk to the HTTP service that contains information about your ID, the validity period of this ticket, network address, and a Client/HTTP Service Session Key, and is encrypted with the HTTP Service Secret Key. Only the HTTP Service can decrypt this new ticket.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.008.jpg&#34; width=&#34;500&#34; height=&#34;400&#34; alt=&#34;TGS2Client&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;The second message is the Client/HTTP Service Session Key that’s encrypted with the Client/Ticket Granting Server Session Key.&lt;/p&gt;
-&lt;h3&gt;You and the HTTP Service&lt;/h3&gt;
-&lt;p&gt;Your machine then decrypts the last message with the Client/Ticket Granting Server Session key to obtain the Client/HTTP Service Session key. Your machine can’t, however, decrypt the ticket for the HTTP Service since it’s encrypted with the HTTP Service Secret Key.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.009.jpg&#34; width=&#34;500&#34; height=&#34;400&#34; alt=&#34;ClientDecryptTGS&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;Your machine then sends the first message that the Ticket Granting Server sent you, the ticket for the HTTP Service that is encrypted with the HTTP Service Secret Key. Your machine also then sends an Authenticator that contains your client ID plus a timestamp that is encrypted with the Client/Ticket Granting Server Session Key.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.010.jpg&#34; width=&#34;500&#34; height=&#34;400&#34; alt=&#34;Client2HTTP&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;The HTTP Service then decrypts your first message with its secret key to get your client ID, network address, validity period, and the Client/HTTP Service Session Key.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.011.jpg&#34; width=&#34;500&#34; height=&#34;400&#34; alt=&#34;HTTPDecrypt&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;It then decrypts your second message using the Client/HTTP Service Session Key. It can then compare the second message’s client ID and timestamp to the information decrypted from your first message.&lt;/p&gt;
-
-&lt;p&gt;The HTTP Service then sends an Authenticator message to you confirming its identity to you, with a message containing timestamp + 1 and is encrypted with the Client/HTTP Service Session key.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.012.jpg&#34; width=&#34;500&#34; height=&#34;400&#34; alt=&#34;HTTPAuth&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;Your machine receives the Authenticator message, and knows that it has to receive a message with timestamp + 1. It decrypts the message with the Client/HTTP Service Session Key.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.013.jpg&#34; width=&#34;500&#34; height=&#34;400&#34; alt=&#34;ClientDecryptHTTP&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;And now both you and the HTTP Service have been authenticated!&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.014.jpg&#34; width=&#34;500&#34; height=&#34;400&#34; alt=&#34;Authed&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;In a future post, I’ll write up how to actually setup a server for Kerberos authentication.&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;Some current implementations of Kerberos:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://technet.microsoft.com/en-us/library/bb742516.aspx&#34;&gt;Windows Active Directory&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://freeipa.org&#34;&gt;freeIPA&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.h5l.org/&#34;&gt;Heimdal&lt;/a&gt; &lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.gnu.org/software/shishi/&#34;&gt;GNU Shishi&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Other resources for Kerberos:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://content.hccfl.edu/pollock/AUnixSec/MoronsGuideToKerberos.htm&#34;&gt;Moron&amp;#39;s Guide to Kerberos&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Video: &lt;a href=&#34;http://www.youtube.com/watch?v=7-LjpO2nTJo&#34;&gt;Kerberos Authentication Guide&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.ietf.org/rfc/rfc4120.txt&#34;&gt;RFC 4120: The Kerberos Network Authentication Service v5&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+            <author>
+                <name>Lynn Root</name>
+                <email>lynn@lynnroot.com</email>
+                <uri>http://www.roguelynn.com/</uri>
+            </author>
+            <content type="html">&lt;p&gt;Diversity within the Python community.&lt;/p&gt;
 </content>
         </entry>
     
@@ -336,6 +237,21 @@
         </entry>
     
         <entry>
+            <title type="html">Sink or Swim: 5 Life Jackets to Throw to the New Coder</title>
+            <link rel="alternate" href="http://www.roguelynn.com/words/Sink-or-Swim/" type="text/html" />
+            <id>http://www.roguelynn.com/words/Sink-or-Swim/</id>
+            <updated>2013-03-15T20:03:00Z</updated>
+
+            <author>
+                <name>Lynn Root</name>
+                <email>lynn@lynnroot.com</email>
+                <uri>http://www.roguelynn.com/</uri>
+            </author>
+            <content type="html">&lt;p&gt;With the launch of &lt;a href=&#34;http://newcoder.io&#34;&gt;newcoder.io&lt;/a&gt;, I reflected on how many want to learn to code, and many choose Python as a first language. We direct them to Learn Python the Hard Way, or Dive into Python. Great! But now what? I launched 5 digestible projects to gradually progress the Python learner from near drowning to a decent swimmer. The goal is to have new coders feeling accomplished and to continuing learning.&lt;/p&gt;
+</content>
+        </entry>
+    
+        <entry>
             <title type="html">Soft release of my New Year&#39;s project: Salarly</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/soft-release-of-my-new-years-project/" type="text/html" />
             <id>http://www.roguelynn.com/words/soft-release-of-my-new-years-project/</id>
@@ -496,6 +412,21 @@
 &lt;/ul&gt;
 &lt;h2&gt;Swim safely! &lt;img src=&#34;http://www.roguelynn.com/assets/images/scuba_small.png&#34; alt=&#34;scuba&#34;&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+</content>
+        </entry>
+    
+        <entry>
+            <title type="html">Avoid Drowning: Swim your way through a new code base</title>
+            <link rel="alternate" href="http://www.roguelynn.com/words/Avoid-Drowning/" type="text/html" />
+            <id>http://www.roguelynn.com/words/Avoid-Drowning/</id>
+            <updated>2013-01-01T20:05:00Z</updated>
+
+            <author>
+                <name>Lynn Root</name>
+                <email>lynn@lynnroot.com</email>
+                <uri>http://www.roguelynn.com/</uri>
+            </author>
+            <content type="html">&lt;p&gt;How to get acquainted with a new code base.&lt;/p&gt;
 </content>
         </entry>
     
@@ -896,6 +827,35 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
         </entry>
     
         <entry>
+            <title type="html">Community FTW: How can we make it better?</title>
+            <link rel="alternate" href="http://www.roguelynn.com/words/Community-FTW/" type="text/html" />
+            <id>http://www.roguelynn.com/words/Community-FTW/</id>
+            <updated>2012-10-01T20:12:00Z</updated>
+
+            <author>
+                <name>Lynn Root</name>
+                <email>lynn@lynnroot.com</email>
+                <uri>http://www.roguelynn.com/</uri>
+            </author>
+            <content type="html"></content>
+        </entry>
+    
+        <entry>
+            <title type="html">Keynote: Community FTW</title>
+            <link rel="alternate" href="http://www.roguelynn.com/words/PyCarolinas-Keynote/" type="text/html" />
+            <id>http://www.roguelynn.com/words/PyCarolinas-Keynote/</id>
+            <updated>2012-10-01T20:11:00Z</updated>
+
+            <author>
+                <name>Lynn Root</name>
+                <email>lynn@lynnroot.com</email>
+                <uri>http://www.roguelynn.com/</uri>
+            </author>
+            <content type="html">&lt;p&gt;I was honored when &lt;a href=&#34;http://twitter.com/ironfroggy&#34;&gt;Calvin Spealman&lt;/a&gt; invited me to keynote on the topic of community.  He wanted folks to leave feeling inspired to build up the area&amp;#39;s sense of community.  A lot of pressure, but having a conference is a damn good litmus test to understand a local area&amp;#39;s Python community.&lt;/p&gt;
+</content>
+        </entry>
+    
+        <entry>
             <title type="html">NetSec for n00bs, part I: Password Storage</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/netsec-for-n00bs-part-i-password-storage/" type="text/html" />
             <id>http://www.roguelynn.com/words/netsec-for-n00bs-part-i-password-storage/</id>
@@ -1224,6 +1184,20 @@ damn good problem to attack).&lt;/li&gt;
         </entry>
     
         <entry>
+            <title type="html">Faking it til I&#39;m Making it: How I&#39;m Learning how to Code</title>
+            <link rel="alternate" href="http://www.roguelynn.com/words/If-Meet-Then-Tweet/" type="text/html" />
+            <id>http://www.roguelynn.com/words/If-Meet-Then-Tweet/</id>
+            <updated>2012-08-02T20:15:00Z</updated>
+
+            <author>
+                <name>Lynn Root</name>
+                <email>lynn@lynnroot.com</email>
+                <uri>http://www.roguelynn.com/</uri>
+            </author>
+            <content type="html"></content>
+        </entry>
+    
+        <entry>
             <title type="html">Our generation&#39;s Legos</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/our-generations-legos/" type="text/html" />
             <id>http://www.roguelynn.com/words/our-generations-legos/</id>
@@ -1456,6 +1430,20 @@ to #pyladies, I called him out, addressed it with the EuroPython organizers, and
 
 &lt;p&gt;To wrap up the evening, Guido van Rossum did a casual but well attended moderated Q&amp;amp;A.  He was quite frank in answering his questions, from &amp;quot;I just don&amp;#39;t know what this person is asking&amp;quot; to &amp;quot;I&amp;#39;m not going to waste my time answering this.&amp;quot;  My next post will be the loosely transcribed conversation, after I refactor it a bit to actually be readable.  But believe me when I say that while Guido is quite tired of the same question, &amp;quot;Looking back, what would you do differently&amp;quot;, he&amp;#39;s a fantastic sport that offers great dialogue for us in the Python community.  So stay tuned!&lt;/p&gt;
 </content>
+        </entry>
+    
+        <entry>
+            <title type="html">Keynote: Python += Women: Increasing Engagement</title>
+            <link rel="alternate" href="http://www.roguelynn.com/words/Keynote-EuroPython/" type="text/html" />
+            <id>http://www.roguelynn.com/words/Keynote-EuroPython/</id>
+            <updated>2012-07-01T20:17:00Z</updated>
+
+            <author>
+                <name>Lynn Root</name>
+                <email>lynn@lynnroot.com</email>
+                <uri>http://www.roguelynn.com/</uri>
+            </author>
+            <content type="html"></content>
         </entry>
     
         <entry>
