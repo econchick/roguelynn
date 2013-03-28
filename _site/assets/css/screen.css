@@ -23,9 +23,7 @@ html {
   line-height: 1; }
 
 ol, ul {
-  list-style: disc;
-  padding-left: 20px;
-  padding-bottom: 15px; }
+  list-style: disc; }
 
 table {
   border-collapse: collapse;
@@ -163,7 +161,7 @@ nav {
     text-align: right; }
     /* line 94, ../sass/screen.scss */
     nav .contents li {
-      margin-left: 0.6em; }
+      margin-left: 0.6em;}
       /* line 96, ../sass/screen.scss */
       nav .contents li a {
         -webkit-transition-duration: 0.4s;
