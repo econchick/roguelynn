@@ -5,7 +5,7 @@
     <link rel="alternate" href="http://www.roguelynn.com/" />
     <link rel="self" href="http://www.roguelynn.com/feed.xml" type="application/atom+xml" />
     <id>http://www.roguelynn.com/</id>
-    <updated>2013-03-28T20:24:41Z</updated>
+    <updated>2013-03-28T20:34:08Z</updated>
 
     <author>
         <name>Lynn Root</name>
@@ -18,7 +18,7 @@
             <title type="html">Introduce Django to your old friends</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/Introduce-Django-to-your-old-friends/" type="text/html" />
             <id>http://www.roguelynn.com/words/Introduce-Django-to-your-old-friends/</id>
-            <updated>2013-03-28T19:58:00Z</updated>
+            <updated>2013-03-28T20:30:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -33,7 +33,7 @@
             <title type="html">Keynote - TBD</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/Keynote-PyCon-Ireland/" type="text/html" />
             <id>http://www.roguelynn.com/words/Keynote-PyCon-Ireland/</id>
-            <updated>2013-03-27T20:01:00Z</updated>
+            <updated>2013-03-27T20:31:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>

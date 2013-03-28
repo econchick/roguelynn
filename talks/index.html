@@ -9,7 +9,7 @@
                     {% if 'upcoming talk' in post.tags %}
                             <time>{{ post.talk_date }}</time>
                             <p id="location">{{ post.location }}</p>
-                            <h4><a href="{{ get_url(post.url) }}">{{ post.title }}</a></h4>
+                            <h4><a href="{{ post.conf_url }}">{{ post.title }}</a></h4>
                             <p>{{ post.content }}</p>
                             <br />
                     {% endif %}
@@ -19,20 +19,20 @@
                     {% if 'past talk' in post.tags %}
                             <time>{{ post.talk_date }}</time>
                             <p id="location">{{ post.location }}</p>
-                            <h4><a href="{{ get_url(post.url) }}">{{ post.title }}</a></h4>
+                            <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
                             <br/>
                             <p>{{ post.content }}</p>
                             {% if post.blog_post %}
-                            <h4 class="talk-item"><a href="{{ get_url(post.blog_post)}}"><span aria-hidden="true" class="icon" data-icon="&#128213;"></span>&nbsp;&nbsp;Full Blog Post</a></h4>
+                            <h4 class="talk-item"><a href="{{ post.blog_post}}"><span aria-hidden="true" class="icon" data-icon="&#128213;"></span>&nbsp;&nbsp;Full Blog Post</a></h4>
                             {% endif %}
                             {% if post.video %}
-                            <h4 class="talk-item"><a href="{{ get_url(post.video)}}"><span aria-hidden="true" class="icon" data-icon="&#127916;"></span>&nbsp;&nbsp;Video available</a></h4>
+                            <h4 class="talk-item"><a href="{{ post.video }}"><span aria-hidden="true" class="icon" data-icon="&#127916;"></span>&nbsp;&nbsp;Video available</a></h4>
                             {% endif %}
                             {% if post.slides %}
-                            <h4 class="talk-item"><a href="{{ get_url(post.slides)}}"><span aria-hidden="true" class="icon link" data-icon="&#59212;"></span>&nbsp;&nbsp;Slides available</a></h4>
+                            <h4 class="talk-item"><a href="{{ post.slides }}"><span aria-hidden="true" class="icon link" data-icon="&#59212;"></span>&nbsp;&nbsp;Slides available</a></h4>
                             {% endif %}
                             {% if post.code %}
-                            <h4 class="talk-item"><a href="{{ get_url(post.code)}}"><span aria-hidden="true" class="icon" data-icon="&#128213;"></span>&nbsp;&nbsp;Demoed Code</a></h4><br />
+                            <h4 class="talk-item"><a href="{{ post.code }}"><span aria-hidden="true" class="icon" data-icon="&#128213;"></span>&nbsp;&nbsp;Demoed Code</a></h4><br />
                             {% endif %}
                             <br />
                     {% endif %}
