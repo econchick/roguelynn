@@ -4,14 +4,23 @@ title: "The New Coder: A Path to Software Engineering"
 tags: [tutorials, learning, pycon]
 ---
 
+This post contains all the sources and thoughts behind my PyCon 2013 talk launching [newcoder.io][newcoder]. The [video][PyCon] and [slides][slides] are available.
+
+<img class="displayed" src="{{ get_asset('images/SoS-slide1.png') }}" width="370" height="300")/> 
+
 If the influx of [private][1], [independent][2] [schools][3] for learning how to [code][4] is any indication, the ever-growing [list][20] of [moocs][21], or the [financial][5] [smack][6] in the [face][7] is a tell-tale sign: software engineering as a career is having its 15 minutes of fame. Looking at the pace of its overall growth in terms of jobs and earnings, it’s not too far from [Moore's Law][8].
 
-But in the context of history, software engineering is merely just going through its industrial phase compared to other engineering fields. There’s no revolutionary way to build a bridge or a highway; we’ve perfected the assembly line; making a guitar or violin is now more of an art than a science. Yet we’re still [arguing][9] how best to [approach][10] software engineering problems and rapidly [developing][11] new [languages][12].
+But in the context of history, software engineering is merely just going through its industrial phase compared to other engineering fields. There’s no revolutionary way to build a bridge or a highway; we’ve perfected the assembly line; making a guitar or violin is now more of an art than a science. 
+
+<img class="displayed" src="{{ get_asset('images/SoS-writing-classes.png') }}" width="370" height="300")/> 
+
+Yet we’re still [arguing][9] how best to [approach][10] software engineering problems and rapidly [developing][11] new [languages][12].
 
 ## Learning how to code in our industrial revolution 
 
 A textbook and a classroom is fine for learning more established engineering fields like architecture or manufacturing, but with revolutionary pace of software development, how best should we teach its principles? A four-year degree doesn’t merely grant you “l33t” status, certainly not by [researchers’ standards][13]: 
->…takes about 10 years of experience to turn a novice into an expert programmer.
+
+<img class="displayed" src="{{ get_asset('images/SoS-10-years.png') }}" width="370" height="300")/> 
 
 One predominant theme I am seeing is that gap from learning syntax to becoming a passable junior developer. You went through [Learn Python the Hard Way][18], uh, now what? Sure – a for-loop is easy to identify, to code when told exactly what to do, but that’s not real life.
 
@@ -24,35 +33,61 @@ We need something to create those connections outside of those isolated concepts
 
 ## Project-based learning
 
-I started off blowing bubbles - I did take one course in computer science (after I graduated); I would have failed if it weren’t for my crappy little final [project](22) shadowing the fact that I couldn’t code.But I love it – the cold, chilly, 3am night never looked better to me. But who wants to pay $2000 for a single course whose credit won’t necessarily apply towards anything. I was drowning while from being told "this is how we chlorinate the water" to "here are the hydrodynamic equations that your body must follow in order to swim fast".So I ditched traditional academia and I’ve been learning to code through completing projects.  It’s been a self-directed study with motivation to actually do this for a living. It's paid off - within a year, I am now a software engineer at Red Hat. Granted I still choke on water every once and a while, but I took to the water myself after studying what others do, how they code, and teaching others.
+I started off blowing bubbles - I did take one course in computer science (after I graduated); I would have failed if it weren’t for my crappy little final [project](22) shadowing the fact that I couldn’t code.
+
+But I love it – the cold, chilly, 3am night never looked better to me. But who wants to pay $2000 for a single course whose credit won’t necessarily apply towards anything. I was drowning while from being told "this is how we chlorinate the water" to "here are the hydrodynamic equations that your body must follow in order to swim fast".
+
+So I ditched traditional academia and I’ve been learning to code through completing projects.  It’s been a self-directed study with motivation to actually do this for a living. It's paid off - within a year, I am now a software engineer at Red Hat. Granted I still choke on water every once and a while, but I took to the water myself after studying what others do, how they code, and teaching others.
 
 ## Learning through frustration
 
-I've certainly belly flopped a few times.  I tend to find myself learning more through frustration than being simply told what or how to do it. It usually ends success but not without tears and wasted time. It may not be the best way to go about learning, but it certainly challenges me to push myself through the hard times; builds up my endurance for longer races.But I see myself in a good position to teach what I’ve learned - I'm no olympic swimmer, I still have those fresh, n00b eyes when trying to understand a code base. Yet when I try to explain it to someone else, concepts do solidify – teaching others gives that personal meaning and understanding since I want to create that context that builds that cumulative learning.
+I've certainly belly flopped a few times.  I tend to find myself learning more through frustration than being simply told what or how to do it. It usually ends success but not without tears and wasted time. It may not be the best way to go about learning, but it certainly challenges me to push myself through the hard times; builds up my endurance for longer races.
+
+<img class="displayed" src="{{ get_asset('images/SoS-frustration.png') }}" width="370" height="300")/> 
+
+But I see myself in a good position to teach what I’ve learned - I'm no olympic swimmer, I still have those fresh, n00b eyes when trying to understand a code base. Yet when I try to explain it to someone else, concepts do solidify – teaching others gives that personal meaning and understanding since I want to create that context that builds that cumulative learning.
 
 ## Passing on the frustration
 
-In a selfish effort to further my understanding, I am here to coach you with 5 swim lessons: I’ve written five tutorials – well, three are complete, the other two have been coded out and need tutorial language behind it. These are meant to build on each other and thread that “concepts for context” for the new guppy in the water, but also be digestible and not overwhelming.The tutorials aim to pick up where introductory or outdated tutorials leave off with fun projects. You learn how to tread water by playing water polo, not by someone dictating to move your arms and legs back and forth. So each has a purpose and a set of goals, ends on how these projects are used in real life, and where to explore afterwards in case the new coder wants to learn more in depth.
-There is some subtlety baked into these projects though. In particular, the language used and how topics are presented. I’ve written each tutorial with a set of side effects in mind – indirect learning – that eventually become the goals of future tutorials. So we play water polo for treading water, but it also builds endurance and strength indirectly.
->Knowledge is actively constructed by the student, not passively absorb from textbooks and lectures. I want guppies to learn by doing. We can't read how to swim. You have to feel the water against your hands to learn how to paddle through; you must accidently snort up water to learn how to breathe.
+In a selfish effort to further my understanding, I am here to coach you with 5 swim lessons: I’ve written five tutorials – well, three are complete, the other two have been coded out and need tutorial language behind it. These are meant to build on each other and thread that “concepts for context” for the new guppy in the water, but also be digestible and not overwhelming.
+
+The tutorials aim to pick up where introductory or outdated tutorials leave off with fun projects. You learn how to tread water by playing water polo, not by someone dictating to move your arms and legs back and forth. 
+
+So each has a purpose and a set of goals, ends on how these projects are used in real life, and where to explore afterwards in case the new coder wants to learn more in depth.
+
+There is some subtlety baked into these projects though. In particular, the language used and how topics are presented. I’ve written each tutorial with a set of side effects in mind – indirect learning – that eventually become the goals of future tutorials. So we play water polo for treading water, but it also builds endurance and strength indirectly.
+
+<img class="displayed" src="{{ get_asset('images/SoS-knowledge.png') }}" width="370" height="300")/> 
+
+I want guppies to learn by doing. We can't read how to swim. You have to feel the water against your hands to learn how to paddle through; you must accidently snort up water to learn how to breathe.
 
 ### defined goals
 
-As the new coder dives into the tutorial, s/he will be exposed to what Pythonic means through learning how to construct proper import statements in the proper order, how to write legible docstrings and comments, the language’s keywords when exploring file I/O.S/he will work with third-party packages to get a soft intro to what it means to interact with a RESTful API, how to parse the data returned from that API with different data structures. Terminology of object-oriented programming are introduced when instantiating classes and methods versus calling a function.Each tutorial has the same goal of developing one’s logic in approaching a problem through organization, reading others’ code, debugging, testing, and logging.I’ve tried to write these in a way that addresses any “stupid” or “naive” questions by using sidebars or gently introducing new terminology. The difference between docstrings and comments may be obvious to some people, but not all – especially when just starting out.
+As the new coder dives into the tutorial, s/he will be exposed to what Pythonic means through learning how to construct proper import statements in the proper order, how to write legible docstrings and comments, the language’s keywords when exploring file I/O.
+
+S/he will work with third-party packages to get a soft intro to what it means to interact with a RESTful API, how to parse the data returned from that API with different data structures. Terminology of object-oriented programming are introduced when instantiating classes and methods versus calling a function.
+
+Each tutorial has the same goal of developing one’s logic in approaching a problem through organization, reading others’ code, debugging, testing, and logging.
+
+I’ve tried to write these in a way that addresses any “stupid” or “naive” questions by using sidebars or gently introducing new terminology. The difference between docstrings and comments may be obvious to some people, but not all – especially when just starting out.
 
 ### If you’re curious
 
-The constructive learning is exercised by using “if you're curious” side-bars. Of course you’re curious as a new coder! Just a bit of positive language to entice folks to read a bit more advance topics; to push their endurance.As more advanced topics are introduced through these side-bars, they are not meant to pressure anyone reading through them - you can take a break to catch your breathe - but they are guided to find out more information if the new coder is wanting to dive deeper.  If a s/he skips or doesn’t understand fully, it’s fine – the tutorial can still be completed with full understanding of the goals, and the “curious” concepts will be explored again in future tutorials.
+The constructive learning is exercised by using “if you're curious” side-bars. 
+
+Of course you’re curious as a new coder! Just a bit of positive language to entice folks to read a bit more advance topics; to push their endurance.
+
+As more advanced topics are introduced through these side-bars, they are not meant to pressure anyone reading through them - you can take a break to catch your breathe - but they are guided to find out more information if the new coder is wanting to dive deeper.  If a s/he skips or doesn’t understand fully, it’s fine – the tutorial can still be completed with full understanding of the goals, and the “curious” concepts will be explored again in future tutorials.
 
 ### In Action
 
 Many times, we’re given a project in school, and we wonder, “What good is this? Is this even used in real life? am I ever going to compete in the state championships?” The application of a project is the pitfall for a lot of folks. It can be discouraging to learn how to swim without a realm to show off one's skills.
-I include an “in action” conclusion with how each project is used in the industry now. These are not meaningless exercises to learn data structures or how to make a graph with matplotlib. These tutorials use the learning of data structures _to_ build tools that are being used in real life.
+I include an “in action” conclusion with how each project is used in the industry now. These are not meaningless exercises to learn data structures or how to make a graph with matplotlib. These tutorials use the learning of data structures _to_ build tools that are being used in real life.
 
 
 ### Where to go from here
-Lastly, one main critique for new coders is “where do I go from here” after completing how-tos and guides. I made it to state champs, is that all? 
-It’s extremely difficult to learn what you need to learn, yet not know what _should _be learned. To not burn out our new flying fish, each tutorial ends with guidance on where to go to from the end, including how to build upon what was just coded out, and resources on the topics covered.
+Lastly, one main critique for new coders is “where do I go from here” after completing how-tos and guides. I made it to state champs, is that all? 
+It’s extremely difficult to learn what you need to learn, yet not know what _should_ be learned. To not burn out our new flying fish, each tutorial ends with guidance on where to go to from the end, including how to build upon what was just coded out, and resources on the topics covered.
 
 ## The tutorials
 
@@ -159,9 +194,13 @@ while indirectly being exposed to:
 
 So because we’re in software engineering’s industrial revolution, we need to have a revolutionary way of learning how to code. 
 
+<img class="displayed" src="{{ get_asset('images/SoS-lightbulb.png') }}" width="370" height="300")/> 
+
 As the lifeguard and coach, I advise our Python guppies to not get discouraged.  The way we are learning to code leaves us on the edge of the pool expecting us to compete after reading a chapter on human hydrodynamics.  
 
-Try out my swim lessons at **[newcoder.io](http://newcoder.io)** - give feedback, contribute, spread it around, and use it to teach others.So please - don’t drown. Swim safe!
+Try out my swim lessons at **[newcoder.io](http://newcoder.io)** - give feedback, contribute, spread it around, and use it to teach others.
+
+So please - don’t drown. Swim safe!
 
 
 
@@ -192,3 +231,6 @@ Try out my swim lessons at **[newcoder.io](http://newcoder.io)** - give feedback
 [23]: http://twistedmatrix.com/trac/
 [24]: https://github.com/jessamynsmith/talkbackbot
 [25]: http://www.scrapy.org
+[pycon]: https://www.youtube.com/watch?v=5hBMlTFfOJg
+[newcoder]: http://newcoder.io
+[slides]: https://speakerdeck.com/pyconslides/sink-or-swim-5-life-jackets-to-throw-to-the-new-coder-by-lynn-root

@@ -510,9 +510,11 @@ blockquote {
   -o-border-radius: 3px;
   border-radius: 3px;
   background: #fefefe;
-  color: #dd4a38;
-  margin: 20px;
-  padding: 20px; }
+  color: #414247;
+  margin: 10px;
+  font-style: italic;
+  padding: 20px;
+  padding-bottom: 3px; }
 
 article li span {
   color: #636570;
