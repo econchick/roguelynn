@@ -54,20 +54,21 @@
 <p>SHA-2: consists of 4 hash functions producing 244, 256, 384 or 512 bit hashes. While no attacks have been successful on SHA-2, its algorithm is similar to SHA-1.  It&#39;s still considered safe, but time is ticking. </p>
 
 <p>These hash functions are still decent enough for message passing, just not password storage. Another hash algorithm, <a href="http://en.wikipedia.org/wiki/Bcrypt" title="Wiki: Bcrypt">Bcrypt</a>, is thought to be more resistant to brute-force attacks.  This is because the algorithm adapts over time, basically lengthening the time it takes to create a hash, making it difficult to leverage increases in computer power. </p>
-<h4>Two things to note with hash functions:</h4>
+<h4 id="two-things-to-note-with-hash-functions">Two things to note with hash functions:</h4>
 <ol>
 <li>Don&#39;t implement your own hash function. Just don&#39;t.</li>
 <li>Speed should not be a factor when hashing passwords.  Basically, the longer it takes to hash a password, the longer it takes for brute-force attacks.  Speedier algorithms like MD5 or SHA-1 is fine for message-passing and source verification, but not good for storing sensitive information. </li>
 </ol>
-<h4>Is a hash enough?</h4>
+<h4 id="is-a-hash-enough">Is a hash enough?</h4>
 <p>No. Storing a hash of a password isn&#39;t enough.  If only a hash function is used to store a hash of plaintext, it&#39;d be pretty easy to break it. For instance, if your password was &#39;password&#39;, it would have the same hash value as someone else who also uses the same password.  If someone were to break into a database of hashed passwords, it&#39;d be very simple to do a quick frequency analysis, whichever hash is the most popular would probably be &#39;password&#39; or something like &#39;1234&#39;. This is essentially called a <a href="http://en.wikipedia.org/wiki/Rainbow_table" title="Wiki: Rainbow table">Rainbow Table</a>, a set of reverse-engineered hashed passwords.  It is reasonable (in the amount of time spent, aka brute force) to create a rainbow table of passwords up to about 8 characters in length. </p>
-<h4>So then what now?</h4>
+<h4 id="so-then-what-now">So then what now?</h4>
 <p>In order to combat the ease of creating rainbow tables, a <a href="http://en.wikipedia.org/wiki/Salt_(cryptography)" title="Wiki: Salt">salt</a> is added to the password before it is hashed.  It is very important that this salt is used only once, and is unique per user/password. For instance, if you use &#39;password&#39; as your password, your salt could be (which would be decided behind the scenes) &#39;1\$0-1209-1!@fkjl&#39;, so the input for the hash algorithm would be &#39;password&#39;+&#39;1\$0-1209-1!@fkjl&#39;.  Your salt would not be used for anyone else&#39;s password.  So if someone else uses &#39;password&#39;, their salt would be something totally different, like &#39;sl;--90(d%&#39;, baring a different hash value for the same plaintext password. </p>
-<h4>Side note</h4>
+<h4 id="side-note">Side note</h4>
 <p>If you&#39;re interested in the history of cryptography, breaking passwords and frequency analysis as well as a great history on computing, I would highly suggest <a href="http://www.amazon.com/gp/product/B004IK8PLE/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B004IK8PLE&amp;linkCode=as2&amp;tag=roglyn-20" title="The Code Book">The Code Book: The Science of Secrecy from Ancient Egypt to Quantum Cryptography</a>. </p>
 
 <p><a href="/words/2012-10-03-netsec-for-n00bs-part-ii-ciphers-symmetric" title="Symmetric Ciphers">Part II - Ciphers</a></p>
 
+            <p id="footer">&#8756;</p>
             <div id="disqus_thread"></div>
                 <script type="text/javascript">
                     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */

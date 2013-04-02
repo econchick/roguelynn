@@ -51,15 +51,15 @@
 
 <p>In other words: <br>
 <img src="/assets/images/no_idea_dog.png" alt="no_idea_dog" title="I have no idea what I&#39;m doing"></p>
-<h3>From email setup to patch submission in 8 days, then what?</h3>
+<h3 id="from-email-setup-to-patch-submission-in-8-days-then-what">From email setup to patch submission in 8 days, then what?</h3>
 <p>I previously <a href="/words/from-email-setup-to-patch-submission-in-8-days" title="From email setup to patch submission in 8 days">wrote</a> about the progress I was making.  TL;DR - I submitted a patch in the first two weeks of working (mind you, it was immediately NACKed and a lesson was learned in testing).  But not much followed other than a handful of other patches. </p>
 
 <p>Sure, I learned bits of the IPA package in detail in regards to code and moving parts, and on the grand scale of how LDAP, DNS, AD trusts, Kerberos, Daemon, NTP, Certificate Authority, etc, all talk to each other and <em>why</em> it makes freeIPA appealing to sys admins, developers, etc. But it was (and still is) excruciatingly difficult to develop an understanding of what parts need to be integrated, and when I need to take step back and learn the deep, dark corners of DNS, BIND, and Apache. </p>
 
 <p>Thank god for mentors outside of my team as well; stupid questions about the Python language, like &quot;Isn&#39;t it bad to have import *? Why?&quot; were met with impatience at work. That&#39;s not to say my team mates weren&#39;t helpful; I had many ELI5 moments with them.</p>
-<h3>My Expectations</h3>
+<h3 id="my-expectations">My Expectations</h3>
 <p>I had this idea in my head that I would write more than ~15-20 lines of code for the IPA project. Correction: I assumed I&#39;d write more <em>Python</em> code during this time here in Brno. I wanted to learn how to write good code, the design pattern of the project, maybe write a test or two.</p>
-<h3>What I learned</h3>
+<h3 id="what-i-learned">What I learned</h3>
 <p>What I actually ended up learning was the overall Linux file system (naturally), Vim, git, the process of submitting patches for review, public versus private errors, virtual machines (and the many ways to break them), and git blame, <a href="http://andyjeffries.co.uk/articles/25-tips-for-intermediate-git-users" title="Tips for intermediate git users">git reset HEAD@{1 hour ago}</a>, and <a href="https://github.com/tomheon/git_by_a_bus" title="Git by a Bus">git-by-a-bus</a>. </p>
 
 <p>Other things I&#39;m sure some take for granted like iptables, key-bindings &amp; keyboard shortcuts (using those make me feel like a baller), vimrc, simple bash commands &amp; scripting, and the like.</p>
@@ -67,7 +67,7 @@
 <p>And yes, I also learned a bit of Ruby. To be honest, I&#39;ve written more Ruby code for OpenShift than Python code for freeIPA. I&#39;ve started to make a list of grievances of the Ruby language when coming from Python. #snark</p>
 
 <p>I also learned the structure of OpenShift - the two Apache servers it uses, the broken installation scripts, the larger picture of what of freeIPA needs to be integrated where.</p>
-<h3>What I need to learn</h3>
+<h3 id="what-i-need-to-learn">What I need to learn</h3>
 <p>I still have a ways to go in learning to program in Ruby, but it&#39;s understandably easier when I have an okay grasp on programming in Python.</p>
 
 <p>Apache is still a black hole to me, but I&#39;ve begun to understand what pieces need to be added to OpenShift.</p>
@@ -75,13 +75,14 @@
 <p>I also have no freaking clue how <em>exactly</em> to integrate a project that&#39;s written in Python into a Ruby-based project.</p>
 
 <p>I also need to develop a better understanding of GSSAPI (supposedly an implementation of an API, written in Python, Ruby, whatever, that appropriately talks to Kerberos, written in C). This understanding will needed for when the DNS dynamically updates hosts (through nsupdate) and there needs to be a Kerberos-based authentication handshake.</p>
-<h3>What troubles me</h3>
+<h3 id="what-troubles-me">What troubles me</h3>
 <p>This task I am meant to do is complex; it&#39;s not an application where I can go bug my dev friends for the best library or approach. These are two different projects where the integration happens at a level that folks have experience in either but not both. <em>I</em> am the integration point; <em>I</em> am supposed to have an understanding of these two systems, how they differ and compare in setup. This requires a deep understanding of how the internet works, of Linux systems, and of security implementations, among other things that I can&#39;t even conceive of right now.</p>
 
 <p>What scares the sh!t out of me is that there is no one that knows how to do this better than me. #wat </p>
 
 <p>The fear of failure has never been stronger, but it is a great motivator.</p>
 
+            <p id="footer">&#8756;</p>
             <div id="disqus_thread"></div>
                 <script type="text/javascript">
                     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */

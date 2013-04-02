@@ -23,7 +23,9 @@ html {
   line-height: 1; }
 
 ol, ul {
-  list-style: disc; }
+  list-style: disc;
+  padding-left: 20px;
+  padding-bottom: 15px}
 
 table {
   border-collapse: collapse;
@@ -125,6 +127,11 @@ nav {
     font-size: 1em;
     font-weight: 600;
     text-transform: uppercase; }
+  nav ul {
+    list-style: disc;
+    padding-left: 0px;
+    padding-bottom: 0px
+  }
   /* line 74, ../sass/screen.scss */
   nav .title {
     width: 49.15254%;
@@ -695,7 +702,6 @@ img.displayed {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  border:3px solid #414247;
 }
 
 pre {
@@ -728,4 +734,47 @@ code {
   -webkit-box-shadow: 0px 0px 0px 2px #f2f2f2;
   box-shadow: 0px 0px 0px 2px #f2f2f2;
   white-space: pre;
+}
+
+#break {
+    font-size: 24px;
+    text-align: center;
+}
+
+#footer {
+    font-size: 24px;
+    text-align: center;
+}
+
+#caption {
+  font-size: 0.8em;
+  font-weight: 100;
+  margin-top: -3em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#client-secret-key {
+  color: #003399;
+  font-weight: bolder;
+}
+
+#tgs-secret-key{
+  color: #00CC00;
+  font-weight: bolder;
+}
+
+#http-secret-key{
+  color: rgb(133, 96, 168);
+  font-weight: bolder;
+}
+
+#tgs-session-key{
+  color: rgb(0, 128, 64);
+  font-weight: bolder;
+}
+
+#http-session-key{
+  color: rgb(128, 0, 64);
+  font-weight: bolder;
 }

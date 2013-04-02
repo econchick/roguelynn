@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
 
-        <title>Explain like I'm 5: Kerberos — Lynn Root</title>
+        <title>Explain like I’m 5: Kerberos — Lynn Root</title>
         <meta name="description" content="Homepage and blog of Lynn Root. Python Engineer, PyLadiesSF Founder, Socializer in San Francisco." />
         <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/ico" />
         <link rel="alternate" type="application/atom+xml" title="Atom 1.0" href="http://www.roguelynn.com/feed.xml" />
@@ -38,147 +38,235 @@
         <div class="page">
             
     <section id="post">
-        <h2>Explain like I'm 5: Kerberos</h2>
+        <h2>Explain like I’m 5: Kerberos</h2>
         <aside>
-            <time pubdate datetime="2013-03-26">March 26, 2013</time>
+            <time pubdate datetime="2013-04-02">April 02, 2013</time>
         </aside>
         <article>
             <p>Explain like I’m 5 years old: Kerberos – what is Kerberos, and why should I care?</p>
-<h3>In a nutshell</h3>
+
+<p>While this topic probably can not be explained to a 5 year-old and be understood, this is my attempt at defragmenting documentation with some visual aids and digestible language.</p>
+<h3 id="in-a-nutshell">In a nutshell</h3>
 <p>Basically, Kerberos comes down to just this:</p>
 
 <ul>
 <li>a protocol for authentication</li>
 <li>uses tickets to authenticate</li>
+<li>avoids storing passwords locally or sending them over the internet</li>
 <li>involves a trusted 3rd-party</li>
 <li>built on symmetric-key cryptography</li>
 </ul>
 
-<p>You have a <strong>ticket</strong> – your proof of identity encrypted with a secret key for the particular service requested – and so long as it’s valid, you can access the requested service that is within a Kerberos realm.</p>
+<p>You have a <strong>ticket</strong> – your proof of identity encrypted with a <span id="secret-key">secret key</span> for the particular service requested – on your local machine (creation of a ticket is described below); so long as it’s valid, you can access the requested service that is within a Kerberos realm.</p>
 
-<p>Typically, this is used within corporate/internal environments. Perhaps you want to access the internal benefits site to review your health care selections. Rather than re-entering your user/password credentials, your ticket (cached on your system) is used to authenticate allowing for single sign-on.</p>
+<p>Typically, this is used within corporate/internal environments. Perhaps you want to access your internal payroll site to review what little bonus your boss has given you. Rather than re-entering your user/password credentials, your ticket (cached on your system) is used to authenticate allowing for single sign-on.</p>
 
 <p>Your ticket is refreshed when you sign on to your computer, or when you <code>kinit USER</code> within your terminal.</p>
 
-<p>For the trivia-loving folks, Kerberos’ name comes from <a href="%22http://en.wikipedia.org/wiki/Kerberos_(protocol)#History_and_development%22">Greek mythology</a>, the three-headed guard dog of <a href="http://en.wikipedia.org/wiki/Hades">Hades</a>. It’s pretty fitting since it takes a third-party (a Key Distribution Center) to authenticate between a client and a service or host machine.</p>
+<p>For the trivia-loving folks, Kerberos’ name comes from <a href="http://l.ynn.me/Zxcew1">Greek mythology</a>, the three-headed guard dog of <a href="http://en.wikipedia.org/wiki/Hades">Hades</a>. It’s pretty fitting since it takes a third-party (a Key Distribution Center) to authenticate between a client and a service or host machine.</p>
 
-<p><img class="displayed" src="/assets/images/Hades-et-Cerberus-III.jpg" width="300" height="450"/></p>
-<h3>Kerberos Realm</h3>
+<p><img class="displayed" src="/assets/images/Hades-et-Cerberus-III.jpg" width="300" height="450"/><br>
+<p id="caption"><a href="http://en.wikipedia.org/wiki/File:Hades-et-Cerberus-III.jpg">Wikipedia</a></p></p>
+<h3 id="kerberos-realm">Kerberos Realm</h3>
 <p>Admins create realms – Kerberos realms – that will encompass all that is available to access.  Granted, <strong>you</strong> may not have access to certain services or host machines that is defined within the policy management – developers should not access anything finance related, stuff like that. But a realm defines what Kerberos manages in terms of who can access what. </p>
 
-<p>Your machine, the Client, lives within this realm, as well as the service or host you want to request and the Key Distribution Center (KDC).  In the following example, I separate out the Authoritative Server and the Ticket Granting Server, but both are within the KDC.</p>
+<p>Your machine, the Client, lives within this realm, as well as the service or host you want to request and the Key Distribution Center, KDC (no, not the <a href="http://en.wikipedia.org/wiki/KGB">KGB</a>, although I always think of that, too).  In the following example, I separate out the Authentication Server and the Ticket Granting Server, but both are within the KDC.</p>
 
-<p>Below describes what happens when you request something from an internal HTTP Service – like information on your benefits within your corporate intranet.</p>
+<p><img class="displayed" src="/assets/images/Kerb.001.jpg" width="630" height="475" alt="Kerberos Realm"/></p>
+<h3 id="to-keep-in-the-back-of-your-mind">To keep in the back of your mind</h3>
+<p>You may want to come back up here after you read through the gritty details on how the example works. </p>
 
-<p><img class="displayed" src="/assets/images/Kerb.001.jpg" width="500" height="400" alt="Kerberos Realm"/></p>
-<h3>Quick Overview</h3>
 <p>When requesting access to a service or host, three interactions take place between you and:</p>
 
 <ul>
-<li>Authentication Server,</li>
-<li>Ticket Granting Server,</li>
-<li>Service or host machine that you’re wanting access to. </li>
+<li>the Authentication Server</li>
+<li>the Ticket Granting Server</li>
+<li>the Service or host machine that you’re wanting access to. </li>
 </ul>
 
-<p>Between each interaction (with the exception of the very first and last interaction), you’ll both send and receive two messages. Each received message is one that you can decrypt, and one that you can not. </p>
-
-<p>Of the sent messages, one is an authenticator that contains your ID and timestamp, and the other is the message that you received that you can not decrypt.</p>
-
-<p>The sent messages are decrypted with the respective server, service, or host machine secret key. Within that message is the session key that can decrypt the authenticator.</p>
-
-<p>Now, the gritty details on how it works: </p>
-<h3>You and the Authentication Server</h3>
-<p>You want to access an HTTP Service so a plaintext request is sent to an Authentication Server, a part of the KDC.</p>
-
-<p><img class="displayed" src="/assets/images/Kerb.002.jpg" width="500" height="400" alt="Request"/></p>
-
-<p>The Authentication Server will check if both you are in the KDC database as well as the requested service (the HTTP service).</p>
-
-<p><img class="displayed" src="/assets/images/Kerb.003.jpg" width="500" height="400" alt="DB check"/></p>
-
-<p>If there are no errors (password expired, user/service not found, etc.), it will generate a Session Key between you and the Ticket Granting Server (TGS) that you can decrypt with your/the Client Secret Key that is stored in the KDC database.  The Client Secret Key is your hashed password (plus optionally a salt) – the hash algorithm is chosen during implementation of the Kerberos setup (DES3, RC4, CRC32, AES, etc). This key is stored in the KDC database.</p>
-
-<p><strong>Side note:</strong> the KDC itself is encrypted with a master key to add a layer of difficulty from stealing keys from the database.</p>
-
-<p>The Authentiation Server will then send two messages back to you. One message is the generated Session Key for the Ticket Granting Server (also a part of the KDC). Because your machine has the Client Secret Key, it can decrypt the Client/TGS Session Key.</p>
-
-<p><img class="displayed" src="/assets/images/Kerb.004.jpg" width="500" height="400" alt="Auth2Client"/></p>
-
-<p>The second message is the Ticket Granting Ticket (TGT) that includes your client ID, network address, validity period of the ticket and the Client/TGS Session Key. This second message is encrypted with the Ticket Granting Server Secret Key.</p>
-
-<p><img class="displayed" src="/assets/images/Kerb.005.jpg" width="500" height="400" alt="ClientDecryptAuth"/></p>
-<h3>You and the Ticket Granting Server</h3>
-<p>Your machine can not decode the TGT, so it sends it to the Ticket Granting Server.</p>
-
-<p><img class="displayed" src="/assets/images/Kerb.006.jpg" width="500" height="400" alt="Client2TGS"/></p>
-
-<p>Your machine sends another message to the TGS – an Authenticator that contains your client ID as well as a timestamp that is encrypted with the Client/TGS Session Key previously generated by the Authentication Server that you had decrypted with your Client Secret Key.</p>
-
-<p>The Ticket Granting Server decrypts the first message with its Secret Key and reads the TGT.</p>
-
-<p><img class="displayed" src="/assets/images/Kerb.007.jpg" width="500" height="400" alt="TGSDecrypt"/></p>
-
-<p>In order for the Ticket Granting Server to confirm your client ID, timestamp and validity period of the TGT, it decrypts the second message you sent, the Authenticator, with the Client/TGS Session Key it got from decrypting the TGT. </p>
-
-<p>The Ticket Granting Server then sends you two messages: the first is a ticket for you to talk to the HTTP service that contains information about your ID, the validity period of this ticket, network address, and a Client/HTTP Service Session Key (generated by the TGS), and is encrypted with the HTTP Service Secret Key. Only the HTTP Service can decrypt this new ticket.</p>
-
-<p><img class="displayed" src="/assets/images/Kerb.008.jpg" width="500" height="400" alt="TGS2Client"/></p>
-
-<p>The second message is the Client/HTTP Service Session Key that’s encrypted with the Client/TGS Session Key.</p>
-<h3>You and the HTTP Service</h3>
-<p>Your machine then decrypts the last message with the Client/Ticket Granting Server Session key to obtain the Client/HTTP Service Session key. </p>
-
-<p>Your machine can’t, however, decrypt the ticket for the HTTP Service since it’s encrypted with the HTTP Service Secret Key.</p>
-
-<p><img class="displayed" src="/assets/images/Kerb.009.jpg" width="500" height="400" alt="ClientDecryptTGS"/></p>
-
-<p>Your machine then sends the first message that the Ticket Granting Server sent you, the ticket to the HTTP Service that is encrypted with the HTTP Service Secret Key. </p>
-
-<p>Your machine also then sends an Authenticator that contains your client ID plus a timestamp that is encrypted with the Client/TGS Session Key.</p>
-
-<p><img class="displayed" src="/assets/images/Kerb.010.jpg" width="500" height="400" alt="Client2HTTP"/></p>
-
-<p>The HTTP Service then decrypts your first message with its secret key to get your client ID, network address, validity period, and the Client/HTTP Service Session Key.</p>
-
-<p><img class="displayed" src="/assets/images/Kerb.011.jpg" width="500" height="400" alt="HTTPDecrypt"/></p>
-
-<p>It then decrypts your second message using the Client/HTTP Service Session Key. It can then compare the second message’s client ID and timestamp to the information decrypted from your first message.</p>
-
-<p>The HTTP Service then sends an Authenticator message to you confirming its identity to you, with a message containing timestamp + 1 and is encrypted with the Client/HTTP Service Session key.</p>
-
-<p><img class="displayed" src="/assets/images/Kerb.012.jpg" width="500" height="400" alt="HTTPAuth"/></p>
-
-<p>Your machine reads the Authenticator message, and knows that it has to receive a message with timestamp + 1. It decrypts the message with the Client/HTTP Service Session Key.</p>
-
-<p><img class="displayed" src="/assets/images/Kerb.013.jpg" width="500" height="400" alt="ClientDecryptHTTP"/></p>
-
-<p>And now both you and the HTTP Service have been authenticated!</p>
-
-<p><img class="displayed" src="/assets/images/Kerb.014.jpg" width="500" height="400" alt="Authed"/></p>
-
-<hr>
-
-<p>In a future post, I’ll write up how to actually setup a server for Kerberos authentication.</p>
-
-<hr>
-
-<p>Some current implementations of Kerberos:</p>
+<p>Other important points:</p>
 
 <ul>
-<li><a href="http://technet.microsoft.com/en-us/library/bb742516.aspx">Windows Active Directory</a></li>
-<li><a href="http://freeipa.org">freeIPA</a></li>
-<li><a href="http://www.h5l.org/">Heimdal</a> </li>
-<li><a href="http://www.gnu.org/software/shishi/">GNU Shishi</a></li>
+<li>With each interaction, you’ll receive two messages. Each message is one that you can decrypt, and one that you can not. </li>
+<li>The service or machine you are requesting access to <strong>never</strong> communicates directly with the KDC.</li>
+<li>The KDC stores all of the secret keys for user machines and services in its database.</li>
+<li>Secret keys are passwords plus a salt that are hashed – the <a href="http://web.mit.edu/kerberos/krb5-current/doc/admin/conf_files/kdc_conf.html#encryption-and-salt-types">hash algorithm</a> is chosen during implementation of the Kerberos setup. For services or host machines, there are no passwords (who would enter it). A key is actually generated by an admin during initial setup and memorized on the service/host machine. </li>
+<li><strong>Again</strong>, these secret keys are all stored in the KDC database; <a href="#in-a-nutshell">recall</a> the Kerberos’ reliance on symmetric-key cryptography.</li>
+<li>The KDC itself is encrypted with a master key to add a layer of difficulty from stealing keys from the database.</li>
+<li>There are Kerberos <a href="http://k5wiki.kerberos.org/wiki/Pkinit_configuration">configurations</a> and <a href="http://freeipa.org">implementations</a> that use public-key cryptography instead of symmetrical key encryption.</li>
 </ul>
 
-<p>Other resources for Kerberos:</p>
+<p><em>An aside:</em> the order of the messages and their contents discussed here does not reflect the order in which they are sent over TCP or UDP. </p>
+
+<p>The example below describes what happens when you request something from an internal HTTP Service – like information regarding payroll within your corporate intranet.</p>
+<h3 id="you-and-the-authentication-server">You and the Authentication Server</h3>
+<p>You want to access an HTTP Service, but first you must introduce yourself to the Authentication Server. Logging into your computer, or <code>kinit USERNAME</code>, initiates that introduction via a plaintext request for a Ticket Granting Ticket (TGT). The plaintext message contains:</p>
 
 <ul>
-<li><a href="http://content.hccfl.edu/pollock/AUnixSec/MoronsGuideToKerberos.htm">Moron&#39;s Guide to Kerberos</a></li>
-<li>Video: <a href="http://www.youtube.com/watch?v=7-LjpO2nTJo">Kerberos Authentication Guide</a></li>
-<li><a href="http://www.ietf.org/rfc/rfc4120.txt">RFC 4120: The Kerberos Network Authentication Service v5</a></li>
+<li>your name/ID</li>
+<li>the name/ID of the requested service (in this case, service is the Ticket Granting Server),</li>
+<li>your network address (may be a list of IP addresses for multiple machines, or may be null if wanting to use on any machine), and</li>
+<li>requested lifetime for the validity of the TGT,</li>
 </ul>
 
+<p>and is sent to the Authentication Server.</p>
+
+<p><img class="displayed" src="/assets/images/Kerb.002.jpg" width="630" height="475" alt="Request to AS"/></p>
+
+<p>The Authentication Server will check if you are in the KDC database. This check is only to see if you exist; no credentials are checked.</p>
+
+<p><img class="displayed" src="/assets/images/Kerb.003.jpg" width="630" height="475" alt="AS DB check"/></p>
+
+<p>If there are no errors (e.g. user is not found), it will randomly generate a key called a <span id="tgs-session-key">session key</span> for use between you and the Ticket Granting Server (TGS).  </p>
+
+<p>The Authentication Server will then send two messages back to you. One message is the TGT that contains:</p>
+
+<ul>
+<li>your name/ID,</li>
+<li>the TGS name/ID,</li>
+<li>timestamp,</li>
+<li>your network address (may be a list of IP addresses for multiple machines, or may be null if wanting to use on any machine)</li>
+<li>lifetime of the TGT (could be what you initially requested, lower if you or the TGS’s secret keys are about to expire, or another limit that was implemented during the Kerberos setup), and</li>
+<li><font id="tgs-session-key">TGS Session Key</font>,</li>
+</ul>
+
+<p>and is encrypted with the <span id="tgs-secret-key">TGS Secret Key</span> . The other message contains:</p>
+
+<ul>
+<li>the TGS name/ID,</li>
+<li>timestamp,</li>
+<li>lifetime (same as above), and</li>
+<li><font id="tgs-session-key">TGS Session Key</font></li>
+</ul>
+
+<p>and is encrypted with your <span id="client-secret-key">Client Secret Key</span>.  Note that the <span id="tgs-session-key">TGS Session Key</span> is the shared key between you and the TGS.</p>
+
+<p><img class="displayed" src="/assets/images/Kerb.004.jpg" width="630" height="475" alt="AS Response to Client"/></p>
+
+<p>Your <span id="client-secret-key">Client Secret Key</span> is determined by prompting you for your password, appending a salt (made up of <code>user@REALMNAME.COM</code>) and hashing the whole thing. Now you can use it for decrypting the second message in order to obtain the <span id="tgs-session-key">TGS Session Key</span>. If the password is incorrect, then you will not be able to decrypt the message. Please note that this is the step in which the password you enter is implicitly validated.</p>
+
+<p><img class="displayed" src="/assets/images/Kerb.005.jpg" width="630" height="475" alt="Client Decrypt Response"/></p>
+
+<p>You can not, however, decrypt the TGT since you do not know the <span id="tgs-secret-key">TGS Secret Key</span>. The encrypted TGT is stored within your credential cache.</p>
+<h3 id="you-and-the-ticket-granting-server">You and the Ticket Granting Server</h3>
+<p>At this point, you have the TGT that you can not read because you do not have the <span id="tgs-secret-key">TGS Secret Key</span> to decrypt it. You do, however, have the <span id="tgs-session-key">TGS Session Key</span>. </p>
+
+<p>It’s now your turn to send two messages. You first prepare the Authenticator, encrypted with the <span id="tgs-session-key">TGS Session Key</span>, containing:</p>
+
+<ul>
+<li>your name/ID, and</li>
+<li>timestamp.</li>
+</ul>
+
+<p>You send an unencrypted message that contains:</p>
+
+<ul>
+<li>the requested HTTP Service name/ID you want access to, and</li>
+<li>lifetime of the Ticket for the HTTP Service, </li>
+</ul>
+
+<p>along with the encrypted Authenticator and TGT to the Ticket Granting Server. </p>
+
+<p><img class="displayed" src="/assets/images/Kerb.006.jpg" width="630" height="475" alt="Client messages to TGS"/></p>
+
+<p>The Ticket Granting Server will first check the KDC database to see if the HTTP Service exists. </p>
+
+<p><img class="displayed" src="/assets/images/Kerb.007.jpg" width="630" height="475" alt="TGS DB check"/></p>
+
+<p>If so, the TGS decrypts the TGT with its <span id="secret-key">Secret Key</span> . Since the now-unencrypted TGT contains the <span id="tgs-session-key">TGS Session Key</span>, the TGS can decrypt the Authenticator you sent.</p>
+
+<p><img class="displayed" src="/assets/images/Kerb.008.jpg" width="630" height="475" alt="TGS Decrypts messages"/></p>
+
+<p>The TGS will then do the following:</p>
+
+<ul>
+<li>compare your client ID from the Authenticator to that of the TGT </li>
+<li>compare the timestamp from the Authenticator to that of the TGT (typical Kerberos-system tolerance of difference is 2 minutes, but can be configured otherwise)</li>
+<li>check to see if the TGT is expired (the lifetime element),</li>
+<li>check that the Authenticator is not already in the TGS’s cache (for avoiding replay attacks), and </li>
+<li>if the network address in the original request is not null, compares the source’s IP address to your network address (or within the requested list) within the TGT.</li>
+</ul>
+
+<p>The Ticket Granting Server then randomly generates the <span id="http-session-key">HTTP Service Session Key</span>, and prepares the HTTP Service ticket for you that contains:</p>
+
+<ul>
+<li>your name/ID,</li>
+<li>HTTP Service name/ID,</li>
+<li>your network address (may be a list of IP addresses for multiple machines, or may be null if wanting to use on any machine),</li>
+<li>timestamp,</li>
+<li>lifetime of the validity of the ticket, and</li>
+<li><font id="http-session-key">HTTP Service Session Key</font>,</li>
+</ul>
+
+<p>and encrypts it with the <span id="http-secret-key">HTTP Service Secret Key</span>. </p>
+
+<p><img class="displayed" src="/assets/images/Kerb.009.jpg" width="630" height="475" alt="TGS responds to Client"/></p>
+
+<p>Then the TGS sends you two messages. One is the encrypted HTTP Service Ticket; the other contains:</p>
+
+<ul>
+<li>HTTP Service name/ID,</li>
+<li>timestamp,</li>
+<li>lifetime of the validity of the ticket, and</li>
+<li><font id="http-session-key">HTTP Service Session Key</font>,</li>
+</ul>
+
+<p>that is encrypted with the <span id="tgs-session-key">TGS Session Key</span>.</p>
+
+<p>Your machine decrypts the latter message with the <span id="tgs-session-key">TGS Session Key</span> that it cached earlier to obtain the <span id="http-session-key">HTTP Service Session Key</span>. </p>
+
+<p>Your machine can not, however, decrypt the HTTP Service Ticket since it’s encrypted with the <span id="http-secret-key">HTTP Service Secret Key</span>.</p>
+
+<p><img class="displayed" src="/assets/images/Kerb.010.jpg" width="630" height="475" alt="Client Decrypt TGS messages"/></p>
+<h3 id="you-and-the-http-service">You and the HTTP Service</h3>
+<p>To now access the HTTP Service, your machine prepares another Authenticator message that contains:</p>
+
+<ul>
+<li>your name/ID,</li>
+<li>timestamp,</li>
+</ul>
+
+<p>and is encrypted with the <span id="http-session-key">HTTP Service Session Key</span>.  Your machine then sends the Authenticator and the still-encrypted HTTP Service Ticket received from the TGS.</p>
+
+<p><img class="displayed" src="/assets/images/Kerb.011.jpg" width="630" height="475" alt="Client messages HTTP Service"/></p>
+
+<p>The HTTP Service then decrypts the Ticket with its <span id="http-secret-key">Secret Key</span> to obtain the <span id="http-session-key">HTTP Service Session Key</span>.  It then uses that <span id="http-session-key">Session Key</span> to decrypt the Authenticator message you sent. </p>
+
+<p><img class="displayed" src="/assets/images/Kerb.012.jpg" width="630" height="475" alt="HTTP Decrypts messages"/></p>
+
+<p>Similar to the TGS, the HTTP Server will then do the following:</p>
+
+<ul>
+<li>compares your client ID from the Authenticator to that of the Ticket,</li>
+<li>compares the timestamp from the Authenticator to that of the Ticket (typical Kerberos-system tolerance of difference is 2 minutes, but can be configured otherwise),</li>
+<li>checks to see if the Ticket is expired (the lifetime element),</li>
+<li>checks that the Authenticator is not already in the HTTP Server’s cache (for avoiding replay attacks), and </li>
+<li>if the network address in the original request is not null, compares the source’s IP address to your network address (or within the requested list) within the TGT.</li>
+</ul>
+
+<p>The HTTP Service then sends an Authenticator message containing its ID and timestamp in order to confirm its identity to you and is encrypted with the <span id="http-session-key">HTTP Service Session Key</span>.</p>
+
+<p><img class="displayed" src="/assets/images/Kerb.013.jpg" width="630" height="475" alt="HTTP responds with Auth"/></p>
+
+<p>Your machine reads the Authenticator message by decrypting with the cached <span id="http-session-key">HTTP Service Session Key</span>, and knows that it has to receive a message with the HTTP Service’s ID and timestamp.</p>
+
+<p><img class="displayed" src="/assets/images/Kerb.014.jpg" width="630" height="475" alt="Client Decrypt HTTP Auth"/></p>
+
+<p>And now you have been authenticated to use the HTTP Service. Future requests use the cached HTTP Service Ticket, so long as it has not expired as defined within the lifetime attribute.</p>
+
+<p>While I will write on this later, the HTTP Service itself must be able to support Kerberos. As well, you must also have a browser that supports <a href="http://www.ietf.org/rfc/rfc4559.txt">SPNEGO/Negotiate</a>.</p>
+
+<p><img class="displayed" src="/assets/images/Kerb.015.jpg" width="630" height="475" alt="Authed"/></p>
+
+<p>Perhaps re-read <a href="#to-keep-in-the-back-of-your-mind">the points</a> previously outlined; check out <a href="http://www.h5l.org/">this</a> or <a href="http://www.gnu.org/software/shishi/">this</a> current implementation, especially <a href="http://freeipa.org">the one on which I am paid to work</a> that communicates with <a href="http://technet.microsoft.com/en-us/library/bb742516.aspx">this popular implementation</a>; or review a <a href="http://www.kerberos.org/software/tutorial.html">tutorial</a>, <a href="http://content.hccfl.edu/pollock/AUnixSec/MoronsGuideToKerberos.htm">resource guide</a>, the go-to <a href="http://www.youtube.com/watch?v=7-LjpO2nTJo">video</a> that was sent to me when I started learning about Kerberos, or the <a href="http://www.ietf.org/rfc/rfc4120.txt">RFC itself</a>.  </p>
+
+<p>The above images were rendered with Keynote with icons used from <a href="http://fortawesome.github.com/Font-Awesome/">font awesome</a> and <a href="http://glyphicons.com/">glyphicons</a>, and are available on <a href="https://www.slideshare.net/roguelynn/kerberos-slides/">slideshare</a>.</p>
+
+<p id="break">&#12316;</p>
+
+<p>In a future posts, I’ll write up how to actually setup a Kerberos realm, setting up an HTTP Service that will accept Negotiate authentication, and writing a web application that can plug into Kerberos for its authentication.</p>
+
+            <p id="footer">&#8756;</p>
             <div id="disqus_thread"></div>
                 <script type="text/javascript">
                     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
