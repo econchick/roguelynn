@@ -10,3 +10,6 @@ social:
 jinja:
     extensions:
         - jinja2.ext.loopcontrols
+misaka:
+    render_flags:
+        toc: true

@@ -5,7 +5,7 @@
     <link rel="alternate" href="http://www.roguelynn.com/" />
     <link rel="self" href="http://www.roguelynn.com/feed.xml" type="application/atom+xml" />
     <id>http://www.roguelynn.com/</id>
-    <updated>2013-04-01T02:36:50Z</updated>
+    <updated>2013-04-02T16:36:15Z</updated>
 
     <author>
         <name>Lynn Root</name>
@@ -13,6 +13,242 @@
         <uri>http://www.roguelynn.com/</uri>
     </author>
 
+    
+        <entry>
+            <title type="html">Explain like I’m 5: Kerberos</title>
+            <link rel="alternate" href="http://www.roguelynn.com/words/explain-like-im-5-kerberos/" type="text/html" />
+            <id>http://www.roguelynn.com/words/explain-like-im-5-kerberos/</id>
+            <updated>2013-04-02T16:34:00Z</updated>
+
+            <author>
+                <name>Lynn Root</name>
+                <email>lynn@lynnroot.com</email>
+                <uri>http://www.roguelynn.com/</uri>
+            </author>
+            <content type="html">&lt;p&gt;Explain like I’m 5 years old: Kerberos – what is Kerberos, and why should I care?&lt;/p&gt;
+
+&lt;p&gt;While this topic probably can not be explained to a 5 year-old and be understood, this is my attempt at defragmenting documentation with some visual aids and digestible language.&lt;/p&gt;
+&lt;h3 id=&#34;in-a-nutshell&#34;&gt;In a nutshell&lt;/h3&gt;
+&lt;p&gt;Basically, Kerberos comes down to just this:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;a protocol for authentication&lt;/li&gt;
+&lt;li&gt;uses tickets to authenticate&lt;/li&gt;
+&lt;li&gt;avoids storing passwords locally or sending them over the internet&lt;/li&gt;
+&lt;li&gt;involves a trusted 3rd-party&lt;/li&gt;
+&lt;li&gt;built on symmetric-key cryptography&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You have a &lt;strong&gt;ticket&lt;/strong&gt; – your proof of identity encrypted with a &lt;span id=&#34;secret-key&#34;&gt;secret key&lt;/span&gt; for the particular service requested – on your local machine (creation of a ticket is described below); so long as it’s valid, you can access the requested service that is within a Kerberos realm.&lt;/p&gt;
+
+&lt;p&gt;Typically, this is used within corporate/internal environments. Perhaps you want to access your internal payroll site to review what little bonus your boss has given you. Rather than re-entering your user/password credentials, your ticket (cached on your system) is used to authenticate allowing for single sign-on.&lt;/p&gt;
+
+&lt;p&gt;Your ticket is refreshed when you sign on to your computer, or when you &lt;code&gt;kinit USER&lt;/code&gt; within your terminal.&lt;/p&gt;
+
+&lt;p&gt;For the trivia-loving folks, Kerberos’ name comes from &lt;a href=&#34;http://l.ynn.me/Zxcew1&#34;&gt;Greek mythology&lt;/a&gt;, the three-headed guard dog of &lt;a href=&#34;http://en.wikipedia.org/wiki/Hades&#34;&gt;Hades&lt;/a&gt;. It’s pretty fitting since it takes a third-party (a Key Distribution Center) to authenticate between a client and a service or host machine.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Hades-et-Cerberus-III.jpg&#34; width=&#34;300&#34; height=&#34;450&#34;/&gt;&lt;br&gt;
+&lt;p id=&#34;caption&#34;&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/File:Hades-et-Cerberus-III.jpg&#34;&gt;Wikipedia&lt;/a&gt;&lt;/p&gt;&lt;/p&gt;
+&lt;h3 id=&#34;kerberos-realm&#34;&gt;Kerberos Realm&lt;/h3&gt;
+&lt;p&gt;Admins create realms – Kerberos realms – that will encompass all that is available to access.  Granted, &lt;strong&gt;you&lt;/strong&gt; may not have access to certain services or host machines that is defined within the policy management – developers should not access anything finance related, stuff like that. But a realm defines what Kerberos manages in terms of who can access what. &lt;/p&gt;
+
+&lt;p&gt;Your machine, the Client, lives within this realm, as well as the service or host you want to request and the Key Distribution Center, KDC (no, not the &lt;a href=&#34;http://en.wikipedia.org/wiki/KGB&#34;&gt;KGB&lt;/a&gt;, although I always think of that, too).  In the following example, I separate out the Authentication Server and the Ticket Granting Server, but both are within the KDC.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.001.jpg&#34; width=&#34;630&#34; height=&#34;475&#34; alt=&#34;Kerberos Realm&#34;/&gt;&lt;/p&gt;
+&lt;h3 id=&#34;to-keep-in-the-back-of-your-mind&#34;&gt;To keep in the back of your mind&lt;/h3&gt;
+&lt;p&gt;You may want to come back up here after you read through the gritty details on how the example works. &lt;/p&gt;
+
+&lt;p&gt;When requesting access to a service or host, three interactions take place between you and:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;the Authentication Server&lt;/li&gt;
+&lt;li&gt;the Ticket Granting Server&lt;/li&gt;
+&lt;li&gt;the Service or host machine that you’re wanting access to. &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Other important points:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;With each interaction, you’ll receive two messages. Each message is one that you can decrypt, and one that you can not. &lt;/li&gt;
+&lt;li&gt;The service or machine you are requesting access to &lt;strong&gt;never&lt;/strong&gt; communicates directly with the KDC.&lt;/li&gt;
+&lt;li&gt;The KDC stores all of the secret keys for user machines and services in its database.&lt;/li&gt;
+&lt;li&gt;Secret keys are passwords plus a salt that are hashed – the &lt;a href=&#34;http://web.mit.edu/kerberos/krb5-current/doc/admin/conf_files/kdc_conf.html#encryption-and-salt-types&#34;&gt;hash algorithm&lt;/a&gt; is chosen during implementation of the Kerberos setup. For services or host machines, there are no passwords (who would enter it). A key is actually generated by an admin during initial setup and memorized on the service/host machine. &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Again&lt;/strong&gt;, these secret keys are all stored in the KDC database; &lt;a href=&#34;#in-a-nutshell&#34;&gt;recall&lt;/a&gt; the Kerberos’ reliance on symmetric-key cryptography.&lt;/li&gt;
+&lt;li&gt;The KDC itself is encrypted with a master key to add a layer of difficulty from stealing keys from the database.&lt;/li&gt;
+&lt;li&gt;There are Kerberos &lt;a href=&#34;http://k5wiki.kerberos.org/wiki/Pkinit_configuration&#34;&gt;configurations&lt;/a&gt; and &lt;a href=&#34;http://freeipa.org&#34;&gt;implementations&lt;/a&gt; that use public-key cryptography instead of symmetrical key encryption.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;An aside:&lt;/em&gt; the order of the messages and their contents discussed here does not reflect the order in which they are sent over TCP or UDP. &lt;/p&gt;
+
+&lt;p&gt;The example below describes what happens when you request something from an internal HTTP Service – like information regarding payroll within your corporate intranet.&lt;/p&gt;
+&lt;h3 id=&#34;you-and-the-authentication-server&#34;&gt;You and the Authentication Server&lt;/h3&gt;
+&lt;p&gt;You want to access an HTTP Service, but first you must introduce yourself to the Authentication Server. Logging into your computer, or &lt;code&gt;kinit USERNAME&lt;/code&gt;, initiates that introduction via a plaintext request for a Ticket Granting Ticket (TGT). The plaintext message contains:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;your name/ID&lt;/li&gt;
+&lt;li&gt;the name/ID of the requested service (in this case, service is the Ticket Granting Server),&lt;/li&gt;
+&lt;li&gt;your network address (may be a list of IP addresses for multiple machines, or may be null if wanting to use on any machine), and&lt;/li&gt;
+&lt;li&gt;requested lifetime for the validity of the TGT,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;and is sent to the Authentication Server.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.002.jpg&#34; width=&#34;630&#34; height=&#34;475&#34; alt=&#34;Request to AS&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;The Authentication Server will check if you are in the KDC database. This check is only to see if you exist; no credentials are checked.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.003.jpg&#34; width=&#34;630&#34; height=&#34;475&#34; alt=&#34;AS DB check&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;If there are no errors (e.g. user is not found), it will randomly generate a key called a &lt;span id=&#34;tgs-session-key&#34;&gt;session key&lt;/span&gt; for use between you and the Ticket Granting Server (TGS).  &lt;/p&gt;
+
+&lt;p&gt;The Authentication Server will then send two messages back to you. One message is the TGT that contains:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;your name/ID,&lt;/li&gt;
+&lt;li&gt;the TGS name/ID,&lt;/li&gt;
+&lt;li&gt;timestamp,&lt;/li&gt;
+&lt;li&gt;your network address (may be a list of IP addresses for multiple machines, or may be null if wanting to use on any machine)&lt;/li&gt;
+&lt;li&gt;lifetime of the TGT (could be what you initially requested, lower if you or the TGS’s secret keys are about to expire, or another limit that was implemented during the Kerberos setup), and&lt;/li&gt;
+&lt;li&gt;&lt;font id=&#34;tgs-session-key&#34;&gt;TGS Session Key&lt;/font&gt;,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;and is encrypted with the &lt;span id=&#34;tgs-secret-key&#34;&gt;TGS Secret Key&lt;/span&gt; . The other message contains:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;the TGS name/ID,&lt;/li&gt;
+&lt;li&gt;timestamp,&lt;/li&gt;
+&lt;li&gt;lifetime (same as above), and&lt;/li&gt;
+&lt;li&gt;&lt;font id=&#34;tgs-session-key&#34;&gt;TGS Session Key&lt;/font&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;and is encrypted with your &lt;span id=&#34;client-secret-key&#34;&gt;Client Secret Key&lt;/span&gt;.  Note that the &lt;span id=&#34;tgs-session-key&#34;&gt;TGS Session Key&lt;/span&gt; is the shared key between you and the TGS.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.004.jpg&#34; width=&#34;630&#34; height=&#34;475&#34; alt=&#34;AS Response to Client&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Your &lt;span id=&#34;client-secret-key&#34;&gt;Client Secret Key&lt;/span&gt; is determined by prompting you for your password, appending a salt (made up of &lt;code&gt;user@REALMNAME.COM&lt;/code&gt;) and hashing the whole thing. Now you can use it for decrypting the second message in order to obtain the &lt;span id=&#34;tgs-session-key&#34;&gt;TGS Session Key&lt;/span&gt;. If the password is incorrect, then you will not be able to decrypt the message. Please note that this is the step in which the password you enter is implicitly validated.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.005.jpg&#34; width=&#34;630&#34; height=&#34;475&#34; alt=&#34;Client Decrypt Response&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;You can not, however, decrypt the TGT since you do not know the &lt;span id=&#34;tgs-secret-key&#34;&gt;TGS Secret Key&lt;/span&gt;. The encrypted TGT is stored within your credential cache.&lt;/p&gt;
+&lt;h3 id=&#34;you-and-the-ticket-granting-server&#34;&gt;You and the Ticket Granting Server&lt;/h3&gt;
+&lt;p&gt;At this point, you have the TGT that you can not read because you do not have the &lt;span id=&#34;tgs-secret-key&#34;&gt;TGS Secret Key&lt;/span&gt; to decrypt it. You do, however, have the &lt;span id=&#34;tgs-session-key&#34;&gt;TGS Session Key&lt;/span&gt;. &lt;/p&gt;
+
+&lt;p&gt;It’s now your turn to send two messages. You first prepare the Authenticator, encrypted with the &lt;span id=&#34;tgs-session-key&#34;&gt;TGS Session Key&lt;/span&gt;, containing:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;your name/ID, and&lt;/li&gt;
+&lt;li&gt;timestamp.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You send an unencrypted message that contains:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;the requested HTTP Service name/ID you want access to, and&lt;/li&gt;
+&lt;li&gt;lifetime of the Ticket for the HTTP Service, &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;along with the encrypted Authenticator and TGT to the Ticket Granting Server. &lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.006.jpg&#34; width=&#34;630&#34; height=&#34;475&#34; alt=&#34;Client messages to TGS&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;The Ticket Granting Server will first check the KDC database to see if the HTTP Service exists. &lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.007.jpg&#34; width=&#34;630&#34; height=&#34;475&#34; alt=&#34;TGS DB check&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;If so, the TGS decrypts the TGT with its &lt;span id=&#34;secret-key&#34;&gt;Secret Key&lt;/span&gt; . Since the now-unencrypted TGT contains the &lt;span id=&#34;tgs-session-key&#34;&gt;TGS Session Key&lt;/span&gt;, the TGS can decrypt the Authenticator you sent.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.008.jpg&#34; width=&#34;630&#34; height=&#34;475&#34; alt=&#34;TGS Decrypts messages&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;The TGS will then do the following:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;compare your client ID from the Authenticator to that of the TGT &lt;/li&gt;
+&lt;li&gt;compare the timestamp from the Authenticator to that of the TGT (typical Kerberos-system tolerance of difference is 2 minutes, but can be configured otherwise)&lt;/li&gt;
+&lt;li&gt;check to see if the TGT is expired (the lifetime element),&lt;/li&gt;
+&lt;li&gt;check that the Authenticator is not already in the TGS’s cache (for avoiding replay attacks), and &lt;/li&gt;
+&lt;li&gt;if the network address in the original request is not null, compares the source’s IP address to your network address (or within the requested list) within the TGT.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The Ticket Granting Server then randomly generates the &lt;span id=&#34;http-session-key&#34;&gt;HTTP Service Session Key&lt;/span&gt;, and prepares the HTTP Service ticket for you that contains:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;your name/ID,&lt;/li&gt;
+&lt;li&gt;HTTP Service name/ID,&lt;/li&gt;
+&lt;li&gt;your network address (may be a list of IP addresses for multiple machines, or may be null if wanting to use on any machine),&lt;/li&gt;
+&lt;li&gt;timestamp,&lt;/li&gt;
+&lt;li&gt;lifetime of the validity of the ticket, and&lt;/li&gt;
+&lt;li&gt;&lt;font id=&#34;http-session-key&#34;&gt;HTTP Service Session Key&lt;/font&gt;,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;and encrypts it with the &lt;span id=&#34;http-secret-key&#34;&gt;HTTP Service Secret Key&lt;/span&gt;. &lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.009.jpg&#34; width=&#34;630&#34; height=&#34;475&#34; alt=&#34;TGS responds to Client&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Then the TGS sends you two messages. One is the encrypted HTTP Service Ticket; the other contains:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;HTTP Service name/ID,&lt;/li&gt;
+&lt;li&gt;timestamp,&lt;/li&gt;
+&lt;li&gt;lifetime of the validity of the ticket, and&lt;/li&gt;
+&lt;li&gt;&lt;font id=&#34;http-session-key&#34;&gt;HTTP Service Session Key&lt;/font&gt;,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;that is encrypted with the &lt;span id=&#34;tgs-session-key&#34;&gt;TGS Session Key&lt;/span&gt;.&lt;/p&gt;
+
+&lt;p&gt;Your machine decrypts the latter message with the &lt;span id=&#34;tgs-session-key&#34;&gt;TGS Session Key&lt;/span&gt; that it cached earlier to obtain the &lt;span id=&#34;http-session-key&#34;&gt;HTTP Service Session Key&lt;/span&gt;. &lt;/p&gt;
+
+&lt;p&gt;Your machine can not, however, decrypt the HTTP Service Ticket since it’s encrypted with the &lt;span id=&#34;http-secret-key&#34;&gt;HTTP Service Secret Key&lt;/span&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.010.jpg&#34; width=&#34;630&#34; height=&#34;475&#34; alt=&#34;Client Decrypt TGS messages&#34;/&gt;&lt;/p&gt;
+&lt;h3 id=&#34;you-and-the-http-service&#34;&gt;You and the HTTP Service&lt;/h3&gt;
+&lt;p&gt;To now access the HTTP Service, your machine prepares another Authenticator message that contains:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;your name/ID,&lt;/li&gt;
+&lt;li&gt;timestamp,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;and is encrypted with the &lt;span id=&#34;http-session-key&#34;&gt;HTTP Service Session Key&lt;/span&gt;.  Your machine then sends the Authenticator and the still-encrypted HTTP Service Ticket received from the TGS.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.011.jpg&#34; width=&#34;630&#34; height=&#34;475&#34; alt=&#34;Client messages HTTP Service&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;The HTTP Service then decrypts the Ticket with its &lt;span id=&#34;http-secret-key&#34;&gt;Secret Key&lt;/span&gt; to obtain the &lt;span id=&#34;http-session-key&#34;&gt;HTTP Service Session Key&lt;/span&gt;.  It then uses that &lt;span id=&#34;http-session-key&#34;&gt;Session Key&lt;/span&gt; to decrypt the Authenticator message you sent. &lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.012.jpg&#34; width=&#34;630&#34; height=&#34;475&#34; alt=&#34;HTTP Decrypts messages&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Similar to the TGS, the HTTP Server will then do the following:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;compares your client ID from the Authenticator to that of the Ticket,&lt;/li&gt;
+&lt;li&gt;compares the timestamp from the Authenticator to that of the Ticket (typical Kerberos-system tolerance of difference is 2 minutes, but can be configured otherwise),&lt;/li&gt;
+&lt;li&gt;checks to see if the Ticket is expired (the lifetime element),&lt;/li&gt;
+&lt;li&gt;checks that the Authenticator is not already in the HTTP Server’s cache (for avoiding replay attacks), and &lt;/li&gt;
+&lt;li&gt;if the network address in the original request is not null, compares the source’s IP address to your network address (or within the requested list) within the TGT.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The HTTP Service then sends an Authenticator message containing its ID and timestamp in order to confirm its identity to you and is encrypted with the &lt;span id=&#34;http-session-key&#34;&gt;HTTP Service Session Key&lt;/span&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.013.jpg&#34; width=&#34;630&#34; height=&#34;475&#34; alt=&#34;HTTP responds with Auth&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Your machine reads the Authenticator message by decrypting with the cached &lt;span id=&#34;http-session-key&#34;&gt;HTTP Service Session Key&lt;/span&gt;, and knows that it has to receive a message with the HTTP Service’s ID and timestamp.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.014.jpg&#34; width=&#34;630&#34; height=&#34;475&#34; alt=&#34;Client Decrypt HTTP Auth&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;And now you have been authenticated to use the HTTP Service. Future requests use the cached HTTP Service Ticket, so long as it has not expired as defined within the lifetime attribute.&lt;/p&gt;
+
+&lt;p&gt;While I will write on this later, the HTTP Service itself must be able to support Kerberos. As well, you must also have a browser that supports &lt;a href=&#34;http://www.ietf.org/rfc/rfc4559.txt&#34;&gt;SPNEGO/Negotiate&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.015.jpg&#34; width=&#34;630&#34; height=&#34;475&#34; alt=&#34;Authed&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Perhaps re-read &lt;a href=&#34;#to-keep-in-the-back-of-your-mind&#34;&gt;the points&lt;/a&gt; previously outlined; check out &lt;a href=&#34;http://www.h5l.org/&#34;&gt;this&lt;/a&gt; or &lt;a href=&#34;http://www.gnu.org/software/shishi/&#34;&gt;this&lt;/a&gt; current implementation, especially &lt;a href=&#34;http://freeipa.org&#34;&gt;the one on which I am paid to work&lt;/a&gt; that communicates with &lt;a href=&#34;http://technet.microsoft.com/en-us/library/bb742516.aspx&#34;&gt;this popular implementation&lt;/a&gt;; or review a &lt;a href=&#34;http://www.kerberos.org/software/tutorial.html&#34;&gt;tutorial&lt;/a&gt;, &lt;a href=&#34;http://content.hccfl.edu/pollock/AUnixSec/MoronsGuideToKerberos.htm&#34;&gt;resource guide&lt;/a&gt;, the go-to &lt;a href=&#34;http://www.youtube.com/watch?v=7-LjpO2nTJo&#34;&gt;video&lt;/a&gt; that was sent to me when I started learning about Kerberos, or the &lt;a href=&#34;http://www.ietf.org/rfc/rfc4120.txt&#34;&gt;RFC itself&lt;/a&gt;.  &lt;/p&gt;
+
+&lt;p&gt;The above images were rendered with Keynote with icons used from &lt;a href=&#34;http://fortawesome.github.com/Font-Awesome/&#34;&gt;font awesome&lt;/a&gt; and &lt;a href=&#34;http://glyphicons.com/&#34;&gt;glyphicons&lt;/a&gt;, and are available on &lt;a href=&#34;https://www.slideshare.net/roguelynn/kerberos-slides/&#34;&gt;slideshare&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p id=&#34;break&#34;&gt;&amp;#12316;&lt;/p&gt;
+
+&lt;p&gt;In a future posts, I’ll write up how to actually setup a Kerberos realm, setting up an HTTP Service that will accept Negotiate authentication, and writing a web application that can plug into Kerberos for its authentication.&lt;/p&gt;
+</content>
+        </entry>
     
         <entry>
             <title type="html">Introduce Django to your old friends</title>
@@ -45,155 +281,6 @@
         </entry>
     
         <entry>
-            <title type="html">Explain like I&#39;m 5: Kerberos</title>
-            <link rel="alternate" href="http://www.roguelynn.com/words/explain-like-im-5-kerberos/" type="text/html" />
-            <id>http://www.roguelynn.com/words/explain-like-im-5-kerberos/</id>
-            <updated>2013-03-26T02:36:00Z</updated>
-
-            <author>
-                <name>Lynn Root</name>
-                <email>lynn@lynnroot.com</email>
-                <uri>http://www.roguelynn.com/</uri>
-            </author>
-            <content type="html">&lt;p&gt;Explain like I’m 5 years old: Kerberos – what is Kerberos, and why should I care?&lt;/p&gt;
-&lt;h3&gt;In a nutshell&lt;/h3&gt;
-&lt;p&gt;Basically, Kerberos comes down to just this:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;a protocol for authentication&lt;/li&gt;
-&lt;li&gt;uses tickets to authenticate&lt;/li&gt;
-&lt;li&gt;involves a trusted 3rd-party&lt;/li&gt;
-&lt;li&gt;built on symmetric-key cryptography&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;You have a &lt;strong&gt;ticket&lt;/strong&gt; – your proof of identity encrypted with a secret key for the particular service requested – and so long as it’s valid, you can access the requested service that is within a Kerberos realm.&lt;/p&gt;
-
-&lt;p&gt;Typically, this is used within corporate/internal environments. Perhaps you want to access the internal benefits site to review your health care selections. Rather than re-entering your user/password credentials, your ticket (cached on your system) is used to authenticate allowing for single sign-on.&lt;/p&gt;
-
-&lt;p&gt;Your ticket is refreshed when you sign on to your computer, or when you &lt;code&gt;kinit USER&lt;/code&gt; within your terminal.&lt;/p&gt;
-
-&lt;p&gt;For the trivia-loving folks, Kerberos’ name comes from &lt;a href=&#34;%22http://en.wikipedia.org/wiki/Kerberos_(protocol)#History_and_development%22&#34;&gt;Greek mythology&lt;/a&gt;, the three-headed guard dog of &lt;a href=&#34;http://en.wikipedia.org/wiki/Hades&#34;&gt;Hades&lt;/a&gt;. It’s pretty fitting since it takes a third-party (a Key Distribution Center) to authenticate between a client and a service or host machine.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Hades-et-Cerberus-III.jpg&#34; width=&#34;300&#34; height=&#34;450&#34;/&gt;&lt;/p&gt;
-&lt;h3&gt;Kerberos Realm&lt;/h3&gt;
-&lt;p&gt;Admins create realms – Kerberos realms – that will encompass all that is available to access.  Granted, &lt;strong&gt;you&lt;/strong&gt; may not have access to certain services or host machines that is defined within the policy management – developers should not access anything finance related, stuff like that. But a realm defines what Kerberos manages in terms of who can access what. &lt;/p&gt;
-
-&lt;p&gt;Your machine, the Client, lives within this realm, as well as the service or host you want to request and the Key Distribution Center (KDC).  In the following example, I separate out the Authoritative Server and the Ticket Granting Server, but both are within the KDC.&lt;/p&gt;
-
-&lt;p&gt;Below describes what happens when you request something from an internal HTTP Service – like information on your benefits within your corporate intranet.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.001.jpg&#34; width=&#34;500&#34; height=&#34;400&#34; alt=&#34;Kerberos Realm&#34;/&gt;&lt;/p&gt;
-&lt;h3&gt;Quick Overview&lt;/h3&gt;
-&lt;p&gt;When requesting access to a service or host, three interactions take place between you and:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Authentication Server,&lt;/li&gt;
-&lt;li&gt;Ticket Granting Server,&lt;/li&gt;
-&lt;li&gt;Service or host machine that you’re wanting access to. &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Between each interaction (with the exception of the very first and last interaction), you’ll both send and receive two messages. Each received message is one that you can decrypt, and one that you can not. &lt;/p&gt;
-
-&lt;p&gt;Of the sent messages, one is an authenticator that contains your ID and timestamp, and the other is the message that you received that you can not decrypt.&lt;/p&gt;
-
-&lt;p&gt;The sent messages are decrypted with the respective server, service, or host machine secret key. Within that message is the session key that can decrypt the authenticator.&lt;/p&gt;
-
-&lt;p&gt;Now, the gritty details on how it works: &lt;/p&gt;
-&lt;h3&gt;You and the Authentication Server&lt;/h3&gt;
-&lt;p&gt;You want to access an HTTP Service so a plaintext request is sent to an Authentication Server, a part of the KDC.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.002.jpg&#34; width=&#34;500&#34; height=&#34;400&#34; alt=&#34;Request&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;The Authentication Server will check if both you are in the KDC database as well as the requested service (the HTTP service).&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.003.jpg&#34; width=&#34;500&#34; height=&#34;400&#34; alt=&#34;DB check&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;If there are no errors (password expired, user/service not found, etc.), it will generate a Session Key between you and the Ticket Granting Server (TGS) that you can decrypt with your/the Client Secret Key that is stored in the KDC database.  The Client Secret Key is your hashed password (plus optionally a salt) – the hash algorithm is chosen during implementation of the Kerberos setup (DES3, RC4, CRC32, AES, etc). This key is stored in the KDC database.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Side note:&lt;/strong&gt; the KDC itself is encrypted with a master key to add a layer of difficulty from stealing keys from the database.&lt;/p&gt;
-
-&lt;p&gt;The Authentiation Server will then send two messages back to you. One message is the generated Session Key for the Ticket Granting Server (also a part of the KDC). Because your machine has the Client Secret Key, it can decrypt the Client/TGS Session Key.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.004.jpg&#34; width=&#34;500&#34; height=&#34;400&#34; alt=&#34;Auth2Client&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;The second message is the Ticket Granting Ticket (TGT) that includes your client ID, network address, validity period of the ticket and the Client/TGS Session Key. This second message is encrypted with the Ticket Granting Server Secret Key.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.005.jpg&#34; width=&#34;500&#34; height=&#34;400&#34; alt=&#34;ClientDecryptAuth&#34;/&gt;&lt;/p&gt;
-&lt;h3&gt;You and the Ticket Granting Server&lt;/h3&gt;
-&lt;p&gt;Your machine can not decode the TGT, so it sends it to the Ticket Granting Server.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.006.jpg&#34; width=&#34;500&#34; height=&#34;400&#34; alt=&#34;Client2TGS&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;Your machine sends another message to the TGS – an Authenticator that contains your client ID as well as a timestamp that is encrypted with the Client/TGS Session Key previously generated by the Authentication Server that you had decrypted with your Client Secret Key.&lt;/p&gt;
-
-&lt;p&gt;The Ticket Granting Server decrypts the first message with its Secret Key and reads the TGT.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.007.jpg&#34; width=&#34;500&#34; height=&#34;400&#34; alt=&#34;TGSDecrypt&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;In order for the Ticket Granting Server to confirm your client ID, timestamp and validity period of the TGT, it decrypts the second message you sent, the Authenticator, with the Client/TGS Session Key it got from decrypting the TGT. &lt;/p&gt;
-
-&lt;p&gt;The Ticket Granting Server then sends you two messages: the first is a ticket for you to talk to the HTTP service that contains information about your ID, the validity period of this ticket, network address, and a Client/HTTP Service Session Key (generated by the TGS), and is encrypted with the HTTP Service Secret Key. Only the HTTP Service can decrypt this new ticket.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.008.jpg&#34; width=&#34;500&#34; height=&#34;400&#34; alt=&#34;TGS2Client&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;The second message is the Client/HTTP Service Session Key that’s encrypted with the Client/TGS Session Key.&lt;/p&gt;
-&lt;h3&gt;You and the HTTP Service&lt;/h3&gt;
-&lt;p&gt;Your machine then decrypts the last message with the Client/Ticket Granting Server Session key to obtain the Client/HTTP Service Session key. &lt;/p&gt;
-
-&lt;p&gt;Your machine can’t, however, decrypt the ticket for the HTTP Service since it’s encrypted with the HTTP Service Secret Key.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.009.jpg&#34; width=&#34;500&#34; height=&#34;400&#34; alt=&#34;ClientDecryptTGS&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;Your machine then sends the first message that the Ticket Granting Server sent you, the ticket to the HTTP Service that is encrypted with the HTTP Service Secret Key. &lt;/p&gt;
-
-&lt;p&gt;Your machine also then sends an Authenticator that contains your client ID plus a timestamp that is encrypted with the Client/TGS Session Key.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.010.jpg&#34; width=&#34;500&#34; height=&#34;400&#34; alt=&#34;Client2HTTP&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;The HTTP Service then decrypts your first message with its secret key to get your client ID, network address, validity period, and the Client/HTTP Service Session Key.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.011.jpg&#34; width=&#34;500&#34; height=&#34;400&#34; alt=&#34;HTTPDecrypt&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;It then decrypts your second message using the Client/HTTP Service Session Key. It can then compare the second message’s client ID and timestamp to the information decrypted from your first message.&lt;/p&gt;
-
-&lt;p&gt;The HTTP Service then sends an Authenticator message to you confirming its identity to you, with a message containing timestamp + 1 and is encrypted with the Client/HTTP Service Session key.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.012.jpg&#34; width=&#34;500&#34; height=&#34;400&#34; alt=&#34;HTTPAuth&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;Your machine reads the Authenticator message, and knows that it has to receive a message with timestamp + 1. It decrypts the message with the Client/HTTP Service Session Key.&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.013.jpg&#34; width=&#34;500&#34; height=&#34;400&#34; alt=&#34;ClientDecryptHTTP&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;And now both you and the HTTP Service have been authenticated!&lt;/p&gt;
-
-&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/Kerb.014.jpg&#34; width=&#34;500&#34; height=&#34;400&#34; alt=&#34;Authed&#34;/&gt;&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;In a future post, I’ll write up how to actually setup a server for Kerberos authentication.&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;Some current implementations of Kerberos:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://technet.microsoft.com/en-us/library/bb742516.aspx&#34;&gt;Windows Active Directory&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://freeipa.org&#34;&gt;freeIPA&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.h5l.org/&#34;&gt;Heimdal&lt;/a&gt; &lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.gnu.org/software/shishi/&#34;&gt;GNU Shishi&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Other resources for Kerberos:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://content.hccfl.edu/pollock/AUnixSec/MoronsGuideToKerberos.htm&#34;&gt;Moron&amp;#39;s Guide to Kerberos&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Video: &lt;a href=&#34;http://www.youtube.com/watch?v=7-LjpO2nTJo&#34;&gt;Kerberos Authentication Guide&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.ietf.org/rfc/rfc4120.txt&#34;&gt;RFC 4120: The Kerberos Network Authentication Service v5&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-        </entry>
-    
-        <entry>
             <title type="html">The New Coder: A Path to Software Engineering</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/The-New-Coder-A-path-to-Software-Engineering/" type="text/html" />
             <id>http://www.roguelynn.com/words/The-New-Coder-A-path-to-Software-Engineering/</id>
@@ -215,7 +302,7 @@
 &lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/SoS-writing-classes.png&#34; width=&#34;370&#34; height=&#34;300&#34;)/&gt; &lt;/p&gt;
 
 &lt;p&gt;Yet we’re still &lt;a href=&#34;http://www.youtube.com/watch?v=o9pEzgHorH0&#34; title=&#34;Write fewer classes&#34;&gt;arguing&lt;/a&gt; how best to &lt;a href=&#34;http://lucumr.pocoo.org/2013/2/13/moar-classes/&#34; title=&#34;Write more classes&#34;&gt;approach&lt;/a&gt; software engineering problems and rapidly &lt;a href=&#34;http://docs.topazruby.com/en/latest/&#34; title=&#34;Topaz Ruby&#34;&gt;developing&lt;/a&gt; new &lt;a href=&#34;http://www.rust-lang.org/&#34; title=&#34;Rust Programming Language&#34;&gt;languages&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;Learning how to code in our industrial revolution&lt;/h2&gt;
+&lt;h2 id=&#34;learning-how-to-code-in-our-industrial-revolution&#34;&gt;Learning how to code in our industrial revolution&lt;/h2&gt;
 &lt;p&gt;A textbook and a classroom is fine for learning more established engineering fields like architecture or manufacturing, but with revolutionary pace of software development, how best should we teach its principles? A four-year degree doesn’t merely grant you “l33t” status, certainly not by &lt;a href=&#34;http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.100.9130&#34; title=&#34;Learning and teaching programming: A review and discussion&#34;&gt;researchers’ standards&lt;/a&gt;: &lt;/p&gt;
 
 &lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/SoS-10-years.png&#34; width=&#34;370&#34; height=&#34;300&#34;)/&gt; &lt;/p&gt;
@@ -231,19 +318,19 @@
 &lt;p&gt;Learning from lectures and textbooks only go so far. With typical formal education, one learns that certain computer science concepts exist, like how to compile and install an OS, go deeper into how compiling or installing works, or why a particular code base does not work. But it does not necessarily bridge outside of those concepts to understand its application or how the whole works together with its parts.&lt;/p&gt;
 
 &lt;p&gt;We need something to create those connections outside of those isolated concepts; to build ourselves context while learning; give personal meaning while striving for understanding as a whole. We &lt;a href=&#34;http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.23.924&#34; title=&#34;Constructivism in Computer Science&#34;&gt;construct&lt;/a&gt; our learning rather than simply listen and regurgitate what is taught. So how can we apply that to learning how to code? &lt;/p&gt;
-&lt;h2&gt;Project-based learning&lt;/h2&gt;
+&lt;h2 id=&#34;project-based-learning&#34;&gt;Project-based learning&lt;/h2&gt;
 &lt;p&gt;I started off blowing bubbles - I did take one course in computer science (after I graduated); I would have failed if it weren’t for my crappy little final &lt;a href=&#34;22&#34;&gt;project&lt;/a&gt; shadowing the fact that I couldn’t code.&lt;/p&gt;
 
 &lt;p&gt;But I love it – the cold, chilly, 3am night never looked better to me. But who wants to pay $2000 for a single course whose credit won’t necessarily apply towards anything. I was drowning while from being told &amp;quot;this is how we chlorinate the water&amp;quot; to &amp;quot;here are the hydrodynamic equations that your body must follow in order to swim fast&amp;quot;.&lt;/p&gt;
 
 &lt;p&gt;So I ditched traditional academia and I’ve been learning to code through completing projects.  It’s been a self-directed study with motivation to actually do this for a living. It&amp;#39;s paid off - within a year, I am now a software engineer at Red Hat. Granted I still choke on water every once and a while, but I took to the water myself after studying what others do, how they code, and teaching others.&lt;/p&gt;
-&lt;h2&gt;Learning through frustration&lt;/h2&gt;
+&lt;h2 id=&#34;learning-through-frustration&#34;&gt;Learning through frustration&lt;/h2&gt;
 &lt;p&gt;I&amp;#39;ve certainly belly flopped a few times.  I tend to find myself learning more through frustration than being simply told what or how to do it. It usually ends success but not without tears and wasted time. It may not be the best way to go about learning, but it certainly challenges me to push myself through the hard times; builds up my endurance for longer races.&lt;/p&gt;
 
 &lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/SoS-frustration.png&#34; width=&#34;370&#34; height=&#34;300&#34;)/&gt; &lt;/p&gt;
 
 &lt;p&gt;But I see myself in a good position to teach what I’ve learned - I&amp;#39;m no olympic swimmer, I still have those fresh, n00b eyes when trying to understand a code base. Yet when I try to explain it to someone else, concepts do solidify – teaching others gives that personal meaning and understanding since I want to create that context that builds that cumulative learning.&lt;/p&gt;
-&lt;h2&gt;Passing on the frustration&lt;/h2&gt;
+&lt;h2 id=&#34;passing-on-the-frustration&#34;&gt;Passing on the frustration&lt;/h2&gt;
 &lt;p&gt;In a selfish effort to further my understanding, I am here to coach you with 5 swim lessons: I’ve written five tutorials – well, three are complete, the other two have been coded out and need tutorial language behind it. These are meant to build on each other and thread that “concepts for context” for the new guppy in the water, but also be digestible and not overwhelming.&lt;/p&gt;
 
 &lt;p&gt;The tutorials aim to pick up where introductory or outdated tutorials leave off with fun projects. You learn how to tread water by playing water polo, not by someone dictating to move your arms and legs back and forth. &lt;/p&gt;
@@ -255,7 +342,7 @@
 &lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/SoS-knowledge.png&#34; width=&#34;370&#34; height=&#34;300&#34;)/&gt; &lt;/p&gt;
 
 &lt;p&gt;I want guppies to learn by doing. We can&amp;#39;t read how to swim. You have to feel the water against your hands to learn how to paddle through; you must accidently snort up water to learn how to breathe.&lt;/p&gt;
-&lt;h3&gt;defined goals&lt;/h3&gt;
+&lt;h3 id=&#34;defined-goals&#34;&gt;defined goals&lt;/h3&gt;
 &lt;p&gt;As the new coder dives into the tutorial, s/he will be exposed to what Pythonic means through learning how to construct proper import statements in the proper order, how to write legible docstrings and comments, the language’s keywords when exploring file I/O.&lt;/p&gt;
 
 &lt;p&gt;S/he will work with third-party packages to get a soft intro to what it means to interact with a RESTful API, how to parse the data returned from that API with different data structures. Terminology of object-oriented programming are introduced when instantiating classes and methods versus calling a function.&lt;/p&gt;
@@ -263,21 +350,21 @@
 &lt;p&gt;Each tutorial has the same goal of developing one’s logic in approaching a problem through organization, reading others’ code, debugging, testing, and logging.&lt;/p&gt;
 
 &lt;p&gt;I’ve tried to write these in a way that addresses any “stupid” or “naive” questions by using sidebars or gently introducing new terminology. The difference between docstrings and comments may be obvious to some people, but not all – especially when just starting out.&lt;/p&gt;
-&lt;h3&gt;If you’re curious&lt;/h3&gt;
+&lt;h3 id=&#34;if-youre-curious&#34;&gt;If you’re curious&lt;/h3&gt;
 &lt;p&gt;The constructive learning is exercised by using “if you&amp;#39;re curious” side-bars. &lt;/p&gt;
 
 &lt;p&gt;Of course you’re curious as a new coder! Just a bit of positive language to entice folks to read a bit more advance topics; to push their endurance.&lt;/p&gt;
 
 &lt;p&gt;As more advanced topics are introduced through these side-bars, they are not meant to pressure anyone reading through them - you can take a break to catch your breathe - but they are guided to find out more information if the new coder is wanting to dive deeper.  If a s/he skips or doesn’t understand fully, it’s fine – the tutorial can still be completed with full understanding of the goals, and the “curious” concepts will be explored again in future tutorials.&lt;/p&gt;
-&lt;h3&gt;In Action&lt;/h3&gt;
+&lt;h3 id=&#34;in-action&#34;&gt;In Action&lt;/h3&gt;
 &lt;p&gt;Many times, we’re given a project in school, and we wonder, “What good is this? Is this even used in real life? am I ever going to compete in the state championships?” The application of a project is the pitfall for a lot of folks. It can be discouraging to learn how to swim without a realm to show off one&amp;#39;s skills.&lt;br&gt;
 I include an “in action” conclusion with how each project is used in the industry now. These are not meaningless exercises to learn data structures or how to make a graph with matplotlib. These tutorials use the learning of data structures &lt;em&gt;to&lt;/em&gt; build tools that are being used in real life.&lt;/p&gt;
-&lt;h3&gt;Where to go from here&lt;/h3&gt;
+&lt;h3 id=&#34;where-to-go-from-here&#34;&gt;Where to go from here&lt;/h3&gt;
 &lt;p&gt;Lastly, one main critique for new coders is “where do I go from here” after completing how-tos and guides. I made it to state champs, is that all? &lt;br&gt;
 It’s extremely difficult to learn what you need to learn, yet not know what &lt;em&gt;should&lt;/em&gt; be learned. To not burn out our new flying fish, each tutorial ends with guidance on where to go to from the end, including how to build upon what was just coded out, and resources on the topics covered.&lt;/p&gt;
-&lt;h2&gt;The tutorials&lt;/h2&gt;
+&lt;h2 id=&#34;the-tutorials&#34;&gt;The tutorials&lt;/h2&gt;
 &lt;p&gt;So what exactly are the tutorials? What are my lesson plans?&lt;/p&gt;
-&lt;h3&gt;DataViz&lt;/h3&gt;
+&lt;h3 id=&#34;dataviz&#34;&gt;DataViz&lt;/h3&gt;
 &lt;p&gt;The first tutorial is data visualization. While creating some graphs and plotting on Google maps, the purpose is for the new coder to understand how to:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -295,7 +382,7 @@ It’s extremely difficult to learn what you need to learn, yet not know what &l
 &lt;li&gt;File Input/Output, Iterators, and Generators with using Python’s keywords and built-in functions&lt;/li&gt;
 &lt;li&gt;Global variables, docstrings, list comprehensions&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;API&lt;/h3&gt;
+&lt;h3 id=&#34;api&#34;&gt;API&lt;/h3&gt;
 &lt;p&gt;The second one uses the techniques from the dataviz tutorial to graph data grabbed from a public API. The project is to fetch video game platform information from &lt;a href=&#34;http://www.giantbomb.com/api/&#34;&gt;Giantbomb.com&lt;/a&gt;, combine that with &lt;a href=&#34;http://research.stlouisfed.org/fred2/data/CPIAUCSL.txt&#34;&gt;CPI&lt;/a&gt; data to adjust the value of the US dollar over time and generate a bar chart to show the price development.&lt;/p&gt;
 
 &lt;p&gt;The goals :&lt;/p&gt;
@@ -314,7 +401,7 @@ It’s extremely difficult to learn what you need to learn, yet not know what &l
 &lt;li&gt;Logging&lt;/li&gt;
 &lt;li&gt;Validating data&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;Web scraping&lt;/h3&gt;
+&lt;h3 id=&#34;web-scraping&#34;&gt;Web scraping&lt;/h3&gt;
 &lt;p&gt;The web scraping tutorial is meant to show folks are able to grab data without the use of an API.  The project builds a web scraper using &lt;a href=&#34;http://scrapy.org/&#34;&gt;Scrapy&lt;/a&gt; to scroll through &lt;a href=&#34;http://www.livingsocial.com&#34;&gt;LivingSocial&lt;/a&gt; and save local deals to Postgres. It also includes a quick how-to on cronjobs, so folks can run this script daily. So rather than getting those annoying emails, folks can query a database when they want a deal on sky diving or hot yoga.&lt;/p&gt;
 
 &lt;p&gt;The goals of this particular tutorial are to:&lt;/p&gt;
@@ -338,7 +425,7 @@ It’s extremely difficult to learn what you need to learn, yet not know what &l
 &lt;p&gt;As a means of inspiration and to build a bit of personal context, the project finishes with a story of how one gal was able to continually scrape the London Olympics’ website in order to grab a ticket to the gymnastics final. &lt;/p&gt;
 
 &lt;p&gt;Since &lt;a href=&#34;http://www.scrapy.org&#34;&gt;Scrapy&lt;/a&gt; makes use of Twisted, it creates that familiar ground when moving onto the next tutorial.&lt;/p&gt;
-&lt;h3&gt;IRC bot&lt;/h3&gt;
+&lt;h3 id=&#34;irc-bot&#34;&gt;IRC bot&lt;/h3&gt;
 &lt;p&gt;I just had to make a tutorial based off of &lt;a href=&#34;http://twistedmatrix.com/trac/&#34;&gt;Twisted&lt;/a&gt;. The project is actually based off of Jessamyn Smith’s IRC bot – the &lt;a href=&#34;https://github.com/jessamynsmith/talkbackbot&#34;&gt;talkbackbot&lt;/a&gt;, where if anyone would say “That’s what she said”, the bot would reply with a notable quote from a woman (that’s what she &lt;em&gt;really&lt;/em&gt; said!).&lt;/p&gt;
 
 &lt;p&gt;The purpose for the new coders is to:&lt;/p&gt;
@@ -359,7 +446,7 @@ It’s extremely difficult to learn what you need to learn, yet not know what &l
 &lt;/ul&gt;
 
 &lt;p&gt;Of course, software engineering is more than the internet. &lt;/p&gt;
-&lt;h3&gt;Sudoku Game&lt;/h3&gt;
+&lt;h3 id=&#34;sudoku-game&#34;&gt;Sudoku Game&lt;/h3&gt;
 &lt;p&gt;The final tutorial walks new coders through building a GUI with a Sudoku game. With the least amount of hand-holding, the tutorial walks through how to build a game board as well as how to approach programming the logic that makes Sudoku.&lt;/p&gt;
 
 &lt;p&gt;The goals for new coders to take away are:&lt;/p&gt;
@@ -378,7 +465,7 @@ It’s extremely difficult to learn what you need to learn, yet not know what &l
 &lt;li&gt;User-driven programming&lt;/li&gt;
 &lt;li&gt;“private” methods&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;newcoder.io&lt;/h2&gt;
+&lt;h2 id=&#34;newcoder.io&#34;&gt;newcoder.io&lt;/h2&gt;
 &lt;p&gt;So because we’re in software engineering’s industrial revolution, we need to have a revolutionary way of learning how to code. &lt;/p&gt;
 
 &lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/SoS-lightbulb.png&#34; width=&#34;370&#34; height=&#34;300&#34;)/&gt; &lt;/p&gt;
@@ -447,11 +534,11 @@ It’s extremely difficult to learn what you need to learn, yet not know what &l
             <content type="html">&lt;p&gt;A month or two ago, I signed up for a lightning talk for &lt;a href=&#34;http://www.meetup.com/Women-Who-Code-SF/events/93965402/&#34; title=&#34;WWC Lightning Talk Event&#34;&gt;today&amp;#39;s&lt;/a&gt; Women Who Code event. I didn&amp;#39;t submit a title - I was more, &amp;quot;sure, I could talk!&amp;quot;&lt;/p&gt;
 
 &lt;p&gt;Only on Tuesday did I find out I was actually on the bill to speak! Welp, here&amp;#39;s a just-in-time presentation. My slides are &lt;a href=&#34;http://www.slideshare.net/roguelynn/avoid-drowning&#34;&gt;here&lt;/a&gt; - but basically this post flows through what&amp;#39;s presented on.&lt;/p&gt;
-&lt;h2&gt;My experience&lt;/h2&gt;
+&lt;h2 id=&#34;my-experience&#34;&gt;My experience&lt;/h2&gt;
 &lt;hr&gt;
 
 &lt;p&gt;Coming back from Brno, and having just started a new engineering position, I feel like I knew this topic well: how to swim your way through a new code base. There may be other/better advice, but this was my take away from my first three months at Red Hat.&lt;/p&gt;
-&lt;h2&gt;N&lt;img src=&#34;http://www.roguelynn.com/assets/images/no_diving_small.png&#34; alt=&#34;no_diving&#34;&gt;  Diving!&lt;/h2&gt;
+&lt;h2 id=&#34;n-diving&#34;&gt;N&lt;img src=&#34;http://www.roguelynn.com/assets/images/no_diving_small.png&#34; alt=&#34;no_diving&#34;&gt;  Diving!&lt;/h2&gt;
 &lt;hr&gt;
 
 &lt;p&gt;You might feel inclined to jump into the code base. FFS you&amp;#39;re a coder! Why wouldn&amp;#39;t you want to jump in?&lt;/p&gt;
@@ -459,113 +546,113 @@ It’s extremely difficult to learn what you need to learn, yet not know what &l
 &lt;p&gt;As most lifeguards might say of pools with shallow depths: you&amp;#39;ll break your neck and drown.&lt;/p&gt;
 
 &lt;p&gt;Let&amp;#39;s take a more holistic approach - I&amp;#39;ll walk you through how I am fumbling through getting to know two (!) code bases with questions I asked myself. Mind you, not all these questions are relevant to your situation; it all depends on your code base, naturally.&lt;/p&gt;
-&lt;h2&gt;T&lt;img src=&#34;http://www.roguelynn.com/assets/images/droplets_small.png&#34; alt=&#34;droplet&#34;&gt;  p-down approach&lt;/h2&gt;
+&lt;h2 id=&#34;t-p-down-approach&#34;&gt;T&lt;img src=&#34;http://www.roguelynn.com/assets/images/droplets_small.png&#34; alt=&#34;droplet&#34;&gt;  p-down approach&lt;/h2&gt;
 &lt;hr&gt;
-&lt;h3&gt;Overview&lt;/h3&gt;
+&lt;h3 id=&#34;overview&#34;&gt;Overview&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;What is the purpose of this project or product?&lt;/li&gt;
 &lt;li&gt;What problems does it solve for its target audience?&lt;/li&gt;
 &lt;li&gt;What are its overall strengths and weaknesses; its selling points?&lt;/li&gt;
 &lt;li&gt;What competitive projects or products are out there?&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;Architecture&lt;/h3&gt;
+&lt;h3 id=&#34;architecture&#34;&gt;Architecture&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;What major components make up the code base?&lt;/li&gt;
 &lt;li&gt;How do they all fit together?&lt;/li&gt;
 &lt;li&gt;How do they communicate with each other?&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;Break it apart&lt;/h3&gt;
+&lt;h3 id=&#34;break-it-apart&#34;&gt;Break it apart&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;What&amp;#39;s this component or chunk&amp;#39;s purpose?&lt;/li&gt;
 &lt;li&gt;What problem does it solve for this project?&lt;/li&gt;
 &lt;li&gt;Strength &amp;amp; weaknesses of this chunk or component?&lt;/li&gt;
 &lt;li&gt;How does it fit with another chunk(s)?&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;Lather, rinse, repe&lt;img src=&#34;http://www.roguelynn.com/assets/images/repeat_small.png&#34; alt=&#34;repeat&#34;&gt;t.&lt;/h2&gt;
+&lt;h2 id=&#34;lather-rinse-repet.&#34;&gt;Lather, rinse, repe&lt;img src=&#34;http://www.roguelynn.com/assets/images/repeat_small.png&#34; alt=&#34;repeat&#34;&gt;t.&lt;/h2&gt;
 &lt;hr&gt;
 
 &lt;p&gt;Continue on until you drill down to the very lowest component, the lowest before you hit the code to answer your questions.&lt;/p&gt;
 
 &lt;p&gt;You should be reviewing documentation and architecture diagrams &amp;amp; walk-throughs, talking to the architect of the product/project, and your team mates.&lt;/p&gt;
-&lt;h2&gt;Go with the &lt;img src=&#34;http://www.roguelynn.com/assets/images/fish_small.png&#34; alt=&#34;flow&#34;&gt; flow &lt;img src=&#34;http://www.roguelynn.com/assets/images/fish_small.png&#34; alt=&#34;flow&#34;&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;go-with-the-flow-&#34;&gt;Go with the &lt;img src=&#34;http://www.roguelynn.com/assets/images/fish_small.png&#34; alt=&#34;flow&#34;&gt; flow &lt;img src=&#34;http://www.roguelynn.com/assets/images/fish_small.png&#34; alt=&#34;flow&#34;&gt;&lt;/h2&gt;
 &lt;hr&gt;
 
 &lt;p&gt;Now it&amp;#39;s time to figure out the flow of the project or product.&lt;/p&gt;
-&lt;h3&gt;User&lt;/h3&gt;
+&lt;h3 id=&#34;user&#34;&gt;User&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Who is the target audience? Other developers, IT professionals, non-tech folks?&lt;/li&gt;
 &lt;li&gt;How is this project used?&lt;/li&gt;
 &lt;li&gt;What is the learning curve for the user?&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;Sys Admin&lt;/h3&gt;
+&lt;h3 id=&#34;sys-admin&#34;&gt;Sys Admin&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;How are users set up?&lt;/li&gt;
 &lt;li&gt;How is it maintained, updated, upgraded, supported, etc?&lt;/li&gt;
 &lt;li&gt;How does it work with the existing systems?&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;Your Manager&lt;/h3&gt;
+&lt;h3 id=&#34;your-manager&#34;&gt;Your Manager&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;What are the goals of the project? Future feature implementations? Direction that this product is going?&lt;/li&gt;
 &lt;li&gt;What are the release cycles or pressure dates?&lt;/li&gt;
 &lt;li&gt;What other teams do you need to work with? QE? Support? Other complementary/necessary projects/products?&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;Developer (YOU)&lt;/h3&gt;
+&lt;h3 id=&#34;developer-you&#34;&gt;Developer (YOU)&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;How do you submit and fix a bug?&lt;/li&gt;
 &lt;li&gt;How is the code tested?&lt;/li&gt;
 &lt;li&gt;Who are the go-to people for certain aspects of the project?&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;Ease in  &lt;img src=&#34;http://www.roguelynn.com/assets/images/ease_in_small.png&#34; alt=&#34;ease&#34;&gt;  the water&amp;#39;s a bit cold&lt;/h2&gt;
+&lt;h2 id=&#34;ease-in-the-water39s-a-bit-cold&#34;&gt;Ease in  &lt;img src=&#34;http://www.roguelynn.com/assets/images/ease_in_small.png&#34; alt=&#34;ease&#34;&gt;  the water&amp;#39;s a bit cold&lt;/h2&gt;
 &lt;hr&gt;
 
 &lt;p&gt;Alright - git pull that code.&lt;/p&gt;
-&lt;h3&gt;File Hierarchy&lt;/h3&gt;
+&lt;h3 id=&#34;file-hierarchy&#34;&gt;File Hierarchy&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Top-down approach again: how is this project organized? What files/modules depend on what? &lt;/li&gt;
 &lt;li&gt;How does the file structure match up with the architecture you saw earlier?&lt;/li&gt;
 &lt;li&gt;Where is the documentation (both for developer and user/admin)? The source code/moving parts? The test suite? (Who tests the tests!?)&lt;/li&gt;
 &lt;li&gt;What modules are used? Look what&amp;#39;s being used from the language&amp;#39;s standard library, the modules defined in the package itself, and third-party packages.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;Dependencies&lt;/h3&gt;
+&lt;h3 id=&#34;dependencies&#34;&gt;Dependencies&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;What are the operating system requirements? Hardware reqs?&lt;/li&gt;
 &lt;li&gt;Software requirements: is there an assumption that users have the default database needed? Or other libraries already on your machine?&lt;/li&gt;
 &lt;li&gt;What are the build requirements for the project?&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;Swim floaties (remember those things around your arms?!)&lt;/h3&gt;
+&lt;h3 id=&#34;swim-floaties-remember-those-things-around-your-arms&#34;&gt;Swim floaties (remember those things around your arms?!)&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&amp;#39;&lt;code&gt;$ git log&lt;/code&gt;&amp;#39;  for commit logs (watch out - it could go back years). Check out git&amp;#39;s pretty print documentation for more readable output.&lt;/li&gt;
 &lt;li&gt;&amp;#39;&lt;code&gt;$ git blame&lt;/code&gt;&amp;#39; is, of course, a great tool. Include -L flag for to/from line numbers, and -e flag to see emails of the contributors.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://dev.hubspot.com/blog/bid/57694/Git-by-a-Bus&#34; title=&#34;Git By a bus&#34;&gt;git-by-a-bus&lt;/a&gt; is a great tool goes through the logs of the code and gives you html to visually see who are the biggest contributors to which parts of the library. Highly recommend.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;Challenge yourself&lt;/h3&gt;
+&lt;h3 id=&#34;challenge-yourself&#34;&gt;Challenge yourself&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Write up documentation that&amp;#39;s missing.&lt;/li&gt;
 &lt;li&gt;Fix a bug &amp;amp; submit a patch. This really forces you to understand the code, how it was written, conventions of the project, and how small pieces fit together.&lt;/li&gt;
 &lt;li&gt;Write more tests to increase test coverage.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;Lifes&lt;img src=&#34;http://www.roguelynn.com/assets/images/life_preserver_small.png&#34; alt=&#34;life&#34;&gt;vers&lt;/h2&gt;
+&lt;h2 id=&#34;lifesvers&#34;&gt;Lifes&lt;img src=&#34;http://www.roguelynn.com/assets/images/life_preserver_small.png&#34; alt=&#34;life&#34;&gt;vers&lt;/h2&gt;
 &lt;hr&gt;
-&lt;h3&gt;Mentors&lt;/h3&gt;
+&lt;h3 id=&#34;mentors&#34;&gt;Mentors&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Find an internal mentor to bug about package/product questions. It may be your lead, or someone who&amp;#39;s been there for a while.&lt;/li&gt;
 &lt;li&gt;An external mentor is great to have too - perhaps you have a language question and you don&amp;#39;t want to look stupid in front of your coworkers.  It&amp;#39;s also great to get a different point of view for how the development process works elsewhere.&lt;/li&gt;
 &lt;li&gt;Your manager - yep, s/he is by default a mentor, whether good or bad, or absent. Learn how to manage up if you&amp;#39;re not getting what you need at first. Avoid detailed questions and ask bigger questions like &amp;quot;how is my approach in this?&amp;quot;, or &amp;quot;am I learning at an acceptable speed?&amp;quot;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;Research&lt;/h3&gt;
+&lt;h3 id=&#34;research&#34;&gt;Research&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;I highly recommend keeping a personal/private wiki as you learn new terms, processes, etc.&lt;/li&gt;
 &lt;li&gt;Also - a bookmarking service that helps you organize your research for quick retrieval (I recommend &lt;a href=&#34;http://pinboard.in&#34; title=&#34;Pinboard&#34;&gt;Pinboard&lt;/a&gt;).&lt;/li&gt;
 &lt;li&gt;Old fashioned post-its, whiteboarding, paper+pen, anything. Physically writing down a piece of information (typically architecture diagrams) helped me solidify concepts better.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;Suggested Reading&lt;/h3&gt;
+&lt;h3 id=&#34;suggested-reading&#34;&gt;Suggested Reading&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://pragprog.com/book/tpp/the-pragmatic-programmer&#34; title=&#34;The Pragmatic Programmer&#34;&gt;The Pragmatic Programmer&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;A language-specific cookbook (keep near your work computer)&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://pragprog.com/book/jcdeg/new-programmer-s-survival-manual&#34; title=&#34;New Programmer&amp;#39;s Survival Manual&#34;&gt;The New Programmer&amp;#39;s Survival Manual&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://pragprog.com/book/kcdc/the-developer-s-code&#34; title=&#34;Developer&amp;#39;s Code&#34;&gt;The Developer&amp;#39;s Code: What Real Programmers Do&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;Swim safely! &lt;img src=&#34;http://www.roguelynn.com/assets/images/scuba_small.png&#34; alt=&#34;scuba&#34;&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;swim-safely-&#34;&gt;Swim safely! &lt;img src=&#34;http://www.roguelynn.com/assets/images/scuba_small.png&#34; alt=&#34;scuba&#34;&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 </content>
         </entry>
@@ -597,7 +684,7 @@ It’s extremely difficult to learn what you need to learn, yet not know what &l
                 <uri>http://www.roguelynn.com/</uri>
             </author>
             <content type="html">&lt;p&gt;I don&amp;#39;t do New Years&amp;#39; resolutions. But I like to take the time and reflect on the past year to declare a theme for next year. &lt;/p&gt;
-&lt;h3&gt;2012&amp;#39;s theme: Be awesome.&lt;/h3&gt;
+&lt;h3 id=&#34;s-theme-be-awesome.&#34;&gt;2012&amp;#39;s theme: Be awesome.&lt;/h3&gt;
 &lt;p&gt;I think I accomplished that!&lt;/p&gt;
 
 &lt;ol&gt;
@@ -635,7 +722,7 @@ The events I held and/or led for PyLadies were a lot of fun:&lt;/p&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;As well as organizing the DjangoCon US scholarships for PyLadies and for the DSF and helping spread the PyLadies chapters in Atlanta, NYC, Seattle, PDX, and elsewhere. A new PyLadies website that I started should be up soon too that will include a PyLady Events Code of Conduct. &lt;/p&gt;
-&lt;h3&gt;What is the theme for 2013?&lt;/h3&gt;
+&lt;h3 id=&#34;what-is-the-theme-for-2013&#34;&gt;What is the theme for 2013?&lt;/h3&gt;
 &lt;p&gt;I had an epic year: met so many fantastic people in the Python world and in the San Francisco community including Python + Django core devs and community leaders; got the guts to give talks (and actually enjoy giving them!); got a job that I freaking love. &lt;/p&gt;
 
 &lt;p&gt;So, what will the theme be for 2013? &lt;/p&gt;
@@ -671,15 +758,15 @@ The events I held and/or led for PyLadies were a lot of fun:&lt;/p&gt;
 
 &lt;p&gt;In other words: &lt;br&gt;
 &lt;img src=&#34;http://www.roguelynn.com/assets/images/no_idea_dog.png&#34; alt=&#34;no_idea_dog&#34; title=&#34;I have no idea what I&amp;#39;m doing&#34;&gt;&lt;/p&gt;
-&lt;h3&gt;From email setup to patch submission in 8 days, then what?&lt;/h3&gt;
+&lt;h3 id=&#34;from-email-setup-to-patch-submission-in-8-days-then-what&#34;&gt;From email setup to patch submission in 8 days, then what?&lt;/h3&gt;
 &lt;p&gt;I previously &lt;a href=&#34;http://www.roguelynn.com/words/from-email-setup-to-patch-submission-in-8-days&#34; title=&#34;From email setup to patch submission in 8 days&#34;&gt;wrote&lt;/a&gt; about the progress I was making.  TL;DR - I submitted a patch in the first two weeks of working (mind you, it was immediately NACKed and a lesson was learned in testing).  But not much followed other than a handful of other patches. &lt;/p&gt;
 
 &lt;p&gt;Sure, I learned bits of the IPA package in detail in regards to code and moving parts, and on the grand scale of how LDAP, DNS, AD trusts, Kerberos, Daemon, NTP, Certificate Authority, etc, all talk to each other and &lt;em&gt;why&lt;/em&gt; it makes freeIPA appealing to sys admins, developers, etc. But it was (and still is) excruciatingly difficult to develop an understanding of what parts need to be integrated, and when I need to take step back and learn the deep, dark corners of DNS, BIND, and Apache. &lt;/p&gt;
 
 &lt;p&gt;Thank god for mentors outside of my team as well; stupid questions about the Python language, like &amp;quot;Isn&amp;#39;t it bad to have import *? Why?&amp;quot; were met with impatience at work. That&amp;#39;s not to say my team mates weren&amp;#39;t helpful; I had many ELI5 moments with them.&lt;/p&gt;
-&lt;h3&gt;My Expectations&lt;/h3&gt;
+&lt;h3 id=&#34;my-expectations&#34;&gt;My Expectations&lt;/h3&gt;
 &lt;p&gt;I had this idea in my head that I would write more than ~15-20 lines of code for the IPA project. Correction: I assumed I&amp;#39;d write more &lt;em&gt;Python&lt;/em&gt; code during this time here in Brno. I wanted to learn how to write good code, the design pattern of the project, maybe write a test or two.&lt;/p&gt;
-&lt;h3&gt;What I learned&lt;/h3&gt;
+&lt;h3 id=&#34;what-i-learned&#34;&gt;What I learned&lt;/h3&gt;
 &lt;p&gt;What I actually ended up learning was the overall Linux file system (naturally), Vim, git, the process of submitting patches for review, public versus private errors, virtual machines (and the many ways to break them), and git blame, &lt;a href=&#34;http://andyjeffries.co.uk/articles/25-tips-for-intermediate-git-users&#34; title=&#34;Tips for intermediate git users&#34;&gt;git reset HEAD@{1 hour ago}&lt;/a&gt;, and &lt;a href=&#34;https://github.com/tomheon/git_by_a_bus&#34; title=&#34;Git by a Bus&#34;&gt;git-by-a-bus&lt;/a&gt;. &lt;/p&gt;
 
 &lt;p&gt;Other things I&amp;#39;m sure some take for granted like iptables, key-bindings &amp;amp; keyboard shortcuts (using those make me feel like a baller), vimrc, simple bash commands &amp;amp; scripting, and the like.&lt;/p&gt;
@@ -687,7 +774,7 @@ The events I held and/or led for PyLadies were a lot of fun:&lt;/p&gt;
 &lt;p&gt;And yes, I also learned a bit of Ruby. To be honest, I&amp;#39;ve written more Ruby code for OpenShift than Python code for freeIPA. I&amp;#39;ve started to make a list of grievances of the Ruby language when coming from Python. #snark&lt;/p&gt;
 
 &lt;p&gt;I also learned the structure of OpenShift - the two Apache servers it uses, the broken installation scripts, the larger picture of what of freeIPA needs to be integrated where.&lt;/p&gt;
-&lt;h3&gt;What I need to learn&lt;/h3&gt;
+&lt;h3 id=&#34;what-i-need-to-learn&#34;&gt;What I need to learn&lt;/h3&gt;
 &lt;p&gt;I still have a ways to go in learning to program in Ruby, but it&amp;#39;s understandably easier when I have an okay grasp on programming in Python.&lt;/p&gt;
 
 &lt;p&gt;Apache is still a black hole to me, but I&amp;#39;ve begun to understand what pieces need to be added to OpenShift.&lt;/p&gt;
@@ -695,7 +782,7 @@ The events I held and/or led for PyLadies were a lot of fun:&lt;/p&gt;
 &lt;p&gt;I also have no freaking clue how &lt;em&gt;exactly&lt;/em&gt; to integrate a project that&amp;#39;s written in Python into a Ruby-based project.&lt;/p&gt;
 
 &lt;p&gt;I also need to develop a better understanding of GSSAPI (supposedly an implementation of an API, written in Python, Ruby, whatever, that appropriately talks to Kerberos, written in C). This understanding will needed for when the DNS dynamically updates hosts (through nsupdate) and there needs to be a Kerberos-based authentication handshake.&lt;/p&gt;
-&lt;h3&gt;What troubles me&lt;/h3&gt;
+&lt;h3 id=&#34;what-troubles-me&#34;&gt;What troubles me&lt;/h3&gt;
 &lt;p&gt;This task I am meant to do is complex; it&amp;#39;s not an application where I can go bug my dev friends for the best library or approach. These are two different projects where the integration happens at a level that folks have experience in either but not both. &lt;em&gt;I&lt;/em&gt; am the integration point; &lt;em&gt;I&lt;/em&gt; am supposed to have an understanding of these two systems, how they differ and compare in setup. This requires a deep understanding of how the internet works, of Linux systems, and of security implementations, among other things that I can&amp;#39;t even conceive of right now.&lt;/p&gt;
 
 &lt;p&gt;What scares the sh!t out of me is that there is no one that knows how to do this better than me. #wat &lt;/p&gt;
@@ -718,21 +805,21 @@ The events I held and/or led for PyLadies were a lot of fun:&lt;/p&gt;
             <content type="html">&lt;p&gt;You just got a notice saying that your talk was accepted to [some huge freaking conference]. Awesome!&lt;/p&gt;
 
 &lt;p&gt;Oh but wait, now you have to actually &lt;em&gt;talk&lt;/em&gt;. That entails preparation, and speaking in front of people!&lt;/p&gt;
-&lt;h3&gt;Step 1: Let it set in.&lt;/h3&gt;
+&lt;h3 id=&#34;step-1-let-it-set-in.&#34;&gt;Step 1: Let it set in.&lt;/h3&gt;
 &lt;p&gt;Breathe. Maybe pour a glass of wine.&lt;/p&gt;
-&lt;h3&gt;Step 2: Find inspiration.&lt;/h3&gt;
+&lt;h3 id=&#34;step-2-find-inspiration.&#34;&gt;Step 2: Find inspiration.&lt;/h3&gt;
 &lt;p&gt;A little research on how to speak well can go a long way.&lt;/p&gt;
-&lt;h4&gt;Reading&lt;/h4&gt;
+&lt;h4 id=&#34;reading&#34;&gt;Reading&lt;/h4&gt;
 &lt;p&gt;I can suggest &lt;a href=&#34;http://www.amazon.com/Confessions-Public-Speaker-English/dp/1449301959&#34; title=&#34;Confessions of a Public Speaker&#34;&gt;Confessions of a Public Speaker&lt;/a&gt;. The book is easily digestible and pretty humorous. The author offers great practical advice, and while it is more of a how-to book, it reads like a novel.&lt;/p&gt;
 
 &lt;p&gt;Another book I recommend is &lt;a href=&#34;http://www.amazon.com/Presentation-Zen-Simple-Design-Delivery/dp/0321525655&#34; title=&#34;Presentation Zen&#34;&gt;Presentation Zen&lt;/a&gt;. Please, if you only get one thing out of this book, it&amp;#39;s is that simplicity matters, but black font on a white background sucks.  The main point, though, is that the slides should support you, the speaker, and not detract.  It offers great advice on design tips, planning, and delivery.&lt;/p&gt;
-&lt;h4&gt;Watching&lt;/h4&gt;
+&lt;h4 id=&#34;watching&#34;&gt;Watching&lt;/h4&gt;
 &lt;p&gt;There are some fantastic folks that give talks.  One of my absolute favorites is a TED talk from Benjamin Zander on &lt;a href=&#34;http://www.ted.com/talks/benjamin_zander_on_music_and_passion.html&#34; title=&#34;Benjamin Zander TED Talk&#34;&gt;The transformative power of classical music&lt;/a&gt;. This dude is so epic, so wrapped up in his own passion that he immediately connects with his audience. He talks about the disconnect between classical music and mainstream society today. But really, he could talk about anything and I&amp;#39;d still watch him.&lt;/p&gt;
 
 &lt;p&gt;Another one of my favorite TED talks is by Elizabeth Gilbert, &lt;a href=&#34;http://www.youtube.com/watch?v=86x-u-tz0MA&amp;amp;feature=youtu.be&#34; title=&#34;Elizabeth Gilbert TED Talk&#34;&gt;Your elusive creative genius&lt;/a&gt;. She talks about everyone having a genius within. But what is remarkable is how much effort she put into practicing this talk.&lt;/p&gt;
 
 &lt;p&gt;A technical talk that I thoroughly enjoyed was Jessica McKellar&amp;#39;s &lt;a href=&#34;http://klewel.com/conferences/djangocon-2012/index.php?talkID=35&#34; title=&#34;Jessica McKellar Keynote at DjangoCon EU 2012&#34;&gt;Keynote&lt;/a&gt; at DjangoCon EU in 2012. She was critical in a positive way, and very engaging with the audience because of her spot-on observations about Django&amp;#39;s weaknesses.&lt;/p&gt;
-&lt;h3&gt;Step 3: Write out your talk.&lt;/h3&gt;
+&lt;h3 id=&#34;step-3-write-out-your-talk.&#34;&gt;Step 3: Write out your talk.&lt;/h3&gt;
 &lt;p&gt;Sit down and write out your talk. Perhaps when submitting your proposal, you gave an outline. Flesh that out a bit with solid speaking points. What I typically do is type it out on a text editor, a sentence or two per point.&lt;/p&gt;
 
 &lt;p&gt;One solid piece of advice is to follow this flow:&lt;/p&gt;
@@ -744,7 +831,7 @@ The events I held and/or led for PyLadies were a lot of fun:&lt;/p&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;Beginning your talk stating who you are, why you are speaking, and what the audience&amp;#39;s take-away will allow the audience to have a good idea of what to expect.&lt;/p&gt;
-&lt;h3&gt;Step 4: Practice.&lt;/h3&gt;
+&lt;h3 id=&#34;step-4-practice.&#34;&gt;Step 4: Practice.&lt;/h3&gt;
 &lt;p&gt;Practice. &lt;/p&gt;
 
 &lt;p&gt;Yep, you knew that was coming. Craig Kerstiens wrote up a great &lt;a href=&#34;http://craigkerstiens.com/2012/06/19/pro-tips-for-conference-talks/&#34; title=&#34;Craig Kerstiens&amp;#39; Pro-tips for Conference Talks&#34;&gt;post&lt;/a&gt; containing tips for preparation.&lt;/p&gt;
@@ -752,7 +839,7 @@ The events I held and/or led for PyLadies were a lot of fun:&lt;/p&gt;
 &lt;p&gt;Essentially, practice at home in front of friends (perhaps entice them with a free meal, first) and/or practice locally at meetups or events like &lt;a href=&#34;http://igniteshow.com/&#34; title=&#34;Ignite&#34;&gt;Ignite&lt;/a&gt; or &lt;a href=&#34;http://www.pecha-kucha.org/&#34; title=&#34;Pecha Kucha&#34;&gt;Pecha Kucha&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;This is vital so you can get feedback. Perhaps your message wasn&amp;#39;t clear, or your font on your slides are too similar to comic sans. Maybe you fumble and don&amp;#39;t notice it with too many &amp;quot;um&amp;quot;s and &amp;quot;whatnot&amp;quot;s.&lt;/p&gt;
-&lt;h3&gt;Step 5: Relax.&lt;/h3&gt;
+&lt;h3 id=&#34;step-5-relax.&#34;&gt;Step 5: Relax.&lt;/h3&gt;
 &lt;p&gt;As a former collegiate athlete, it was known that &amp;#39;the night before the night before&amp;#39; was the most important. For instance, if your talk is on Saturday, Thursday night&amp;#39;s sleep will affect your energy level and stamina (and thus, affecting nerves and confidence) more than Friday. That&amp;#39;s not to say rest on Thursday and party on Friday. &lt;/p&gt;
 
 &lt;p&gt;Another tidbit from my athlete days is to ease up on yourself the day before. Relax, tune out, don&amp;#39;t stress. Assuming you have practiced your talk beforehand and are comfortable, then ease up the day before. No need to stress about getting one more practice run in.&lt;/p&gt;
@@ -775,9 +862,9 @@ The events I held and/or led for PyLadies were a lot of fun:&lt;/p&gt;
                 <uri>http://www.roguelynn.com/</uri>
             </author>
             <content type="html">&lt;p&gt;Hellz yea, I&amp;#39;m a freaking engineer (sounds more hilarious in my head then it reads). Now who the hell wouldn&amp;#39;t want to be an engineer? Fellow PyLady, Julia Grace, &lt;a href=&#34;https://twitter.com/jewelia/status/262665853483499520&#34; title=&#34;Tweet from Julia Grace&#34;&gt;asked&lt;/a&gt; about my expectations of being an engineer versus what I actually experienced.  &lt;/p&gt;
-&lt;h4&gt;TL;DR: It&amp;#39;s awesome.&lt;/h4&gt;
+&lt;h4 id=&#34;tldr-it39s-awesome.&#34;&gt;TL;DR: It&amp;#39;s awesome.&lt;/h4&gt;
 &lt;p&gt;Here&amp;#39;s the basic run down: &lt;/p&gt;
-&lt;h4&gt;Asked advice from Systers &amp;amp; DevChix Mailing List&lt;/h4&gt;
+&lt;h4 id=&#34;asked-advice-from-systers-amp-devchix-mailing-list&#34;&gt;Asked advice from Systers &amp;amp; DevChix Mailing List&lt;/h4&gt;
 &lt;p&gt;(exact quotes, but leaving anonymous):&lt;/p&gt;
 
 &lt;ul&gt;
@@ -790,7 +877,7 @@ The events I held and/or led for PyLadies were a lot of fun:&lt;/p&gt;
 &lt;li&gt; Many guys truly don&amp;#39;t think that women can or should be coding as equals.&lt;/li&gt;
 &lt;li&gt; At least 89% of the time, by the time I have really defined my question, I have figured out the answer.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;Expectations and Preformed Thoughts &amp;amp; Concerns:&lt;/h4&gt;
+&lt;h4 id=&#34;expectations-and-preformed-thoughts-amp-concerns&#34;&gt;Expectations and Preformed Thoughts &amp;amp; Concerns:&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt; I would have to wind down my community engagements to an &amp;#39;acceptable&amp;#39; level, e.g. only x amount of non-Red Hat related conferences.&lt;/li&gt;
 &lt;li&gt; Thrown into code to fix a bug/patch/whatever&lt;/li&gt;
@@ -798,7 +885,7 @@ The events I held and/or led for PyLadies were a lot of fun:&lt;/p&gt;
 &lt;li&gt; Many naive questions from me, met with a poor/mean/unadjusted attitude, or worse, lack of any sort of emotional response (I&amp;#39;d rather -know- I annoy you than wonder if you loathe my questions).&lt;/li&gt;
 &lt;li&gt; I&amp;#39;d be restricted from doing certain things; &amp;quot;when you&amp;#39;re ready for it&amp;quot; aka &amp;quot;when I&amp;#39;m ready to give this piece of my job up and move on to something better.&amp;quot;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;I set expectations for &lt;em&gt;myself&lt;/em&gt; too:&lt;/h4&gt;
+&lt;h4 id=&#34;i-set-expectations-formyself-too&#34;&gt;I set expectations for &lt;em&gt;myself&lt;/em&gt; too:&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt; Learn this shit fast.&lt;/li&gt;
 &lt;li&gt; Be awesome.&lt;/li&gt;
@@ -807,7 +894,7 @@ The events I held and/or led for PyLadies were a lot of fun:&lt;/p&gt;
 &lt;li&gt; Submit a patch by the end of the 3rd week (end of the 1st full week in Brno).&lt;/li&gt;
 &lt;li&gt; Maintain awesomeness.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;How the first few weeks actually went:&lt;/h4&gt;
+&lt;h4 id=&#34;how-the-first-few-weeks-actually-went&#34;&gt;How the first few weeks actually went:&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt; Crash course on LDAP &amp;amp; Kerberos, how to create VMs both on my local machine and on remote servers (I feel dangerous now).&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;My last name &lt;em&gt;is&lt;/em&gt; awesome.  However, sometimes I misread my terminal prompt:&lt;/p&gt;
@@ -829,7 +916,7 @@ Must be root to setup this server!&lt;br&gt;
 &lt;li&gt;&lt;p&gt;I was assigned 5 tickets on day #2 in Brno. This will probably be the only time I will be excited to be assigned tickets. They seem to be the types of tickets that are &amp;#39;easy pickens&amp;#39; but also give the challenge of making you dig through the whole freaking code base only to find the issue comes from an outside package. /phew &lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.redhat.com/archives/freeipa-devel/2012-October/msg00556.html&#34;&gt;I SUBMITTED MY FIRST PATCH&lt;/a&gt; (day #3 in Brno. 8 days of learning terms/code/git/processes, ignoring travel days, orientation, blah). &lt;em&gt;Side note: that patch broke everything. I learned a lesson in tests the following day.&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;Cultural Differences:&lt;/h4&gt;
+&lt;h4 id=&#34;cultural-differences&#34;&gt;Cultural Differences:&lt;/h4&gt;
 &lt;p&gt;I was also &lt;a href=&#34;https://twitter.com/juliaelman/status/262666318715707392%20&#34; title=&#34;Julia Elman&amp;#39;s tweet&#34;&gt;asked&lt;/a&gt; about what differences I&amp;#39;ve seen in the engineering cultures, and the &lt;a href=&#34;https://twitter.com/aesptux/status/262668691731263488&#34; title=&#34;Adrian Espinosa&amp;#39;s tweet&#34;&gt;moving abroad experience&lt;/a&gt; in general.  Immediately, my memory is refreshed on how hyper-sexualized women are dressed here.  I wear converse or pumas everyday -&amp;gt; flag for &amp;#39;I&amp;#39;m not from here!&amp;#39; as many women where heals (not crazy tall ones, although some do).  And hygiene can be an issue for some folks (lulz).  Also, while it&amp;#39;s still relatively cheap in Czech Rep (2006: 22-24 Kc to 1 USD, now: 20 Kc to 1 USD), cost of living has gone up. Food is more expensive, housing, Ikea.&lt;/p&gt;
 
 &lt;p&gt;Immediate engineering culture differences are hard to pick up right now, and I hope to be able to have a better PoV after 2 months.  Every so often, I get a surprised look when I ask a question, giving me the impression that I&amp;#39;m not as much of a n00b as was thought.  I think that more comes from the reputation that preceded me, the discussions that were had before I arrived.  I don&amp;#39;t read into this at all.  I mean - no one told me to read into the package code before arriving... but I did, and it&amp;#39;s&lt;br&gt;
@@ -1032,16 +1119,16 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
 &lt;p&gt;SHA-2: consists of 4 hash functions producing 244, 256, 384 or 512 bit hashes. While no attacks have been successful on SHA-2, its algorithm is similar to SHA-1.  It&amp;#39;s still considered safe, but time is ticking. &lt;/p&gt;
 
 &lt;p&gt;These hash functions are still decent enough for message passing, just not password storage. Another hash algorithm, &lt;a href=&#34;http://en.wikipedia.org/wiki/Bcrypt&#34; title=&#34;Wiki: Bcrypt&#34;&gt;Bcrypt&lt;/a&gt;, is thought to be more resistant to brute-force attacks.  This is because the algorithm adapts over time, basically lengthening the time it takes to create a hash, making it difficult to leverage increases in computer power. &lt;/p&gt;
-&lt;h4&gt;Two things to note with hash functions:&lt;/h4&gt;
+&lt;h4 id=&#34;two-things-to-note-with-hash-functions&#34;&gt;Two things to note with hash functions:&lt;/h4&gt;
 &lt;ol&gt;
 &lt;li&gt;Don&amp;#39;t implement your own hash function. Just don&amp;#39;t.&lt;/li&gt;
 &lt;li&gt;Speed should not be a factor when hashing passwords.  Basically, the longer it takes to hash a password, the longer it takes for brute-force attacks.  Speedier algorithms like MD5 or SHA-1 is fine for message-passing and source verification, but not good for storing sensitive information. &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4&gt;Is a hash enough?&lt;/h4&gt;
+&lt;h4 id=&#34;is-a-hash-enough&#34;&gt;Is a hash enough?&lt;/h4&gt;
 &lt;p&gt;No. Storing a hash of a password isn&amp;#39;t enough.  If only a hash function is used to store a hash of plaintext, it&amp;#39;d be pretty easy to break it. For instance, if your password was &amp;#39;password&amp;#39;, it would have the same hash value as someone else who also uses the same password.  If someone were to break into a database of hashed passwords, it&amp;#39;d be very simple to do a quick frequency analysis, whichever hash is the most popular would probably be &amp;#39;password&amp;#39; or something like &amp;#39;1234&amp;#39;. This is essentially called a &lt;a href=&#34;http://en.wikipedia.org/wiki/Rainbow_table&#34; title=&#34;Wiki: Rainbow table&#34;&gt;Rainbow Table&lt;/a&gt;, a set of reverse-engineered hashed passwords.  It is reasonable (in the amount of time spent, aka brute force) to create a rainbow table of passwords up to about 8 characters in length. &lt;/p&gt;
-&lt;h4&gt;So then what now?&lt;/h4&gt;
+&lt;h4 id=&#34;so-then-what-now&#34;&gt;So then what now?&lt;/h4&gt;
 &lt;p&gt;In order to combat the ease of creating rainbow tables, a &lt;a href=&#34;http://en.wikipedia.org/wiki/Salt_(cryptography)&#34; title=&#34;Wiki: Salt&#34;&gt;salt&lt;/a&gt; is added to the password before it is hashed.  It is very important that this salt is used only once, and is unique per user/password. For instance, if you use &amp;#39;password&amp;#39; as your password, your salt could be (which would be decided behind the scenes) &amp;#39;1\$0-1209-1!@fkjl&amp;#39;, so the input for the hash algorithm would be &amp;#39;password&amp;#39;+&amp;#39;1\$0-1209-1!@fkjl&amp;#39;.  Your salt would not be used for anyone else&amp;#39;s password.  So if someone else uses &amp;#39;password&amp;#39;, their salt would be something totally different, like &amp;#39;sl;--90(d%&amp;#39;, baring a different hash value for the same plaintext password. &lt;/p&gt;
-&lt;h4&gt;Side note&lt;/h4&gt;
+&lt;h4 id=&#34;side-note&#34;&gt;Side note&lt;/h4&gt;
 &lt;p&gt;If you&amp;#39;re interested in the history of cryptography, breaking passwords and frequency analysis as well as a great history on computing, I would highly suggest &lt;a href=&#34;http://www.amazon.com/gp/product/B004IK8PLE/ref=as_li_ss_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=390957&amp;amp;creativeASIN=B004IK8PLE&amp;amp;linkCode=as2&amp;amp;tag=roglyn-20&#34; title=&#34;The Code Book&#34;&gt;The Code Book: The Science of Secrecy from Ancient Egypt to Quantum Cryptography&lt;/a&gt;. &lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.roguelynn.com/words/2012-10-03-netsec-for-n00bs-part-ii-ciphers-symmetric&#34; title=&#34;Symmetric Ciphers&#34;&gt;Part II - Ciphers&lt;/a&gt;&lt;/p&gt;
@@ -1060,7 +1147,7 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
                 <uri>http://www.roguelynn.com/</uri>
             </author>
             <content type="html">&lt;p&gt;Thinking about going to &lt;a href=&#34;https://us.pycon.org/2013/&#34; title=&#34;PyCon&#34;&gt;PyCon&lt;/a&gt; for 2013?  Here are arguments to make for yourself and/or for your employer to go to PyCon this year.&lt;/p&gt;
-&lt;h4&gt;Because you&amp;#39;re new to Python&lt;/h4&gt;
+&lt;h4 id=&#34;because-you39re-new-to-python&#34;&gt;Because you&amp;#39;re new to Python&lt;/h4&gt;
 &lt;p&gt;This year&amp;#39;s PyCon is all about education.  The Program Committee is making an effort to include talks that cover all levels of experience; this includes talks, tutorials, and posters. Need  I remind you, the conference&amp;#39;s tag line is:&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -1068,9 +1155,9 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
 &lt;/blockquote&gt;
 
 &lt;p&gt;Beginners will probably get more benefit from tutorials than talks, and it&amp;#39;s perfectly okay to just sign up for tutorials.  If you&amp;#39;re hesitant, take a look at &lt;a href=&#34;https://us.pycon.org/2012/schedule/&#34; title=&#34;PyCon 2012 schedule&#34;&gt;2012&amp;#39;s schedule&lt;/a&gt;.  If there are even a couple of talks that seem interesting to you, you can be certain that similar subject matters will be spoken about for 2013. I also want to point out that talks and tutorials, while key to the conference, do not make the whole conference.  Spending hours in the Exhibit hall, talking to companies that use Python, learning about community outreach programs or open source projects are what makes the most out of a PyCon experience. Many companies will be recruiting, and perhaps that is intimidating, but it shouldn&amp;#39;t be.  Talk to them about the steps it takes to succeed at their company; find out what they&amp;#39;re looking for in an engineer.  This information can help you set goals for what you want to get out of learning Python.&lt;/p&gt;
-&lt;h4&gt;Because you&amp;#39;re a veteran to Python&lt;/h4&gt;
+&lt;h4 id=&#34;because-you39re-a-veteran-to-python&#34;&gt;Because you&amp;#39;re a veteran to Python&lt;/h4&gt;
 &lt;p&gt;There will be plenty of talks &amp;amp; tutorials on the other side of the spectrum: intermediate, advanced, and extreme/deep dive.  Python is ever evolving, always improving, so best not to quit learning.  There will be many challenging subjects spoken about, brilliant people holding conversations over their posters or post-talk/tutorial. Not to mention sprints.  Either join with the core language, or other Python projects that interest you.  Or perhaps this will give you the time and focus to code out that project you&amp;#39;ve always had on your todo list.&lt;/p&gt;
-&lt;h4&gt;You&amp;#39;re convinced, but your employer might not be&lt;/h4&gt;
+&lt;h4 id=&#34;you39re-convinced-but-your-employer-might-not-be&#34;&gt;You&amp;#39;re convinced, but your employer might not be&lt;/h4&gt;
 &lt;p&gt;It&amp;#39;s cheap.  Tutorials are $150/200 each (early bird/on site) for 3 1/2-4 hours of intense learning.  The conference is $450/$600/$700 (corporate prices, early bird/regular/on site).  Comparatively, these huge conferences often go for far more than that. You will learn more in 9 days of tutorials, talks, and sprints than a year of reading books. Not only will you be exposed to trends, new technologies and ideas not yet written about, you have the opportunity to talk with other Python devs.  Another company had the same deployment issues you folks are having?  What about managing real time data? The hall way track presents many opportunities to have those conversations and knowledge transfers.&lt;/p&gt;
 
 &lt;p&gt;A relavent tweet to part on:&lt;/p&gt;
@@ -1093,7 +1180,7 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
                 <uri>http://www.roguelynn.com/</uri>
             </author>
             <content type="html">&lt;p&gt;It is my great pleasure (and squee!) to share with my friends, family, PyLadies, twitter nerds, Women Who Code&amp;#39;rs, DevChixen, Systers, and everyone else that I can now say: &lt;/p&gt;
-&lt;h4&gt;I am an Engineer.&lt;/h4&gt;
+&lt;h4 id=&#34;i-am-an-engineer.&#34;&gt;I am an Engineer.&lt;/h4&gt;
 &lt;p&gt;&lt;img src=&#34;http://www.roguelynn.com/assets/images/Joey_Chandler.gif&#34; alt=&#34;Joey &amp;amp; Chandler from Friends&#34; title=&#34;Moving Day&#34;&gt;&lt;/p&gt;
 
 &lt;p&gt;Yes, the same person that once did not know the difference between a compiler and an interpreter, couldn&amp;#39;t explain wtf __init__.py files do, or conceive of generators versus iterators. The same person that took her way too long to admit that you can return more than one item in a function.  This is the same n00b that was once told by Leah Culver that one&lt;/p&gt;
@@ -1103,7 +1190,7 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
 &lt;/blockquote&gt;
 
 &lt;p&gt;(I&amp;#39;d like to point out that it&amp;#39;s this exact industry that promotes and cultivates a culture &lt;em&gt;not&lt;/em&gt; of ivory tower pedigrees but of free, easy access, and open source education.) Well my friends: by no means am I an expert, nor am I graduating from n00b status.  I am, however, taking my next step.  Drum roll... I am joining &lt;strong&gt;Red Hat&lt;/strong&gt; as a &lt;del&gt; black hat hacker&lt;/del&gt;&lt;strong&gt; Associate Software Engineer&lt;/strong&gt; working with OSS projects integrating RH&amp;#39;s &lt;a href=&#34;http://http://freeipa.org/page/Main_Page&#34; title=&#34;freeIPA&#34;&gt;identity and authorization&lt;/a&gt; down in Mountain View. Coding, community-building, applied cryptography, what could be better?  I&amp;#39;m just so honored and excited that my new manager and those I will be working with are willing to take a chance on me, and to give me the opportunity to grow into a field that I naively fell in love with (you can&amp;#39;t help who or what you fall in love with).&lt;/p&gt;
-&lt;h4&gt;Oh wait! there&amp;#39;s MOAR!&lt;/h4&gt;
+&lt;h4 id=&#34;oh-wait-there39s-moar&#34;&gt;Oh wait! there&amp;#39;s MOAR!&lt;/h4&gt;
 &lt;p&gt;I&amp;#39;m being given the awesome opportunity of a 2-month, unofficial &amp;#39;boot camp&amp;#39; at Red Hat&amp;#39;s &lt;strong&gt;Czech Republic&lt;/strong&gt; location in Brno.  HUZZAH! &lt;em&gt;Personal* *history insert&lt;/em&gt;: I lived in Prague, CZ for a semester in 2006. Loved it. Wrote my senior thesis on its transitional economy. Lived like a queen with beer being cheaper than water.  Utterly ecstatic to visit again. OK I&amp;#39;LL BE HONEST the real reason I&amp;#39;m joining RH is get my own &lt;a href=&#34;http://www.networkworld.com/Google%20Subnet/redhat%20penguin.gif&#34; title=&#34;Linux Penguin w fedora&#34;&gt;red fedora&lt;/a&gt;. #justkiddingnotreally&lt;/p&gt;
 
 &lt;p&gt;I&amp;#39;ll still lead PyLadies SF, live in SF, and be heavily involved in the Python community.  Just now employed, with health care, and a hard-earn title.&lt;/p&gt;
@@ -1122,7 +1209,7 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
                 <uri>http://www.roguelynn.com/</uri>
             </author>
             <content type="html">&lt;p&gt;OH MAN PYCON IS SO MUCH FUN.  &lt;em&gt;Right? I know!&lt;/em&gt;  I remember a tweet from &lt;a href=&#34;http://www.twitter.com/hmason&#34; title=&#34;Hilary Mason&amp;#39;s twitter&#34;&gt;Hilary Mason&lt;/a&gt; that it should be &amp;quot;PyCAAHHHNNN&amp;quot; (imagine with a Boston accent while flashing \m/ upon entrance). Ever thought about submitting a proposal? &lt;em&gt;What? oh no, no no no.*Why not? *What would I talk about?  I have nothing to say!&lt;/em&gt; (Oddly, when starting out submitting talks to conferences, I never had that dialogue or PoV.  It was more like &amp;quot;I &amp;lt;3 the Python community. How can I be more involved?&amp;quot; and that&amp;#39;s how my ideation process started) (PS I love the verb &lt;em&gt;to ideate&lt;/em&gt;.  It&amp;#39;s great.)&lt;/p&gt;
-&lt;h4&gt; So how about this:&lt;/h4&gt;
+&lt;h4 id=&#34;so-how-about-this&#34;&gt; So how about this:&lt;/h4&gt;
 &lt;p&gt;Tell me what talks you went to at previous years&amp;#39; PyCons that you found were pretty good (regardless of speaker performance)? What about: what would you like to see at PyCon &lt;em&gt;this&lt;/em&gt; year? Ok.  You want to see those topics? Why don&amp;#39;t &lt;strong&gt;you&lt;/strong&gt; write the talk you want to see? Bam, you have an idea. (cheeky lil&amp;#39; blogger, aren&amp;#39;t I?) No seriously: if you want to see a talk, write it yourself.  &lt;/p&gt;
 
 &lt;p&gt;Or: take what it is that you do with Python (professionally, hobby-wise, side-jobs, whatevs), and write a talk on it. &lt;/p&gt;
@@ -1136,7 +1223,7 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
 &lt;p&gt;Topics that &lt;strong&gt;could do&lt;/strong&gt; &lt;strong&gt;surprisingly well&lt;/strong&gt; are security/cryptography, event-driven networking, and subjects that people should know about and probably default to industry standard, but don&amp;#39;t really know in depth.  &lt;strong&gt;Very interesting&lt;/strong&gt; subjects include &lt;em&gt;alternatives to giants&lt;/em&gt; like Django (e.g. Flask, Pyramid), or &lt;em&gt;where has Python failed.&lt;/em&gt; &lt;/p&gt;
 
 &lt;p&gt;There are &lt;strong&gt;important&lt;/strong&gt; subject matters like &lt;em&gt;accessibility&lt;/em&gt; within Python, and &lt;em&gt;diversity&lt;/em&gt; &amp;amp; &lt;em&gt;community&lt;/em&gt; building. Not all talks at PyCon are technical (my head would explode), but are needed and well-respected nonetheless.&lt;/p&gt;
-&lt;h4&gt;When proposing a talk:&lt;/h4&gt;
+&lt;h4 id=&#34;when-proposing-a-talk&#34;&gt;When proposing a talk:&lt;/h4&gt;
 &lt;p&gt;&lt;strong&gt;Submit early.&lt;/strong&gt;  You know how many proposals the Program Committee has to read through?  Not to many right now.  There is more time and patience to give feedback, give a second look after the speaker responds/edits.  The committee also is not that tired yet. Submit on September 27th?  Dead tired.  Not really wanting to give feedback; just wanting this voting process over. &lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Write an outline.&lt;/strong&gt;  Yes just do it.  It can be bare bones, but it helps a lot to see where you&amp;#39;re going with this talk, if there is enough meat behind this talk or if it&amp;#39;s too ambitious for the time slot.   Don&amp;#39;t write out your whole talk.  &lt;em&gt;My n00b confession: I wrote a 2-page single-spaced essay for my proposed talk at OSCON. /facepalm&lt;/em&gt; It also significantly helps the reviewer and you to &lt;strong&gt;associate length of time&lt;/strong&gt; per bullet/subpoint/etc.  The reviewer has a sense of where you&amp;#39;re going, if it can actually be a full talk or if it&amp;#39;s too long.  It also helps you frame your actual talk when you come to flesh it out (because no one &lt;em&gt;writes&lt;/em&gt; the damn talk before they propose it for the first time). &lt;/p&gt;
@@ -1177,7 +1264,7 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
             <content type="html">&lt;p&gt;Ever thought about speaking? Want to give speaking at &lt;a href=&#34;http://us.pycon.org/2013&#34; title=&#34;PyCon 2013&#34;&gt;PyCon&lt;/a&gt; a shot, but not sure what to talk about? Even if you have a tiny inkling that you&amp;#39;d want to speak, beginner level or advanced, come to our workshop to get help brainstorming ideas &amp;amp; learn what makes a good proposal! &lt;a href=&#34;http://pycon2013workshop.eventbrite.com&#34; title=&#34;Eventbrite Link: PyLadies PyCon workshop @Google Hangout&#34;&gt;Join the PyLadies hangout&lt;/a&gt;, open to &lt;strong&gt;PyLadies&lt;/strong&gt; and &lt;strong&gt;PyLaddies&lt;/strong&gt;, with help from PyLadies&amp;#39; leaders, previous years PyCon speakers &amp;amp; current Program Committee members (e.g. the folks that review proposals) to ideate, write, and submit your proposal to speak, give a tutorial, or a poster session at PyCon 2013. Space is limited by the Google Hangout technology. An invite link will be sent out about 15 minutes prior to the start time. For those in the Bay Area, be sure to check out the PyLadies San Francisco meetup, &lt;a href=&#34;http://www.meetup.com/PyLadiesSF/events/76870962/&#34; title=&#34;PyLadies Meetup: Workshop for PyCon Talk Proposals&#34;&gt;Workshop: Talk Proposal Writing for PyCon&lt;/a&gt;, on Tuesday, August 28th. &lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.eventbrite.com/event/4207274070?ref=ebtnebregn&#34;&gt;&lt;img src=&#34;http://www.eventbrite.com/custombutton?eid=4207274070&#34; alt=&#34;Button&#34;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;MOAR RESOURCES!&lt;/h4&gt;
+&lt;h4 id=&#34;moar-resources&#34;&gt;MOAR RESOURCES!&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://us.pycon.org/2013/speaking/speakatpycon/&#34; title=&#34;PyCon Info for Speakers&#34;&gt;More information in regards to speaking at PyCon.&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://pycon.blogspot.com/2012/08/what-talks-do-you-want-to-see-at-pycon.html&#34; title=&#34;PyCon Blog - what talks do you want to see&#34;&gt;Collection of suggested ideas from the Python community on the PyCon blog.&lt;/a&gt;&lt;/li&gt;
@@ -1215,7 +1302,7 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
             <content type="html">&lt;p&gt;When I was in high school, I was in &amp;quot;IB&amp;quot; math - the international equivalent to AP courses, except harder.  I really, really, &lt;em&gt;really&lt;/em&gt; enjoyed math.  My teacher would always mispronounce my name (&amp;quot;Wynn!&amp;quot;), but nonetheless, I loved the challenge.  I was the only one to receive 100% on the final exam, and one of a handful to take the IB exam.  I studied regularly, went over classmates&amp;#39; houses, worked through practice problems of vectors, differentiation, integration, goodness it was awesome.  I&amp;#39;d say that studying for this sort of stuff is very much like (if not the same concept) as the training I did for swimming: 2 hours/day in the pool, 6 days a week, extra hour each day of dry land training (side stepping the fact that right now, the most exercise I get is walking to/from cafes...). &lt;/p&gt;
 
 &lt;p&gt;While it&amp;#39;s been years since my crush on high school math, that same feeling comes again when studying for technical interviews.  Few hours/day, every day, until the interview.  I recently had the excitement of having a technical phone screen with Google, and I thought it went pretty well.  Not in terms of I think I can make it to the next round (I don&amp;#39;t need to mention that the bar is set very high with them), but how I felt when comparing my last technical interview experience back in April.  I&amp;#39;d like to share how I prepared myself. I&amp;#39;ll mention that I my CV reflects a lot of PyLadies work, as well as knowledge of Python (natch), SQL, git, and working with different APIs.&lt;/p&gt;
-&lt;h4&gt;How I prepared:&lt;/h4&gt;
+&lt;h4 id=&#34;how-i-prepared&#34;&gt;How I prepared:&lt;/h4&gt;
 &lt;p&gt;I had about a week for preparation (contrary to my previous one, where I had about two weeks).  Really, it had all depended on scheduling, but I tried to push it out as far as I could :D. First I read through a couple of Python resources just to become familiar with the &amp;#39;hidden gems&amp;#39; of the language that I may not use regularly or don&amp;#39;t have exposure to:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -1317,13 +1404,13 @@ damn good problem to attack).&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Reading through those redditor&amp;#39;s interview questions, I actually felt that I can answer the majority of them.  Actually I didn&amp;#39;t know what encapsulation was, but luckily I wasn&amp;#39;t the one in the hot seat for that interview, and I googled it :D.&lt;/p&gt;
-&lt;h4&gt;My weak points that I will work on:&lt;/h4&gt;
+&lt;h4 id=&#34;my-weak-points-that-i-will-work-on&#34;&gt;My weak points that I will work on:&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;  Understanding what can be done to improve runtimes of an algorithm  (not just be able to tell the runtime).&lt;/li&gt;
 &lt;li&gt;  Being more confident in my understanding of concepts.  For instance, I know what a RESTful API is, but how do I spit it back coherently? Same with explaining git.&lt;/li&gt;
 &lt;li&gt;  Calm the f&amp;amp;ck down.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;Things I thought I did well in:&lt;/h4&gt;
+&lt;h4 id=&#34;things-i-thought-i-did-well-in&#34;&gt;Things I thought I did well in:&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;  Wrote &amp;amp; instantiated a class that would be used to make a graph, using the requested private variables/methods (he seemed a little impressed).  Although I do believe I mixed up new style v classic. /facepalm&lt;/li&gt;
 &lt;li&gt;  Talking through each and every damn thing I was saying and writing (was not easy the first time).  And going back through what I coded to test simple cases &amp;amp; fixed typos/errors.&lt;/li&gt;
@@ -1413,7 +1500,7 @@ damn good problem to attack).&lt;/li&gt;
                 <uri>http://www.roguelynn.com/</uri>
             </author>
             <content type="html">&lt;p&gt;Seeing how my previous &lt;a href=&#34;http://www.roguelynn.com/2012-05-20-gold-nuggets-my-bookmarks-collection&#34; title=&#34;Gold Nuggets&#34;&gt;bookmarks post&lt;/a&gt; was well-received, here is MOAR!  A collection of helpful tutorials, tools, and libraries for folks learning Python/how to code, or looking to improve and explore their skills.&lt;/p&gt;
-&lt;h4&gt;Tutorials &amp;amp; How-tos&lt;/h4&gt;
+&lt;h4 id=&#34;tutorials-amp-how-tos&#34;&gt;Tutorials &amp;amp; How-tos&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://krondo.com/?page_id=1327&#34; title=&#34;Intro to Twisted&#34;&gt;Introduction to Twisted&lt;/a&gt;: A thorough introduction to Twisted and Asyncronous programming in Python. &lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://try.github.com/levels/1/challenges/1&#34; title=&#34;tryGit&#34;&gt;tryGit&lt;/a&gt;: Learn Git with GitHub&amp;amp; Codeschool&amp;#39;s new tutorial. &lt;/li&gt;
@@ -1422,13 +1509,13 @@ damn good problem to attack).&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://people.csail.mit.edu/pgbovine/python/&#34; title=&#34;Online Python Tutorial&#34;&gt;Online Python Tutor&lt;/a&gt;: Learn &amp;amp; Practice programming in your browser.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://craigkerstiens.com/2012/06/19/pro-tips-for-conference-talks/&#34; title=&#34;Conference Pro Tips&#34;&gt;Protips on Conference Talks&lt;/a&gt;: Thinking about giving a talk at a conference? Here is some great advice on how to rock it!&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;Tools&lt;/h4&gt;
+&lt;h4 id=&#34;tools&#34;&gt;Tools&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://opensourcehacker.com/2012/05/11/sublime-text-2-tips-for-python-and-web-developers/&#34; title=&#34;Sublime Text 2 for Python &amp;amp; Web Developers&#34;&gt;Sublime for Python and Web Developers&lt;/a&gt;: How to squeeze more power out of one of the most popular, light weight text editors for Python.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.shortcutfoo.com/app/tutorial/sublimetext&#34; title=&#34;Sublime Shortcuts&#34;&gt;Sublime Short cuts&lt;/a&gt;**: Learn to get more out of the latest text editor. &lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.corntab.com/pages/crontab-gui&#34; title=&#34;Crontab GUI&#34;&gt;Visual Crontab Editor&lt;/a&gt;: Easily create crontab syntax for your Linux or Unix servers.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;Libraries&lt;/h4&gt;
+&lt;h4 id=&#34;libraries&#34;&gt;Libraries&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;[PEP-8 Style Guide Checker][PEP8]: Are you writing code according to the standard Python guidelines?  Have no idea?  Try out this library.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/BrewerHimself/Logr&#34; title=&#34;Simple Python blogger&#34;&gt;Logr&lt;/a&gt;: Simple Python blogger. &lt;/li&gt;
@@ -1469,11 +1556,11 @@ damn good problem to attack).&lt;/li&gt;
                 <email>lynn@lynnroot.com</email>
                 <uri>http://www.roguelynn.com/</uri>
             </author>
-            <content type="html">&lt;h4&gt;Change the Ratio at DjangoCon 2012&lt;/h4&gt;
+            <content type="html">&lt;h4 id=&#34;change-the-ratio-at-djangocon-2012&#34;&gt;Change the Ratio at DjangoCon 2012&lt;/h4&gt;
 &lt;p&gt;If you’d like to go to &lt;a href=&#34;http://www.djangocon.us/&#34; title=&#34;DjangoCon US 2012&#34;&gt;DjangoCon 2012&lt;/a&gt; in Washington, D.C. -- or know a talented developer who does -- but cannot attend due to financial hardship, please &lt;a href=&#34;https://docs.google.com/spreadsheet/viewform?formkey=dDc1X2hrUGJVRGdEWnRjTklxR2tSNFE6MQ#gid=0&#34; title=&#34;FinAid&#34;&gt;apply for financial aid through DjangoCon&lt;/a&gt;. &lt;strong&gt;And&lt;/strong&gt;, if you&amp;#39;re a PyLady (as opposed to a PyLaddie), please indicate that you would like to be considered for a&lt;strong&gt; PyLadies grant&lt;/strong&gt; on that form. This year&amp;#39;s conference goes from Sept. 3 - Sept. 9. The deadline for the PyLadies grant submission is &lt;strong&gt;Friday, August 3rd&lt;/strong&gt;.  We apologize for the short notice, but we know that people need time to make travel plans/request days off from work, etc.  You will hear from us by the end of the week after applications are submitted. If you know of a talented, deserving female developer who might benefit greatly from attending DjangoCon, email &lt;a href=&#34;mailto:info@pyladies.com&#34; title=&#34;Email to Info&#34;&gt;us&lt;/a&gt;.  We&amp;#39;ll do our best to help as many women as possible. &lt;/p&gt;
 
 &lt;p&gt;Many thanks to the DjangoCon organizers and the Python Software Foundation for helping the PyLadies manage this program.&lt;/p&gt;
-&lt;h4&gt;Sponsors:&lt;/h4&gt;
+&lt;h4 id=&#34;sponsors&#34;&gt;Sponsors:&lt;/h4&gt;
 &lt;p&gt;The goal of this program is to bring new talent to the Djangosphere by supporting developers and giving them opportunity to make connections in the community. Your support of PyLadies’ outreach efforts will pay off hugely over the long term by improving the diversity of the industry as a whole. Companies &amp;amp; Individuals are invited to offer funding for talented developers who have demonstrated or show potential for a serious commitment to diversity in the Django commnunity. Donations will go through the &lt;a href=&#34;http://python.org/psf&#34; title=&#34;PSF&#34;&gt;Python Software Foundation&lt;/a&gt;, and are thus &lt;strong&gt;tax-deductible&lt;/strong&gt;, yeah! Please email &lt;a href=&#34;mailto:sponsors@pyladies.com&#34; title=&#34;Email to Sponsors&#34;&gt;sponsors@pyladies.com&lt;/a&gt; if you&amp;#39;d like to send a woman developer to DjangoCon.&lt;/p&gt;
 </content>
         </entry>
@@ -1539,7 +1626,7 @@ to #pyladies, I called him out, addressed it with the EuroPython organizers, and
                 <email>lynn@lynnroot.com</email>
                 <uri>http://www.roguelynn.com/</uri>
             </author>
-            <content type="html">&lt;h4&gt;Update:&lt;/h4&gt;
+            <content type="html">&lt;h4 id=&#34;update&#34;&gt;Update:&lt;/h4&gt;
 &lt;p&gt;With the pseudo/half baked apology from the original offender, I&amp;#39;ve decided to remove any identifying characteristics. &lt;/p&gt;
 
 &lt;hr&gt;
@@ -1641,7 +1728,7 @@ about. &lt;/p&gt;
                 <uri>http://www.roguelynn.com/</uri>
             </author>
             <content type="html">&lt;p&gt;I&amp;#39;ve collected many bookmarks related to Python, programming, computer science, etc.  It&amp;#39;s time I cleaned it out and organized it better.  In the midst of doing this, I found some really awesome sites, libraries, tutorials, etc that need to be shared.  I still have plenty of bookmarks that are great resources, but I didn&amp;#39;t want to inondate readers :). I&amp;#39;ve loosely divided them up by experience level.  Here goes: &lt;/p&gt;
-&lt;h4&gt;Beginner:&lt;/h4&gt;
+&lt;h4 id=&#34;beginner&#34;&gt;Beginner:&lt;/h4&gt;
 &lt;ol&gt;
 &lt;li&gt; &lt;a href=&#34;http://sigpwned.com/content/learning-how-program&#34; title=&#34;Learning How to Program&#34;&gt;Advice&lt;/a&gt; on learning how to program.&lt;/li&gt;
 &lt;li&gt; Model, View, Controller &lt;a href=&#34;http://www.tomdalling.com/blog/software-design/model-view-controller-explained&#34; title=&#34;MVC Explained&#34;&gt;explained&lt;/a&gt;.&lt;/li&gt;
@@ -1649,14 +1736,14 @@ about. &lt;/p&gt;
 &lt;li&gt; Colorful Git &lt;a href=&#34;http://rogerdudler.github.com/git-guide/&#34; title=&#34;Git Guide&#34;&gt;Tutorial&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt; Git Tutorial based on &lt;a href=&#34;http://openhatch.org/missions/git&#34; title=&#34;Git Missions&#34;&gt;missions to complete&lt;/a&gt;.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4&gt;Advanced Beginner/Intermediate:&lt;/h4&gt;
+&lt;h4 id=&#34;advanced-beginnerintermediate&#34;&gt;Advanced Beginner/Intermediate:&lt;/h4&gt;
 &lt;ol&gt;
 &lt;li&gt; Git &lt;a href=&#34;http://sitaramc.github.com/gcs/index.html&#34; title=&#34;Git for Scientists&#34;&gt;Tutorial&lt;/a&gt;for Scientists (although, you don&amp;#39;t need to be ascientist to get the benefit of this tutorial).&lt;/li&gt;
 &lt;li&gt; Bash Shell &lt;a href=&#34;http://dl.dropbox.com/u/397277/bash_shell_cheat_sheetV2.pdf&#34; title=&#34;Bash Cheat Sheet&#34;&gt;Cheat Sheet&lt;/a&gt; (Linux/Mac).  I&amp;#39;m in love with Bash.&lt;/li&gt;
 &lt;li&gt; Django tutorial:&lt;a href=&#34;http://lightbird.net/dbe/blog.html&#34; title=&#34;Django Simple Blog&#34;&gt;A simple Blog&lt;/a&gt; (uses an old version of Django).&lt;/li&gt;
 &lt;li&gt; &lt;a href=&#34;http://bpython-interpreter.org/about/&#34; title=&#34;bpython Interpreter&#34;&gt;bpython&lt;/a&gt;: an overlay to the Python interpreter.  Features in-linesyntax highlighting, autocomplete suggestions, displays a list of parameters when calling a function, displays what&amp;#39;s inside of the libraries when you import.  This is a lightweight IDE for the terminal/Python shell.  Awesome!&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4&gt;Experience Agnostic:&lt;/h4&gt;
+&lt;h4 id=&#34;experience-agnostic&#34;&gt;Experience Agnostic:&lt;/h4&gt;
 &lt;ol&gt;
 &lt;li&gt; Awesome little &lt;a href=&#34;%20http://pypi.python.org/pypi/pep8&#34; title=&#34;PEP-8 tool&#34;&gt;Python library&lt;/a&gt;: checks to see if your Python file is PEP-8 compliant.&lt;/li&gt;
 &lt;li&gt; &lt;a href=&#34;http://jeetworks.org/gitcommandswidget&#34; title=&#34;Git Widget&#34;&gt;Git Widget/Cheat sheet&lt;/a&gt; for Mac (lives on your dashboard for easy access).&lt;/li&gt;
@@ -1716,7 +1803,7 @@ about. &lt;/p&gt;
                 <email>lynn@lynnroot.com</email>
                 <uri>http://www.roguelynn.com/</uri>
             </author>
-            <content type="html">&lt;h4&gt;Before you read on: &lt;/h4&gt;
+            <content type="html">&lt;h4 id=&#34;before-you-read-on&#34;&gt;Before you read on: &lt;/h4&gt;
 &lt;p&gt;We have our first event this &lt;a href=&#34;http://www.meetup.com/PyLadiesSF/events/59189602/&#34; title=&#34;Debut Event&#34;&gt;Saturday, April 28th&lt;/a&gt; from 3p-8pm at &lt;a href=&#34;http://klout.com/home&#34; title=&#34;Klout&#34;&gt;Klout&lt;/a&gt; with an awesome dinner provided by &lt;a href=&#34;http://www.linkedin.com&#34; title=&#34;LinkedIn&#34;&gt;LinkedIn&lt;/a&gt;.  EXCITING!!! &lt;/p&gt;
 
 &lt;hr&gt;
