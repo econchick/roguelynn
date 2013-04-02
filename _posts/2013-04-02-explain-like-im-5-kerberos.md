@@ -191,7 +191,7 @@ Similar to the TGS, the HTTP Server will then do the following:
 * compares the timestamp from the Authenticator to that of the Ticket (typical Kerberos-system tolerance of difference is 2 minutes, but can be configured otherwise),
 * checks to see if the Ticket is expired (the lifetime element),
 * checks that the Authenticator is not already in the HTTP Server’s cache (for avoiding replay attacks), and 
-* if the network address in the original request is not null, compares the source’s IP address to your network address (or within the requested list) within the TGT.
+* if the network address in the original request is not null, compares the source’s IP address to your network address (or within the requested list) within the Ticket.
 
 The HTTP Service then sends an Authenticator message containing its ID and timestamp in order to confirm its identity to you and is encrypted with the <span id="http-session-key">HTTP Service Session Key</span>.
 

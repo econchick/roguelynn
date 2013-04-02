@@ -5,7 +5,7 @@
     <link rel="alternate" href="http://www.roguelynn.com/" />
     <link rel="self" href="http://www.roguelynn.com/feed.xml" type="application/atom+xml" />
     <id>http://www.roguelynn.com/</id>
-    <updated>2013-04-02T16:36:15Z</updated>
+    <updated>2013-04-02T17:58:23Z</updated>
 
     <author>
         <name>Lynn Root</name>
@@ -18,7 +18,7 @@
             <title type="html">Explain like I’m 5: Kerberos</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/explain-like-im-5-kerberos/" type="text/html" />
             <id>http://www.roguelynn.com/words/explain-like-im-5-kerberos/</id>
-            <updated>2013-04-02T16:34:00Z</updated>
+            <updated>2013-04-02T17:58:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -223,7 +223,7 @@
 &lt;li&gt;compares the timestamp from the Authenticator to that of the Ticket (typical Kerberos-system tolerance of difference is 2 minutes, but can be configured otherwise),&lt;/li&gt;
 &lt;li&gt;checks to see if the Ticket is expired (the lifetime element),&lt;/li&gt;
 &lt;li&gt;checks that the Authenticator is not already in the HTTP Server’s cache (for avoiding replay attacks), and &lt;/li&gt;
-&lt;li&gt;if the network address in the original request is not null, compares the source’s IP address to your network address (or within the requested list) within the TGT.&lt;/li&gt;
+&lt;li&gt;if the network address in the original request is not null, compares the source’s IP address to your network address (or within the requested list) within the Ticket.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;The HTTP Service then sends an Authenticator message containing its ID and timestamp in order to confirm its identity to you and is encrypted with the &lt;span id=&#34;http-session-key&#34;&gt;HTTP Service Session Key&lt;/span&gt;.&lt;/p&gt;
