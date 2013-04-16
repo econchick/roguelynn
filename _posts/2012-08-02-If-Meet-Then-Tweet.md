@@ -1,8 +1,0 @@
----
-layout: talk.html
-title: "Faking it til I'm Making it: How I'm Learning how to Code"
-tags: [past talk]
-talk_date: "August, 2012"
-location: "Girl Geek Dinners, San Francisco"
-video: "http://www.youtube.com/watch?v=CrqLmtDw7K4&feature=g-like"
----
