@@ -20,20 +20,20 @@
                             <time>{{ post.talk_date }}</time>
                             <p id="location">{{ post.location }}</p>
                             <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
-                            <br/>
                             <p>{{ post.content }}</p>
+                            <br />
+                            <h4 class="talk-item">
                             {% if post.blog_post %}
-                            <h4 class="talk-item"><a href="{{ post.blog_post}}"><span aria-hidden="true" class="icon" data-icon="&#128213;"></span>&nbsp;&nbsp;Full Blog Post</a></h4>
+                            <a href="{{ post.blog_post}}"><span aria-hidden="true" class="icon" data-icon="&#128213;"></span>&nbsp;&nbsp;Full Blog Post</a>
                             {% endif %}
-                            {% if post.video %}
-                            <h4 class="talk-item"><a href="{{ post.video }}"><span aria-hidden="true" class="icon" data-icon="&#127916;"></span>&nbsp;&nbsp;Video available</a></h4>
+                            {% if post.video %}<a href="{{ post.video }}"><span aria-hidden="true" class="icon" data-icon="&#127916;"></span>&nbsp;&nbsp;Video available</a>
                             {% endif %}
-                            {% if post.slides %}
-                            <h4 class="talk-item"><a href="{{ post.slides }}"><span aria-hidden="true" class="icon link" data-icon="&#59212;"></span>&nbsp;&nbsp;Slides available</a></h4>
+                            {% if post.slides %}<a href="{{ post.slides }}"><span aria-hidden="true" class="icon link" data-icon="&#59212;"></span>&nbsp;&nbsp;Slides available</a>
                             {% endif %}
-                            {% if post.code %}
-                            <h4 class="talk-item"><a href="{{ post.code }}"><span aria-hidden="true" class="icon" data-icon="&#128213;"></span>&nbsp;&nbsp;Demoed Code</a></h4><br />
+                            {% if post.code %}<a href="{{ post.code }}"><span aria-hidden="true" class="icon" data-icon="&#128213;"></span>&nbsp;&nbsp;Demoed Code</a>
                             {% endif %}
+                            </h4>
+                            <br />
                             <br />
                     {% endif %}
                 {% endfor %}

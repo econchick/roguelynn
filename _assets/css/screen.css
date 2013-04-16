@@ -17,7 +17,7 @@ time, mark, audio, video {
   border: 0;
   font: inherit;
   font-size: 100%;
-  vertical-align: baseline; }
+  vertical-align: top; }
 
 html {
   line-height: 1; }
@@ -529,7 +529,7 @@ article li span {
   text-transform: uppercase; }
 
 .icon {
-  margin: 0.5em 0; }
+  margin: 0.1em 0.1em; }
   .icon:before {
     font-family: 'entypo';
     font-size: 58px;

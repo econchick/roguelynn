@@ -5,7 +5,7 @@
     <link rel="alternate" href="http://www.roguelynn.com/" />
     <link rel="self" href="http://www.roguelynn.com/feed.xml" type="application/atom+xml" />
     <id>http://www.roguelynn.com/</id>
-    <updated>2013-04-11T19:04:26Z</updated>
+    <updated>2013-04-16T18:02:33Z</updated>
 
     <author>
         <name>Lynn Root</name>
@@ -13,6 +13,55 @@
         <uri>http://www.roguelynn.com/</uri>
     </author>
 
+    
+        <entry>
+            <title type="html">Introduce Django to your old friends</title>
+            <link rel="alternate" href="http://www.roguelynn.com/words/Introduce-Django-to-your-old-friends/" type="text/html" />
+            <id>http://www.roguelynn.com/words/Introduce-Django-to-your-old-friends/</id>
+            <updated>2013-04-16T17:55:00Z</updated>
+
+            <author>
+                <name>Lynn Root</name>
+                <email>lynn@lynnroot.com</email>
+                <uri>http://www.roguelynn.com/</uri>
+            </author>
+            <content type="html">&lt;p&gt;Django 1.5 introduced a configurable User model, fantastic! &lt;/p&gt;
+
+&lt;p&gt;Now what? &lt;a href=&#34;http://2013.djangocon.eu/talks/#5&#34; class=&#39;more-link&#39;&gt;Read more &amp;rarr;&lt;/a&gt;&lt;/p&gt;
+</content>
+        </entry>
+    
+        <entry>
+            <title type="html">Introduce Django to your old friends</title>
+            <link rel="alternate" href="http://www.roguelynn.com/words/EuroPython-Introduce-Django/" type="text/html" />
+            <id>http://www.roguelynn.com/words/EuroPython-Introduce-Django/</id>
+            <updated>2013-04-15T17:55:00Z</updated>
+
+            <author>
+                <name>Lynn Root</name>
+                <email>lynn@lynnroot.com</email>
+                <uri>http://www.roguelynn.com/</uri>
+            </author>
+            <content type="html">&lt;p&gt;Django 1.5 introduced a configurable User model, fantastic! &lt;/p&gt;
+
+&lt;p&gt;Now what? &lt;a href=&#34;https://ep2013.europython.eu/conference/talks/introduce-django-to-your-old-friends&#34; class=&#39;more-link&#39;&gt;Read more &amp;rarr;&lt;/a&gt;&lt;/p&gt;
+</content>
+        </entry>
+    
+        <entry>
+            <title type="html">Sink or Swim: 5 Life Jackets to Throw to the New Coder</title>
+            <link rel="alternate" href="http://www.roguelynn.com/words/EuroPython-Sink-or-Swim/" type="text/html" />
+            <id>http://www.roguelynn.com/words/EuroPython-Sink-or-Swim/</id>
+            <updated>2013-04-15T17:54:00Z</updated>
+
+            <author>
+                <name>Lynn Root</name>
+                <email>lynn@lynnroot.com</email>
+                <uri>http://www.roguelynn.com/</uri>
+            </author>
+            <content type="html">&lt;p&gt;With the recent launch of &lt;a href=&#34;http://newcoder.io&#34;&gt;newcoder.io&lt;/a&gt;, I will reflect on how many want to learn to code but lots get lost. &lt;a href=&#34;https://ep2013.europython.eu/conference/talks/sink-or-swim-5-life-jackets-to-throw-to-new-coders&#34; class=&#39;more-link&#39;&gt;Read more &amp;rarr;&lt;/a&gt;&lt;/p&gt;
+</content>
+        </entry>
     
         <entry>
             <title type="html">Explain like I’m 5: Kerberos</title>
@@ -251,21 +300,6 @@
         </entry>
     
         <entry>
-            <title type="html">Introduce Django to your old friends</title>
-            <link rel="alternate" href="http://www.roguelynn.com/words/Introduce-Django-to-your-old-friends/" type="text/html" />
-            <id>http://www.roguelynn.com/words/Introduce-Django-to-your-old-friends/</id>
-            <updated>2013-03-28T20:30:00Z</updated>
-
-            <author>
-                <name>Lynn Root</name>
-                <email>lynn@lynnroot.com</email>
-                <uri>http://www.roguelynn.com/</uri>
-            </author>
-            <content type="html">&lt;p&gt;Django 1.5 introduced a configurable User model, fantastic! Now what? With the increased flexibility of user models, integrating Django into an existing infrastructure is now easier than ever. This talk gives an introduction to the new configurable User model, and then walks through how to integrate Django applications to authenticate against already existing identity management systems like LDAP, Kerberos, etc.&lt;/p&gt;
-</content>
-        </entry>
-    
-        <entry>
             <title type="html">Keynote - TBD</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/Keynote-PyCon-Ireland/" type="text/html" />
             <id>http://www.roguelynn.com/words/Keynote-PyCon-Ireland/</id>
@@ -482,15 +516,14 @@ It’s extremely difficult to learn what you need to learn, yet not know what &l
             <title type="html">Sink or Swim: 5 Life Jackets to Throw to the New Coder</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/Sink-or-Swim/" type="text/html" />
             <id>http://www.roguelynn.com/words/Sink-or-Swim/</id>
-            <updated>2013-03-15T20:03:00Z</updated>
+            <updated>2013-03-15T17:56:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
                 <uri>http://www.roguelynn.com/</uri>
             </author>
-            <content type="html">&lt;p&gt;With the launch of &lt;a href=&#34;http://newcoder.io&#34;&gt;newcoder.io&lt;/a&gt;, I reflected on how many want to learn to code, and many choose Python as a first language. We direct them to Learn Python the Hard Way, or Dive into Python. Great! But now what? I launched 5 digestible projects to gradually progress the Python learner from near drowning to a decent swimmer. The goal is to have new coders feeling accomplished and to continuing learning.&lt;/p&gt;
-</content>
+            <content type="html"></content>
         </entry>
     
         <entry>
@@ -1427,8 +1460,8 @@ damn good problem to attack).&lt;/li&gt;
     
         <entry>
             <title type="html">Faking it til I&#39;m Making it: How I&#39;m Learning how to Code</title>
-            <link rel="alternate" href="http://www.roguelynn.com/words/If-Meet-Then-Tweet/" type="text/html" />
-            <id>http://www.roguelynn.com/words/If-Meet-Then-Tweet/</id>
+            <link rel="alternate" href="http://www.roguelynn.com/words/Faking-it/" type="text/html" />
+            <id>http://www.roguelynn.com/words/Faking-it/</id>
             <updated>2012-08-02T20:15:00Z</updated>
 
             <author>
