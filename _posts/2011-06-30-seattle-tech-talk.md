@@ -2,6 +2,7 @@
 layout: post.html
 title: 'Seattle Tech Talk'
 tags: [Facebook, talks]
+category: [words]
 ---
 
 I had the interesting experience of attending a Seattle tech talk with Facebook's Mark Zuckerberg. Unfortunately I was too scared to ask him if he felt $70 billion was a fair value for the FB IPO estimate, or if he needed any analysts to help him justify such a number.

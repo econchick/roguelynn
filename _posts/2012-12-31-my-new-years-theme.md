@@ -2,6 +2,7 @@
 layout: post.html
 title: "My New Years Theme"
 tags: [programming, python, reflection]
+category: [words]
 ---
 
 I don't do New Years' resolutions. But I like to take the time and reflect on the past year to declare a theme for next year. 

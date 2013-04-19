@@ -2,6 +2,7 @@
 layout: post.html
 title: 'From email setup to patch submission in 8 days.'
 tags: [python, programming]
+category: [words]
 ---
 
 Hellz yea, I'm a freaking engineer (sounds more hilarious in my head then it reads). Now who the hell wouldn't want to be an engineer? Fellow PyLady, Julia Grace, [asked][JuliaG] about my expectations of being an engineer versus what I actually experienced.  

@@ -2,6 +2,7 @@
 layout: post.html
 title: 'Update: PyLadiesSF Debut'
 tags: [PyLadies]
+category: [words]
 ---
 
 Wow, what an event it was! I'd say we had about \~50 attendees for our [first event][event], which is awesome.  There was so much excitement in the room that I couldn't even get a chance to hack on my projects!  

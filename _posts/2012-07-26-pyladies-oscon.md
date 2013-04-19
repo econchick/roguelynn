@@ -2,6 +2,7 @@
 layout: post.html
 title: 'PyLadies @ OSCON'
 tags: [OSCON, PSF, PyLadies]
+category: [words]
 ---
 
 I had the wonderful opportunity to bring up a few fellow PyLadies to Portland, Oregon for O'Reilly's Open Source Convention.  Thanks to the help of the [Python Software Foundation][PSF], we were able to bring along swag including stickers, postcards of information on how to start a local PyLadies chapter, and a new banner. 

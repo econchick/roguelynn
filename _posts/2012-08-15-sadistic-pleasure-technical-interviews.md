@@ -2,6 +2,7 @@
 layout: post.html
 title: 'Sadistic/Masochistic pleasure: Technical Interviews'
 tags: [algorithms, interviewing, pin]
+category: [words, resources]
 ---
 
 When I was in high school, I was in "IB" math - the international equivalent to AP courses, except harder.  I really, really, *really* enjoyed math.  My teacher would always mispronounce my name ("Wynn!"), but nonetheless, I loved the challenge.  I was the only one to receive 100% on the final exam, and one of a handful to take the IB exam.  I studied regularly, went over classmates' houses, worked through practice problems of vectors, differentiation, integration, goodness it was awesome.  I'd say that studying for this sort of stuff is very much like (if not the same concept) as the training I did for swimming: 2 hours/day in the pool, 6 days a week, extra hour each day of dry land training (side stepping the fact that right now, the most exercise I get is walking to/from cafes...). 

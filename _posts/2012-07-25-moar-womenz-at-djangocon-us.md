@@ -2,6 +2,7 @@
 layout: post.html
 title: 'Moar Womenz at DjangoCon US!'
 tags: [DjangoCon, PyLadies, conferences]
+category: [words]
 ---
 
 #### Change the Ratio at DjangoCon 2012

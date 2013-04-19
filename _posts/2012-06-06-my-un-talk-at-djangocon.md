@@ -2,6 +2,7 @@
 layout: post.html
 title: 'My un-talk at DjangoCon. Warning: rant.'
 tags: [DjangoCon, PyLadies]
+category: [words]
 ---
 
 I woke up the morning of [my talk][talk] lightly hung over after the awesome Divio after party for DjangoCon Europe/Zurich wanting to completely scrap my whole prepared talk this afternoon about what I've done to educate women, and how to make the [Django tutorial better][Django] for new folks coming into programming in general.  Not because I'm hung over, or a wimp, or that I didn't prepare (which I half-ass did, enough to feel fine going up on stage).  But because something else needs to be talked

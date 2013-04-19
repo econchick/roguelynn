@@ -2,6 +2,7 @@
 layout: post.html
 title: 'Moar Bookmarks!'
 tags: [git, libraries, sublime, twisted, links]
+category: [words, resources]
 ---
 
 Seeing how my previous [bookmarks post]({{ get_url("2012-05-20-gold-nuggets-my-bookmarks-collection")}} "Gold Nuggets") was well-received, here is MOAR!  A collection of helpful tutorials, tools, and libraries for folks learning Python/how to code, or looking to improve and explore their skills.

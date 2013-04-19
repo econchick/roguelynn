@@ -2,6 +2,7 @@
 layout: post.html
 title: 'From n00b to Engineer in 1 year'
 tags: [Red Hat, engineer, fav]
+category: [words]
 ---
 
 It is my great pleasure (and squee!) to share with my friends, family, PyLadies, twitter nerds, Women Who Code'rs, DevChixen, Systers, and everyone else that I can now say: 

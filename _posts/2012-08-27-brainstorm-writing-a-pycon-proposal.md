@@ -2,6 +2,7 @@
 layout: post.html
 title: 'Brainstorm: Writing a PyCon proposal'
 tags: [PyCon, PyLadies, devChix, Women2.0]
+category: [words]
 ---
 
 OH MAN PYCON IS SO MUCH FUN.  *Right? I know!*  I remember a tweet from [Hilary Mason][Hilary] that it should be "PyCAAHHHNNN" (imagine with a Boston accent while flashing \\m/ upon entrance). Ever thought about submitting a proposal? *What? oh no, no no no.*Why not? *What would I talk about?  I have nothing to say!* (Oddly, when starting out submitting talks to conferences, I never had that dialogue or PoV.  It was more like "I \<3 the Python community. How can I be more involved?" and that's how my ideation process started) (PS I love the verb *to ideate*.  It's great.)

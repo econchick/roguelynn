@@ -2,6 +2,7 @@
 layout: post.html
 title: "Soft release of my New Year's project: Salarly"
 tags: [django, d3.js, xCharts]
+category: [words]
 ---
 
 Finally, I can actually do some show & tell!

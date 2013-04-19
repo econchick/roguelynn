@@ -13,3 +13,5 @@ jinja:
 misaka:
     render_flags:
         toc: true
+tag_layout: tag.html
+tags_url: /category/

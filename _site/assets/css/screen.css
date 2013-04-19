@@ -182,7 +182,7 @@ nav {
         color: #54555C; }
         /* line 100, ../sass/screen.scss */
         nav .contents li a:hover {
-          color: #313236; }
+          color: #38a5dd; }
         /* line 103, ../sass/screen.scss */
         nav .contents li a.current {
           -webkit-transition-property: color;
@@ -448,7 +448,7 @@ p.caption {
 
 h1 {
   display: block;
-  font-size: 5em;
+  font-size: 3.5em;
   line-height: 100%;
   font-weight: 700;
   margin-bottom: 0em;
@@ -736,6 +736,10 @@ code {
   white-space: pre;
 }
 
+#tags {
+  text-align: center;
+}
+
 #break {
     font-size: 24px;
     text-align: center;
@@ -777,4 +781,8 @@ code {
 #http-session-key{
   color: rgb(128, 0, 64);
   font-weight: bolder;
+}
+
+#about{
+  padding-top: 1.3em;
 }

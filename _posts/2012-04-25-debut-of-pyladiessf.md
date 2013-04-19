@@ -2,6 +2,7 @@
 layout: post.html
 title: 'Debut of PyLadiesSF'
 tags: [PyLadies, pyladiessf, Python, Women Who Code]
+category: [words]
 ---
 
 #### Before you read on: 

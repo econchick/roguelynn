@@ -2,6 +2,7 @@
 layout: post.html
 title: "Avoid Drowning: Swim your way through a new code base"
 tags: [n00b, engineering, presentation]
+category: [words]
 ---
 A month or two ago, I signed up for a lightning talk for [today's][wwc] Women Who Code event. I didn't submit a title - I was more, "sure, I could talk!"
 

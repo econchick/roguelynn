@@ -2,6 +2,7 @@
 layout: post.html
 title: 'A memorable EuroPython, for the better'
 tags: [community, EuroPython, PyLadies]
+category: [words]
 ---
 
 EuroPython marked many memorable experiences for me, as a PyLady, as a member of the Python community, and as a newbie to coding & programming. First, it is widely known and very well accepted that the folks at EuroPython did a fantastic job in organizing the whole conference. Every detail was well thought out.  Coming from 7000+ miles away, I did not feel like a foreigner.  Little things, including inviting me to join them in the evening a couple days before the conference; having cordial side conversations; and making connections & introductions, it all really helped me out. 

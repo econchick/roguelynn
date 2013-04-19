@@ -2,6 +2,7 @@
 layout: post.html
 title: "It's for SCIENCE"
 tags: [events, physics]
+category: [words]
 ---
 
 Guten tag, all. I just had an awesome weekend.  I attended [San Francisco Science Hack Day][Hackathon] and it was *awesome*!  It was two **full days**, so let me lay it out for you: **about me:**programming & science n00b **mission:**to make & hack things with SCIENCE **vision:**to hack data from Switzerland's Large Hadron Collider for better accessibility and understanding, esp for enthusiasts but n00bs like me. **results:**

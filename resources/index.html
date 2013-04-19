@@ -1,0 +1,25 @@
+{% extends "site.html" %}
+{% block title %}Resources{% endblock %}
+{% block content %}
+    <section id="archive">
+        <h1>Resources</h1>
+            <article>
+                <h3>Recommended Readings</h3>
+                {% for post in posts %}
+                    {% if 'resources' in post.category and 'readings' in post.category %}
+                    <ul>
+                        <li><a href="{{ post.book_link }}">{{ post.title }}</a></li>
+                    </ul>
+                    {% endif %}
+                    {% endfor %}
+                <h3>Selected Posts</h3>
+                {% for post in posts %}
+                    {% if 'resources' in post.category and 'words' in post.category %}
+                    <ul>
+                        <li><a href="{{ get_url(post.url) }}">{{ post.title }}</a></li>
+                    </ul>
+                    {% endif %}
+                {% endfor %}
+            </article>
+    </section>
+{% endblock %}

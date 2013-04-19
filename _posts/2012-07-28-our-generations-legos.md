@@ -2,6 +2,7 @@
 layout: post.html
 title: "Our generation's Legos"
 tags: [education, Python, raspberry pi, pin]
+category: [words]
 ---
 
 First time I heard about raspberry pi was through twitter.  I thought: Oh I bet that's a cute name for a new python module.  Didn't look into it. 

@@ -2,6 +2,7 @@
 layout: post.html
 title: "Explain like I’m 5: Kerberos"
 tags: [kerberos]
+category: [words]
 ---
 
 Explain like I’m 5 years old: Kerberos – what is Kerberos, and why should I care?

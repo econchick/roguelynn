@@ -2,6 +2,7 @@
 layout: post.html
 title: "Reflection of my time in Brno"
 tags: [programming, OpenShift, ruby, python]
+category: [words]
 ---
 
 I'm just returning to San Francisco from spending two months at [Red Hat Czech][map] in Brno, Czech Republic. It had its ups and downs, but most of all, I found it important and pivotal to my career as I develop into an engineer.

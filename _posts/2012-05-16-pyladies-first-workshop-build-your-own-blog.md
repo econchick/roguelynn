@@ -2,6 +2,7 @@
 layout: post.html
 title: 'PyLadies First Workshop: Build your own Blog'
 tags: [Django, PyLadies]
+category: [words]
 ---
 
 What a blast I had on Saturday!  It was a great learning experience for both the attendees and for us PyLadies org board!  Good lessons learned, such as virtualenv is a beast to install depending on one's operating system.  Next time, we'll have a pre-workshop session for installation of dependencies and such. We went through how to build a blog using Django and its class-based views.  We also went over Model-View-Controller concepts, and how they apply to Django.  We wrapped up with a quick overview of how easy it is to deploy an application on Heroku (way too easy!). 

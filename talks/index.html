@@ -3,16 +3,14 @@
 {% block content %}
     <section id="archive">
         <h1>Talks</h1>
-            <article id="talks">
-                <h2>Upcoming Talks</h2>
+            <article>
                 {% for post in posts %}
                     {% if 'upcoming talk' in post.tags %}
+                    {% if not 'hidden' in post.tags %}
+                            <h3>{{ post.location }}</h3>
                             <time>{{ post.talk_date }}</time>
-                            <p id="location">{{ post.location }}</p>
-                            <h4><a href="{{ post.conf_url }}">{{ post.title }}</a></h4>
-                            <p>{{ post.content }}</p>
-                            <br />
-                    {% endif %}
+                            {{ post.content }}
+                    {% endif %}{% endif %}
                 {% endfor %}
                 <h2>Previous Talks</h2>
                 {% for post in posts %}
@@ -21,7 +19,6 @@
                             <p id="location">{{ post.location }}</p>
                             <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
                             <p>{{ post.content }}</p>
-                            <br />
                             <h4 class="talk-item">
                             {% if post.blog_post %}
                             <a href="{{ post.blog_post}}"><span aria-hidden="true" class="icon" data-icon="&#128213;"></span>&nbsp;&nbsp;Full Blog Post</a>
@@ -33,8 +30,6 @@
                             {% if post.code %}<a href="{{ post.code }}"><span aria-hidden="true" class="icon" data-icon="&#128213;"></span>&nbsp;&nbsp;Demoed Code</a>
                             {% endif %}
                             </h4>
-                            <br />
-                            <br />
                     {% endif %}
                 {% endfor %}
             </article>

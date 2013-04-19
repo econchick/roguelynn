@@ -2,6 +2,7 @@
 layout: post.html
 title: 'Operation: PyCon attendance'
 tags: [python, pycon]
+category: [words]
 ---
 
 Thinking about going to [PyCon][PyCon] for 2013?  Here are arguments to make for yourself and/or for your employer to go to PyCon this year.
