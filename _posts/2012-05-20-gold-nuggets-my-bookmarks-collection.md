@@ -5,7 +5,9 @@ tags: [Bash, Django, git, tutorials, Python, links]
 category: [words, resources]
 ---
 
-I've collected many bookmarks related to Python, programming, computer science, etc.  It's time I cleaned it out and organized it better.  In the midst of doing this, I found some really awesome sites, libraries, tutorials, etc that need to be shared.  I still have plenty of bookmarks that are great resources, but I didn't want to inondate readers :). I've loosely divided them up by experience level.  Here goes: 
+I've collected many bookmarks related to Python, programming, computer science, etc.  
+
+It's time I cleaned it out and organized it better.  In the midst of doing this, I found some really awesome sites, libraries, tutorials, etc that need to be shared.  I still have plenty of bookmarks that are great resources, but I didn't want to inondate readers :). I've loosely divided them up by experience level.  Here goes: 
 
 #### Beginner:
 

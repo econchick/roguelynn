@@ -5,7 +5,9 @@ tags: [community, python, pyladies]
 category: [talks]
 ---
 
-I had the absolute pleasure attending the first [PyCarolinas][PyCarolinas] conference.  I was honored when [Calvin Spealman][Calvin] invited me to keynote on the topic of community.  He wanted folks to leave feeling inspired to build up the area's sense of community.  A lot of pressure, but having a conference is a damn good litmus test to understand a local area's Python community. When trying to develop my talk, during my procrastination/conference-driven-development, I tried to understand and uncover the inherit qualities of the Python community. But first I had to step back: *why* is community important? I took a peek at [the Art of Community][book] by Jono Bacon (awesome last name).  It's a decent book and it had some good thoughts.  Particularly, he states:
+I had the absolute pleasure attending the first [PyCarolinas][PyCarolinas] conference.  I was honored when [Calvin Spealman][Calvin] invited me to keynote on the topic of community.  He wanted folks to leave feeling inspired to build up the area's sense of community.  
+
+A lot of pressure, but having a conference is a damn good litmus test to understand a local area's Python community. When trying to develop my talk, during my procrastination/conference-driven-development, I tried to understand and uncover the inherit qualities of the Python community. But first I had to step back: *why* is community important? I took a peek at [the Art of Community][book] by Jono Bacon (awesome last name).  It's a decent book and it had some good thoughts.  Particularly, he states:
 
 > The importance of community is not in the crusade, but in how you unify people to march forward together, side by side.
 

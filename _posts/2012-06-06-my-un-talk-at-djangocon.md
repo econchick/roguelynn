@@ -5,7 +5,9 @@ tags: [DjangoCon, PyLadies]
 category: [words]
 ---
 
-I woke up the morning of [my talk][talk] lightly hung over after the awesome Divio after party for DjangoCon Europe/Zurich wanting to completely scrap my whole prepared talk this afternoon about what I've done to educate women, and how to make the [Django tutorial better][Django] for new folks coming into programming in general.  Not because I'm hung over, or a wimp, or that I didn't prepare (which I half-ass did, enough to feel fine going up on stage).  But because something else needs to be talked
+I woke up the morning of [my talk][talk] lightly hung over after the awesome Divio after party for DjangoCon Europe/Zurich wanting to completely scrap my whole prepared talk this afternoon about what I've done to educate women, and how to make the [Django tutorial better][Django] for new folks coming into programming in general.
+
+Not because I'm hung over, or a wimp, or that I didn't prepare (which I half-ass did, enough to feel fine going up on stage).  But because something else needs to be talked
 about. 
 
 Women.  Women in tech.  Women at conferences. I want to make a few points about my experience here at DjangoCon: I woke up this morning a little offended.  There are about 250 attendees, about 8-10 of them are women (or at least selected female cut shirts), a ratio that is not unfamiliar, but quite low nonetheless.  Those who reviewed the talk proposals for DjangoCon Europe selected 2 women (myself included) to give a talk, and invited 2 women to serve as keynote speakers. 

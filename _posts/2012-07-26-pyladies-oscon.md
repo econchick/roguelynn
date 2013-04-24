@@ -5,7 +5,9 @@ tags: [OSCON, PSF, PyLadies]
 category: [words]
 ---
 
-I had the wonderful opportunity to bring up a few fellow PyLadies to Portland, Oregon for O'Reilly's Open Source Convention.  Thanks to the help of the [Python Software Foundation][PSF], we were able to bring along swag including stickers, postcards of information on how to start a local PyLadies chapter, and a new banner. 
+I had the wonderful opportunity to bring up a few fellow PyLadies to Portland, Oregon for O'Reilly's Open Source Convention.  
+
+Thanks to the help of the [Python Software Foundation][PSF], we were able to bring along swag including stickers, postcards of information on how to start a local PyLadies chapter, and a new banner. 
 
 It was an interesting experience.  There was a lot of excitement for the conference; the open-source community is fantastic to be a part of. But what was weird was that I felt there were not a lot of Pythonistas there.  Similarly, I felt PyLadies' presence wasn't as well received as I originally anticipated.  I heard a lot of people walk by, asking "pe... pilates? what's pilates?" Interestingly enough, this gave me an event idea: "PyLadies does Pilates!" :D 
 

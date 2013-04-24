@@ -5,7 +5,9 @@ tags: [learn to code, PyLadies, Python, Women Who Code]
 category: [words]
 ---
 
-Who knew I'd get wrapped into Silicon Valley? I should post more so I don't have to do such a digest of what's been going on! :) It all started when I took my first CS class.   Well, it sucked. Learning first in C, I thought, “Well, I know some of these words.” I [re]assure you, C does not come naturally to a (former) financial analyst.  I felt
+Who knew I'd get wrapped into Silicon Valley? 
+
+I should post more so I don't have to do such a digest of what's been going on! :) It all started when I took my first CS class. Well, it sucked. Learning first in C, I thought, “Well, I know some of these words.” I [re]assure you, C does not come naturally to a (former) financial analyst.  I felt
 I was drowning: I failed both exams. 
 
 I had the pleasure of attending Science Hack Day, where I was first exposed to Python.  Then it was all downhill from there... My final project was [inflatr.com][inflatr], which used the awesomeness of Python and my undying interest in economics.  Python is actually an interesting language; it poses as an easy-to-learn language for beginner coders, but it more so leverages the coder to build programs and scripts efficiently by taking away a lot of the tediousness that other languages are known for and where beginners drown. 
