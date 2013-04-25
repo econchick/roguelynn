@@ -9,7 +9,7 @@
                     {% if 'upcoming talk' in post.tags %}
                     {% if not 'hidden' in post.tags %}
                             <h3>{{ post.location }}</h3>
-                            <time>{{ post.talk_date }}</time>
+                            <time id="talks">{{ post.talk_date }}</time>
                             {{ post.content }}
                     {% endif %}{% endif %}
                 {% endfor %}
@@ -18,7 +18,7 @@
                 {% for post in posts %}
                     {% if 'past talk' in post.tags %}                            
                             <h3>{{ post.location }}</h3> 
-                            <time>{{ post.talk_date }}</time>
+                            <time id="talks">{{ post.talk_date }}</time>
                             <p id="location">{{ post.title}}</p>
                             <h5 class="talk-item">
                             {% if post.blog_post %}

@@ -652,12 +652,23 @@ section#archive article#talks a {
   color: #dd4a38;
 }
 
-time {
+/*time {
   color:#7F808A;
   font-style:italic;
   margin-left:-10em;
   text-align: right;
+}*/
+time {
+color:#7F808A;
+display:block;
+font-style:italic;
+left:-320px;
+margin-top:-10px;
+margin-left: -10em;
+text-align:right;
+width:175px;
 }
+
 section#post aside time {
   color:#7F808A;
   font-style:italic;
