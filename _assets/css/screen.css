@@ -489,7 +489,7 @@ h5 {
   font-size: 0.9em;
   font-weight: 600;
   margin-top: 0.4em;
-  text-align: right;
+  text-align: left;
   text-transform: uppercase; }
 
 h6 {
@@ -649,13 +649,14 @@ section#archive article#location h4{
 }
 
 section#archive article#talks a {
-  color: #38a5dd;
+  color: #dd4a38;
 }
 
 time {
   color:#7F808A;
   font-style:italic;
-  margin-left:-13em;
+  margin-left:-10em;
+  text-align: right;
 }
 section#post aside time {
   color:#7F808A;

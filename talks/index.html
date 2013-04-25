@@ -3,7 +3,8 @@
 {% block content %}
     <section id="archive">
         <h1>Talks</h1>
-            <article>
+            <article id="talks">
+                <h2>Upcoming</h2>
                 {% for post in posts %}
                     {% if 'upcoming talk' in post.tags %}
                     {% if not 'hidden' in post.tags %}
@@ -12,24 +13,24 @@
                             {{ post.content }}
                     {% endif %}{% endif %}
                 {% endfor %}
-                <h2>Previous Talks</h2>
+                <hr>
+                <h2>Past</h2>
                 {% for post in posts %}
-                    {% if 'past talk' in post.tags %}
+                    {% if 'past talk' in post.tags %}                            
+                            <h3>{{ post.location }}</h3> 
                             <time>{{ post.talk_date }}</time>
-                            <p id="location">{{ post.location }}</p>
-                            <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
-                            <p>{{ post.content }}</p>
-                            <h4 class="talk-item">
+                            <p id="location">{{ post.title}}</p>
+                            <h5 class="talk-item">
                             {% if post.blog_post %}
-                            <a href="{{ post.blog_post}}"><span aria-hidden="true" class="icon" data-icon="&#128213;"></span>&nbsp;&nbsp;Full Blog Post</a>
+                            <a href="{{ post.blog_post}}"><span aria-hidden="true" class="icon" data-icon="&#128213;"></span>&nbsp;&nbsp;Blog Post</a>
                             {% endif %}
-                            {% if post.video %}<a href="{{ post.video }}"><span aria-hidden="true" class="icon" data-icon="&#127916;"></span>&nbsp;&nbsp;Video available</a>
+                            {% if post.video %}<a href="{{ post.video }}"><span aria-hidden="true" class="icon" data-icon="&#127916;"></span>&nbsp;&nbsp;Video</a>
                             {% endif %}
-                            {% if post.slides %}<a href="{{ post.slides }}"><span aria-hidden="true" class="icon link" data-icon="&#59212;"></span>&nbsp;&nbsp;Slides available</a>
+                            {% if post.slides %}<a href="{{ post.slides }}"><span aria-hidden="true" class="icon link" data-icon="&#59212;"></span>&nbsp;&nbsp;Slides</a>
                             {% endif %}
                             {% if post.code %}<a href="{{ post.code }}"><span aria-hidden="true" class="icon" data-icon="&#128213;"></span>&nbsp;&nbsp;Demoed Code</a>
                             {% endif %}
-                            </h4>
+                            </h5>
                     {% endif %}
                 {% endfor %}
             </article>
