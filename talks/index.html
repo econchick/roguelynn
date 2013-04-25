@@ -4,23 +4,23 @@
     <section id="archive">
         <h1>Talks</h1>
             <article id="talks">
-                <h2>Upcoming</h2>
+                <h3>Upcoming</h3>
                 {% for post in posts %}
                     {% if 'upcoming talk' in post.tags %}
                     {% if not 'hidden' in post.tags %}
-                            <h3>{{ post.location }}</h3>
+                            <h4>{{ post.location }}</h4>
                             <time id="talks">{{ post.talk_date }}</time>
                             {{ post.content }}
                     {% endif %}{% endif %}
                 {% endfor %}
-                <hr>
-                <h2>Past</h2>
+                <p id="footer">&#8275;</p>
+                <h3>Past</h3>
                 {% for post in posts %}
                     {% if 'past talk' in post.tags %}                            
-                            <h3>{{ post.location }}</h3> 
+                            <h4>{{ post.location }}</h4>
                             <time id="talks">{{ post.talk_date }}</time>
                             <p id="location">{{ post.title}}</p>
-                            <h5 class="talk-item">
+                            <h5 id="talk-item">
                             {% if post.blog_post %}
                             <a href="{{ post.blog_post}}"><span aria-hidden="true" class="icon" data-icon="&#128213;"></span>&nbsp;&nbsp;Blog Post</a>
                             {% endif %}

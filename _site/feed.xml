@@ -5,7 +5,7 @@
     <link rel="alternate" href="http://www.roguelynn.com/" />
     <link rel="self" href="http://www.roguelynn.com/feed.xml" type="application/atom+xml" />
     <id>http://www.roguelynn.com/</id>
-    <updated>2013-04-25T01:09:02Z</updated>
+    <updated>2013-04-25T16:46:09Z</updated>
 
     <author>
         <name>Lynn Root</name>
@@ -105,16 +105,16 @@
             <title type="html">Introduce Django to your old friends</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/EuroPython-Introduce-Django/" type="text/html" />
             <id>http://www.roguelynn.com/words/EuroPython-Introduce-Django/</id>
-            <updated>2013-04-15T17:46:00Z</updated>
+            <updated>2013-04-15T16:36:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
                 <uri>http://www.roguelynn.com/</uri>
             </author>
-            <content type="html">&lt;p&gt;&lt;a href=&#34;http://2013.djangocon.eu/talks/#5&#34;&gt;Introduce Django to your old friends:&lt;/a&gt; Django 1.5 introduced a configurable User model, fantastic! Now what? With the increased flexibility of user models, integrating Django into an existing infrastructure is now easier than ever. &lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://ep2013.europython.eu/conference/talks/sink-or-swim-5-life-jackets-to-throw-to-new-coders&#34;&gt;Sink or Swim: 5 Life Jackets to Throw to the New Coder:&lt;/a&gt; With the recent launch of &lt;a href=&#34;http://newcoder.io&#34;&gt;newcoder.io&lt;/a&gt;, I will reflect on how many want to learn to code but lots get lost.&lt;/p&gt;
+            <content type="html">&lt;p&gt;&lt;a href=&#34;http://2013.djangocon.eu/talks/#5&#34;&gt;Introduce Django to your old friends:&lt;/a&gt; Django 1.5 introduced a configurable User model, fantastic! Now what? With the increased flexibility of user models, integrating Django into an existing infrastructure is now easier than ever. &lt;br&gt;
+&lt;p /&gt;&lt;br&gt;
+&lt;a href=&#34;https://ep2013.europython.eu/conference/talks/sink-or-swim-5-life-jackets-to-throw-to-new-coders&#34;&gt;Sink or Swim: 5 Life Jackets to Throw to the New Coder:&lt;/a&gt; With the recent launch of &lt;a href=&#34;http://newcoder.io&#34;&gt;newcoder.io&lt;/a&gt;, I will reflect on how many want to learn to code but lots get lost.&lt;/p&gt;
 </content>
         </entry>
     

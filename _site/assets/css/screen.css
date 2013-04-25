@@ -280,10 +280,12 @@ nav {
           .page article .talk ul li a {
             border-bottom: none; }
             /* line 161, ../sass/screen.scss */
-            .page article .talk ul li a h4.talk-item {
-              color: #636570; }
+            .page article .talk a h5.talk-item {
+              color: #636570;
+              padding-bottom: 1em;
+              padding-top: 1em; }
             /* line 165, ../sass/screen.scss */
-            .page article .talk ul li a:hover h4.talk-item {
+            .page article .talk a:hover h5.talk-item {
               -webkit-transition-property: color;
               -moz-transition-property: color;
               -o-transition-property: color;
@@ -294,7 +296,7 @@ nav {
               transition-duration: 0.4s;
               color: #dd4a38; }
               /* line 169, ../sass/screen.scss */
-              .page article .talk ul li a:hover h4.talk-item .icon {
+              .page article .talk a:hover h5.talk-item .icon {
                 -webkit-transition-property: color;
                 -moz-transition-property: color;
                 -o-transition-property: color;
@@ -638,6 +640,10 @@ section#archive article#talks p {
   margin-bottom: 1.4em;
 }
 
+#talks h4 {
+  margin-bottom: 1em;
+}
+
 section#archive article#talks p#location {
   font-style: italic;
   margin-bottom: 0em;
@@ -652,6 +658,14 @@ section#archive article#talks a {
   color: #dd4a38;
 }
 
+section#archive article#talks a {
+  color: #dd4a38;
+}
+
+h5#talk-item {
+  padding-top: .5em;
+  padding-bottom: 1em;
+}
 /*time {
   color:#7F808A;
   font-style:italic;
