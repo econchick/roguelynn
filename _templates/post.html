@@ -3,9 +3,7 @@
 {% block content %}
     <section id="post">
         <h2>{{ post.title }}</h2>
-        <aside>
-            <time pubdate datetime="{{ post.timestamp|date('%Y-%m-%d') }}">{{ post.date }}</time>
-        </aside>
+        <time pubdate datetime id="post-date"="{{ post.timestamp|date('%Y-%m-%d') }}">{{ post.date }}</time>
         <article>
             {{ post.content }}
             <p id="footer">&#8756;</p>

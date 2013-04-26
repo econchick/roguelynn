@@ -683,10 +683,12 @@ text-align:right;
 width:175px;
 }
 
-section#post aside time {
+time#post-date {
   color:#7F808A;
   font-style:italic;
-  margin-left: 0em;
+  margin-left: -10em;
+  text-align: left;
+  padding-left: 10em;
 }
 
 h5 a {
