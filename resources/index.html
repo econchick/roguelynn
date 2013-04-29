@@ -4,7 +4,14 @@
     <section id="archive">
         <h1>Resources</h1>
             <article>
-                <h3>Recommended Readings</h3>
+                <h3>Tools</h3>
+                {% for post in posts %}
+                    {% if 'resources' in post.category and 'tools' in post.category %}
+                     {{ post.content }}
+                    {% endif %}
+                    {% endfor %}
+
+                <h3>Readings</h3>
                 {% for post in posts %}
                     {% if 'resources' in post.category and 'readings' in post.category %}
                     <ul>
