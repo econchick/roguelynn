@@ -666,12 +666,7 @@ h5#talk-item {
   padding-top: .5em;
   padding-bottom: 1em;
 }
-/*time {
-  color:#7F808A;
-  font-style:italic;
-  margin-left:-10em;
-  text-align: right;
-}*/
+
 time {
 color:#7F808A;
 display:block;
