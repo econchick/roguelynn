@@ -1,0 +1,251 @@
+/* General setup */
+body {
+    margin: 40px 0;
+    font-size: 20px;
+    color: #333;
+    /*font-family: 'PT Serif', serif;*/
+    /*font-family: 'Merriweather', serif;*/
+    /*font-family: 'Gentium Book Basic', serif;*/
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+h1, h2, h3, h4, h5 {
+    color: #222;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+}
+
+h1 {
+    font-size: 40px;
+    line-height: 45px;
+}
+
+h2 {
+    font-size: 36px;
+    line-height: 40px;
+}
+
+h3 {
+    font-size: 30px;
+    line-height: 34px;
+}
+
+h1 small {
+    font-size: 20px;
+    color: #666;
+    font-weight:300;
+}
+
+p {
+    font-size: 20px;
+    line-height: 32px;
+    padding-bottom: 8px;
+}
+
+p.small {
+    font-size: 16px;
+    line-height: 22px;
+    padding-bottom: 8px;
+}
+
+li {
+    font-size: 20px;
+    line-height: 32px;
+    padding-bottom: 8px;
+}
+
+img {
+    padding: 10px;
+}
+
+a {
+    color:#06A;
+}
+
+a:visited {
+    color:#607890;
+}
+
+.gray {
+    color: #999;
+}
+
+/* Avatar (left hand size) */
+.avatar-section li {
+    line-height: 23px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+
+.avatar-section ul {
+    list-style: none outside;
+    margin-bottom: 20px;
+}
+
+#avatar {
+    background-image: url('/assets/images/me.jpg');
+    background-size: cover;
+    height: 154px;
+    width: 154px;
+    display: block;
+    border-radius: 50%;
+    margin-bottom: 8px;
+    border: 2px solid #999;
+    opacity: .8;
+    -webkit-transition: all 500ms ease-in;
+    -moz-transition: all 500ms ease-in;
+    -o-transition: all 500ms ease-in;
+    margin-left: 22px;
+}
+
+#social li {
+    display: inline-block;
+    font-size: 22px;
+    overflow: hidden;
+}
+
+#social a, #social a:visited {
+    color: #999;
+    -webkit-transition: color 200ms ease-in;
+    -moz-transition: color 200ms ease-in;
+    -o-transition: color 200ms ease-in;
+}
+
+a.icon-envelope {
+    background: url('/assets/images/webicon-mail.png');
+    background-size: 20px 20px;
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+}
+
+
+a.icon-github {
+    background: url('/assets/images/webicon-github.png');
+    background-size: 20px 20px;
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+}
+
+a.icon-twitter {
+    background: url('/assets/images/webicon-twitter.png');
+    background-size: 20px 20px;
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+}
+
+
+/* Main content area */
+span.date {
+    text-align: right;
+    color: #999;
+    float: right;
+    font-family: 'Gentium Book Basic', serif;
+}
+
+/* Post area */
+.header span.date {
+    font-size: 18px;
+    margin-top: 14px;
+}
+
+.header {
+    padding-bottom: 17px;
+    margin-top: 18px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid #EEE;
+}
+
+.publish-footer {
+    margin-top:20px;
+    margin-bottom:10px;
+}
+
+.pagination {
+    text-align: center;
+    height: inherit;
+    margin: inherit;
+}
+
+.sharing {
+    text-align: center;
+}
+
+ul {
+    list-style: none outside;
+}
+
+ul.posts li {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 21px;
+    line-height: 32px;
+    font-weight: 400;
+}
+
+ul.bulleted {
+    list-style-type: disc;
+}
+
+.post blockquote {
+    padding: 8px;
+    font-size: 20px;
+    line-height: 26px;
+}
+
+.post .zemanta-related-title {
+    margin-top: 20px;
+}
+
+.post table {
+    margin: 10px 0;
+}
+
+.post td {
+    font-size: 16px;
+}
+
+tr.highlight > td {
+    background-color: #ddeedd;
+}
+
+.table-striped tbody > tr.highlight:nth-child(odd) > td, .table-striped tbody > tr.highlight:nth-child(odd) > th {
+    background-color: #ddeedd;
+}
+
+td.highlight {
+    font-weight: bold;
+    background-color: #ddeedd;
+}
+
+/*table.small th {
+    font-size: 10px;
+}
+
+table.small td {
+    font-size: 8px;
+}*/
+
+.center {
+    text-align: center;
+}
+
+.follow-footer {
+    font-size: 16px;
+}
+
+.follow-footer a {
+    text-decoration: underline;
+}
+
+.thumbnail > img {
+    padding: 0;
+}
+
+footer {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+}
