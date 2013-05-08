@@ -635,6 +635,11 @@ section#archive article p {
   margin-top: -1.5em;
   margin-bottom: 3em;
 }
+section#resume article p {
+  margin-top: .5em;
+  margin-bottom: 1em;
+}
+
 section#archive article#talks p {
   margin-top: -1.5em;
   margin-bottom: 1.4em;
@@ -666,7 +671,7 @@ h5#talk-item {
   padding-top: .5em;
   padding-bottom: 1em;
 }
-
+bund
 time {
 color:#7F808A;
 display:block;

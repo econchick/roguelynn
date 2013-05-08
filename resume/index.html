@@ -1,0 +1,46 @@
+{% extends "site.html" %}
+{% block title %}Resume{% endblock %}
+{% block content %}
+    <section id="resume">
+        <h1>Résumé</h1>
+        <a href="">PDF version</a>
+            <article>
+                <h3>Skills</h3>
+                {% for post in posts %}
+                    {% if 'resume' in post.category and 'skills' in post.category %}
+                        {{ post.content }}
+                    {% endif %}
+                {% endfor %}
+                <h3>Projects</h3>
+                <ul>
+                {% for post in posts %}
+                    {% if 'resume' in post.category and 'projects' in post.category %}
+                        <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+                        <small>{{ post.dateemp }}</small>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+                <h3>Experience</h3>
+                {% for post in posts %}
+                    {% if 'resume' in post.category and 'experience' in post.category %}
+                        <h4>{{ post.position}} – {{ post.employer }}</h4>
+                        <small>{{ post.dateemp }}</small><br/>
+                        {{ post.content }}
+                    {% endif %}
+                {% endfor %}
+                <h3>Technical Talks</h3>
+                {% for post in posts %}
+                    {% if 'resume' in post.category and 'talks' in post.category %}
+                        <h4><a href="{{ post.talk_url }}">{{ post.title }}</a></h4>
+                        <small>{{ post.dateemp }}</small>
+                    {% endif %}
+                {% endfor %}
+                <h3>Education</h3>
+                {% for post in posts %}
+                    {% if 'resume' in post.category and 'education' in post.category %}
+                        {{ post.content }}
+                    {% endif %}
+                {% endfor %}
+            </article>
+    </section>
+{% endblock %}

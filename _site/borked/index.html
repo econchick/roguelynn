@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
 
-        <title>Sink or Swim: 5 Life Jackets to throw to the new coder — Lynn Root</title>
+        <title>Words — Lynn Root</title>
         <meta name="description" content="Homepage and blog of Lynn Root. Python Engineer, PyLadiesSF Founder, Socializer in San Francisco." />
         <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/ico" />
         <link rel="alternate" type="application/atom+xml" title="Atom 1.0" href="http://www.roguelynn.com/feed.xml" />
@@ -19,6 +19,9 @@
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
         
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="/assets/js/xcharts.min.js"></script>
+
     </head>
     <body>
         <div class="nav-wrapper">
@@ -39,32 +42,56 @@
         </div>
         <div class="page">
             
-    <section id="post">
-        <h2>Sink or Swim: 5 Life Jackets to throw to the new coder</h2>
-        <time pubdate datetime id="post-date"="2013-05-08">May 08, 2013</time>
-        <article>
-            
-            <p id="footer">&#8756;</p>
-            <div id="disqus_thread"></div>
-                <script type="text/javascript">
-                    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-                    var disqus_shortname = 'roguelynn'; // required: replace example with your forum shortname
-
-                    /* * * DON'T EDIT BELOW THIS LINE * * */
-                    (function() {
-                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                    })();
-                </script>
-                <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-        </article>
-    </section>
-    <p><a href="/words/">&larr; See all posts</a></p>
-    <p><iframe style="border: 0; margin: 0; padding: 0;"
-        src="https://www.gittip.com/roguelynn/widget.html"
-        width="48pt" height="22pt"></iframe></p>
+<div id="chart">
+    <figure style="width: 600px; height: 400px;" id="myChart"></figure>
+<script type="text/javascript">
+var data = {
+  "xScale": "time",
+  "yScale": "linear",
+  "type": "line",
+  "main": [
+    {
+      "className": ".borkedVMs",
+      "data": [
+        {
+          "x": "2013-04-23",
+          "y": 0
+        },
+        {
+          "x": "2013-04-24",
+          "y": 0
+        },
+        {
+          "x": "2013-04-25",
+          "y": 0
+        },
+        {
+          "x": "2013-04-26",
+          "y": 1
+        },
+        {
+          "x": "2013-04-27",
+          "y": 7
+        },
+        {
+          "x": "2013-04-28",
+          "y": 3
+        },
+        {
+          "x": "2013-04-29",
+          "y": 0
+        }
+      ]
+    }
+  ]
+};
+var opts = {
+  "dataFormatX": function (x) { return d3.time.format('%Y-%m-%d').parse(x); },
+  "tickFormatX": function (x) { return d3.time.format('%A')(x); }
+};
+var myChart = new xChart('line', data, '#myChart', opts);
+</script>
+</div>
 
         </div>
         <div class="footer-wrapper">
