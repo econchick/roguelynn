@@ -5,6 +5,12 @@
         <h1>Résumé</h1>
         <a href="">PDF version</a>
             <article>
+                <h3>tl;dr</h3>
+                {% for post in posts %}
+                    {% if 'resume' in post.category and 'tldr' in post.category %}
+                        {{ post.content }}
+                    {% endif %}
+                {% endfor %}
                 <h3>Skills</h3>
                 {% for post in posts %}
                     {% if 'resume' in post.category and 'skills' in post.category %}
@@ -37,9 +43,15 @@
                 {% endfor %}
                 <h3>Education</h3>
                 {% for post in posts %}
-                    {% if 'resume' in post.category and 'education' in post.category %}
+                    {% if 'resume' in post.category and 'babo' in post.category %}
+                        <h4>{{ post.title}} – {{ post.degree}}</h4>
+                        <small>{{ post.dateemp }}, {{ post.address }}</small>
                         {{ post.content }}
                     {% endif %}
+                    {% if 'resume' in post.category and 'education' in post.category %}
+                        <h4>{{ post.title }}</h4>
+                        {{ post.content }}
+                        {% endif %}
                 {% endfor %}
             </article>
     </section>
