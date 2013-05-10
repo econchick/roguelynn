@@ -1,24 +1,56 @@
+@charset "UTF-8";
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: top; }
 /* General setup */
+@font-face {
+  font-family: "entypo";
+  src: url("/assets/fonts/entypo.eot") format('embedded-opentype'), url("/assets/fonts/entypo.woff") format('woff'), url("/assets/fonts/entypo.ttf") format('truetype'), url("/assets/fonts/entypo.svg") format('svg'); }
+
+@font-face {
+  font-family: "entypo-social";
+  src: url("/assets/fonts/entypo-social.eot") format('embedded-opentype'), url("/assets/fonts/entypo-social.woff") format('woff'), url("/assets/fonts/entypo-social.ttf") format('truetype'), url("/assets/fonts/entypo-social.svg") format('svg'); }
+
 body {
     margin: 40px 0;
     font-size: 20px;
-    color: #333;
+    color: #414247;
+    background-color: #F0F2F5;
     /*font-family: 'PT Serif', serif;*/
     /*font-family: 'Merriweather', serif;*/
     /*font-family: 'Gentium Book Basic', serif;*/
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Myriad Pro", myriad-pro, Verdana, serif;
     font-weight: 400;
 }
 
 h1, h2, h3, h4, h5 {
     color: #222;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: "Myriad Pro", myriad-pro, Verdana, serif;
     font-weight: 300;
 }
 
 h1 {
-    font-size: 40px;
+    font-size: 2.5em;
     line-height: 45px;
+    color: #414247;
+    padding-top: .5em;
+    padding-bottom: 1em;
 }
 
 h2 {
@@ -29,6 +61,7 @@ h2 {
 h3 {
     font-size: 30px;
     line-height: 34px;
+    padding-bottom: .3em;
 }
 
 h1 small {
@@ -36,6 +69,29 @@ h1 small {
     color: #666;
     font-weight:300;
 }
+h2 abbr {
+color: #38a5dd;
+}
+
+#splash h1{
+  padding-top: 1.5em;
+  padding-bottom: 1em;
+  display: block;
+  font-size: 3.5em;
+  line-height: 100%;
+  font-weight: 700;
+  margin-bottom: 0em;
+  width: 100%; 
+}
+
+#splash h2 {
+  font-size: 2em;
+  color: #414247;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 100%;
+  margin-top: .5em; 
+  margin-bottom: .5em;}
 
 p {
     font-size: 20px;
@@ -60,15 +116,19 @@ img {
 }
 
 a {
-    color:#06A;
-}
-
-a:visited {
-    color:#607890;
+    color:#38a5dd;
 }
 
 .gray {
     color: #999;
+}
+
+#avatar-section a {
+    color: #313236;
+}
+
+#avatar-section a:visited {
+    color: #313236;
 }
 
 /* Avatar (left hand size) */
@@ -84,19 +144,19 @@ a:visited {
 }
 
 #avatar {
-    background-image: url('/assets/images/me.jpg');
+    background-image: url('/assets/images/other-me.png');
     background-size: cover;
     height: 154px;
     width: 154px;
     display: block;
     border-radius: 50%;
-    margin-bottom: 8px;
-    border: 2px solid #999;
+    margin-bottom: 10px;
+    border: 2px solid #313236;
     opacity: .8;
     -webkit-transition: all 500ms ease-in;
     -moz-transition: all 500ms ease-in;
     -o-transition: all 500ms ease-in;
-    margin-left: 22px;
+    margin-left: 1px;
 }
 
 #social li {
@@ -105,6 +165,7 @@ a:visited {
     overflow: hidden;
 }
 
+
 #social a, #social a:visited {
     color: #999;
     -webkit-transition: color 200ms ease-in;
@@ -112,31 +173,75 @@ a:visited {
     -o-transition: color 200ms ease-in;
 }
 
-a.icon-envelope {
-    background: url('/assets/images/webicon-mail.png');
-    background-size: 20px 20px;
-    width: 20px;
-    height: 20px;
-    margin-left: 5px;
+
+.social .icon {
+  font-size: 72px;
+  margin-right: 0.25em; }
+  .social .icon.twitter:before, .social .icon.github:before, .social .icon.email:before, .social .icon.spotify:before, .social .icon.flattr:before {
+    font-family: 'entypo-social';
+    content: attr(data-icon); }
+  .social .icon.rss:before, .social .icon.email:before, .social .icon.airplane:before, .social .icon.link:before, .social .icon.photos:before {
+    font-family: 'entypo';
+    content: attr(data-icon); }
+
+footer {
+  clear: both;
+  position: relative;
+  height: 30px;
+  bottom: 0; }
+footer {
+  *zoom: 1;
+  max-width: 59em;
+  _width: 59em;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1em;
+  padding-right: 1em;
+  height: 30px;
+  padding: 30px 0 40px 0; 
 }
+footer:after {
+  content: "";
+  display: table;
+  clear: both; }
+@media (max-width: 19em) {
+  footer {
+    max-width: 19em; } }
+@media (min-width: 20em) and (max-width: 30em) {
+  footer {
+    max-width: 29em; } }
+@media (min-width: 30.1em) and (max-width: 40em) {
+  footer {
+    max-width: 39em; } }
+@media (min-width: 40.1em) and (max-width: 63em) {
+  footer {
+    max-width: 49em; } }
+footer ul.social {
+  width: 49.15254%;footer
+  margin-right: 1.69492%;
+  display: inline; }
+footer ul.social li {
+  display: inline; }
+footer ul.social li a {
+  -webkit-transition-duration: 0.8s;
+  -moz-transition-duration: 0.8s;
+  -o-transition-duration: 0.8s;
+  transition-duration: 0.8s;
+  -webkit-transition-property: color;
+  -moz-transition-property: color;
+  -o-transition-property: color;
+  transition-property: color;
+  color: #636570; }
+footer ul.social li a:hover {
+  color: #dd4a38;
+  text-decoration: none; }
 
-
-a.icon-github {
-    background: url('/assets/images/webicon-github.png');
-    background-size: 20px 20px;
-    width: 20px;
-    height: 20px;
-    margin-left: 5px;
+.footer-wrapper {
+  width: 100%; 
+  background-color: #313236; 
+  position: relative;
+  bottom: -40px;
 }
-
-a.icon-twitter {
-    background: url('/assets/images/webicon-twitter.png');
-    background-size: 20px 20px;
-    width: 20px;
-    height: 20px;
-    margin-left: 5px;
-}
-
 
 /* Main content area */
 span.date {
@@ -244,8 +349,33 @@ table.small td {
     padding: 0;
 }
 
-footer {
+/*footer {
     margin-top: 10px;
     text-align: center;
     font-size: 14px;
+}*/
+
+#client-secret-key {
+  color: #003399;
+  font-weight: bolder;
+}
+
+#tgs-secret-key{
+  color: #00CC00;
+  font-weight: bolder;
+}
+
+#http-secret-key{
+  color: rgb(133, 96, 168);
+  font-weight: bolder;
+}
+
+#tgs-session-key{
+  color: rgb(0, 128, 64);
+  font-weight: bolder;
+}
+
+#http-session-key{
+  color: rgb(128, 0, 64);
+  font-weight: bolder;
 }
