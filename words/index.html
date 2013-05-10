@@ -3,12 +3,15 @@
 {% block content %}
     <h1>Words</h1>
     <div class="span7">
-        <ul "posts">
-            {% for post in site.posts %}
-            <li>
+        <ul class="posts">
+            {% for post in posts %}
+            {% if 'words' in post.category %}
+            <li>                
                 <a href="{{ post.url }}">{{ post.title }}</a>
-                <span class="date">{{ post.date }}</span>
+                 &#32;&#187;&#32;<small>{{ post.date }}</small>
+                <p>{{ post.excerpt }}</p>
             </li>
+            {% endif %}
         {% endfor %}
         </ul>
     </div>

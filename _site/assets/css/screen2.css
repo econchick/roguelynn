@@ -140,6 +140,8 @@ a {
 
 .avatar-section ul {
     list-style: none outside;
+    margin-top: 40px;
+    margin-left: 30px;
     margin-bottom: 20px;
 }
 
@@ -151,7 +153,7 @@ a {
     display: block;
     border-radius: 50%;
     margin-bottom: 10px;
-    border: 2px solid #313236;
+    border: 1px dashed #313236;
     opacity: .8;
     -webkit-transition: all 500ms ease-in;
     -moz-transition: all 500ms ease-in;
@@ -245,10 +247,10 @@ footer ul.social li a:hover {
 
 /* Main content area */
 span.date {
-    text-align: right;
+    text-align: left;
     color: #999;
-    float: right;
-    font-family: 'Gentium Book Basic', serif;
+    float: left;
+    font-family: "Myriad Pro", myriad-pro, Verdana, serif;
 }
 
 /* Post area */
@@ -279,18 +281,19 @@ span.date {
     text-align: center;
 }
 
-ul {
+ul.posts {
     list-style: none outside;
+    margin-left: -1.5em;
 }
 
 ul.posts li {
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Myriad Pro", myriad-pro, Verdana, serif;
     font-size: 21px;
     line-height: 32px;
     font-weight: 400;
 }
 
-ul.bulleted {
+ul {
     list-style-type: disc;
 }
 
