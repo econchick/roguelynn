@@ -8,8 +8,7 @@
             {% if 'words' in post.category %}
             <li>                
                 <a href="{{ post.url }}">{{ post.title }}</a>
-                 &#32;&#187;&#32;<small>{{ post.date }}</small>
-                <p>{{ post.excerpt }}</p>
+                 &#187;&#32;<small>{{ post.date }}</small>
             </li>
             {% endif %}
         {% endfor %}

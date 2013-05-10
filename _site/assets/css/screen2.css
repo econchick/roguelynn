@@ -73,6 +73,30 @@ h2 abbr {
 color: #38a5dd;
 }
 
+small {
+  font-size: 0.9em;
+  font-style: italic; 
+  color: #999;
+}
+
+#posts p {
+ color: #999;   
+}
+
+img.displayed {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#caption {
+  font-size: 0.8em;
+  font-weight: 100;
+  margin-top: -3em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 #splash h1{
   padding-top: 1.5em;
   padding-bottom: 1em;
@@ -97,6 +121,7 @@ p {
     font-size: 20px;
     line-height: 32px;
     padding-bottom: 8px;
+    font-weight: 200;
 }
 
 p.small {
@@ -295,6 +320,7 @@ ul.posts li {
 
 ul {
     list-style-type: disc;
+    margin-left: 2em;
 }
 
 .post blockquote {
