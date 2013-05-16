@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+        <title>Part 3: Setting up a Kerberos test environment — Lynn Root</title>
+        <meta name="description" content="Homepage and blog of Lynn Root. Python Engineer, PyLadiesSF Founder, Socializer in San Francisco." />
+        <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/ico" />
+        <link rel="alternate" type="application/atom+xml" title="Atom 1.0" href="http://www.roguelynn.com/feed.xml" />
+
+        <!--Stylesheets-->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'> 
+        <link rel="stylesheet" href="/assets/css/lightbox.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/pygments3.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/bootstrap.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/bootstrap-responsive.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/screen2.css" media="screen" title="screen">
+
+
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        
+    </head>
+    <body>
+    <div class="container">
+      <div class="row">
+        <div class="span3 offset1">
+          <div class="avatar-section">
+            <a id="avatar" href="/"></a>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/about">About</a></li>
+              <li><a href="/words">Words</a></li>
+              <li><a href="/talks">Talks</a></li>
+              <li><a href="/pyladies">PyLadies</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="span7">
+            
+
+<article class='ten columns offset-by-four' id="article-content">
+  <header class="ten columns" id="article-header">
+    <h1>Part 3: Setting up a Kerberos test environment</h1>
+  </header>
+
+  <div class='ten columns gray' id="date-header">
+    <p>
+      May 16, 2013
+  
+    </p>
+
+  </div>
+
+  <div class="ten columns" id="article-content">
+    <p>This is part 3 of a series of posts on setting up Django to use external authentication.  This post explains how to setup your own environment to test Django authentication against Apache and Kerberos/Active Directory/LDAP.</p>
+<h3 id="setting-up-your-own-test-environment">Setting up your own test environment</h3>
+<p>Naturally, you only care about coding and developing. I’ve made a <a href="https://gist.github.com/econchick/99699a6fee2eb44d13b0">Vagrantfile</a> that spins up two VMs: an IPA server with a Kerberos KDC, and a client within the Kerberos realm that runs Apache, both on Fedora 18.</p>
+<h4 id="setup-your-kerberos-test-environment">Setup your Kerberos test environment:</h4><pre><code>$ git clone\
+      https://gist.github.com/econchick/99699a6fee2eb44d13b0\
+      KerbTestEnvironment
+$ cd KerbTestEnvironment
+
+# for a synced folder between local and Vagrant VM
+$ mkdir synergizerApp  
+
+# to spin up both machines at the same time:
+$ vagrant up
+
+# to spin up machines individually:
+$ vagrant up ipaserver
+$ vagrant up client
+</code></pre><h4 id="using-the-test-environment">Using the test environment</h4>
+<p>To use your Kerberos test environment, make sure both VMs are up and running with <code>vagrant status</code>.  </p>
+
+<p>First, ssh into the <strong>server</strong> via <code>vagrant ssh ipaserver</code> then check to see if the IPA service is up and running, and if not, start it up:</p>
+<pre><code>[vagrant@ipaserver]$ sudo ipactl status
+[vagrant@ipaserver]$ sudo ipactl start
+</code></pre>
+<p>Be sure you can <code>kinit</code> on the server:</p>
+<pre><code>[vagrant@ipaserver]$ kinit admin
+</code></pre>
+<p>Now, ssh into the <strong>client</strong> via <code>vagrant ssh client</code>, then check to see if you can <code>kinit</code> to make sure this VM can connect to <code>ipaserver</code>’s KDC:</p>
+<pre><code>[vagrant@client]$ kinit admin
+</code></pre>
+<p>To push your app to the client VM, you can just copy your Django code to the <code>KerbTestEnvironment/synergizerApp/</code> directory we created earlier, and it will drop into Apache’s default directory, <code>/var/www/</code>.  You will need to configure Apache for wsgi. </p>
+
+<p>Then go on with the earlier described <a href="#does-it-negotiate-testing-setup">testing</a>.</p>
+<h4 id="possible-issues">Possible issues</h4>
+<ul>
+<li>If you receive similar to the following error during <code>vagrant up $VM_NAME</code>: </li>
+</ul>
+
+<blockquote>
+<p>The following SSH command responded with a non-zero exit status.<br>
+Vagrant assumes that this means the command failed!<br>
+/sbin/ifup p7p1 2&gt; /dev/null</p>
+</blockquote>
+
+<p>then apply <a href="https://github.com/monvillalon/vagrant/commit/dc9830350a0f2be3bb7a4b4e9fcefaed66c6a26a">this</a> fix within Vagrant’s installation.  For my Mac OS X Mountain Lion + Vagrant v1.2.2 (most up-to-date at the time of this article), it was a bit tough to find the exact place where this fix should be made.  Wherever the vagrant gems are installed, find <code>plugins/guests/fedora/cap/configure_network.rb</code> to adjust the line that contains this:</p>
+<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span class="n">machine</span><span class="o">.</span><span class="n">communicate</span><span class="o">.</span><span class="n">sudo</span><span class="p">(</span><span class="s2">&quot;/sbin/ifup p7p</span><span class="si">#{</span><span class="n">interface</span><span class="si">}</span><span class="s2"> 2&gt;\</span>
+<span class="s2">                          /dev/null&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div></div>
+<p>to this:</p>
+<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span class="n">machine</span><span class="o">.</span><span class="n">communicate</span><span class="o">.</span><span class="n">sudo</span><span class="p">(</span><span class="s2">&quot;/sbin/ifup p7p</span><span class="si">#{</span><span class="n">interface</span><span class="si">}</span><span class="s2"> 2&gt;\ </span>
+<span class="s2">                          /dev/null&quot;</span><span class="p">,</span> <span class="ss">:error</span> <span class="o">=&gt;</span> <span class="kp">false</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div></div>
+<p><em>(ya ya, a pull request containing this fix, or rather an update to ifup, should be made; who has time for that…)</em></p>
+
+<ul>
+<li><p>If you get a clock skew error during <code>kinit</code> on the <code>ipaserver</code>, restart IPA via <code>sudo ipactl restart</code> and make sure <code>ntpd</code> is running with <code>service ntpd status</code>.</p></li>
+<li><p>If you get a clock skew error during <code>kinit</code> on the <code>client</code>, you’ll need to resync NTP. Try the following (you’ll have to do the <code>ntpdate</code> command at least twice to adjust the NTP clock to at most 300 seconds/5 minutes difference):</p></li>
+</ul>
+<pre><code>[vagrant@client]$ sudo killall ntpd
+[vagrant@client]$ sudo ntpdate ipaserver.example.com
+[vagrant@client]$ sudo ntpdate ipaserver.example.com
+[vagrant@client]$ kinit admin
+</code></pre><h3 id="resources">Resources</h3>
+<ul>
+<li><a href="https://docs.fedoraproject.org/en-US/Fedora/17/html/FreeIPA_Guide/index.html">Setting up IPA</a></li>
+<li>Part 0: <a href="/words/explain-like-im-5-kerberos/">Explain like I’m 5: Kerberos</a></li>
+<li>Part 1: <a href="/words/django-custom-user-models">Django 1.5 Custom User Models</a></li>
+<li>Part 3: <a href="/words/setting-up-a-kerberos-test-environment">Setting up a Kerberos test environment</a></li>
+</ul>
+
+    <p id="footer">&#8756;</p>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'roguelynn'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+  </div>
+</article>
+
+        </div>
+      </div>
+    </div>
+    <div class="footer-wrapper">
+        <footer id="bottom">
+            <ul class="social">
+                <li><a class="icon twitter" data-icon="&#62217;" href="http://twitter.com/roguelynn" title="Twitter"></a></li>
+                <li><a class="icon github" data-icon="&#62208;" href="http://github.com/econchick" title="GitHub"></a></li>
+                <li><a class="icon photos" data-icon="&#128247;" href="http://500px.com/roguelynn" title="500px"></a><li>
+                <li><a class="icon spotify" data-icon="&#62247;" href="http://open.spotify.com/user/econchick" title="Spotify"></a></li>
+                <li><a class="icon flattr" data-icon="&#62262;" href="https://flattr.com/profile/roguelynn" title="Flattr"></a></li>
+                <li><a class="icon email" data-icon="&#10002;" href="mailto:lynn+roguelynn@lynnroot.com?subject:Hello!" title="Email"></a></li>
+                <li><a class="icon airplane" data-icon="&#9992;" href="https://www.tripit.com/people/lynn.root" title="Tripit"></a></li>
+                <li><a class="icon rss" data-icon="&#59194;" href="http://www.roguelynn.com/feed.xml" title="RSS"></a></li>
+                <li>© 2007–2013 Lynn Root. All Rights Reserved.</li>
+            </ul>
+        </footer>
+    </div>
+        
+        <!--Javascript-->
+        <script src="/assets/js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <!-- Start of StatCounter Code for Default Guide -->
+        <script type="text/javascript">
+        var sc_project=4334716; 
+        var sc_invisible=1; 
+        var sc_security="d7034a4d"; 
+        </script>
+        <script type="text/javascript"
+        src="http://www.statcounter.com/counter/counter.js"></script>
+        <noscript><div class="statcounter"><a title="web stats"
+        href="http://statcounter.com/free-web-stats/"
+        target="_blank"><img class="statcounter"
+        src="http://c.statcounter.com/4334716/0/d7034a4d/1/"
+        alt="web stats"></a></div></noscript>
+        <!-- End of StatCounter Code for Default Guide -->
+        <script type="text/javascript">
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-6966504-1']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
+        </script>
+        <!-- Piwik -->
+        <script type="text/javascript">
+          var _paq = _paq || [];
+          _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+          _paq.push(["setCookieDomain", "*.roguelynn.com"]);
+          _paq.push(["setDomains", ["*.roguelynn.com"]]);
+          _paq.push(["trackPageView"]);
+          _paq.push(["enableLinkTracking"]);
+
+          (function() {
+            var u=(("https:" == document.location.protocol) ? "https" : "http") + "://stats.ox.cx/";
+            _paq.push(["setTrackerUrl", u+"piwik.php"]);
+            _paq.push(["setSiteId", "9"]);
+            var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+            g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+          })();
+        </script>
+        <noscript>
+            <!-- Piwik Image Tracker -->
+            <img src="http://stats.ox.cx/piwik.php?idsite=9&amp;rec=1&action_name=homepage" style="border:0" alt="" />
+            <!-- End Piwik -->
+        </noscript>
+        <!-- End Piwik Code -->
+    </body>
+</html>

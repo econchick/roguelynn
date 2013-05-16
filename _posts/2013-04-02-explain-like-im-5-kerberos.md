@@ -2,6 +2,7 @@
 layout: post.html
 title: "Explain like I’m 5: Kerberos"
 tags: [kerberos]
+updated_at: "May 16, 2013"
 category: [words]
 ---
 
@@ -215,4 +216,6 @@ The above images were rendered with Keynote with icons used from [font awesome](
 <p id="break">&#12316;</p>
 
 In a future posts, I’ll write up how to actually setup a Kerberos realm, setting up an HTTP Service that will accept Negotiate authentication, and writing a web application that can plug into Kerberos for its authentication.
+
+**Update: May 16th, 2013:** My [post]({{ get_url("circus")}}) on setting up a web application + Apache for Kerberos, along with creating your own Kerberos test environment. 
 

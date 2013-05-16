@@ -62,6 +62,16 @@ h3 {
     font-size: 30px;
     line-height: 34px;
     padding-bottom: .3em;
+    margin-top: .7em;
+}
+
+h4 {
+    font-size: 22px;
+    line-height: 28px;
+    padding-bottom: .3em;
+    margin-top: .7em;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 h1 small {
@@ -407,3 +417,66 @@ table.small td {
   color: rgb(128, 0, 64);
   font-weight: bolder;
 }
+
+#footer {
+    font-size: 24px;
+    text-align: center;
+}
+
+#buzzword{
+  color: #38a5dd;
+  font-weight: bolder;
+}
+
+#antibuzz{
+  color: #dd4a38;
+  font-weight: bolder;
+}
+
+pre, code {
+  font-family: "Envy Code R", monospace;
+  font-size: 12pt;
+  color: #414247;
+}
+
+pre {
+  padding: 5px;
+  background-color: #c3c6d5;
+  color: #414247;
+}
+pre code {
+  padding: 0px;
+  background-color: transparent;
+  border-width: 0px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: inherit;
+}
+
+code {
+  padding: 0px 2px 0px 2px;
+  background-color: #c3c6d5;
+  border: 1px solid #d9d9d9;
+  -webkit-box-shadow: 0px 0px 0px 2px #f2f2f2;
+  box-shadow: 0px 0px 0px 2px #f2f2f2;
+  white-space: pre;
+}
+
+q, blockquote {
+  quotes: none; }
+  q:before, q:after, blockquote:before, blockquote:after {
+    content: "";
+    content: none; }
+
+blockquote {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  background: #fefefe;
+  color: #414247;
+  margin: 10px;
+  font-style: italic;
+  padding: 20px;
+  padding-bottom: 3px; }

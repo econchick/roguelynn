@@ -12,7 +12,7 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'> 
         <link rel="stylesheet" href="/assets/css/lightbox.css" media="screen" title="screen">
-        <link rel="stylesheet" href="/assets/css/pygments.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/pygments3.css" media="screen" title="screen">
         <link rel="stylesheet" href="/assets/css/bootstrap.css" media="screen" title="screen">
         <link rel="stylesheet" href="/assets/css/bootstrap-responsive.css" media="screen" title="screen">
         <link rel="stylesheet" href="/assets/css/screen2.css" media="screen" title="screen">
@@ -61,13 +61,23 @@
 
 <p>I&#39;ve made a <a href="https://github.com/econchick/PyLadiesBYOBlog" title="PyLadies Build your own Blog">GitHub repo</a> for people to fork &amp; contribute. I didn&#39;t find an easily accessible tutorial for building a blog, or for building a simple app using Django&#39;s class views, so hopefully this will grow to something useful in the Django community. Til next time!</p>
 
-  </div>
+    <p id="footer">&#8756;</p>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'roguelynn'; // required: replace example with your forum shortname
 
-  <footer class="ten columns">
-    <p id='follow'>
-      You should follow me on Twitter <a href="http://twitter.com/roguelynn">here</a>.
-    </p>
-  </footer>
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+  </div>
 </article>
 
         </div>
