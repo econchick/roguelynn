@@ -5,7 +5,7 @@ tags: [django, djangcon, conference, kerberos, integration]
 category: [talks, words, circus]
 ---
 
-This post is the write-up that goes along with my [DjangoCon EU talk](http://2013.djangocon.eu) with slides [here]() and video to come soon.  This is also an extention my previous Kerberos post, [Explain like I’m 5: Kerberos]( {{get_url("words/explain-like-im-5-kerberos/")}})
+This post is the write-up that goes along with my [DjangoCon EU talk](http://2013.djangocon.eu) with slides [here](https://speakerdeck.com/roguelynn/introduce-django-to-your-old-friends) and video to come soon.  This is also an extention my previous Kerberos post, [Explain like I’m 5: Kerberos]( {{get_url("words/explain-like-im-5-kerberos/")}})
 
 ### Intro
 
