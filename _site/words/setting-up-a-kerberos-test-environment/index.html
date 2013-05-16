@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
 
-        <title>Introduce Django to your old friends - or foes — Lynn Root</title>
+        <title>Part 3: Setting up a Kerberos test environment — Lynn Root</title>
         <meta name="description" content="Homepage and blog of Lynn Root. Python Engineer, PyLadiesSF Founder, Socializer in San Francisco." />
         <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/ico" />
         <link rel="alternate" type="application/atom+xml" title="Atom 1.0" href="http://www.roguelynn.com/feed.xml" />
@@ -40,17 +40,80 @@
         <div class="page">
             
     <section id="post">
-        <h2>Introduce Django to your old friends - or foes</h2>
+        <h2>Part 3: Setting up a Kerberos test environment</h2>
         <time pubdate datetime id="post-date"="2013-05-16">May 16, 2013</time>
         <article>
-            <p>How to set up your Django application for internal authentication: </p>
+            <p>This is part 3 of a series of posts on setting up Django to use external authentication.  This post explains how to setup your own environment to test Django authentication against Apache and Kerberos/Active Directory/LDAP.</p>
+<h3 id="setting-up-your-own-test-environment">Setting up your own test environment</h3>
+<p>Naturally, you only care about coding and developing. I’ve made a <a href="https://gist.github.com/econchick/99699a6fee2eb44d13b0">Vagrantfile</a> that spins up two VMs: an IPA server with a Kerberos KDC, and a client within the Kerberos realm that runs Apache, both on Fedora 18.</p>
+<h4 id="setup-your-kerberos-test-environment">Setup your Kerberos test environment:</h4><pre><code>$ git clone\
+      https://gist.github.com/econchick/99699a6fee2eb44d13b0\
+      KerbTestEnvironment
+$ cd KerbTestEnvironment
 
-<p>This series of posts goes along with my <a href="http://2013.djangocon.eu">DjangoCon EU talk</a> with slides <a href="https://speakerdeck.com/roguelynn/introduce-django-to-your-old-friends">here</a> and video to come soon. </p>
+# for a synced folder between local and Vagrant VM
+$ mkdir synergizerApp  
 
-<p>Part 0: <a href="/words/explain-like-im-5-kerberos/">Explain like I’m 5: Kerberos</a><br>
-Part 1: <a href="/words/django-custom-user-models">Django 1.5 Custom User Models</a><br>
-Part 2: <a href="/words/apache-kerberos-for-django">Apache and Kerberos for Django Authentication + Authorization</a><br>
-Part 3: <a href="/words/setting-up-a-kerberos-test-environment">Setting up a Kerberos test environment</a></p>
+# to spin up both machines at the same time:
+$ vagrant up
+
+# to spin up machines individually:
+$ vagrant up ipaserver
+$ vagrant up client
+</code></pre><h4 id="using-the-test-environment">Using the test environment</h4>
+<p>To use your Kerberos test environment, make sure both VMs are up and running with <code>vagrant status</code>.  </p>
+
+<p>First, ssh into the <strong>server</strong> via <code>vagrant ssh ipaserver</code> then check to see if the IPA service is up and running, and if not, start it up:</p>
+<pre><code>[vagrant@ipaserver]$ sudo ipactl status
+[vagrant@ipaserver]$ sudo ipactl start
+</code></pre>
+<p>Be sure you can <code>kinit</code> on the server:</p>
+<pre><code>[vagrant@ipaserver]$ kinit admin
+</code></pre>
+<p>Now, ssh into the <strong>client</strong> via <code>vagrant ssh client</code>, then check to see if you can <code>kinit</code> to make sure this VM can connect to <code>ipaserver</code>’s KDC:</p>
+<pre><code>[vagrant@client]$ kinit admin
+</code></pre>
+<p>To push your app to the client VM, you can just copy your Django code to the <code>KerbTestEnvironment/synergizerApp/</code> directory we created earlier, and it will drop into Apache’s default directory, <code>/var/www/</code>.  You will need to configure Apache for wsgi. </p>
+
+<p>Then go on with the earlier described <a href="#does-it-negotiate-testing-setup">testing</a>.</p>
+<h4 id="possible-issues">Possible issues</h4>
+<ul>
+<li>If you receive similar to the following error during <code>vagrant up $VM_NAME</code>: </li>
+</ul>
+
+<blockquote>
+<p>The following SSH command responded with a non-zero exit status.<br>
+Vagrant assumes that this means the command failed!<br>
+/sbin/ifup p7p1 2&gt; /dev/null</p>
+</blockquote>
+
+<p>then apply <a href="https://github.com/monvillalon/vagrant/commit/dc9830350a0f2be3bb7a4b4e9fcefaed66c6a26a">this</a> fix within Vagrant’s installation.  For my Mac OS X Mountain Lion + Vagrant v1.2.2 (most up-to-date at the time of this article), it was a bit tough to find the exact place where this fix should be made.  Wherever the vagrant gems are installed, find <code>plugins/guests/fedora/cap/configure_network.rb</code> to adjust the line that contains this:</p>
+<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span class="n">machine</span><span class="o">.</span><span class="n">communicate</span><span class="o">.</span><span class="n">sudo</span><span class="p">(</span><span class="s2">&quot;/sbin/ifup p7p</span><span class="si">#{</span><span class="n">interface</span><span class="si">}</span><span class="s2"> 2&gt; /dev/null&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div></div>
+<p>to this:</p>
+<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span class="n">machine</span><span class="o">.</span><span class="n">communicate</span><span class="o">.</span><span class="n">sudo</span><span class="p">(</span><span class="s2">&quot;/sbin/ifup p7p</span><span class="si">#{</span><span class="n">interface</span><span class="si">}</span><span class="s2"> 2&gt; /dev/null&quot;</span><span class="p">,\</span>
+                          <span class="ss">:error</span> <span class="o">=&gt;</span> <span class="kp">false</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div></div>
+<p><em>(ya ya, a pull request containing this fix, or rather an update to ifup, should be made; who has time for that…)</em></p>
+
+<ul>
+<li><p>If you get a clock skew error during <code>kinit</code> on the <code>ipaserver</code>, restart IPA via <code>sudo ipactl restart</code> and make sure <code>ntpd</code> is running with <code>service ntpd status</code>.</p></li>
+<li><p>If you get a clock skew error during <code>kinit</code> on the <code>client</code>, you’ll need to resync NTP. Try the following (you’ll have to do the <code>ntpdate</code> command at least twice to adjust the NTP clock to at most 300 seconds/5 minutes difference):</p></li>
+</ul>
+<pre><code>[vagrant@client]$ sudo killall ntpd
+[vagrant@client]$ sudo ntpdate ipaserver.example.com
+[vagrant@client]$ sudo ntpdate ipaserver.example.com
+[vagrant@client]$ kinit admin
+</code></pre><h3 id="resources">Resources</h3>
+<ul>
+<li><a href="https://docs.fedoraproject.org/en-US/Fedora/17/html/FreeIPA_Guide/index.html">Setting up IPA</a></li>
+<li>Part 0: <a href="/words/explain-like-im-5-kerberos/">Explain like I’m 5: Kerberos</a></li>
+<li>Part 1: <a href="/words/django-custom-user-models">Django 1.5 Custom User Models</a></li>
+<li>Part 3: <a href="/words/setting-up-a-kerberos-test-environment">Setting up a Kerberos test environment</a></li>
+</ul>
 
             <p id="footer">&#8756;</p>
             <div id="disqus_thread"></div>

@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
 
-        <title>Introduce Django to your old friends - or foes — Lynn Root</title>
+        <title>Circus — Lynn Root</title>
         <meta name="description" content="Homepage and blog of Lynn Root. Python Engineer, PyLadiesSF Founder, Socializer in San Francisco." />
         <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/ico" />
         <link rel="alternate" type="application/atom+xml" title="Atom 1.0" href="http://www.roguelynn.com/feed.xml" />
@@ -39,466 +39,130 @@
         </div>
         <div class="page">
             
-    <section id="post">
-        <h2>Introduce Django to your old friends - or foes</h2>
+    <section id="archive">
+        <h2>Introduce Django to your old Friends – or Foes</h2>
+        
+        
         <time pubdate datetime id="post-date"="2013-05-16">May 16, 2013</time>
-        <article>
-            <p>This post is the write-up that goes along with my <a href="http://2013.djangocon.eu">DjangoCon EU talk</a> with slides <a href="">here</a> and video to come soon.  This is also an extention my previous Kerberos post, <a href="/words/explain-like-im-5-kerberos/">Explain like I’m 5: Kerberos</a></p>
-<h3 id="intro">Intro</h3>
-<p>Everyone has or has had a Pointy-Haired boss or client, right? micromanagement, incompetence, unaware?  …maybe I’m I the only one?</p>
+            <article>
+                <p><p>How to set up your Django application for internal authentication: </p>
 
-<p>So your Pointy-haired boss/client needs an web application.  Perhaps it’s an internal web app that supposed to capitalize on synergy, streamline costs, leverage assets, all those other effing  <span id="buzzword">buzzwords</span>.</p>
+<p>This series of posts goes along with my <a href="http://2013.djangocon.eu">DjangoCon EU talk</a> with slides <a href="https://speakerdeck.com/roguelynn/introduce-django-to-your-old-friends">here</a> and video to come soon. </p>
 
-<p>You hope to use postgres and django’s default auth mechanism, but no.  you have to use the corporate/internal authentication system. aka - single sign-on. We’re trying to avoid managing separate user credentials and needing to login to the required <span id="buzzword">mission-critical synergy</span> app.</p>
-
-<p>Not to despair, my Djangonauts - you can <span id="buzzword">leverage</span> Django’s new custom user models!</p>
-<h3 id="problem-make-an-internal-web-app">Problem: Make an internal Web App</h3>
-<p>So an overview of problem:</p>
-
-<ul>
-<li>need to integrate into internal authentication like Kerberos, LDAP, Active Directory</li>
-<li>can’t use Postgres for authentication - BUMMER</li>
-<li>leverage single sign-on within your app</li>
-</ul>
-<h3 id="crap.-what-is-this-single-sign-on-magic">Crap. What is this single sign-on magic?!</h3>
-<ul>
-<li>Enter: the new custom user model introduced in <a href="https://docs.djangoproject.com/en/dev/releases/1.5/#configurable-user-model">Django 1.5</a>
-
-<ul>
-<li>allows for a different identifier than the basic User Model with username greater than 30 chars</li>
-<li>username can be email, twitter, etc, or add those elements as requirements</li>
-<li>great for Kerberos/LDAP/Active Directory authentication because often the username for those identity management systems is similar to email, <code>username@INTERNAL_DOMAIN</code></li>
-</ul></li>
-</ul>
-<h3 id="scenario">Scenario</h3>
-<p>Let’s create a dummy application: <code>./manage.py startapp synergizerApp</code>.  Just for the sake of simplicity, this is just a single django project with a single app.</p>
-<h4 id="creating-your-custom-user-model">Creating your custom user model</h4>
-<p>While you’re hooking into a pre-defined user database that will take care of authentication, and perhaps authorization, you’ll can still define a own custom model with inheriting from <code>AbstractUserBase</code> with your own additions, like so:</p>
-<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># synergizerApp/models.py</span>
-
-<span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">AbstractBaseUser</span>
-<span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
-
-<span class="n">MAX_LENGTH</span> <span class="o">=</span> <span class="mi">254</span>
-
-<span class="k">class</span> <span class="nc">KerbUser</span><span class="p">(</span><span class="n">AbstractBaseUser</span><span class="p">):</span>
-    <span class="n">username</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">254</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">first_name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">last_name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">email</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">EmailField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">syngery_level</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">()</span>
-    <span class="n">is_team_player</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-
-    <span class="n">USERNAME_FIELD</span> <span class="o">=</span> <span class="s">&#39;username&#39;</span>
-    <span class="n">REQUIRED_FIELDS</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;email&#39;</span><span class="p">,</span> <span class="s">&#39;syngery_level&#39;</span><span class="p">]</span>
-</pre></div>
-</td></tr></table></div></div>
-<p>So now because you defined a custom user model, since we also require a synergy_level for the user, we’ll need to define a user manager to take care of creating users &amp; superusers within Django.  </p>
-
-<p>The key parts here are just defining what a user/superuser should have when creating one within Django, and referring to the UserManager within the user model itself.</p>
-<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22</pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">AbstractBaseUser</span><span class="p">,</span> <span class="n">BaseUserManager</span>
-<span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
-
-<span class="k">class</span> <span class="nc">KerbUserManager</span><span class="p">(</span><span class="n">BaseUserManager</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">create_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">synergy_level</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-        <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">,</span> <span class="n">synergy_level</span><span class="o">=</span><span class="n">synergy_level</span><span class="p">)</span>
-        <span class="c"># &lt;--snip--&gt;</span>
-        <span class="k">return</span> <span class="n">user</span>
-
-    <span class="k">def</span> <span class="nf">create_superuser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">synergy_level</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
-        <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span><span class="n">email</span><span class="p">,</span> <span class="n">synergy_level</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">)</span>
-        <span class="n">user</span><span class="o">.</span><span class="n">is_team_player</span> <span class="o">=</span> <span class="bp">True</span>
-        <span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">user</span>
-
-
-<span class="k">class</span> <span class="nc">KerbUser</span><span class="p">(</span><span class="n">AbstractBaseUser</span><span class="p">):</span>
-    <span class="n">username</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="n">MAX_LENGTH</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-
-    <span class="c"># &lt;--snip--&gt;</span>
-
-    <span class="n">objects</span> <span class="o">=</span> <span class="n">KerbUserManager</span><span class="p">()</span>
-</pre></div>
-</td></tr></table></div></div>
-<p>Just a few variables should be set within <code>settings.py</code> file to make Django a <span id="buzzword">team player</span>:</p>
-<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># settings.py</span>
-
-<span class="c"># &lt;--snip--&gt;</span>
-<span class="n">AUTH_USER_MODEL</span> <span class="o">=</span> <span class="s">&#39;synergizerApp.KerbUser&#39;</span>
-
-<span class="n">MIDDLEWARE_CLASSES</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="o">...</span>
-    <span class="s">&#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;</span><span class="p">,</span>
-    <span class="s">&#39;django.contrib.auth.middleware.RemoteUserMiddleware&#39;</span><span class="p">,</span>
-    <span class="o">...</span>
-<span class="p">)</span>
-
-<span class="n">AUTHENTICATION_BACKENDS</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="s">&#39;django.contrib.auth.backends.RemoteUserBackend&#39;</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="c"># &lt;--snip--&gt;</span>
-</pre></div>
-</td></tr></table></div></div>
-<p><strong>Note:</strong> The order of middleware is very important: the <code>AuthenticationMiddleware</code> must precede <code>RemoteUserMiddleware</code>.</p>
-
-<p>If want to use <code>user</code> from the Kerberos&#39; <code>user@REALM</code> as the username, you can simply extend <code>RemoteUserBackend</code>:</p>
-<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># synergizerApp/krb5.py</span>
-
-<span class="kn">from</span> <span class="nn">django.contrib.auth.backends</span> <span class="kn">import</span> <span class="n">RemoteUserBackend</span>
-
-<span class="k">class</span> <span class="nc">Krb5RemoteUserBackend</span><span class="p">(</span><span class="n">RemoteUserBackend</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">clean_username</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">):</span>
-        <span class="c"># remove @REALM from username</span>
-        <span class="k">return</span> <span class="n">username</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;@&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> 
-</pre></div>
-</td></tr></table></div></div>
-<p>and <code>settings.py</code> for your custom backend defined above:</p>
-<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># settings.py</span>
-
-<span class="c"># &lt;--snip--&gt;</span>
-<span class="n">AUTHENTICATION_BACKENDS</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="s">&#39;appname.krb5.Krb5RemoteUserBackend&#39;</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="c"># &lt;--snip--&gt;</span>
-</pre></div>
-</td></tr></table></div></div>
-<p>To access the user within the models for your application, you’ll refer to the custom user model like so:</p>
-<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># synergizerApp/models.py</span>
-
-<span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
-<span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
-
-<span class="k">class</span> <span class="nc">Synergy</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">money_sink</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">AUTH_USER_MODEL</span><span class="p">)</span>
-    <span class="c"># &lt;--snip--&gt;</span>
-</pre></div>
-</td></tr></table></div></div><h3 id="how-do-i-apache">How do I Apache?</h3>
-<p>Alright, now that my application is done and the custom user is setup, how do I actually <em>hook</em> this into the internal network?</p>
-
-<p>Apache is the <span id="antibuzz">anti-buzzword</span> if you will, but often you don’t have a choice.</p>
-<h4 id="configuring-apache">Configuring Apache</h4>
-<p>On the host machine that will be running the Apache instance, make sure to install <code>mod_auth_kerb</code> for Kerberos, or <code>mod_authnz_ldap</code> for LDAP.</p>
-
-<p>Within <code>/etc/httpd/conf.d/</code>, create another <code>.conf</code> file, for instance: <code>remote_user.conf</code>. You can also have this configuration within <code>.htaccess</code> in the desired protected directory itself. </p>
-
-<p>Configuration for Kerberos should look similar to:</p>
-<pre><code># remote_user.conf or .htaccess
-LoadModule auth_kerb_module modules/mod_auth_kerb.so
-
-&lt;Location /&gt; 
-    AuthName &#34;DjangoConKerberos&#34;
-    AuthType Kerberos
-    KrbMethodNegotiate On
-    KrbMethodK5Passwd Off
-    KrbServiceName HTTP/$FQDN
-    KrbAuthRealms KERBEROS_DOMAIN
-    Krb5KeyTab /path/to/http.keytab
-    Require valid-user
-
-    Order Deny,Allow
-    Deny from all
-&lt;/Location&gt;
-</code></pre>
-<p>If using LDAP + Basic auth instead of Kerberos, Apache configuration should look similar to:</p>
-<pre><code># remote_user.conf or .htaccess
-LoadModule authnz_ldap_module modules/mod_authnz_ldap.so
-
-&lt;Location /&gt; 
-    AuthName &#34;DjangoConLDAP&#34;
-    AuthType Basic
-    AuthBasicProvider ldap
-    AuthzLDAPAuthoritative Off
-    AuthLDAPURL ldap://$LDAP_URL:389/CN=...
-    AuthLDAPBindDN cn=myusername,cn=Users,...
-    AuthLDAPBindPassword mypassword
-    Require valid-user
-
-    Order Deny,Allow
-    Deny from all
-&lt;/Location&gt;
-</code></pre>
-<p>An important part of setting up Apache for an internal Kerberized system is getting a keytab for Apache.  Most likely, you won’t have access to get the needed keytab, and will need to request one from whoever manages the corporate identity system.  </p>
-
-<p>However, it’s quite easy to spin up a test environment to see if the configuration is working correctly detailed <a href="#setting-up-your-own-test-environment">below</a>.</p>
-
-<p>See <a href="http://modauthkerb.sourceforge.net/configure.html">here</a> for more detailed information on the various configuration parameters for <code>mod_auth_kerb</code> + Apache, or <a href="http://httpd.apache.org/docs/2.2/mod/mod_authnz_ldap.html">here</a> for LDAP + Apache configuration, and <a href="http://www.netexpertise.eu/en/apache/authentication-against-active-directory.html">here</a> for Active Directory with LDAP + Apache configuration.</p>
-
-<p>You will need to setup <a href="https://docs.djangoproject.com/en/dev/howto/deployment/wsgi/">wsgi configuration</a> for Apache to actually serve your application.  </p>
-
-<p>If, by some <em>odd</em> reason, you want or can use something other than Apache, there is a <a href="https://github.com/fintler/nginx-mod-auth-kerb">mod_auth_kerb setup</a> for nginx.  <strong>Disclaimer:</strong> I have not used or tested nginx with Kerberos setup.</p>
-<h3 id="does-it-negotiate-testing-setup">Does it negotiate? Testing setup</h3><h4 id="curl">cURL</h4>
-<p>I’d suggest to first try with <code>curl</code> to make sure the Apache + Kerberos setup is correct:</p>
-<pre><code>[vagrant@client]# kinit roguelynn
-Password for roguelynn@ROOTCLOUD.COM:
-[vagrant@client]# curl -I --negotiate -u : \
-    https://synergizeapp.strategery.com
-
-HTTP/1.1 401 Unauthorized
-Date: Wed, 15 May 2013 09:10:18 GMT
-Server: Apache/2.4.4 (Fedora)
-WWW-Authenticate: Negotiate
-Content-type text/html; charset=iso-8859-1
-
-HTTP/1.1 200
-Date: Wed, 15 May 2013 09:10:18 GMT
-Server: Apache/2.4.4 (Fedora)
-WWW-Authenticate: Negotiate sOmE_RanDom_T0k3n
-...
-</code></pre>
-<p>The <code>--negotiate</code> flag flips on <a href="http://en.wikipedia.org/wiki/SPNEGO">SPNego</a> for cURL, and the <code>-u :</code> forces cURL to pick up the authenticated user’s cached ticket from <code>kinit</code>’ing.  You can see your cached ticket with <code>klist</code>. </p>
-<h4 id="requests.py">requests.py</h4>
-<p>For <code>requests</code> fans:</p>
-<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span class="nv">$ </span>kinit USERNAME
-<span class="nv">$ </span>python
-&gt;&gt;&gt; import requests
-&gt;&gt;&gt; from requests_kerberos import HTTPKerberosAuth
-&gt;&gt;&gt; <span class="nv">r</span> <span class="o">=</span> requests.get<span class="o">(</span><span class="s2">&quot;$APACHE_PROTECTED_FQDN&quot;</span>, <span class="nv">auth</span><span class="o">=</span>HTTPKerberosAuth<span class="o">())</span>
-&gt;&gt;&gt; r.status_code
-200
-</pre></div>
-</td></tr></table></div></div><h4 id="browser">Browser</h4>
-<p>First, we’ll need to configure our browser to use Negotiate/SPNego:</p>
-
-<ul>
-<li>Safari – just “works”. Thanks, Apple.</li>
-<li><p>Chrome</p>
-
-<ul>
-<li><p>Mac:</p>
-<pre><code>open &#39;Google Chrome.app&#39; --args\
-    --auth-server-whitelist=&#34;*ROGUECLOUD.COM&#34;\
-    --auth-negotiate-delegate-whitelist=&#34;*KERBEROS_DOMAIN&#34;\
-    --auth-schemes=&#34;basic,digest,ntlm,negotiate&#34;
-</code></pre></li>
-<li><p>Linux:</p>
-<pre><code>google-chrome --enable-plugins --args\
-    --auth-server-whitelist=&#34;*KERBEROS_DOMAIN&#34;\
-    --auth-negotiate-delegate-whitelist=&#34;*KERBEROS_DOMAIN&#34;\
-    --auth-schemes=&#34;basic,digest,ntlm,negotiate&#34;
-</code></pre></li>
-<li><p>Windows: </p>
-<pre><code>chrome.exe --auth-server-whitelist=&#34;*KERBEROS_DOMAIN&#34;\
-    --auth-negotiate-delegate-whitelist=&#34;*ROGUECLOUD.COM&#34;\
-    --auth-schemes=&#34;basic,digest,ntlm,negotiate&#34;
-</code></pre></li>
-<li><p>Firefox</p>
-
-<ul>
-<li>Navigate to <code>about:config</code></li>
-<li>Search for &quot;negotiate&quot;</li>
-<li>For <code>network.negotiate-auth.delegation-uris</code> add <code>.KERBEROS_DOMAIN</code></li>
-<li>For <code>network.negotiate-auth.trusted-uris</code> add <code>.KERBEROS_DOMAIN</code></li>
-</ul></li>
-<li><p>IE</p>
-
-<ul>
-<li>Internet Options &gt; Tools &gt; Advanced Tab</li>
-<li>Within Security section, select &quot;Enable Integrated Windows Authentication&quot;</li>
-<li>Restart browser</li>
-</ul></li>
-</ul></li>
-<li><p>Authenticate yourself with <code>kinit USERNAME</code> within the terminal.  </p></li>
-<li><p>Finally, navigating to <code>$APACHE_PROTECTED_FQDN</code> within browser should then just work if everything is setup appropriately. </p></li>
-<li><p>If prompted for Kerberos username/password, then Apache configuration maybe incorrect if you did not intend that, but should still authenticate with Kerberos credentials</p></li>
-</ul>
-<h3 id="authentication-vs-authorization">Authentication vs Authorization</h3>
-<p>So - I’m sure this isn’t news to anyone: there’s a difference between authentication and authorization.  First is who you are, the second is what you can do.  </p>
-
-<p>Using RemoteUserBackend and Middleware doesn’t automatically grab what the user is authorized to do; it’s just authentication.  </p>
-
-<p>However, if needed, there are ways to hook into the user database to grab permissions.</p>
-<h4 id="accessing-permissions">Accessing Permissions</h4>
-<p>Say your app needs to know if a user is defined as an Admin, or staff, a part of a particular group (e.g. &quot;finance&quot;, &quot;engineering&quot;) or something else that is already defined in your external auth system.  Customizing a backend is needed to connect directly to the external user datastore.</p>
-
-<p>Typically, LDAP holds users in groups, through <code>memberOf</code> parameter or something similar.  By binding to the LDAP to find what group the user is a member of, you can then define what authorization that a user has within your own app logic.  e.g. if user is a member of “admins”, then create_superuser(user).  </p>
-
-<ul>
-<li><a href="http://pythonhosted.org/django-auth-ldap">django-auth-ldap</a> and/or <a href="https://code.google.com/p/django-ldap-groups">django-ldap-groups</a> can be dropped into your Django app</li>
-<li>Or one of these snippets () - they are focused on Active Directory but so long as the configuration variables within your <code>settings.py</code> are correct, it should work with a standard LDAP or IPA setup:
-
-<ul>
-<li><a href="http://djangosnippets.org/snippets/501/">Active Directory</a></li>
-<li><a href="http://djangosnippets.org/snippets/901/">Active Directory over SSL</a></li>
-<li><a href="http://djangosnippets.org/snippets/1397/">Active Directory/LDAP</a></li>
-<li><a href="http://djangosnippets.org/snippets/2899/">Active Directory with Groups</a></li>
-</ul></li>
-</ul>
-
-<p>In a Kerberized environment, one approach may to be just getting another keytab for accessing the LDAP, although that requires the service to have wide read privileges.  </p>
-
-<p>How I would approach it though, at least within an IPA environment (which stores its user information in an LDAP), is to capitalize on IPA’s use of <a href="https://fedorahosted.org/sssd/">SSSD - System Security Services Daemon</a>.  You can execute local system calls, like <code>getent group $USERNAME</code> and SSSD grabs the group the user is a member of.</p>
-<h3 id="setting-up-your-own-test-environment">Setting up your own test environment</h3>
-<p>Naturally, you only care about coding and developing. I’ve made a <a href="https://gist.github.com/econchick/99699a6fee2eb44d13b0">Vagrantfile</a> that spins up two VMs: an IPA server with a Kerberos KDC, and a client within the Kerberos realm that runs Apache, both on Fedora 18.</p>
-<h4 id="setup-your-kerberos-test-environment">Setup your Kerberos test environment:</h4><pre><code>$ git clone\
-      https://gist.github.com/econchick/99699a6fee2eb44d13b0\
-      KerbTestEnvironment
-$ cd KerbTestEnvironment
-
-# for a synced folder between local and Vagrant VM
-$ mkdir synergizerApp  
-
-# to spin up both machines at the same time:
-$ vagrant up
-
-# to spin up machines individually:
-$ vagrant up ipaserver
-$ vagrant up client
-</code></pre><h4 id="using-the-test-environment">Using the test environment</h4>
-<p>To use your Kerberos test environment, make sure both VMs are up and running with <code>vagrant status</code>.  </p>
-
-<p>First, ssh into the <strong>server</strong> via <code>vagrant ssh ipaserver</code> then check to see if the IPA service is up and running, and if not, start it up:</p>
-<pre><code>[vagrant@ipaserver]$ sudo ipactl status
-[vagrant@ipaserver]$ sudo ipactl start
-</code></pre>
-<p>Be sure you can <code>kinit</code> on the server:</p>
-<pre><code>[vagrant@ipaserver]$ kinit admin
-</code></pre>
-<p>Now, ssh into the <strong>client</strong> via <code>vagrant ssh client</code>, then check to see if you can <code>kinit</code> to make sure this VM can connect to <code>ipaserver</code>’s KDC:</p>
-<pre><code>[vagrant@client]$ kinit admin
-</code></pre>
-<p>To push your app to the client VM, you can just copy your Django code to the <code>KerbTestEnvironment/synergizerApp/</code> directory we created earlier, and it will drop into Apache’s default directory, <code>/var/www/</code>.  You will need to configure Apache for wsgi. </p>
-
-<p>Then go on with the earlier described <a href="#does-it-negotiate-testing-setup">testing</a>.</p>
-<h4 id="possible-issues">Possible issues</h4>
-<ul>
-<li>If you receive similar to the following error during <code>vagrant up $VM_NAME</code>: </li>
-</ul>
-
-<blockquote>
-<p>The following SSH command responded with a non-zero exit status.<br>
-Vagrant assumes that this means the command failed!<br>
-/sbin/ifup p7p1 2&gt; /dev/null</p>
-</blockquote>
-
-<p>then apply <a href="https://github.com/monvillalon/vagrant/commit/dc9830350a0f2be3bb7a4b4e9fcefaed66c6a26a">this</a> fix within Vagrant’s installation.  For my Mac OS X Mountain Lion + Vagrant v1.2.2 (most up-to-date at the time of this article), it was a bit tough to find the exact place where this fix should be made.  Wherever the vagrant gems are installed, find <code>plugins/guests/fedora/cap/configure_network.rb</code> to adjust the line that contains this:</p>
-<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span class="n">machine</span><span class="o">.</span><span class="n">communicate</span><span class="o">.</span><span class="n">sudo</span><span class="p">(</span><span class="s2">&quot;/sbin/ifup p7p</span><span class="si">#{</span><span class="n">interface</span><span class="si">}</span><span class="s2"> 2&gt; /dev/null&quot;</span><span class="p">)</span>
-</pre></div>
-</td></tr></table></div></div>
-<p>to this:</p>
-<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span class="n">machine</span><span class="o">.</span><span class="n">communicate</span><span class="o">.</span><span class="n">sudo</span><span class="p">(</span><span class="s2">&quot;/sbin/ifup p7p</span><span class="si">#{</span><span class="n">interface</span><span class="si">}</span><span class="s2"> 2&gt; /dev/null&quot;</span><span class="p">,\</span>
-                          <span class="ss">:error</span> <span class="o">=&gt;</span> <span class="kp">false</span><span class="p">)</span>
-</pre></div>
-</td></tr></table></div></div>
-<p><em>(ya ya, a pull request containing this fix, or rather an update to ifup, should be made; who has time for that…)</em></p>
-
-<ul>
-<li><p>If you get a clock skew error during <code>kinit</code> on the <code>ipaserver</code>, restart IPA via <code>sudo ipactl restart</code> and make sure <code>ntpd</code> is running with <code>service ntpd status</code>.</p></li>
-<li><p>If you get a clock skew error during <code>kinit</code> on the <code>client</code>, you’ll need to resync NTP. Try the following (you’ll have to do the <code>ntpdate</code> command at least twice to adjust the NTP clock to at most 300 seconds/5 minutes difference):</p></li>
-</ul>
-<pre><code>[vagrant@client]$ sudo killall ntpd
-[vagrant@client]$ sudo ntpdate ipaserver.example.com
-[vagrant@client]$ sudo ntpdate ipaserver.example.com
-[vagrant@client]$ kinit admin
-</code></pre><h3 id="other-resources">Other resources</h3>
-<ul>
-<li><a href="/words/explain-like-im-5-kerberos/">My post on How Kerberos Works</a></li>
-<li><a href="http://procrastinatingdev.com/django/using-configurable-user-models-in-django-1-5/">Using configurable user models in Django</a></li>
-<li><a href="http://pythonhosted.org/django-auth-ldap">django-auth-ldap library</a></li>
-<li><a href="http://www.sensibledevelopment.com/2011/01/a-generic-wsgi-file-for-deploying-django-with-virtualenv-and-mod_wsgi/">Help with generic setup with django, virtualenv, and Apache’s mod_wsgi</a> </li>
-</ul>
-
-            <p id="footer">&#8756;</p>
-            <div id="disqus_thread"></div>
-                <script type="text/javascript">
-                    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-                    var disqus_shortname = 'roguelynn'; // required: replace example with your forum shortname
-
-                    /* * * DON'T EDIT BELOW THIS LINE * * */
-                    (function() {
-                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                    })();
-                </script>
-                <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-        </article>
+<p>Part 0: <a href="/words/explain-like-im-5-kerberos/">Explain like I’m 5: Kerberos</a><br>
+Part 1: <a href="/words/django-custom-user-models">Django 1.5 Custom User Models</a><br>
+Part 2: <a href="/words/apache-kerberos-for-django">Apache and Kerberos for Django Authentication + Authorization</a><br>
+Part 3: <a href="/words/setting-up-a-kerberos-test-environment">Setting up a Kerberos test environment</a></p>
+</p>
+                    
+            </article>
+            
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
+        
+                
     </section>
-    <p><a href="/words/">&larr; See all posts</a></p>
-    <p><iframe style="border: 0; margin: 0; padding: 0;"
-        src="https://www.gittip.com/roguelynn/widget.html"
-        width="48pt" height="22pt"></iframe></p>
 
         </div>
         <div class="footer-wrapper">
