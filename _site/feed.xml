@@ -5,7 +5,7 @@
     <link rel="alternate" href="http://www.roguelynn.com/" />
     <link rel="self" href="http://www.roguelynn.com/feed.xml" type="application/atom+xml" />
     <id>http://www.roguelynn.com/</id>
-    <updated>2013-05-16T15:59:09Z</updated>
+    <updated>2013-05-16T16:14:15Z</updated>
 
     <author>
         <name>Lynn Root</name>
@@ -19,14 +19,14 @@
             <title type="html">Introduce Django to your old friends - or foes</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/introduce-django-to-your-old-friends/" type="text/html" />
             <id>http://www.roguelynn.com/words/introduce-django-to-your-old-friends/</id>
-            <updated>2013-05-16T15:39:00Z</updated>
+            <updated>2013-05-16T16:13:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
                 <uri>http://www.roguelynn.com/</uri>
             </author>
-            <content type="html">&lt;p&gt;This post is the write-up that goes along with my &lt;a href=&#34;http://2013.djangocon.eu&#34;&gt;DjangoCon EU talk&lt;/a&gt; with slides &lt;a href=&#34;&#34;&gt;here&lt;/a&gt; and video to come soon.  This is also an extention my previous Kerberos post, &lt;a href=&#34;http://www.roguelynn.com/words/explain-like-im-5-kerberos/&#34;&gt;Explain like I’m 5: Kerberos&lt;/a&gt;&lt;/p&gt;
+            <content type="html">&lt;p&gt;This post is the write-up that goes along with my &lt;a href=&#34;http://2013.djangocon.eu&#34;&gt;DjangoCon EU talk&lt;/a&gt; with slides &lt;a href=&#34;https://speakerdeck.com/roguelynn/introduce-django-to-your-old-friends&#34;&gt;here&lt;/a&gt; and video to come soon.  This is also an extention my previous Kerberos post, &lt;a href=&#34;http://www.roguelynn.com/words/explain-like-im-5-kerberos/&#34;&gt;Explain like I’m 5: Kerberos&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;intro&#34;&gt;Intro&lt;/h3&gt;
 &lt;p&gt;Everyone has or has had a Pointy-Haired boss or client, right? micromanagement, incompetence, unaware?  …maybe I’m I the only one?&lt;/p&gt;
 
