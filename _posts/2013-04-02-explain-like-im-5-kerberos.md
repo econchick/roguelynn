@@ -216,3 +216,5 @@ The above images were rendered with Keynote with icons used from [font awesome](
 
 In a future posts, I’ll write up how to actually setup a Kerberos realm, setting up an HTTP Service that will accept Negotiate authentication, and writing a web application that can plug into Kerberos for its authentication.
 
+**Update: May 16th, 2013:** My [post]({{ get_url("words/introduce-django-to-your-old-friends/")}}) on setting up a web application + Apache for Kerberos, along with creating your own Kerberos test environment. 
+
