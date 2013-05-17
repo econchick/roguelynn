@@ -436,13 +436,13 @@ table.small td {
 pre, code {
   font-family: "Envy Code R", monospace;
   font-size: 12pt;
-  color: #414247;
+  color: #f8f8f2;
 }
 
 pre {
   padding: 5px;
-  background-color: #c3c6d5;
-  color: #414247;
+  background-color: #49483e;
+  color: #75715e;
 }
 pre code {
   padding: 0px;
@@ -450,12 +450,12 @@ pre code {
   border-width: 0px;
   -webkit-box-shadow: none;
   box-shadow: none;
-  color: inherit;
+  color: #f8f8f2;
 }
 
 code {
   padding: 0px 2px 0px 2px;
-  background-color: #c3c6d5;
+  background-color: #49483e;
   border: 1px solid #d9d9d9;
   -webkit-box-shadow: 0px 0px 0px 2px #f2f2f2;
   box-shadow: 0px 0px 0px 2px #f2f2f2;

@@ -13,7 +13,7 @@ Naturally, you only care about coding and developing. I’ve made a [Vagrantfile
 
 #### Setup your Kerberos test environment:
 
-```
+```bash
 $ git clone\
       https://gist.github.com/econchick/99699a6fee2eb44d13b0\
       KerbTestEnvironment
@@ -36,20 +36,20 @@ To use your Kerberos test environment, make sure both VMs are up and running wit
 
 First, ssh into the **server** via `vagrant ssh ipaserver` then check to see if the IPA service is up and running, and if not, start it up:
 
-```
+```bash
 [vagrant@ipaserver]$ sudo ipactl status
 [vagrant@ipaserver]$ sudo ipactl start
 ```
 
 Be sure you can `kinit` on the server:
 
-```
+```bash
 [vagrant@ipaserver]$ kinit admin
 ```
 
 Now, ssh into the **client** via `vagrant ssh client`, then check to see if you can `kinit` to make sure this VM can connect to `ipaserver`’s KDC:
 
-```
+```bash
 [vagrant@client]$ kinit admin
 ```
 
@@ -85,7 +85,7 @@ _(ya ya, a pull request containing this fix, or rather an update to ifup, should
 
 * If you get a clock skew error during `kinit` on the `client`, you’ll need to resync NTP. Try the following (you’ll have to do the `ntpdate` command at least twice to adjust the NTP clock to at most 300 seconds/5 minutes difference):
 
-```
+```bash
 [vagrant@client]$ sudo killall ntpd
 [vagrant@client]$ sudo ntpdate ipaserver.example.com
 [vagrant@client]$ sudo ntpdate ipaserver.example.com

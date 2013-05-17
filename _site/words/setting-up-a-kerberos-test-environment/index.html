@@ -58,33 +58,51 @@
     <p>This is part 3 of a series of posts on setting up Django to use external authentication.  This post explains how to setup your own environment to test Django authentication against Apache and Kerberos/Active Directory/LDAP.</p>
 <h3 id="setting-up-your-own-test-environment">Setting up your own test environment</h3>
 <p>Naturally, you only care about coding and developing. I’ve made a <a href="https://gist.github.com/econchick/99699a6fee2eb44d13b0">Vagrantfile</a> that spins up two VMs: an IPA server with a Kerberos KDC, and a client within the Kerberos realm that runs Apache, both on Fedora 18.</p>
-<h4 id="setup-your-kerberos-test-environment">Setup your Kerberos test environment:</h4><pre><code>$ git clone\
-      https://gist.github.com/econchick/99699a6fee2eb44d13b0\
+<h4 id="setup-your-kerberos-test-environment">Setup your Kerberos test environment:</h4><div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span class="nv">$ </span>git clone<span class="se">\</span>
+      https://gist.github.com/econchick/99699a6fee2eb44d13b0<span class="se">\</span>
       KerbTestEnvironment
-$ cd KerbTestEnvironment
+<span class="nv">$ </span><span class="nb">cd </span>KerbTestEnvironment
 
-# for a synced folder between local and Vagrant VM
-$ mkdir synergizerApp  
+<span class="c"># for a synced folder between local and Vagrant VM</span>
+<span class="nv">$ </span>mkdir synergizerApp  
 
-# to spin up both machines at the same time:
-$ vagrant up
+<span class="c"># to spin up both machines at the same time:</span>
+<span class="nv">$ </span>vagrant up
 
-# to spin up machines individually:
-$ vagrant up ipaserver
-$ vagrant up client
-</code></pre><h4 id="using-the-test-environment">Using the test environment</h4>
+<span class="c"># to spin up machines individually:</span>
+<span class="nv">$ </span>vagrant up ipaserver
+<span class="nv">$ </span>vagrant up client
+</pre></div>
+</td></tr></table></div></div><h4 id="using-the-test-environment">Using the test environment</h4>
 <p>To use your Kerberos test environment, make sure both VMs are up and running with <code>vagrant status</code>.  </p>
 
 <p>First, ssh into the <strong>server</strong> via <code>vagrant ssh ipaserver</code> then check to see if the IPA service is up and running, and if not, start it up:</p>
-<pre><code>[vagrant@ipaserver]$ sudo ipactl status
-[vagrant@ipaserver]$ sudo ipactl start
-</code></pre>
+<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span class="o">[</span>vagrant@ipaserver<span class="o">]</span><span class="nv">$ </span>sudo ipactl status
+<span class="o">[</span>vagrant@ipaserver<span class="o">]</span><span class="nv">$ </span>sudo ipactl start
+</pre></div>
+</td></tr></table></div></div>
 <p>Be sure you can <code>kinit</code> on the server:</p>
-<pre><code>[vagrant@ipaserver]$ kinit admin
-</code></pre>
+<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span class="o">[</span>vagrant@ipaserver<span class="o">]</span><span class="nv">$ </span>kinit admin
+</pre></div>
+</td></tr></table></div></div>
 <p>Now, ssh into the <strong>client</strong> via <code>vagrant ssh client</code>, then check to see if you can <code>kinit</code> to make sure this VM can connect to <code>ipaserver</code>’s KDC:</p>
-<pre><code>[vagrant@client]$ kinit admin
-</code></pre>
+<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span class="o">[</span>vagrant@client<span class="o">]</span><span class="nv">$ </span>kinit admin
+</pre></div>
+</td></tr></table></div></div>
 <p>To push your app to the client VM, you can just copy your Django code to the <code>KerbTestEnvironment/synergizerApp/</code> directory we created earlier, and it will drop into Apache’s default directory, <code>/var/www/</code>.  You will need to configure Apache for wsgi. </p>
 
 <p>Then go on with the earlier described <a href="#does-it-negotiate-testing-setup">testing</a>.</p>
@@ -117,11 +135,15 @@ Vagrant assumes that this means the command failed!<br>
 <li><p>If you get a clock skew error during <code>kinit</code> on the <code>ipaserver</code>, restart IPA via <code>sudo ipactl restart</code> and make sure <code>ntpd</code> is running with <code>service ntpd status</code>.</p></li>
 <li><p>If you get a clock skew error during <code>kinit</code> on the <code>client</code>, you’ll need to resync NTP. Try the following (you’ll have to do the <code>ntpdate</code> command at least twice to adjust the NTP clock to at most 300 seconds/5 minutes difference):</p></li>
 </ul>
-<pre><code>[vagrant@client]$ sudo killall ntpd
-[vagrant@client]$ sudo ntpdate ipaserver.example.com
-[vagrant@client]$ sudo ntpdate ipaserver.example.com
-[vagrant@client]$ kinit admin
-</code></pre><h3 id="resources">Resources</h3>
+<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span class="o">[</span>vagrant@client<span class="o">]</span><span class="nv">$ </span>sudo killall ntpd
+<span class="o">[</span>vagrant@client<span class="o">]</span><span class="nv">$ </span>sudo ntpdate ipaserver.example.com
+<span class="o">[</span>vagrant@client<span class="o">]</span><span class="nv">$ </span>sudo ntpdate ipaserver.example.com
+<span class="o">[</span>vagrant@client<span class="o">]</span><span class="nv">$ </span>kinit admin
+</pre></div>
+</td></tr></table></div></div><h3 id="resources">Resources</h3>
 <ul>
 <li><a href="https://docs.fedoraproject.org/en-US/Fedora/17/html/FreeIPA_Guide/index.html">Setting up IPA</a></li>
 <li>Part 0: <a href="/words/explain-like-im-5-kerberos/">Explain like I’m 5: Kerberos</a></li>

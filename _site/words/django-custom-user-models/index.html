@@ -177,6 +177,8 @@
     <span class="n">objects</span> <span class="o">=</span> <span class="n">KerbUserManager</span><span class="p">()</span>
 </pre></div>
 </td></tr></table></div></div>
+<p>Within your custom user model, <code>KerbUser</code>, you will also need to define <code>get_full_name</code> and <code>get_short_name</code>, and <code>is_active</code> which defaults to <code>True</code>.</p>
+
 <p>Just a few variables should be set within <code>settings.py</code> file to make Django a <span id="buzzword">team player</span>:</p>
 <div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -265,6 +267,22 @@
 <span class="k">class</span> <span class="nc">Synergy</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">money_sink</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">AUTH_USER_MODEL</span><span class="p">)</span>
     <span class="c"># &lt;--snip--&gt;</span>
+</pre></div>
+</td></tr></table></div></div>
+<p>To access within your views:</p>
+<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># synergizerApp/views.py</span>
+
+<span class="kn">from</span> <span class="nn">django.contrib.auth</span> <span class="kn">import</span> <span class="n">get_user_model</span>
+
+<span class="n">User</span> <span class="o">=</span> <span class="n">get_user_model</span><span class="p">()</span>
+
+<span class="c"># &lt;--snip--&gt;</span>
 </pre></div>
 </td></tr></table></div></div><h3 id="other-resources">Other resources</h3>
 <ul>
