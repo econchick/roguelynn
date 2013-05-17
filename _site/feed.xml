@@ -5,7 +5,7 @@
     <link rel="alternate" href="http://www.roguelynn.com/" />
     <link rel="self" href="http://www.roguelynn.com/feed.xml" type="application/atom+xml" />
     <id>http://www.roguelynn.com/</id>
-    <updated>2013-05-16T22:22:50Z</updated>
+    <updated>2013-05-17T04:18:47Z</updated>
 
     <author>
         <name>Lynn Root</name>
@@ -16,274 +16,10 @@
     
         
         <entry>
-            <title type="html">Part 3: Setting up a Kerberos test environment</title>
-            <link rel="alternate" href="http://www.roguelynn.com/words/setting-up-a-kerberos-test-environment/" type="text/html" />
-            <id>http://www.roguelynn.com/words/setting-up-a-kerberos-test-environment/</id>
-            <updated>2013-05-16T22:17:00Z</updated>
-
-            <author>
-                <name>Lynn Root</name>
-                <email>lynn@lynnroot.com</email>
-                <uri>http://www.roguelynn.com/</uri>
-            </author>
-            <content type="html">&lt;p&gt;This is part 3 of a series of posts on setting up Django to use external authentication.  This post explains how to setup your own environment to test Django authentication against Apache and Kerberos/Active Directory/LDAP.&lt;/p&gt;
-&lt;h3 id=&#34;setting-up-your-own-test-environment&#34;&gt;Setting up your own test environment&lt;/h3&gt;
-&lt;p&gt;Naturally, you only care about coding and developing. I’ve made a &lt;a href=&#34;https://gist.github.com/econchick/99699a6fee2eb44d13b0&#34;&gt;Vagrantfile&lt;/a&gt; that spins up two VMs: an IPA server with a Kerberos KDC, and a client within the Kerberos realm that runs Apache, both on Fedora 18.&lt;/p&gt;
-&lt;h4 id=&#34;setup-your-kerberos-test-environment&#34;&gt;Setup your Kerberos test environment:&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;$ git clone\
-      https://gist.github.com/econchick/99699a6fee2eb44d13b0\
-      KerbTestEnvironment
-$ cd KerbTestEnvironment
-
-# for a synced folder between local and Vagrant VM
-$ mkdir synergizerApp  
-
-# to spin up both machines at the same time:
-$ vagrant up
-
-# to spin up machines individually:
-$ vagrant up ipaserver
-$ vagrant up client
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;using-the-test-environment&#34;&gt;Using the test environment&lt;/h4&gt;
-&lt;p&gt;To use your Kerberos test environment, make sure both VMs are up and running with &lt;code&gt;vagrant status&lt;/code&gt;.  &lt;/p&gt;
-
-&lt;p&gt;First, ssh into the &lt;strong&gt;server&lt;/strong&gt; via &lt;code&gt;vagrant ssh ipaserver&lt;/code&gt; then check to see if the IPA service is up and running, and if not, start it up:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;[vagrant@ipaserver]$ sudo ipactl status
-[vagrant@ipaserver]$ sudo ipactl start
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Be sure you can &lt;code&gt;kinit&lt;/code&gt; on the server:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;[vagrant@ipaserver]$ kinit admin
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Now, ssh into the &lt;strong&gt;client&lt;/strong&gt; via &lt;code&gt;vagrant ssh client&lt;/code&gt;, then check to see if you can &lt;code&gt;kinit&lt;/code&gt; to make sure this VM can connect to &lt;code&gt;ipaserver&lt;/code&gt;’s KDC:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;[vagrant@client]$ kinit admin
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;To push your app to the client VM, you can just copy your Django code to the &lt;code&gt;KerbTestEnvironment/synergizerApp/&lt;/code&gt; directory we created earlier, and it will drop into Apache’s default directory, &lt;code&gt;/var/www/&lt;/code&gt;.  You will need to configure Apache for wsgi. &lt;/p&gt;
-
-&lt;p&gt;Then go on with the earlier described &lt;a href=&#34;#does-it-negotiate-testing-setup&#34;&gt;testing&lt;/a&gt;.&lt;/p&gt;
-&lt;h4 id=&#34;possible-issues&#34;&gt;Possible issues&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;If you receive similar to the following error during &lt;code&gt;vagrant up $VM_NAME&lt;/code&gt;: &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;The following SSH command responded with a non-zero exit status.&lt;br&gt;
-Vagrant assumes that this means the command failed!&lt;br&gt;
-/sbin/ifup p7p1 2&amp;gt; /dev/null&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;then apply &lt;a href=&#34;https://github.com/monvillalon/vagrant/commit/dc9830350a0f2be3bb7a4b4e9fcefaed66c6a26a&#34;&gt;this&lt;/a&gt; fix within Vagrant’s installation.  For my Mac OS X Mountain Lion + Vagrant v1.2.2 (most up-to-date at the time of this article), it was a bit tough to find the exact place where this fix should be made.  Wherever the vagrant gems are installed, find &lt;code&gt;plugins/guests/fedora/cap/configure_network.rb&lt;/code&gt; to adjust the line that contains this:&lt;/p&gt;
-&lt;pre lang=&#34;ruby&#34;&gt;&lt;code&gt;machine.communicate.sudo(&amp;#34;/sbin/ifup p7p#{interface} 2&amp;gt;\
-                          /dev/null&amp;#34;)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;to this:&lt;/p&gt;
-&lt;pre lang=&#34;ruby&#34;&gt;&lt;code&gt;machine.communicate.sudo(&amp;#34;/sbin/ifup p7p#{interface} 2&amp;gt;\ 
-                          /dev/null&amp;#34;, :error =&amp;gt; false)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;em&gt;(ya ya, a pull request containing this fix, or rather an update to ifup, should be made; who has time for that…)&lt;/em&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;If you get a clock skew error during &lt;code&gt;kinit&lt;/code&gt; on the &lt;code&gt;ipaserver&lt;/code&gt;, restart IPA via &lt;code&gt;sudo ipactl restart&lt;/code&gt; and make sure &lt;code&gt;ntpd&lt;/code&gt; is running with &lt;code&gt;service ntpd status&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;If you get a clock skew error during &lt;code&gt;kinit&lt;/code&gt; on the &lt;code&gt;client&lt;/code&gt;, you’ll need to resync NTP. Try the following (you’ll have to do the &lt;code&gt;ntpdate&lt;/code&gt; command at least twice to adjust the NTP clock to at most 300 seconds/5 minutes difference):&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre&gt;&lt;code&gt;[vagrant@client]$ sudo killall ntpd
-[vagrant@client]$ sudo ntpdate ipaserver.example.com
-[vagrant@client]$ sudo ntpdate ipaserver.example.com
-[vagrant@client]$ kinit admin
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resources&#34;&gt;Resources&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.fedoraproject.org/en-US/Fedora/17/html/FreeIPA_Guide/index.html&#34;&gt;Setting up IPA&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Part 0: &lt;a href=&#34;http://www.roguelynn.com/words/explain-like-im-5-kerberos/&#34;&gt;Explain like I’m 5: Kerberos&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Part 1: &lt;a href=&#34;http://www.roguelynn.com/words/django-custom-user-models&#34;&gt;Django 1.5 Custom User Models&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Part 3: &lt;a href=&#34;http://www.roguelynn.com/words/setting-up-a-kerberos-test-environment&#34;&gt;Setting up a Kerberos test environment&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-        </entry>
-        
-    
-        
-        <entry>
-            <title type="html">Part 2: Apache and Kerberos for Django Authentication + Authorization</title>
-            <link rel="alternate" href="http://www.roguelynn.com/words/apache-kerberos-for-django/" type="text/html" />
-            <id>http://www.roguelynn.com/words/apache-kerberos-for-django/</id>
-            <updated>2013-05-16T22:14:00Z</updated>
-
-            <author>
-                <name>Lynn Root</name>
-                <email>lynn@lynnroot.com</email>
-                <uri>http://www.roguelynn.com/</uri>
-            </author>
-            <content type="html">&lt;p&gt;This is part 2 of a series of posts on setting up Django to use external authentication.  This post explains how to setup Apache for Django to use a corporate/internal authentication environment.&lt;/p&gt;
-&lt;h3 id=&#34;how-do-i-apache&#34;&gt;How do I Apache?&lt;/h3&gt;
-&lt;p&gt;Alright, now that my application is done and the custom user is setup, how do I actually &lt;em&gt;hook&lt;/em&gt; this into the internal network?&lt;/p&gt;
-
-&lt;p&gt;Apache is the &lt;span id=&#34;antibuzz&#34;&gt;anti-buzzword&lt;/span&gt; if you will, but often you don’t have a choice.&lt;/p&gt;
-&lt;h4 id=&#34;configuring-apache&#34;&gt;Configuring Apache&lt;/h4&gt;
-&lt;p&gt;On the host machine that will be running the Apache instance, make sure to install &lt;code&gt;mod_auth_kerb&lt;/code&gt; for Kerberos, or &lt;code&gt;mod_authnz_ldap&lt;/code&gt; for LDAP.&lt;/p&gt;
-
-&lt;p&gt;Within &lt;code&gt;/etc/httpd/conf.d/&lt;/code&gt;, create another &lt;code&gt;.conf&lt;/code&gt; file, for instance: &lt;code&gt;remote_user.conf&lt;/code&gt;. You can also have this configuration within &lt;code&gt;.htaccess&lt;/code&gt; in the desired protected directory itself. &lt;/p&gt;
-
-&lt;p&gt;Configuration for Kerberos should look similar to:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# remote_user.conf or .htaccess
-LoadModule auth_kerb_module modules/mod_auth_kerb.so
-
-&amp;lt;Location /&amp;gt; 
-    AuthName &amp;#34;DjangoConKerberos&amp;#34;
-    AuthType Kerberos
-    KrbMethodNegotiate On
-    KrbMethodK5Passwd Off
-    KrbServiceName HTTP/$FQDN
-    KrbAuthRealms KERBEROS_DOMAIN
-    Krb5KeyTab /path/to/http.keytab
-    Require valid-user
-
-    Order Deny,Allow
-    Deny from all
-&amp;lt;/Location&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;If using LDAP + Basic auth instead of Kerberos, Apache configuration should look similar to:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# remote_user.conf or .htaccess
-LoadModule authnz_ldap_module modules/mod_authnz_ldap.so
-
-&amp;lt;Location /&amp;gt; 
-    AuthName &amp;#34;DjangoConLDAP&amp;#34;
-    AuthType Basic
-    AuthBasicProvider ldap
-    AuthzLDAPAuthoritative Off
-    AuthLDAPURL ldap://$LDAP_URL:389/CN=...
-    AuthLDAPBindDN cn=myusername,cn=Users,...
-    AuthLDAPBindPassword mypassword
-    Require valid-user
-
-    Order Deny,Allow
-    Deny from all
-&amp;lt;/Location&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;An important part of setting up Apache for an internal Kerberized system is getting a keytab for Apache.  Most likely, you won’t have access to get the needed keytab, and will need to request one from whoever manages the corporate identity system.  &lt;/p&gt;
-
-&lt;p&gt;However, it’s quite easy to spin up a test environment to see if the configuration is working correctly detailed in &lt;a href=&#34;http://www.roguelynn.com/words/setting-up-a-kerberos-test-environment&#34;&gt;part 3&lt;/a&gt; of this series.&lt;/p&gt;
-
-&lt;p&gt;See &lt;a href=&#34;http://modauthkerb.sourceforge.net/configure.html&#34;&gt;here&lt;/a&gt; for more detailed information on the various configuration parameters for &lt;code&gt;mod_auth_kerb&lt;/code&gt; + Apache, or &lt;a href=&#34;http://httpd.apache.org/docs/2.2/mod/mod_authnz_ldap.html&#34;&gt;here&lt;/a&gt; for LDAP + Apache configuration, and &lt;a href=&#34;http://www.netexpertise.eu/en/apache/authentication-against-active-directory.html&#34;&gt;here&lt;/a&gt; for Active Directory with LDAP + Apache configuration.&lt;/p&gt;
-
-&lt;p&gt;You will need to setup &lt;a href=&#34;https://docs.djangoproject.com/en/dev/howto/deployment/wsgi/&#34;&gt;wsgi configuration&lt;/a&gt; for Apache to actually serve your application.  &lt;/p&gt;
-
-&lt;p&gt;If, by some &lt;em&gt;odd&lt;/em&gt; reason, you want or can use something other than Apache, there is a &lt;a href=&#34;https://github.com/fintler/nginx-mod-auth-kerb&#34;&gt;mod_auth_kerb setup&lt;/a&gt; for nginx.  &lt;strong&gt;Disclaimer:&lt;/strong&gt; I have not used or tested nginx with Kerberos setup.&lt;/p&gt;
-&lt;h3 id=&#34;does-it-negotiate-testing-setup&#34;&gt;Does it negotiate? Testing setup&lt;/h3&gt;&lt;h4 id=&#34;curl&#34;&gt;cURL&lt;/h4&gt;
-&lt;p&gt;I’d suggest to first try with &lt;code&gt;curl&lt;/code&gt; to make sure the Apache + Kerberos setup is correct:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;[vagrant@client]# kinit roguelynn
-Password for roguelynn@ROOTCLOUD.COM:
-[vagrant@client]# curl -I --negotiate -u : \
-    https://synergizeapp.strategery.com
-
-HTTP/1.1 401 Unauthorized
-Date: Wed, 15 May 2013 09:10:18 GMT
-Server: Apache/2.4.4 (Fedora)
-WWW-Authenticate: Negotiate
-Content-type text/html; charset=iso-8859-1
-
-HTTP/1.1 200
-Date: Wed, 15 May 2013 09:10:18 GMT
-Server: Apache/2.4.4 (Fedora)
-WWW-Authenticate: Negotiate sOmE_RanDom_T0k3n
-...
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The &lt;code&gt;--negotiate&lt;/code&gt; flag flips on &lt;a href=&#34;http://en.wikipedia.org/wiki/SPNEGO&#34;&gt;SPNego&lt;/a&gt; for cURL, and the &lt;code&gt;-u :&lt;/code&gt; forces cURL to pick up the authenticated user’s cached ticket from &lt;code&gt;kinit&lt;/code&gt;’ing.  You can see your cached ticket with &lt;code&gt;klist&lt;/code&gt;. &lt;/p&gt;
-&lt;h4 id=&#34;requests.py&#34;&gt;requests.py&lt;/h4&gt;
-&lt;p&gt;For &lt;code&gt;requests&lt;/code&gt; fans:&lt;/p&gt;
-&lt;pre lang=&#34;bash&#34;&gt;&lt;code&gt;$ kinit USERNAME
-$ python
-&amp;gt;&amp;gt;&amp;gt; import requests
-&amp;gt;&amp;gt;&amp;gt; from requests_kerberos import HTTPKerberosAuth
-&amp;gt;&amp;gt;&amp;gt; r = requests.get(&amp;#34;$APACHE_PROTECTED_FQDN&amp;#34;,\
-                     auth=HTTPKerberosAuth())
-&amp;gt;&amp;gt;&amp;gt; r.status_code
-200
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;browser&#34;&gt;Browser&lt;/h4&gt;
-&lt;p&gt;First, we’ll need to configure our browser to use Negotiate/SPNego:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Safari – just “works”. Thanks, Apple.&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Chrome&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Mac:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;open &amp;#39;Google Chrome.app&amp;#39; --args\
-  --auth-server-whitelist=&amp;#34;*ROGUECLOUD.COM&amp;#34;\
-  --auth-negotiate-delegate-whitelist=&amp;#34;*KERBEROS_DOMAIN&amp;#34;\
-  --auth-schemes=&amp;#34;basic,digest,ntlm,negotiate&amp;#34;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Linux:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;google-chrome --enable-plugins --args\
-  --auth-server-whitelist=&amp;#34;*KERBEROS_DOMAIN&amp;#34;\
-  --auth-negotiate-delegate-whitelist=&amp;#34;*KERBEROS_DOMAIN&amp;#34;\
-  --auth-schemes=&amp;#34;basic,digest,ntlm,negotiate&amp;#34;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Windows: &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;chrome.exe --auth-server-whitelist=&amp;#34;*KERBEROS_DOMAIN&amp;#34;\
-  --auth-negotiate-delegate-whitelist=&amp;#34;*ROGUECLOUD.COM&amp;#34;\
-  --auth-schemes=&amp;#34;basic,digest,ntlm,negotiate&amp;#34;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Firefox&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Navigate to &lt;code&gt;about:config&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Search for &amp;quot;negotiate&amp;quot;&lt;/li&gt;
-&lt;li&gt;For &lt;code&gt;network.negotiate-auth.delegation-uris&lt;/code&gt; add &lt;code&gt;.KERBEROS_DOMAIN&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;For &lt;code&gt;network.negotiate-auth.trusted-uris&lt;/code&gt; add &lt;code&gt;.KERBEROS_DOMAIN&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;IE&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Internet Options &amp;gt; Tools &amp;gt; Advanced Tab&lt;/li&gt;
-&lt;li&gt;Within Security section, select &amp;quot;Enable Integrated Windows Authentication&amp;quot;&lt;/li&gt;
-&lt;li&gt;Restart browser&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Authenticate yourself with &lt;code&gt;kinit USERNAME&lt;/code&gt; within the terminal.  &lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Finally, navigating to &lt;code&gt;$APACHE_PROTECTED_FQDN&lt;/code&gt; within browser should then just work if everything is setup appropriately. &lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;If prompted for Kerberos username/password, then Apache configuration maybe incorrect if you did not intend that, but should still authenticate with Kerberos credentials&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;authentication-vs-authorization&#34;&gt;Authentication vs Authorization&lt;/h3&gt;
-&lt;p&gt;So - I’m sure this isn’t news to anyone: there’s a difference between authentication and authorization.  First is who you are, the second is what you can do.  &lt;/p&gt;
-
-&lt;p&gt;Using RemoteUserBackend and Middleware doesn’t automatically grab what the user is authorized to do; it’s just authentication.  &lt;/p&gt;
-
-&lt;p&gt;However, if needed, there are ways to hook into the user database to grab permissions.&lt;/p&gt;
-&lt;h4 id=&#34;accessing-permissions&#34;&gt;Accessing Permissions&lt;/h4&gt;
-&lt;p&gt;Say your app needs to know if a user is defined as an Admin, or staff, a part of a particular group (e.g. &amp;quot;finance&amp;quot;, &amp;quot;engineering&amp;quot;) or something else that is already defined in your external auth system.  Customizing a backend is needed to connect directly to the external user datastore.&lt;/p&gt;
-
-&lt;p&gt;Typically, LDAP holds users in groups, through &lt;code&gt;memberOf&lt;/code&gt; parameter or something similar.  By binding to the LDAP to find what group the user is a member of, you can then define what authorization that a user has within your own app logic.  e.g. if user is a member of “admins”, then create_superuser(user).  &lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://pythonhosted.org/django-auth-ldap&#34;&gt;django-auth-ldap&lt;/a&gt; and/or &lt;a href=&#34;https://code.google.com/p/django-ldap-groups&#34;&gt;django-ldap-groups&lt;/a&gt; can be dropped into your Django app&lt;/li&gt;
-&lt;li&gt;Or one of these snippets () - they are focused on Active Directory but so long as the configuration variables within your &lt;code&gt;settings.py&lt;/code&gt; are correct, it should work with a standard LDAP or IPA setup:
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://djangosnippets.org/snippets/501/&#34;&gt;Active Directory&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://djangosnippets.org/snippets/901/&#34;&gt;Active Directory over SSL&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://djangosnippets.org/snippets/1397/&#34;&gt;Active Directory/LDAP&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://djangosnippets.org/snippets/2899/&#34;&gt;Active Directory with Groups&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;In a Kerberized environment, one approach may to be just getting another keytab for accessing the LDAP, although that requires the service to have wide read privileges.  &lt;/p&gt;
-
-&lt;p&gt;How I would approach it though, at least within an IPA environment (which stores its user information in an LDAP), is to capitalize on IPA’s use of &lt;a href=&#34;https://fedorahosted.org/sssd/&#34;&gt;SSSD - System Security Services Daemon&lt;/a&gt;.  You can execute local system calls, like &lt;code&gt;getent group $USERNAME&lt;/code&gt; and SSSD grabs the group the user is a member of.&lt;/p&gt;
-&lt;h3 id=&#34;resources&#34;&gt;Resources&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.sensibledevelopment.com/2011/01/a-generic-wsgi-file-for-deploying-django-with-virtualenv-and-mod_wsgi/&#34;&gt;Help with generic setup with django, virtualenv, and Apache’s mod_wsgi&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Part 0: &lt;a href=&#34;http://www.roguelynn.com/words/explain-like-im-5-kerberos/&#34;&gt;Explain like I’m 5: Kerberos&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Part 1: &lt;a href=&#34;http://www.roguelynn.com/words/django-custom-user-models&#34;&gt;Django 1.5 Custom User Models&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Part 3: &lt;a href=&#34;http://www.roguelynn.com/words/setting-up-a-kerberos-test-environment&#34;&gt;Setting up a Kerberos test environment&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-        </entry>
-        
-    
-        
-        <entry>
             <title type="html">Part 1: Django 1.5 Custom User Models</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/django-custom-user-models/" type="text/html" />
             <id>http://www.roguelynn.com/words/django-custom-user-models/</id>
-            <updated>2013-05-16T22:12:00Z</updated>
+            <updated>2013-05-16T22:23:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -433,6 +169,270 @@ class Synergy(models.Model):
         
     
         
+        <entry>
+            <title type="html">Part 3: Setting up a Kerberos test environment</title>
+            <link rel="alternate" href="http://www.roguelynn.com/words/setting-up-a-kerberos-test-environment/" type="text/html" />
+            <id>http://www.roguelynn.com/words/setting-up-a-kerberos-test-environment/</id>
+            <updated>2013-05-16T04:18:00Z</updated>
+
+            <author>
+                <name>Lynn Root</name>
+                <email>lynn@lynnroot.com</email>
+                <uri>http://www.roguelynn.com/</uri>
+            </author>
+            <content type="html">&lt;p&gt;This is part 3 of a series of posts on setting up Django to use external authentication.  This post explains how to setup your own environment to test Django authentication against Apache and Kerberos/Active Directory/LDAP.&lt;/p&gt;
+&lt;h3 id=&#34;setting-up-your-own-test-environment&#34;&gt;Setting up your own test environment&lt;/h3&gt;
+&lt;p&gt;Naturally, you only care about coding and developing. I’ve made a &lt;a href=&#34;https://gist.github.com/econchick/99699a6fee2eb44d13b0&#34;&gt;Vagrantfile&lt;/a&gt; that spins up two VMs: an IPA server with a Kerberos KDC, and a client within the Kerberos realm that runs Apache, both on Fedora 18.&lt;/p&gt;
+&lt;h4 id=&#34;setup-your-kerberos-test-environment&#34;&gt;Setup your Kerberos test environment:&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;$ git clone\
+      https://gist.github.com/econchick/99699a6fee2eb44d13b0\
+      KerbTestEnvironment
+$ cd KerbTestEnvironment
+
+# for a synced folder between local and Vagrant VM
+$ mkdir synergizerApp  
+
+# to spin up both machines at the same time:
+$ vagrant up
+
+# to spin up machines individually:
+$ vagrant up ipaserver
+$ vagrant up client
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;using-the-test-environment&#34;&gt;Using the test environment&lt;/h4&gt;
+&lt;p&gt;To use your Kerberos test environment, make sure both VMs are up and running with &lt;code&gt;vagrant status&lt;/code&gt;.  &lt;/p&gt;
+
+&lt;p&gt;First, ssh into the &lt;strong&gt;server&lt;/strong&gt; via &lt;code&gt;vagrant ssh ipaserver&lt;/code&gt; then check to see if the IPA service is up and running, and if not, start it up:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[vagrant@ipaserver]$ sudo ipactl status
+[vagrant@ipaserver]$ sudo ipactl start
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Be sure you can &lt;code&gt;kinit&lt;/code&gt; on the server:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[vagrant@ipaserver]$ kinit admin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now, ssh into the &lt;strong&gt;client&lt;/strong&gt; via &lt;code&gt;vagrant ssh client&lt;/code&gt;, then check to see if you can &lt;code&gt;kinit&lt;/code&gt; to make sure this VM can connect to &lt;code&gt;ipaserver&lt;/code&gt;’s KDC:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[vagrant@client]$ kinit admin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To push your app to the client VM, you can just copy your Django code to the &lt;code&gt;KerbTestEnvironment/synergizerApp/&lt;/code&gt; directory we created earlier, and it will drop into Apache’s default directory, &lt;code&gt;/var/www/&lt;/code&gt;.  You will need to configure Apache for wsgi. &lt;/p&gt;
+
+&lt;p&gt;Then go on with the earlier described &lt;a href=&#34;#does-it-negotiate-testing-setup&#34;&gt;testing&lt;/a&gt;.&lt;/p&gt;
+&lt;h4 id=&#34;possible-issues&#34;&gt;Possible issues&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;If you receive a similar error message during &lt;code&gt;vagrant up $VM_NAME&lt;/code&gt;: &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The following SSH command responded with a non-zero exit status.&lt;br&gt;
+Vagrant assumes that this means the command failed!&lt;br&gt;
+/sbin/ifup p7p1 2&amp;gt; /dev/null&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;then apply &lt;a href=&#34;https://github.com/monvillalon/vagrant/commit/dc9830350a0f2be3bb7a4b4e9fcefaed66c6a26a&#34;&gt;this&lt;/a&gt; fix within Vagrant’s installation.  For my Mac OS X Mountain Lion + Vagrant v1.2.2 (most up-to-date at the time of this article), it was a bit tough to find the exact place where this fix should be made.  Wherever the vagrant gems are installed, find &lt;code&gt;plugins/guests/fedora/cap/configure_network.rb&lt;/code&gt; to adjust the line that contains this:&lt;/p&gt;
+&lt;pre lang=&#34;ruby&#34;&gt;&lt;code&gt;machine.communicate.sudo(&amp;#34;/sbin/ifup p7p#{interface} 2&amp;gt;\
+                          /dev/null&amp;#34;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;to this:&lt;/p&gt;
+&lt;pre lang=&#34;ruby&#34;&gt;&lt;code&gt;machine.communicate.sudo(&amp;#34;/sbin/ifup p7p#{interface} 2&amp;gt;\ 
+                          /dev/null&amp;#34;, :error =&amp;gt; false)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;(ya ya, a pull request containing this fix, or rather an update to ifup, should be made; who has time for that…)&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;If you get a clock skew error during &lt;code&gt;kinit&lt;/code&gt; on the &lt;code&gt;ipaserver&lt;/code&gt;, restart IPA via &lt;code&gt;sudo ipactl restart&lt;/code&gt; and make sure &lt;code&gt;ntpd&lt;/code&gt; is running with &lt;code&gt;service ntpd status&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;If you get a clock skew error during &lt;code&gt;kinit&lt;/code&gt; on the &lt;code&gt;client&lt;/code&gt;, you’ll need to resync NTP. Try the following (you’ll have to do the &lt;code&gt;ntpdate&lt;/code&gt; command at least twice to adjust the NTP clock to at most 300 seconds/5 minutes difference):&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;[vagrant@client]$ sudo killall ntpd
+[vagrant@client]$ sudo ntpdate ipaserver.example.com
+[vagrant@client]$ sudo ntpdate ipaserver.example.com
+[vagrant@client]$ kinit admin
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resources&#34;&gt;Resources&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.fedoraproject.org/en-US/Fedora/17/html/FreeIPA_Guide/index.html&#34;&gt;Setting up IPA&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Part 0: &lt;a href=&#34;http://www.roguelynn.com/words/explain-like-im-5-kerberos/&#34;&gt;Explain like I’m 5: Kerberos&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Part 1: &lt;a href=&#34;http://www.roguelynn.com/words/django-custom-user-models&#34;&gt;Django 1.5 Custom User Models&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Part 3: &lt;a href=&#34;http://www.roguelynn.com/words/setting-up-a-kerberos-test-environment&#34;&gt;Setting up a Kerberos test environment&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        </entry>
+        
+    
+        
+        <entry>
+            <title type="html">Part 2: Apache and Kerberos for Django Authentication + Authorization</title>
+            <link rel="alternate" href="http://www.roguelynn.com/words/apache-kerberos-for-django/" type="text/html" />
+            <id>http://www.roguelynn.com/words/apache-kerberos-for-django/</id>
+            <updated>2013-05-16T04:17:00Z</updated>
+
+            <author>
+                <name>Lynn Root</name>
+                <email>lynn@lynnroot.com</email>
+                <uri>http://www.roguelynn.com/</uri>
+            </author>
+            <content type="html">&lt;p&gt;This is part 2 of a series of posts on setting up Django to use external authentication.  This post explains how to setup Apache for Django to use a corporate/internal authentication environment.&lt;/p&gt;
+&lt;h3 id=&#34;how-do-i-apache&#34;&gt;How do I Apache?&lt;/h3&gt;
+&lt;p&gt;Alright, now that my application is done and the custom user is setup, how do I actually &lt;em&gt;hook&lt;/em&gt; this into the internal network?&lt;/p&gt;
+
+&lt;p&gt;Apache is the &lt;span id=&#34;antibuzz&#34;&gt;anti-buzzword&lt;/span&gt; if you will, but often you don’t have a choice.&lt;/p&gt;
+&lt;h4 id=&#34;configuring-apache&#34;&gt;Configuring Apache&lt;/h4&gt;
+&lt;p&gt;On the host machine that will be running the Apache instance, make sure to install &lt;code&gt;mod_auth_kerb&lt;/code&gt; for Kerberos, or &lt;code&gt;mod_authnz_ldap&lt;/code&gt; for LDAP.&lt;/p&gt;
+
+&lt;p&gt;Within &lt;code&gt;/etc/httpd/conf.d/&lt;/code&gt;, create another &lt;code&gt;.conf&lt;/code&gt; file, for instance: &lt;code&gt;remote_user.conf&lt;/code&gt;. You can also have this configuration within &lt;code&gt;.htaccess&lt;/code&gt; in the desired protected directory itself. &lt;/p&gt;
+
+&lt;p&gt;Configuration for Kerberos should look similar to:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# remote_user.conf or .htaccess
+LoadModule auth_kerb_module modules/mod_auth_kerb.so
+
+&amp;lt;Location /&amp;gt; 
+    AuthName &amp;#34;DjangoConKerberos&amp;#34;
+    AuthType Kerberos
+    KrbMethodNegotiate On
+    KrbMethodK5Passwd Off
+    KrbServiceName HTTP/$FQDN
+    KrbAuthRealms KERBEROS_DOMAIN
+    Krb5KeyTab /path/to/http.keytab
+    Require valid-user
+
+    Order Deny,Allow
+    Deny from all
+&amp;lt;/Location&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If using LDAP + Basic auth instead of Kerberos, Apache configuration should look similar to:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# remote_user.conf or .htaccess
+LoadModule authnz_ldap_module modules/mod_authnz_ldap.so
+
+&amp;lt;Location /&amp;gt; 
+    AuthName &amp;#34;DjangoConLDAP&amp;#34;
+    AuthType Basic
+    AuthBasicProvider ldap
+    AuthzLDAPAuthoritative Off
+    AuthLDAPURL ldap://$LDAP_URL:389/CN=...
+    AuthLDAPBindDN cn=myusername,cn=Users,...
+    AuthLDAPBindPassword mypassword
+    Require valid-user
+
+    Order Deny,Allow
+    Deny from all
+&amp;lt;/Location&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;An important part of setting up Apache for an internal Kerberized system is getting a keytab for Apache.  Most likely, you won’t have access to get the needed keytab, and will need to request one from whoever manages the corporate identity system.  &lt;/p&gt;
+
+&lt;p&gt;However, it’s quite easy to spin up a test environment to see if your configuration is working correctly.  I detail how to set one up in &lt;a href=&#34;http://www.roguelynn.com/words/setting-up-a-kerberos-test-environment&#34;&gt;part 3&lt;/a&gt; of this series.&lt;/p&gt;
+
+&lt;p&gt;See &lt;a href=&#34;http://modauthkerb.sourceforge.net/configure.html&#34;&gt;here&lt;/a&gt; for more detailed information on the various configuration parameters for &lt;code&gt;mod_auth_kerb&lt;/code&gt; + Apache, or &lt;a href=&#34;http://httpd.apache.org/docs/2.2/mod/mod_authnz_ldap.html&#34;&gt;here&lt;/a&gt; for LDAP + Apache configuration, and &lt;a href=&#34;http://www.netexpertise.eu/en/apache/authentication-against-active-directory.html&#34;&gt;here&lt;/a&gt; for Active Directory with LDAP + Apache configuration.&lt;/p&gt;
+
+&lt;p&gt;You will need to setup &lt;a href=&#34;https://docs.djangoproject.com/en/dev/howto/deployment/wsgi/&#34;&gt;wsgi configuration&lt;/a&gt; for Apache to actually serve your application.  &lt;/p&gt;
+
+&lt;p&gt;If, by some &lt;em&gt;odd&lt;/em&gt; reason, you want or can use something other than Apache, there is a &lt;a href=&#34;https://github.com/fintler/nginx-mod-auth-kerb&#34;&gt;mod_auth_kerb setup&lt;/a&gt; for nginx.  &lt;strong&gt;Disclaimer:&lt;/strong&gt; I have not used or tested nginx with Kerberos setup.&lt;/p&gt;
+&lt;h3 id=&#34;does-it-negotiate-testing-setup&#34;&gt;Does it negotiate? Testing setup&lt;/h3&gt;&lt;h4 id=&#34;curl&#34;&gt;cURL&lt;/h4&gt;
+&lt;p&gt;I’d suggest to first try with &lt;code&gt;curl&lt;/code&gt; to make sure the Apache + Kerberos setup is correct:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[vagrant@client]# kinit roguelynn
+Password for roguelynn@ROOTCLOUD.COM:
+[vagrant@client]# curl -I --negotiate -u : \
+    https://synergizeapp.strategery.com
+
+HTTP/1.1 401 Unauthorized
+Date: Wed, 15 May 2013 09:10:18 GMT
+Server: Apache/2.4.4 (Fedora)
+WWW-Authenticate: Negotiate
+Content-type text/html; charset=iso-8859-1
+
+HTTP/1.1 200
+Date: Wed, 15 May 2013 09:10:18 GMT
+Server: Apache/2.4.4 (Fedora)
+WWW-Authenticate: Negotiate sOmE_RanDom_T0k3n
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;--negotiate&lt;/code&gt; flag flips on &lt;a href=&#34;http://en.wikipedia.org/wiki/SPNEGO&#34;&gt;SPNego&lt;/a&gt; for cURL, and the &lt;code&gt;-u :&lt;/code&gt; forces cURL to pick up the authenticated user’s cached ticket from &lt;code&gt;kinit&lt;/code&gt;’ing.  You can see your cached ticket with &lt;code&gt;klist&lt;/code&gt;. &lt;/p&gt;
+&lt;h4 id=&#34;requests.py&#34;&gt;requests.py&lt;/h4&gt;
+&lt;p&gt;For &lt;code&gt;requests&lt;/code&gt; fans:&lt;/p&gt;
+&lt;pre lang=&#34;bash&#34;&gt;&lt;code&gt;$ kinit USERNAME
+$ python
+&amp;gt;&amp;gt;&amp;gt; import requests
+&amp;gt;&amp;gt;&amp;gt; from requests_kerberos import HTTPKerberosAuth
+&amp;gt;&amp;gt;&amp;gt; r = requests.get(&amp;#34;$APACHE_PROTECTED_FQDN&amp;#34;,\
+                     auth=HTTPKerberosAuth())
+&amp;gt;&amp;gt;&amp;gt; r.status_code
+200
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;browser&#34;&gt;Browser&lt;/h4&gt;
+&lt;p&gt;First, we’ll need to configure our browser to use Negotiate/SPNego:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Safari – just “works”. Thanks, Apple.&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Chrome&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Mac:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;open &amp;#39;Google Chrome.app&amp;#39; --args\
+  --auth-server-whitelist=&amp;#34;*ROGUECLOUD.COM&amp;#34;\
+  --auth-negotiate-delegate-whitelist=&amp;#34;*KERBEROS_DOMAIN&amp;#34;\
+  --auth-schemes=&amp;#34;basic,digest,ntlm,negotiate&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Linux:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;google-chrome --enable-plugins --args\
+  --auth-server-whitelist=&amp;#34;*KERBEROS_DOMAIN&amp;#34;\
+  --auth-negotiate-delegate-whitelist=&amp;#34;*KERBEROS_DOMAIN&amp;#34;\
+  --auth-schemes=&amp;#34;basic,digest,ntlm,negotiate&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Windows: &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;chrome.exe --auth-server-whitelist=&amp;#34;*KERBEROS_DOMAIN&amp;#34;\
+  --auth-negotiate-delegate-whitelist=&amp;#34;*ROGUECLOUD.COM&amp;#34;\
+  --auth-schemes=&amp;#34;basic,digest,ntlm,negotiate&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Firefox&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Navigate to &lt;code&gt;about:config&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Search for &amp;quot;negotiate&amp;quot;&lt;/li&gt;
+&lt;li&gt;For &lt;code&gt;network.negotiate-auth.delegation-uris&lt;/code&gt; add &lt;code&gt;.KERBEROS_DOMAIN&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;For &lt;code&gt;network.negotiate-auth.trusted-uris&lt;/code&gt; add &lt;code&gt;.KERBEROS_DOMAIN&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;IE&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Internet Options &amp;gt; Tools &amp;gt; Advanced Tab&lt;/li&gt;
+&lt;li&gt;Within Security section, select &amp;quot;Enable Integrated Windows Authentication&amp;quot;&lt;/li&gt;
+&lt;li&gt;Restart browser&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Authenticate yourself with &lt;code&gt;kinit USERNAME&lt;/code&gt; within the terminal.  &lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Finally, navigating to &lt;code&gt;$APACHE_PROTECTED_FQDN&lt;/code&gt; within browser should then just work if everything is setup appropriately. &lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;If prompted for Kerberos username/password, then Apache configuration maybe incorrect if you did not intend that, but should still authenticate with Kerberos credentials&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;authentication-vs-authorization&#34;&gt;Authentication vs Authorization&lt;/h3&gt;
+&lt;p&gt;So - I’m sure this isn’t news to anyone: there’s a difference between authentication and authorization.  First is who you are, the second is what you can do.  &lt;/p&gt;
+
+&lt;p&gt;Using RemoteUserBackend and Middleware doesn’t automatically grab what the user is authorized to do; it’s just authentication.  &lt;/p&gt;
+
+&lt;p&gt;However, if needed, there are ways to hook into the user database to grab permissions.&lt;/p&gt;
+&lt;h4 id=&#34;accessing-permissions&#34;&gt;Accessing Permissions&lt;/h4&gt;
+&lt;p&gt;Say your app needs to know if a user is defined as an admin, or staff, a part of a particular group (e.g. &amp;quot;finance&amp;quot;, &amp;quot;engineering&amp;quot;) or something else that is already defined in your external auth system.  Customizing a backend is needed to connect directly to the external user datastore.&lt;/p&gt;
+
+&lt;p&gt;Typically, LDAP holds users in groups, through &lt;code&gt;memberOf&lt;/code&gt; parameter or something similar.  By binding to the LDAP to find what group the user is a member of, you can then define what authorization that a user has within your own app logic.  e.g. if user is a member of “admins”, then create_superuser(user).  &lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://pythonhosted.org/django-auth-ldap&#34;&gt;django-auth-ldap&lt;/a&gt; and/or &lt;a href=&#34;https://code.google.com/p/django-ldap-groups&#34;&gt;django-ldap-groups&lt;/a&gt; can be dropped into your Django app&lt;/li&gt;
+&lt;li&gt;Or one of these snippets (they are focused on Active Directory but so long as the configuration variables within your &lt;code&gt;settings.py&lt;/code&gt; are correct, it should work with a standard LDAP or IPA setup):
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://djangosnippets.org/snippets/501/&#34;&gt;Active Directory&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://djangosnippets.org/snippets/901/&#34;&gt;Active Directory over SSL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://djangosnippets.org/snippets/1397/&#34;&gt;Active Directory/LDAP&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://djangosnippets.org/snippets/2899/&#34;&gt;Active Directory with Groups&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In a Kerberized environment, one approach may to be just getting another keytab for accessing the LDAP, although that requires the service to have wide read privileges.  &lt;/p&gt;
+
+&lt;p&gt;How I would approach it though, at least within an IPA environment (which stores its user information in an LDAP), is to capitalize on IPA’s use of &lt;a href=&#34;https://fedorahosted.org/sssd/&#34;&gt;SSSD - System Security Services Daemon&lt;/a&gt;.  You can execute local system calls, like &lt;code&gt;getent group $USERNAME&lt;/code&gt; and SSSD grabs the group the user is a member of.&lt;/p&gt;
+&lt;h3 id=&#34;resources&#34;&gt;Resources&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.sensibledevelopment.com/2011/01/a-generic-wsgi-file-for-deploying-django-with-virtualenv-and-mod_wsgi/&#34;&gt;Help with generic setup with django, virtualenv, and Apache’s mod_wsgi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Part 0: &lt;a href=&#34;http://www.roguelynn.com/words/explain-like-im-5-kerberos/&#34;&gt;Explain like I’m 5: Kerberos&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Part 1: &lt;a href=&#34;http://www.roguelynn.com/words/django-custom-user-models&#34;&gt;Django 1.5 Custom User Models&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Part 3: &lt;a href=&#34;http://www.roguelynn.com/words/setting-up-a-kerberos-test-environment&#34;&gt;Setting up a Kerberos test environment&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        </entry>
+        
+    
+        
     
         
     
@@ -455,7 +455,7 @@ class Synergy(models.Model):
             <title type="html">Explain like I’m 5: Kerberos</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/explain-like-im-5-kerberos/" type="text/html" />
             <id>http://www.roguelynn.com/words/explain-like-im-5-kerberos/</id>
-            <updated>2013-04-02T22:22:00Z</updated>
+            <updated>2013-04-02T22:23:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>

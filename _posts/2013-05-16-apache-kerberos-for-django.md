@@ -64,7 +64,7 @@ LoadModule authnz_ldap_module modules/mod_authnz_ldap.so
 
 An important part of setting up Apache for an internal Kerberized system is getting a keytab for Apache.  Most likely, you won’t have access to get the needed keytab, and will need to request one from whoever manages the corporate identity system.  
 
-However, it’s quite easy to spin up a test environment to see if the configuration is working correctly detailed in [part 3]({{ get_url("words/setting-up-a-kerberos-test-environment")}}) of this series.
+However, it’s quite easy to spin up a test environment to see if your configuration is working correctly.  I detail how to set one up in [part 3]({{ get_url("words/setting-up-a-kerberos-test-environment")}}) of this series.
 
 See [here](http://modauthkerb.sourceforge.net/configure.html) for more detailed information on the various configuration parameters for `mod_auth_kerb` + Apache, or [here](http://httpd.apache.org/docs/2.2/mod/mod_authnz_ldap.html) for LDAP + Apache configuration, and [here](http://www.netexpertise.eu/en/apache/authentication-against-active-directory.html) for Active Directory with LDAP + Apache configuration.
 
@@ -164,12 +164,12 @@ However, if needed, there are ways to hook into the user database to grab permis
 
 #### Accessing Permissions
 
-Say your app needs to know if a user is defined as an Admin, or staff, a part of a particular group (e.g. "finance", "engineering") or something else that is already defined in your external auth system.  Customizing a backend is needed to connect directly to the external user datastore.
+Say your app needs to know if a user is defined as an admin, or staff, a part of a particular group (e.g. "finance", "engineering") or something else that is already defined in your external auth system.  Customizing a backend is needed to connect directly to the external user datastore.
 
 Typically, LDAP holds users in groups, through `memberOf` parameter or something similar.  By binding to the LDAP to find what group the user is a member of, you can then define what authorization that a user has within your own app logic.  e.g. if user is a member of “admins”, then create_superuser(user).  
 
 * [django-auth-ldap](http://pythonhosted.org/django-auth-ldap) and/or [django-ldap-groups](https://code.google.com/p/django-ldap-groups) can be dropped into your Django app
-* Or one of these snippets () - they are focused on Active Directory but so long as the configuration variables within your `settings.py` are correct, it should work with a standard LDAP or IPA setup:
+* Or one of these snippets (they are focused on Active Directory but so long as the configuration variables within your `settings.py` are correct, it should work with a standard LDAP or IPA setup):
     * [Active Directory](http://djangosnippets.org/snippets/501/)
     * [Active Directory over SSL](http://djangosnippets.org/snippets/901/)
     * [Active Directory/LDAP](http://djangosnippets.org/snippets/1397/)

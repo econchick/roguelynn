@@ -59,7 +59,7 @@ Then go on with the earlier described [testing](#does-it-negotiate-testing-setup
 
 #### Possible issues
 
-* If you receive similar to the following error during `vagrant up $VM_NAME`: 
+* If you receive a similar error message during `vagrant up $VM_NAME`: 
 
 > The following SSH command responded with a non-zero exit status.
 > Vagrant assumes that this means the command failed!

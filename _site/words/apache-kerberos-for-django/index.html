@@ -103,7 +103,7 @@ LoadModule authnz_ldap_module modules/mod_authnz_ldap.so
 </code></pre>
 <p>An important part of setting up Apache for an internal Kerberized system is getting a keytab for Apache.  Most likely, you won’t have access to get the needed keytab, and will need to request one from whoever manages the corporate identity system.  </p>
 
-<p>However, it’s quite easy to spin up a test environment to see if the configuration is working correctly detailed in <a href="/words/setting-up-a-kerberos-test-environment">part 3</a> of this series.</p>
+<p>However, it’s quite easy to spin up a test environment to see if your configuration is working correctly.  I detail how to set one up in <a href="/words/setting-up-a-kerberos-test-environment">part 3</a> of this series.</p>
 
 <p>See <a href="http://modauthkerb.sourceforge.net/configure.html">here</a> for more detailed information on the various configuration parameters for <code>mod_auth_kerb</code> + Apache, or <a href="http://httpd.apache.org/docs/2.2/mod/mod_authnz_ldap.html">here</a> for LDAP + Apache configuration, and <a href="http://www.netexpertise.eu/en/apache/authentication-against-active-directory.html">here</a> for Active Directory with LDAP + Apache configuration.</p>
 
@@ -200,13 +200,13 @@ WWW-Authenticate: Negotiate sOmE_RanDom_T0k3n
 
 <p>However, if needed, there are ways to hook into the user database to grab permissions.</p>
 <h4 id="accessing-permissions">Accessing Permissions</h4>
-<p>Say your app needs to know if a user is defined as an Admin, or staff, a part of a particular group (e.g. &quot;finance&quot;, &quot;engineering&quot;) or something else that is already defined in your external auth system.  Customizing a backend is needed to connect directly to the external user datastore.</p>
+<p>Say your app needs to know if a user is defined as an admin, or staff, a part of a particular group (e.g. &quot;finance&quot;, &quot;engineering&quot;) or something else that is already defined in your external auth system.  Customizing a backend is needed to connect directly to the external user datastore.</p>
 
 <p>Typically, LDAP holds users in groups, through <code>memberOf</code> parameter or something similar.  By binding to the LDAP to find what group the user is a member of, you can then define what authorization that a user has within your own app logic.  e.g. if user is a member of “admins”, then create_superuser(user).  </p>
 
 <ul>
 <li><a href="http://pythonhosted.org/django-auth-ldap">django-auth-ldap</a> and/or <a href="https://code.google.com/p/django-ldap-groups">django-ldap-groups</a> can be dropped into your Django app</li>
-<li>Or one of these snippets () - they are focused on Active Directory but so long as the configuration variables within your <code>settings.py</code> are correct, it should work with a standard LDAP or IPA setup:
+<li>Or one of these snippets (they are focused on Active Directory but so long as the configuration variables within your <code>settings.py</code> are correct, it should work with a standard LDAP or IPA setup):
 
 <ul>
 <li><a href="http://djangosnippets.org/snippets/501/">Active Directory</a></li>
