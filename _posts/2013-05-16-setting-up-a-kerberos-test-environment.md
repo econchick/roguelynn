@@ -95,6 +95,7 @@ _(ya ya, a pull request containing this fix, or rather an update to ifup, should
 ### Resources
 
 * [Setting up IPA](https://docs.fedoraproject.org/en-US/Fedora/17/html/FreeIPA_Guide/index.html)
+* [User-contributed How-tos for IPA](http://freeipa.org/page/HowTos), including working with IPA, Interoperability with other systems, and 3rd party implementations.
 * Part 0: [Explain like I’m 5: Kerberos]( {{get_url("words/explain-like-im-5-kerberos/")}})
 * Part 1: [Django 1.5 Custom User Models]( {{get_url("words/django-custom-user-models")}})
 * Part 3: [Setting up a Kerberos test environment]({{ get_url("words/setting-up-a-kerberos-test-environment")}})
