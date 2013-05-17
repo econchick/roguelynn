@@ -95,6 +95,8 @@ class KerbUser(AbstractBaseUser):
     objects = KerbUserManager()
 ``` 
 
+Within your custom user model, `KerbUser`, you will also need to define `get_full_name` and `get_short_name`, and `is_active` which defaults to `True`.
+
 Just a few variables should be set within `settings.py` file to make Django a <span id="buzzword">team player</span>:
 
 ```python
@@ -157,6 +159,17 @@ class Synergy(models.Model):
     # <--snip-->
 ```
 
+To access within your views:
+
+```python
+# synergizerApp/views.py
+
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
+# <--snip-->
+```
 
 
 ### Other resources
