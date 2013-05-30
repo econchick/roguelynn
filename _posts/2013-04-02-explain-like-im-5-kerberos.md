@@ -2,7 +2,7 @@
 layout: post.html
 title: "Explain like I’m 5: Kerberos"
 tags: [kerberos]
-updated_at: "May 16, 2013"
+updated_at: "May 30, 2013"
 category: [words]
 ---
 
