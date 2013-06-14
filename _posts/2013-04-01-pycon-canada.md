@@ -1,7 +1,7 @@
 ---
 layout: talk.html
 title: "Featured Speaker"
-tags: [upcoming talk, hidden]
+tags: [upcoming talk]
 talk_date: "August, 2013"
 location: "PyCon Canada, Toronto"
 conf_url: "http://pycon.ca"
