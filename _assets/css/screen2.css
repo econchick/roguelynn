@@ -17,7 +17,9 @@ time, mark, audio, video {
   border: 0;
   font: inherit;
   font-size: 100%;
-  vertical-align: top; }
+  vertical-align: top; 
+  text-rendering: optimizeLegibility;
+}
 /* General setup */
 @font-face {
   font-family: "entypo";
@@ -37,6 +39,7 @@ body {
     /*font-family: 'Gentium Book Basic', serif;*/
     font-family: "Myriad Pro", myriad-pro, Verdana, serif;
     font-weight: 400;
+    text-transform: 
 }
 
 h1, h2, h3, h4, h5 {
