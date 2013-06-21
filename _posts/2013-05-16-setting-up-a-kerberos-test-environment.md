@@ -76,7 +76,7 @@ to this:
 
 ```ruby
 machine.communicate.sudo("/sbin/ifup p7p#{interface} 2>\ 
-                          /dev/null", :error => false)
+                          /dev/null", :error_check => false)
 ```
 
 _(ya ya, a pull request containing this fix, or rather an update to ifup, should be made; who has time for that…)_
