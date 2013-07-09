@@ -126,7 +126,7 @@ Vagrant assumes that this means the command failed!<br>
 <p>to this:</p>
 <div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span class="n">machine</span><span class="o">.</span><span class="n">communicate</span><span class="o">.</span><span class="n">sudo</span><span class="p">(</span><span class="s2">&quot;/sbin/ifup p7p</span><span class="si">#{</span><span class="n">interface</span><span class="si">}</span><span class="s2"> 2&gt;\ </span>
-<span class="s2">                          /dev/null&quot;</span><span class="p">,</span> <span class="ss">:error</span> <span class="o">=&gt;</span> <span class="kp">false</span><span class="p">)</span>
+<span class="s2">                          /dev/null&quot;</span><span class="p">,</span> <span class="ss">:error_check</span> <span class="o">=&gt;</span> <span class="kp">false</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div></div>
 <p><em>(ya ya, a pull request containing this fix, or rather an update to ifup, should be made; who has time for that…)</em></p>

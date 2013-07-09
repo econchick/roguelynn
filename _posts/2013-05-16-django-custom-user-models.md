@@ -2,7 +2,7 @@
 layout: post.html
 title: "Part 1: Django 1.5 Custom User Models"
 tags: [django, djangcon, custom user models]
-category: [talks, words, circus]
+category: [talks, words, circus, kerberos]
 ---
 
 This is part 1 of a series of posts on setting up Django to use external authentication.  This post explains how to setup Django with custom user models for corporate/internal authentication methods.

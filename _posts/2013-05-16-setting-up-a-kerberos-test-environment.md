@@ -2,7 +2,7 @@
 layout: post.html
 title: "Part 3: Setting up a Kerberos test environment"
 tags: [django, djangcon, apache, kerberos, authentication, remote user]
-category: [talks, words, circus]
+category: [talks, words, circus, kerberos]
 ---
 
 This is part 3 of a series of posts on setting up Django to use external authentication.  This post explains how to setup your own environment to test Django authentication against Apache and Kerberos/Active Directory/LDAP.

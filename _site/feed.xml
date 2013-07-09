@@ -5,7 +5,7 @@
     <link rel="alternate" href="http://www.roguelynn.com/" />
     <link rel="self" href="http://www.roguelynn.com/feed.xml" type="application/atom+xml" />
     <id>http://www.roguelynn.com/</id>
-    <updated>2013-06-14T11:38:24Z</updated>
+    <updated>2013-07-09T22:29:59Z</updated>
 
     <author>
         <name>Lynn Root</name>
@@ -19,11 +19,15 @@
         
     
         
+    
+        
+    
+        
         <entry>
             <title type="html">Part 3: Setting up a Kerberos test environment</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/setting-up-a-kerberos-test-environment/" type="text/html" />
             <id>http://www.roguelynn.com/words/setting-up-a-kerberos-test-environment/</id>
-            <updated>2013-05-16T12:07:00Z</updated>
+            <updated>2013-05-16T12:40:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -80,7 +84,7 @@ Vagrant assumes that this means the command failed!&lt;br&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;to this:&lt;/p&gt;
 &lt;pre lang=&#34;ruby&#34;&gt;&lt;code&gt;machine.communicate.sudo(&amp;#34;/sbin/ifup p7p#{interface} 2&amp;gt;\ 
-                          /dev/null&amp;#34;, :error =&amp;gt; false)
+                          /dev/null&amp;#34;, :error_check =&amp;gt; false)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;em&gt;(ya ya, a pull request containing this fix, or rather an update to ifup, should be made; who has time for that…)&lt;/em&gt;&lt;/p&gt;
 
@@ -106,173 +110,10 @@ Vagrant assumes that this means the command failed!&lt;br&gt;
     
         
         <entry>
-            <title type="html">Part 1: Django 1.5 Custom User Models</title>
-            <link rel="alternate" href="http://www.roguelynn.com/words/django-custom-user-models/" type="text/html" />
-            <id>http://www.roguelynn.com/words/django-custom-user-models/</id>
-            <updated>2013-05-16T04:31:00Z</updated>
-
-            <author>
-                <name>Lynn Root</name>
-                <email>lynn@lynnroot.com</email>
-                <uri>http://www.roguelynn.com/</uri>
-            </author>
-            <content type="html">&lt;p&gt;This is part 1 of a series of posts on setting up Django to use external authentication.  This post explains how to setup Django with custom user models for corporate/internal authentication methods.&lt;/p&gt;
-&lt;h3 id=&#34;intro&#34;&gt;Intro&lt;/h3&gt;
-&lt;p&gt;Everyone has or has had a Pointy-haired boss or client, right? micromanagement, incompetence, unaware?  Maybe you’re lucky?&lt;/p&gt;
-
-&lt;p&gt;So your Pointy-haired boss/client needs an web application.  Perhaps it’s an internal web app that supposed to capitalize on synergy, streamline costs, leverage assets, all those other effing  &lt;span id=&#34;buzzword&#34;&gt;buzzwords&lt;/span&gt;.&lt;/p&gt;
-
-&lt;p&gt;You hope to use postgres and Django’s default auth mechanism, but no – you have to use the corporate/internal authentication system, a.k.a - &lt;a href=&#34;http://en.wikipedia.org/wiki/Single_sign-on&#34;&gt;single sign-on&lt;/a&gt;. We’re trying to avoid managing separate user credentials and needing to login to the required &lt;span id=&#34;buzzword&#34;&gt;mission-critical synergy&lt;/span&gt; app.&lt;/p&gt;
-
-&lt;p&gt;Not to despair, my Djangonauts - you can &lt;span id=&#34;buzzword&#34;&gt;leverage&lt;/span&gt; Django’s new custom user models!&lt;/p&gt;
-&lt;h3 id=&#34;problem-make-an-internal-web-app&#34;&gt;Problem: Make an internal Web App&lt;/h3&gt;
-&lt;p&gt;So an overview of problem:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;need to integrate into internal authentication like Kerberos, LDAP, Active Directory&lt;/li&gt;
-&lt;li&gt;can’t use Postgres for authentication - BUMMER&lt;/li&gt;
-&lt;li&gt;leverage single sign-on within your app&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;crap.-what-is-this-single-sign-on-magic&#34;&gt;Crap. What is this single sign-on magic?!&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Enter: the new custom user model introduced in &lt;a href=&#34;https://docs.djangoproject.com/en/dev/releases/1.5/#configurable-user-model&#34;&gt;Django 1.5&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;allows for a different identifier than the basic User Model with username greater than 30 chars&lt;/li&gt;
-&lt;li&gt;username can be email, twitter, etc, or add those elements as requirements&lt;/li&gt;
-&lt;li&gt;great for Kerberos/LDAP/Active Directory authentication because often the username for those identity management systems is similar to email, &lt;code&gt;username@INTERNAL_DOMAIN&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;scenario&#34;&gt;Scenario&lt;/h3&gt;
-&lt;p&gt;Let’s create a dummy application: &lt;code&gt;./manage.py startapp synergizerApp&lt;/code&gt;.  Just for the sake of simplicity, this is just a single django project with a single app.&lt;/p&gt;
-&lt;h4 id=&#34;creating-your-custom-user-model&#34;&gt;Creating your custom user model&lt;/h4&gt;
-&lt;p&gt;While you’re hooking into a pre-defined user database that will take care of authentication, and perhaps authorization, you can still define your own custom model by inheriting from &lt;code&gt;AbstractUserBase&lt;/code&gt; with your own additions, like so:&lt;/p&gt;
-&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;# synergizerApp/models.py
-
-from django.contrib.auth.models import AbstractBaseUser
-from django.db import models
-
-
-class KerbUser(AbstractBaseUser):
-    username = models.CharField(max_length=254, unique=True)
-    first_name = models.CharField(max_length=30, blank=True)
-    last_name = models.CharField(max_length=30, blank=True)
-    email = models.EmailField(blank=True)
-    synergy_level = models.IntegerField()
-    is_team_player = models.BooleanField(default=False)
-
-    USERNAME_FIELD = &amp;#39;username&amp;#39;
-    REQUIRED_FIELDS = [&amp;#39;email&amp;#39;, &amp;#39;synergy_level&amp;#39;]
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Because you defined a custom user model – requiring a &lt;code&gt;synergy_level&lt;/code&gt; for the user – you’ll need to define a user manager to take care of creating users &amp;amp; superusers within Django.  &lt;/p&gt;
-
-&lt;p&gt;The key parts here are just defining what a user/superuser should have, and referring to the UserManager within the user model itself.&lt;/p&gt;
-&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;from django.contrib.auth.models import (
-    AbstractBaseUser, BaseUserManager)
-from django.db import models
-
-class KerbUserManager(BaseUserManager):
-    def create_user(self, email, synergy_level, 
-                    password=None):
-        user = self.model(email=email, 
-                          synergy_level=synergy_level)
-        # &amp;lt;--snip--&amp;gt;
-        return user
-
-    def create_superuser(self, email, synergy_level,
-                         password):
-        user = self.create_user(email, synergy_level, 
-                                password=password)
-        user.is_team_player = True
-        user.save()
-        return user
-
-
-class KerbUser(AbstractBaseUser):
-    username = models.CharField(max_length=254, ...)
-
-    # &amp;lt;--snip--&amp;gt;
-
-    objects = KerbUserManager()
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Within your custom user model, &lt;code&gt;KerbUser&lt;/code&gt;, you will also need to define &lt;code&gt;get_full_name&lt;/code&gt; and &lt;code&gt;get_short_name&lt;/code&gt;, and &lt;code&gt;is_active&lt;/code&gt; which defaults to &lt;code&gt;True&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Just a few variables should be set within &lt;code&gt;settings.py&lt;/code&gt; file to make Django a &lt;span id=&#34;buzzword&#34;&gt;team player&lt;/span&gt;:&lt;/p&gt;
-&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;# settings.py
-
-# &amp;lt;--snip--&amp;gt;
-AUTH_USER_MODEL = &amp;#39;synergizerApp.KerbUser&amp;#39;
-
-MIDDLEWARE_CLASSES = (
-    ...
-    &amp;#39;django.contrib.auth.middleware.AuthenticationMiddleware&amp;#39;,
-    &amp;#39;django.contrib.auth.middleware.RemoteUserMiddleware&amp;#39;,
-    ...
-)
-
-AUTHENTICATION_BACKENDS = (
-    &amp;#39;django.contrib.auth.backends.RemoteUserBackend&amp;#39;,
-)
-
-# &amp;lt;--snip--&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; The order of middleware is very important: the &lt;code&gt;AuthenticationMiddleware&lt;/code&gt; must precede &lt;code&gt;RemoteUserMiddleware&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;If want to use &lt;code&gt;user&lt;/code&gt; from the Kerberos&amp;#39; &lt;code&gt;user@REALM&lt;/code&gt; as the username, you can simply extend &lt;code&gt;RemoteUserBackend&lt;/code&gt;:&lt;/p&gt;
-&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;# synergizerApp/krb5.py
-
-from django.contrib.auth.backends import RemoteUserBackend
-
-class Krb5RemoteUserBackend(RemoteUserBackend):
-    def clean_username(self, username):
-        # remove @REALM from username
-        return username.split(&amp;#34;@&amp;#34;)[0] 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;and &lt;code&gt;settings.py&lt;/code&gt; for your custom backend defined above:&lt;/p&gt;
-&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;# settings.py
-
-# &amp;lt;--snip--&amp;gt;
-AUTHENTICATION_BACKENDS = (
-    &amp;#39;appname.krb5.Krb5RemoteUserBackend&amp;#39;,
-)
-# &amp;lt;--snip--&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;To access the user within the models for your application, you’ll refer to the custom user model like so:&lt;/p&gt;
-&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;# synergizerApp/models.py
-
-from django.conf import settings
-from django.db import models
-
-class Synergy(models.Model):
-    money_sink = models.ForeignKey(settings.AUTH_USER_MODEL)
-    # &amp;lt;--snip--&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;To access within your views:&lt;/p&gt;
-&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;# synergizerApp/views.py
-
-from django.contrib.auth import get_user_model
-
-User = get_user_model()
-
-# &amp;lt;--snip--&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;other-resources&#34;&gt;Other resources&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Part 0: &lt;a href=&#34;http://www.roguelynn.com/words/explain-like-im-5-kerberos/&#34;&gt;How Kerberos Works&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Part 2: &lt;a href=&#34;http://www.roguelynn.com/words/apache-kerberos-for-django&#34;&gt;Apache and Kerberos for Django Authentication + Authorization&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Part 3: &lt;a href=&#34;http://www.roguelynn.com/words/setting-up-a-kerberos-test-environment&#34;&gt;Setting up a Kerberos test environment&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://procrastinatingdev.com/django/using-configurable-user-models-in-django-1-5/&#34;&gt;Using configurable user models in Django&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-        </entry>
-        
-    
-        
-        <entry>
             <title type="html">Part 2: Apache and Kerberos for Django Authentication + Authorization</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/apache-kerberos-for-django/" type="text/html" />
             <id>http://www.roguelynn.com/words/apache-kerberos-for-django/</id>
-            <updated>2013-05-16T04:17:00Z</updated>
+            <updated>2013-05-16T12:39:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -446,6 +287,167 @@ $ python
         </entry>
         
     
+        
+        <entry>
+            <title type="html">Part 1: Django 1.5 Custom User Models</title>
+            <link rel="alternate" href="http://www.roguelynn.com/words/django-custom-user-models/" type="text/html" />
+            <id>http://www.roguelynn.com/words/django-custom-user-models/</id>
+            <updated>2013-05-16T12:39:00Z</updated>
+
+            <author>
+                <name>Lynn Root</name>
+                <email>lynn@lynnroot.com</email>
+                <uri>http://www.roguelynn.com/</uri>
+            </author>
+            <content type="html">&lt;p&gt;This is part 1 of a series of posts on setting up Django to use external authentication.  This post explains how to setup Django with custom user models for corporate/internal authentication methods.&lt;/p&gt;
+&lt;h3 id=&#34;intro&#34;&gt;Intro&lt;/h3&gt;
+&lt;p&gt;Everyone has or has had a Pointy-haired boss or client, right? micromanagement, incompetence, unaware?  Maybe you’re lucky?&lt;/p&gt;
+
+&lt;p&gt;So your Pointy-haired boss/client needs an web application.  Perhaps it’s an internal web app that supposed to capitalize on synergy, streamline costs, leverage assets, all those other effing  &lt;span id=&#34;buzzword&#34;&gt;buzzwords&lt;/span&gt;.&lt;/p&gt;
+
+&lt;p&gt;You hope to use postgres and Django’s default auth mechanism, but no – you have to use the corporate/internal authentication system, a.k.a - &lt;a href=&#34;http://en.wikipedia.org/wiki/Single_sign-on&#34;&gt;single sign-on&lt;/a&gt;. We’re trying to avoid managing separate user credentials and needing to login to the required &lt;span id=&#34;buzzword&#34;&gt;mission-critical synergy&lt;/span&gt; app.&lt;/p&gt;
+
+&lt;p&gt;Not to despair, my Djangonauts - you can &lt;span id=&#34;buzzword&#34;&gt;leverage&lt;/span&gt; Django’s new custom user models!&lt;/p&gt;
+&lt;h3 id=&#34;problem-make-an-internal-web-app&#34;&gt;Problem: Make an internal Web App&lt;/h3&gt;
+&lt;p&gt;So an overview of problem:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;need to integrate into internal authentication like Kerberos, LDAP, Active Directory&lt;/li&gt;
+&lt;li&gt;can’t use Postgres for authentication - BUMMER&lt;/li&gt;
+&lt;li&gt;leverage single sign-on within your app&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;crap.-what-is-this-single-sign-on-magic&#34;&gt;Crap. What is this single sign-on magic?!&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Enter: the new custom user model introduced in &lt;a href=&#34;https://docs.djangoproject.com/en/dev/releases/1.5/#configurable-user-model&#34;&gt;Django 1.5&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;allows for a different identifier than the basic User Model with username greater than 30 chars&lt;/li&gt;
+&lt;li&gt;username can be email, twitter, etc, or add those elements as requirements&lt;/li&gt;
+&lt;li&gt;great for Kerberos/LDAP/Active Directory authentication because often the username for those identity management systems is similar to email, &lt;code&gt;username@INTERNAL_DOMAIN&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;scenario&#34;&gt;Scenario&lt;/h3&gt;
+&lt;p&gt;Let’s create a dummy application: &lt;code&gt;./manage.py startapp synergizerApp&lt;/code&gt;.  Just for the sake of simplicity, this is just a single django project with a single app.&lt;/p&gt;
+&lt;h4 id=&#34;creating-your-custom-user-model&#34;&gt;Creating your custom user model&lt;/h4&gt;
+&lt;p&gt;While you’re hooking into a pre-defined user database that will take care of authentication, and perhaps authorization, you can still define your own custom model by inheriting from &lt;code&gt;AbstractUserBase&lt;/code&gt; with your own additions, like so:&lt;/p&gt;
+&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;# synergizerApp/models.py
+
+from django.contrib.auth.models import AbstractBaseUser
+from django.db import models
+
+
+class KerbUser(AbstractBaseUser):
+    username = models.CharField(max_length=254, unique=True)
+    first_name = models.CharField(max_length=30, blank=True)
+    last_name = models.CharField(max_length=30, blank=True)
+    email = models.EmailField(blank=True)
+    synergy_level = models.IntegerField()
+    is_team_player = models.BooleanField(default=False)
+
+    USERNAME_FIELD = &amp;#39;username&amp;#39;
+    REQUIRED_FIELDS = [&amp;#39;email&amp;#39;, &amp;#39;synergy_level&amp;#39;]
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Because you defined a custom user model – requiring a &lt;code&gt;synergy_level&lt;/code&gt; for the user – you’ll need to define a user manager to take care of creating users &amp;amp; superusers within Django.  &lt;/p&gt;
+
+&lt;p&gt;The key parts here are just defining what a user/superuser should have, and referring to the UserManager within the user model itself.&lt;/p&gt;
+&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;from django.contrib.auth.models import (
+    AbstractBaseUser, BaseUserManager)
+from django.db import models
+
+class KerbUserManager(BaseUserManager):
+    def create_user(self, email, synergy_level, 
+                    password=None):
+        user = self.model(email=email, 
+                          synergy_level=synergy_level)
+        # &amp;lt;--snip--&amp;gt;
+        return user
+
+    def create_superuser(self, email, synergy_level,
+                         password):
+        user = self.create_user(email, synergy_level, 
+                                password=password)
+        user.is_team_player = True
+        user.save()
+        return user
+
+
+class KerbUser(AbstractBaseUser):
+    username = models.CharField(max_length=254, ...)
+
+    # &amp;lt;--snip--&amp;gt;
+
+    objects = KerbUserManager()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Within your custom user model, &lt;code&gt;KerbUser&lt;/code&gt;, you will also need to define &lt;code&gt;get_full_name&lt;/code&gt; and &lt;code&gt;get_short_name&lt;/code&gt;, and &lt;code&gt;is_active&lt;/code&gt; which defaults to &lt;code&gt;True&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Just a few variables should be set within &lt;code&gt;settings.py&lt;/code&gt; file to make Django a &lt;span id=&#34;buzzword&#34;&gt;team player&lt;/span&gt;:&lt;/p&gt;
+&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;# settings.py
+
+# &amp;lt;--snip--&amp;gt;
+AUTH_USER_MODEL = &amp;#39;synergizerApp.KerbUser&amp;#39;
+
+MIDDLEWARE_CLASSES = (
+    ...
+    &amp;#39;django.contrib.auth.middleware.AuthenticationMiddleware&amp;#39;,
+    &amp;#39;django.contrib.auth.middleware.RemoteUserMiddleware&amp;#39;,
+    ...
+)
+
+AUTHENTICATION_BACKENDS = (
+    &amp;#39;django.contrib.auth.backends.RemoteUserBackend&amp;#39;,
+)
+
+# &amp;lt;--snip--&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; The order of middleware is very important: the &lt;code&gt;AuthenticationMiddleware&lt;/code&gt; must precede &lt;code&gt;RemoteUserMiddleware&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;If want to use &lt;code&gt;user&lt;/code&gt; from the Kerberos&amp;#39; &lt;code&gt;user@REALM&lt;/code&gt; as the username, you can simply extend &lt;code&gt;RemoteUserBackend&lt;/code&gt;:&lt;/p&gt;
+&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;# synergizerApp/krb5.py
+
+from django.contrib.auth.backends import RemoteUserBackend
+
+class Krb5RemoteUserBackend(RemoteUserBackend):
+    def clean_username(self, username):
+        # remove @REALM from username
+        return username.split(&amp;#34;@&amp;#34;)[0] 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and &lt;code&gt;settings.py&lt;/code&gt; for your custom backend defined above:&lt;/p&gt;
+&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;# settings.py
+
+# &amp;lt;--snip--&amp;gt;
+AUTHENTICATION_BACKENDS = (
+    &amp;#39;appname.krb5.Krb5RemoteUserBackend&amp;#39;,
+)
+# &amp;lt;--snip--&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To access the user within the models for your application, you’ll refer to the custom user model like so:&lt;/p&gt;
+&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;# synergizerApp/models.py
+
+from django.conf import settings
+from django.db import models
+
+class Synergy(models.Model):
+    money_sink = models.ForeignKey(settings.AUTH_USER_MODEL)
+    # &amp;lt;--snip--&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To access within your views:&lt;/p&gt;
+&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;# synergizerApp/views.py
+
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
+# &amp;lt;--snip--&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;other-resources&#34;&gt;Other resources&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Part 0: &lt;a href=&#34;http://www.roguelynn.com/words/explain-like-im-5-kerberos/&#34;&gt;How Kerberos Works&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Part 2: &lt;a href=&#34;http://www.roguelynn.com/words/apache-kerberos-for-django&#34;&gt;Apache and Kerberos for Django Authentication + Authorization&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Part 3: &lt;a href=&#34;http://www.roguelynn.com/words/setting-up-a-kerberos-test-environment&#34;&gt;Setting up a Kerberos test environment&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://procrastinatingdev.com/django/using-configurable-user-models-in-django-1-5/&#34;&gt;Using configurable user models in Django&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        </entry>
         
     
         

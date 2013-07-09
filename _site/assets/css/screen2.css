@@ -17,7 +17,7 @@ time, mark, audio, video {
   border: 0;
   font: inherit;
   font-size: 100%;
-  vertical-align: top; 
+  vertical-align: top;
   text-rendering: optimizeLegibility;
 }
 /* General setup */
@@ -39,7 +39,7 @@ body {
     /*font-family: 'Gentium Book Basic', serif;*/
     font-family: "Myriad Pro", myriad-pro, Verdana, serif;
     font-weight: 400;
-    text-transform: 
+    text-transform:
 }
 
 h1, h2, h3, h4, h5 {
@@ -88,12 +88,12 @@ color: #38a5dd;
 
 small {
   font-size: 0.9em;
-  font-style: italic; 
+  font-style: italic;
   color: #999;
 }
 
 #posts p {
- color: #999;   
+ color: #999;
 }
 
 img.displayed {
@@ -118,7 +118,7 @@ img.displayed {
   line-height: 100%;
   font-weight: 700;
   margin-bottom: 0em;
-  width: 100%; 
+  width: 100%;
 }
 
 #splash h2 {
@@ -127,7 +127,7 @@ img.displayed {
   font-weight: 600;
   text-transform: uppercase;
   line-height: 100%;
-  margin-top: .5em; 
+  margin-top: .5em;
   margin-bottom: .5em;}
 
 p {
@@ -216,12 +216,13 @@ a {
 .social .icon {
   font-size: 72px;
   margin-right: 0.25em; }
-  .social .icon.twitter:before, .social .icon.github:before, .social .icon.email:before, .social .icon.spotify:before, .social .icon.flattr:before {
+  .social .icon.twitter:before, .social .icon.github:before, .social .icon.email:before, .social .icon.spotify:before, .social .icon.flattr:before, .social .icon.blog:before, .social .icon.video:before, .social .icon.code:before, .social .icon.slides:before {
     font-family: 'entypo-social';
     content: attr(data-icon); }
-  .social .icon.rss:before, .social .icon.email:before, .social .icon.airplane:before, .social .icon.link:before, .social .icon.photos:before {
+  .social .icon.rss:before, .social .icon.email:before, .social .icon.airplane:before, .link:before, .social .icon.photos:before, .blog:before, .video:before, .code:before, .slides:before{
     font-family: 'entypo';
     content: attr(data-icon); }
+
 
 footer {
   clear: both;
@@ -237,7 +238,7 @@ footer {
   padding-left: 1em;
   padding-right: 1em;
   height: 30px;
-  padding: 30px 0 40px 0; 
+  padding: 30px 0 40px 0;
 }
 footer:after {
   content: "";
@@ -276,8 +277,8 @@ footer ul.social li a:hover {
   text-decoration: none; }
 
 .footer-wrapper {
-  width: 100%; 
-  background-color: #313236; 
+  width: 100%;
+  background-color: #313236;
   position: relative;
   bottom: -200px;
 }
@@ -483,3 +484,19 @@ blockquote {
   font-style: italic;
   padding: 20px;
   padding-bottom: 3px; }
+
+time#talks {
+  color:#7F808A;
+  font-style:italic;
+}
+
+h2#talklist {
+  color:#7F808A;
+  font-style:italic;
+  text-transform: uppercase;
+  font-size: 32px;
+}
+h3#upcoming {
+  text-transform: uppercase;
+  font-size: 26px;
+}
