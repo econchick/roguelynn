@@ -5,7 +5,7 @@
     <link rel="alternate" href="http://www.roguelynn.com/" />
     <link rel="self" href="http://www.roguelynn.com/feed.xml" type="application/atom+xml" />
     <id>http://www.roguelynn.com/</id>
-    <updated>2013-07-10T22:06:41Z</updated>
+    <updated>2013-07-19T17:17:17Z</updated>
 
     <author>
         <name>Lynn Root</name>
@@ -2205,23 +2205,23 @@ about. &lt;/p&gt;
             <title type="html">O HAI THERE!</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/o-hai-there/" type="text/html" />
             <id>http://www.roguelynn.com/words/o-hai-there/</id>
-            <updated>2012-03-22T23:44:00Z</updated>
+            <updated>2012-03-22T17:16:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
                 <uri>http://www.roguelynn.com/</uri>
             </author>
-            <content type="html">&lt;p&gt;Who knew I&amp;#39;d get wrapped into Silicon Valley? &lt;/p&gt;
+            <content type="html">&lt;p&gt;Who knew I&amp;#39;d get wrapped into Silicon Valley?&lt;/p&gt;
 
 &lt;p&gt;I should post more so I don&amp;#39;t have to do such a digest of what&amp;#39;s been going on! :) It all started when I took my first CS class. Well, it sucked. Learning first in C, I thought, “Well, I know some of these words.” I [re]assure you, C does not come naturally to a (former) financial analyst.  I felt&lt;br&gt;
-I was drowning: I failed both exams. &lt;/p&gt;
+I was drowning: I failed both exams.&lt;/p&gt;
 
-&lt;p&gt;I had the pleasure of attending Science Hack Day, where I was first exposed to Python.  Then it was all downhill from there... My final project was &lt;a href=&#34;http://inflatr.com&#34; title=&#34;InflatR&#34;&gt;inflatr.com&lt;/a&gt;, which used the awesomeness of Python and my undying interest in economics.  Python is actually an interesting language; it poses as an easy-to-learn language for beginner coders, but it more so leverages the coder to build programs and scripts efficiently by taking away a lot of the tediousness that other languages are known for and where beginners drown. &lt;/p&gt;
+&lt;p&gt;I had the pleasure of attending Science Hack Day, where I was first exposed to Python.  Then it was all downhill from there... My final project was &lt;a href=&#34;http://inflatr.com&#34; title=&#34;InflatR&#34;&gt;inflatr.com&lt;/a&gt;, which used the awesomeness of Python and my undying interest in economics.  Python is actually an interesting language; it poses as an easy-to-learn language for beginner coders, but it more so leverages the coder to build programs and scripts efficiently by taking away a lot of the tediousness that other languages are known for and where beginners drown.&lt;/p&gt;
 
-&lt;p&gt;I then had the audacity to start up a study group for women wanting to learn Python.  Standing on the shoulders of the newly founded &lt;a href=&#34;http://www.meetup.com/women-who-code-sf&#34; title=&#34;Women Who Code meetup&#34;&gt;Women Who Code&lt;/a&gt; group (growing at a linear rate of 100 members a month without skipping a beat!).  Never had I organized a group like this before, but let me tell you: it was so easy, it begged to be done.  Within a few days of conceiving of the idea, I had gotten the &amp;#39;okay&amp;#39; from Women Who Code, found space at Dropbox who generously agreed to hosting the group for 8 weeks &lt;em&gt;and&lt;/em&gt; join them for dinner every meetup, and secured Guido van Rossum, the Benevolent Dictator of Life at Google, aka the founder and creator of Python, to kick off the first event. The first meetup guest list filled up within hours. &lt;/p&gt;
+&lt;p&gt;I then had the audacity to start up a study group for women wanting to learn Python.  Standing on the shoulders of the newly founded &lt;a href=&#34;http://www.meetup.com/women-who-code-sf&#34; title=&#34;Women Who Code meetup&#34;&gt;Women Who Code&lt;/a&gt; group (growing at a linear rate of 100 members a month without skipping a beat!).  Never had I organized a group like this before, but let me tell you: it was so easy, it begged to be done.  Within a few days of conceiving of the idea, I had gotten the &amp;#39;okay&amp;#39; from Women Who Code, found space at Dropbox who generously agreed to hosting the group for 8 weeks &lt;em&gt;and&lt;/em&gt; join them for dinner every meetup, and secured Guido van Rossum, the Benevolent Dictator of Life at Google, aka the founder and creator of Python, to kick off the first event. The first meetup guest list filled up within hours.&lt;/p&gt;
 
-&lt;p&gt;By the time the study series got into its grove, I received sponsorship from PyLadies to attend the mecca of all Python users - PyCon, down in Santa Clara.  On top of that, I received a grant that included two free PyCon registrations (normally ~\$300) as well as \$100 off registration, and \$300 to rent a car to bring these women from the SF area to PyCon.  Lastly, I scored a FOSS Sponsorship booth that allowed Women Who Code to represent and promote the group at the conversation.  Seeing as how we didn&amp;#39;t have any of the typical &amp;#39;marketing materials&amp;#39; that one would need at a conference, I asked for and instantly received another grant for \$200 to get a banner, a poster, some stickers and 5000 business cards all with Women Who Code&amp;#39;s name and mission. It was one of the best experiences ever, both attending PyCon and working with the women that attended my study group.  My name and actions within this community are known before I arrive anywhere now.  There is so much energy and crave to learn Python in a safe environment that I just can&amp;#39;t stop now. &lt;/p&gt;
+&lt;p&gt;By the time the study series got into its grove, I received sponsorship from PyLadies to attend the mecca of all Python users - PyCon, down in Santa Clara.  On top of that, I received a grant that included two free PyCon registrations (normally ~$300) as well as $100 off registration, and $300 to rent a car to bring these women from the SF area to PyCon.  Lastly, I scored a FOSS Sponsorship booth that allowed Women Who Code to represent and promote the group at the conversation.  Seeing as how we didn&amp;#39;t have any of the typical &amp;#39;marketing materials&amp;#39; that one would need at a conference, I asked for and instantly received another grant for $200 to get a banner, a poster, some stickers and 5000 business cards all with Women Who Code&amp;#39;s name and mission. It was one of the best experiences ever, both attending PyCon and working with the women that attended my study group.  My name and actions within this community are known before I arrive anywhere now.  There is so much energy and crave to learn Python in a safe environment that I just can&amp;#39;t stop now.&lt;/p&gt;
 
 &lt;p&gt;PyLadies approached me a couple months ago to start a San Francisco chapter, and now I&amp;#39;m going full force! So now my current projects are to get PyLadies SF going, to clean up and implement new applications to my inflation site, to continue coding in Python and increase my algorithms education, and to continue being awesome. :-) Stay tuned: this weekend I&amp;#39;ll produce a postmortem on my recently passed laptop.&lt;/p&gt;
 </content>
