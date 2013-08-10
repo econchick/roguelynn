@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+        <title>PRISM-as-a-Service: Not Subject to American Law — Lynn Root</title>
+        <meta name="description" content="Homepage and blog of Lynn Root. Python Engineer, PyLadiesSF Founder, Socializer in San Francisco." />
+        <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/ico" />
+        <link rel="alternate" type="application/atom+xml" title="Atom 1.0" href="http://www.roguelynn.com/feed.xml" />
+
+
+        <!--Stylesheets-->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/assets/css/lightbox.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/pygments3.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/bootstrap.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/bootstrap-responsive.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/screen2.css" media="screen" title="screen">
+
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        
+    </head>
+    <body>
+    <div class="container">
+      <div class="row">
+        <div class="span3 offset1">
+          <div class="avatar-section">
+            <a id="avatar" href="/"></a>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/about">About</a></li>
+              <li><a href="/words">Words</a></li>
+              <li><a href="/talks">Talks</a></li>
+              <li><a href="/pyladies">PyLadies</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="span7">
+            
+
+<article class='ten columns offset-by-four' id="article-content">
+  <header class="ten columns" id="article-header">
+    <h1>PRISM-as-a-Service: Not Subject to American Law</h1>
+  </header>
+
+  <div class='ten columns gray' id="date-header">
+    <p>
+      August 10, 2013
+  
+    </p>
+
+  </div>
+
+  <div class="ten columns" id="article-content">
+    <p>In the light of <a href="http://en.wikipedia.org/wiki/PRISM_(surveillance_program)">PRISM</a>’s <a href="http://www.washingtonpost.com/investigations/us-intelligence-mining-data-from-nine-us-internet-companies-in-broad-secret-program/2013/06/06/3a0c0da8-cebf-11e2-8845-d970ccb04497_story.html">whistle blowing</a>, many folks, like <a href="http://fredlybrand.com/2013/06/23/an-apology-to-my-european-it-team/">here</a>, <a href="http://www.theregister.co.uk/2013/06/08/what_about_a_us_tech_boycott/">here</a>, and <a href="http://blogs.computerworld.com/cloud-storage/22305/why-prism-kills-cloud">here</a>, are questioning whether the cloud is a viable option.</p>
+
+<p>This write-up, originally presented at <a href="http://pycon.ca">PyCon Canada 2013</a> (<a href="https://speakerdeck.com/roguelynn/prism-as-a-service-not-subject-to-american-law">slides</a>, and video coming soon) is a look at what PRISM is, how the cloud is affected, and how we can maintain privacy in the cloud.</p>
+<h4 id="disclaimer">Disclaimer</h4>
+<p>I am not a lawyer, nor have I studied law in anyway.  I’m a typical American with the <a href="http://www.archives.gov/exhibits/charters/constitution.html">US Constitution</a> and the <a href="http://www.archives.gov/exhibits/charters/bill_of_rights_transcript.html">Bill of Rights</a> engrained in my soul.</p>
+
+<p>Nor have I had any experience in three-letter-government-agencies-that-are-out-to-get-you, or currently work/have worked for a company involved in PRISM (or at least not that I’m aware of).</p>
+
+<p>This post has no special insight nor conspiracy theories, just painting a story from publicly available research.</p>
+<h2 id="overview">Overview</h2><h4 id="what-is-prism">What is PRISM?</h4>
+<p>PRISM stands for “Planning Tool for Resource Integration, Synchronization, and Management” and is a clandestine electronic data mining program for the purpose of mass surveillance.  PRISM aims to collect metadata that passes through US servers.</p>
+
+<p>In general, the collected data <a href="http://www.washingtonpost.com/wp-srv/special/politics/prism-collection-documents/">includes</a> email, voice &amp; video chat, videos, photos, stored data, online social networking details, among others.</p>
+<h4 id="who-does-it-affect-and-who-is-involved">Who does it affect and who is involved?</h4>
+<p>It’s meant to target foreign communications and not specifically or intentionally target US citizens.</p>
+
+<p>Starting with Microsoft in September 2007, PRISM <a href="http://www.washingtonpost.com/wp-srv/special/politics/prism-collection-documents/">started collecting data</a>.  Other companies include Yahoo (2008), Google (2009), Facebook (2009), PalTalk (2009), YouTube (2010), Skype (2011), AOL (2011), and Apple (2012).</p>
+<h4 id="how-does-it-work">How does it work?</h4>
+<p>From the NSA slides <a href="http://www.washingtonpost.com/wp-srv/special/politics/prism-collection-documents/">posted</a> on Washington Post, and from the press releases from <a href="http://googleblog.blogspot.com/2013/06/what.html">Google</a>, <a href="https://www.facebook.com/zuck/posts/10100828955847631">Facebook</a>, <a href="http://www.apple.com/apples-commitment-to-customer-privacy/">Apple</a>, <a href="http://www.microsoft.com/en-us/news/Press/2013/Jun13/06-06statement.aspx">Microsoft</a>, and others, the NSA does not have <em>direct</em> access to these companies&#39; servers.  For the collection process, the FBI issues a directive to the company, and the company responds by supplying data (or, supposedly, denies or requests more information).</p>
+
+<blockquote>
+<p>The FBI uses government equipment on private company property to retrieve matching information from a participating company, such as Microsoft or Yahoo and pass it without further review to the NSA.</p>
+
+<p><a href="http://www.washingtonpost.com/wp-srv/special/politics/prism-collection-documents/">Source: Washington Post</a></p>
+</blockquote>
+
+<p>The NSA then <a href="http://www.washingtonpost.com/wp-srv/special/politics/prism-collection-documents/">filters the data</a> by type (voice, video, call records, internet records, etc.) followed by foreign versus American subject to reduce the intake of information about Americans.</p>
+<h2 id="timeline">Timeline</h2><h4 id="mass-surveillance-nothing-new-and-not-just-us">Mass Surveillance: Nothing New, and not just US</h4>
+<script async class="speakerdeck-embed" data-id="e8a985f0e3730130e8c53a22532026d5" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>
+
+<p><small><span id="caption"><a href="https://www.eff.org/nsa-spying/timeline">Timeline sources</a></span></small></p>
+<h2 id="unanswered-questions">Unanswered Questions</h2>
+<p>The lack of detail in both the involved companies&#39; statements and in the NSA slides and responses themselves leave a lot of questions.  For instance:</p>
+
+<ul>
+<li>How is a target’s “foreignness” determined?</li>
+<li>How exactly are they identifying non-US citizens?</li>
+<li>Are foreign-born US residents included as foreigners?</li>
+<li>What if a US citizen and a foreigner communicate?</li>
+<li>What about US citizens abroad, or US citizens using services abroad?</li>
+<li><a href="https://news.ycombinator.com/item?id=5860003">Does the NSA/FBI have jurisdiction on foreign persons/companies using services from US-based companies that are located/incorporated abroad</a>?  How does physical location of the person/company/service/hardware matter? If a <a href="https://news.ycombinator.com/item?id=5860038">company like Twitter says no</a> to a request, can the NSA go to their PRISM-compliant hosts to get the desired information?</li>
+<li>What exactly do works like “backdoor”, “direct access”, and “intentional” mean?  Do participating companies not know they are participating, therefore unaware of a “backdoor”? Or are companies knowingly allow access to their servers?</li>
+<li>If the NSA is not intentionally targeting Americans, what do they do with the accidently-collected data? or the data received from Five Eyes that includes Americans?</li>
+<li>How is the PRISM-collected data handled by the NSA? Does the NSA maintain rigorous security measures to protect against threats?</li>
+<li>What exactly is the NSA doing with the data?  Are they merely collecting, or analyzing it?</li>
+</ul>
+<h2 id="effects-on-the-cloud">Effects on the cloud</h2>
+<p>The US cloud has started to feel the pain in the wake of PRISM being outed. The <a href="https://cloudsecurityalliance.org/">Cloud Security Alliance</a> conducted a <a href="https://cloudsecurityalliance.org/research/surveys/#_nsa_prism">survey</a> showing that 56% of foreign-based members are less likely to use US-based cloud providers, while 10% have all-out cancelled their contracts with US providers.</p>
+
+<p>Governments themselves are starting to act: Germany has also <a href="http://www.heise.de/newsticker/meldung/PRISM-Datenschuetzer-stoppen-neue-Datentransfers-von-Firmen-in-die-USA-1922987.html">banned</a> (in German) all future transfer of data to non-EU-based clouds.</p>
+
+<p>More recently, the <a href="http://www.itif.org/">Information Technology &amp; Innovation Foundation</a> released a report quantifying <a href="http://www2.itif.org/2013-cloud-computing-costs.pdf">how much PRISM will cost the US computing industry</a> (PDF):</p>
+
+<blockquote>
+<p>The U.S. cloud computing industry stands to lose $22 to $35 billion over the next three years as a result of the recent revelations about the NSA’s electronic surveillance programs.</p>
+</blockquote>
+
+<p>Folks have <a href="http://www.theregister.co.uk/2013/06/08/what_about_a_us_tech_boycott/">boycotted</a> US cloud, others are <a href="http://www.reddit.com/r/worldnews/comments/1fxg0d/nsa_prism_why_im_boycotting_us_cloud_tech_and_you/caespwn">experiencing</a> a run on their own cloud services, and some are even <a href="http://fredlybrand.com/2013/06/23/an-apology-to-my-european-it-team/">apologizing</a> to foreign co-workers on using US-based cloud services.</p>
+<h2 id="what-can-we-do">What can we do?</h2>
+<p>It’s difficult to defend oneself against an attacker whose capabilities you do not know.  We should approach protecting our privacy by asking some questions, defining threat scenarios, and building defenses around that.</p>
+<h3 id="limit-government-exposure">Limit government exposure</h3>
+<p>There are, in general, three reasons a government may spy: industrial espionage, political reasons, and terrorism</p>
+
+<p>By bringing cloud services within your company&#39;s national jurisdiction, you effectively eliminate industrial espionage by a foreign government.  It is very unlikely to be spied on for industrial espionage by your own government.</p>
+
+<p>That said, it’s still unclear if the USA, UK, Europe, etc, can have access to data even if you host services within your own country.  However, that starts to require political solutions rather than technical.</p>
+
+<p>In the end, we have no idea what the technical capabilities of these “attackers” are.  Random hackers usually do not have scale like governments do.  We have to assume government spies can do anything, but then protection costs skyrocket.  In general, though, a company’s data is not that important to governments.  It’s personal profiles that is a bit part of any kind of PRISM-like scheme.</p>
+<h3 id="diy-cloud">DIY Cloud</h3>
+<p>Solutions are simply moving your business elsewhere to your own jurisdiction.  I can’t answer whether using US company’s services abroad, like <a href="https://blog.heroku.com/archives/2013/4/24/europe-region">Heroku’s european servers</a>, will or will not protect you against the US government.</p>
+
+<p>Being that hardware is getting a lot cheaper, do-it-yourself clouds like <a href="http://www.openstack.org/">OpenStack</a>, <a href="https://www.openshift.com/">OpenShift</a>, <a href="http://owncloud.org/">ownCloud</a>, <a href="http://cloudstack.apache.org/">CloudStack</a>, etc., will give you total knowledge of what is on your machines and total control of your response if and when a hacker (government or not) gets in.  I have my own personal cloud thanks to the raspberry pi.</p>
+
+<p>In general, though, a company’s data is not that important to governments.  It’s personal profiles that is a bit part of any kind of PRISM-like scheme.</p>
+<h3 id="as-nerds-ourselves">As nerds ourselves</h3>
+<p>Now the question is: what level of granularity are you okay with that your government knows?  Or coming from a different direction, is it possible to go completely anonymous?  I may sound like I’m wearing a tinfoil hat, but bear with me – this is more of a proof of concept that no, it is not possible to go completely anonymous.</p>
+<h4 id="location-tracking">Location tracking</h4>
+<p>I would imagine most folks are okay with a government knowing <em>when</em> you are inside its nation.  But how granular are you okay with in being tracked?</p>
+
+<p>It’s difficult to “go off the grid” entirely.  As long as you carry a phone, you’re trackable. If you live in <a href="http://www.aclu.org/technology-and-liberty/new-law-requires-warrants-cell-phone-tracking">Maine</a> or <a href="http://www.thetakeaway.org/2013/jul/22/new-jersey-supreme-court-warrant-required-acquire-cell-phone-location-data/">New Jersey</a>, you’re lucky; but in the majority of the US, a search warrant is not needed to ask your cell phone carrier for your location data.  You can certainly turn off your phone, but as soon as you turn it on, location is recorded when connecting to a cell tower or wifi connection spot. In London, a <a href="http://arstechnica.com/security/2013/08/no-this-isnt-a-scene-from-minority-report-this-trash-can-is-stalking-you/">UK company is building smart trash cans that track every WiFi-enabled smartphone that passes by</a>. In a one-week period with just 12 cans installed, more than 4 million devices were tracked.</p>
+
+<p>Sure, you could rotate through pay-as-you-go phones.  You’ll have to pay with cash, but it’s unclear if ATMs log bill numbers with account numbers.  If you do have unmarked bills, then where do you buy the phone?  What store reliably does not have security cameras? The phone has a barcode to scan when purchasing; would logs of purchases be tied to camera footage? You may ask, “would the government really care? Am I that dangerous to be tracked?” Yet in the UK for instance, <a href="http://www.theguardian.com/uk/2011/mar/02/cctv-cameras-watching-surveillance">your every move is already being watched</a>.</p>
+
+<p>In terms of the internet, your internet service provider (ISP) will always know your connections, and can always be intercepted.  Even if you are not using a line that is tied to your name, your location can still be identified because of the MAC address associated with your connection.</p>
+
+<p>Perhaps you write a script to change your MAC address after every connection to avoid being tracked.  There are other identifying factors: there is <a href="http://en.wikipedia.org/wiki/TCP/IP_stack_fingerprinting">OS fingerprinting</a> and <a href="https://panopticlick.eff.org">browser fingerprinting</a>.</p>
+
+<p>It’s not <em>truly</em> clear one can avoid location tracking if connected to the internet at all.</p>
+<h4 id="behavior-profiling">Behavior profiling</h4>
+<p>Assume that you can avoid being tracked by location.  You’re still trackable.</p>
+
+<p>What you do online creates a nice <a href="https://www.eff.org/issues/online-behavioral-tracking">behavior profile</a> on you.  When do you go online? Who do you email? What websites do you visit?  This behavior is always visible to your ISP because they need to route you.</p>
+
+<p>Even when you flip open an incognito tab with Chrome, it clearly states what information is not being hidden:</p>
+
+<p><img class="displayed" src="/assets/images/incognito.png" width="650" height="550"/></p>
+
+<p>One popular way to increase anonymity is using the <a href="http://www.movements.org/how-to/entry/how-to-surf-the-internet-anonymously-with-tor/">Tor</a> project. Note, however, simply using Tor does not encrypt all of your internet activities.  However, there are <a href="https://www.torproject.org/download/download.html.en#Warning">certain habits</a> that can be done to increase the effectiveness of Tor.</p>
+
+<p>Tor only gives you anonymity, though. It does <em>not</em> provide privacy. For instance, using Tor allows you to connect to sites without being traced back to you.  Privacy protests your data, anonymity protects you.  To protect privacy, VPN is your answer. When choosing a VPN, <a href="http://torrentfreak.com/vpn-services-that-take-your-anonymity-seriously-2013-edition-130302/">be sure to do your research</a>.  If you are to use both Tor and VPN, <a href="http://www.slideshare.net/slideshow/embed_code/14380693?startSlide=138">be sure you know what you’re doing</a>, or you may end up like <a href="http://en.wikipedia.org/wiki/Sarah_Palin_email_hack">this guy</a>.</p>
+
+<p>The <a href="https://www.eff.org/">EFF</a> has a great <a href="https://www.eff.org/pages/tor-and-https">graph</a> of the potentially visible data to eavesdroppers with Tor, HTTPS, and neither or both.</p>
+
+<p>Yet the status of Tor is now questionable with the owner of “Freedom Hosting” <a href="https://openwatch.net/i/200/">arrested</a> due to a <a href="http://pastebin.com/pmGEj9bV">JavaScript exploit</a> deployed against a Tor-user’s browser.  Even if you were to avoid these sorts of exploits, if an individual controls a relatively large percentage of Tor nodes (I can’t find the resource, but I believe about 15% is enough), the owner can de-anonymize you.</p>
+
+<p>Assuming if both your Tor connection and your browser is secure, you’re using a trusty VPN service, and not downloading exploitable files, how can you avoid being profiled? It’s still difficult to hide pure browsing activity (unless you write scripts to simulate fake activity). At this point, not much else can be done.</p>
+
+<p>What about email? PGP/GPG only encrypts the body of the email.  Therefore, who you email, any x-headers, routing information, and <em>subject</em> of the email is not encrypted. Perhaps use an obfuscatory or minimal subject line.  If you <em>really</em> don’t want folks knowing who you’re emailing, then perhaps a private, self-hosted forum is the way to communicate.  How far do you want to go?</p>
+<h4 id="encryption">Encryption</h4>
+<p>And SSL? Can we trust it? The general status of SSL should be considered unclear on a technical level.  With <a href="http://arstechnica.com/business/2011/09/new-javascript-hacking-tool-can-intercept-paypal-other-secure-sessions/">BEAST</a>, <a href="http://www.cert.sd/index928f.html">CRIME</a>, and <a href="http://breachattack.com">BREACH</a> attacks on SSL presented in three consecutive years, is SSL enough?  There may be more attacks against SSL that is not public if two dudes are able to publicly present three SSL attacks three years in a row.</p>
+
+<p>Assuming that SSL is technically secure, a <a href="http://arstechnica.com/security/2010/03/govts-certificate-authorities-conspire-to-spy-on-ssl-users/">government can still go to a root Certificate Authority and demand its private key to facilitate man-in-the-middle attacks</a>, or the CA itself <a href="http://www.vasco.com/company/about_vasco/press_room/news_archive/2011/news_diginotar_reports_security_incident.aspx">could be compromised</a>.  One way to ensure trusted certificates are being used and avoid MITM attacks is <a href="https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning">certificate pinning</a>.</p>
+
+<p>One concern with PRISM is that the “<a href="http://news.netcraft.com/archives/2013/06/25/ssl-intercepted-today-decrypted-tomorrow.html">NSA logs very high volumes of internet traffic and retains captured encrypted communication for later cryptanalysis</a>”.  <a href="http://en.wikipedia.org/wiki/Perfect_forward_secrecy">Perfect Forward Secrecy</a> is one <a href="http://blogs.computerworld.com/encryption/22366/can-nsa-see-through-encrypted-web-pages-maybe-so">defense</a> against this:</p>
+
+<blockquote>
+<p>When PFS is used, the compromise of an SSL site&#39;s private key does not necessarily reveal the secrets of past private communication; connections to SSL sites which use PFS have a per-session key which is not revealed if the long-term private key is compromised. The security of PFS depends on both parties discarding the shared secret after the transaction is complete (or after a reasonable period to allow for session resumption).</p>
+
+<p><a href="http://news.netcraft.com/archives/2013/06/25/ssl-intercepted-today-decrypted-tomorrow.html">Source</a></p>
+</blockquote>
+
+<p>Quick note though: PFS does <em>not</em> protect against MITM attacks:</p>
+
+<blockquote>
+<p>Someone with access to the server&#39;s private key can, of course, perform an active man in the middle attack and impersonate the server. However, they can do that only when the communication is taking place. It is not possible to pile up a mountain of encrypted traffic and decrypt it later.</p>
+
+<p><a href="https://community.qualys.com/blogs/securitylabs/2013/06/25/ssl-labs-deploying-forward-secrecy">Source</a></p>
+</blockquote>
+<h2 id="outlook">Outlook</h2>
+<p>It essentially comes down to the questions:</p>
+
+<ul>
+<li>How do we deal with SSL?</li>
+<li>How much can we trust it?</li>
+<li>Do we need to “reboot” our encryption protocols and habits entirely?</li>
+<li>Should we reevaluate the whole idea of the certificate authority system?</li>
+</ul>
+
+<p>Whether the NSA has “direct” access to PRISM-cooperating companies’ servers or has effectively <a href="https://mailman.stanford.edu/pipermail/liberationtech/2013-June/008838.html">hacked cryptographic constructs</a>, our privacy has been challenged.  Our data is being collected, and while it may seem trivial now, one day you may be deemed a terrorist like <a href="http://gawker.com/kid-who-rapped-about-marathon-bombing-now-faces-terro-486959354">this kid here</a>.</p>
+
+<p>Finally,</p>
+
+<blockquote>
+<p>First they came for the Socialists, and I did not speak out– Because I was not a Socialist. Then they came for the Trade Unionists, and I did not speak out– Because I was not a Trade Unionist. Then they came for the Jews, and I did not speak out– Because I was not a Jew. Then they came for me– and there was no one left to speak for me.</p>
+
+<p>– Martin Niemöller</p>
+</blockquote>
+
+    <p id="footer">&#8756;</p>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'roguelynn'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+  </div>
+</article>
+
+        </div>
+      </div>
+    </div>
+    <div class="footer-wrapper">
+        <footer id="bottom">
+            <ul class="social">
+                <li><a class="icon twitter" data-icon="&#62217;" href="http://twitter.com/roguelynn" title="Twitter"></a></li>
+                <li><a class="icon github" data-icon="&#62208;" href="http://github.com/econchick" title="GitHub"></a></li>
+                <li><a class="icon photos" data-icon="&#128247;" href="http://500px.com/roguelynn" title="500px"></a><li>
+                <li><a class="icon spotify" data-icon="&#62247;" href="http://open.spotify.com/user/econchick" title="Spotify"></a></li>
+                <li><a class="icon flattr" data-icon="&#62262;" href="https://flattr.com/profile/roguelynn" title="Flattr"></a></li>
+                <li><a class="icon email" data-icon="&#10002;" href="mailto:lynn+roguelynn@lynnroot.com?subject:Hello!" title="Email"></a></li>
+                <li><a class="icon airplane" data-icon="&#9992;" href="https://www.tripit.com/people/lynn.root" title="Tripit"></a></li>
+                <li><a class="icon rss" data-icon="&#59194;" href="http://www.roguelynn.com/feed.xml" title="RSS"></a></li>
+                <li><a class="icon ohours" data-icon="&#59168;" href="http://ohours.org/roguelynn"></a></li>
+                <li>© 2007–2013 Lynn Root. All Rights Reserved.</li>
+            </ul>
+        </footer>
+    </div>
+        
+        <!--Javascript-->
+        <script src="/assets/js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <!-- Start of StatCounter Code for Default Guide -->
+        <script type="text/javascript">
+        var sc_project=4334716;
+        var sc_invisible=1;
+        var sc_security="d7034a4d";
+        </script>
+        <script type="text/javascript"
+        src="http://www.statcounter.com/counter/counter.js"></script>
+        <noscript><div class="statcounter"><a title="web stats"
+        href="http://statcounter.com/free-web-stats/"
+        target="_blank"><img class="statcounter"
+        src="http://c.statcounter.com/4334716/0/d7034a4d/1/"
+        alt="web stats"></a></div></noscript>
+        <!-- End of StatCounter Code for Default Guide -->
+        <script type="text/javascript">
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-6966504-1']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
+        </script>
+        <!-- Piwik -->
+        <script type="text/javascript">
+          var _paq = _paq || [];
+          _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+          _paq.push(["setCookieDomain", "*.roguelynn.com"]);
+          _paq.push(["setDomains", ["*.roguelynn.com"]]);
+          _paq.push(["trackPageView"]);
+          _paq.push(["enableLinkTracking"]);
+
+          (function() {
+            var u=(("https:" == document.location.protocol) ? "https" : "http") + "://stats.ox.cx/";
+            _paq.push(["setTrackerUrl", u+"piwik.php"]);
+            _paq.push(["setSiteId", "9"]);
+            var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+            g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+          })();
+        </script>
+        <noscript>
+            <!-- Piwik Image Tracker -->
+            <img src="http://stats.ox.cx/piwik.php?idsite=9&amp;rec=1&action_name=homepage" style="border:0" alt="" />
+            <!-- End Piwik -->
+        </noscript>
+        <!-- End Piwik Code -->
+    </body>
+</html>

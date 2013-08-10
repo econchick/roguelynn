@@ -1,10 +1,12 @@
 ---
 layout: talk.html
 title: "PRISM-as-a-Service: Not Subject to American Law"
-tags: [upcoming talk]
+tags: [past talk]
 talk_date: "August, 2013"
 location: "PyCon Canada, Toronto"
 conf_url: "https://2013.pycon.ca/en/schedule/presentation/99/"
+slides: "https://speakerdeck.com/roguelynn/prism-as-a-service-not-subject-to-american-law"
+blog_post: "http://www.roguelynn.com/prism"
 category: [talks]
 ---
 
