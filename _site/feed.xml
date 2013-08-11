@@ -5,7 +5,7 @@
     <link rel="alternate" href="http://www.roguelynn.com/" />
     <link rel="self" href="http://www.roguelynn.com/feed.xml" type="application/atom+xml" />
     <id>http://www.roguelynn.com/</id>
-    <updated>2013-08-10T15:52:16Z</updated>
+    <updated>2013-08-11T20:04:18Z</updated>
 
     <author>
         <name>Lynn Root</name>
@@ -19,7 +19,7 @@
             <title type="html">PRISM-as-a-Service: Not Subject to American Law</title>
             <link rel="alternate" href="http://www.roguelynn.com/prism/" type="text/html" />
             <id>http://www.roguelynn.com/prism/</id>
-            <updated>2013-08-10T15:09:00Z</updated>
+            <updated>2013-08-10T20:02:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -101,7 +101,7 @@
 
 &lt;p&gt;In general, though, a company’s data is not that important to governments.  It’s personal profiles that is a bit part of any kind of PRISM-like scheme.&lt;/p&gt;
 &lt;h3 id=&#34;as-nerds-ourselves&#34;&gt;As nerds ourselves&lt;/h3&gt;
-&lt;p&gt;Now the question is: what level of granularity are you okay with that your government knows?  Or coming from a different direction, is it possible to go completely anonymous?  I may sound like I’m wearing a tinfoil hat, but bear with me – this is more of a proof of concept that no, it is not possible to go completely anonymous.&lt;/p&gt;
+&lt;p&gt;Now the question is: what level of granularity are you okay with that your government knows?  Or coming from a different direction, is it possible to go completely anonymous?  I may sound like I’m wearing a tinfoil hat, but bare with me – this is more of a proof of concept that no, it is not possible to go completely anonymous.&lt;/p&gt;
 &lt;h4 id=&#34;location-tracking&#34;&gt;Location tracking&lt;/h4&gt;
 &lt;p&gt;I would imagine most folks are okay with a government knowing &lt;em&gt;when&lt;/em&gt; you are inside its nation.  But how granular are you okay with in being tracked?&lt;/p&gt;
 
