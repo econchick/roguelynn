@@ -105,7 +105,7 @@ In general, though, a company’s data is not that important to governments.  It
 
 ### As nerds ourselves
 
-Now the question is: what level of granularity are you okay with that your government knows?  Or coming from a different direction, is it possible to go completely anonymous?  I may sound like I’m wearing a tinfoil hat, but bear with me – this is more of a proof of concept that no, it is not possible to go completely anonymous.
+Now the question is: what level of granularity are you okay with that your government knows?  Or coming from a different direction, is it possible to go completely anonymous?  I may sound like I’m wearing a tinfoil hat, but bare with me – this is more of a proof of concept that no, it is not possible to go completely anonymous.
 
 #### Location tracking
 
