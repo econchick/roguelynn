@@ -48,137 +48,14 @@
 
   <div class='ten columns gray' id="date-header">
     <p>
-      January 10, 2013
+      May 08, 2013
   
     </p>
 
   </div>
 
   <div class="ten columns" id="article-content">
-    <p>A month or two ago, I signed up for a lightning talk for <a href="http://www.meetup.com/Women-Who-Code-SF/events/93965402/" title="WWC Lightning Talk Event">today&#39;s</a> Women Who Code event. I didn&#39;t submit a title - I was more, &quot;sure, I could talk!&quot;</p>
-
-<p>Only on Tuesday did I find out I was actually on the bill to speak! Welp, here&#39;s a just-in-time presentation. My slides are <a href="http://www.slideshare.net/roguelynn/avoid-drowning">here</a> - but basically this post flows through what&#39;s presented on.</p>
-<h2 id="my-experience">My experience</h2>
-<hr>
-
-<p>Coming back from Brno, and having just started a new engineering position, I feel like I knew this topic well: how to swim your way through a new code base. There may be other/better advice, but this was my take away from my first three months at Red Hat.</p>
-<h2 id="n-diving">N<img src="/assets/images/no_diving_small.png" alt="no_diving">  Diving!</h2>
-<hr>
-
-<p>You might feel inclined to jump into the code base. FFS you&#39;re a coder! Why wouldn&#39;t you want to jump in?</p>
-
-<p>As most lifeguards might say of pools with shallow depths: you&#39;ll break your neck and drown.</p>
-
-<p>Let&#39;s take a more holistic approach - I&#39;ll walk you through how I am fumbling through getting to know two (!) code bases with questions I asked myself. Mind you, not all these questions are relevant to your situation; it all depends on your code base, naturally.</p>
-<h2 id="t-p-down-approach">T<img src="/assets/images/droplets_small.png" alt="droplet">  p-down approach</h2>
-<hr>
-<h3 id="overview">Overview</h3>
-<ul>
-<li>What is the purpose of this project or product?</li>
-<li>What problems does it solve for its target audience?</li>
-<li>What are its overall strengths and weaknesses; its selling points?</li>
-<li>What competitive projects or products are out there?</li>
-</ul>
-<h3 id="architecture">Architecture</h3>
-<ul>
-<li>What major components make up the code base?</li>
-<li>How do they all fit together?</li>
-<li>How do they communicate with each other?</li>
-</ul>
-<h3 id="break-it-apart">Break it apart</h3>
-<ul>
-<li>What&#39;s this component or chunk&#39;s purpose?</li>
-<li>What problem does it solve for this project?</li>
-<li>Strength &amp; weaknesses of this chunk or component?</li>
-<li>How does it fit with another chunk(s)?</li>
-</ul>
-<h2 id="lather-rinse-repet.">Lather, rinse, repe<img src="/assets/images/repeat_small.png" alt="repeat">t.</h2>
-<hr>
-
-<p>Continue on until you drill down to the very lowest component, the lowest before you hit the code to answer your questions.</p>
-
-<p>You should be reviewing documentation and architecture diagrams &amp; walk-throughs, talking to the architect of the product/project, and your team mates.</p>
-<h2 id="go-with-the-flow-">Go with the <img src="/assets/images/fish_small.png" alt="flow"> flow <img src="/assets/images/fish_small.png" alt="flow"></h2>
-<hr>
-
-<p>Now it&#39;s time to figure out the flow of the project or product.</p>
-<h3 id="user">User</h3>
-<ul>
-<li>Who is the target audience? Other developers, IT professionals, non-tech folks?</li>
-<li>How is this project used?</li>
-<li>What is the learning curve for the user?</li>
-</ul>
-<h3 id="sys-admin">Sys Admin</h3>
-<ul>
-<li>How are users set up?</li>
-<li>How is it maintained, updated, upgraded, supported, etc?</li>
-<li>How does it work with the existing systems?</li>
-</ul>
-<h3 id="your-manager">Your Manager</h3>
-<ul>
-<li>What are the goals of the project? Future feature implementations? Direction that this product is going?</li>
-<li>What are the release cycles or pressure dates?</li>
-<li>What other teams do you need to work with? QE? Support? Other complementary/necessary projects/products?</li>
-</ul>
-<h3 id="developer-you">Developer (YOU)</h3>
-<ul>
-<li>How do you submit and fix a bug?</li>
-<li>How is the code tested?</li>
-<li>Who are the go-to people for certain aspects of the project?</li>
-</ul>
-<h2 id="ease-in-the-water39s-a-bit-cold">Ease in  <img src="/assets/images/ease_in_small.png" alt="ease">  the water&#39;s a bit cold</h2>
-<hr>
-
-<p>Alright - git pull that code.</p>
-<h3 id="file-hierarchy">File Hierarchy</h3>
-<ul>
-<li>Top-down approach again: how is this project organized? What files/modules depend on what? </li>
-<li>How does the file structure match up with the architecture you saw earlier?</li>
-<li>Where is the documentation (both for developer and user/admin)? The source code/moving parts? The test suite? (Who tests the tests!?)</li>
-<li>What modules are used? Look what&#39;s being used from the language&#39;s standard library, the modules defined in the package itself, and third-party packages.</li>
-</ul>
-<h3 id="dependencies">Dependencies</h3>
-<ul>
-<li>What are the operating system requirements? Hardware reqs?</li>
-<li>Software requirements: is there an assumption that users have the default database needed? Or other libraries already on your machine?</li>
-<li>What are the build requirements for the project?</li>
-</ul>
-<h3 id="swim-floaties-remember-those-things-around-your-arms">Swim floaties (remember those things around your arms?!)</h3>
-<ul>
-<li>&#39;<code>$ git log</code>&#39;  for commit logs (watch out - it could go back years). Check out git&#39;s pretty print documentation for more readable output.</li>
-<li>&#39;<code>$ git blame</code>&#39; is, of course, a great tool. Include -L flag for to/from line numbers, and -e flag to see emails of the contributors.</li>
-<li><a href="http://dev.hubspot.com/blog/bid/57694/Git-by-a-Bus" title="Git By a bus">git-by-a-bus</a> is a great tool goes through the logs of the code and gives you html to visually see who are the biggest contributors to which parts of the library. Highly recommend.</li>
-</ul>
-<h3 id="challenge-yourself">Challenge yourself</h3>
-<ul>
-<li>Write up documentation that&#39;s missing.</li>
-<li>Fix a bug &amp; submit a patch. This really forces you to understand the code, how it was written, conventions of the project, and how small pieces fit together.</li>
-<li>Write more tests to increase test coverage.</li>
-</ul>
-<h2 id="lifesvers">Lifes<img src="/assets/images/life_preserver_small.png" alt="life">vers</h2>
-<hr>
-<h3 id="mentors">Mentors</h3>
-<ul>
-<li>Find an internal mentor to bug about package/product questions. It may be your lead, or someone who&#39;s been there for a while.</li>
-<li>An external mentor is great to have too - perhaps you have a language question and you don&#39;t want to look stupid in front of your coworkers.  It&#39;s also great to get a different point of view for how the development process works elsewhere.</li>
-<li>Your manager - yep, s/he is by default a mentor, whether good or bad, or absent. Learn how to manage up if you&#39;re not getting what you need at first. Avoid detailed questions and ask bigger questions like &quot;how is my approach in this?&quot;, or &quot;am I learning at an acceptable speed?&quot;</li>
-</ul>
-<h3 id="research">Research</h3>
-<ul>
-<li>I highly recommend keeping a personal/private wiki as you learn new terms, processes, etc.</li>
-<li>Also - a bookmarking service that helps you organize your research for quick retrieval (I recommend <a href="http://pinboard.in" title="Pinboard">Pinboard</a>).</li>
-<li>Old fashioned post-its, whiteboarding, paper+pen, anything. Physically writing down a piece of information (typically architecture diagrams) helped me solidify concepts better.</li>
-</ul>
-<h3 id="suggested-reading">Suggested Reading</h3>
-<ul>
-<li><a href="http://pragprog.com/book/tpp/the-pragmatic-programmer" title="The Pragmatic Programmer">The Pragmatic Programmer</a></li>
-<li>A language-specific cookbook (keep near your work computer)</li>
-<li><a href="http://pragprog.com/book/jcdeg/new-programmer-s-survival-manual" title="New Programmer&#39;s Survival Manual">The New Programmer&#39;s Survival Manual</a></li>
-<li><a href="http://pragprog.com/book/kcdc/the-developer-s-code" title="Developer&#39;s Code">The Developer&#39;s Code: What Real Programmers Do</a></li>
-</ul>
-<h2 id="swim-safely-">Swim safely! <img src="/assets/images/scuba_small.png" alt="scuba"></h2>
-<p><br /></p>
-
+    
     <p id="footer">&#8756;</p>
     <div id="disqus_thread"></div>
     <script type="text/javascript">
