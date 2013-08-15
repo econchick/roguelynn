@@ -6,7 +6,11 @@ code_url: "https://github.com/econchick/new-coder"
 tags: [resume]
 category: [resume, projects]
 dateemp: "March 2013 - present"
+abs_url: http://www.roguelynn.com/projects/newcoder/
+url: projects/newcoder/
 ---
+
+Five Python tutorials for the new coder.
 
 With some [help][contributions] of my friends in the Python community, I’ve built 5 digestible projects to gradually progress the Python learner from near drowning to a decent swimmer. The goal is to have new coders feeling accomplished and to continuing learning with: [Data Visualization][dv] with matplotlib; [APIs][apis] with Requests; [Web Scraping][web] with Scrapy and Postgres; [IRC bot][irc] with Twisted; and [Sudoku GUI][gui] with Tkinter.
 
