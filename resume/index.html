@@ -3,7 +3,7 @@
 {% block content %}
     <section id="resume">
         <h1>Résumé</h1>
-        <a href="">PDF version</a>
+        <a href="{{ get_asset('pdfs/LynnRootResume.pdf') }}">PDF version</a>
             <article>
                 <h3>tl;dr</h3>
                 {% for post in posts %}
