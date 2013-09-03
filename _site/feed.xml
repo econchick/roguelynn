@@ -5,7 +5,7 @@
     <link rel="alternate" href="http://www.roguelynn.com/" />
     <link rel="self" href="http://www.roguelynn.com/feed.xml" type="application/atom+xml" />
     <id>http://www.roguelynn.com/</id>
-    <updated>2013-08-16T00:36:09Z</updated>
+    <updated>2013-09-03T01:46:50Z</updated>
 
     <author>
         <name>Lynn Root</name>
@@ -13,6 +13,39 @@
         <uri>http://www.roguelynn.com/</uri>
     </author>
 
+    
+        
+        <entry>
+            <title type="html">Karmawho.re: Your Reddit Comment Karma Visualized</title>
+            <link rel="alternate" href="http://www.roguelynn.com/words/karmawhore/" type="text/html" />
+            <id>http://www.roguelynn.com/words/karmawhore/</id>
+            <updated>2013-09-02T01:46:00Z</updated>
+
+            <author>
+                <name>Lynn Root</name>
+                <email>lynn@lynnroot.com</email>
+                <uri>http://www.roguelynn.com/</uri>
+            </author>
+            <content type="html">&lt;p&gt;Is a lot of your time wasted from &lt;a href=&#34;http://www.urbandictionary.com/define.php?term=Derping&#34;&gt;derping&lt;/a&gt; around on &lt;a href=&#34;http://reddit.com&#34;&gt;Reddit&lt;/a&gt;?  Do you find that you have to correct someone when they’re &lt;a href=&#34;http://xkcd.com/386/&#34;&gt;&lt;strong&gt;wrong&lt;/strong&gt; on the internet&lt;/a&gt;?  Wish that your collected comment karma was worth something?&lt;/p&gt;
+
+&lt;p&gt;Well, I can’t trade you anything for your karma.  But I can provide you with awesome &lt;a href=&#34;http://d3js.org&#34;&gt;d3&lt;/a&gt; visualizations of it!&lt;/p&gt;
+
+&lt;p&gt;Check out &lt;a href=&#34;http://www.karmawho.re&#34;&gt;&lt;strong&gt;www.karmawho.re&lt;/strong&gt;&lt;/a&gt; to visualize your &lt;strike&gt;wasted time&lt;/strike&gt; collected karma from comment posts.  Search via your Reddit user name, or click “I’m feeling creepy” to visualize comments of a random user.  Try plugging in a few of &lt;a href=&#34;http://www.karmawhores.net/&#34;&gt;these top comment posters&lt;/a&gt; if you find that you don’t post enough on Reddit.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/karmawhore-start.png&#34; style=&#34;box-shadow: 0 1px 2px rgba(0,0,0,0.5);&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/karmawhore-time.png&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/karmawhore-totalkarma.png&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/karmawhore-wordcloud.png&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;displayed&#34; src=&#34;http://www.roguelynn.com/assets/images/karmawhore-buckets.png&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Karmawhore was a labor day weekend project using &lt;a href=&#34;http://d3js.org&#34;&gt;d3.js&lt;/a&gt;, &lt;a href=&#34;http://nvd3.org/&#34;&gt;nvd3&lt;/a&gt;, and &lt;a href=&#34;https://github.com/jasondavies/d3-cloud&#34;&gt;d3 wordcloud&lt;/a&gt; to bring you these awesome graphs.&lt;/p&gt;
+</content>
+        </entry>
+        
     
         
         <entry>
