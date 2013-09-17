@@ -5,7 +5,7 @@
     <link rel="alternate" href="http://www.roguelynn.com/" />
     <link rel="self" href="http://www.roguelynn.com/feed.xml" type="application/atom+xml" />
     <id>http://www.roguelynn.com/</id>
-    <updated>2013-09-03T02:41:53Z</updated>
+    <updated>2013-09-17T17:21:17Z</updated>
 
     <author>
         <name>Lynn Root</name>
@@ -16,10 +16,35 @@
     
         
         <entry>
+            <title type="html">Hanging my Red Hat for headphones</title>
+            <link rel="alternate" href="http://www.roguelynn.com/words/joining-spotify/" type="text/html" />
+            <id>http://www.roguelynn.com/words/joining-spotify/</id>
+            <updated>2013-09-17T17:21:00Z</updated>
+
+            <author>
+                <name>Lynn Root</name>
+                <email>lynn@lynnroot.com</email>
+                <uri>http://www.roguelynn.com/</uri>
+            </author>
+            <content type="html">&lt;p&gt;At the end of the month, I’ll be trading in my Red Hat for a pair of head phones: I’ll be joining &lt;a href=&#34;http://open.spotify.com/user/econchick&#34;&gt;Spotify&lt;/a&gt; in San Francisco as a Partner Engineer to work on third-party integration.&lt;/p&gt;
+
+&lt;p&gt;I had a fantastic experience working on &lt;a href=&#34;http://freeipa.org&#34;&gt;freeIPA&lt;/a&gt;, but found the opportunity at Spotify too awesome to pass up.  &lt;/p&gt;
+
+&lt;p&gt;You&amp;#39;ll still see me at conferences (maybe more so!).  But perhaps more exciting is the ability to dedicate some time and effort to PyLadies, the Python community, and push Spotify to contribute more to open source.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#39;m super excited to be joining Spotify, a product that I love and a team that I&amp;#39;ve admired ever since I met them at EuroPython in 2012.&lt;/p&gt;
+
+&lt;p&gt;What can I say? I wanted more wubwub!&lt;/p&gt;
+</content>
+        </entry>
+        
+    
+        
+        <entry>
             <title type="html">Karmawho.re: Your Reddit Comment Karma Visualized</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/karmawhore/" type="text/html" />
             <id>http://www.roguelynn.com/words/karmawhore/</id>
-            <updated>2013-09-02T01:48:00Z</updated>
+            <updated>2013-09-02T02:42:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
