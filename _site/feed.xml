@@ -5,7 +5,7 @@
     <link rel="alternate" href="http://www.roguelynn.com/" />
     <link rel="self" href="http://www.roguelynn.com/feed.xml" type="application/atom+xml" />
     <id>http://www.roguelynn.com/</id>
-    <updated>2013-09-17T17:23:36Z</updated>
+    <updated>2013-10-04T23:22:22Z</updated>
 
     <author>
         <name>Lynn Root</name>
@@ -15,11 +15,15 @@
 
     
         
+    
+        
+    
+        
         <entry>
             <title type="html">Hanging my Red Hat for headphones</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/joining-spotify/" type="text/html" />
             <id>http://www.roguelynn.com/words/joining-spotify/</id>
-            <updated>2013-09-17T17:21:00Z</updated>
+            <updated>2013-09-17T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -44,7 +48,7 @@
             <title type="html">Karmawho.re: Your Reddit Comment Karma Visualized</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/karmawhore/" type="text/html" />
             <id>http://www.roguelynn.com/words/karmawhore/</id>
-            <updated>2013-09-02T02:42:00Z</updated>
+            <updated>2013-09-02T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -77,7 +81,7 @@
             <title type="html">PRISM-as-a-Service: Not Subject to American Law</title>
             <link rel="alternate" href="http://www.roguelynn.com/prism/" type="text/html" />
             <id>http://www.roguelynn.com/prism/</id>
-            <updated>2013-08-10T23:49:00Z</updated>
+            <updated>2013-08-10T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -250,7 +254,7 @@
             <title type="html">Part 2: Apache and Kerberos for Django Authentication + Authorization</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/apache-kerberos-for-django/" type="text/html" />
             <id>http://www.roguelynn.com/words/apache-kerberos-for-django/</id>
-            <updated>2013-05-16T23:49:00Z</updated>
+            <updated>2013-05-16T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -429,7 +433,7 @@ $ python
             <title type="html">Part 1: Django 1.5 Custom User Models</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/django-custom-user-models/" type="text/html" />
             <id>http://www.roguelynn.com/words/django-custom-user-models/</id>
-            <updated>2013-05-16T23:49:00Z</updated>
+            <updated>2013-05-16T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -594,7 +598,7 @@ User = get_user_model()
             <title type="html">Part 3: Setting up a Kerberos test environment</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/setting-up-a-kerberos-test-environment/" type="text/html" />
             <id>http://www.roguelynn.com/words/setting-up-a-kerberos-test-environment/</id>
-            <updated>2013-05-16T23:49:00Z</updated>
+            <updated>2013-05-16T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -708,7 +712,7 @@ Vagrant assumes that this means the command failed!&lt;br&gt;
             <title type="html">Explain like I’m 5: Kerberos</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/explain-like-im-5-kerberos/" type="text/html" />
             <id>http://www.roguelynn.com/words/explain-like-im-5-kerberos/</id>
-            <updated>2013-04-02T23:49:00Z</updated>
+            <updated>2013-04-02T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -946,13 +950,11 @@ Vagrant assumes that this means the command failed!&lt;br&gt;
         
     
         
-    
-        
         <entry>
             <title type="html">The New Coder: A Path to Software Engineering</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/The-New-Coder-A-path-to-Software-Engineering/" type="text/html" />
             <id>http://www.roguelynn.com/words/The-New-Coder-A-path-to-Software-Engineering/</id>
-            <updated>2013-03-15T17:46:00Z</updated>
+            <updated>2013-03-15T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -1152,7 +1154,7 @@ It’s extremely difficult to learn what you need to learn, yet not know what &l
             <title type="html">Soft release of my New Year&#39;s project: Salarly</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/soft-release-of-my-new-years-project/" type="text/html" />
             <id>http://www.roguelynn.com/words/soft-release-of-my-new-years-project/</id>
-            <updated>2013-01-26T17:46:00Z</updated>
+            <updated>2013-01-26T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -1181,7 +1183,7 @@ It’s extremely difficult to learn what you need to learn, yet not know what &l
             <title type="html">Avoid Drowning: Swim your way through a new code base</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/avoid-drowning/" type="text/html" />
             <id>http://www.roguelynn.com/words/avoid-drowning/</id>
-            <updated>2013-01-10T23:47:00Z</updated>
+            <updated>2013-01-10T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -1320,13 +1322,11 @@ It’s extremely difficult to learn what you need to learn, yet not know what &l
         
     
         
-    
-        
         <entry>
             <title type="html">My New Years Theme</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/my-new-years-theme/" type="text/html" />
             <id>http://www.roguelynn.com/words/my-new-years-theme/</id>
-            <updated>2012-12-31T17:45:00Z</updated>
+            <updated>2012-12-31T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -1391,11 +1391,13 @@ The events I held and/or led for PyLadies were a lot of fun:&lt;/p&gt;
         
     
         
+    
+        
         <entry>
             <title type="html">Reflection of my time in Brno</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/reflection-of-my-time-in-brno/" type="text/html" />
             <id>http://www.roguelynn.com/words/reflection-of-my-time-in-brno/</id>
-            <updated>2012-12-21T17:45:00Z</updated>
+            <updated>2012-12-21T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -1449,7 +1451,7 @@ The events I held and/or led for PyLadies were a lot of fun:&lt;/p&gt;
             <title type="html">CR@P I&#39;M SPEAKING AT [insert conference here]! How do I prepare?</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/crap-im-speaking/" type="text/html" />
             <id>http://www.roguelynn.com/words/crap-im-speaking/</id>
-            <updated>2012-12-03T22:52:00Z</updated>
+            <updated>2012-12-03T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -1510,7 +1512,7 @@ The events I held and/or led for PyLadies were a lot of fun:&lt;/p&gt;
             <title type="html">From email setup to patch submission in 8 days.</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/from-email-setup-to-patch-submission-in-8-days/" type="text/html" />
             <id>http://www.roguelynn.com/words/from-email-setup-to-patch-submission-in-8-days/</id>
-            <updated>2012-11-06T17:45:00Z</updated>
+            <updated>2012-11-06T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -1590,7 +1592,7 @@ helped a lot.  I haven&amp;#39;t been approached inappropriately, scoffed at, o
             <title type="html">NetSec for n00bs, part III: Simple Intro Public Key Crypto</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/netsec-for-n00bs-part-iii-simple-intro-public-key-crypto/" type="text/html" />
             <id>http://www.roguelynn.com/words/netsec-for-n00bs-part-iii-simple-intro-public-key-crypto/</id>
-            <updated>2012-10-15T17:45:00Z</updated>
+            <updated>2012-10-15T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -1633,7 +1635,7 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
             <title type="html">NetSec for n00bs, part II: Ciphers (symmetric)</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/netsec-for-n00bs-part-ii-ciphers-symmetric/" type="text/html" />
             <id>http://www.roguelynn.com/words/netsec-for-n00bs-part-ii-ciphers-symmetric/</id>
-            <updated>2012-10-03T17:45:00Z</updated>
+            <updated>2012-10-03T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -1675,11 +1677,13 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
         
     
         
+    
+        
         <entry>
             <title type="html">NetSec for n00bs, part I: Password Storage</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/netsec-for-n00bs-part-i-password-storage/" type="text/html" />
             <id>http://www.roguelynn.com/words/netsec-for-n00bs-part-i-password-storage/</id>
-            <updated>2012-10-01T23:46:00Z</updated>
+            <updated>2012-10-01T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -1719,13 +1723,11 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
         
     
         
-    
-        
         <entry>
             <title type="html">Operation: PyCon attendance</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/operation-pycon-attendance/" type="text/html" />
             <id>http://www.roguelynn.com/words/operation-pycon-attendance/</id>
-            <updated>2012-09-29T17:45:00Z</updated>
+            <updated>2012-09-29T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -1760,7 +1762,7 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
             <title type="html">From n00b to Engineer in 1 year</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/from-n00b-to-engineer-in-one-year/" type="text/html" />
             <id>http://www.roguelynn.com/words/from-n00b-to-engineer-in-one-year/</id>
-            <updated>2012-09-25T17:45:00Z</updated>
+            <updated>2012-09-25T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -1795,7 +1797,7 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
             <title type="html">Brainstorm: Writing a PyCon proposal</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/brainstorm-writing-a-pycon-proposal/" type="text/html" />
             <id>http://www.roguelynn.com/words/brainstorm-writing-a-pycon-proposal/</id>
-            <updated>2012-08-27T23:46:00Z</updated>
+            <updated>2012-08-27T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -1852,7 +1854,7 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
             <title type="html">PyCon Proposal Brainstorming via Google Hangout</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/pycon-proposal-brainstorming-via-google-hangout/" type="text/html" />
             <id>http://www.roguelynn.com/words/pycon-proposal-brainstorming-via-google-hangout/</id>
-            <updated>2012-08-25T23:46:00Z</updated>
+            <updated>2012-08-25T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -1894,7 +1896,7 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
             <title type="html">Sadistic/Masochistic pleasure: Technical Interviews</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/sadistic-pleasure-technical-interviews/" type="text/html" />
             <id>http://www.roguelynn.com/words/sadistic-pleasure-technical-interviews/</id>
-            <updated>2012-08-15T23:46:00Z</updated>
+            <updated>2012-08-15T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -2037,7 +2039,7 @@ damn good problem to attack).&lt;/li&gt;
             <title type="html">Our generation&#39;s Legos</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/our-generations-legos/" type="text/html" />
             <id>http://www.roguelynn.com/words/our-generations-legos/</id>
-            <updated>2012-07-28T17:44:00Z</updated>
+            <updated>2012-07-28T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -2088,7 +2090,7 @@ damn good problem to attack).&lt;/li&gt;
             <title type="html">Moar Bookmarks!</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/moar-bookmarks/" type="text/html" />
             <id>http://www.roguelynn.com/words/moar-bookmarks/</id>
-            <updated>2012-07-27T23:45:00Z</updated>
+            <updated>2012-07-27T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -2128,7 +2130,7 @@ damn good problem to attack).&lt;/li&gt;
             <title type="html">PyLadies @ OSCON</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/pyladies-oscon/" type="text/html" />
             <id>http://www.roguelynn.com/words/pyladies-oscon/</id>
-            <updated>2012-07-26T23:45:00Z</updated>
+            <updated>2012-07-26T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -2153,7 +2155,7 @@ damn good problem to attack).&lt;/li&gt;
             <title type="html">Moar Womenz at DjangoCon US!</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/moar-womenz-at-djangocon-us/" type="text/html" />
             <id>http://www.roguelynn.com/words/moar-womenz-at-djangocon-us/</id>
-            <updated>2012-07-25T17:44:00Z</updated>
+            <updated>2012-07-25T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -2175,7 +2177,7 @@ damn good problem to attack).&lt;/li&gt;
             <title type="html">A memorable EuroPython, for the better</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/a-memorable-europython-for-the-better/" type="text/html" />
             <id>http://www.roguelynn.com/words/a-memorable-europython-for-the-better/</id>
-            <updated>2012-07-12T23:45:00Z</updated>
+            <updated>2012-07-12T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -2229,7 +2231,7 @@ to #pyladies, I called him out, addressed it with the EuroPython organizers, and
             <title type="html">You ask why I need to talk about women in the Python community?</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/really/" type="text/html" />
             <id>http://www.roguelynn.com/words/really/</id>
-            <updated>2012-07-05T17:44:00Z</updated>
+            <updated>2012-07-05T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -2255,7 +2257,7 @@ to #pyladies, I called him out, addressed it with the EuroPython organizers, and
             <title type="html">EuroPython 2012: Day 1</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/europython-2012-day-1/" type="text/html" />
             <id>http://www.roguelynn.com/words/europython-2012-day-1/</id>
-            <updated>2012-07-03T23:45:00Z</updated>
+            <updated>2012-07-03T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -2296,7 +2298,7 @@ to #pyladies, I called him out, addressed it with the EuroPython organizers, and
             <title type="html">My un-talk at DjangoCon. Warning: rant.</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/my-un-talk-at-djangocon/" type="text/html" />
             <id>http://www.roguelynn.com/words/my-un-talk-at-djangocon/</id>
-            <updated>2012-06-06T23:45:00Z</updated>
+            <updated>2012-06-06T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -2328,7 +2330,7 @@ about. &lt;/p&gt;
             <title type="html">Gold Nuggets: My Bookmarks Collection</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/gold-nuggets-my-bookmarks-collection/" type="text/html" />
             <id>http://www.roguelynn.com/words/gold-nuggets-my-bookmarks-collection/</id>
-            <updated>2012-05-20T23:45:00Z</updated>
+            <updated>2012-05-20T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -2368,7 +2370,7 @@ about. &lt;/p&gt;
             <title type="html">PyLadies First Workshop: Build your own Blog</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/pyladies-first-workshop-build-your-own-blog/" type="text/html" />
             <id>http://www.roguelynn.com/words/pyladies-first-workshop-build-your-own-blog/</id>
-            <updated>2012-05-16T23:45:00Z</updated>
+            <updated>2012-05-16T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -2389,7 +2391,7 @@ about. &lt;/p&gt;
             <title type="html">Update: PyLadiesSF Debut</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/update-pyladiessf-debut/" type="text/html" />
             <id>http://www.roguelynn.com/words/update-pyladiessf-debut/</id>
-            <updated>2012-04-30T17:43:00Z</updated>
+            <updated>2012-04-30T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -2414,7 +2416,7 @@ about. &lt;/p&gt;
             <title type="html">Debut of PyLadiesSF</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/debut-of-pyladiessf/" type="text/html" />
             <id>http://www.roguelynn.com/words/debut-of-pyladiessf/</id>
-            <updated>2012-04-25T17:43:00Z</updated>
+            <updated>2012-04-25T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -2448,7 +2450,7 @@ about. &lt;/p&gt;
             <title type="html">O HAI THERE!</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/o-hai-there/" type="text/html" />
             <id>http://www.roguelynn.com/words/o-hai-there/</id>
-            <updated>2012-03-22T23:49:00Z</updated>
+            <updated>2012-03-22T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -2476,7 +2478,7 @@ I was drowning: I failed both exams.&lt;/p&gt;
             <title type="html">It&#39;s for SCIENCE</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/its-for-science/" type="text/html" />
             <id>http://www.roguelynn.com/words/its-for-science/</id>
-            <updated>2011-11-14T23:44:00Z</updated>
+            <updated>2011-11-14T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -2508,7 +2510,7 @@ if it&amp;#39;s on a scale of ...100.&lt;/li&gt;
             <title type="html">Studying BitCoin</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/studying-bitcoin/" type="text/html" />
             <id>http://www.roguelynn.com/words/studying-bitcoin/</id>
-            <updated>2011-07-07T23:44:00Z</updated>
+            <updated>2011-07-07T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -2527,7 +2529,7 @@ if it&amp;#39;s on a scale of ...100.&lt;/li&gt;
             <title type="html">Seattle Tech Talk</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/seattle-tech-talk/" type="text/html" />
             <id>http://www.roguelynn.com/words/seattle-tech-talk/</id>
-            <updated>2011-06-30T17:43:00Z</updated>
+            <updated>2011-06-30T23:06:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
