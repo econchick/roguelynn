@@ -48,7 +48,9 @@
 
   <div class='ten columns gray' id="date-header">
     <p>
-      August 10, 2013
+      August 8th, 2013
+  
+      – revised October 7th, 2013
   
     </p>
 
@@ -82,6 +84,24 @@
 </blockquote>
 
 <p>The NSA then <a href="http://www.washingtonpost.com/wp-srv/special/politics/prism-collection-documents/">filters the data</a> by type (voice, video, call records, internet records, etc.) followed by foreign versus American subject to reduce the intake of information about Americans.</p>
+<h4 id="what-is-xkeyscore">What is XKeyscore?</h4>
+<p><a href="http://en.wikipedia.org/wiki/XKeyscore">XKeyscore</a> complements PRISM, and is actually a system/framework for digital network intelligence exploitation revealed by The Guardian on <a href="http://www.theguardian.com/world/2013/jul/31/nsa-top-secret-program-online-data">July 31st, 2013</a>.  In the released <a href="http://www.theguardian.com/world/interactive/2013/jul/31/nsa-xkeyscore-program-full-presentation">NSA presentation</a>, XKeyscore is detailed to have over 500-700 servers (numbers conflicting on page 4 and 6 of the <a href="http://www.theguardian.com/world/interactive/2013/jul/31/nsa-xkeyscore-program-full-presentation">document</a>) that allows a federated query system of completely unfiltered data. The system houses collected email addresses, user activity, phone numbers, extracted files, and parsed client-side HTTP traffic, and can allow for real-time interception.</p>
+
+<p>Example queries it supports include:</p>
+
+<ul>
+<li>Encrypted word documents from a particular country</li>
+<li>PGP usage from a particular country</li>
+<li>VPN connections in a particular country, and all data related to those connections to be decrypted (author’s open-ended question: where is XKeystore/NSA getting keys to decrypt data?)</li>
+<li>All Excel spreadhseets containing MAC addresses coming out of a particular country</li>
+<li>All exploitable machines in a particular country</li>
+<li>Email addresses tied to Google Map searches</li>
+<li>All documents that reference $Y subject</li>
+</ul>
+
+<p>With each search within XKeyscore system, users can <a href="http://static.guim.co.uk/sys-images/Guardian/Pix/audio/video/2013/7/31/1375270036263/KS2-001.jpg">input any email address with a justification</a>, like “target is in Africa” (just a text-input field! Seemingly no approval system!), and the system <a href="http://static.guim.co.uk/sys-images/Guardian/Pix/audio/video/2013/7/31/1375282759484/KS3edit2-001.jpg">returns</a> a list of emails, with users selecting and reading an email (unknown if entire body or just “metadata” of To, From, CC, BCC, Attachements, etc.) within NSA-viewing software.</p>
+
+<p>Alarmingly, a user can also setup ongoing surveillance of someone just as easily.  The user is required to select a <a href="http://static.guim.co.uk/sys-images/Guardian/Pix/audio/video/2013/7/31/1375269316245/KS4-001.jpg">“foreign factor”</a>, including “The person is a user of storage media seized outside of the U.S.”.  While unclear what qualifies as storage media, this puts into question <em>anyone</em>, including U.S. citizens, who has ever used storage abroad (any of my fellow American citizens use <a href="https://fastmail.fm">Fastmail</a>?).</p>
 <h2 id="timeline">Timeline</h2><h4 id="mass-surveillance-nothing-new-and-not-just-us">Mass Surveillance: Nothing New, and not just US</h4>
 <script async class="speakerdeck-embed" data-id="e8a985f0e3730130e8c53a22532026d5" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>
 
@@ -113,6 +133,8 @@
 </blockquote>
 
 <p>Folks have <a href="http://www.theregister.co.uk/2013/06/08/what_about_a_us_tech_boycott/">boycotted</a> US cloud, others are <a href="http://www.reddit.com/r/worldnews/comments/1fxg0d/nsa_prism_why_im_boycotting_us_cloud_tech_and_you/caespwn">experiencing</a> a run on their own cloud services, and some are even <a href="http://fredlybrand.com/2013/06/23/an-apology-to-my-european-it-team/">apologizing</a> to foreign co-workers on using US-based cloud services.</p>
+
+<p>Not just on the corporate level, we’re also seeing services that aim for user privacy and anonymity shutting down, including <a href="http://silentcircle.wordpress.com/2013/08/09/to-our-customers/">Silent Circle</a>, <a href="http://lavabit.com/">Lavabit</a> (now in court over <a href="http://www.wired.com/threatlevel/2013/10/lavabit_unsealed/">refusal to hand over SSL keys</a>), <a href="https://www.eff.org/deeplinks/2013/08/dea-and-nsa-team-intelligence-laundering">Silk Road</a>, and <a href="http://www.theguardian.com/world/2013/oct/04/nsa-gchq-attack-tor-network-encryption">Tor</a>.</p>
 <h2 id="what-can-we-do">What can we do?</h2>
 <p>It’s difficult to defend oneself against an attacker whose capabilities you do not know.  We should approach protecting our privacy by asking some questions, defining threat scenarios, and building defenses around that.</p>
 <h3 id="limit-government-exposure">Limit government exposure</h3>
@@ -127,6 +149,10 @@
 <p>Solutions are simply moving your business elsewhere to your own jurisdiction.  I can’t answer whether using US company’s services abroad, like <a href="https://blog.heroku.com/archives/2013/4/24/europe-region">Heroku’s european servers</a>, will or will not protect you against the US government.</p>
 
 <p>Being that hardware is getting a lot cheaper, do-it-yourself clouds like <a href="http://www.openstack.org/">OpenStack</a>, <a href="https://www.openshift.com/">OpenShift</a>, <a href="http://owncloud.org/">ownCloud</a>, <a href="http://cloudstack.apache.org/">CloudStack</a>, etc., will give you total knowledge of what is on your machines and total control of your response if and when a hacker (government or not) gets in.  I have my own personal cloud thanks to the raspberry pi.</p>
+<h3 id="know-your-neighbors">Know your neighbors</h3>
+<p>If you do decide to ‘do-it-yourself’ - know your neighbors! Where are your datacenters, where are your servers?  Who is next door?  <a href="https://fastmail.fm,%20an%20Australian%20company%20that%20offers%20email%20for%20individuals%20or%20businesses,%20recently%20%5Bposted%20about%20their%20servers%20being%20in%20the%20US%5D(http://blog.fastmail.fm/2013/10/07/fastmails-servers-are-in-the-us-what-this-means-for-you/">Fastmail</a>.  The purpose of the post was to address privacy concerns, noting that they only subjected to Australian law.  But the commendable part of that post was them talking about how despite not being subjected to US law and having encrypted everything from your keyboard to the moon and back, there are other possible ways to get data.  Specifically, they state that their “colocation providers” aka the people they share data center space with, “could be compelled to give physical access to [their] servers” as well as simple brute force physical attack.</p>
+
+<p><img class="displayed" alt="obgligatory XKCD post" src="http://imgs.xkcd.com/comics/security.png" width="650" height="550"/></p>
 
 <p>In general, though, a company’s data is not that important to governments.  It’s personal profiles that is a bit part of any kind of PRISM-like scheme.</p>
 <h3 id="as-nerds-ourselves">As nerds ourselves</h3>
