@@ -10,7 +10,7 @@ updated_at: October 7th, 2013
 
 In the light of [PRISM][prismwiki]’s [whistle blowing][whistleblowing], many folks, like [here][apology], [here][notsubjecttoamericanlaw], and [here][prismkillscloud], are questioning whether the cloud is a viable option.
 
-This write-up, originally presented at [PyCon Canada 2013][pyconca] ([slides](https://speakerdeck.com/roguelynn/prism-as-a-service-not-subject-to-american-law), and video coming soon) is a look at what PRISM is, how the cloud is affected, and how we can maintain privacy in the cloud.
+This write-up, originally presented at [PyCon Canada 2013][pyconca] ([slides](https://speakerdeck.com/roguelynn/prism-as-a-service-not-subject-to-american-law), and [video](http://pyvideo.org/video/2319/prism-as-a-service-not-subject-to-american-law)), and updated for [PyCon Ireland][pyconie] ([slides](https://speakerdeck.com/roguelynn/pycon-ireland-keynote-prism-as-a-service)), is a look at what PRISM is, how the cloud is affected, and how we can maintain privacy in the cloud.
 
 
 #### Disclaimer
@@ -213,3 +213,4 @@ Whether the NSA has “direct” access to PRISM-cooperating companies’ server
 [notsubjecttoamericanlaw]: http://www.theregister.co.uk/2013/06/08/what_about_a_us_tech_boycott/
 [prismkillscloud]: http://blogs.computerworld.com/cloud-storage/22305/why-prism-kills-cloud
 [prismwiki]: http://en.wikipedia.org/wiki/PRISM_(surveillance_program)
+[pyconie]: http://python.ie/pycon/2013/
