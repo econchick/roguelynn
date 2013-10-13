@@ -5,7 +5,7 @@
     <link rel="alternate" href="http://www.roguelynn.com/" />
     <link rel="self" href="http://www.roguelynn.com/feed.xml" type="application/atom+xml" />
     <id>http://www.roguelynn.com/</id>
-    <updated>2013-10-13T06:20:10Z</updated>
+    <updated>2013-10-13T12:29:43Z</updated>
 
     <author>
         <name>Lynn Root</name>
@@ -19,7 +19,7 @@
             <title type="html">PRISM-as-a-Service: Not Subject to American Law</title>
             <link rel="alternate" href="http://www.roguelynn.com/prism/" type="text/html" />
             <id>http://www.roguelynn.com/prism/</id>
-            <updated>2013-10-07T23:56:00Z</updated>
+            <updated>2013-10-07T12:29:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -28,7 +28,7 @@
             </author>
             <content type="html">&lt;p&gt;In the light of &lt;a href=&#34;http://en.wikipedia.org/wiki/PRISM_(surveillance_program)&#34;&gt;PRISM&lt;/a&gt;’s &lt;a href=&#34;http://www.washingtonpost.com/investigations/us-intelligence-mining-data-from-nine-us-internet-companies-in-broad-secret-program/2013/06/06/3a0c0da8-cebf-11e2-8845-d970ccb04497_story.html&#34;&gt;whistle blowing&lt;/a&gt;, many folks, like &lt;a href=&#34;http://fredlybrand.com/2013/06/23/an-apology-to-my-european-it-team/&#34;&gt;here&lt;/a&gt;, &lt;a href=&#34;http://www.theregister.co.uk/2013/06/08/what_about_a_us_tech_boycott/&#34;&gt;here&lt;/a&gt;, and &lt;a href=&#34;http://blogs.computerworld.com/cloud-storage/22305/why-prism-kills-cloud&#34;&gt;here&lt;/a&gt;, are questioning whether the cloud is a viable option.&lt;/p&gt;
 
-&lt;p&gt;This write-up, originally presented at &lt;a href=&#34;http://pycon.ca&#34;&gt;PyCon Canada 2013&lt;/a&gt; (&lt;a href=&#34;https://speakerdeck.com/roguelynn/prism-as-a-service-not-subject-to-american-law&#34;&gt;slides&lt;/a&gt;, and video coming soon) is a look at what PRISM is, how the cloud is affected, and how we can maintain privacy in the cloud.&lt;/p&gt;
+&lt;p&gt;This write-up, originally presented at &lt;a href=&#34;http://pycon.ca&#34;&gt;PyCon Canada 2013&lt;/a&gt; (&lt;a href=&#34;https://speakerdeck.com/roguelynn/prism-as-a-service-not-subject-to-american-law&#34;&gt;slides&lt;/a&gt;, and &lt;a href=&#34;http://pyvideo.org/video/2319/prism-as-a-service-not-subject-to-american-law&#34;&gt;video&lt;/a&gt;), and updated for &lt;a href=&#34;http://python.ie/pycon/2013/&#34;&gt;PyCon Ireland&lt;/a&gt; (&lt;a href=&#34;https://speakerdeck.com/roguelynn/pycon-ireland-keynote-prism-as-a-service&#34;&gt;slides&lt;/a&gt;), is a look at what PRISM is, how the cloud is affected, and how we can maintain privacy in the cloud.&lt;/p&gt;
 &lt;h4 id=&#34;disclaimer&#34;&gt;Disclaimer&lt;/h4&gt;
 &lt;p&gt;I am not a lawyer, nor have I studied law in anyway.  I’m a typical American with the &lt;a href=&#34;http://www.archives.gov/exhibits/charters/constitution.html&#34;&gt;US Constitution&lt;/a&gt; and the &lt;a href=&#34;http://www.archives.gov/exhibits/charters/bill_of_rights_transcript.html&#34;&gt;Bill of Rights&lt;/a&gt; engrained in my soul.&lt;/p&gt;
 
