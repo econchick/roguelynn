@@ -5,7 +5,7 @@
     <link rel="alternate" href="http://www.roguelynn.com/" />
     <link rel="self" href="http://www.roguelynn.com/feed.xml" type="application/atom+xml" />
     <id>http://www.roguelynn.com/</id>
-    <updated>2013-10-13T12:29:43Z</updated>
+    <updated>2013-12-30T23:18:59Z</updated>
 
     <author>
         <name>Lynn Root</name>
@@ -13,6 +13,407 @@
         <uri>http://www.roguelynn.com/</uri>
     </author>
 
+    
+        
+        <entry>
+            <title type="html">How to scapy</title>
+            <link rel="alternate" href="http://www.roguelynn.com/words/how-to-scapy/" type="text/html" />
+            <id>http://www.roguelynn.com/words/how-to-scapy/</id>
+            <updated>2013-12-11T23:13:00Z</updated>
+
+            <author>
+                <name>Lynn Root</name>
+                <email>lynn@lynnroot.com</email>
+                <uri>http://www.roguelynn.com/</uri>
+            </author>
+            <content type="html">&lt;div class=&#34;cell border-box-sizing code_cell vbox&#34;&gt;
+    &lt;div class=&#34;input hbox&#34;&gt;
+        &lt;div class=&#34;prompt input_prompt&#34;&gt;
+        In&amp;nbsp;[1]:
+        &lt;/div&gt;
+        &lt;div class=&#34;input_area box-flex1&#34;&gt;
+            &lt;div class=&#34;highlight-ipynb&#34;&gt;
+                &lt;pre class=&#34;ipynb&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;scapy.all&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;  &lt;span class=&#34;c&#34;&gt;# this makes me cringe&lt;/span&gt;&lt;/pre&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;cell border-box-sizing code_cell vbox&#34;&gt;
+    &lt;div class=&#34;input hbox&#34;&gt;
+        &lt;div class=&#34;prompt input_prompt&#34;&gt;
+            In&amp;nbsp;[2]:
+        &lt;/div&gt;
+        &lt;div class=&#34;input_area box-flex1&#34;&gt;
+            &lt;div class=&#34;highlight-ipynb&#34;&gt;
+                &lt;pre class=&#34;ipynb&#34;&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sniff&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;iface&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;quot;en0&amp;quot;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;filter&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;quot;tcp and port 80&amp;quot;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;count&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;cell border-box-sizing code_cell vbox&#34;&gt;
+    &lt;div class=&#34;input hbox&#34;&gt;
+       &lt;div class=&#34;prompt input_prompt&#34;&gt;
+            In&amp;nbsp;[3]:
+        &lt;/div&gt;
+        &lt;div class=&#34;input_area box-flex1&#34;&gt;
+            &lt;div class=&#34;highlight-ipynb&#34;&gt;
+                &lt;pre class=&#34;ipynb&#34;&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;/pre&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;vbox output_wrapper&#34;&gt;
+        &lt;div class=&#34;output vbox&#34;&gt;
+            &lt;div class=&#34;hbox output_area&#34;&gt;
+                &lt;div class=&#34;prompt output_prompt&#34;&gt;
+                    Out[3]:
+                &lt;/div&gt;
+                &lt;div class=&#34;box-flex1 output_subarea output_pyout&#34;&gt;
+                    &lt;pre class=&#34;ipynb&#34;&gt;&amp;lt;Sniffed: TCP:10 UDP:0 ICMP:0 Other:0&amp;gt;&lt;/pre&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;cell border-box-sizing code_cell vbox&#34;&gt;
+    &lt;div class=&#34;input hbox&#34;&gt;
+        &lt;div class=&#34;prompt input_prompt&#34;&gt;In&amp;nbsp;[4]:&lt;/div&gt;
+        &lt;div class=&#34;input_area box-flex1&#34;&gt;
+            &lt;div class=&#34;highlight-ipynb&#34;&gt;
+                &lt;pre class=&#34;ipynb&#34;&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;res&lt;/span&gt;&lt;/pre&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;vbox output_wrapper&#34;&gt;
+        &lt;div class=&#34;output vbox&#34;&gt;
+            &lt;div class=&#34;hbox output_area&#34;&gt;
+                &lt;div class=&#34;prompt output_prompt&#34;&gt;Out[4]:&lt;/div&gt;
+                &lt;div class=&#34;box-flex1 output_subarea output_pyout&#34;&gt;
+                    &lt;pre class=&#34;ipynb&#34;&gt;[&amp;lt;Ether  dst=00:1d:70:df:2d:11 src=14:10:9f:e1:54:9b type=0x800 |&amp;lt;IP  version=4L ihl=5L tos=0x0 len=64 id=650 flags=DF frag=0L ttl=64 proto=tcp chksum=0x9f88 src=10.25.3.61 dst=184.73.211.6 options=[] |&amp;lt;TCP  sport=53491 dport=http seq=3474155615 ack=0 dataofs=11L reserved=0L flags=S window=65535 chksum=0xecd6 urgptr=0 options=[(&amp;apos;MSS&amp;apos;, 1460), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;WScale&amp;apos;, 4), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;Timestamp&amp;apos;, (1224433615, 0)), (&amp;apos;SAckOK&amp;apos;, &amp;apos;&amp;apos;), (&amp;apos;EOL&amp;apos;, None)] |&amp;gt;&amp;gt;&amp;gt;,&lt;p&gt;&amp;lt;Ether  dst=00:1d:70:df:2d:11 src=14:10:9f:e1:54:9b type=0x800 |&amp;lt;IP  version=4L ihl=5L tos=0x0 len=64 id=41196 flags=DF frag=0L ttl=64 proto=tcp chksum=0xb59a src=10.25.3.61 dst=50.31.164.188 options=[] |&amp;lt;TCP  sport=53492 dport=http seq=3315328916 ack=0 dataofs=11L reserved=0L flags=S window=65535 chksum=0x2b8d urgptr=0 options=[(&amp;apos;MSS&amp;apos;, 1460), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;WScale&amp;apos;, 4), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;Timestamp&amp;apos;, (1224433615, 0)), (&amp;apos;SAckOK&amp;apos;, &amp;apos;&amp;apos;), (&amp;apos;EOL&amp;apos;, None)] |&amp;gt;&amp;gt;&amp;gt;,&lt;p&gt;&amp;lt;Ether  dst=00:1d:70:df:2d:11 src=14:10:9f:e1:54:9b type=0x800 |&amp;lt;IP  version=4L ihl=5L tos=0x0 len=64 id=40761 flags=DF frag=0L ttl=64 proto=tcp chksum=0xb74d src=10.25.3.61 dst=50.31.164.188 options=[] |&amp;lt;TCP  sport=53493 dport=http seq=700164627 ack=0 dataofs=11L reserved=0L flags=S window=65535 chksum=0x4ee urgptr=0 options=[(&amp;apos;MSS&amp;apos;, 1460), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;WScale&amp;apos;, 4), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;Timestamp&amp;apos;, (1224433615, 0)), (&amp;apos;SAckOK&amp;apos;, &amp;apos;&amp;apos;), (&amp;apos;EOL&amp;apos;, None)] |&amp;gt;&amp;gt;&amp;gt;,&lt;p&gt;&amp;lt;Ether  dst=00:1d:70:df:2d:11 src=14:10:9f:e1:54:9b type=0x800 |&amp;lt;IP  version=4L ihl=5L tos=0x0 len=64 id=26980 flags=DF frag=0L ttl=64 proto=tcp chksum=0x38ae src=10.25.3.61 dst=184.73.211.6 options=[] |&amp;lt;TCP  sport=53494 dport=http seq=2552994569 ack=0 dataofs=11L reserved=0L flags=S window=65535 chksum=0xf110 urgptr=0 options=[(&amp;apos;MSS&amp;apos;, 1460), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;WScale&amp;apos;, 4), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;Timestamp&amp;apos;, (1224433616, 0)), (&amp;apos;SAckOK&amp;apos;, &amp;apos;&amp;apos;), (&amp;apos;EOL&amp;apos;, None)] |&amp;gt;&amp;gt;&amp;gt;,&lt;p&gt;&amp;lt;Ether  dst=00:1d:70:df:2d:11 src=14:10:9f:e1:54:9b type=0x800 |&amp;lt;IP  version=4L ihl=5L tos=0x0 len=64 id=48861 flags=DF frag=0L ttl=64 proto=tcp chksum=0xe334 src=10.25.3.61 dst=184.73.211.6 options=[] |&amp;lt;TCP  sport=53495 dport=http seq=1279463156 ack=0 dataofs=11L reserved=0L flags=S window=65535 chksum=0xc90d urgptr=0 options=[(&amp;apos;MSS&amp;apos;, 1460), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;WScale&amp;apos;, 4), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;Timestamp&amp;apos;, (1224433616, 0)), (&amp;apos;SAckOK&amp;apos;, &amp;apos;&amp;apos;), (&amp;apos;EOL&amp;apos;, None)] |&amp;gt;&amp;gt;&amp;gt;,&lt;p&gt;&amp;lt;Ether  dst=00:1d:70:df:2d:11 src=14:10:9f:e1:54:9b type=0x800 |&amp;lt;IP  version=4L ihl=5L tos=0x0 len=64 id=14036 flags=DF frag=0L ttl=64 proto=tcp chksum=0x6b3e src=10.25.3.61 dst=184.73.211.6 options=[] |&amp;lt;TCP  sport=53496 dport=http seq=2445014061 ack=0 dataofs=11L reserved=0L flags=S window=65535 chksum=0x9e5a urgptr=0 options=[(&amp;apos;MSS&amp;apos;, 1460), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;WScale&amp;apos;, 4), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;Timestamp&amp;apos;, (1224433616, 0)), (&amp;apos;SAckOK&amp;apos;, &amp;apos;&amp;apos;), (&amp;apos;EOL&amp;apos;, None)] |&amp;gt;&amp;gt;&amp;gt;,&lt;p&gt;&amp;lt;Ether  dst=00:1d:70:df:2d:11 src=14:10:9f:e1:54:9b type=0x800 |&amp;lt;IP  version=4L ihl=5L tos=0x0 len=64 id=60321 flags=DF frag=0L ttl=64 proto=tcp chksum=0xb670 src=10.25.3.61 dst=184.73.211.6 options=[] |&amp;lt;TCP  sport=53497 dport=http seq=405324467 ack=0 dataofs=11L reserved=0L flags=S window=65535 chksum=0x4967 urgptr=0 options=[(&amp;apos;MSS&amp;apos;, 1460), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;WScale&amp;apos;, 4), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;Timestamp&amp;apos;, (1224433616, 0)), (&amp;apos;SAckOK&amp;apos;, &amp;apos;&amp;apos;), (&amp;apos;EOL&amp;apos;, None)] |&amp;gt;&amp;gt;&amp;gt;,&lt;p&gt;&amp;lt;Ether  dst=00:1d:70:df:2d:11 src=14:10:9f:e1:54:9b type=0x800 |&amp;lt;IP  version=4L ihl=5L tos=0x0 len=64 id=34902 flags=DF frag=0L ttl=64 proto=tcp chksum=0x19bc src=10.25.3.61 dst=184.73.211.6 options=[] |&amp;lt;TCP  sport=53498 dport=http seq=3477655716 ack=0 dataofs=11L reserved=0L flags=S window=65535 chksum=0x8454 urgptr=0 options=[(&amp;apos;MSS&amp;apos;, 1460), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;WScale&amp;apos;, 4), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;Timestamp&amp;apos;, (1224433616, 0)), (&amp;apos;SAckOK&amp;apos;, &amp;apos;&amp;apos;), (&amp;apos;EOL&amp;apos;, None)] |&amp;gt;&amp;gt;&amp;gt;,&lt;p&gt;&amp;lt;Ether  dst=00:1d:70:df:2d:11 src=14:10:9f:e1:54:9b type=0x800 |&amp;lt;IP  version=4L ihl=5L tos=0x0 len=64 id=31060 flags=DF frag=0L ttl=64 proto=tcp chksum=0xd487 src=10.25.3.61 dst=192.33.31.101 options=[] |&amp;lt;TCP  sport=53499 dport=http seq=3025988404 ack=0 dataofs=11L reserved=0L flags=S window=65535 chksum=0x3030 urgptr=0 options=[(&amp;apos;MSS&amp;apos;, 1460), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;WScale&amp;apos;, 4), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;Timestamp&amp;apos;, (1224433689, 0)), (&amp;apos;SAckOK&amp;apos;, &amp;apos;&amp;apos;), (&amp;apos;EOL&amp;apos;, None)] |&amp;gt;&amp;gt;&amp;gt;,&lt;p&gt;&amp;lt;Ether  dst=00:1d:70:df:2d:11 src=14:10:9f:e1:54:9b type=0x800 |&amp;lt;IP  version=4L ihl=5L tos=0x0 len=64 id=33529 flags=DF frag=0L ttl=64 proto=tcp chksum=0xcae2 src=10.25.3.61 dst=192.33.31.101 options=[] |&amp;lt;TCP  sport=53500 dport=http seq=1607594496 ack=0 dataofs=11L reserved=0L flags=S window=65535 chksum=0x7dee urgptr=0 options=[(&amp;apos;MSS&amp;apos;, 1460), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;WScale&amp;apos;, 4), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;Timestamp&amp;apos;, (1224433689, 0)), (&amp;apos;SAckOK&amp;apos;, &amp;apos;&amp;apos;), (&amp;apos;EOL&amp;apos;, None)] |&amp;gt;&amp;gt;&amp;gt;]
+                     &lt;/pre&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;cell border-box-sizing code_cell vbox&#34;&gt;
+    &lt;div class=&#34;input hbox&#34;&gt;
+        &lt;div class=&#34;prompt input_prompt&#34;&gt;In&amp;nbsp;[5]:&lt;/div&gt;
+        &lt;div class=&#34;input_area box-flex1&#34;&gt;
+            &lt;div class=&#34;highlight-ipynb&#34;&gt;
+                &lt;pre class=&#34;ipynb&#34;&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;res&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;c&#34;&gt;# first packet&lt;/span&gt;&lt;/pre&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;vbox output_wrapper&#34;&gt;
+        &lt;div class=&#34;output vbox&#34;&gt;
+            &lt;div class=&#34;hbox output_area&#34;&gt;
+                &lt;div class=&#34;prompt output_prompt&#34;&gt;Out[5]:&lt;/div&gt;
+                &lt;div class=&#34;box-flex1 output_subarea output_pyout&#34;&gt;
+                    &lt;pre class=&#34;ipynb&#34;&gt;&amp;lt;Ether  dst=00:1d:70:df:2d:11 src=14:10:9f:e1:54:9b type=0x800 |&amp;lt;IP  version=4L ihl=5L tos=0x0 len=64 id=650 flags=DF frag=0L ttl=64 proto=tcp chksum=0x9f88 src=10.25.3.61 dst=184.73.211.6 options=[] |&amp;lt;TCP  sport=53491 dport=http seq=3474155615 ack=0 dataofs=11L reserved=0L flags=S window=65535 chksum=0xecd6 urgptr=0 options=[(&amp;apos;MSS&amp;apos;, 1460), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;WScale&amp;apos;, 4), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;Timestamp&amp;apos;, (1224433615, 0)), (&amp;apos;SAckOK&amp;apos;, &amp;apos;&amp;apos;), (&amp;apos;EOL&amp;apos;, None)] |&amp;gt;&amp;gt;&amp;gt;&lt;/pre&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;cell border-box-sizing code_cell vbox&#34;&gt;
+    &lt;div class=&#34;input hbox&#34;&gt;
+        &lt;div class=&#34;prompt input_prompt&#34;&gt;In&amp;nbsp;[6]:&lt;/div&gt;
+        &lt;div class=&#34;input_area box-flex1&#34;&gt;
+            &lt;div class=&#34;highlight-ipynb&#34;&gt;
+                &lt;pre class=&#34;ipynb&#34;&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;res&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;/pre&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;vbox output_wrapper&#34;&gt;
+        &lt;div class=&#34;output vbox&#34;&gt;
+            &lt;div class=&#34;hbox output_area&#34;&gt;
+                &lt;div class=&#34;prompt output_prompt&#34;&gt;Out[6]:&lt;/div&gt;
+                &lt;div class=&#34;box-flex1 output_subarea output_pyout&#34;&gt;
+                    &lt;pre class=&#34;ipynb&#34;&gt;
+###[ Ethernet ]###
+  dst       = 00:1d:70:df:2d:11
+  src       = 14:10:9f:e1:54:9b
+  type      = 0x800
+###[ IP ]###
+     version   = 4L
+     ihl       = 5L
+     tos       = 0x0
+     len       = 64
+     id        = 650
+     flags     = DF
+     frag      = 0L
+     ttl       = 64
+     proto     = tcp
+     chksum    = 0x9f88
+     src       = 10.25.3.61
+     dst       = 184.73.211.6
+     \options   \
+###[ TCP ]###
+        sport     = 53491
+        dport     = http
+        seq       = 3474155615
+        ack       = 0
+        dataofs   = 11L
+        reserved  = 0L
+        flags     = S
+        window    = 65535
+        chksum    = 0xecd6
+        urgptr    = 0
+        options   = [(&amp;apos;MSS&amp;apos;, 1460), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;WScale&amp;apos;, 4), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;Timestamp&amp;apos;, (1224433615, 0)), (&amp;apos;SAckOK&amp;apos;, &amp;apos;&amp;apos;), (&amp;apos;EOL&amp;apos;, None)]&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;/div&gt;&lt;br&gt;
+&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/div&gt;&lt;/p&gt;
+</content>
+        </entry>
+        
+    
+        
+        <entry>
+            <title type="html">How to spy with Python: so easy, the NSA can do it</title>
+            <link rel="alternate" href="http://www.roguelynn.com/spy/" type="text/html" />
+            <id>http://www.roguelynn.com/spy/</id>
+            <updated>2013-11-23T18:55:00Z</updated>
+
+            <author>
+                <name>Lynn Root</name>
+                <email>lynn@lynnroot.com</email>
+                <uri>http://www.roguelynn.com/</uri>
+            </author>
+            <content type="html">&lt;p&gt;I’ve previously spoken about &lt;a href=&#34;http://www.roguelynn.com/prism&#34;&gt;PRISM&lt;/a&gt; at both &lt;a href=&#34;http://pycon.ca&#34;&gt;PyCon Canada&lt;/a&gt; and &lt;a href=&#34;http://python.ie/pycon/2013/&#34;&gt;PyCon Ireland&lt;/a&gt;.  For &lt;a href=&#34;http://blah&#34;&gt;PyConES&lt;/a&gt; in Madrid this year, I decided to combine the PRISM talk with a bit of Python.  Because, why not?  Slides from PyConES can be found &lt;a href=&#34;http://blah&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h4 id=&#34;disclaimer&#34;&gt;Disclaimer&lt;/h4&gt;
+&lt;p&gt;I am not a lawyer, nor have I studied law in anyway.  I’m a typical American with the &lt;a href=&#34;http://www.archives.gov/exhibits/charters/constitution.html&#34;&gt;US Constitution&lt;/a&gt; and the &lt;a href=&#34;http://www.archives.gov/exhibits/charters/bill_of_rights_transcript.html&#34;&gt;Bill of Rights&lt;/a&gt; engrained in my soul.&lt;/p&gt;
+
+&lt;p&gt;Nor have I had any experience in three-letter-government-agencies-that-are-out-to-get-you, or currently work/have worked for a company involved in PRISM (or at least not that I’m aware of).&lt;/p&gt;
+
+&lt;p&gt;This post has no special insight nor conspiracy theories, just painting a story from publicly available research.&lt;/p&gt;
+&lt;h4 id=&#34;overview-amp-context&#34;&gt;Overview &amp;amp; Context&lt;/h4&gt;
+&lt;p&gt;To read more about what PRISM and XKeyScore is, I detail the history and context in my &lt;a href=&#34;http://www.roguelynn.com/prism&#34;&gt;previous post&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;how-to-spy-with-python&#34;&gt;How to Spy with Python&lt;/h2&gt;
+&lt;p&gt;Below are a few proof of concepts that take the published spy queries on the NSA’s XKeyScore slides.  These are meant to be simplistic and not scalable.&lt;/p&gt;
+&lt;h3 id=&#34;tools-used&#34;&gt;Tools used&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://blah&#34;&gt;Scapy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blah&#34;&gt;pygeoip&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blah&#34;&gt;geojson&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blah&#34;&gt;python-nmap&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;quick-how-to-with-scapy&#34;&gt;Quick How-to with Scapy&lt;/h3&gt;
+&lt;p&gt;First off, what makes me cringe, per Scapy’s &lt;a href=&#34;http://blah&#34;&gt;documentation&lt;/a&gt;:&lt;/p&gt;
+
+&lt;pre class=&#34;ipynb&#34;&gt;
+&gt;&gt;&gt; from scapy.all import *
+&lt;/pre&gt;
+
+&lt;p&gt;or from the terminal:&lt;/p&gt;
+
+&lt;pre class=&#34;ipynb&#34;&gt;
+$ sudo scapy
+&lt;/pre&gt;
+
+&lt;p&gt;To sniff the wireless, Scapy has a sniff function.  Here, tell Scapy to sniff on my wifi card, &lt;code&gt;en0&lt;/code&gt;, which can be found via &lt;code&gt;ifconfig&lt;/code&gt; functionality in your terminal.  If you don’t specify an interface, it will default to all listed when you type &lt;code&gt;conf&lt;/code&gt; in the terminal.&lt;/p&gt;
+
+&lt;p&gt;I’m filtering by TCP traffic and listing on port 80 only.  As well, I’m limited the sniff packets to only 10.  If you do not limit the number of packets collected, then it will continue until you interrupt the process.&lt;/p&gt;
+&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; a = sniff(iface=&amp;#34;en0&amp;#34;, filter=&amp;#34;tcp and port 80&amp;#34;, count=10)
+&amp;gt;&amp;gt;&amp;gt; a
+&amp;lt;Sniffed: TCP:10 UDP:0 ICMP:0 Other:0&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To see all the packets, &lt;code&gt;a.res&lt;/code&gt; returns a list with a barf of information, snipped below:&lt;/p&gt;
+&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; a.res
+
+[&amp;lt;Ether  dst=00:1d:70:df:2d:11 src=14:10:9f:e1:54:9b type=0x800 |&amp;lt;IP  version=4L ihl=5L tos=0x0 len=64 id=650 flags=DF frag=0L ttl=64 proto=tcp chksum=0x9f88 src=10.25.3.61 dst=184.73.211.6 options=[] |&amp;lt;TCP  sport=53491 dport=http seq=3474155615 ack=0 dataofs=11L reserved=0L flags=S window=65535 chksum=0xecd6 urgptr=0 options=[(&amp;#39;MSS&amp;#39;, 1460), (&amp;#39;NOP&amp;#39;, None), (&amp;#39;WScale&amp;#39;, 4), (&amp;#39;NOP&amp;#39;, None), (&amp;#39;NOP&amp;#39;, None), (&amp;#39;Timestamp&amp;#39;, (1224433615, 0)), (&amp;#39;SAckOK&amp;#39;, &amp;#39;&amp;#39;), (&amp;#39;EOL&amp;#39;, None)] |&amp;gt;&amp;gt;&amp;gt;,
+# &amp;lt;--snip--&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Looking at the first packet:&lt;/p&gt;
+&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; a.res[0]  # first packet
+&amp;lt;Ether  dst=00:1d:70:df:2d:11 src=14:10:9f:e1:54:9b type=0x800 |&amp;lt;IP  version=4L ihl=5L tos=0x0 len=64 id=650 flags=DF frag=0L ttl=64 proto=tcp chksum=0x9f88 src=10.25.3.61 dst=184.73.211.6 options=[] |&amp;lt;TCP  sport=53491 dport=http seq=3474155615 ack=0 dataofs=11L reserved=0L flags=S window=65535 chksum=0xecd6 urgptr=0 options=[(&amp;#39;MSS&amp;#39;, 1460), (&amp;#39;NOP&amp;#39;, None), (&amp;#39;WScale&amp;#39;, 4), (&amp;#39;NOP&amp;#39;, None), (&amp;#39;NOP&amp;#39;, None), (&amp;#39;Timestamp&amp;#39;, (1224433615, 0)), (&amp;#39;SAckOK&amp;#39;, &amp;#39;&amp;#39;), (&amp;#39;EOL&amp;#39;, None)] |&amp;gt;&amp;gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And with Scapy’s “pretty printing” function, &lt;code&gt;show&lt;/code&gt;:&lt;/p&gt;
+&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; a.res[0].show()
+###[ Ethernet ]###
+    dst       = 00:1d:70:df:2d:11
+    src       = 14:10:9f:e1:54:9b
+    type      = 0x800
+  ###[ IP ]###
+       version   = 4L
+       ihl       = 5L
+       tos       = 0x0
+       len       = 64
+       id        = 650
+       flags     = DF
+       frag      = 0L
+       ttl       = 64
+       proto     = tcp
+       chksum    = 0x9f88
+       src       = 10.25.3.61
+       dst       = 184.73.211.6
+       \options   \
+   ###[ TCP ]###
+          sport     = 53491
+          dport     = http
+          seq       = 3474155615
+          ack       = 0
+          dataofs   = 11L
+          reserved  = 0L
+          flags     = S
+          window    = 65535
+          chksum    = 0xecd6
+          urgptr    = 0
+          options   = [(&amp;#39;MSS&amp;#39;, 1460), (&amp;#39;NOP&amp;#39;, None), (&amp;#39;WScale&amp;#39;, 4), (&amp;#39;NOP&amp;#39;, None), (&amp;#39;NOP&amp;#39;, None), (&amp;#39;Timestamp&amp;#39;, (1224433615, 0)), (&amp;#39;SAckOK&amp;#39;, &amp;#39;&amp;#39;), (&amp;#39;EOL&amp;#39;, None)]
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;query-1-show-me-everyone-that-has-searched-for-y-term&#34;&gt;Query 1: Show me everyone that has searched for $Y term&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Filter for tcp &amp;amp; host = google.com&lt;/li&gt;
+&lt;li&gt;Parse packets for &amp;quot;q=&amp;quot; plus the search term, eg &amp;quot;q=ice+cream&amp;quot; (note: URL encoding!)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Again, the ugly import:&lt;br&gt;
+&lt;code&gt;python&lt;br&gt;
+from scapy.all import *&lt;br&gt;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;We filter for TCP traffic and for host &lt;code&gt;search.yahoo.com&lt;/code&gt;.  I chose Yahoo because they do not send search queries over HTTPS, which Google now does (at least in the US).&lt;/p&gt;
+
+&lt;p&gt;You can either sniff online:&lt;/p&gt;
+&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; pkts = sniff(filter=&amp;#34;tcp and host search.yahoo.com&amp;#34;, count=300)
+&amp;gt;&amp;gt;&amp;gt; # saving for later
+&amp;gt;&amp;gt;&amp;gt; wrpcap(&amp;#34;data/yahoo_search.cap&amp;#34;, pkts)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Or use a previously saved pcap file (from Scapy’s &lt;code&gt;wrpcap&lt;/code&gt; function or from wireshark/tshark/tcpdump/etc.):&lt;/p&gt;
+&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;# importing pcap file
+&amp;gt;&amp;gt;&amp;gt; sample_http = &amp;#39;data/yahoo_search.cap&amp;#39;
+&amp;gt;&amp;gt;&amp;gt; pkts = sniff(offline=sample_http)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I see that I’ve collected 300 TCP packets:&lt;/p&gt;
+&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; pkts
+&amp;lt;Sniffed: TCP:300 UDP:0 ICMP:0 Other:0&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Using Scapy’s &lt;code&gt;nsummary&lt;/code&gt; function (output snipped a bit):&lt;/p&gt;
+&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; pkts.nsummary()
+0000 Ether / IP / TCP 10.25.3.61:53261 &amp;gt; 74.6.239.58:http S
+0001 Ether / IP / TCP 10.25.3.61:53262 &amp;gt; 74.6.239.58:http S
+0002 Ether / IP / TCP 10.25.3.61:53263 &amp;gt; 74.6.239.58:http S
+0003 Ether / IP / TCP 74.6.239.58:http &amp;gt; 10.25.3.61:53261 SA
+0004 Ether / IP / TCP 10.25.3.61:53261 &amp;gt; 74.6.239.58:http A
+# &amp;lt;--snip--&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I saw that packet 79 had A / Raw (as opposed to A / Raw / Padding or something else) from the &lt;code&gt;pkts.nsummary()&lt;/code&gt; command.  Taking a look at that packet in particular:&lt;/p&gt;
+&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;pkts[79].show()
+
+     ###[ Ethernet ]###
+       dst       = 00:1d:70:df:2d:11
+       src       = 14:10:9f:e1:54:9b
+       type      = 0x800
+     ###[ IP ]###
+          version   = 4L
+          ihl       = 5L
+          tos       = 0x0
+          len       = 1420
+          id        = 51853
+          flags     = DF
+          frag      = 0L
+          ttl       = 64
+          proto     = tcp
+          chksum    = 0x2448
+          src       = 10.25.3.61
+          dst       = 74.6.239.58
+          \options   \
+     ###[ TCP ]###
+             sport     = 53261
+             dport     = http
+             seq       = 3423577226
+             ack       = 4075984347
+             dataofs   = 8L
+             reserved  = 0L
+             flags     = A
+             window    = 8192
+             chksum    = 0xe4ca
+             urgptr    = 0
+             options   = [(&amp;#39;NOP&amp;#39;, None), (&amp;#39;NOP&amp;#39;, None), (&amp;#39;Timestamp&amp;#39;, (1222799014, 196990643))]
+     ###[ Raw ]###
+                load      = &amp;#39;GET /search;_ylt=A0oG7mGUD49SBxcA3WpXNyoA;_ylc=X1MDMjc2NjY3OQRfcgMyBGJjawNmbWVsb2s1OTRqZ3UyJTI2YiUzRDQlMjZkJTNEOU15M2RnMXBZRUtpdVJyeG9BWlNlRGxLcjJFLSUyNnMlM0Q4ciUyNmklM0RTSjdlY2Y4ZURZakZnbS5DRWRucgRjc3JjcHZpZANHcC5VRjBnZXVyRDdPcmloVWtuRHdnWUFYWjUwR1ZLUEQ1UUFCc3hpBGZyA3lmcC10LTE0MARmcjIDc2ItdG9wBGdwcmlkA2NlVHN4WXhzUWIuOW51aGNlWG9TTUEEbXRlc3RpZANBRDAxJTNEU01FMzQxJTI2QURTUlAlM0RBRFNSUEMxJTI2QVNTVCUzRFZJUDI4OSUyNk1TRlQlM0RNU1kwMTAlMjZVSTAxJTNEVUlDMSUyNlVOSSUzRFJDRjA0NARuX3JzbHQDMTAEbl9zdWdnAzgEb3JpZ2luA3NlYXJjaC55YWhvby5jb20EcG9zAzAEcHFzdHIDBHBxc3RybAMEcXN0cmwDNgRxdWVyeQNNYWRyaWQEdF9zdG1wAzEzODUxMDczNTU4MzEEdnRlc3RpZANVSUMx?p=Madrid&amp;amp;fr2=sb-top&amp;amp;fr=yfp-t-140 HTTP/1.1\r\nHost: search.yahoo.com\r\nConnection: keep-alive\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\r\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36\r\nReferer: http://search.yahoo.com/search;_ylt=ApD.LW7jivmrlmZzNKxChqqbvZx4?p=Python&amp;amp;toggle=1&amp;amp;cop=mss&amp;amp;ei=UTF-8&amp;amp;fr=yfp-t-140\r\nAccept-Encoding: gzip,deflate,sdch\r\nAccept-Language: en-US,en;q=0.8\r\nCookie: B=fmelok594jgu2&amp;amp;b=4&amp;amp;d=9My3dg1pYEKiuRrxoAZSeDlKr2E-&amp;amp;s=8r&amp;amp;i=SJ7ecf8eDYjFgm.CEdnr; AO=o=0; YLS=v=1&amp;amp;p=1&amp;amp;n=1; F=a=I.qqZFgMvSp1SMQ7oNaJGIBu5DAJGO25SeRxXSKxg6_KZLWHQMHEkeFQrEOxAH9BOvMhwKs-&amp;amp;b=.hBp; Y=v=1&amp;amp;n=fr6nunkr11qks&amp;amp;l=he6k4bodd/o&amp;amp;p=f2m0&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Let’s just grab the “Raw” layer specifically:&lt;/p&gt;
+&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; pkts[79].getlayer(Raw)
+&amp;lt;Raw  load=&amp;#39;GET /search;_ylt=A0oG7mGUD49SBxcA3WpXNyoA;_ylc=X1MDMjc2NjY3OQRfcgMyBGJjawNmbWVsb2s1OTRqZ3UyJTI2YiUzRDQlMjZkJTNEOU15M2RnMXBZRUtpdVJyeG9BWlNlRGxLcjJFLSUyNnMlM0Q4ciUyNmklM0RTSjdlY2Y4ZURZakZnbS5DRWRucgRjc3JjcHZpZANHcC5VRjBnZXVyRDdPcmloVWtuRHdnWUFYWjUwR1ZLUEQ1UUFCc3hpBGZyA3lmcC10LTE0MARmcjIDc2ItdG9wBGdwcmlkA2NlVHN4WXhzUWIuOW51aGNlWG9TTUEEbXRlc3RpZANBRDAxJTNEU01FMzQxJTI2QURTUlAlM0RBRFNSUEMxJTI2QVNTVCUzRFZJUDI4OSUyNk1TRlQlM0RNU1kwMTAlMjZVSTAxJTNEVUlDMSUyNlVOSSUzRFJDRjA0NARuX3JzbHQDMTAEbl9zdWdnAzgEb3JpZ2luA3NlYXJjaC55YWhvby5jb20EcG9zAzAEcHFzdHIDBHBxc3RybAMEcXN0cmwDNgRxdWVyeQNNYWRyaWQEdF9zdG1wAzEzODUxMDczNTU4MzEEdnRlc3RpZANVSUMx?p=Madrid&amp;amp;fr2=sb-top&amp;amp;fr=yfp-t-140 HTTP/1.1\r\nHost: search.yahoo.com\r\nConnection: keep-alive\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\r\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36\r\nReferer: http://search.yahoo.com/search;_ylt=ApD.LW7jivmrlmZzNKxChqqbvZx4?p=Python&amp;amp;toggle=1&amp;amp;cop=mss&amp;amp;ei=UTF-8&amp;amp;fr=yfp-t-140\r\nAccept-Encoding: gzip,deflate,sdch\r\nAccept-Language: en-US,en;q=0.8\r\nCookie: B=fmelok594jgu2&amp;amp;b=4&amp;amp;d=9My3dg1pYEKiuRrxoAZSeDlKr2E-&amp;amp;s=8r&amp;amp;i=SJ7ecf8eDYjFgm.CEdnr; AO=o=0; YLS=v=1&amp;amp;p=1&amp;amp;n=1; F=a=I.qqZFgMvSp1SMQ7oNaJGIBu5DAJGO25SeRxXSKxg6_KZLWHQMHEkeFQrEOxAH9BOvMhwKs-&amp;amp;b=.hBp; Y=v=1&amp;amp;n=fr6nunkr11qks&amp;amp;l=he6k4bodd/o&amp;amp;p=f2m0&amp;#39; |&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We start to see something a little bit more interesting.  I’m going to parse this a little bit.  When physically searching via Yahoo, I noticed that the search term comes after &lt;code&gt;?p=&lt;/code&gt; and before &lt;code&gt;&amp;amp;&lt;/code&gt; in my browser, so I’ll do some splitting:&lt;/p&gt;
+&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; first_query = pkts[79].getlayer(Raw)
+&amp;gt;&amp;gt;&amp;gt; print first_query.fields.get(&amp;#39;load&amp;#39;).split(&amp;#39;?p=&amp;#39;)[1].split(&amp;#39;&amp;amp;&amp;#39;)[0]
+Madrid
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ha! I searched for Madrid!  Let’s check some other queries out: &lt;/p&gt;
+&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; second_query = pkts[148].getlayer(Raw)
+&amp;gt;&amp;gt;&amp;gt; print second_query.fields.get(&amp;#39;load&amp;#39;).split(&amp;#39;?p=&amp;#39;)[1].split(&amp;#39;&amp;amp;&amp;#39;)[0]
+I+love+chocolate
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I misspelled my favorite coffee place when searching:&lt;/p&gt;
+&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; third_query = pkts[227].getlayer(Raw)
+&amp;gt;&amp;gt;&amp;gt; print third_query.fields.get(&amp;#39;load&amp;#39;).split(&amp;#39;?p=&amp;#39;)[1].split(&amp;#39;&amp;amp;&amp;#39;)[0]
+Blue+Bottle+Coffe
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;query-2-how-me-everyone-from-x-country-that-has-visited-y-extremist-forum&#34;&gt;Query 2: How me everyone from $X country that has visited $Y extremist forum&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Filter for source IP &amp;amp; destination IP, and traceroute those IPs:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;iframe src=&#34;http://nbviewer.ipython.org/7588949&#34; width=&#34;900&#34; height=&#34;500&#34;&gt;&lt;/iframe&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Filter for GET term like above:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;iframe src=&#34;http://nbviewer.ipython.org/7589025&#34; width=&#34;900&#34; height=&#34;500&#34;&gt;&lt;/iframe&gt;
+&lt;h4 id=&#34;query-3-give-me-all-emails-with-x-in-the-body-of-the-email&#34;&gt;Query 3: Give me all emails with $X in the body of the email&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Filter for HTTP traffic and &amp;quot;POST&amp;quot; for sent - if sent via web interface then will probably be over HTTPS (save packet for decryption later!)&lt;/li&gt;
+&lt;li&gt;OR Filter for port 25&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Once packets are collected, parse packets&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Download and save this &lt;a href=&#34;http://wiki.wireshark.org/SampleCaptures?action=AttachFile&amp;amp;do=get&amp;amp;target=smtp.pcap&#34;&gt;sample pcap file&lt;/a&gt; from Wireskark’s &lt;a href=&#34;http://wiki.wireshark.org/SampleCaptures&#34;&gt;Sample Captures&lt;/a&gt; for an example of smtp traffic.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Now parsing and putting together the raw data (decoded base64 if needed), you can do a simple search for key terms.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;iframe src=&#34;http://nbviewer.ipython.org/7589033&#34; width=&#34;900&#34; height=&#34;500&#34;&gt;&lt;/iframe&gt;
+&lt;h4 id=&#34;query-4-give-me-pgp-usage-from-z-country&#34;&gt;Query 4: Give me PGP usage from $Z country&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;br&gt;
+Very similar to above, sniff for SMTP traffic.  Then just parse/search for &amp;#39;multipart/encrypted&amp;#39; and/or &amp;#39;protocol=&amp;quot;application/pgp-encrypted&amp;quot;&amp;#39; within &amp;quot;Content-Type&amp;quot; header of the email.  This just tells you that the email has been encrypted with PGP.  Now, we already have a database collections/hosts of PGP/GPG keys, so I&amp;#39;m sure the NSA is getting their cryptographers on it!&lt;/p&gt;
+
+&lt;iframe src=&#34;http://nbviewer.ipython.org/7589056&#34; width=&#34;900&#34; height=&#34;500&#34;&gt;&lt;/iframe&gt;
+&lt;h4 id=&#34;query-5-show-me-chats-for-x-user-during-y-timeframe&#34;&gt;Query 5: Show me chats for $X user during $Y timeframe&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;br&gt;
+You will need to disable your SSL connection to the chat server.  Then just sniff for XMPP traffic (Jabber, Facebook, gchat) or IRC traffic (TCP + port 6667 (typically)).&lt;/p&gt;
+
+&lt;iframe src=&#34;http://nbtest.herokuapp.com/gist/econchick/7589075&#34; width=&#34;900&#34; height=&#34;500&#34;&gt;&lt;/iframe&gt;
+&lt;h4 id=&#34;query-6-find-all-exploitable-machines-in-z-country&#34;&gt;Query 6: Find all exploitable machines in $Z Country&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Create a port sniffer - responses return OS&lt;/li&gt;
+&lt;li&gt;Geolocate machines with the resolved IP addresses&lt;/li&gt;
+&lt;li&gt;Either search for a specific machine, or combile and/or query a database needed of known exploitable machines (e.g. &lt;a href=&#34;http://www.shodanhq.com/&#34;&gt;shodan&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;iframe src=&#34;http://nbviewer.ipython.org/7589366&#34; width=&#34;900&#34; height=&#34;500&#34;&gt;&lt;/iframe&gt;
+&lt;h4 id=&#34;other-easy-tricks&#34;&gt;Other easy tricks&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;VoIP calls: protocol filter = SIP&lt;/li&gt;
+&lt;li&gt;Can easily read Chrome/Firefox/Skype sqlite databases once inside someone&amp;#39;s machine&lt;/li&gt;
+&lt;li&gt;Physical location of where you&amp;#39;ve connected to - can get the SSID via wireshark/scapy, and use wigle.net to search by SSID&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        </entry>
+        
     
         
         <entry>
