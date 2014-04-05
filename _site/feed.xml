@@ -5,7 +5,7 @@
     <link rel="alternate" href="http://www.roguelynn.com/" />
     <link rel="self" href="http://www.roguelynn.com/feed.xml" type="application/atom+xml" />
     <id>http://www.roguelynn.com/</id>
-    <updated>2014-04-05T00:48:28Z</updated>
+    <updated>2014-04-05T01:06:16Z</updated>
 
     <author>
         <name>Lynn Root</name>
@@ -15,11 +15,13 @@
 
     
         
+    
+        
         <entry>
             <title type="html">DRAFT: Spotify &amp; Python</title>
             <link rel="alternate" href="http://www.roguelynn.com/spotify-and-python/" type="text/html" />
             <id>http://www.roguelynn.com/spotify-and-python/</id>
-            <updated>2014-04-04T00:48:00Z</updated>
+            <updated>2014-04-04T00:55:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
@@ -67,7 +69,7 @@ new_set = (w.upper() for w in old_list)
 
 &lt;p&gt;There’s also a library that I should use more but is quite awesome — &lt;a href=&#34;https://docs.python.org/2/library/profile.html&#34;&gt;profile&lt;/a&gt; (along with others) where you can profile a Python file to understand how it consumes OS resources.  One that complements profile is &lt;a href=&#34;https://docs.python.org/2/library/timeit.html&#34;&gt;timeit&lt;/a&gt; to understand the time execution of some Python code.   Lastly, there’s &lt;a href=&#34;https://docs.python.org/2/library/pdb.html&#34;&gt;pdb&lt;/a&gt; — the interactive debugger that is great tool &lt;span style=&#34;text-decoration:line-through;&#34;&gt;instead of flooding your codebase with print statements&lt;/span&gt; to get in the habit of using regularly.&lt;/p&gt;
 
-&lt;p&gt;IPython notebook is sort of beyond words.  &lt;a href=&#34;http://ipython.org/&#34;&gt;IPython&lt;/a&gt; is a different Python shell that is more interactive than the standard.  The &lt;a href=&#34;http://ipython.org/notebook.html&#34;&gt;notebook&lt;/a&gt; is pretty awesome — it’s a web based interactive computational environment where you can execute code (Python &lt;em&gt;and&lt;/em&gt; Bash), write in Markdown, create graphs, and make slides.  It’s pretty awesome because I could make a notebook, give it to you, and you can go ahead and run it in your own environment.  The web server runs locally, but you can host the notebook on a server and share with others.&lt;/p&gt;
+&lt;p&gt;IPython notebook is sort of beyond words.  &lt;a href=&#34;http://ipython.org/&#34;&gt;IPython&lt;/a&gt; is a different Python shell that is more interactive than the standard.  The &lt;a href=&#34;http://ipython.org/notebook.html&#34;&gt;notebook&lt;/a&gt; is pretty awesome — it’s a web based interactive computational environment where you can execute code (Python &lt;em&gt;and&lt;/em&gt; Bash), write in Markdown, create graphs, and make slides.  It’s pretty fantastic because I could make a notebook, give it to you, and you can go ahead and run it in your own environment.  The web server runs locally, but you can host the notebook on a server and share with others.&lt;/p&gt;
 
 &lt;p&gt;Lastly, a few of my favorite &amp;amp; frequently-used 3rd party packages:&lt;/p&gt;
 
@@ -188,8 +190,12 @@ Readability counts&lt;/p&gt;
 &lt;p&gt;As I mentioned earlier, lately about 50% of our backend services are in Python, with the other 50% Java.  This is pretty much because there’s no “corporate mandate” that we must write everything in Python — that teams and squads can choose whatever language &amp;amp; tools they want.  And related to that — it’s been difficult to find good Python programmers™ so we started hiring Java programmers, which has been having a noticeable impact on the tools we select (side note — we&amp;#39;re &lt;a href=&#34;http:&#34;&gt;hiring&lt;/a&gt;).&lt;/p&gt;
 
 &lt;p&gt;Lastly, we’re hoping to include Python into our desktop client.  Right now, it’s written in C++, but it’d be nice to use Python for the business logic with C++ for the graphics/GUI elements.&lt;/p&gt;
+
+&lt;p&gt;I hope the talk I gave and this accompanying post helps give some perspective to our choices, and highlights Python’s features for product/project/processes development.&lt;/p&gt;
 </content>
         </entry>
+        
+    
         
     
         
