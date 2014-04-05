@@ -1,7 +1,7 @@
 ---
 layout: talk.html
 title: "Keynote - Open Source your Education"
-tags: [upcoming talk]
+tags: [past talk]
 talk_date: "October, 2013"
 location: "PyCon, Finland"
 conf_url: "http://fi.pycon.org/2013"

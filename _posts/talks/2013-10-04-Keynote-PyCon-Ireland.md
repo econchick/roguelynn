@@ -1,7 +1,7 @@
 ---
 layout: talk.html
 title: "Keynote - PRISM as a Service: Not Subject to American Law"
-tags: [upcoming talk]
+tags: [past talk]
 talk_date: "October, 2013"
 location: "PyCon, Ireland"
 conf_url: "http://python.ie/pycon"
