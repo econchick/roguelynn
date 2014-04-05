@@ -77,6 +77,14 @@ h4 {
     font-weight: bold;
 }
 
+h5 {
+  font-size:20px;
+  line-height: 25px;
+  padding-bottom: .3em;
+  margin-top: .7em;
+  font-weight:bold;
+}
+
 h1 small {
     font-size: 20px;
     color: #666;
@@ -170,6 +178,10 @@ a {
     color:#38a5dd;
 }
 
+a:hover, a:active {
+  text-decoration: none;
+}
+
 .gray {
     color: #999;
 }
@@ -185,8 +197,9 @@ a {
 /* Avatar (left hand size) */
 .avatar-section li {
     line-height: 23px;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
+    font-family: "Myriad Pro", myriad-pro, Verdana, serif;
+    font-weight: 100;
+    font-size: 21px;
 }
 
 .avatar-section ul {
@@ -326,7 +339,7 @@ ul.posts li {
     font-family: "Myriad Pro", myriad-pro, Verdana, serif;
     font-size: 21px;
     line-height: 32px;
-    font-weight: 400;
+    font-weight: 200;
 }
 
 ul {
@@ -459,12 +472,10 @@ pre code {
 }
 
 code {
+  color:black;
   padding: 0px 2px 0px 2px;
-  background-color: #49483e;
-  border: 1px solid #d9d9d9;
-  -webkit-box-shadow: 0px 0px 0px 2px #f2f2f2;
-  box-shadow: 0px 0px 0px 2px #f2f2f2;
-  white-space: pre;
+  background-color: #fff;
+  border: 1px solid #f8f8f8;
   /*overflow-y: scroll;*/
 }
 
@@ -475,17 +486,21 @@ q, blockquote {
     content: none; }
 
 blockquote {
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
   background: #fefefe;
-  color: #414247;
+  /*color: #414247;*/
+  color: #dd4a38;
   margin: 10px;
+  font-family: "Trebuchet MS";
   font-style: italic;
   padding: 20px;
-  padding-bottom: 3px; }
+  padding-bottom: 3px; 
+  padding-top: 4px;
+}
 
 time#talks {
   color:#7F808A;
