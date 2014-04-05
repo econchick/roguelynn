@@ -9,7 +9,7 @@
                     {% if 'upcoming talk' in post.tags %}
                     {% if not 'hidden' in post.tags %}
                             <h3 id="upcoming">{{ post.location }}</h3>
-                            <h4>{{ post.title }}</h4>
+                            <h4><a href="{{ post.conf_url }}">{{ post.title }}</a></h4>
                             <time id="talks">{{ post.talk_date }}</time>
                             <p>{{ post.excerpt }}</p>
                     {% endif %}{% endif %}
