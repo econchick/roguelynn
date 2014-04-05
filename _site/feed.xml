@@ -5,7 +5,7 @@
     <link rel="alternate" href="http://www.roguelynn.com/" />
     <link rel="self" href="http://www.roguelynn.com/feed.xml" type="application/atom+xml" />
     <id>http://www.roguelynn.com/</id>
-    <updated>2013-12-30T23:18:59Z</updated>
+    <updated>2014-04-05T00:48:28Z</updated>
 
     <author>
         <name>Lynn Root</name>
@@ -16,401 +16,178 @@
     
         
         <entry>
-            <title type="html">How to scapy</title>
-            <link rel="alternate" href="http://www.roguelynn.com/words/how-to-scapy/" type="text/html" />
-            <id>http://www.roguelynn.com/words/how-to-scapy/</id>
-            <updated>2013-12-11T23:13:00Z</updated>
+            <title type="html">DRAFT: Spotify &amp; Python</title>
+            <link rel="alternate" href="http://www.roguelynn.com/spotify-and-python/" type="text/html" />
+            <id>http://www.roguelynn.com/spotify-and-python/</id>
+            <updated>2014-04-04T00:48:00Z</updated>
 
             <author>
                 <name>Lynn Root</name>
                 <email>lynn@lynnroot.com</email>
                 <uri>http://www.roguelynn.com/</uri>
             </author>
-            <content type="html">&lt;div class=&#34;cell border-box-sizing code_cell vbox&#34;&gt;
-    &lt;div class=&#34;input hbox&#34;&gt;
-        &lt;div class=&#34;prompt input_prompt&#34;&gt;
-        In&amp;nbsp;[1]:
-        &lt;/div&gt;
-        &lt;div class=&#34;input_area box-flex1&#34;&gt;
-            &lt;div class=&#34;highlight-ipynb&#34;&gt;
-                &lt;pre class=&#34;ipynb&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;scapy.all&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;  &lt;span class=&#34;c&#34;&gt;# this makes me cringe&lt;/span&gt;&lt;/pre&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
+            <content type="html">&lt;p&gt;I just gave this as a talk at &lt;a href=&#34;http://greatwideopen.org&#34;&gt;Great Wide Open Conference&lt;/a&gt; in Atlanta, Georgia on April 3rd, 2014.  This blog post is meant to be the accompaniment to the talk; video to follow, slides are &lt;a href=&#34;http://rogue.ly/pfte&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
-&lt;div class=&#34;cell border-box-sizing code_cell vbox&#34;&gt;
-    &lt;div class=&#34;input hbox&#34;&gt;
-        &lt;div class=&#34;prompt input_prompt&#34;&gt;
-            In&amp;nbsp;[2]:
-        &lt;/div&gt;
-        &lt;div class=&#34;input_area box-flex1&#34;&gt;
-            &lt;div class=&#34;highlight-ipynb&#34;&gt;
-                &lt;pre class=&#34;ipynb&#34;&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sniff&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;iface&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;quot;en0&amp;quot;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;filter&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;quot;tcp and port 80&amp;quot;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;count&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
+&lt;p&gt;The title of the talk was “Python for the Enterprise”, which was proposed to me when invited to speak.  Sure! I said, but it was more from the point of view of a general company, rather than whatever you may associate with the word “Enterprise” (to me, I think of Red Hat :)).&lt;/p&gt;
 
-&lt;div class=&#34;cell border-box-sizing code_cell vbox&#34;&gt;
-    &lt;div class=&#34;input hbox&#34;&gt;
-       &lt;div class=&#34;prompt input_prompt&#34;&gt;
-            In&amp;nbsp;[3]:
-        &lt;/div&gt;
-        &lt;div class=&#34;input_area box-flex1&#34;&gt;
-            &lt;div class=&#34;highlight-ipynb&#34;&gt;
-                &lt;pre class=&#34;ipynb&#34;&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;/pre&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;vbox output_wrapper&#34;&gt;
-        &lt;div class=&#34;output vbox&#34;&gt;
-            &lt;div class=&#34;hbox output_area&#34;&gt;
-                &lt;div class=&#34;prompt output_prompt&#34;&gt;
-                    Out[3]:
-                &lt;/div&gt;
-                &lt;div class=&#34;box-flex1 output_subarea output_pyout&#34;&gt;
-                    &lt;pre class=&#34;ipynb&#34;&gt;&amp;lt;Sniffed: TCP:10 UDP:0 ICMP:0 Other:0&amp;gt;&lt;/pre&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
+&lt;p&gt;This &lt;span style=&#34;text-decoration:line-through;&#34;&gt;talk&lt;/span&gt; post practically wrote itself.  I was approached to talk about &lt;a href=&#34;https://developer.spotify.com/&#34;&gt;Spotify&lt;/a&gt;, for whom I love working, and Python, in which I love writing, and how Spotify uses Python.  I can&amp;#39;t think of a better topic — to convince you why Python is awesome for a company.&lt;/p&gt;
 
-&lt;div class=&#34;cell border-box-sizing code_cell vbox&#34;&gt;
-    &lt;div class=&#34;input hbox&#34;&gt;
-        &lt;div class=&#34;prompt input_prompt&#34;&gt;In&amp;nbsp;[4]:&lt;/div&gt;
-        &lt;div class=&#34;input_area box-flex1&#34;&gt;
-            &lt;div class=&#34;highlight-ipynb&#34;&gt;
-                &lt;pre class=&#34;ipynb&#34;&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;res&lt;/span&gt;&lt;/pre&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;vbox output_wrapper&#34;&gt;
-        &lt;div class=&#34;output vbox&#34;&gt;
-            &lt;div class=&#34;hbox output_area&#34;&gt;
-                &lt;div class=&#34;prompt output_prompt&#34;&gt;Out[4]:&lt;/div&gt;
-                &lt;div class=&#34;box-flex1 output_subarea output_pyout&#34;&gt;
-                    &lt;pre class=&#34;ipynb&#34;&gt;[&amp;lt;Ether  dst=00:1d:70:df:2d:11 src=14:10:9f:e1:54:9b type=0x800 |&amp;lt;IP  version=4L ihl=5L tos=0x0 len=64 id=650 flags=DF frag=0L ttl=64 proto=tcp chksum=0x9f88 src=10.25.3.61 dst=184.73.211.6 options=[] |&amp;lt;TCP  sport=53491 dport=http seq=3474155615 ack=0 dataofs=11L reserved=0L flags=S window=65535 chksum=0xecd6 urgptr=0 options=[(&amp;apos;MSS&amp;apos;, 1460), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;WScale&amp;apos;, 4), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;Timestamp&amp;apos;, (1224433615, 0)), (&amp;apos;SAckOK&amp;apos;, &amp;apos;&amp;apos;), (&amp;apos;EOL&amp;apos;, None)] |&amp;gt;&amp;gt;&amp;gt;,&lt;p&gt;&amp;lt;Ether  dst=00:1d:70:df:2d:11 src=14:10:9f:e1:54:9b type=0x800 |&amp;lt;IP  version=4L ihl=5L tos=0x0 len=64 id=41196 flags=DF frag=0L ttl=64 proto=tcp chksum=0xb59a src=10.25.3.61 dst=50.31.164.188 options=[] |&amp;lt;TCP  sport=53492 dport=http seq=3315328916 ack=0 dataofs=11L reserved=0L flags=S window=65535 chksum=0x2b8d urgptr=0 options=[(&amp;apos;MSS&amp;apos;, 1460), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;WScale&amp;apos;, 4), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;Timestamp&amp;apos;, (1224433615, 0)), (&amp;apos;SAckOK&amp;apos;, &amp;apos;&amp;apos;), (&amp;apos;EOL&amp;apos;, None)] |&amp;gt;&amp;gt;&amp;gt;,&lt;p&gt;&amp;lt;Ether  dst=00:1d:70:df:2d:11 src=14:10:9f:e1:54:9b type=0x800 |&amp;lt;IP  version=4L ihl=5L tos=0x0 len=64 id=40761 flags=DF frag=0L ttl=64 proto=tcp chksum=0xb74d src=10.25.3.61 dst=50.31.164.188 options=[] |&amp;lt;TCP  sport=53493 dport=http seq=700164627 ack=0 dataofs=11L reserved=0L flags=S window=65535 chksum=0x4ee urgptr=0 options=[(&amp;apos;MSS&amp;apos;, 1460), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;WScale&amp;apos;, 4), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;Timestamp&amp;apos;, (1224433615, 0)), (&amp;apos;SAckOK&amp;apos;, &amp;apos;&amp;apos;), (&amp;apos;EOL&amp;apos;, None)] |&amp;gt;&amp;gt;&amp;gt;,&lt;p&gt;&amp;lt;Ether  dst=00:1d:70:df:2d:11 src=14:10:9f:e1:54:9b type=0x800 |&amp;lt;IP  version=4L ihl=5L tos=0x0 len=64 id=26980 flags=DF frag=0L ttl=64 proto=tcp chksum=0x38ae src=10.25.3.61 dst=184.73.211.6 options=[] |&amp;lt;TCP  sport=53494 dport=http seq=2552994569 ack=0 dataofs=11L reserved=0L flags=S window=65535 chksum=0xf110 urgptr=0 options=[(&amp;apos;MSS&amp;apos;, 1460), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;WScale&amp;apos;, 4), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;Timestamp&amp;apos;, (1224433616, 0)), (&amp;apos;SAckOK&amp;apos;, &amp;apos;&amp;apos;), (&amp;apos;EOL&amp;apos;, None)] |&amp;gt;&amp;gt;&amp;gt;,&lt;p&gt;&amp;lt;Ether  dst=00:1d:70:df:2d:11 src=14:10:9f:e1:54:9b type=0x800 |&amp;lt;IP  version=4L ihl=5L tos=0x0 len=64 id=48861 flags=DF frag=0L ttl=64 proto=tcp chksum=0xe334 src=10.25.3.61 dst=184.73.211.6 options=[] |&amp;lt;TCP  sport=53495 dport=http seq=1279463156 ack=0 dataofs=11L reserved=0L flags=S window=65535 chksum=0xc90d urgptr=0 options=[(&amp;apos;MSS&amp;apos;, 1460), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;WScale&amp;apos;, 4), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;Timestamp&amp;apos;, (1224433616, 0)), (&amp;apos;SAckOK&amp;apos;, &amp;apos;&amp;apos;), (&amp;apos;EOL&amp;apos;, None)] |&amp;gt;&amp;gt;&amp;gt;,&lt;p&gt;&amp;lt;Ether  dst=00:1d:70:df:2d:11 src=14:10:9f:e1:54:9b type=0x800 |&amp;lt;IP  version=4L ihl=5L tos=0x0 len=64 id=14036 flags=DF frag=0L ttl=64 proto=tcp chksum=0x6b3e src=10.25.3.61 dst=184.73.211.6 options=[] |&amp;lt;TCP  sport=53496 dport=http seq=2445014061 ack=0 dataofs=11L reserved=0L flags=S window=65535 chksum=0x9e5a urgptr=0 options=[(&amp;apos;MSS&amp;apos;, 1460), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;WScale&amp;apos;, 4), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;Timestamp&amp;apos;, (1224433616, 0)), (&amp;apos;SAckOK&amp;apos;, &amp;apos;&amp;apos;), (&amp;apos;EOL&amp;apos;, None)] |&amp;gt;&amp;gt;&amp;gt;,&lt;p&gt;&amp;lt;Ether  dst=00:1d:70:df:2d:11 src=14:10:9f:e1:54:9b type=0x800 |&amp;lt;IP  version=4L ihl=5L tos=0x0 len=64 id=60321 flags=DF frag=0L ttl=64 proto=tcp chksum=0xb670 src=10.25.3.61 dst=184.73.211.6 options=[] |&amp;lt;TCP  sport=53497 dport=http seq=405324467 ack=0 dataofs=11L reserved=0L flags=S window=65535 chksum=0x4967 urgptr=0 options=[(&amp;apos;MSS&amp;apos;, 1460), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;WScale&amp;apos;, 4), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;Timestamp&amp;apos;, (1224433616, 0)), (&amp;apos;SAckOK&amp;apos;, &amp;apos;&amp;apos;), (&amp;apos;EOL&amp;apos;, None)] |&amp;gt;&amp;gt;&amp;gt;,&lt;p&gt;&amp;lt;Ether  dst=00:1d:70:df:2d:11 src=14:10:9f:e1:54:9b type=0x800 |&amp;lt;IP  version=4L ihl=5L tos=0x0 len=64 id=34902 flags=DF frag=0L ttl=64 proto=tcp chksum=0x19bc src=10.25.3.61 dst=184.73.211.6 options=[] |&amp;lt;TCP  sport=53498 dport=http seq=3477655716 ack=0 dataofs=11L reserved=0L flags=S window=65535 chksum=0x8454 urgptr=0 options=[(&amp;apos;MSS&amp;apos;, 1460), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;WScale&amp;apos;, 4), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;Timestamp&amp;apos;, (1224433616, 0)), (&amp;apos;SAckOK&amp;apos;, &amp;apos;&amp;apos;), (&amp;apos;EOL&amp;apos;, None)] |&amp;gt;&amp;gt;&amp;gt;,&lt;p&gt;&amp;lt;Ether  dst=00:1d:70:df:2d:11 src=14:10:9f:e1:54:9b type=0x800 |&amp;lt;IP  version=4L ihl=5L tos=0x0 len=64 id=31060 flags=DF frag=0L ttl=64 proto=tcp chksum=0xd487 src=10.25.3.61 dst=192.33.31.101 options=[] |&amp;lt;TCP  sport=53499 dport=http seq=3025988404 ack=0 dataofs=11L reserved=0L flags=S window=65535 chksum=0x3030 urgptr=0 options=[(&amp;apos;MSS&amp;apos;, 1460), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;WScale&amp;apos;, 4), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;Timestamp&amp;apos;, (1224433689, 0)), (&amp;apos;SAckOK&amp;apos;, &amp;apos;&amp;apos;), (&amp;apos;EOL&amp;apos;, None)] |&amp;gt;&amp;gt;&amp;gt;,&lt;p&gt;&amp;lt;Ether  dst=00:1d:70:df:2d:11 src=14:10:9f:e1:54:9b type=0x800 |&amp;lt;IP  version=4L ihl=5L tos=0x0 len=64 id=33529 flags=DF frag=0L ttl=64 proto=tcp chksum=0xcae2 src=10.25.3.61 dst=192.33.31.101 options=[] |&amp;lt;TCP  sport=53500 dport=http seq=1607594496 ack=0 dataofs=11L reserved=0L flags=S window=65535 chksum=0x7dee urgptr=0 options=[(&amp;apos;MSS&amp;apos;, 1460), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;WScale&amp;apos;, 4), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;Timestamp&amp;apos;, (1224433689, 0)), (&amp;apos;SAckOK&amp;apos;, &amp;apos;&amp;apos;), (&amp;apos;EOL&amp;apos;, None)] |&amp;gt;&amp;gt;&amp;gt;]
-                     &lt;/pre&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&#34;cell border-box-sizing code_cell vbox&#34;&gt;
-    &lt;div class=&#34;input hbox&#34;&gt;
-        &lt;div class=&#34;prompt input_prompt&#34;&gt;In&amp;nbsp;[5]:&lt;/div&gt;
-        &lt;div class=&#34;input_area box-flex1&#34;&gt;
-            &lt;div class=&#34;highlight-ipynb&#34;&gt;
-                &lt;pre class=&#34;ipynb&#34;&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;res&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;  &lt;span class=&#34;c&#34;&gt;# first packet&lt;/span&gt;&lt;/pre&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;vbox output_wrapper&#34;&gt;
-        &lt;div class=&#34;output vbox&#34;&gt;
-            &lt;div class=&#34;hbox output_area&#34;&gt;
-                &lt;div class=&#34;prompt output_prompt&#34;&gt;Out[5]:&lt;/div&gt;
-                &lt;div class=&#34;box-flex1 output_subarea output_pyout&#34;&gt;
-                    &lt;pre class=&#34;ipynb&#34;&gt;&amp;lt;Ether  dst=00:1d:70:df:2d:11 src=14:10:9f:e1:54:9b type=0x800 |&amp;lt;IP  version=4L ihl=5L tos=0x0 len=64 id=650 flags=DF frag=0L ttl=64 proto=tcp chksum=0x9f88 src=10.25.3.61 dst=184.73.211.6 options=[] |&amp;lt;TCP  sport=53491 dport=http seq=3474155615 ack=0 dataofs=11L reserved=0L flags=S window=65535 chksum=0xecd6 urgptr=0 options=[(&amp;apos;MSS&amp;apos;, 1460), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;WScale&amp;apos;, 4), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;Timestamp&amp;apos;, (1224433615, 0)), (&amp;apos;SAckOK&amp;apos;, &amp;apos;&amp;apos;), (&amp;apos;EOL&amp;apos;, None)] |&amp;gt;&amp;gt;&amp;gt;&lt;/pre&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
+&lt;p&gt;I’ll give a short intro on Spotify, as well as Python, to bring everyone up to speed.  I’ll then discuss why we chose Python, and how/where we use the language, as well as issues we’ve faced.  I’ll wrap up with Spotify’s future with Python, and Python’s future as a language.&lt;/p&gt;
+&lt;h3 id=&#34;about-spotify&#34;&gt;About Spotify&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.spotify.com&#34;&gt;Spotify&lt;/a&gt; is a streaming music service that is available in &lt;a href=&#34;https://support.spotify.com/us/learn-more/faq/#!/article/Availability-in-overseas-territories&#34;&gt;55 countries&lt;/a&gt; — and continually working to expand to “&lt;a href=&#34;http://&#34;&gt;Play Everywhere&lt;/a&gt;”.  Beta launched in 2007, and in &lt;a href=&#34;http://news.spotify.com/us/2011/07/14/hello-america-spotify-here/&#34;&gt;2011 it came to the US&lt;/a&gt;.  &lt;a href=&#34;http://press.spotify.com/us/information/&#34;&gt;As of writing of this post&lt;/a&gt;, we have over 6 million paid subscribers, with 24 million monthly active users.  We have over 20 million unique songs — not including compilation albums and such.  We also pay 70-80% of our income to rights holders, totaling $1 billion dollars to date.&lt;/p&gt;
 
-&lt;div class=&#34;cell border-box-sizing code_cell vbox&#34;&gt;
-    &lt;div class=&#34;input hbox&#34;&gt;
-        &lt;div class=&#34;prompt input_prompt&#34;&gt;In&amp;nbsp;[6]:&lt;/div&gt;
-        &lt;div class=&#34;input_area box-flex1&#34;&gt;
-            &lt;div class=&#34;highlight-ipynb&#34;&gt;
-                &lt;pre class=&#34;ipynb&#34;&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;res&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;/pre&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;vbox output_wrapper&#34;&gt;
-        &lt;div class=&#34;output vbox&#34;&gt;
-            &lt;div class=&#34;hbox output_area&#34;&gt;
-                &lt;div class=&#34;prompt output_prompt&#34;&gt;Out[6]:&lt;/div&gt;
-                &lt;div class=&#34;box-flex1 output_subarea output_pyout&#34;&gt;
-                    &lt;pre class=&#34;ipynb&#34;&gt;
-###[ Ethernet ]###
-  dst       = 00:1d:70:df:2d:11
-  src       = 14:10:9f:e1:54:9b
-  type      = 0x800
-###[ IP ]###
-     version   = 4L
-     ihl       = 5L
-     tos       = 0x0
-     len       = 64
-     id        = 650
-     flags     = DF
-     frag      = 0L
-     ttl       = 64
-     proto     = tcp
-     chksum    = 0x9f88
-     src       = 10.25.3.61
-     dst       = 184.73.211.6
-     \options   \
-###[ TCP ]###
-        sport     = 53491
-        dport     = http
-        seq       = 3474155615
-        ack       = 0
-        dataofs   = 11L
-        reserved  = 0L
-        flags     = S
-        window    = 65535
-        chksum    = 0xecd6
-        urgptr    = 0
-        options   = [(&amp;apos;MSS&amp;apos;, 1460), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;WScale&amp;apos;, 4), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;NOP&amp;apos;, None), (&amp;apos;Timestamp&amp;apos;, (1224433615, 0)), (&amp;apos;SAckOK&amp;apos;, &amp;apos;&amp;apos;), (&amp;apos;EOL&amp;apos;, None)]&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;p&gt;From a technical standpoint, we have about 4.5 terabytes of compressed data from users per day, and 400 gigabytes of data generated from services per day.  64 terabytes of data is generated every day by our 590-node Hadoop cluster.  We run about 7,500 Hadoop jobs per day, with it ever growing.  Just a few months ago, we were running 5,000 jobs per day.&lt;/p&gt;
+&lt;h3 id=&#34;about-python&#34;&gt;About Python&lt;/h3&gt;
+&lt;p&gt;Shifting gears to Python.  Python is about 23 years old created by a Dutch dude named Guido van Rossum.  Latest versions are both 2.7.6 and 3.4.0 — those unfamiliar with Python may wonder why there are two latest releases — of which I’ll go over a little later.  Python is dynamically typed and has automatic memory management.  While it’s mostly considered a scripting language, it’s very prevalent in web development, networking, scientific computing, database management, 2 &amp;amp; 3D animation, natural language processing, info sec, artificial intelligent — not much left in terms of software engineering besides lower level software engineering like writing kernels and drivers.&lt;/p&gt;
 
-&lt;p&gt;&lt;/div&gt;&lt;br&gt;
-&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;The big items about Python are that scope is defined by whitespace — no semicolons or brackets giving a code base very “breathable”.  Folks that contribute to the core of Python often prefer readability of code rather than minor optimization.  &lt;/p&gt;
 
-&lt;p&gt;&lt;/div&gt;&lt;/p&gt;
-</content>
-        </entry>
-        
-    
-        
-        <entry>
-            <title type="html">How to spy with Python: so easy, the NSA can do it</title>
-            <link rel="alternate" href="http://www.roguelynn.com/spy/" type="text/html" />
-            <id>http://www.roguelynn.com/spy/</id>
-            <updated>2013-11-23T18:55:00Z</updated>
+&lt;p&gt;Python is also cross-platform — granted setting up a Windows machine for Python development can be a bit of a pain.  But major Linux flavors and Mac OS ship with Python on their systems.  &lt;/p&gt;
 
-            <author>
-                <name>Lynn Root</name>
-                <email>lynn@lynnroot.com</email>
-                <uri>http://www.roguelynn.com/</uri>
-            </author>
-            <content type="html">&lt;p&gt;I’ve previously spoken about &lt;a href=&#34;http://www.roguelynn.com/prism&#34;&gt;PRISM&lt;/a&gt; at both &lt;a href=&#34;http://pycon.ca&#34;&gt;PyCon Canada&lt;/a&gt; and &lt;a href=&#34;http://python.ie/pycon/2013/&#34;&gt;PyCon Ireland&lt;/a&gt;.  For &lt;a href=&#34;http://blah&#34;&gt;PyConES&lt;/a&gt; in Madrid this year, I decided to combine the PRISM talk with a bit of Python.  Because, why not?  Slides from PyConES can be found &lt;a href=&#34;http://blah&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;h4 id=&#34;disclaimer&#34;&gt;Disclaimer&lt;/h4&gt;
-&lt;p&gt;I am not a lawyer, nor have I studied law in anyway.  I’m a typical American with the &lt;a href=&#34;http://www.archives.gov/exhibits/charters/constitution.html&#34;&gt;US Constitution&lt;/a&gt; and the &lt;a href=&#34;http://www.archives.gov/exhibits/charters/bill_of_rights_transcript.html&#34;&gt;Bill of Rights&lt;/a&gt; engrained in my soul.&lt;/p&gt;
+&lt;p&gt;Python also has a few popular implementations, with more still in development.  The main one being CPython that is implemented in C — which is the one shipped with Linux &amp;amp; OS X.  There is also &lt;a href=&#34;http://pypy.org&#34;&gt;PyPy&lt;/a&gt;, Python implemented in Python — which has proven to be faster than CPython with various tests, &lt;a href=&#34;http:&#34;&gt;including Twisted&lt;/a&gt;, one of the most popular networking library.  There’s &lt;a href=&#34;http://www.jython.org&#34;&gt;Jython&lt;/a&gt; — which compiles into Java byte code, and &lt;a href=&#34;http://ironpython.net&#34;&gt;IronPython&lt;/a&gt;, for the .NET runtime.&lt;/p&gt;
 
-&lt;p&gt;Nor have I had any experience in three-letter-government-agencies-that-are-out-to-get-you, or currently work/have worked for a company involved in PRISM (or at least not that I’m aware of).&lt;/p&gt;
+&lt;p&gt;So that’s essentially the TL;DR of the language, but really quickly I just want to mention a few of my favorite things with Python.  &lt;/p&gt;
 
-&lt;p&gt;This post has no special insight nor conspiracy theories, just painting a story from publicly available research.&lt;/p&gt;
-&lt;h4 id=&#34;overview-amp-context&#34;&gt;Overview &amp;amp; Context&lt;/h4&gt;
-&lt;p&gt;To read more about what PRISM and XKeyScore is, I detail the history and context in my &lt;a href=&#34;http://www.roguelynn.com/prism&#34;&gt;previous post&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;how-to-spy-with-python&#34;&gt;How to Spy with Python&lt;/h2&gt;
-&lt;p&gt;Below are a few proof of concepts that take the published spy queries on the NSA’s XKeyScore slides.  These are meant to be simplistic and not scalable.&lt;/p&gt;
-&lt;h3 id=&#34;tools-used&#34;&gt;Tools used&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://blah&#34;&gt;Scapy&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://blah&#34;&gt;pygeoip&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://blah&#34;&gt;geojson&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://blah&#34;&gt;python-nmap&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;quick-how-to-with-scapy&#34;&gt;Quick How-to with Scapy&lt;/h3&gt;
-&lt;p&gt;First off, what makes me cringe, per Scapy’s &lt;a href=&#34;http://blah&#34;&gt;documentation&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;The language has some “sugar” baked in — one of my most loved is list &amp;amp; generator comprehensions, where one can condense a for-loop into a one-liner.  For example (inspired from the &lt;a href=&#34;https://wiki.python.org/moin/PythonSpeed/PerformanceTips&#34;&gt;Python wiki&lt;/a&gt;):&lt;/p&gt;
+&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;# for-loop
 
-&lt;pre class=&#34;ipynb&#34;&gt;
-&gt;&gt;&gt; from scapy.all import *
-&lt;/pre&gt;
+new_list = []
+for word in old_list:
+    new_list.append(word.upper())
 
-&lt;p&gt;or from the terminal:&lt;/p&gt;
+# list comprehension
+new_list = [w.upper() for w in old_list]
 
-&lt;pre class=&#34;ipynb&#34;&gt;
-$ sudo scapy
-&lt;/pre&gt;
-
-&lt;p&gt;To sniff the wireless, Scapy has a sniff function.  Here, tell Scapy to sniff on my wifi card, &lt;code&gt;en0&lt;/code&gt;, which can be found via &lt;code&gt;ifconfig&lt;/code&gt; functionality in your terminal.  If you don’t specify an interface, it will default to all listed when you type &lt;code&gt;conf&lt;/code&gt; in the terminal.&lt;/p&gt;
-
-&lt;p&gt;I’m filtering by TCP traffic and listing on port 80 only.  As well, I’m limited the sniff packets to only 10.  If you do not limit the number of packets collected, then it will continue until you interrupt the process.&lt;/p&gt;
-&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; a = sniff(iface=&amp;#34;en0&amp;#34;, filter=&amp;#34;tcp and port 80&amp;#34;, count=10)
-&amp;gt;&amp;gt;&amp;gt; a
-&amp;lt;Sniffed: TCP:10 UDP:0 ICMP:0 Other:0&amp;gt;
+# generator comprehension
+new_set = (w.upper() for w in old_list)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;To see all the packets, &lt;code&gt;a.res&lt;/code&gt; returns a list with a barf of information, snipped below:&lt;/p&gt;
-&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; a.res
+&lt;p&gt;&lt;a href=&#34;https://docs.python.org/2/library/simplehttpserver.html&#34;&gt;SimpleHTTPServer&lt;/a&gt; is one of my favorite tools from the standard library.  Need a quick server? Run &lt;code&gt;python -m SimpleHTTPServer&lt;/code&gt;!  Super awesome for testing, debugging, or simply viewing your web site locally.&lt;/p&gt;
 
-[&amp;lt;Ether  dst=00:1d:70:df:2d:11 src=14:10:9f:e1:54:9b type=0x800 |&amp;lt;IP  version=4L ihl=5L tos=0x0 len=64 id=650 flags=DF frag=0L ttl=64 proto=tcp chksum=0x9f88 src=10.25.3.61 dst=184.73.211.6 options=[] |&amp;lt;TCP  sport=53491 dport=http seq=3474155615 ack=0 dataofs=11L reserved=0L flags=S window=65535 chksum=0xecd6 urgptr=0 options=[(&amp;#39;MSS&amp;#39;, 1460), (&amp;#39;NOP&amp;#39;, None), (&amp;#39;WScale&amp;#39;, 4), (&amp;#39;NOP&amp;#39;, None), (&amp;#39;NOP&amp;#39;, None), (&amp;#39;Timestamp&amp;#39;, (1224433615, 0)), (&amp;#39;SAckOK&amp;#39;, &amp;#39;&amp;#39;), (&amp;#39;EOL&amp;#39;, None)] |&amp;gt;&amp;gt;&amp;gt;,
-# &amp;lt;--snip--&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Looking at the first packet:&lt;/p&gt;
-&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; a.res[0]  # first packet
-&amp;lt;Ether  dst=00:1d:70:df:2d:11 src=14:10:9f:e1:54:9b type=0x800 |&amp;lt;IP  version=4L ihl=5L tos=0x0 len=64 id=650 flags=DF frag=0L ttl=64 proto=tcp chksum=0x9f88 src=10.25.3.61 dst=184.73.211.6 options=[] |&amp;lt;TCP  sport=53491 dport=http seq=3474155615 ack=0 dataofs=11L reserved=0L flags=S window=65535 chksum=0xecd6 urgptr=0 options=[(&amp;#39;MSS&amp;#39;, 1460), (&amp;#39;NOP&amp;#39;, None), (&amp;#39;WScale&amp;#39;, 4), (&amp;#39;NOP&amp;#39;, None), (&amp;#39;NOP&amp;#39;, None), (&amp;#39;Timestamp&amp;#39;, (1224433615, 0)), (&amp;#39;SAckOK&amp;#39;, &amp;#39;&amp;#39;), (&amp;#39;EOL&amp;#39;, None)] |&amp;gt;&amp;gt;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;And with Scapy’s “pretty printing” function, &lt;code&gt;show&lt;/code&gt;:&lt;/p&gt;
-&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; a.res[0].show()
-###[ Ethernet ]###
-    dst       = 00:1d:70:df:2d:11
-    src       = 14:10:9f:e1:54:9b
-    type      = 0x800
-  ###[ IP ]###
-       version   = 4L
-       ihl       = 5L
-       tos       = 0x0
-       len       = 64
-       id        = 650
-       flags     = DF
-       frag      = 0L
-       ttl       = 64
-       proto     = tcp
-       chksum    = 0x9f88
-       src       = 10.25.3.61
-       dst       = 184.73.211.6
-       \options   \
-   ###[ TCP ]###
-          sport     = 53491
-          dport     = http
-          seq       = 3474155615
-          ack       = 0
-          dataofs   = 11L
-          reserved  = 0L
-          flags     = S
-          window    = 65535
-          chksum    = 0xecd6
-          urgptr    = 0
-          options   = [(&amp;#39;MSS&amp;#39;, 1460), (&amp;#39;NOP&amp;#39;, None), (&amp;#39;WScale&amp;#39;, 4), (&amp;#39;NOP&amp;#39;, None), (&amp;#39;NOP&amp;#39;, None), (&amp;#39;Timestamp&amp;#39;, (1224433615, 0)), (&amp;#39;SAckOK&amp;#39;, &amp;#39;&amp;#39;), (&amp;#39;EOL&amp;#39;, None)]
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;query-1-show-me-everyone-that-has-searched-for-y-term&#34;&gt;Query 1: Show me everyone that has searched for $Y term&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Another popular one that I use a lot is the &lt;a href=&#34;https://docs.python.org/2/library/csv.html&#34;&gt;CSV&lt;/a&gt; module — allows for easy handling of comma-delimited files like &lt;code&gt;.xls&lt;/code&gt; and &lt;code&gt;.csv&lt;/code&gt;. &lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;Filter for tcp &amp;amp; host = google.com&lt;/li&gt;
-&lt;li&gt;Parse packets for &amp;quot;q=&amp;quot; plus the search term, eg &amp;quot;q=ice+cream&amp;quot; (note: URL encoding!)&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;There’s also a library that I should use more but is quite awesome — &lt;a href=&#34;https://docs.python.org/2/library/profile.html&#34;&gt;profile&lt;/a&gt; (along with others) where you can profile a Python file to understand how it consumes OS resources.  One that complements profile is &lt;a href=&#34;https://docs.python.org/2/library/timeit.html&#34;&gt;timeit&lt;/a&gt; to understand the time execution of some Python code.   Lastly, there’s &lt;a href=&#34;https://docs.python.org/2/library/pdb.html&#34;&gt;pdb&lt;/a&gt; — the interactive debugger that is great tool &lt;span style=&#34;text-decoration:line-through;&#34;&gt;instead of flooding your codebase with print statements&lt;/span&gt; to get in the habit of using regularly.&lt;/p&gt;
 
-&lt;p&gt;Again, the ugly import:&lt;br&gt;
-&lt;code&gt;python&lt;br&gt;
-from scapy.all import *&lt;br&gt;
-&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;IPython notebook is sort of beyond words.  &lt;a href=&#34;http://ipython.org/&#34;&gt;IPython&lt;/a&gt; is a different Python shell that is more interactive than the standard.  The &lt;a href=&#34;http://ipython.org/notebook.html&#34;&gt;notebook&lt;/a&gt; is pretty awesome — it’s a web based interactive computational environment where you can execute code (Python &lt;em&gt;and&lt;/em&gt; Bash), write in Markdown, create graphs, and make slides.  It’s pretty awesome because I could make a notebook, give it to you, and you can go ahead and run it in your own environment.  The web server runs locally, but you can host the notebook on a server and share with others.&lt;/p&gt;
 
-&lt;p&gt;We filter for TCP traffic and for host &lt;code&gt;search.yahoo.com&lt;/code&gt;.  I chose Yahoo because they do not send search queries over HTTPS, which Google now does (at least in the US).&lt;/p&gt;
+&lt;p&gt;Lastly, a few of my favorite &amp;amp; frequently-used 3rd party packages:&lt;/p&gt;
 
-&lt;p&gt;You can either sniff online:&lt;/p&gt;
-&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; pkts = sniff(filter=&amp;#34;tcp and host search.yahoo.com&amp;#34;, count=300)
-&amp;gt;&amp;gt;&amp;gt; # saving for later
-&amp;gt;&amp;gt;&amp;gt; wrpcap(&amp;#34;data/yahoo_search.cap&amp;#34;, pkts)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Or use a previously saved pcap file (from Scapy’s &lt;code&gt;wrpcap&lt;/code&gt; function or from wireshark/tshark/tcpdump/etc.):&lt;/p&gt;
-&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;# importing pcap file
-&amp;gt;&amp;gt;&amp;gt; sample_http = &amp;#39;data/yahoo_search.cap&amp;#39;
-&amp;gt;&amp;gt;&amp;gt; pkts = sniff(offline=sample_http)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;I see that I’ve collected 300 TCP packets:&lt;/p&gt;
-&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; pkts
-&amp;lt;Sniffed: TCP:300 UDP:0 ICMP:0 Other:0&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Using Scapy’s &lt;code&gt;nsummary&lt;/code&gt; function (output snipped a bit):&lt;/p&gt;
-&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; pkts.nsummary()
-0000 Ether / IP / TCP 10.25.3.61:53261 &amp;gt; 74.6.239.58:http S
-0001 Ether / IP / TCP 10.25.3.61:53262 &amp;gt; 74.6.239.58:http S
-0002 Ether / IP / TCP 10.25.3.61:53263 &amp;gt; 74.6.239.58:http S
-0003 Ether / IP / TCP 74.6.239.58:http &amp;gt; 10.25.3.61:53261 SA
-0004 Ether / IP / TCP 10.25.3.61:53261 &amp;gt; 74.6.239.58:http A
-# &amp;lt;--snip--&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;I saw that packet 79 had A / Raw (as opposed to A / Raw / Padding or something else) from the &lt;code&gt;pkts.nsummary()&lt;/code&gt; command.  Taking a look at that packet in particular:&lt;/p&gt;
-&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;pkts[79].show()
+&lt;p&gt;&lt;a href=&#34;http://www.secdev.org/projects/scapy/&#34;&gt;Scapy&lt;/a&gt; is basically tcpdump or Wireshark in Python — it allows you to sniff internet traffic and manipulate packets.  Not condoning this, but it’s pretty fun to play with scapy at a cafe with public wifi.  &lt;/p&gt;
 
-     ###[ Ethernet ]###
-       dst       = 00:1d:70:df:2d:11
-       src       = 14:10:9f:e1:54:9b
-       type      = 0x800
-     ###[ IP ]###
-          version   = 4L
-          ihl       = 5L
-          tos       = 0x0
-          len       = 1420
-          id        = 51853
-          flags     = DF
-          frag      = 0L
-          ttl       = 64
-          proto     = tcp
-          chksum    = 0x2448
-          src       = 10.25.3.61
-          dst       = 74.6.239.58
-          \options   \
-     ###[ TCP ]###
-             sport     = 53261
-             dport     = http
-             seq       = 3423577226
-             ack       = 4075984347
-             dataofs   = 8L
-             reserved  = 0L
-             flags     = A
-             window    = 8192
-             chksum    = 0xe4ca
-             urgptr    = 0
-             options   = [(&amp;#39;NOP&amp;#39;, None), (&amp;#39;NOP&amp;#39;, None), (&amp;#39;Timestamp&amp;#39;, (1222799014, 196990643))]
-     ###[ Raw ]###
-                load      = &amp;#39;GET /search;_ylt=A0oG7mGUD49SBxcA3WpXNyoA;_ylc=X1MDMjc2NjY3OQRfcgMyBGJjawNmbWVsb2s1OTRqZ3UyJTI2YiUzRDQlMjZkJTNEOU15M2RnMXBZRUtpdVJyeG9BWlNlRGxLcjJFLSUyNnMlM0Q4ciUyNmklM0RTSjdlY2Y4ZURZakZnbS5DRWRucgRjc3JjcHZpZANHcC5VRjBnZXVyRDdPcmloVWtuRHdnWUFYWjUwR1ZLUEQ1UUFCc3hpBGZyA3lmcC10LTE0MARmcjIDc2ItdG9wBGdwcmlkA2NlVHN4WXhzUWIuOW51aGNlWG9TTUEEbXRlc3RpZANBRDAxJTNEU01FMzQxJTI2QURTUlAlM0RBRFNSUEMxJTI2QVNTVCUzRFZJUDI4OSUyNk1TRlQlM0RNU1kwMTAlMjZVSTAxJTNEVUlDMSUyNlVOSSUzRFJDRjA0NARuX3JzbHQDMTAEbl9zdWdnAzgEb3JpZ2luA3NlYXJjaC55YWhvby5jb20EcG9zAzAEcHFzdHIDBHBxc3RybAMEcXN0cmwDNgRxdWVyeQNNYWRyaWQEdF9zdG1wAzEzODUxMDczNTU4MzEEdnRlc3RpZANVSUMx?p=Madrid&amp;amp;fr2=sb-top&amp;amp;fr=yfp-t-140 HTTP/1.1\r\nHost: search.yahoo.com\r\nConnection: keep-alive\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\r\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36\r\nReferer: http://search.yahoo.com/search;_ylt=ApD.LW7jivmrlmZzNKxChqqbvZx4?p=Python&amp;amp;toggle=1&amp;amp;cop=mss&amp;amp;ei=UTF-8&amp;amp;fr=yfp-t-140\r\nAccept-Encoding: gzip,deflate,sdch\r\nAccept-Language: en-US,en;q=0.8\r\nCookie: B=fmelok594jgu2&amp;amp;b=4&amp;amp;d=9My3dg1pYEKiuRrxoAZSeDlKr2E-&amp;amp;s=8r&amp;amp;i=SJ7ecf8eDYjFgm.CEdnr; AO=o=0; YLS=v=1&amp;amp;p=1&amp;amp;n=1; F=a=I.qqZFgMvSp1SMQ7oNaJGIBu5DAJGO25SeRxXSKxg6_KZLWHQMHEkeFQrEOxAH9BOvMhwKs-&amp;amp;b=.hBp; Y=v=1&amp;amp;n=fr6nunkr11qks&amp;amp;l=he6k4bodd/o&amp;amp;p=f2m0&amp;#39;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Let’s just grab the “Raw” layer specifically:&lt;/p&gt;
-&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; pkts[79].getlayer(Raw)
-&amp;lt;Raw  load=&amp;#39;GET /search;_ylt=A0oG7mGUD49SBxcA3WpXNyoA;_ylc=X1MDMjc2NjY3OQRfcgMyBGJjawNmbWVsb2s1OTRqZ3UyJTI2YiUzRDQlMjZkJTNEOU15M2RnMXBZRUtpdVJyeG9BWlNlRGxLcjJFLSUyNnMlM0Q4ciUyNmklM0RTSjdlY2Y4ZURZakZnbS5DRWRucgRjc3JjcHZpZANHcC5VRjBnZXVyRDdPcmloVWtuRHdnWUFYWjUwR1ZLUEQ1UUFCc3hpBGZyA3lmcC10LTE0MARmcjIDc2ItdG9wBGdwcmlkA2NlVHN4WXhzUWIuOW51aGNlWG9TTUEEbXRlc3RpZANBRDAxJTNEU01FMzQxJTI2QURTUlAlM0RBRFNSUEMxJTI2QVNTVCUzRFZJUDI4OSUyNk1TRlQlM0RNU1kwMTAlMjZVSTAxJTNEVUlDMSUyNlVOSSUzRFJDRjA0NARuX3JzbHQDMTAEbl9zdWdnAzgEb3JpZ2luA3NlYXJjaC55YWhvby5jb20EcG9zAzAEcHFzdHIDBHBxc3RybAMEcXN0cmwDNgRxdWVyeQNNYWRyaWQEdF9zdG1wAzEzODUxMDczNTU4MzEEdnRlc3RpZANVSUMx?p=Madrid&amp;amp;fr2=sb-top&amp;amp;fr=yfp-t-140 HTTP/1.1\r\nHost: search.yahoo.com\r\nConnection: keep-alive\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\r\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36\r\nReferer: http://search.yahoo.com/search;_ylt=ApD.LW7jivmrlmZzNKxChqqbvZx4?p=Python&amp;amp;toggle=1&amp;amp;cop=mss&amp;amp;ei=UTF-8&amp;amp;fr=yfp-t-140\r\nAccept-Encoding: gzip,deflate,sdch\r\nAccept-Language: en-US,en;q=0.8\r\nCookie: B=fmelok594jgu2&amp;amp;b=4&amp;amp;d=9My3dg1pYEKiuRrxoAZSeDlKr2E-&amp;amp;s=8r&amp;amp;i=SJ7ecf8eDYjFgm.CEdnr; AO=o=0; YLS=v=1&amp;amp;p=1&amp;amp;n=1; F=a=I.qqZFgMvSp1SMQ7oNaJGIBu5DAJGO25SeRxXSKxg6_KZLWHQMHEkeFQrEOxAH9BOvMhwKs-&amp;amp;b=.hBp; Y=v=1&amp;amp;n=fr6nunkr11qks&amp;amp;l=he6k4bodd/o&amp;amp;p=f2m0&amp;#39; |&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;We start to see something a little bit more interesting.  I’m going to parse this a little bit.  When physically searching via Yahoo, I noticed that the search term comes after &lt;code&gt;?p=&lt;/code&gt; and before &lt;code&gt;&amp;amp;&lt;/code&gt; in my browser, so I’ll do some splitting:&lt;/p&gt;
-&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; first_query = pkts[79].getlayer(Raw)
-&amp;gt;&amp;gt;&amp;gt; print first_query.fields.get(&amp;#39;load&amp;#39;).split(&amp;#39;?p=&amp;#39;)[1].split(&amp;#39;&amp;amp;&amp;#39;)[0]
-Madrid
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Ha! I searched for Madrid!  Let’s check some other queries out: &lt;/p&gt;
-&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; second_query = pkts[148].getlayer(Raw)
-&amp;gt;&amp;gt;&amp;gt; print second_query.fields.get(&amp;#39;load&amp;#39;).split(&amp;#39;?p=&amp;#39;)[1].split(&amp;#39;&amp;amp;&amp;#39;)[0]
-I+love+chocolate
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;I misspelled my favorite coffee place when searching:&lt;/p&gt;
-&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; third_query = pkts[227].getlayer(Raw)
-&amp;gt;&amp;gt;&amp;gt; print third_query.fields.get(&amp;#39;load&amp;#39;).split(&amp;#39;?p=&amp;#39;)[1].split(&amp;#39;&amp;amp;&amp;#39;)[0]
-Blue+Bottle+Coffe
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;query-2-how-me-everyone-from-x-country-that-has-visited-y-extremist-forum&#34;&gt;Query 2: How me everyone from $X country that has visited $Y extremist forum&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://docs.python-requests.org/en/latest/&#34;&gt;requests&lt;/a&gt; is another popular 3rd party package — it’s pitched as “HTTP for Humans”, as the url lib from the standard library isn’t too fun to work with.  It provides tools to not only get/post data, manipulate headers, etc, it also allows for authentication like OAuth, Kerberos, among others.  &lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;Filter for source IP &amp;amp; destination IP, and traceroute those IPs:&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Another popular library, and one of my favorites for quick development is &lt;a href=&#34;http://flask.pocoo.org/&#34;&gt;Flask&lt;/a&gt; — a micro web framework.  It’s easily extensible — both with more third party packages, or you can write your own pretty simply.   &lt;/p&gt;
 
-&lt;iframe src=&#34;http://nbviewer.ipython.org/7588949&#34; width=&#34;900&#34; height=&#34;500&#34;&gt;&lt;/iframe&gt;
+&lt;p&gt;Another package — and unfortunately I don’t get a lot of opportunities to work with it, but &lt;a href=&#34;http://networkx.github.io/&#34;&gt;NetworkX&lt;/a&gt; is a great library for creating graph visualizations with simple ways to create edges and nodes.&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;Filter for GET term like above:&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Lastly — Twisted.  &lt;a href=&#34;http://twistedmatrix.com&#34;&gt;Twisted&lt;/a&gt; is a beast of a project but is a fantastic event-driven networking library.  What I like about Twisted is the core dev team is super smart; working with them really improves my code quality.  It also has a lot of goodies — you can easily create an IRC client and server, a DNS server, mail server, web server, a lot of great stuff.  &lt;/p&gt;
+&lt;h3 id=&#34;how-spotify-uses-python&#34;&gt;How Spotify Uses Python&lt;/h3&gt;
+&lt;p&gt;Way back when Spotify started in 2006, we implemented about 80% of everything that is Spotify in Python.  We chose the language because of its standard library &amp;amp; the 3rd party package ecosystem, because of its community, as well as it being fast where it counts.&lt;/p&gt;
+&lt;h4 id=&#34;libraries-amp-packages&#34;&gt;Libraries &amp;amp; Packages&lt;/h4&gt;
+&lt;p&gt;So first, looking at Python’s standard libraries — it’s pretty damn comprehensive.  It has many tools to interact with different protocols and data formats, ways to interact with the OS processes and sockets, data persistence with SQLite, easily create zip, gzip files, tar balls, and work with file input/output.  There are also modules for development like unit testing and doc testing, as well as logging, command line argument and option parsing.  Just take a look at it &lt;a href=&#34;https://docs.python.org/2/library/&#34;&gt;all&lt;/a&gt;.&lt;/p&gt;
 
-&lt;iframe src=&#34;http://nbviewer.ipython.org/7589025&#34; width=&#34;900&#34; height=&#34;500&#34;&gt;&lt;/iframe&gt;
-&lt;h4 id=&#34;query-3-give-me-all-emails-with-x-in-the-body-of-the-email&#34;&gt;Query 3: Give me all emails with $X in the body of the email&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;There’s also &lt;a href=&#34;https://pypi.python.org&#34;&gt;PyPI&lt;/a&gt;, which is the Python Packaging Index, where folks upload packages/modules that they’ve developed for others to download and use.  To download packages, the “python” way is via &lt;a href=&#34;http://www.pip-installer.org/en/latest/&#34;&gt;&lt;code&gt;pip&lt;/code&gt;&lt;/a&gt; — stands for “python install python” — where on the command line you can run &lt;code&gt;pip install $packagename&lt;/code&gt;, similar to &lt;code&gt;gem install&lt;/code&gt; for Ruby.  For those familiar with easy_install, pip is its replacement.   &lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;Filter for HTTP traffic and &amp;quot;POST&amp;quot; for sent - if sent via web interface then will probably be over HTTPS (save packet for decryption later!)&lt;/li&gt;
-&lt;li&gt;OR Filter for port 25&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Once packets are collected, parse packets&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Download and save this &lt;a href=&#34;http://wiki.wireshark.org/SampleCaptures?action=AttachFile&amp;amp;do=get&amp;amp;target=smtp.pcap&#34;&gt;sample pcap file&lt;/a&gt; from Wireskark’s &lt;a href=&#34;http://wiki.wireshark.org/SampleCaptures&#34;&gt;Sample Captures&lt;/a&gt; for an example of smtp traffic.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Now parsing and putting together the raw data (decoded base64 if needed), you can do a simple search for key terms.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;There are over 38,000 packages on PyPI, including packages for networking like &lt;a href=&#34;https://pypi.python.org/pypi/gevent/1.0&#34;&gt;Gevent&lt;/a&gt; and &lt;a href=&#34;https://pypi.python.org/pypi/Twisted/13.2.0&#34;&gt;Twisted&lt;/a&gt;, web frameworks like &lt;a href=&#34;https://pypi.python.org/pypi/Django/1.6.2&#34;&gt;Django&lt;/a&gt;, &lt;a href=&#34;https://pypi.python.org/pypi/Flask/0.10.1&#34;&gt;Flask&lt;/a&gt;, and &lt;a href=&#34;http:&#34;&gt;Pyramid&lt;/a&gt;, there are many other test frameworks and documentation tools. There are so many awesome packages, and the fact that one can install via the command line makes life a lot easier.&lt;/p&gt;
 
-&lt;iframe src=&#34;http://nbviewer.ipython.org/7589033&#34; width=&#34;900&#34; height=&#34;500&#34;&gt;&lt;/iframe&gt;
-&lt;h4 id=&#34;query-4-give-me-pgp-usage-from-z-country&#34;&gt;Query 4: Give me PGP usage from $Z country&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;br&gt;
-Very similar to above, sniff for SMTP traffic.  Then just parse/search for &amp;#39;multipart/encrypted&amp;#39; and/or &amp;#39;protocol=&amp;quot;application/pgp-encrypted&amp;quot;&amp;#39; within &amp;quot;Content-Type&amp;quot; header of the email.  This just tells you that the email has been encrypted with PGP.  Now, we already have a database collections/hosts of PGP/GPG keys, so I&amp;#39;m sure the NSA is getting their cryptographers on it!&lt;/p&gt;
+&lt;p&gt;So what packages does Spotify use?  Definitely all of the listed above — I’ll mention what exactly in a little bit.  We also have are own internal &lt;a href=&#34;https://pypi.python.org/pypi/pypiserver&#34;&gt;PyPI server&lt;/a&gt; so we can package Spotify-specific python packages for our Debian systems that easily hooks into our build system. We’re thinking of someday moving to &lt;a href=&#34;http://doc.devpi.net/latest/&#34;&gt;devpi&lt;/a&gt; for our PyPI server. Someday.&lt;/p&gt;
+&lt;h4 id=&#34;community&#34;&gt;Community&lt;/h4&gt;
+&lt;p&gt;Another reason we elected to develop Spotify in Python is its community.  I mentioned PyPI before, the packaging index.  Pretty much, there’s a package for anything you could possibly imagine on PyPI.  The community also is very good at maintaining these packages, and if a package dies or is no longer being developed on, many times someone will take over maintenance and development, or make a substitute.&lt;/p&gt;
 
-&lt;iframe src=&#34;http://nbviewer.ipython.org/7589056&#34; width=&#34;900&#34; height=&#34;500&#34;&gt;&lt;/iframe&gt;
-&lt;h4 id=&#34;query-5-show-me-chats-for-x-user-during-y-timeframe&#34;&gt;Query 5: Show me chats for $X user during $Y timeframe&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;br&gt;
-You will need to disable your SSL connection to the chat server.  Then just sniff for XMPP traffic (Jabber, Facebook, gchat) or IRC traffic (TCP + port 6667 (typically)).&lt;/p&gt;
+&lt;p&gt;When Spotify was deciding whether to write code in Python or Ruby, we chose Python because of its documentation.  Back in 2006/2007, much of the Ruby’s documentation didn’t exist — you had to read the source code, which can be difficult and/or time consuming.  As well, any docs that were available was in Japanese.  &lt;/p&gt;
 
-&lt;iframe src=&#34;http://nbtest.herokuapp.com/gist/econchick/7589075&#34; width=&#34;900&#34; height=&#34;500&#34;&gt;&lt;/iframe&gt;
-&lt;h4 id=&#34;query-6-find-all-exploitable-machines-in-z-country&#34;&gt;Query 6: Find all exploitable machines in $Z Country&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Looking at the Python community, it puts a lot of importance on documentation (and in English! with lots of internationalization movements!).  We even have a very popular documentation &lt;a href=&#34;http://conf.writethedocs.org/&#34;&gt;conference&lt;/a&gt; based on &lt;a href=&#34;https://readthedocs.org&#34;&gt;Read the Docs&lt;/a&gt;, which hosts documentation for free built with &lt;a href=&#34;https://sphinx-doc.org&#34;&gt;Sphinx&lt;/a&gt;, which is also a documentation package originally written for Python.  Note that it’s a bit “shunned upon” to release a package without docs on how to install and work with said package. &lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;Create a port sniffer - responses return OS&lt;/li&gt;
-&lt;li&gt;Geolocate machines with the resolved IP addresses&lt;/li&gt;
-&lt;li&gt;Either search for a specific machine, or combile and/or query a database needed of known exploitable machines (e.g. &lt;a href=&#34;http://www.shodanhq.com/&#34;&gt;shodan&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Lastly, the community embraces the “zen” of Python, which basically means: &lt;/p&gt;
 
-&lt;iframe src=&#34;http://nbviewer.ipython.org/7589366&#34; width=&#34;900&#34; height=&#34;500&#34;&gt;&lt;/iframe&gt;
-&lt;h4 id=&#34;other-easy-tricks&#34;&gt;Other easy tricks&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;VoIP calls: protocol filter = SIP&lt;/li&gt;
-&lt;li&gt;Can easily read Chrome/Firefox/Skype sqlite databases once inside someone&amp;#39;s machine&lt;/li&gt;
-&lt;li&gt;Physical location of where you&amp;#39;ve connected to - can get the SSID via wireshark/scapy, and use wigle.net to search by SSID&lt;/li&gt;
-&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Beautiful is better than ugly&lt;br&gt;
+Explicit is better than implicit&lt;br&gt;
+Simple is better than complex&lt;br&gt;
+Complex is better than complicated&lt;br&gt;
+Readability counts&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;To describe Python code as clever is &lt;em&gt;not&lt;/em&gt; a compliment.  The &lt;a href=&#34;http:&#34;&gt;Zen of Python&lt;/a&gt; essentially defines what it means to be Pythonic.  And so sure, there may be many ways approach solving a problem with Python, but unlike Perl where “there is more than one way to do it”, Python strives for one and only way — hopefully an obvious way.  &lt;/p&gt;
+
+&lt;p&gt;This Zen of Python really helps the development process — if the community naturally embraces being Pythonic, then code that we use from the standard library and from third-party packages will be readable and understandable, and therefore our &lt;em&gt;own&lt;/em&gt; code will be just that.  This “zen” is pretty important to the development process, which is a part of the next reason we chose Python.&lt;/p&gt;
+&lt;h4 id=&#34;fast-where-it-counts&#34;&gt;Fast where it Counts&lt;/h4&gt;
+&lt;p&gt;So where the Zen of Python comes into play for the “fast where it counts” is both during development time and code reviews.  Since being Pythonic and the embracing the Zen of Python is heavily engrained in the community, it contributes to very readable code.  Code reviews are then quicker since it’s easier to read — nothing too clever or obfuscatory.  The whitespace also helps — while its purpose is to define scope, it lends to very readable code since there is not a lot of syntax in the way.&lt;/p&gt;
+
+&lt;p&gt;As a Python developer, I physically write less code than if I were to code in another language such as C.  To not have to write such verbose code, not having to implement personal libraries for string manipulation, to quickly code out an idea within a few hours — that makes me a happy and productive developer.  &lt;/p&gt;
+
+&lt;p&gt;Developing in Python is in itself fast.  The startup time is instant — there’s no time wasted on starting up a VM, or compile time.  The minutes saved during debugging, testing, etc. really adds up.   Python is not edit-compile-link-execute-break-debug like C is.  Python is just edit &amp;amp; debug, forgoing lots of steps to develop something that works.&lt;/p&gt;
+
+&lt;p&gt;For a company, all that time saved is vital: the quicker code reviews, the physically writing less code, the start up time — it really augments the development cycle.  To get the initial viable product out the door so one can iterate over it is important.  The quicker you can iterate and improve upon a product, the higher probability the product will be successful.&lt;/p&gt;
+
+&lt;p&gt;Lastly, many folks like to argue that Python is physically not fast — and that argument needs to be taken into context.  CPython, the most popular implementation of Python, &lt;em&gt;is&lt;/em&gt; slow for CPU-bound tasks (a side note: PyPy, another Python implementation, &lt;a href=&#34;http:&#34;&gt;is much faster in this regard&lt;/a&gt;).  This is because of the &lt;a href=&#34;http:&#34;&gt;global interpreter lock&lt;/a&gt;.  Python’s memory management is not exactly thread-safe, so the GIL is required to prevent multiple threads running the same Python code at once.  Before you write off Python for being too slow, you really have to have a deep understanding of the GIL (which I do not, but &lt;a href=&#34;http:&#34;&gt;this dude&lt;/a&gt; does), how it affects your application, how many cores you have, and where your application bottlenecks.  For Spotify, we are far more I/O bound versus CPU-bound.  We’re not writing software that does heavy computations like cryptography; a lot more is reading/writing to sockets, databases, that sort of thing.  And plus — machines are uber cheap, essentially eliminating any CPU-bound issues for us.&lt;/p&gt;
+&lt;h3 id=&#34;where-spotify-uses-python&#34;&gt;Where Spotify uses Python&lt;/h3&gt;
+&lt;p&gt;So where exactly do we use Python?  When Spotify began, about 80% of the codebase was Python.  Lately, it’s closer to 50% Python, 50% Java for our backend services.&lt;/p&gt;
+
+&lt;p&gt;But there are still a lot of services written in Python at Spotify, including the account creation and login system; our social system; payments uses a lot of Flask and Python in general; and all of our analytics jobs are in Python.  &lt;/p&gt;
+
+&lt;p&gt;We’ve written our own daemon and request handler in Python; our build scripts are in Python, and as I mentioned earlier, we have an internal PyPI that allows us to pip install Spotify-specific Python packages, or any backports we need from the regular PyPI.  &lt;/p&gt;
+
+&lt;p&gt;My latest projects are in Python, including an internally-released interactive API console to test out sample API calls, as well as a new API endpoint for interacting with our social graph that is currently in progress.  It’s definitely a Python developer’s paradise from my PoV.&lt;/p&gt;
+&lt;h3 id=&#34;what-spotify-uses&#34;&gt;What Spotify uses&lt;/h3&gt;
+&lt;p&gt;A big difference that we see when talking to other Python shops is we get the question, “so what are you using, Django, turbogears?” when that question is more for web dev shops.  And back in 2006, it was certainly different or odd to be using Python for something other than serving web pages.  &lt;/p&gt;
+
+&lt;p&gt;Spotify &lt;em&gt;does&lt;/em&gt; use many 3rd party packages, both popular and not-so, some for internal projects and processes, some that are client facing.  Some popular web frameworks for apps we’ve built use &lt;a href=&#34;http:&#34;&gt;Django&lt;/a&gt;, &lt;a href=&#34;http:&#34;&gt;Pyramid&lt;/a&gt;, and &lt;a href=&#34;http://flask.pocoo.org/&#34;&gt;Flask&lt;/a&gt;.  We did start with &lt;a href=&#34;http://twistedmatrix.com&#34;&gt;Twisted&lt;/a&gt;, and we still have some Twisted code, but we predominantly use &lt;a href=&#34;http:&#34;&gt;gevent&lt;/a&gt; for networking, as well as &lt;a href=&#34;http:&#34;&gt;Celery&lt;/a&gt; for task management.  &lt;a href=&#34;http://docs.python-requests.org/en/latest/&#34;&gt;requests&lt;/a&gt; is a favorite internally for simple stuff.  We heavily use &lt;a href=&#34;http:&#34;&gt;SQLAlchemy&lt;/a&gt; for database ORMs.   The label record companies give us metadata in the form of XML, which we parse with the &lt;a href=&#34;http:&#34;&gt;lxml&lt;/a&gt; library.  There’s a Python wrapper for &lt;a href=&#34;http:&#34;&gt;Zookeeper&lt;/a&gt; called &lt;a href=&#34;http:&#34;&gt;Kazoo&lt;/a&gt;, allowing us to orchestrate loading music metadata indices to over 200 production servers.&lt;/p&gt;
+&lt;h3 id=&#34;how-weve-given-back&#34;&gt;How we’ve given back&lt;/h3&gt;
+&lt;p&gt;Spotify “takes” a lot — Python is open source, there are no fees to use the language.  But Python and its packages being open source (released under a &lt;a href=&#34;http:&#34;&gt;GPL-compatible license&lt;/a&gt;) means that one can “take” from the community without giving back pretty easily.  Spotify is very appreciative of the Python community so we’ve given back in a few ways.&lt;/p&gt;
+
+&lt;p&gt;We’ve open sourced a few libraries, including &lt;a href=&#34;http:&#34;&gt;Luigi&lt;/a&gt; and &lt;a href=&#34;http:&#34;&gt;Snakebite&lt;/a&gt; — both very popular for working with Hadoop and general complex pipelines of batch jobs.  We’ve also recently released &lt;a href=&#34;https://github.com/spotify&#34;&gt;dh-virtualenv&lt;/a&gt;, which allows you to build a Debian package that essentially runs in a virtual environment.  It will pip install python packages that are required for running and create a nice deb package.  This is especially nice if Debian does not have your desired python packages bundled up in apt.&lt;/p&gt;
+
+&lt;p&gt;We’ve also submitted patches to one of our most widely used package — Gevent.  We also have a few folks that contribute to CPython itself.  Of course, there’s always more we can do, always more we can open source and contribute back.&lt;/p&gt;
+
+&lt;p&gt;Lastly — and one of the main reasons I joined Spotify — is their commitment to diversity.  Before I started there, the folks in Stockholm invited me up to host a &lt;a href=&#34;http://www.pyladies.com&#34;&gt;PyLadies&lt;/a&gt; workshop.  They wanted to get a local PyLadies chapter started, and since then, &lt;a href=&#34;http:&#34;&gt;it has been very successful&lt;/a&gt;.  My team in SF is especially enthusiastic, always happy to host the local chapter, as well as join as mentors for workshops.  &lt;/p&gt;
+
+&lt;p&gt;Spotify doesn’t limit their diversity efforts to just the Python community — we’ve started conversations to implement a Code of Conduct required for any meetup or conference the company sponsors.  We’ve also contributed to other tech diversity movements like Rails Girls.&lt;/p&gt;
+
+&lt;p&gt;So Python has served us very well, and we’ve tried to give back to its community to help it grow.&lt;/p&gt;
+&lt;h3 id=&#34;not-all-sunshine-and-rainbows&#34;&gt;Not All Sunshine and Rainbows&lt;/h3&gt;
+&lt;p&gt;But Spotify and Python is not without its issues.&lt;/p&gt;
+&lt;h4 id=&#34;issues-spotify-has-faced-with-python&#34;&gt;Issues Spotify has Faced with Python&lt;/h4&gt;
+&lt;p&gt;First off — while the community is big, there are a number of tools not publicly available that would address our needs.  As I mentioned earlier, we wrote our own daemon, and our own request handler because the popular frameworks out there have too much — we don’t need batteries included.  &lt;/p&gt;
+
+&lt;p&gt;We also have very specific and unique problems to solve, so we tend to write our own packages.  This is starting to bleed into other packages that are already publicly available, like an HTTP client.  We have our own — partly because every library is missing something whether it be the ability to chunk requests or timeouts don’t work properly, and partly because we have this “not invented here” syndrome after building a lot of homegrown solutions.  &lt;/p&gt;
+
+&lt;p&gt;Spotify actually started with Twisted rather than gevent — and folks found it very difficult to “twistify” their applications and services.  We found that Twisted and Postgres did not want to play nicely either.  So we moved to gevent, but that wasn’t a panacea either.  memcache and our gevent setup does not work well together.&lt;/p&gt;
+
+&lt;p&gt;We also use Debian packages for &lt;em&gt;everything&lt;/em&gt;.  Before dh-virtualenv handling installation of Python packages from PyPI for a Debian package, we either had to backport the library that we wanted to Debian, or grab the code itself to use in our own projects.  &lt;/p&gt;
+
+&lt;p&gt;So yes, now we have &lt;a href=&#34;https://github.com/spotify&#34;&gt;dh-virtualenv&lt;/a&gt; — which literally just became available about six months ago — but it doesn’t solve everything.  We are able to pip install packages when building a Debian package from either our internal PyPI server or the regular PyPI, but — scarily enough — we don’t review the code that we grab from third parties.  The way that the main PyPI (the pypi.python.org one) is setup, anyone can upload packages, and there are no security reviews.  So theoretically, we (and anyone who uses pip to install from non-vetted PyPI servers) could install a malicious Python package within our Debian package, and deploy it to our servers.  :-!   Yes, developers have the option to upload their PGP keys to their accounts in PyPI, but that just proves identity, not necessarily the safety of their packages.  This is more of an Python packaging ecosystem issue, not just a Spotify-specific issue. This is an issue for the Ruby community and other languages as well.&lt;/p&gt;
+&lt;h4 id=&#34;issues-python-faces&#34;&gt;Issues Python Faces&lt;/h4&gt;
+&lt;p&gt;Python is not a perfect language as well — and in my point of view, there are three main issues Python the language and its developers face.&lt;/p&gt;
+&lt;h5 id=&#34;the-great-debate-python-2-versus-3&#34;&gt;The Great Debate: Python 2 versus 3&lt;/h5&gt;
+&lt;p&gt;Earlier, I mentioned that there are two latest releases of Python, 2.7.6 and 3.4.0.  Most folks coming into Python think, “oh, I’ll just get the latest release”.  This is problematic in a few ways.&lt;/p&gt;
+
+&lt;p&gt;Except for Windows, downloading and setting up Python 3 can create issues because the major Linux flavors like Ubuntu, Debian, Fedora, as well as Mac OS X &lt;em&gt;already&lt;/em&gt; have Python installed — but it’s Python 2.&lt;/p&gt;
+
+&lt;p&gt;So as folks gets started, they think they may be running their Python programs in 3 when &lt;code&gt;python myprogram.py&lt;/code&gt; will pull up the system python (unless folks know what they’re doing and symlink &lt;code&gt;python&lt;/code&gt; to Python 3. But even then, whichever programs or scripts your system runs with Python may break since version 3 is not backwards compatible with 2).  Properly setting up one’s system for both versions is definitely not beginner-friendly.&lt;/p&gt;
+
+&lt;p&gt;Many big projects are compatible for Python 3, but many of the smaller, less popular, and non-web development-related packages are not. I’m sure many developers can relate to having a project or five depend on some obscure package. This can influence the adaptation of Python 3 for a non-web dev type of company like Spotify.&lt;/p&gt;
+
+&lt;p&gt;Beyond that, Python 3 adaptation is slacking.  A lot of packages are being made compatible for Python 3, but not a lot of development is targeted to 3.  There’s also no big company running 3 in production, or not publicly saying so.  Spotify is sort of waiting to see someone do exactly that before we take the plunge.  There also hasn’t been fast adoption to 3 because there are no “big ticket” features like the removing the GIL; folks see no benefit in upgrading that would outweigh the cost of migrating, as &lt;a href=&#34;http:&#34;&gt;Alex Gaynor pointed out&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;And for Spotify, as well as I’m sure a lot of other folks, our servers run Debian stable, which means Python 2.6.  Having Debian or Red Hat, Fedora, Ubuntu ship Python 3 would also be a big boost.  I know that Red Hat-flavored Linux and Ubuntu recently released parallel support, but again, there’s no huge benefit in upgrading to Python 3, at least for us, so even if it is supported, that isn’t removing a blocking factor.&lt;/p&gt;
+&lt;h5 id=&#34;the-gil&#34;&gt;The GIL&lt;/h5&gt;
+&lt;p&gt;I previously mentioned CPU-bound performance versus I/O bound — which has to do with the Global Interpreter Lock.  The GIL allows Python programs to be threadsafe, allowing only one thread to be executed at a time.  Multithreading often doesn’t work to improve performance, and often actually degrades a program’s speed.  The GIL is actually one of Python’s hardest problems™ — it’s very difficult to understand thoroughly, and one needs a deep understanding in order to optimize an application where the GIL is the bottleneck.  It’s also not trivial to remove from the CPython implementation.  But the GIL may be a good thing — using multiple processes instead of multiple threads is far easier to develop and debug, and is in general a safer concurrency model. &lt;/p&gt;
+&lt;h5 id=&#34;python-on-windows&#34;&gt;Python on Windows&lt;/h5&gt;
+&lt;p&gt;Lastly — and a personal issue that I face a lot — is Python on Windows.  Granted, spin up a Linux VMs for Python development, but developing on a VM is not ideal since it often slows down your computer, as well as it’s a pain to properly setup networking when your on your corporate VPN. &lt;/p&gt;
+
+&lt;p&gt;So, sure — it’s not that hard to download Python on a Windows machine.  But there are many hurdles to get your Windows system setup properly for Python development.  &lt;a href=&#34;http:&#34;&gt;virtualenv&lt;/a&gt; — a popular python tool that allows one to contain libraries and Python versions from clashing with multiple projects — and &lt;a href=&#34;http:&#34;&gt;virtualenvwrapper&lt;/a&gt;, a nice little command line wrapper around virtualenv — is very difficult to properly setup with Windows.  Of all the workshops I’ve hosted for PyLadies, Windows users take the longest time to setup for development (there are indeed other ways to setup a Windows or otherwise unruly *nix-like machine for a beginner’s workshop, but I’ve always tried to set folks up the right way™ .  &lt;/p&gt;
+
+&lt;p&gt;There are many Python packages that have C extensions.  How do you compile the C extensions on Windows?  Welp, you have to download a C compiler for Windows.  What about running from the command line? Wait — Windows doesn’t have a *nix-like command line! Better download a CLI tool for Windows.  Windows is great for development using Visual Studio IDE — but Visual Studio only has built in support for C/C++, C#, .NET, Visual Basic, and the like.  Time to download another tool to use Visual Studio &amp;amp; Python!  Other languages have these issues too, like Ruby, and git.  &lt;/p&gt;
+
+&lt;p&gt;Python development and packaging tends to focus on *nix-like machines.  The fact that OSX and Linux ships with Python makes it quite easy to setup the development environment.  The OS package managers like apt-get and brew make it very easy to install packages specific to your OS flavor, version, and architecture, something that Windows lacks.  Setup is just not as easy as &lt;code&gt;apt-get install&lt;/code&gt; or &lt;code&gt;brew install&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;looking-forward&#34;&gt;Looking Forward&lt;/h3&gt;
+&lt;p&gt;So what’s the future for Spotify &amp;amp; Python?  &lt;/p&gt;
+
+&lt;p&gt;Well — we’ve decided to move (someday...) from Debian stable to Ubuntu, which will allow us to revisit Python 3 support.  Some folks are already writing their Python code to be Python 3 compatible.  &lt;/p&gt;
+
+&lt;p&gt;As I mentioned earlier, lately about 50% of our backend services are in Python, with the other 50% Java.  This is pretty much because there’s no “corporate mandate” that we must write everything in Python — that teams and squads can choose whatever language &amp;amp; tools they want.  And related to that — it’s been difficult to find good Python programmers™ so we started hiring Java programmers, which has been having a noticeable impact on the tools we select (side note — we&amp;#39;re &lt;a href=&#34;http:&#34;&gt;hiring&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Lastly, we’re hoping to include Python into our desktop client.  Right now, it’s written in C++, but it’d be nice to use Python for the business logic with C++ for the graphics/GUI elements.&lt;/p&gt;
 </content>
         </entry>
         
@@ -1365,8 +1142,6 @@ Vagrant assumes that this means the command failed!&lt;br&gt;
         
     
         
-    
-        
         <entry>
             <title type="html">The New Coder: A Path to Software Engineering</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/The-New-Coder-A-path-to-Software-Engineering/" type="text/html" />
@@ -1564,6 +1339,8 @@ It’s extremely difficult to learn what you need to learn, yet not know what &l
 &lt;p&gt;So please - don’t drown. Swim safe!&lt;/p&gt;
 </content>
         </entry>
+        
+    
         
     
         
@@ -2094,8 +1871,6 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
         
     
         
-    
-        
         <entry>
             <title type="html">NetSec for n00bs, part I: Password Storage</title>
             <link rel="alternate" href="http://www.roguelynn.com/words/netsec-for-n00bs-part-i-password-storage/" type="text/html" />
@@ -2135,6 +1910,8 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
 &lt;p&gt;&lt;a href=&#34;http://www.roguelynn.com/words/2012-10-03-netsec-for-n00bs-part-ii-ciphers-symmetric&#34; title=&#34;Symmetric Ciphers&#34;&gt;Part II - Ciphers&lt;/a&gt;&lt;/p&gt;
 </content>
         </entry>
+        
+    
         
     
         
