@@ -1,10 +1,12 @@
 ---
 layout: talk.html
 title: "For Lack of a Better Name(server): DNS Explained"
-tags: [upcoming talk]
+tags: [past talk]
 talk_date: "April, 2014"
 location: "PyCon in Montreal"
 conf_url: "https://us.pycon.org/2014/"
+slides: https://speakerdeck.com/roguelynn/for-lack-of-a-better-name-server-dns-explained
+video: https://www.youtube.com/watch?v=Xdd7c8t6ySA
 category: [talks]
 ---
 
