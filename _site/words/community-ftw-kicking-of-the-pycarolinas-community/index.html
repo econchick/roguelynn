@@ -10,14 +10,17 @@
 
 
         <!--Stylesheets-->
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="/assets/css/lightbox.css" media="screen" title="screen">
         <!--<link rel="stylesheet" href="/assets/css/pygments3.css" media="screen" title="screen">-->
-        <link rel="stylesheet" href="/assets/css/bootstrap.css" media="screen" title="screen">
-        <link rel="stylesheet" href="/assets/css/bootstrap-responsive.css" media="screen" title="screen">
-        <link rel="stylesheet" href="/assets/css/screen2.css" media="screen" title="screen">
-        <link rel="stylesheet" href="/assets/css/ipython.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/opensans.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/droidserif.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/bitter.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/main.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/font-awesome.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/rst.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/code.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/ipython.min.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/nikola_ipython.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/custom.css" media="screen" title="screen">
 
         <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -25,20 +28,26 @@
         
     </head>
     <body>
-    <div class="container">
-      <div class="row">
-        <div class="span2">
-          <div class="avatar-section">
-            <a id="avatar" href="/"></a>
-            <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/about">About</a></li>
-              <li><a href="/words">Words</a></li>
-              <li><a href="/talks">Talks</a></li>
-              <li><a href="/pyladies">PyLadies</a></li>
-            </ul>
-          </div>
-        </div>
+      <section class="social">
+          <ul>
+              <li><a href="/" title="Home"><i class="fa fa-home"></i></a></li>
+              <li><a href="/words/" title="Blog Posts"><i class="fa fa-quote-left"></i></a></li>
+              <li><a href="/talks/" title="Talks"><i class="fa fa-microphone"></i></a></li>
+              <li><a href="/about/" title="About"><i class="fa fa-user"></i></a></li>
+              <li><a href="/pages/" title="Pages"><i class="fa fa-coffee"></i></a></li>
+              <li id="break">–</li>
+              <li><a href="http://twitter.com/roguelynn" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="https://alpha.app.net/roguelynn" title="ADN"><i class="fa fa-adn"></i></a></li>
+              <li><a href="http://github.com/econchick" title="GitHub"><i class="fa fa-github"></i></a></li>
+              <li><a href="http://open.spotify.com/user/econchick" title="Spotify"><i class="fa fa-spotify"></i></a></li>
+              <li><a href="https://www.tripit.com/people/lynn.root" title="Where am I?"><i class="fa fa-plane"></i></a></li>
+              <li id="break">–</li>
+              <li><a href="archive.html" title="Archives"><i class="fa fa-archive"></i></a></li>
+              <li><a href="http://www.roguelynn.com/feed.xml" title="RSS"><i class="fa fa-rss"></i></a></li>
+          </ul>
+      </section>
+    <section class="page-content">
+      <div class="content" rel="main">
         <div class="span9">
             
 
@@ -64,13 +73,13 @@
 <p>The importance of community is not in the crusade, but in how you unify people to march forward together, side by side.</p>
 </blockquote>
 
-<p>Corny, I know.  But what that translates to me is &quot;Hey! You&#39;re a nerd. I&#39;m a nerd. Let&#39;s hang out. Kthxbai.&quot;  Right?  My theory is that in high school, when we&#39;re developing our social lives, teenagers generally strive for a sense of belonging among their peers.  Whether they want to be among the &#39;popular&#39;/&#39;in crowd&#39; or perhaps a part of the football team, drama/theater, orchestra (or, as I called it when I played the bass: dork-estra), there&#39;s this need for acceptance somewhere.  While we might grow out of our awkward, angsty, punky teenager phase, we still have this internal sense of &#39;where do I belong? where do I feel most comfortable? who do I like being around?&#39;  At least, that&#39;s what goes on in my head, and may or may not be explicitly thought about with others, but perhaps the subconscious is there. I came across this other quote from LJ Hanifan:</p>
+<p>Corny, I know.  But what that translates to me is &ldquo;Hey! You&#39;re a nerd. I&#39;m a nerd. Let&#39;s hang out. Kthxbai.&rdquo;  Right?  My theory is that in high school, when we&#39;re developing our social lives, teenagers generally strive for a sense of belonging among their peers.  Whether they want to be among the &#39;popular&#39;/&#39;in crowd&#39; or perhaps a part of the football team, drama/theater, orchestra (or, as I called it when I played the bass: dork-estra), there&#39;s this need for acceptance somewhere.  While we might grow out of our awkward, angsty, punky teenager phase, we still have this internal sense of &#39;where do I belong? where do I feel most comfortable? who do I like being around?&#39;  At least, that&#39;s what goes on in my head, and may or may not be explicitly thought about with others, but perhaps the subconscious is there. I came across this other quote from LJ Hanifan:</p>
 
 <blockquote>
-<p>The individual is helpless socially... He comes into contact with his neighbors... and they with other neighbors, there will be the accumulation of social capital. The community as a whole will benefit by the cooperation of its parts, while the individual will find in his associations the advantages of the help, sympathy, and fellowship of his neighbors.</p>
+<p>The individual is helpless socially&hellip; He comes into contact with his neighbors&hellip; and they with other neighbors, there will be the accumulation of social capital. The community as a whole will benefit by the cooperation of its parts, while the individual will find in his associations the advantages of the help, sympathy, and fellowship of his neighbors.</p>
 </blockquote>
 
-<p>My efforts in learning how to program stemmed from creating my own community: I started a Python study group in the beginning of the year through <a href="http://meetup.com/women-who-code-sf" title="Women Who Code meetup group">Women Who Code</a>, I dragged WWC&#39;ers down to PyCon, I started the SF/Bay area chapter of PyLadies, and said &quot;hell, I could speak, let me talk about learning with women.&quot; It&#39;s so amazing the support, the patience, the forgiveness when you learn with folks trying to also learn, those who ask the questions, &quot;ah I see a lightbulb, what did I say to make that go off?&quot; or simply &quot;what do you need help with?&quot; followed by patience and understanding. Mind you, there isn&#39;t a stupid question, just a naive one, on the way to being educated. So a year of learning and studying has landed me <a href="/2012-09-25-from-n00b-to-engineer-in-one-year" title="ideal job">my ideal job</a>], to which gives credence to learning outside the classroom is just as effective, if not more, in the professional realm. Back to when trying to understand the awesome sauce that coats the Python community, these words kept coming up: </p>
+<p>My efforts in learning how to program stemmed from creating my own community: I started a Python study group in the beginning of the year through <a href="http://meetup.com/women-who-code-sf" title="Women Who Code meetup group">Women Who Code</a>, I dragged WWC&#39;ers down to PyCon, I started the SF/Bay area chapter of PyLadies, and said &ldquo;hell, I could speak, let me talk about learning with women.&rdquo; It&#39;s so amazing the support, the patience, the forgiveness when you learn with folks trying to also learn, those who ask the questions, &ldquo;ah I see a lightbulb, what did I say to make that go off?&rdquo; or simply &ldquo;what do you need help with?&rdquo; followed by patience and understanding. Mind you, there isn&#39;t a stupid question, just a naive one, on the way to being educated. So a year of learning and studying has landed me <a href="/2012-09-25-from-n00b-to-engineer-in-one-year" title="ideal job">my ideal job</a>], to which gives credence to learning outside the classroom is just as effective, if not more, in the professional realm. Back to when trying to understand the awesome sauce that coats the Python community, these words kept coming up: </p>
 
 <p><img class="inline" title="Python Tag Cloud" src="/assets/images/python_tag_cloud.png" alt="Tag Cloud" width="300" height="225" /></p>
 
@@ -81,7 +90,7 @@
 
 <ul>
 <li>  invite folks to meetups, conferences, sprints, hackathons/hack nights, etc</li>
-<li>  increase visibility of local groups, e.g. &quot;hey significantother/colleague/friend , you told me you wanted to learn programming/language/python. Have you heard of meetup group/user group/workshop?&quot;</li>
+<li>  increase visibility of local groups, e.g. &ldquo;hey significantother/colleague/friend , you told me you wanted to learn programming/language/python. Have you heard of meetup group/user group/workshop?&rdquo;</li>
 <li>  mentor those folks learning</li>
 </ul></li>
 <li><p>get yourself involved</p>
@@ -123,26 +132,17 @@
 
         </div>
       </div>
-    </div>
-    <div class="footer-wrapper">
-        <footer id="bottom">
-            <ul class="social">
-                <li><a class="icon twitter" data-icon="&#62217;" href="http://twitter.com/roguelynn" title="Twitter"></a></li>
-                <li><a class="icon github" data-icon="&#62208;" href="http://github.com/econchick" title="GitHub"></a></li>
-                <li><a class="icon photos" data-icon="&#128247;" href="http://500px.com/roguelynn" title="500px"></a><li>
-                <li><a class="icon spotify" data-icon="&#62247;" href="http://open.spotify.com/user/econchick" title="Spotify"></a></li>
-                <li><a class="icon flattr" data-icon="&#62262;" href="https://flattr.com/profile/roguelynn" title="Flattr"></a></li>
-                <li><a class="icon email" data-icon="&#10002;" href="mailto:lynn+roguelynn@lynnroot.com?subject:Hello!" title="Email"></a></li>
-                <li><a class="icon airplane" data-icon="&#9992;" href="https://www.tripit.com/people/lynn.root" title="Tripit"></a></li>
-                <li><a class="icon rss" data-icon="&#59194;" href="http://www.roguelynn.com/feed.xml" title="RSS"></a></li>
-                <li><a class="icon ohours" data-icon="&#59168;" href="http://ohours.org/roguelynn"></a></li>
-                <li>© 2007–2014 Lynn Root. All Rights Reserved.</li>
-            </ul>
+      <div class="footer">
+        <footer id="footer" role="contentinfo">
+          <p>© 2007–2014 Lynn Root. All Rights Reserved.</p>
         </footer>
-    </div>
+      </div>
+    </section>
         
         <!--Javascript-->
-        <script src="/assets/js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/assets/js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/assets/js/jquery.timeago.js" type="text/javascript"></script>
+        <script src="/assets/js/toggle.js" type="text/javascript"></script>
         <!-- Start of StatCounter Code for Default Guide -->
         <script type="text/javascript">
         var sc_project=4334716;

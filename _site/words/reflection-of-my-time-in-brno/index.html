@@ -10,14 +10,17 @@
 
 
         <!--Stylesheets-->
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="/assets/css/lightbox.css" media="screen" title="screen">
         <!--<link rel="stylesheet" href="/assets/css/pygments3.css" media="screen" title="screen">-->
-        <link rel="stylesheet" href="/assets/css/bootstrap.css" media="screen" title="screen">
-        <link rel="stylesheet" href="/assets/css/bootstrap-responsive.css" media="screen" title="screen">
-        <link rel="stylesheet" href="/assets/css/screen2.css" media="screen" title="screen">
-        <link rel="stylesheet" href="/assets/css/ipython.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/opensans.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/droidserif.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/bitter.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/main.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/font-awesome.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/rst.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/code.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/ipython.min.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/nikola_ipython.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/custom.css" media="screen" title="screen">
 
         <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -25,20 +28,26 @@
         
     </head>
     <body>
-    <div class="container">
-      <div class="row">
-        <div class="span2">
-          <div class="avatar-section">
-            <a id="avatar" href="/"></a>
-            <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/about">About</a></li>
-              <li><a href="/words">Words</a></li>
-              <li><a href="/talks">Talks</a></li>
-              <li><a href="/pyladies">PyLadies</a></li>
-            </ul>
-          </div>
-        </div>
+      <section class="social">
+          <ul>
+              <li><a href="/" title="Home"><i class="fa fa-home"></i></a></li>
+              <li><a href="/words/" title="Blog Posts"><i class="fa fa-quote-left"></i></a></li>
+              <li><a href="/talks/" title="Talks"><i class="fa fa-microphone"></i></a></li>
+              <li><a href="/about/" title="About"><i class="fa fa-user"></i></a></li>
+              <li><a href="/pages/" title="Pages"><i class="fa fa-coffee"></i></a></li>
+              <li id="break">–</li>
+              <li><a href="http://twitter.com/roguelynn" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="https://alpha.app.net/roguelynn" title="ADN"><i class="fa fa-adn"></i></a></li>
+              <li><a href="http://github.com/econchick" title="GitHub"><i class="fa fa-github"></i></a></li>
+              <li><a href="http://open.spotify.com/user/econchick" title="Spotify"><i class="fa fa-spotify"></i></a></li>
+              <li><a href="https://www.tripit.com/people/lynn.root" title="Where am I?"><i class="fa fa-plane"></i></a></li>
+              <li id="break">–</li>
+              <li><a href="archive.html" title="Archives"><i class="fa fa-archive"></i></a></li>
+              <li><a href="http://www.roguelynn.com/feed.xml" title="RSS"><i class="fa fa-rss"></i></a></li>
+          </ul>
+      </section>
+    <section class="page-content">
+      <div class="content" rel="main">
         <div class="span9">
             
 
@@ -60,7 +69,7 @@
 
 <p>But I need to be honest: throughout 7 of the 8 weeks I spent in Brno, I felt completely and utterly lost. I struggle with the lack of guidance given, especially being brand new into engineering as a profession.  </p>
 
-<p>My job for the next year is to integrate freeIPA into <a href="http://openshift.rhc.com" title="OpenShift">OpenShift</a>, followed by a few more prominent OSS projects. During my one-on-one phone calls with my manager, he says, literally, &quot;You need to develop a deep understanding of the freeIPA project,&quot; and &quot;You need to figure out what you don&#39;t know, and learn it,&quot; without any further guidance other than that I need to accomplish by end of February: to have a proof of concept of integration of IPA -&gt; OpenShift.</p>
+<p>My job for the next year is to integrate freeIPA into <a href="http://openshift.rhc.com" title="OpenShift">OpenShift</a>, followed by a few more prominent OSS projects. During my one-on-one phone calls with my manager, he says, literally, &ldquo;You need to develop a deep understanding of the freeIPA project,&rdquo; and &ldquo;You need to figure out what you don&#39;t know, and learn it,&rdquo; without any further guidance other than that I need to accomplish by end of February: to have a proof of concept of integration of IPA -&gt; OpenShift.</p>
 
 <p>In other words: <br>
 <img src="/assets/images/no_idea_dog.png" alt="no_idea_dog" title="I have no idea what I&#39;m doing"></p>
@@ -69,7 +78,7 @@
 
 <p>Sure, I learned bits of the IPA package in detail in regards to code and moving parts, and on the grand scale of how LDAP, DNS, AD trusts, Kerberos, Daemon, NTP, Certificate Authority, etc, all talk to each other and <em>why</em> it makes freeIPA appealing to sys admins, developers, etc. But it was (and still is) excruciatingly difficult to develop an understanding of what parts need to be integrated, and when I need to take step back and learn the deep, dark corners of DNS, BIND, and Apache. </p>
 
-<p>Thank god for mentors outside of my team as well; stupid questions about the Python language, like &quot;Isn&#39;t it bad to have import *? Why?&quot; were met with impatience at work. That&#39;s not to say my team mates weren&#39;t helpful; I had many ELI5 moments with them.</p>
+<p>Thank god for mentors outside of my team as well; stupid questions about the Python language, like &ldquo;Isn&#39;t it bad to have import *? Why?&rdquo; were met with impatience at work. That&#39;s not to say my team mates weren&#39;t helpful; I had many ELI5 moments with them.</p>
 <h3 id="my-expectations">My Expectations</h3>
 <p>I had this idea in my head that I would write more than ~15-20 lines of code for the IPA project. Correction: I assumed I&#39;d write more <em>Python</em> code during this time here in Brno. I wanted to learn how to write good code, the design pattern of the project, maybe write a test or two.</p>
 <h3 id="what-i-learned">What I learned</h3>
@@ -116,26 +125,17 @@
 
         </div>
       </div>
-    </div>
-    <div class="footer-wrapper">
-        <footer id="bottom">
-            <ul class="social">
-                <li><a class="icon twitter" data-icon="&#62217;" href="http://twitter.com/roguelynn" title="Twitter"></a></li>
-                <li><a class="icon github" data-icon="&#62208;" href="http://github.com/econchick" title="GitHub"></a></li>
-                <li><a class="icon photos" data-icon="&#128247;" href="http://500px.com/roguelynn" title="500px"></a><li>
-                <li><a class="icon spotify" data-icon="&#62247;" href="http://open.spotify.com/user/econchick" title="Spotify"></a></li>
-                <li><a class="icon flattr" data-icon="&#62262;" href="https://flattr.com/profile/roguelynn" title="Flattr"></a></li>
-                <li><a class="icon email" data-icon="&#10002;" href="mailto:lynn+roguelynn@lynnroot.com?subject:Hello!" title="Email"></a></li>
-                <li><a class="icon airplane" data-icon="&#9992;" href="https://www.tripit.com/people/lynn.root" title="Tripit"></a></li>
-                <li><a class="icon rss" data-icon="&#59194;" href="http://www.roguelynn.com/feed.xml" title="RSS"></a></li>
-                <li><a class="icon ohours" data-icon="&#59168;" href="http://ohours.org/roguelynn"></a></li>
-                <li>© 2007–2014 Lynn Root. All Rights Reserved.</li>
-            </ul>
+      <div class="footer">
+        <footer id="footer" role="contentinfo">
+          <p>© 2007–2014 Lynn Root. All Rights Reserved.</p>
         </footer>
-    </div>
+      </div>
+    </section>
         
         <!--Javascript-->
-        <script src="/assets/js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/assets/js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/assets/js/jquery.timeago.js" type="text/javascript"></script>
+        <script src="/assets/js/toggle.js" type="text/javascript"></script>
         <!-- Start of StatCounter Code for Default Guide -->
         <script type="text/javascript">
         var sc_project=4334716;

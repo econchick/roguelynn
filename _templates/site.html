@@ -10,14 +10,17 @@
 
 
         <!--Stylesheets-->
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="{{ get_asset('css/lightbox.css') }}" media="screen" title="screen">
         <!--<link rel="stylesheet" href="{{ get_asset('css/pygments3.css') }}" media="screen" title="screen">-->
-        <link rel="stylesheet" href="{{ get_asset('css/bootstrap.css') }}" media="screen" title="screen">
-        <link rel="stylesheet" href="{{ get_asset('css/bootstrap-responsive.css') }}" media="screen" title="screen">
-        <link rel="stylesheet" href="{{ get_asset('css/screen2.css') }}" media="screen" title="screen">
-        <link rel="stylesheet" href="{{ get_asset('css/ipython.css') }}" media="screen" title="screen">
+        <link rel="stylesheet" href="{{ get_asset('css/opensans.css') }}" media="screen" title="screen">
+        <link rel="stylesheet" href="{{ get_asset('css/droidserif.css') }}" media="screen" title="screen">
+        <link rel="stylesheet" href="{{ get_asset('css/bitter.css') }}" media="screen" title="screen">
+        <link rel="stylesheet" href="{{ get_asset('css/main.css') }}" media="screen" title="screen">
+        <link rel="stylesheet" href="{{ get_asset('css/font-awesome.css') }}" media="screen" title="screen">
+        <link rel="stylesheet" href="{{ get_asset('css/rst.css') }}" media="screen" title="screen">
+        <link rel="stylesheet" href="{{ get_asset('css/code.css') }}" media="screen" title="screen">
+        <link rel="stylesheet" href="{{ get_asset('css/ipython.min.css') }}" media="screen" title="screen">
+        <link rel="stylesheet" href="{{ get_asset('css/nikola_ipython.css') }}" media="screen" title="screen">
+        <link rel="stylesheet" href="{{ get_asset('css/custom.css') }}" media="screen" title="screen">
 
         <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -25,44 +28,41 @@
         {% block extrahead %}{% endblock %}
     </head>
     <body>
-    <div class="container">
-      <div class="row">
-        <div class="span2">
-          <div class="avatar-section">
-            <a id="avatar" href="/"></a>
-            <ul>
-              <li><a href="{{ get_url('/') }}">Home</a></li>
-              <li><a href="{{ get_url('/about') }}">About</a></li>
-              <li><a href="{{ get_url('/words') }}">Words</a></li>
-              <li><a href="{{ get_url('/talks') }}">Talks</a></li>
-              <li><a href="{{ get_url('/pyladies') }}">PyLadies</a></li>
-            </ul>
-          </div>
-        </div>
+      <section class="social">
+          <ul>
+              <li><a href="{{ get_url('/')}}" title="Home"><i class="fa fa-home"></i></a></li>
+              <li><a href="{{ get_url('/words/')}}" title="Blog Posts"><i class="fa fa-quote-left"></i></a></li>
+              <li><a href="{{ get_url('/talks/')}}" title="Talks"><i class="fa fa-microphone"></i></a></li>
+              <li><a href="{{ get_url('/about/')}}" title="About"><i class="fa fa-user"></i></a></li>
+              <li><a href="{{ get_url('/pages/')}}" title="Pages"><i class="fa fa-coffee"></i></a></li>
+              <li id="break">–</li>
+              <li><a href="http://twitter.com/roguelynn" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="https://alpha.app.net/roguelynn" title="ADN"><i class="fa fa-adn"></i></a></li>
+              <li><a href="http://github.com/econchick" title="GitHub"><i class="fa fa-github"></i></a></li>
+              <li><a href="http://open.spotify.com/user/econchick" title="Spotify"><i class="fa fa-spotify"></i></a></li>
+              <li><a href="https://www.tripit.com/people/lynn.root" title="Where am I?"><i class="fa fa-plane"></i></a></li>
+              <li id="break">–</li>
+              <li><a href="archive.html" title="Archives"><i class="fa fa-archive"></i></a></li>
+              <li><a href="{{ get_url('feed.xml', true)}}" title="RSS"><i class="fa fa-rss"></i></a></li>
+          </ul>
+      </section>
+    <section class="page-content">
+      <div class="content" rel="main">
         <div class="span9">
             {% block content %}{% endblock %}
         </div>
       </div>
-    </div>
-    <div class="footer-wrapper">
-        <footer id="bottom">
-            <ul class="social">
-                <li><a class="icon twitter" data-icon="&#62217;" href="http://twitter.com/roguelynn" title="Twitter"></a></li>
-                <li><a class="icon github" data-icon="&#62208;" href="http://github.com/econchick" title="GitHub"></a></li>
-                <li><a class="icon photos" data-icon="&#128247;" href="http://500px.com/roguelynn" title="500px"></a><li>
-                <li><a class="icon spotify" data-icon="&#62247;" href="http://open.spotify.com/user/econchick" title="Spotify"></a></li>
-                <li><a class="icon flattr" data-icon="&#62262;" href="https://flattr.com/profile/roguelynn" title="Flattr"></a></li>
-                <li><a class="icon email" data-icon="&#10002;" href="mailto:lynn+roguelynn@lynnroot.com?subject:Hello!" title="Email"></a></li>
-                <li><a class="icon airplane" data-icon="&#9992;" href="https://www.tripit.com/people/lynn.root" title="Tripit"></a></li>
-                <li><a class="icon rss" data-icon="&#59194;" href="{{ get_url('feed.xml', true)}}" title="RSS"></a></li>
-                <li><a class="icon ohours" data-icon="&#59168;" href="http://ohours.org/roguelynn"></a></li>
-                <li>© 2007–{{ None|date('%Y') }} Lynn Root. All Rights Reserved.</li>
-            </ul>
+      <div class="footer">
+        <footer id="footer" role="contentinfo">
+          <p>© 2007–{{ None|date('%Y') }} Lynn Root. All Rights Reserved.</p>
         </footer>
-    </div>
+      </div>
+    </section>
         {% block scripts %}{% endblock %}
         <!--Javascript-->
-        <script src="{{ get_asset('js/jquery-1.7.2.min.js') }}" type="text/javascript" charset="utf-8"></script>
+        <script src="{{ get_asset('js/jquery-1.10.2.min.js') }}" type="text/javascript" charset="utf-8"></script>
+        <script src="{{ get_asset('js/jquery.timeago.js') }}" type="text/javascript"></script>
+        <script src="{{ get_asset('js/toggle.js') }}" type="text/javascript"></script>
         <!-- Start of StatCounter Code for Default Guide -->
         <script type="text/javascript">
         var sc_project=4334716;

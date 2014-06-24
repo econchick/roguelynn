@@ -10,14 +10,17 @@
 
 
         <!--Stylesheets-->
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="/assets/css/lightbox.css" media="screen" title="screen">
         <!--<link rel="stylesheet" href="/assets/css/pygments3.css" media="screen" title="screen">-->
-        <link rel="stylesheet" href="/assets/css/bootstrap.css" media="screen" title="screen">
-        <link rel="stylesheet" href="/assets/css/bootstrap-responsive.css" media="screen" title="screen">
-        <link rel="stylesheet" href="/assets/css/screen2.css" media="screen" title="screen">
-        <link rel="stylesheet" href="/assets/css/ipython.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/opensans.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/droidserif.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/bitter.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/main.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/font-awesome.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/rst.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/code.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/ipython.min.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/nikola_ipython.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/custom.css" media="screen" title="screen">
 
         <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -25,20 +28,26 @@
         
     </head>
     <body>
-    <div class="container">
-      <div class="row">
-        <div class="span2">
-          <div class="avatar-section">
-            <a id="avatar" href="/"></a>
-            <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/about">About</a></li>
-              <li><a href="/words">Words</a></li>
-              <li><a href="/talks">Talks</a></li>
-              <li><a href="/pyladies">PyLadies</a></li>
-            </ul>
-          </div>
-        </div>
+      <section class="social">
+          <ul>
+              <li><a href="/" title="Home"><i class="fa fa-home"></i></a></li>
+              <li><a href="/words/" title="Blog Posts"><i class="fa fa-quote-left"></i></a></li>
+              <li><a href="/talks/" title="Talks"><i class="fa fa-microphone"></i></a></li>
+              <li><a href="/about/" title="About"><i class="fa fa-user"></i></a></li>
+              <li><a href="/pages/" title="Pages"><i class="fa fa-coffee"></i></a></li>
+              <li id="break">–</li>
+              <li><a href="http://twitter.com/roguelynn" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="https://alpha.app.net/roguelynn" title="ADN"><i class="fa fa-adn"></i></a></li>
+              <li><a href="http://github.com/econchick" title="GitHub"><i class="fa fa-github"></i></a></li>
+              <li><a href="http://open.spotify.com/user/econchick" title="Spotify"><i class="fa fa-spotify"></i></a></li>
+              <li><a href="https://www.tripit.com/people/lynn.root" title="Where am I?"><i class="fa fa-plane"></i></a></li>
+              <li id="break">–</li>
+              <li><a href="archive.html" title="Archives"><i class="fa fa-archive"></i></a></li>
+              <li><a href="http://www.roguelynn.com/feed.xml" title="RSS"><i class="fa fa-rss"></i></a></li>
+          </ul>
+      </section>
+    <section class="page-content">
+      <div class="content" rel="main">
         <div class="span9">
             
 
@@ -56,9 +65,9 @@
   </div>
 
   <div class="ten columns" id="article-content">
-    <p>When I was in high school, I was in &quot;IB&quot; math - the international equivalent to AP courses, except harder.  I really, really, <em>really</em> enjoyed math.  </p>
+    <p>When I was in high school, I was in &ldquo;IB&rdquo; math - the international equivalent to AP courses, except harder.  I really, really, <em>really</em> enjoyed math.  </p>
 
-<p>My teacher would always mispronounce my name (&quot;Wynn!&quot;), but nonetheless, I loved the challenge.  I was the only one to receive 100% on the final exam, and one of a handful to take the IB exam.  I studied regularly, went over classmates&#39; houses, worked through practice problems of vectors, differentiation, integration, goodness it was awesome.  I&#39;d say that studying for this sort of stuff is very much like (if not the same concept) as the training I did for swimming: 2 hours/day in the pool, 6 days a week, extra hour each day of dry land training (side stepping the fact that right now, the most exercise I get is walking to/from cafes...). </p>
+<p>My teacher would always mispronounce my name (&ldquo;Wynn!&rdquo;), but nonetheless, I loved the challenge.  I was the only one to receive 100% on the final exam, and one of a handful to take the IB exam.  I studied regularly, went over classmates&#39; houses, worked through practice problems of vectors, differentiation, integration, goodness it was awesome.  I&#39;d say that studying for this sort of stuff is very much like (if not the same concept) as the training I did for swimming: 2 hours/day in the pool, 6 days a week, extra hour each day of dry land training (side stepping the fact that right now, the most exercise I get is walking to/from cafes&hellip;). </p>
 
 <p>While it&#39;s been years since my crush on high school math, that same feeling comes again when studying for technical interviews.  Few hours/day, every day, until the interview.  I recently had the excitement of having a technical phone screen with Google, and I thought it went pretty well.  Not in terms of I think I can make it to the next round (I don&#39;t need to mention that the bar is set very high with them), but how I felt when comparing my last technical interview experience back in April.  I&#39;d like to share how I prepared myself. I&#39;ll mention that I my CV reflects a lot of PyLadies work, as well as knowledge of Python (natch), SQL, git, and working with different APIs.</p>
 <h4 id="how-i-prepared">How I prepared:</h4>
@@ -173,14 +182,14 @@ damn good problem to attack).</li>
 <ul>
 <li>  Wrote &amp; instantiated a class that would be used to make a graph, using the requested private variables/methods (he seemed a little impressed).  Although I do believe I mixed up new style v classic. /facepalm</li>
 <li>  Talking through each and every damn thing I was saying and writing (was not easy the first time).  And going back through what I coded to test simple cases &amp; fixed typos/errors.</li>
-<li>  My understanding of repr v str (finally...).</li>
+<li>  My understanding of repr v str (finally&hellip;).</li>
 <li>  Simple schema writing (from the first interview).</li>
 <li>  Before coding, switched the font/size to courier 8 (seriously, red flag to them if not using a fixed-width font when gdocs defaults to a variable-width one).</li>
 </ul>
 
 <p>I&#39;m certainly not counting on going further from that interview.  I quite like the set up I have now doing contracting with a friend&#39;s consulting + Harvard&#39;s project, and I seem to walk into new opportunities (then again, this is the Bay Area). Thankfully I&#39;m also able to contribute to open source, give talks &amp; go to conferences, put on workshops and events, etc.</p>
 
-<p>But hey - you&#39;d understand if Google came calling, right?  I actually look forward to the day where I can go in and code on a whiteboard, but that will take a lot more studying, understanding of more complex algorithms, better understanding of runtimes, perhaps systems architecture.  For those PyLadies and Women Who Code&#39;ers in the Bay Area, WWC is hosting a <a href="http://www.meetup.com/Women-Who-Code-SF/events/77224932/" title="Women Who Code tech interviewing event">Technical Interview evening talk/mini-workshop</a> with Gayle Laakmann McDowell next week.  We&#39;re also looking for mentors (and food sponsors!), so hit me up if you&#39;re interested! <strong>Update: </strong>I was told not to divulge what questions I received from the interviewer as it reflects poorly.  So, let me just say: what I studied aligned pretty well with what I was asked :D  I just...wish I had a better memory! Another resource given to me: <a href="https://www.interviewstreet.com/challenges/" title="Interview Street Challenges">Interview Street</a>, and I forgot <a href="http://www.careercup.com/" title="Career Cup: Programming Interview Questions">CareerCup</a>.</p>
+<p>But hey - you&#39;d understand if Google came calling, right?  I actually look forward to the day where I can go in and code on a whiteboard, but that will take a lot more studying, understanding of more complex algorithms, better understanding of runtimes, perhaps systems architecture.  For those PyLadies and Women Who Code&#39;ers in the Bay Area, WWC is hosting a <a href="http://www.meetup.com/Women-Who-Code-SF/events/77224932/" title="Women Who Code tech interviewing event">Technical Interview evening talk/mini-workshop</a> with Gayle Laakmann McDowell next week.  We&#39;re also looking for mentors (and food sponsors!), so hit me up if you&#39;re interested! <strong>Update: </strong>I was told not to divulge what questions I received from the interviewer as it reflects poorly.  So, let me just say: what I studied aligned pretty well with what I was asked :D  I just&hellip;wish I had a better memory! Another resource given to me: <a href="https://www.interviewstreet.com/challenges/" title="Interview Street Challenges">Interview Street</a>, and I forgot <a href="http://www.careercup.com/" title="Career Cup: Programming Interview Questions">CareerCup</a>.</p>
 
     <p id="footer">&#8756;</p>
     <div id="disqus_thread"></div>
@@ -203,26 +212,17 @@ damn good problem to attack).</li>
 
         </div>
       </div>
-    </div>
-    <div class="footer-wrapper">
-        <footer id="bottom">
-            <ul class="social">
-                <li><a class="icon twitter" data-icon="&#62217;" href="http://twitter.com/roguelynn" title="Twitter"></a></li>
-                <li><a class="icon github" data-icon="&#62208;" href="http://github.com/econchick" title="GitHub"></a></li>
-                <li><a class="icon photos" data-icon="&#128247;" href="http://500px.com/roguelynn" title="500px"></a><li>
-                <li><a class="icon spotify" data-icon="&#62247;" href="http://open.spotify.com/user/econchick" title="Spotify"></a></li>
-                <li><a class="icon flattr" data-icon="&#62262;" href="https://flattr.com/profile/roguelynn" title="Flattr"></a></li>
-                <li><a class="icon email" data-icon="&#10002;" href="mailto:lynn+roguelynn@lynnroot.com?subject:Hello!" title="Email"></a></li>
-                <li><a class="icon airplane" data-icon="&#9992;" href="https://www.tripit.com/people/lynn.root" title="Tripit"></a></li>
-                <li><a class="icon rss" data-icon="&#59194;" href="http://www.roguelynn.com/feed.xml" title="RSS"></a></li>
-                <li><a class="icon ohours" data-icon="&#59168;" href="http://ohours.org/roguelynn"></a></li>
-                <li>© 2007–2014 Lynn Root. All Rights Reserved.</li>
-            </ul>
+      <div class="footer">
+        <footer id="footer" role="contentinfo">
+          <p>© 2007–2014 Lynn Root. All Rights Reserved.</p>
         </footer>
-    </div>
+      </div>
+    </section>
         
         <!--Javascript-->
-        <script src="/assets/js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/assets/js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/assets/js/jquery.timeago.js" type="text/javascript"></script>
+        <script src="/assets/js/toggle.js" type="text/javascript"></script>
         <!-- Start of StatCounter Code for Default Guide -->
         <script type="text/javascript">
         var sc_project=4334716;

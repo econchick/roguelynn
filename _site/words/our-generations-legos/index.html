@@ -10,14 +10,17 @@
 
 
         <!--Stylesheets-->
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="/assets/css/lightbox.css" media="screen" title="screen">
         <!--<link rel="stylesheet" href="/assets/css/pygments3.css" media="screen" title="screen">-->
-        <link rel="stylesheet" href="/assets/css/bootstrap.css" media="screen" title="screen">
-        <link rel="stylesheet" href="/assets/css/bootstrap-responsive.css" media="screen" title="screen">
-        <link rel="stylesheet" href="/assets/css/screen2.css" media="screen" title="screen">
-        <link rel="stylesheet" href="/assets/css/ipython.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/opensans.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/droidserif.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/bitter.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/main.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/font-awesome.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/rst.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/code.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/ipython.min.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/nikola_ipython.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/custom.css" media="screen" title="screen">
 
         <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -25,20 +28,26 @@
         
     </head>
     <body>
-    <div class="container">
-      <div class="row">
-        <div class="span2">
-          <div class="avatar-section">
-            <a id="avatar" href="/"></a>
-            <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/about">About</a></li>
-              <li><a href="/words">Words</a></li>
-              <li><a href="/talks">Talks</a></li>
-              <li><a href="/pyladies">PyLadies</a></li>
-            </ul>
-          </div>
-        </div>
+      <section class="social">
+          <ul>
+              <li><a href="/" title="Home"><i class="fa fa-home"></i></a></li>
+              <li><a href="/words/" title="Blog Posts"><i class="fa fa-quote-left"></i></a></li>
+              <li><a href="/talks/" title="Talks"><i class="fa fa-microphone"></i></a></li>
+              <li><a href="/about/" title="About"><i class="fa fa-user"></i></a></li>
+              <li><a href="/pages/" title="Pages"><i class="fa fa-coffee"></i></a></li>
+              <li id="break">–</li>
+              <li><a href="http://twitter.com/roguelynn" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="https://alpha.app.net/roguelynn" title="ADN"><i class="fa fa-adn"></i></a></li>
+              <li><a href="http://github.com/econchick" title="GitHub"><i class="fa fa-github"></i></a></li>
+              <li><a href="http://open.spotify.com/user/econchick" title="Spotify"><i class="fa fa-spotify"></i></a></li>
+              <li><a href="https://www.tripit.com/people/lynn.root" title="Where am I?"><i class="fa fa-plane"></i></a></li>
+              <li id="break">–</li>
+              <li><a href="archive.html" title="Archives"><i class="fa fa-archive"></i></a></li>
+              <li><a href="http://www.roguelynn.com/feed.xml" title="RSS"><i class="fa fa-rss"></i></a></li>
+          </ul>
+      </section>
+    <section class="page-content">
+      <div class="content" rel="main">
         <div class="span9">
             
 
@@ -58,15 +67,15 @@
   <div class="ten columns" id="article-content">
     <p>First time I heard about raspberry pi was through twitter.  I thought: Oh I bet that&#39;s a cute name for a new python module.  Didn&#39;t look into it. </p>
 
-<p>Then I overheard a <em>very</em> dedicated PyLady saying &quot;OMG my Raspberry Pi shipped today!&quot; Wait, a module shipped?  She doesn&#39;t develop python modules.  Is this a physical thing? </p>
+<p>Then I overheard a <em>very</em> dedicated PyLady saying &ldquo;OMG my Raspberry Pi shipped today!&rdquo; Wait, a module shipped?  She doesn&#39;t develop python modules.  Is this a physical thing? </p>
 
-<p>Then, weeks later, I asked another friend, &quot;What is this Raspberry Pi?&quot; The world stopped to him.  &quot;What, are you serious?&quot; he responded.  &quot;Yeah…?&quot;  </p>
+<p>Then, weeks later, I asked another friend, &ldquo;What is this Raspberry Pi?&rdquo; The world stopped to him.  &ldquo;What, are you serious?&rdquo; he responded.  &ldquo;Yeah…?&quot;  </p>
 
 <p>Clearly I wasn&#39;t getting &quot;it.&quot;  </p>
 
-<p>Then I preceded to get educated in &quot;it.&quot; Sure, I thought - that&#39;s cool, a credit card sized computer.  It didn&#39;t seem that big of a deal to me - that the kind of stuff iPhones &amp; Androids run on, wicked small computers.  It&#39;s \$35 too - not bad, but it still didn&#39;t appeal to me.</p>
+<p>Then I preceded to get educated in &quot;it.&rdquo; Sure, I thought - that&#39;s cool, a credit card sized computer.  It didn&#39;t seem that big of a deal to me - that the kind of stuff iPhones &amp; Androids run on, wicked small computers.  It&#39;s \$35 too - not bad, but it still didn&#39;t appeal to me.</p>
 
-<p>And then after a few days after that conversation - it hit me.  Holy sh*t this is a revolutionary idea.  Holy crap, I get &quot;it.&quot;  Now I understood why there was a 3 month wait time for ordering. To share this enlightenment, I can&#39;t simply say &quot;imagine the possibilities.&quot;  A lot of people require handholding for some creative thinking.  </p>
+<p>And then after a few days after that conversation - it hit me.  Holy sh*t this is a revolutionary idea.  Holy crap, I get &ldquo;it.&quot;  Now I understood why there was a 3 month wait time for ordering. To share this enlightenment, I can&#39;t simply say &quot;imagine the possibilities.&quot;  A lot of people require handholding for some creative thinking.  </p>
 
 <p>So let me continue my thought process: I hadn&#39;t really been &#39;into&#39; computers beyond the use of them until about 9 or 10 months ago.  I was damn good at my shortcuts around Excel, my Google-fu skills, my typing speed thanks to AIM, but I didn&#39;t really care about what was going on underneath my laptop&#39;s keyboard. September 2011 I took my first computer science course.  <em>Not</em> because I was interested in learning to program, but because I needed to know programming to apply to graduate school for financial engineering.  December 2011 I finished with an A- and never looked at finance again. In my new life, my &#39;finally found my passion&#39; mindset, I haven&#39;t stopped consuming programming, learning computers, understanding security risks, teaching others and myself python, speaking about it, etc… My 2008 MBP died earlier this year.  It comes back to life every once and a while, but when it does kick the bucket for one last time, oh boy will I perform an autopsy.  I will dissect, rip apart, hack, and reuse anything and everything. </p>
 
@@ -76,13 +85,13 @@
 
 <p>You know what I&#39;m going to do?  Try something out with PyGame and my lego wheels (I feel sorry for the cat and the impending annoyance I will cause him). I plan to make a home security system - quite needed living in the Mission of SF.  How? not sure, but  it&#39;s damn well possible.  Probably hook up one of the speakers that I have from 1999, or steal one from my MBP.  It&#39;ll probably be a hack job at first - faulty wires exposed, false alarms and annoyed neighbors. </p>
 
-<p>OH goodness what about a voice-command thing tailored to my voice?  &quot;Start Pandora&quot; (sorry Spotify).  &quot;Start picture slideshow.&quot;  &quot;Turn off lights.&quot;  &quot;Turn on coffee machine.&quot;  &quot;Remind me to take my meds.&quot;  MY OWN STARTREK LIFE. I&#39;ll get bothered by how relatively slow Debian Squeeze will be (the OS you&#39;ll have to download yourself).  There goes my weekend of learning/writing linux kernels. Hmm after all these thoughts, I stepped back for a second.  </p>
+<p>OH goodness what about a voice-command thing tailored to my voice?  &quot;Start Pandora&rdquo; (sorry Spotify).  &ldquo;Start picture slideshow.&quot;  &quot;Turn off lights.&quot;  &quot;Turn on coffee machine.&quot;  &quot;Remind me to take my meds.&quot;  MY OWN STARTREK LIFE. I&#39;ll get bothered by how relatively slow Debian Squeeze will be (the OS you&#39;ll have to download yourself).  There goes my weekend of learning/writing linux kernels. Hmm after all these thoughts, I stepped back for a second.  </p>
 
-<p>This computer isn&#39;t just for me, and for people like me.  A \$35 computer in the hands (literal hands!) of children.  Not some mystifying 1/2 in x 13 in x 9in slap of aluminum w/ a keyboard. Small a\$\$ computer + PyGame + Legos (+ Arduino maybe) = only limited by imagination.  Perhaps a child can amuse a cat&#39;s afternoon like me.  Or perhaps strap it on one of those small, build-your-own rockets (I LOVED those as a kid!), shoot it up in the air, and record flight data (is that possible? f^ck who cares, I&#39;m going to do it now). </p>
+<p>This computer isn&#39;t just for me, and for people like me.  A \$35 computer in the hands (literal hands!) of children.  Not some mystifying &frac12; in x 13 in x 9in slap of aluminum w/ a keyboard. Small a\$\$ computer + PyGame + Legos (+ Arduino maybe) = only limited by imagination.  Perhaps a child can amuse a cat&#39;s afternoon like me.  Or perhaps strap it on one of those small, build-your-own rockets (I LOVED those as a kid!), shoot it up in the air, and record flight data (is that possible? f^ck who cares, I&#39;m going to do it now). </p>
 
 <p>What if we and our kids take this opportunity to put this computer in the hands of developing nations&#39; children?   I&#39;d chip in \$35 to send this to an eager child with little access to it him/herself.  Why don&#39;t we + our kids preprogram &amp; preload it with learning tools, with Khan academy videos?  Why not send one monitor down, a bunch of cables, and Raspberry Pis w/ edu videos for a whole village?  I&#39;ll throw in some legos in there. Oh man, you know what the best part of it is?  </p>
 
-<p>Python is on Debian Squeeze.  The makers of RP &amp; the OS couldn&#39;t have selected an easier language for the world to learn.  Looking at how far _I_ got in 1/2 a year of learning Python, and I do feel the hindrance of an aging brain.  Imagine the pace at a child learns.  Let me say that again: Imagine the pace that a child learns.  Just think. </p>
+<p>Python is on Debian Squeeze.  The makers of RP &amp; the OS couldn&#39;t have selected an easier language for the world to learn.  Looking at how far _I_ got in &frac12; a year of learning Python, and I do feel the hindrance of an aging brain.  Imagine the pace at a child learns.  Let me say that again: Imagine the pace that a child learns.  Just think. </p>
 
 <p>Ok let me connect the dots for you:  Is your company hiring? </p>
 
@@ -113,26 +122,17 @@
 
         </div>
       </div>
-    </div>
-    <div class="footer-wrapper">
-        <footer id="bottom">
-            <ul class="social">
-                <li><a class="icon twitter" data-icon="&#62217;" href="http://twitter.com/roguelynn" title="Twitter"></a></li>
-                <li><a class="icon github" data-icon="&#62208;" href="http://github.com/econchick" title="GitHub"></a></li>
-                <li><a class="icon photos" data-icon="&#128247;" href="http://500px.com/roguelynn" title="500px"></a><li>
-                <li><a class="icon spotify" data-icon="&#62247;" href="http://open.spotify.com/user/econchick" title="Spotify"></a></li>
-                <li><a class="icon flattr" data-icon="&#62262;" href="https://flattr.com/profile/roguelynn" title="Flattr"></a></li>
-                <li><a class="icon email" data-icon="&#10002;" href="mailto:lynn+roguelynn@lynnroot.com?subject:Hello!" title="Email"></a></li>
-                <li><a class="icon airplane" data-icon="&#9992;" href="https://www.tripit.com/people/lynn.root" title="Tripit"></a></li>
-                <li><a class="icon rss" data-icon="&#59194;" href="http://www.roguelynn.com/feed.xml" title="RSS"></a></li>
-                <li><a class="icon ohours" data-icon="&#59168;" href="http://ohours.org/roguelynn"></a></li>
-                <li>© 2007–2014 Lynn Root. All Rights Reserved.</li>
-            </ul>
+      <div class="footer">
+        <footer id="footer" role="contentinfo">
+          <p>© 2007–2014 Lynn Root. All Rights Reserved.</p>
         </footer>
-    </div>
+      </div>
+    </section>
         
         <!--Javascript-->
-        <script src="/assets/js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/assets/js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/assets/js/jquery.timeago.js" type="text/javascript"></script>
+        <script src="/assets/js/toggle.js" type="text/javascript"></script>
         <!-- Start of StatCounter Code for Default Guide -->
         <script type="text/javascript">
         var sc_project=4334716;

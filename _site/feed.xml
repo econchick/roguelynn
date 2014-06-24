@@ -5,7 +5,7 @@
     <link rel="alternate" href="http://www.roguelynn.com/" />
     <link rel="self" href="http://www.roguelynn.com/feed.xml" type="application/atom+xml" />
     <id>http://www.roguelynn.com/</id>
-    <updated>2014-05-06T17:05:23Z</updated>
+    <updated>2014-06-24T20:25:29Z</updated>
 
     <author>
         <name>Lynn Root</name>
@@ -13,6 +13,8 @@
         <uri>http://www.roguelynn.com/</uri>
     </author>
 
+    
+        
     
         
     
@@ -295,39 +297,39 @@
 
 &lt;p&gt;Configuration for Kerberos should look similar to:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# remote_user.conf or .htaccess
-LoadModule auth_kerb_module modules/mod_auth_kerb.so
+LoadModule auth_kerb_module modules&amp;#47;mod_auth_kerb.so
 
-&amp;lt;Location /&amp;gt; 
-    AuthName &amp;#34;DjangoConKerberos&amp;#34;
+&amp;lt;Location &amp;#47;&amp;gt; 
+    AuthName &amp;quot;DjangoConKerberos&amp;quot;
     AuthType Kerberos
     KrbMethodNegotiate On
     KrbMethodK5Passwd Off
-    KrbServiceName HTTP/$FQDN
+    KrbServiceName HTTP&amp;#47;$FQDN
     KrbAuthRealms KERBEROS_DOMAIN
-    Krb5KeyTab /path/to/http.keytab
+    Krb5KeyTab &amp;#47;path&amp;#47;to&amp;#47;http.keytab
     Require valid-user
 
     Order Deny,Allow
     Deny from all
-&amp;lt;/Location&amp;gt;
+&amp;lt;&amp;#47;Location&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;If using LDAP + Basic auth instead of Kerberos, Apache configuration should look similar to:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# remote_user.conf or .htaccess
-LoadModule authnz_ldap_module modules/mod_authnz_ldap.so
+LoadModule authnz_ldap_module modules&amp;#47;mod_authnz_ldap.so
 
-&amp;lt;Location /&amp;gt; 
-    AuthName &amp;#34;DjangoConLDAP&amp;#34;
+&amp;lt;Location &amp;#47;&amp;gt; 
+    AuthName &amp;quot;DjangoConLDAP&amp;quot;
     AuthType Basic
     AuthBasicProvider ldap
     AuthzLDAPAuthoritative Off
-    AuthLDAPURL ldap://$LDAP_URL:389/CN=...
+    AuthLDAPURL ldap:&amp;#47;&amp;#47;$LDAP_URL:389&amp;#47;CN=...
     AuthLDAPBindDN cn=myusername,cn=Users,...
     AuthLDAPBindPassword mypassword
     Require valid-user
 
     Order Deny,Allow
     Deny from all
-&amp;lt;/Location&amp;gt;
+&amp;lt;&amp;#47;Location&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;An important part of setting up Apache for an internal Kerberized system is getting a keytab for Apache.  Most likely, you won’t have access to get the needed keytab, and will need to request one from whoever manages the corporate identity system.  &lt;/p&gt;
 
@@ -343,28 +345,28 @@ LoadModule authnz_ldap_module modules/mod_authnz_ldap.so
 &lt;pre&gt;&lt;code&gt;[vagrant@client]# kinit roguelynn
 Password for roguelynn@ROOTCLOUD.COM:
 [vagrant@client]# curl -I --negotiate -u : \
-    https://synergizeapp.strategery.com
+    https:&amp;#47;&amp;#47;synergizeapp.strategery.com
 
-HTTP/1.1 401 Unauthorized
+HTTP&amp;#47;1.1 401 Unauthorized
 Date: Wed, 15 May 2013 09:10:18 GMT
-Server: Apache/2.4.4 (Fedora)
+Server: Apache&amp;#47;2.4.4 (Fedora)
 WWW-Authenticate: Negotiate
-Content-type text/html; charset=iso-8859-1
+Content-type text&amp;#47;html; charset=iso-8859-1
 
-HTTP/1.1 200
+HTTP&amp;#47;1.1 200
 Date: Wed, 15 May 2013 09:10:18 GMT
-Server: Apache/2.4.4 (Fedora)
+Server: Apache&amp;#47;2.4.4 (Fedora)
 WWW-Authenticate: Negotiate sOmE_RanDom_T0k3n
 ...
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The &lt;code&gt;--negotiate&lt;/code&gt; flag flips on &lt;a href=&#34;http://en.wikipedia.org/wiki/SPNEGO&#34;&gt;SPNego&lt;/a&gt; for cURL, and the &lt;code&gt;-u :&lt;/code&gt; forces cURL to pick up the authenticated user’s cached ticket from &lt;code&gt;kinit&lt;/code&gt;’ing.  You can see your cached ticket with &lt;code&gt;klist&lt;/code&gt;. &lt;/p&gt;
 &lt;h4 id=&#34;requests.py&#34;&gt;requests.py&lt;/h4&gt;
 &lt;p&gt;For &lt;code&gt;requests&lt;/code&gt; fans:&lt;/p&gt;
-&lt;pre lang=&#34;bash&#34;&gt;&lt;code&gt;$ kinit USERNAME
+&lt;pre&gt;&lt;code data-lang=&#34;bash&#34;&gt;$ kinit USERNAME
 $ python
 &amp;gt;&amp;gt;&amp;gt; import requests
 &amp;gt;&amp;gt;&amp;gt; from requests_kerberos import HTTPKerberosAuth
-&amp;gt;&amp;gt;&amp;gt; r = requests.get(&amp;#34;$APACHE_PROTECTED_FQDN&amp;#34;,\
+&amp;gt;&amp;gt;&amp;gt; r = requests.get(&amp;quot;$APACHE_PROTECTED_FQDN&amp;quot;,\
                      auth=HTTPKerberosAuth())
 &amp;gt;&amp;gt;&amp;gt; r.status_code
 200
@@ -378,26 +380,26 @@ $ python
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Mac:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;open &amp;#39;Google Chrome.app&amp;#39; --args\
-  --auth-server-whitelist=&amp;#34;*ROGUECLOUD.COM&amp;#34;\
-  --auth-negotiate-delegate-whitelist=&amp;#34;*KERBEROS_DOMAIN&amp;#34;\
-  --auth-schemes=&amp;#34;basic,digest,ntlm,negotiate&amp;#34;
+  --auth-server-whitelist=&amp;quot;*ROGUECLOUD.COM&amp;quot;\
+  --auth-negotiate-delegate-whitelist=&amp;quot;*KERBEROS_DOMAIN&amp;quot;\
+  --auth-schemes=&amp;quot;basic,digest,ntlm,negotiate&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Linux:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;google-chrome --enable-plugins --args\
-  --auth-server-whitelist=&amp;#34;*KERBEROS_DOMAIN&amp;#34;\
-  --auth-negotiate-delegate-whitelist=&amp;#34;*KERBEROS_DOMAIN&amp;#34;\
-  --auth-schemes=&amp;#34;basic,digest,ntlm,negotiate&amp;#34;
+  --auth-server-whitelist=&amp;quot;*KERBEROS_DOMAIN&amp;quot;\
+  --auth-negotiate-delegate-whitelist=&amp;quot;*KERBEROS_DOMAIN&amp;quot;\
+  --auth-schemes=&amp;quot;basic,digest,ntlm,negotiate&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Windows: &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;chrome.exe --auth-server-whitelist=&amp;#34;*KERBEROS_DOMAIN&amp;#34;\
-  --auth-negotiate-delegate-whitelist=&amp;#34;*ROGUECLOUD.COM&amp;#34;\
-  --auth-schemes=&amp;#34;basic,digest,ntlm,negotiate&amp;#34;
+&lt;pre&gt;&lt;code&gt;chrome.exe --auth-server-whitelist=&amp;quot;*KERBEROS_DOMAIN&amp;quot;\
+  --auth-negotiate-delegate-whitelist=&amp;quot;*ROGUECLOUD.COM&amp;quot;\
+  --auth-schemes=&amp;quot;basic,digest,ntlm,negotiate&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Firefox&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Navigate to &lt;code&gt;about:config&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Search for &amp;quot;negotiate&amp;quot;&lt;/li&gt;
+&lt;li&gt;Search for &amp;ldquo;negotiate&amp;rdquo;&lt;/li&gt;
 &lt;li&gt;For &lt;code&gt;network.negotiate-auth.delegation-uris&lt;/code&gt; add &lt;code&gt;.KERBEROS_DOMAIN&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;For &lt;code&gt;network.negotiate-auth.trusted-uris&lt;/code&gt; add &lt;code&gt;.KERBEROS_DOMAIN&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
@@ -405,7 +407,7 @@ $ python
 
 &lt;ul&gt;
 &lt;li&gt;Internet Options &amp;gt; Tools &amp;gt; Advanced Tab&lt;/li&gt;
-&lt;li&gt;Within Security section, select &amp;quot;Enable Integrated Windows Authentication&amp;quot;&lt;/li&gt;
+&lt;li&gt;Within Security section, select &amp;ldquo;Enable Integrated Windows Authentication&amp;rdquo;&lt;/li&gt;
 &lt;li&gt;Restart browser&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
@@ -420,7 +422,7 @@ $ python
 
 &lt;p&gt;However, if needed, there are ways to hook into the user database to grab permissions.&lt;/p&gt;
 &lt;h4 id=&#34;accessing-permissions&#34;&gt;Accessing Permissions&lt;/h4&gt;
-&lt;p&gt;Say your app needs to know if a user is defined as an admin, or staff, a part of a particular group (e.g. &amp;quot;finance&amp;quot;, &amp;quot;engineering&amp;quot;) or something else that is already defined in your external auth system.  Customizing a backend is needed to connect directly to the external user datastore.&lt;/p&gt;
+&lt;p&gt;Say your app needs to know if a user is defined as an admin, or staff, a part of a particular group (e.g. &amp;ldquo;finance&amp;rdquo;, &amp;ldquo;engineering&amp;rdquo;) or something else that is already defined in your external auth system.  Customizing a backend is needed to connect directly to the external user datastore.&lt;/p&gt;
 
 &lt;p&gt;Typically, LDAP holds users in groups, through &lt;code&gt;memberOf&lt;/code&gt; parameter or something similar.  By binding to the LDAP to find what group the user is a member of, you can then define what authorization that a user has within your own app logic.  e.g. if user is a member of “admins”, then create_superuser(user).  &lt;/p&gt;
 
@@ -493,7 +495,7 @@ $ python
 &lt;p&gt;Let’s create a dummy application: &lt;code&gt;./manage.py startapp synergizerApp&lt;/code&gt;.  Just for the sake of simplicity, this is just a single django project with a single app.&lt;/p&gt;
 &lt;h4 id=&#34;creating-your-custom-user-model&#34;&gt;Creating your custom user model&lt;/h4&gt;
 &lt;p&gt;While you’re hooking into a pre-defined user database that will take care of authentication, and perhaps authorization, you can still define your own custom model by inheriting from &lt;code&gt;AbstractUserBase&lt;/code&gt; with your own additions, like so:&lt;/p&gt;
-&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;# synergizerApp/models.py
+&lt;pre&gt;&lt;code data-lang=&#34;python&#34;&gt;# synergizerApp&amp;#47;models.py
 
 from django.contrib.auth.models import AbstractBaseUser
 from django.db import models
@@ -514,7 +516,7 @@ class KerbUser(AbstractBaseUser):
 &lt;p&gt;Because you defined a custom user model – requiring a &lt;code&gt;synergy_level&lt;/code&gt; for the user – you’ll need to define a user manager to take care of creating users &amp;amp; superusers within Django.  &lt;/p&gt;
 
 &lt;p&gt;The key parts here are just defining what a user/superuser should have, and referring to the UserManager within the user model itself.&lt;/p&gt;
-&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;from django.contrib.auth.models import (
+&lt;pre&gt;&lt;code data-lang=&#34;python&#34;&gt;from django.contrib.auth.models import (
     AbstractBaseUser, BaseUserManager)
 from django.db import models
 
@@ -545,7 +547,7 @@ class KerbUser(AbstractBaseUser):
 &lt;p&gt;Within your custom user model, &lt;code&gt;KerbUser&lt;/code&gt;, you will also need to define &lt;code&gt;get_full_name&lt;/code&gt; and &lt;code&gt;get_short_name&lt;/code&gt;, and &lt;code&gt;is_active&lt;/code&gt; which defaults to &lt;code&gt;True&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;Just a few variables should be set within &lt;code&gt;settings.py&lt;/code&gt; file to make Django a &lt;span id=&#34;buzzword&#34;&gt;team player&lt;/span&gt;:&lt;/p&gt;
-&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;# settings.py
+&lt;pre&gt;&lt;code data-lang=&#34;python&#34;&gt;# settings.py
 
 # &amp;lt;--snip--&amp;gt;
 AUTH_USER_MODEL = &amp;#39;synergizerApp.KerbUser&amp;#39;
@@ -566,17 +568,17 @@ AUTHENTICATION_BACKENDS = (
 &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; The order of middleware is very important: the &lt;code&gt;AuthenticationMiddleware&lt;/code&gt; must precede &lt;code&gt;RemoteUserMiddleware&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;If want to use &lt;code&gt;user&lt;/code&gt; from the Kerberos&amp;#39; &lt;code&gt;user@REALM&lt;/code&gt; as the username, you can simply extend &lt;code&gt;RemoteUserBackend&lt;/code&gt;:&lt;/p&gt;
-&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;# synergizerApp/krb5.py
+&lt;pre&gt;&lt;code data-lang=&#34;python&#34;&gt;# synergizerApp&amp;#47;krb5.py
 
 from django.contrib.auth.backends import RemoteUserBackend
 
 class Krb5RemoteUserBackend(RemoteUserBackend):
     def clean_username(self, username):
         # remove @REALM from username
-        return username.split(&amp;#34;@&amp;#34;)[0] 
+        return username.split(&amp;quot;@&amp;quot;)[0] 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;and &lt;code&gt;settings.py&lt;/code&gt; for your custom backend defined above:&lt;/p&gt;
-&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;# settings.py
+&lt;pre&gt;&lt;code data-lang=&#34;python&#34;&gt;# settings.py
 
 # &amp;lt;--snip--&amp;gt;
 AUTHENTICATION_BACKENDS = (
@@ -585,7 +587,7 @@ AUTHENTICATION_BACKENDS = (
 # &amp;lt;--snip--&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;To access the user within the models for your application, you’ll refer to the custom user model like so:&lt;/p&gt;
-&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;# synergizerApp/models.py
+&lt;pre&gt;&lt;code data-lang=&#34;python&#34;&gt;# synergizerApp&amp;#47;models.py
 
 from django.conf import settings
 from django.db import models
@@ -595,7 +597,7 @@ class Synergy(models.Model):
     # &amp;lt;--snip--&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;To access within your views:&lt;/p&gt;
-&lt;pre lang=&#34;python&#34;&gt;&lt;code&gt;# synergizerApp/views.py
+&lt;pre&gt;&lt;code data-lang=&#34;python&#34;&gt;# synergizerApp&amp;#47;views.py
 
 from django.contrib.auth import get_user_model
 
@@ -630,8 +632,8 @@ User = get_user_model()
             <content type="html">&lt;p&gt;This is part 3 of a series of posts on setting up Django to use external authentication.  This post explains how to setup your own environment to test Django authentication against Apache and Kerberos/Active Directory/LDAP.&lt;/p&gt;
 &lt;h3 id=&#34;setting-up-your-own-test-environment&#34;&gt;Setting up your own test environment&lt;/h3&gt;
 &lt;p&gt;Naturally, you only care about coding and developing. I’ve made a &lt;a href=&#34;https://gist.github.com/econchick/99699a6fee2eb44d13b0&#34;&gt;Vagrantfile&lt;/a&gt; that spins up two VMs: an IPA server with a Kerberos KDC, and a client within the Kerberos realm that runs Apache, both on Fedora 18.&lt;/p&gt;
-&lt;h4 id=&#34;setup-your-kerberos-test-environment&#34;&gt;Setup your Kerberos test environment:&lt;/h4&gt;&lt;pre lang=&#34;bash&#34;&gt;&lt;code&gt;$ git clone\
-      https://gist.github.com/econchick/99699a6fee2eb44d13b0\
+&lt;h4 id=&#34;setup-your-kerberos-test-environment&#34;&gt;Setup your Kerberos test environment:&lt;/h4&gt;&lt;pre&gt;&lt;code data-lang=&#34;bash&#34;&gt;$ git clone\
+      https:&amp;#47;&amp;#47;gist.github.com&amp;#47;econchick&amp;#47;99699a6fee2eb44d13b0\
       KerbTestEnvironment
 $ cd KerbTestEnvironment
 
@@ -648,14 +650,14 @@ $ vagrant up client
 &lt;p&gt;To use your Kerberos test environment, make sure both VMs are up and running with &lt;code&gt;vagrant status&lt;/code&gt;.  &lt;/p&gt;
 
 &lt;p&gt;First, ssh into the &lt;strong&gt;server&lt;/strong&gt; via &lt;code&gt;vagrant ssh ipaserver&lt;/code&gt; then check to see if the IPA service is up and running, and if not, start it up:&lt;/p&gt;
-&lt;pre lang=&#34;bash&#34;&gt;&lt;code&gt;[vagrant@ipaserver]$ sudo ipactl status
+&lt;pre&gt;&lt;code data-lang=&#34;bash&#34;&gt;[vagrant@ipaserver]$ sudo ipactl status
 [vagrant@ipaserver]$ sudo ipactl start
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Be sure you can &lt;code&gt;kinit&lt;/code&gt; on the server:&lt;/p&gt;
-&lt;pre lang=&#34;bash&#34;&gt;&lt;code&gt;[vagrant@ipaserver]$ kinit admin
+&lt;pre&gt;&lt;code data-lang=&#34;bash&#34;&gt;[vagrant@ipaserver]$ kinit admin
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Now, ssh into the &lt;strong&gt;client&lt;/strong&gt; via &lt;code&gt;vagrant ssh client&lt;/code&gt;, then check to see if you can &lt;code&gt;kinit&lt;/code&gt; to make sure this VM can connect to &lt;code&gt;ipaserver&lt;/code&gt;’s KDC:&lt;/p&gt;
-&lt;pre lang=&#34;bash&#34;&gt;&lt;code&gt;[vagrant@client]$ kinit admin
+&lt;pre&gt;&lt;code data-lang=&#34;bash&#34;&gt;[vagrant@client]$ kinit admin
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;To push your app to the client VM, you can just copy your Django code to the &lt;code&gt;KerbTestEnvironment/synergizerApp/&lt;/code&gt; directory we created earlier, and it will drop into Apache’s default directory, &lt;code&gt;/var/www/&lt;/code&gt;.  You will need to configure Apache for wsgi. &lt;/p&gt;
 
@@ -672,12 +674,12 @@ Vagrant assumes that this means the command failed!&lt;br&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;then apply &lt;a href=&#34;https://github.com/monvillalon/vagrant/commit/dc9830350a0f2be3bb7a4b4e9fcefaed66c6a26a&#34;&gt;this&lt;/a&gt; fix within Vagrant’s installation.  For my Mac OS X Mountain Lion + Vagrant v1.2.2 (most up-to-date at the time of this article), it was a bit tough to find the exact place where this fix should be made.  Wherever the vagrant gems are installed, find &lt;code&gt;plugins/guests/fedora/cap/configure_network.rb&lt;/code&gt; to adjust the line that contains this:&lt;/p&gt;
-&lt;pre lang=&#34;ruby&#34;&gt;&lt;code&gt;machine.communicate.sudo(&amp;#34;/sbin/ifup p7p#{interface} 2&amp;gt;\
-                          /dev/null&amp;#34;)
+&lt;pre&gt;&lt;code data-lang=&#34;ruby&#34;&gt;machine.communicate.sudo(&amp;quot;&amp;#47;sbin&amp;#47;ifup p7p#{interface} 2&amp;gt;\
+                          &amp;#47;dev&amp;#47;null&amp;quot;)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;to this:&lt;/p&gt;
-&lt;pre lang=&#34;ruby&#34;&gt;&lt;code&gt;machine.communicate.sudo(&amp;#34;/sbin/ifup p7p#{interface} 2&amp;gt;\ 
-                          /dev/null&amp;#34;, :error_check =&amp;gt; false)
+&lt;pre&gt;&lt;code data-lang=&#34;ruby&#34;&gt;machine.communicate.sudo(&amp;quot;&amp;#47;sbin&amp;#47;ifup p7p#{interface} 2&amp;gt;\ 
+                          &amp;#47;dev&amp;#47;null&amp;quot;, :error_check =&amp;gt; false)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;em&gt;(ya ya, a pull request containing this fix, or rather an update to ifup, should be made; who has time for that…)&lt;/em&gt;&lt;/p&gt;
 
@@ -685,7 +687,7 @@ Vagrant assumes that this means the command failed!&lt;br&gt;
 &lt;li&gt;&lt;p&gt;If you get a clock skew error during &lt;code&gt;kinit&lt;/code&gt; on the &lt;code&gt;ipaserver&lt;/code&gt;, restart IPA via &lt;code&gt;sudo ipactl restart&lt;/code&gt; and make sure &lt;code&gt;ntpd&lt;/code&gt; is running with &lt;code&gt;service ntpd status&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;If you get a clock skew error during &lt;code&gt;kinit&lt;/code&gt; on the &lt;code&gt;client&lt;/code&gt;, you’ll need to resync NTP. Try the following (you’ll have to do the &lt;code&gt;ntpdate&lt;/code&gt; command at least twice to adjust the NTP clock to at most 300 seconds/5 minutes difference):&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre lang=&#34;bash&#34;&gt;&lt;code&gt;[vagrant@client]$ sudo killall ntpd
+&lt;pre&gt;&lt;code data-lang=&#34;bash&#34;&gt;[vagrant@client]$ sudo killall ntpd
 [vagrant@client]$ sudo ntpdate ipaserver.example.com
 [vagrant@client]$ sudo ntpdate ipaserver.example.com
 [vagrant@client]$ kinit admin
@@ -1011,7 +1013,7 @@ Vagrant assumes that this means the command failed!&lt;br&gt;
 &lt;h2 id=&#34;project-based-learning&#34;&gt;Project-based learning&lt;/h2&gt;
 &lt;p&gt;I started off blowing bubbles - I did take one course in computer science (after I graduated); I would have failed if it weren’t for my crappy little final &lt;a href=&#34;22&#34;&gt;project&lt;/a&gt; shadowing the fact that I couldn’t code.&lt;/p&gt;
 
-&lt;p&gt;But I love it – the cold, chilly, 3am night never looked better to me. But who wants to pay $2000 for a single course whose credit won’t necessarily apply towards anything. I was drowning while from being told &amp;quot;this is how we chlorinate the water&amp;quot; to &amp;quot;here are the hydrodynamic equations that your body must follow in order to swim fast&amp;quot;.&lt;/p&gt;
+&lt;p&gt;But I love it – the cold, chilly, 3am night never looked better to me. But who wants to pay $2000 for a single course whose credit won’t necessarily apply towards anything. I was drowning while from being told &amp;ldquo;this is how we chlorinate the water&amp;rdquo; to &amp;ldquo;here are the hydrodynamic equations that your body must follow in order to swim fast&amp;rdquo;.&lt;/p&gt;
 
 &lt;p&gt;So I ditched traditional academia and I’ve been learning to code through completing projects.  It’s been a self-directed study with motivation to actually do this for a living. It&amp;#39;s paid off - within a year, I am now a software engineer at Red Hat. Granted I still choke on water every once and a while, but I took to the water myself after studying what others do, how they code, and teaching others.&lt;/p&gt;
 &lt;h2 id=&#34;learning-through-frustration&#34;&gt;Learning through frustration&lt;/h2&gt;
@@ -1212,7 +1214,7 @@ It’s extremely difficult to learn what you need to learn, yet not know what &l
                 <email>lynn@lynnroot.com</email>
                 <uri>http://www.roguelynn.com/</uri>
             </author>
-            <content type="html">&lt;p&gt;A month or two ago, I signed up for a lightning talk for &lt;a href=&#34;http://www.meetup.com/Women-Who-Code-SF/events/93965402/&#34; title=&#34;WWC Lightning Talk Event&#34;&gt;today&amp;#39;s&lt;/a&gt; Women Who Code event. I didn&amp;#39;t submit a title - I was more, &amp;quot;sure, I could talk!&amp;quot;&lt;/p&gt;
+            <content type="html">&lt;p&gt;A month or two ago, I signed up for a lightning talk for &lt;a href=&#34;http://www.meetup.com/Women-Who-Code-SF/events/93965402/&#34; title=&#34;WWC Lightning Talk Event&#34;&gt;today&amp;#39;s&lt;/a&gt; Women Who Code event. I didn&amp;#39;t submit a title - I was more, &amp;ldquo;sure, I could talk!&amp;rdquo;&lt;/p&gt;
 
 &lt;p&gt;Only on Tuesday did I find out I was actually on the bill to speak! Welp, here&amp;#39;s a just-in-time presentation. My slides are &lt;a href=&#34;http://www.slideshare.net/roguelynn/avoid-drowning&#34;&gt;here&lt;/a&gt; - but basically this post flows through what&amp;#39;s presented on.&lt;/p&gt;
 &lt;h2 id=&#34;my-experience&#34;&gt;My experience&lt;/h2&gt;
@@ -1318,7 +1320,7 @@ It’s extremely difficult to learn what you need to learn, yet not know what &l
 &lt;ul&gt;
 &lt;li&gt;Find an internal mentor to bug about package/product questions. It may be your lead, or someone who&amp;#39;s been there for a while.&lt;/li&gt;
 &lt;li&gt;An external mentor is great to have too - perhaps you have a language question and you don&amp;#39;t want to look stupid in front of your coworkers.  It&amp;#39;s also great to get a different point of view for how the development process works elsewhere.&lt;/li&gt;
-&lt;li&gt;Your manager - yep, s/he is by default a mentor, whether good or bad, or absent. Learn how to manage up if you&amp;#39;re not getting what you need at first. Avoid detailed questions and ask bigger questions like &amp;quot;how is my approach in this?&amp;quot;, or &amp;quot;am I learning at an acceptable speed?&amp;quot;&lt;/li&gt;
+&lt;li&gt;Your manager - yep, s/he is by default a mentor, whether good or bad, or absent. Learn how to manage up if you&amp;#39;re not getting what you need at first. Avoid detailed questions and ask bigger questions like &amp;ldquo;how is my approach in this?&amp;rdquo;, or &amp;ldquo;am I learning at an acceptable speed?&amp;rdquo;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;research&#34;&gt;Research&lt;/h3&gt;
 &lt;ul&gt;
@@ -1430,7 +1432,7 @@ The events I held and/or led for PyLadies were a lot of fun:&lt;/p&gt;
 
 &lt;p&gt;But I need to be honest: throughout 7 of the 8 weeks I spent in Brno, I felt completely and utterly lost. I struggle with the lack of guidance given, especially being brand new into engineering as a profession.  &lt;/p&gt;
 
-&lt;p&gt;My job for the next year is to integrate freeIPA into &lt;a href=&#34;http://openshift.rhc.com&#34; title=&#34;OpenShift&#34;&gt;OpenShift&lt;/a&gt;, followed by a few more prominent OSS projects. During my one-on-one phone calls with my manager, he says, literally, &amp;quot;You need to develop a deep understanding of the freeIPA project,&amp;quot; and &amp;quot;You need to figure out what you don&amp;#39;t know, and learn it,&amp;quot; without any further guidance other than that I need to accomplish by end of February: to have a proof of concept of integration of IPA -&amp;gt; OpenShift.&lt;/p&gt;
+&lt;p&gt;My job for the next year is to integrate freeIPA into &lt;a href=&#34;http://openshift.rhc.com&#34; title=&#34;OpenShift&#34;&gt;OpenShift&lt;/a&gt;, followed by a few more prominent OSS projects. During my one-on-one phone calls with my manager, he says, literally, &amp;ldquo;You need to develop a deep understanding of the freeIPA project,&amp;rdquo; and &amp;ldquo;You need to figure out what you don&amp;#39;t know, and learn it,&amp;rdquo; without any further guidance other than that I need to accomplish by end of February: to have a proof of concept of integration of IPA -&amp;gt; OpenShift.&lt;/p&gt;
 
 &lt;p&gt;In other words: &lt;br&gt;
 &lt;img src=&#34;http://www.roguelynn.com/assets/images/no_idea_dog.png&#34; alt=&#34;no_idea_dog&#34; title=&#34;I have no idea what I&amp;#39;m doing&#34;&gt;&lt;/p&gt;
@@ -1439,7 +1441,7 @@ The events I held and/or led for PyLadies were a lot of fun:&lt;/p&gt;
 
 &lt;p&gt;Sure, I learned bits of the IPA package in detail in regards to code and moving parts, and on the grand scale of how LDAP, DNS, AD trusts, Kerberos, Daemon, NTP, Certificate Authority, etc, all talk to each other and &lt;em&gt;why&lt;/em&gt; it makes freeIPA appealing to sys admins, developers, etc. But it was (and still is) excruciatingly difficult to develop an understanding of what parts need to be integrated, and when I need to take step back and learn the deep, dark corners of DNS, BIND, and Apache. &lt;/p&gt;
 
-&lt;p&gt;Thank god for mentors outside of my team as well; stupid questions about the Python language, like &amp;quot;Isn&amp;#39;t it bad to have import *? Why?&amp;quot; were met with impatience at work. That&amp;#39;s not to say my team mates weren&amp;#39;t helpful; I had many ELI5 moments with them.&lt;/p&gt;
+&lt;p&gt;Thank god for mentors outside of my team as well; stupid questions about the Python language, like &amp;ldquo;Isn&amp;#39;t it bad to have import *? Why?&amp;rdquo; were met with impatience at work. That&amp;#39;s not to say my team mates weren&amp;#39;t helpful; I had many ELI5 moments with them.&lt;/p&gt;
 &lt;h3 id=&#34;my-expectations&#34;&gt;My Expectations&lt;/h3&gt;
 &lt;p&gt;I had this idea in my head that I would write more than ~15-20 lines of code for the IPA project. Correction: I assumed I&amp;#39;d write more &lt;em&gt;Python&lt;/em&gt; code during this time here in Brno. I wanted to learn how to write good code, the design pattern of the project, maybe write a test or two.&lt;/p&gt;
 &lt;h3 id=&#34;what-i-learned&#34;&gt;What I learned&lt;/h3&gt;
@@ -1516,7 +1518,7 @@ The events I held and/or led for PyLadies were a lot of fun:&lt;/p&gt;
 
 &lt;p&gt;Essentially, practice at home in front of friends (perhaps entice them with a free meal, first) and/or practice locally at meetups or events like &lt;a href=&#34;http://igniteshow.com/&#34; title=&#34;Ignite&#34;&gt;Ignite&lt;/a&gt; or &lt;a href=&#34;http://www.pecha-kucha.org/&#34; title=&#34;Pecha Kucha&#34;&gt;Pecha Kucha&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;This is vital so you can get feedback. Perhaps your message wasn&amp;#39;t clear, or your font on your slides are too similar to comic sans. Maybe you fumble and don&amp;#39;t notice it with too many &amp;quot;um&amp;quot;s and &amp;quot;whatnot&amp;quot;s.&lt;/p&gt;
+&lt;p&gt;This is vital so you can get feedback. Perhaps your message wasn&amp;#39;t clear, or your font on your slides are too similar to comic sans. Maybe you fumble and don&amp;#39;t notice it with too many &amp;ldquo;um&amp;quot;s and &amp;quot;whatnot&amp;quot;s.&lt;/p&gt;
 &lt;h3 id=&#34;step-5-relax.&#34;&gt;Step 5: Relax.&lt;/h3&gt;
 &lt;p&gt;As a former collegiate athlete, it was known that &amp;#39;the night before the night before&amp;#39; was the most important. For instance, if your talk is on Saturday, Thursday night&amp;#39;s sleep will affect your energy level and stamina (and thus, affecting nerves and confidence) more than Friday. That&amp;#39;s not to say rest on Thursday and party on Friday. &lt;/p&gt;
 
@@ -1552,7 +1554,7 @@ The events I held and/or led for PyLadies were a lot of fun:&lt;/p&gt;
 &lt;li&gt; Remember that a lot of engineers don&amp;#39;t have the best people skills so some &amp;#39;rude&amp;#39; people are that way unintentionally.&lt;/li&gt;
 &lt;li&gt; If they dont answer questions, it is most likely because they dont know the answers.&lt;/li&gt;
 &lt;li&gt; Build relationships if possible. Never miss a happy hour type of thing.&lt;/li&gt;
-&lt;li&gt; &amp;quot;Where did you learn that?&amp;quot; is an interesting question&lt;/li&gt;
+&lt;li&gt; &amp;ldquo;Where did you learn that?&amp;rdquo; is an interesting question&lt;/li&gt;
 &lt;li&gt; Figure out the ways in which you like to work- and others like to work- first.&lt;/li&gt;
 &lt;li&gt; Many guys truly don&amp;#39;t think that women can or should be coding as equals.&lt;/li&gt;
 &lt;li&gt; At least 89% of the time, by the time I have really defined my question, I have figured out the answer.&lt;/li&gt;
@@ -1563,7 +1565,7 @@ The events I held and/or led for PyLadies were a lot of fun:&lt;/p&gt;
 &lt;li&gt; Thrown into code to fix a bug/patch/whatever&lt;/li&gt;
 &lt;li&gt; Spend wayyyy too much time thinking over a trivial aspect of said bug/patch/whatever.&lt;/li&gt;
 &lt;li&gt; Many naive questions from me, met with a poor/mean/unadjusted attitude, or worse, lack of any sort of emotional response (I&amp;#39;d rather -know- I annoy you than wonder if you loathe my questions).&lt;/li&gt;
-&lt;li&gt; I&amp;#39;d be restricted from doing certain things; &amp;quot;when you&amp;#39;re ready for it&amp;quot; aka &amp;quot;when I&amp;#39;m ready to give this piece of my job up and move on to something better.&amp;quot;&lt;/li&gt;
+&lt;li&gt; I&amp;#39;d be restricted from doing certain things; &amp;ldquo;when you&amp;#39;re ready for it&amp;rdquo; aka &amp;ldquo;when I&amp;#39;m ready to give this piece of my job up and move on to something better.&amp;rdquo;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;i-set-expectations-formyself-too&#34;&gt;I set expectations for &lt;em&gt;myself&lt;/em&gt; too:&lt;/h4&gt;
 &lt;ul&gt;
@@ -1589,17 +1591,17 @@ Must be root to setup this server!&lt;br&gt;
 &lt;li&gt;&lt;p&gt;These folks have a lot of patience for someone just learning like me.  Very comforting.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;People don&amp;#39;t need free meals/fish deliveries/spousal salaries upon death to be happy to work somewhere.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;It is SO freaking nice not to worry about being in the office during the same time as your manager (precious &amp;#39;face time&amp;#39;); clocking every minute of every hour that has any relation to work.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Engineers are so relaxed and fun to work with. I feel no pressure, and therefore no nerves when asking questions.  Little things like, &amp;#39;here are the IRC channels we&amp;#39;re in...&amp;#39; and &amp;#39;Thursday&amp;#39;s the best because it&amp;#39;s breakfast day.&amp;#39;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;My manager flat out said &amp;quot;I won&amp;#39;t read it&amp;quot; when I forwarded him &lt;a href=&#34;http://www.roguelynn.com/2012-10-21-community-ftw-kicking-of-the-pycarolinas-community&#34; title=&#34;Community FTW&#34;&gt;my post&lt;/a&gt; about the community talk I gave at PyCarolinas (among other questions &amp;amp; discussion points). Damn that guy is awesome. No nonsense, no bs, no coddling, very helpful, thinks outside the box, and brilliant.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;My manager also flat out said &amp;quot;That&amp;#39;s why we hired you&amp;quot; when I asked him about being invited to speak at conferences. hellz yea.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;I can surprise a few people with the little Czech knowledge I&amp;#39;ve retained.  &lt;em&gt;&amp;quot;jedno velky pivo, prosim.&amp;quot;&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Engineers are so relaxed and fun to work with. I feel no pressure, and therefore no nerves when asking questions.  Little things like, &amp;#39;here are the IRC channels we&amp;#39;re in&amp;hellip;&amp;#39; and &amp;#39;Thursday&amp;#39;s the best because it&amp;#39;s breakfast day.&amp;#39;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;My manager flat out said &amp;ldquo;I won&amp;#39;t read it&amp;rdquo; when I forwarded him &lt;a href=&#34;http://www.roguelynn.com/2012-10-21-community-ftw-kicking-of-the-pycarolinas-community&#34; title=&#34;Community FTW&#34;&gt;my post&lt;/a&gt; about the community talk I gave at PyCarolinas (among other questions &amp;amp; discussion points). Damn that guy is awesome. No nonsense, no bs, no coddling, very helpful, thinks outside the box, and brilliant.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;My manager also flat out said &amp;ldquo;That&amp;#39;s why we hired you&amp;rdquo; when I asked him about being invited to speak at conferences. hellz yea.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;I can surprise a few people with the little Czech knowledge I&amp;#39;ve retained.  &lt;em&gt;&amp;ldquo;jedno velky pivo, prosim.&amp;rdquo;&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;I was assigned 5 tickets on day #2 in Brno. This will probably be the only time I will be excited to be assigned tickets. They seem to be the types of tickets that are &amp;#39;easy pickens&amp;#39; but also give the challenge of making you dig through the whole freaking code base only to find the issue comes from an outside package. /phew &lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.redhat.com/archives/freeipa-devel/2012-October/msg00556.html&#34;&gt;I SUBMITTED MY FIRST PATCH&lt;/a&gt; (day #3 in Brno. 8 days of learning terms/code/git/processes, ignoring travel days, orientation, blah). &lt;em&gt;Side note: that patch broke everything. I learned a lesson in tests the following day.&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;cultural-differences&#34;&gt;Cultural Differences:&lt;/h4&gt;
 &lt;p&gt;I was also &lt;a href=&#34;https://twitter.com/juliaelman/status/262666318715707392%20&#34; title=&#34;Julia Elman&amp;#39;s tweet&#34;&gt;asked&lt;/a&gt; about what differences I&amp;#39;ve seen in the engineering cultures, and the &lt;a href=&#34;https://twitter.com/aesptux/status/262668691731263488&#34; title=&#34;Adrian Espinosa&amp;#39;s tweet&#34;&gt;moving abroad experience&lt;/a&gt; in general.  Immediately, my memory is refreshed on how hyper-sexualized women are dressed here.  I wear converse or pumas everyday -&amp;gt; flag for &amp;#39;I&amp;#39;m not from here!&amp;#39; as many women where heals (not crazy tall ones, although some do).  And hygiene can be an issue for some folks (lulz).  Also, while it&amp;#39;s still relatively cheap in Czech Rep (2006: 22-24 Kc to 1 USD, now: 20 Kc to 1 USD), cost of living has gone up. Food is more expensive, housing, Ikea.&lt;/p&gt;
 
-&lt;p&gt;Immediate engineering culture differences are hard to pick up right now, and I hope to be able to have a better PoV after 2 months.  Every so often, I get a surprised look when I ask a question, giving me the impression that I&amp;#39;m not as much of a n00b as was thought.  I think that more comes from the reputation that preceded me, the discussions that were had before I arrived.  I don&amp;#39;t read into this at all.  I mean - no one told me to read into the package code before arriving... but I did, and it&amp;#39;s&lt;br&gt;
+&lt;p&gt;Immediate engineering culture differences are hard to pick up right now, and I hope to be able to have a better PoV after 2 months.  Every so often, I get a surprised look when I ask a question, giving me the impression that I&amp;#39;m not as much of a n00b as was thought.  I think that more comes from the reputation that preceded me, the discussions that were had before I arrived.  I don&amp;#39;t read into this at all.  I mean - no one told me to read into the package code before arriving&amp;hellip; but I did, and it&amp;#39;s&lt;br&gt;
 helped a lot.  I haven&amp;#39;t been approached inappropriately, scoffed at, or met with impatience.&lt;/p&gt;
 
 &lt;p&gt;All in all: this &lt;em&gt;job&lt;/em&gt; lifestyle is utterly fantastic.  I got hired because I like to speak AND code AND continually learn. And I have expectations for myself to continue to speak AND code AND learn.  Look at that? all aligned! Just one drawback: I dream in test failures now.&lt;/p&gt;
@@ -1625,7 +1627,7 @@ helped a lot.  I haven&amp;#39;t been approached inappropriately, scoffed at, o
 
 &lt;blockquote&gt;
 &lt;p&gt;Q: You live in a country with a corrupt mail system. They open every package if they can. You put a lock on the box. You can&amp;#39;t mail a key. How does the receiving person open the box? &lt;br&gt;
-A: Send the box with the lock to this person. He can&amp;#39;t open it, but he can put another lock on this box. This person sends this box with the 2 locks back to you, you unlock your lock and send it back again. So there is just his lock on the box and he can finally open it...&lt;/p&gt;
+A: Send the box with the lock to this person. He can&amp;#39;t open it, but he can put another lock on this box. This person sends this box with the 2 locks back to you, you unlock your lock and send it back again. So there is just his lock on the box and he can finally open it&amp;hellip;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;This is how public/private key crypto, aka asymmetric encryption (also: remember this riddle for technical interviews). Essentially you have two keys.  One is private, which you can imagine, only your computer knows and has access to.  The other is public, which you can give out to any sort of service that wants to talk to your computer securely. Let&amp;#39;s use GitHub for example - you are working on some code, commit locally, then finally make the decision (after you squash all your messy commits) to push to the remote repo on GitHub.  In order to do so, you need to give GitHub your public key. How do you get your public key? In your terminal:&lt;/p&gt;
@@ -1675,7 +1677,7 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
     Cipher:  DEFGHIJKLMNOPQRSTUVWXYZABC
 &lt;/pre&gt;
 
-&lt;p&gt;Your message would read as: &amp;quot;l wklqn mrq lv fxwh.&amp;quot; This would be pretty easy to break, no?  All you&amp;#39;d have to do is try each shift 25 times.  Or you can look at the ciphered text and see &amp;#39;l&amp;#39; is used three times, once alone at the start of the phrase, once in the middle of the second word, and again in the fourth.  &lt;/p&gt;
+&lt;p&gt;Your message would read as: &amp;ldquo;l wklqn mrq lv fxwh.&amp;rdquo; This would be pretty easy to break, no?  All you&amp;#39;d have to do is try each shift 25 times.  Or you can look at the ciphered text and see &amp;#39;l&amp;#39; is used three times, once alone at the start of the phrase, once in the middle of the second word, and again in the fourth.  &lt;/p&gt;
 
 &lt;p&gt;In the English language, A &amp;amp; I are the only letters that can stand by themselves.  Seeing as how we intercepted a primary school girl&amp;#39;s note, one can assume that the message would have herself as the subject of the phrase.  Assuming l = i, you have figured out the shift of the Caesar cipher, and can easily figure out the rest of the message. &lt;/p&gt;
 
@@ -1718,7 +1720,7 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
 
 &lt;p&gt;Currently, it is expected that passwords are stored on systems not in plain text, known as hashes.  A &lt;a href=&#34;http://en.wikipedia.org/wiki/Hash_function&#34; title=&#34;Wiki: Hash Function&#34;&gt;hash function&lt;/a&gt; is used to produce a hash.  This type of function is considered &amp;#39;one-way&amp;#39;, where the hash algorithm will take a plain text phrase (e.g. a password, or anything like a name, social security number, etc) and put out a hash, but would not be able to reverse it - take the hash and put out the plain text.  If you put a hash into a hash function, you would get a new hash.  Common types of hash functions: &lt;a href=&#34;http://en.wikipedia.org/wiki/MD5&#34; title=&#34;wiki: md5&#34;&gt;MD5&lt;/a&gt;, &lt;a href=&#34;http://en.wikipedia.org/wiki/SHA-1&#34; title=&#34;Wiki: SHA-1&#34;&gt;SHA-1&lt;/a&gt;, [SHA-2][SHA2] &lt;/p&gt;
 
-&lt;p&gt;MD5: &amp;quot;Message Digest Algorithm&amp;quot; produces a 128-bit hash.  While it is still widely used, since 1996 flaws have been discovered, making it very conceivable to break hashes. SHA-1: &amp;quot;Secure Hash Algorithm&amp;quot; produces a 160-bit hash.  Also widely used but also has security flaws in the algorithm itself (found around 2005). &lt;/p&gt;
+&lt;p&gt;MD5: &amp;ldquo;Message Digest Algorithm&amp;rdquo; produces a 128-bit hash.  While it is still widely used, since 1996 flaws have been discovered, making it very conceivable to break hashes. SHA-1: &amp;ldquo;Secure Hash Algorithm&amp;rdquo; produces a 160-bit hash.  Also widely used but also has security flaws in the algorithm itself (found around 2005). &lt;/p&gt;
 
 &lt;p&gt;SHA-2: consists of 4 hash functions producing 244, 256, 384 or 512 bit hashes. While no attacks have been successful on SHA-2, its algorithm is similar to SHA-1.  It&amp;#39;s still considered safe, but time is ticking. &lt;/p&gt;
 
@@ -1731,7 +1733,7 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
 &lt;h4 id=&#34;is-a-hash-enough&#34;&gt;Is a hash enough?&lt;/h4&gt;
 &lt;p&gt;No. Storing a hash of a password isn&amp;#39;t enough.  If only a hash function is used to store a hash of plaintext, it&amp;#39;d be pretty easy to break it. For instance, if your password was &amp;#39;password&amp;#39;, it would have the same hash value as someone else who also uses the same password.  If someone were to break into a database of hashed passwords, it&amp;#39;d be very simple to do a quick frequency analysis, whichever hash is the most popular would probably be &amp;#39;password&amp;#39; or something like &amp;#39;1234&amp;#39;. This is essentially called a &lt;a href=&#34;http://en.wikipedia.org/wiki/Rainbow_table&#34; title=&#34;Wiki: Rainbow table&#34;&gt;Rainbow Table&lt;/a&gt;, a set of reverse-engineered hashed passwords.  It is reasonable (in the amount of time spent, aka brute force) to create a rainbow table of passwords up to about 8 characters in length. &lt;/p&gt;
 &lt;h4 id=&#34;so-then-what-now&#34;&gt;So then what now?&lt;/h4&gt;
-&lt;p&gt;In order to combat the ease of creating rainbow tables, a &lt;a href=&#34;http://en.wikipedia.org/wiki/Salt_(cryptography)&#34; title=&#34;Wiki: Salt&#34;&gt;salt&lt;/a&gt; is added to the password before it is hashed.  It is very important that this salt is used only once, and is unique per user/password. For instance, if you use &amp;#39;password&amp;#39; as your password, your salt could be (which would be decided behind the scenes) &amp;#39;1\$0-1209-1!@fkjl&amp;#39;, so the input for the hash algorithm would be &amp;#39;password&amp;#39;+&amp;#39;1\$0-1209-1!@fkjl&amp;#39;.  Your salt would not be used for anyone else&amp;#39;s password.  So if someone else uses &amp;#39;password&amp;#39;, their salt would be something totally different, like &amp;#39;sl;--90(d%&amp;#39;, baring a different hash value for the same plaintext password. &lt;/p&gt;
+&lt;p&gt;In order to combat the ease of creating rainbow tables, a &lt;a href=&#34;http://en.wikipedia.org/wiki/Salt_(cryptography)&#34; title=&#34;Wiki: Salt&#34;&gt;salt&lt;/a&gt; is added to the password before it is hashed.  It is very important that this salt is used only once, and is unique per user/password. For instance, if you use &amp;#39;password&amp;#39; as your password, your salt could be (which would be decided behind the scenes) &amp;#39;1\$0-1209-1!@fkjl&amp;#39;, so the input for the hash algorithm would be &amp;#39;password&amp;#39;+&amp;#39;1\$0-1209-1!@fkjl&amp;#39;.  Your salt would not be used for anyone else&amp;#39;s password.  So if someone else uses &amp;#39;password&amp;#39;, their salt would be something totally different, like &amp;#39;sl;&amp;ndash;90(d%&amp;#39;, baring a different hash value for the same plaintext password. &lt;/p&gt;
 &lt;h4 id=&#34;side-note&#34;&gt;Side note&lt;/h4&gt;
 &lt;p&gt;If you&amp;#39;re interested in the history of cryptography, breaking passwords and frequency analysis as well as a great history on computing, I would highly suggest &lt;a href=&#34;http://www.amazon.com/gp/product/B004IK8PLE/ref=as_li_ss_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=390957&amp;amp;creativeASIN=B004IK8PLE&amp;amp;linkCode=as2&amp;amp;tag=roglyn-20&#34; title=&#34;The Code Book&#34;&gt;The Code Book: The Science of Secrecy from Ancient Egypt to Quantum Cryptography&lt;/a&gt;. &lt;/p&gt;
 
@@ -1768,7 +1770,7 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
 &lt;h4 id=&#34;because-you39re-a-veteran-to-python&#34;&gt;Because you&amp;#39;re a veteran to Python&lt;/h4&gt;
 &lt;p&gt;There will be plenty of talks &amp;amp; tutorials on the other side of the spectrum: intermediate, advanced, and extreme/deep dive.  Python is ever evolving, always improving, so best not to quit learning.  There will be many challenging subjects spoken about, brilliant people holding conversations over their posters or post-talk/tutorial. Not to mention sprints.  Either join with the core language, or other Python projects that interest you.  Or perhaps this will give you the time and focus to code out that project you&amp;#39;ve always had on your todo list.&lt;/p&gt;
 &lt;h4 id=&#34;you39re-convinced-but-your-employer-might-not-be&#34;&gt;You&amp;#39;re convinced, but your employer might not be&lt;/h4&gt;
-&lt;p&gt;It&amp;#39;s cheap.  Tutorials are $150/200 each (early bird/on site) for 3 1/2-4 hours of intense learning.  The conference is $450/$600/$700 (corporate prices, early bird/regular/on site).  Comparatively, these huge conferences often go for far more than that. You will learn more in 9 days of tutorials, talks, and sprints than a year of reading books. Not only will you be exposed to trends, new technologies and ideas not yet written about, you have the opportunity to talk with other Python devs.  Another company had the same deployment issues you folks are having?  What about managing real time data? The hall way track presents many opportunities to have those conversations and knowledge transfers.&lt;/p&gt;
+&lt;p&gt;It&amp;#39;s cheap.  Tutorials are $150/200 each (early bird/on site) for 3 &amp;frac12;-4 hours of intense learning.  The conference is $450/$600/$700 (corporate prices, early bird/regular/on site).  Comparatively, these huge conferences often go for far more than that. You will learn more in 9 days of tutorials, talks, and sprints than a year of reading books. Not only will you be exposed to trends, new technologies and ideas not yet written about, you have the opportunity to talk with other Python devs.  Another company had the same deployment issues you folks are having?  What about managing real time data? The hall way track presents many opportunities to have those conversations and knowledge transfers.&lt;/p&gt;
 
 &lt;p&gt;A relavent tweet to part on:&lt;/p&gt;
 
@@ -1798,10 +1800,10 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
 &lt;p&gt;Yes, the same person that once did not know the difference between a compiler and an interpreter, couldn&amp;#39;t explain wtf __init__.py files do, or conceive of generators versus iterators. The same person that took her way too long to admit that you can return more than one item in a function.  This is the same n00b that was once told by Leah Culver that one&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;&amp;quot;...can&amp;#39;t just learn how to code without a CS degree.&amp;quot;&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;&amp;hellip;can&amp;#39;t just learn how to code without a CS degree.&amp;rdquo;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;(I&amp;#39;d like to point out that it&amp;#39;s this exact industry that promotes and cultivates a culture &lt;em&gt;not&lt;/em&gt; of ivory tower pedigrees but of free, easy access, and open source education.) Well my friends: by no means am I an expert, nor am I graduating from n00b status.  I am, however, taking my next step.  Drum roll... I am joining &lt;strong&gt;Red Hat&lt;/strong&gt; as a &lt;del&gt; black hat hacker&lt;/del&gt;&lt;strong&gt; Associate Software Engineer&lt;/strong&gt; working with OSS projects integrating RH&amp;#39;s &lt;a href=&#34;http://http://freeipa.org/page/Main_Page&#34; title=&#34;freeIPA&#34;&gt;identity and authorization&lt;/a&gt; down in Mountain View. Coding, community-building, applied cryptography, what could be better?  I&amp;#39;m just so honored and excited that my new manager and those I will be working with are willing to take a chance on me, and to give me the opportunity to grow into a field that I naively fell in love with (you can&amp;#39;t help who or what you fall in love with).&lt;/p&gt;
+&lt;p&gt;(I&amp;#39;d like to point out that it&amp;#39;s this exact industry that promotes and cultivates a culture &lt;em&gt;not&lt;/em&gt; of ivory tower pedigrees but of free, easy access, and open source education.) Well my friends: by no means am I an expert, nor am I graduating from n00b status.  I am, however, taking my next step.  Drum roll&amp;hellip; I am joining &lt;strong&gt;Red Hat&lt;/strong&gt; as a &lt;del&gt; black hat hacker&lt;/del&gt;&lt;strong&gt; Associate Software Engineer&lt;/strong&gt; working with OSS projects integrating RH&amp;#39;s &lt;a href=&#34;http://http://freeipa.org/page/Main_Page&#34; title=&#34;freeIPA&#34;&gt;identity and authorization&lt;/a&gt; down in Mountain View. Coding, community-building, applied cryptography, what could be better?  I&amp;#39;m just so honored and excited that my new manager and those I will be working with are willing to take a chance on me, and to give me the opportunity to grow into a field that I naively fell in love with (you can&amp;#39;t help who or what you fall in love with).&lt;/p&gt;
 &lt;h4 id=&#34;oh-wait-there39s-moar&#34;&gt;Oh wait! there&amp;#39;s MOAR!&lt;/h4&gt;
 &lt;p&gt;I&amp;#39;m being given the awesome opportunity of a 2-month, unofficial &amp;#39;boot camp&amp;#39; at Red Hat&amp;#39;s &lt;strong&gt;Czech Republic&lt;/strong&gt; location in Brno.  HUZZAH! &lt;em&gt;Personal* *history insert&lt;/em&gt;: I lived in Prague, CZ for a semester in 2006. Loved it. Wrote my senior thesis on its transitional economy. Lived like a queen with beer being cheaper than water.  Utterly ecstatic to visit again. OK I&amp;#39;LL BE HONEST the real reason I&amp;#39;m joining RH is get my own &lt;a href=&#34;http://www.networkworld.com/Google%20Subnet/redhat%20penguin.gif&#34; title=&#34;Linux Penguin w fedora&#34;&gt;red fedora&lt;/a&gt;. #justkiddingnotreally&lt;/p&gt;
 
@@ -1826,15 +1828,15 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
                 <email>lynn@lynnroot.com</email>
                 <uri>http://www.roguelynn.com/</uri>
             </author>
-            <content type="html">&lt;p&gt;OH MAN PYCON IS SO MUCH FUN.  &lt;em&gt;Right? I know!&lt;/em&gt;  I remember a tweet from &lt;a href=&#34;http://www.twitter.com/hmason&#34; title=&#34;Hilary Mason&amp;#39;s twitter&#34;&gt;Hilary Mason&lt;/a&gt; that it should be &amp;quot;PyCAAHHHNNN&amp;quot; (imagine with a Boston accent while flashing \m/ upon entrance). &lt;/p&gt;
+            <content type="html">&lt;p&gt;OH MAN PYCON IS SO MUCH FUN.  &lt;em&gt;Right? I know!&lt;/em&gt;  I remember a tweet from &lt;a href=&#34;http://www.twitter.com/hmason&#34; title=&#34;Hilary Mason&amp;#39;s twitter&#34;&gt;Hilary Mason&lt;/a&gt; that it should be &amp;ldquo;PyCAAHHHNNN&amp;rdquo; (imagine with a Boston accent while flashing \m/ upon entrance). &lt;/p&gt;
 
-&lt;p&gt;Ever thought about submitting a proposal? &lt;em&gt;What? oh no, no no no.*Why not? *What would I talk about?  I have nothing to say!&lt;/em&gt; (Oddly, when starting out submitting talks to conferences, I never had that dialogue or PoV.  It was more like &amp;quot;I &amp;lt;3 the Python community. How can I be more involved?&amp;quot; and that&amp;#39;s how my ideation process started) (PS I love the verb &lt;em&gt;to ideate&lt;/em&gt;.  It&amp;#39;s great.)&lt;/p&gt;
+&lt;p&gt;Ever thought about submitting a proposal? &lt;em&gt;What? oh no, no no no.*Why not? *What would I talk about?  I have nothing to say!&lt;/em&gt; (Oddly, when starting out submitting talks to conferences, I never had that dialogue or PoV.  It was more like &amp;ldquo;I &amp;lt;3 the Python community. How can I be more involved?&amp;rdquo; and that&amp;#39;s how my ideation process started) (PS I love the verb &lt;em&gt;to ideate&lt;/em&gt;.  It&amp;#39;s great.)&lt;/p&gt;
 &lt;h4 id=&#34;so-how-about-this&#34;&gt; So how about this:&lt;/h4&gt;
 &lt;p&gt;Tell me what talks you went to at previous years&amp;#39; PyCons that you found were pretty good (regardless of speaker performance)? What about: what would you like to see at PyCon &lt;em&gt;this&lt;/em&gt; year? Ok.  You want to see those topics? Why don&amp;#39;t &lt;strong&gt;you&lt;/strong&gt; write the talk you want to see? Bam, you have an idea. (cheeky lil&amp;#39; blogger, aren&amp;#39;t I?) No seriously: if you want to see a talk, write it yourself.  &lt;/p&gt;
 
 &lt;p&gt;Or: take what it is that you do with Python (professionally, hobby-wise, side-jobs, whatevs), and write a talk on it. &lt;/p&gt;
 
-&lt;p&gt;There is &lt;strong&gt;significant&lt;/strong&gt; interest in the &amp;quot;&lt;strong&gt;Python in the Wild&lt;/strong&gt;&amp;quot; - such as, Python in corporations (product/services or used internally), &lt;em&gt;government&lt;/em&gt;, &lt;em&gt;education&lt;/em&gt; (CS degrees, high school programs, communities), and &lt;em&gt;science&lt;/em&gt; (NASA, robotics). &lt;/p&gt;
+&lt;p&gt;There is &lt;strong&gt;significant&lt;/strong&gt; interest in the &amp;ldquo;&lt;strong&gt;Python in the Wild&lt;/strong&gt;&amp;rdquo; - such as, Python in corporations (product/services or used internally), &lt;em&gt;government&lt;/em&gt;, &lt;em&gt;education&lt;/em&gt; (CS degrees, high school programs, communities), and &lt;em&gt;science&lt;/em&gt; (NASA, robotics). &lt;/p&gt;
 
 &lt;p&gt;There is &lt;strong&gt;always&lt;/strong&gt; interest in popular topics, like deployment, big data, python packaging.  Not only do people have &lt;strong&gt;short memories&lt;/strong&gt;, but every year, it will be many people&amp;#39;s &lt;strong&gt;first PyCon&lt;/strong&gt;.&lt;/p&gt;
 
@@ -1855,16 +1857,16 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
 &lt;p&gt;Note: it is &lt;strong&gt;not important&lt;/strong&gt; that you haven&amp;#39;t spoke at PyCon or another conference before.  But do prove that why you should now. Think &lt;strong&gt;posters&lt;/strong&gt; might be a better option for your first time presenting something at PyCon?  With a talk, you have about 30 minutes.  You can plan out what you&amp;#39;re going to say, how your talk might lead to certain questions (pro tip: leave some unanswered/unaddressed items from your talk, and look awesome when you know the answer if they&amp;#39;re asked).  After the talk, for questions you don&amp;#39;t know, you also have the forgiveness of the audience:&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;&amp;quot;Oh actually, hmm, that&amp;#39;s a very good question.  I&amp;#39;m not sure I can address that here right now, but catch me after the talk.&amp;quot;&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;Oh actually, hmm, that&amp;#39;s a very good question.  I&amp;#39;m not sure I can address that here right now, but catch me after the talk.&amp;rdquo;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;(and then sprint away...:D) With a poster, you are defending your PhD thesis (practically), standing around for hours with some of the audience&amp;#39;s expectation of:&lt;/p&gt;
+&lt;p&gt;(and then sprint away&amp;hellip;:D) With a poster, you are defending your PhD thesis (practically), standing around for hours with some of the audience&amp;#39;s expectation of:&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;&amp;quot;You know everything about this talk and I&amp;#39;m going to grill you because you&amp;#39;re stuck here.&amp;quot;&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;You know everything about this talk and I&amp;#39;m going to grill you because you&amp;#39;re stuck here.&amp;rdquo;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;It can be pretty demanding.  But it&amp;#39;s why posters are great for in-depth and/or unconventional topics.  There also a second shot at doing something with PyCon if you&amp;#39;re talk doesn&amp;#39;t get accepted since they are due Jan 15th. I think these hangouts that &lt;a href=&#34;http://www.roguelynn.com/2012/08/25/pycon-proposal-brainstorming-via-google-hangout/&#34; title=&#34;PyCon Proposal Brainstorming via Google Hangout&#34;&gt;PyLadies&lt;/a&gt; did were productive; I got the feedback that they were helpful.  I also got the &amp;quot;zomg such a good idea but I can&amp;#39;t make it tonight.&amp;quot;  I&amp;#39;d like to see more, perhaps from the Program Committee itself (full disclosure, I am a part of the committee). We have 4 weeks until talk proposals are due.&lt;/p&gt;
+&lt;p&gt;It can be pretty demanding.  But it&amp;#39;s why posters are great for in-depth and/or unconventional topics.  There also a second shot at doing something with PyCon if you&amp;#39;re talk doesn&amp;#39;t get accepted since they are due Jan 15th. I think these hangouts that &lt;a href=&#34;http://www.roguelynn.com/2012/08/25/pycon-proposal-brainstorming-via-google-hangout/&#34; title=&#34;PyCon Proposal Brainstorming via Google Hangout&#34;&gt;PyLadies&lt;/a&gt; did were productive; I got the feedback that they were helpful.  I also got the &amp;ldquo;zomg such a good idea but I can&amp;#39;t make it tonight.&amp;rdquo;  I&amp;#39;d like to see more, perhaps from the Program Committee itself (full disclosure, I am a part of the committee). We have 4 weeks until talk proposals are due.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt; Let&amp;#39;s help you give it your best shot. &lt;/strong&gt;&lt;/p&gt;
 </content>
@@ -1925,9 +1927,9 @@ A: Send the box with the lock to this person. He can&amp;#39;t open it, but he 
                 <email>lynn@lynnroot.com</email>
                 <uri>http://www.roguelynn.com/</uri>
             </author>
-            <content type="html">&lt;p&gt;When I was in high school, I was in &amp;quot;IB&amp;quot; math - the international equivalent to AP courses, except harder.  I really, really, &lt;em&gt;really&lt;/em&gt; enjoyed math.  &lt;/p&gt;
+            <content type="html">&lt;p&gt;When I was in high school, I was in &amp;ldquo;IB&amp;rdquo; math - the international equivalent to AP courses, except harder.  I really, really, &lt;em&gt;really&lt;/em&gt; enjoyed math.  &lt;/p&gt;
 
-&lt;p&gt;My teacher would always mispronounce my name (&amp;quot;Wynn!&amp;quot;), but nonetheless, I loved the challenge.  I was the only one to receive 100% on the final exam, and one of a handful to take the IB exam.  I studied regularly, went over classmates&amp;#39; houses, worked through practice problems of vectors, differentiation, integration, goodness it was awesome.  I&amp;#39;d say that studying for this sort of stuff is very much like (if not the same concept) as the training I did for swimming: 2 hours/day in the pool, 6 days a week, extra hour each day of dry land training (side stepping the fact that right now, the most exercise I get is walking to/from cafes...). &lt;/p&gt;
+&lt;p&gt;My teacher would always mispronounce my name (&amp;ldquo;Wynn!&amp;rdquo;), but nonetheless, I loved the challenge.  I was the only one to receive 100% on the final exam, and one of a handful to take the IB exam.  I studied regularly, went over classmates&amp;#39; houses, worked through practice problems of vectors, differentiation, integration, goodness it was awesome.  I&amp;#39;d say that studying for this sort of stuff is very much like (if not the same concept) as the training I did for swimming: 2 hours/day in the pool, 6 days a week, extra hour each day of dry land training (side stepping the fact that right now, the most exercise I get is walking to/from cafes&amp;hellip;). &lt;/p&gt;
 
 &lt;p&gt;While it&amp;#39;s been years since my crush on high school math, that same feeling comes again when studying for technical interviews.  Few hours/day, every day, until the interview.  I recently had the excitement of having a technical phone screen with Google, and I thought it went pretty well.  Not in terms of I think I can make it to the next round (I don&amp;#39;t need to mention that the bar is set very high with them), but how I felt when comparing my last technical interview experience back in April.  I&amp;#39;d like to share how I prepared myself. I&amp;#39;ll mention that I my CV reflects a lot of PyLadies work, as well as knowledge of Python (natch), SQL, git, and working with different APIs.&lt;/p&gt;
 &lt;h4 id=&#34;how-i-prepared&#34;&gt;How I prepared:&lt;/h4&gt;
@@ -2042,14 +2044,14 @@ damn good problem to attack).&lt;/li&gt;
 &lt;ul&gt;
 &lt;li&gt;  Wrote &amp;amp; instantiated a class that would be used to make a graph, using the requested private variables/methods (he seemed a little impressed).  Although I do believe I mixed up new style v classic. /facepalm&lt;/li&gt;
 &lt;li&gt;  Talking through each and every damn thing I was saying and writing (was not easy the first time).  And going back through what I coded to test simple cases &amp;amp; fixed typos/errors.&lt;/li&gt;
-&lt;li&gt;  My understanding of repr v str (finally...).&lt;/li&gt;
+&lt;li&gt;  My understanding of repr v str (finally&amp;hellip;).&lt;/li&gt;
 &lt;li&gt;  Simple schema writing (from the first interview).&lt;/li&gt;
 &lt;li&gt;  Before coding, switched the font/size to courier 8 (seriously, red flag to them if not using a fixed-width font when gdocs defaults to a variable-width one).&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;I&amp;#39;m certainly not counting on going further from that interview.  I quite like the set up I have now doing contracting with a friend&amp;#39;s consulting + Harvard&amp;#39;s project, and I seem to walk into new opportunities (then again, this is the Bay Area). Thankfully I&amp;#39;m also able to contribute to open source, give talks &amp;amp; go to conferences, put on workshops and events, etc.&lt;/p&gt;
 
-&lt;p&gt;But hey - you&amp;#39;d understand if Google came calling, right?  I actually look forward to the day where I can go in and code on a whiteboard, but that will take a lot more studying, understanding of more complex algorithms, better understanding of runtimes, perhaps systems architecture.  For those PyLadies and Women Who Code&amp;#39;ers in the Bay Area, WWC is hosting a &lt;a href=&#34;http://www.meetup.com/Women-Who-Code-SF/events/77224932/&#34; title=&#34;Women Who Code tech interviewing event&#34;&gt;Technical Interview evening talk/mini-workshop&lt;/a&gt; with Gayle Laakmann McDowell next week.  We&amp;#39;re also looking for mentors (and food sponsors!), so hit me up if you&amp;#39;re interested! &lt;strong&gt;Update: &lt;/strong&gt;I was told not to divulge what questions I received from the interviewer as it reflects poorly.  So, let me just say: what I studied aligned pretty well with what I was asked :D  I just...wish I had a better memory! Another resource given to me: &lt;a href=&#34;https://www.interviewstreet.com/challenges/&#34; title=&#34;Interview Street Challenges&#34;&gt;Interview Street&lt;/a&gt;, and I forgot &lt;a href=&#34;http://www.careercup.com/&#34; title=&#34;Career Cup: Programming Interview Questions&#34;&gt;CareerCup&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;But hey - you&amp;#39;d understand if Google came calling, right?  I actually look forward to the day where I can go in and code on a whiteboard, but that will take a lot more studying, understanding of more complex algorithms, better understanding of runtimes, perhaps systems architecture.  For those PyLadies and Women Who Code&amp;#39;ers in the Bay Area, WWC is hosting a &lt;a href=&#34;http://www.meetup.com/Women-Who-Code-SF/events/77224932/&#34; title=&#34;Women Who Code tech interviewing event&#34;&gt;Technical Interview evening talk/mini-workshop&lt;/a&gt; with Gayle Laakmann McDowell next week.  We&amp;#39;re also looking for mentors (and food sponsors!), so hit me up if you&amp;#39;re interested! &lt;strong&gt;Update: &lt;/strong&gt;I was told not to divulge what questions I received from the interviewer as it reflects poorly.  So, let me just say: what I studied aligned pretty well with what I was asked :D  I just&amp;hellip;wish I had a better memory! Another resource given to me: &lt;a href=&#34;https://www.interviewstreet.com/challenges/&#34; title=&#34;Interview Street Challenges&#34;&gt;Interview Street&lt;/a&gt;, and I forgot &lt;a href=&#34;http://www.careercup.com/&#34; title=&#34;Career Cup: Programming Interview Questions&#34;&gt;CareerCup&lt;/a&gt;.&lt;/p&gt;
 </content>
         </entry>
         
@@ -2070,15 +2072,15 @@ damn good problem to attack).&lt;/li&gt;
             </author>
             <content type="html">&lt;p&gt;First time I heard about raspberry pi was through twitter.  I thought: Oh I bet that&amp;#39;s a cute name for a new python module.  Didn&amp;#39;t look into it. &lt;/p&gt;
 
-&lt;p&gt;Then I overheard a &lt;em&gt;very&lt;/em&gt; dedicated PyLady saying &amp;quot;OMG my Raspberry Pi shipped today!&amp;quot; Wait, a module shipped?  She doesn&amp;#39;t develop python modules.  Is this a physical thing? &lt;/p&gt;
+&lt;p&gt;Then I overheard a &lt;em&gt;very&lt;/em&gt; dedicated PyLady saying &amp;ldquo;OMG my Raspberry Pi shipped today!&amp;rdquo; Wait, a module shipped?  She doesn&amp;#39;t develop python modules.  Is this a physical thing? &lt;/p&gt;
 
-&lt;p&gt;Then, weeks later, I asked another friend, &amp;quot;What is this Raspberry Pi?&amp;quot; The world stopped to him.  &amp;quot;What, are you serious?&amp;quot; he responded.  &amp;quot;Yeah…?&amp;quot;  &lt;/p&gt;
+&lt;p&gt;Then, weeks later, I asked another friend, &amp;ldquo;What is this Raspberry Pi?&amp;rdquo; The world stopped to him.  &amp;ldquo;What, are you serious?&amp;rdquo; he responded.  &amp;ldquo;Yeah…?&amp;quot;  &lt;/p&gt;
 
 &lt;p&gt;Clearly I wasn&amp;#39;t getting &amp;quot;it.&amp;quot;  &lt;/p&gt;
 
-&lt;p&gt;Then I preceded to get educated in &amp;quot;it.&amp;quot; Sure, I thought - that&amp;#39;s cool, a credit card sized computer.  It didn&amp;#39;t seem that big of a deal to me - that the kind of stuff iPhones &amp;amp; Androids run on, wicked small computers.  It&amp;#39;s \$35 too - not bad, but it still didn&amp;#39;t appeal to me.&lt;/p&gt;
+&lt;p&gt;Then I preceded to get educated in &amp;quot;it.&amp;rdquo; Sure, I thought - that&amp;#39;s cool, a credit card sized computer.  It didn&amp;#39;t seem that big of a deal to me - that the kind of stuff iPhones &amp;amp; Androids run on, wicked small computers.  It&amp;#39;s \$35 too - not bad, but it still didn&amp;#39;t appeal to me.&lt;/p&gt;
 
-&lt;p&gt;And then after a few days after that conversation - it hit me.  Holy sh*t this is a revolutionary idea.  Holy crap, I get &amp;quot;it.&amp;quot;  Now I understood why there was a 3 month wait time for ordering. To share this enlightenment, I can&amp;#39;t simply say &amp;quot;imagine the possibilities.&amp;quot;  A lot of people require handholding for some creative thinking.  &lt;/p&gt;
+&lt;p&gt;And then after a few days after that conversation - it hit me.  Holy sh*t this is a revolutionary idea.  Holy crap, I get &amp;ldquo;it.&amp;quot;  Now I understood why there was a 3 month wait time for ordering. To share this enlightenment, I can&amp;#39;t simply say &amp;quot;imagine the possibilities.&amp;quot;  A lot of people require handholding for some creative thinking.  &lt;/p&gt;
 
 &lt;p&gt;So let me continue my thought process: I hadn&amp;#39;t really been &amp;#39;into&amp;#39; computers beyond the use of them until about 9 or 10 months ago.  I was damn good at my shortcuts around Excel, my Google-fu skills, my typing speed thanks to AIM, but I didn&amp;#39;t really care about what was going on underneath my laptop&amp;#39;s keyboard. September 2011 I took my first computer science course.  &lt;em&gt;Not&lt;/em&gt; because I was interested in learning to program, but because I needed to know programming to apply to graduate school for financial engineering.  December 2011 I finished with an A- and never looked at finance again. In my new life, my &amp;#39;finally found my passion&amp;#39; mindset, I haven&amp;#39;t stopped consuming programming, learning computers, understanding security risks, teaching others and myself python, speaking about it, etc… My 2008 MBP died earlier this year.  It comes back to life every once and a while, but when it does kick the bucket for one last time, oh boy will I perform an autopsy.  I will dissect, rip apart, hack, and reuse anything and everything. &lt;/p&gt;
 
@@ -2088,13 +2090,13 @@ damn good problem to attack).&lt;/li&gt;
 
 &lt;p&gt;You know what I&amp;#39;m going to do?  Try something out with PyGame and my lego wheels (I feel sorry for the cat and the impending annoyance I will cause him). I plan to make a home security system - quite needed living in the Mission of SF.  How? not sure, but  it&amp;#39;s damn well possible.  Probably hook up one of the speakers that I have from 1999, or steal one from my MBP.  It&amp;#39;ll probably be a hack job at first - faulty wires exposed, false alarms and annoyed neighbors. &lt;/p&gt;
 
-&lt;p&gt;OH goodness what about a voice-command thing tailored to my voice?  &amp;quot;Start Pandora&amp;quot; (sorry Spotify).  &amp;quot;Start picture slideshow.&amp;quot;  &amp;quot;Turn off lights.&amp;quot;  &amp;quot;Turn on coffee machine.&amp;quot;  &amp;quot;Remind me to take my meds.&amp;quot;  MY OWN STARTREK LIFE. I&amp;#39;ll get bothered by how relatively slow Debian Squeeze will be (the OS you&amp;#39;ll have to download yourself).  There goes my weekend of learning/writing linux kernels. Hmm after all these thoughts, I stepped back for a second.  &lt;/p&gt;
+&lt;p&gt;OH goodness what about a voice-command thing tailored to my voice?  &amp;quot;Start Pandora&amp;rdquo; (sorry Spotify).  &amp;ldquo;Start picture slideshow.&amp;quot;  &amp;quot;Turn off lights.&amp;quot;  &amp;quot;Turn on coffee machine.&amp;quot;  &amp;quot;Remind me to take my meds.&amp;quot;  MY OWN STARTREK LIFE. I&amp;#39;ll get bothered by how relatively slow Debian Squeeze will be (the OS you&amp;#39;ll have to download yourself).  There goes my weekend of learning/writing linux kernels. Hmm after all these thoughts, I stepped back for a second.  &lt;/p&gt;
 
-&lt;p&gt;This computer isn&amp;#39;t just for me, and for people like me.  A \$35 computer in the hands (literal hands!) of children.  Not some mystifying 1/2 in x 13 in x 9in slap of aluminum w/ a keyboard. Small a\$\$ computer + PyGame + Legos (+ Arduino maybe) = only limited by imagination.  Perhaps a child can amuse a cat&amp;#39;s afternoon like me.  Or perhaps strap it on one of those small, build-your-own rockets (I LOVED those as a kid!), shoot it up in the air, and record flight data (is that possible? f^ck who cares, I&amp;#39;m going to do it now). &lt;/p&gt;
+&lt;p&gt;This computer isn&amp;#39;t just for me, and for people like me.  A \$35 computer in the hands (literal hands!) of children.  Not some mystifying &amp;frac12; in x 13 in x 9in slap of aluminum w/ a keyboard. Small a\$\$ computer + PyGame + Legos (+ Arduino maybe) = only limited by imagination.  Perhaps a child can amuse a cat&amp;#39;s afternoon like me.  Or perhaps strap it on one of those small, build-your-own rockets (I LOVED those as a kid!), shoot it up in the air, and record flight data (is that possible? f^ck who cares, I&amp;#39;m going to do it now). &lt;/p&gt;
 
 &lt;p&gt;What if we and our kids take this opportunity to put this computer in the hands of developing nations&amp;#39; children?   I&amp;#39;d chip in \$35 to send this to an eager child with little access to it him/herself.  Why don&amp;#39;t we + our kids preprogram &amp;amp; preload it with learning tools, with Khan academy videos?  Why not send one monitor down, a bunch of cables, and Raspberry Pis w/ edu videos for a whole village?  I&amp;#39;ll throw in some legos in there. Oh man, you know what the best part of it is?  &lt;/p&gt;
 
-&lt;p&gt;Python is on Debian Squeeze.  The makers of RP &amp;amp; the OS couldn&amp;#39;t have selected an easier language for the world to learn.  Looking at how far _I_ got in 1/2 a year of learning Python, and I do feel the hindrance of an aging brain.  Imagine the pace at a child learns.  Let me say that again: Imagine the pace that a child learns.  Just think. &lt;/p&gt;
+&lt;p&gt;Python is on Debian Squeeze.  The makers of RP &amp;amp; the OS couldn&amp;#39;t have selected an easier language for the world to learn.  Looking at how far _I_ got in &amp;frac12; a year of learning Python, and I do feel the hindrance of an aging brain.  Imagine the pace at a child learns.  Let me say that again: Imagine the pace that a child learns.  Just think. &lt;/p&gt;
 
 &lt;p&gt;Ok let me connect the dots for you:  Is your company hiring? &lt;/p&gt;
 
@@ -2163,7 +2165,7 @@ damn good problem to attack).&lt;/li&gt;
 
 &lt;p&gt;Thanks to the help of the &lt;a href=&#34;http://www.psf.org&#34; title=&#34;PSF&#34;&gt;Python Software Foundation&lt;/a&gt;, we were able to bring along swag including stickers, postcards of information on how to start a local PyLadies chapter, and a new banner. &lt;/p&gt;
 
-&lt;p&gt;It was an interesting experience.  There was a lot of excitement for the conference; the open-source community is fantastic to be a part of. But what was weird was that I felt there were not a lot of Pythonistas there.  Similarly, I felt PyLadies&amp;#39; presence wasn&amp;#39;t as well received as I originally anticipated.  I heard a lot of people walk by, asking &amp;quot;pe... pilates? what&amp;#39;s pilates?&amp;quot; Interestingly enough, this gave me an event idea: &amp;quot;PyLadies does Pilates!&amp;quot; :D &lt;/p&gt;
+&lt;p&gt;It was an interesting experience.  There was a lot of excitement for the conference; the open-source community is fantastic to be a part of. But what was weird was that I felt there were not a lot of Pythonistas there.  Similarly, I felt PyLadies&amp;#39; presence wasn&amp;#39;t as well received as I originally anticipated.  I heard a lot of people walk by, asking &amp;ldquo;pe&amp;hellip; pilates? what&amp;#39;s pilates?&amp;rdquo; Interestingly enough, this gave me an event idea: &amp;ldquo;PyLadies does Pilates!&amp;rdquo; :D &lt;/p&gt;
 
 &lt;p&gt;The talk that I gave was a little awkward, too. Not many people showed up (bummer), and the majority of the folks that did were women.  That was actually pretty awesome to witness, but it was sort of preaching to the choir. :) One thing I do thoroughly enjoy is the conversation &amp;amp; questions that come after my talks.  I&amp;#39;m always blown away how everyone wants to get more women involved, and how welcoming new ideas and thoughts are to do such thing.&lt;/p&gt;
 
@@ -2185,7 +2187,7 @@ damn good problem to attack).&lt;/li&gt;
                 <uri>http://www.roguelynn.com/</uri>
             </author>
             <content type="html">&lt;h4 id=&#34;change-the-ratio-at-djangocon-2012&#34;&gt;Change the Ratio at DjangoCon 2012&lt;/h4&gt;
-&lt;p&gt;If you’d like to go to &lt;a href=&#34;http://www.djangocon.us/&#34; title=&#34;DjangoCon US 2012&#34;&gt;DjangoCon 2012&lt;/a&gt; in Washington, D.C. -- or know a talented developer who does -- but cannot attend due to financial hardship, please &lt;a href=&#34;https://docs.google.com/spreadsheet/viewform?formkey=dDc1X2hrUGJVRGdEWnRjTklxR2tSNFE6MQ#gid=0&#34; title=&#34;FinAid&#34;&gt;apply for financial aid through DjangoCon&lt;/a&gt;. &lt;strong&gt;And&lt;/strong&gt;, if you&amp;#39;re a PyLady (as opposed to a PyLaddie), please indicate that you would like to be considered for a&lt;strong&gt; PyLadies grant&lt;/strong&gt; on that form. This year&amp;#39;s conference goes from Sept. 3 - Sept. 9. The deadline for the PyLadies grant submission is &lt;strong&gt;Friday, August 3rd&lt;/strong&gt;.  We apologize for the short notice, but we know that people need time to make travel plans/request days off from work, etc.  You will hear from us by the end of the week after applications are submitted. If you know of a talented, deserving female developer who might benefit greatly from attending DjangoCon, email &lt;a href=&#34;mailto:info@pyladies.com&#34; title=&#34;Email to Info&#34;&gt;us&lt;/a&gt;.  We&amp;#39;ll do our best to help as many women as possible. &lt;/p&gt;
+&lt;p&gt;If you’d like to go to &lt;a href=&#34;http://www.djangocon.us/&#34; title=&#34;DjangoCon US 2012&#34;&gt;DjangoCon 2012&lt;/a&gt; in Washington, D.C. &amp;ndash; or know a talented developer who does &amp;ndash; but cannot attend due to financial hardship, please &lt;a href=&#34;https://docs.google.com/spreadsheet/viewform?formkey=dDc1X2hrUGJVRGdEWnRjTklxR2tSNFE6MQ#gid=0&#34; title=&#34;FinAid&#34;&gt;apply for financial aid through DjangoCon&lt;/a&gt;. &lt;strong&gt;And&lt;/strong&gt;, if you&amp;#39;re a PyLady (as opposed to a PyLaddie), please indicate that you would like to be considered for a&lt;strong&gt; PyLadies grant&lt;/strong&gt; on that form. This year&amp;#39;s conference goes from Sept. 3 - Sept. 9. The deadline for the PyLadies grant submission is &lt;strong&gt;Friday, August 3rd&lt;/strong&gt;.  We apologize for the short notice, but we know that people need time to make travel plans/request days off from work, etc.  You will hear from us by the end of the week after applications are submitted. If you know of a talented, deserving female developer who might benefit greatly from attending DjangoCon, email &lt;a href=&#34;mailto:info@pyladies.com&#34; title=&#34;Email to Info&#34;&gt;us&lt;/a&gt;.  We&amp;#39;ll do our best to help as many women as possible. &lt;/p&gt;
 
 &lt;p&gt;Many thanks to the DjangoCon organizers and the Python Software Foundation for helping the PyLadies manage this program.&lt;/p&gt;
 &lt;h4 id=&#34;sponsors&#34;&gt;Sponsors:&lt;/h4&gt;
@@ -2212,9 +2214,9 @@ damn good problem to attack).&lt;/li&gt;
 
 &lt;p&gt;To be given an opportunity to speak about what I&amp;#39;ve been doing with PyLadies in San Francisco and Women Who Code is fantastic; and to have it elevated to a keynote was all the more surreal.  I thought it was pretty well received by the audience.  Many folks asked really good, difficult questions; things that needed to be discussed.  My approach to the talk was to provoke some thought in the audience without really alienating them.  &lt;/p&gt;
 
-&lt;p&gt;Yet many still wanted to get to the elephant in the room: &amp;quot;what are we doing that we don&amp;#39;t know we&amp;#39;re doing?&amp;quot; Long answer short: It&amp;#39;s not Python community-specific, but how we bring general societal norms into the community.  We, the python community, have been very open minded with who joins us.  I&amp;#39;m not sure why, if it&amp;#39;s a precedent that Guido set, if it&amp;#39;s the type of people the language attracts, or if it&amp;#39;s because it&amp;#39;s the model child of FOSS. It&amp;#39;s certainly a breath of fresh air compared to the likes of Java or C (no offense, well, maybe...). &lt;/p&gt;
+&lt;p&gt;Yet many still wanted to get to the elephant in the room: &amp;ldquo;what are we doing that we don&amp;#39;t know we&amp;#39;re doing?&amp;rdquo; Long answer short: It&amp;#39;s not Python community-specific, but how we bring general societal norms into the community.  We, the python community, have been very open minded with who joins us.  I&amp;#39;m not sure why, if it&amp;#39;s a precedent that Guido set, if it&amp;#39;s the type of people the language attracts, or if it&amp;#39;s because it&amp;#39;s the model child of FOSS. It&amp;#39;s certainly a breath of fresh air compared to the likes of Java or C (no offense, well, maybe&amp;hellip;). &lt;/p&gt;
 
-&lt;p&gt;Another hot question was &amp;quot;Is Guido&amp;#39;s t-shirt, Python is for Girls, sexist?&amp;quot;  From the point of view of a woman, it ostracizes me.  It feels like someone is trying to dress up programming with the color pink.  Or like Lego trying to appeal to girls with &lt;a href=&#34;http://shop.lego.com/en-US/Stephanie-s-Outdoor-Bakery-3930&#34; title=&#34;Lego Backery&#34;&gt;it&amp;#39;s easy-bake oven twist&lt;/a&gt;.  But when talking to Guido one-on-one, as I would have thought, he of course didn&amp;#39;t mean it to be offensive.  Rather, he means to challenge the programmer paradigm. After the keynote, many approached me.  One gal from &lt;a href=&#34;http://geekgirlscarrots.pl&#34; title=&#34;Geek Girl Carrots&#34;&gt;geekgirlscarrots.pl&lt;/a&gt; gave me the greatest greeting and sincerest thank you I&amp;#39;ve heard.  Men came up asking for help and ideas how to get more women involved in their communities back home.  I felt this talk was very well received (despite being so nervous for it!).&lt;/p&gt;
+&lt;p&gt;Another hot question was &amp;ldquo;Is Guido&amp;#39;s t-shirt, Python is for Girls, sexist?&amp;rdquo;  From the point of view of a woman, it ostracizes me.  It feels like someone is trying to dress up programming with the color pink.  Or like Lego trying to appeal to girls with &lt;a href=&#34;http://shop.lego.com/en-US/Stephanie-s-Outdoor-Bakery-3930&#34; title=&#34;Lego Backery&#34;&gt;it&amp;#39;s easy-bake oven twist&lt;/a&gt;.  But when talking to Guido one-on-one, as I would have thought, he of course didn&amp;#39;t mean it to be offensive.  Rather, he means to challenge the programmer paradigm. After the keynote, many approached me.  One gal from &lt;a href=&#34;http://geekgirlscarrots.pl&#34; title=&#34;Geek Girl Carrots&#34;&gt;geekgirlscarrots.pl&lt;/a&gt; gave me the greatest greeting and sincerest thank you I&amp;#39;ve heard.  Men came up asking for help and ideas how to get more women involved in their communities back home.  I felt this talk was very well received (despite being so nervous for it!).&lt;/p&gt;
 
 &lt;hr&gt;
 
@@ -2222,7 +2224,7 @@ damn good problem to attack).&lt;/li&gt;
 to #pyladies, I called him out, addressed it with the EuroPython organizers, and allowed a discussion (if you can call it that) happen on my blog. My first thought about that event: The organizers of EuroPython handled it exceptionally well.  I went to the venue early before the conference started for the day, and they were already aware of the tweet (and I assume my reaction to it via twitter or my blog, as well).  They were very diligent in consulting the appropriate people on the EuroPython/Python Italia board.  The result was, I felt, adequate in addressing the situation.  &lt;a href=&#34;https://twitter.com/pwang/status/221172889813131264&#34; title=&#34;Apology 1&#34;&gt;A public apology&lt;/a&gt; (&lt;a href=&#34;https://twitter.com/pwang/status/221196983031963654&#34; title=&#34;Apology 2&#34;&gt;two&lt;/a&gt;, actually) from the attendee via twitter and &lt;a href=&#34;http://www.roguelynn.com/2012/07/05/really/comment-page-1/#comment-5125&#34; title=&#34;Apology Comment&#34;&gt;on my blog&lt;/a&gt;, a &lt;a href=&#34;https://twitter.com/europython/status/221201258424442881&#34; title=&#34;EuroPython Stance&#34;&gt;public stance&lt;/a&gt; on their &lt;a href=&#34;https://ep2012.europython.eu/code-of-conduct&#34; title=&#34;EuroPython CoC&#34;&gt;Code of Conduct&lt;/a&gt; via twitter, and plenty of reassurance in private. I can&amp;#39;t stress enough that the organizers were very respectful, and did exactly what I thought should be done.  This is exactly why there needs to be a CoC at conferences, and why the Python community is very adamant about signing the &lt;a href=&#34;http://letsgetlouder.com/&#34; title=&#34;Lets Get Louder&#34;&gt;Let&amp;#39;s Get Louder campaign&lt;/a&gt;. I&amp;#39;d like to quote a comment on the Let&amp;#39;s Get Louder campaign from someone who I met at EuroPython, but didn&amp;#39;t know at the time of &lt;a href=&#34;http://www.reddit.com/r/Python/comments/vroj4/python_programmers_sign_pledge_to_only/c579eeb&#34; title=&#34;Hynek&amp;#39;s Comment&#34;&gt;when this was posted&lt;/a&gt;:&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;It’s amazing how people who have never been affected by any type of discrimination decide for the rest, that it’s not a big deal and not our problem. But it *is* our problem. Because *this* is *our* community. And I will not tolerate that people get discriminated or harassed ... without any reaction from *inside* the community. &lt;/p&gt;
+&lt;p&gt;It’s amazing how people who have never been affected by any type of discrimination decide for the rest, that it’s not a big deal and not our problem. But it *is* our problem. Because *this* is *our* community. And I will not tolerate that people get discriminated or harassed &amp;hellip; without any reaction from *inside* the community. &lt;/p&gt;
 
 &lt;p&gt;Because that’s bad for our community. For every single person of us. A code of conduct is not about giving women or other minorities the power to get people they dislike out of conferences just by accusing them. &lt;/p&gt;
 
@@ -2232,18 +2234,18 @@ to #pyladies, I called him out, addressed it with the EuroPython organizers, and
 &lt;p&gt;When this incident happened, I &lt;del&gt;teared up a bit&lt;/del&gt; cried. Not because I took the tweet to heart, but because I knew that I was in a safe space, here at the conference.  I had this comment in the back of my mind already, and to reflect back to it gave me some comfort.  I was comfortable showing up to the conference, having normal conversations with folks, and did not feel ostracized. The apology, while I don&amp;#39;t doubt the sincerity, showed lack of cognizance &amp;amp; self awareness of the issue at hand. For clarity: some people don&amp;#39;t get it.  From another community that I shared this incident with, this response hits the point pretty well.  I want to illustrate a female point of view that I heavily agree with, but can&amp;#39;t seem to voice it as well as her.  With her permission, I am posting anonymously:&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;Without #Pyladies it&amp;#39;s not a joke, it&amp;#39;s just a contentless anecdote. The hash tag wasn&amp;#39;t just accidental or in poor taste.  It would still have been sexist and offensive and objectifying and rape-culturish if he had tagged it &amp;quot;#ladies?&amp;quot;or &amp;quot;#Wife?&amp;quot;  (God forbid we say so though, or expect men to actually think about women as people instead of blow job machines.)  &lt;/p&gt;
+&lt;p&gt;Without #Pyladies it&amp;#39;s not a joke, it&amp;#39;s just a contentless anecdote. The hash tag wasn&amp;#39;t just accidental or in poor taste.  It would still have been sexist and offensive and objectifying and rape-culturish if he had tagged it &amp;ldquo;#ladies?&amp;quot;or &amp;rdquo;#Wife?&amp;ldquo;  (God forbid we say so though, or expect men to actually think about women as people instead of blow job machines.)  &lt;/p&gt;
 
 &lt;p&gt;It is extra-special-nasty because he implied that specifically technical women who were where he was right then are *still* nothing more than objects for his sexual pleasure, and so it becomes a specific and personal threat/dehumanization of actual, specific women whom he could probably see at the time.  That is offensive and sexist and objectifying *and* creepy and discouraging and alienating and perpetuates the culture that creates the gross gender imbalances in our industry. Until these dudes start deconstructing their thoughts themselves, I will deconstruct their thoughts for them.  &lt;/p&gt;
 
-&lt;p&gt;If they don&amp;#39;t like what their jokes say about them, they should start thinking before they speak now shouldn&amp;#39;t they? It is entirely possible to make dirty jokes that don&amp;#39;t rely on a blind sense of entitlement to sexual relations with the generic category of &amp;quot;women&amp;quot; (or any other generic category, for that matter.)  &lt;/p&gt;
+&lt;p&gt;If they don&amp;#39;t like what their jokes say about them, they should start thinking before they speak now shouldn&amp;#39;t they? It is entirely possible to make dirty jokes that don&amp;#39;t rely on a blind sense of entitlement to sexual relations with the generic category of &amp;quot;women&amp;rdquo; (or any other generic category, for that matter.)  &lt;/p&gt;
 
-&lt;p&gt;For example, &amp;quot;Sucked the marrow out of my osso bucco at #Europython.  Waiter said I will have &amp;quot;very good orgasm.&amp;quot; He was right. #Flexible&amp;quot; Or &amp;quot;Sucked the marrow out of my osso bucco Waiter said I will have &amp;quot;very good orgasm.&amp;quot; Wasn&amp;#39;t practicing for me #LoveYouDear&amp;quot;&lt;/p&gt;
+&lt;p&gt;For example, &amp;ldquo;Sucked the marrow out of my osso bucco at #Europython.  Waiter said I will have &amp;quot;very good orgasm.&amp;rdquo; He was right. #Flexible&amp;quot; Or &amp;ldquo;Sucked the marrow out of my osso bucco Waiter said I will have &amp;quot;very good orgasm.&amp;rdquo; Wasn&amp;#39;t practicing for me #LoveYouDear&amp;quot;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;This isn&amp;#39;t an overreaction; this was a perfect situation to bring to light the type of incidents women do face.  Sure, maybe one comment can be easily brushed off.  But it isn&amp;#39;t one, it&amp;#39;s many.  From both in private at home with silly, innocuous jokes, to a$$hat comments made in public.  It adds up.  The general creepy comments from being the only female at a table drinking; the hurtful, disrespectful, and gaslighting tweets &amp;amp; blog comments; the crass jokes; the &amp;quot;calm down, just breathe. You&amp;#39;re overreacting&amp;quot; conversation (!). &lt;/p&gt;
+&lt;p&gt;This isn&amp;#39;t an overreaction; this was a perfect situation to bring to light the type of incidents women do face.  Sure, maybe one comment can be easily brushed off.  But it isn&amp;#39;t one, it&amp;#39;s many.  From both in private at home with silly, innocuous jokes, to a$$hat comments made in public.  It adds up.  The general creepy comments from being the only female at a table drinking; the hurtful, disrespectful, and gaslighting tweets &amp;amp; blog comments; the crass jokes; the &amp;ldquo;calm down, just breathe. You&amp;#39;re overreacting&amp;rdquo; conversation (!). &lt;/p&gt;
 
-&lt;p&gt;For simple, lightbulb moments that I&amp;#39;ve witnessed some men get, it&amp;#39;s gratifying and reassuring.  It&amp;#39;s the reason I&amp;#39;m speaking.  The soft &amp;quot;a-ha&amp;quot; speaks loudly. The support that I got that evening and the rest of the conference was amazing. Some went up to bat on behalf of me/PyLadies/women in tech.  Some simply asked how I was doing. Overall, I could not have asked for a better experience.  I met many prolific and awesome people in the Python community.  I&amp;#39;ve made friends that I know will last beyond the sunny days of Florence.  And I&amp;#39;ve made a pretty hard dent in my liver.  I&amp;#39;m looking forward to next year.&lt;/p&gt;
+&lt;p&gt;For simple, lightbulb moments that I&amp;#39;ve witnessed some men get, it&amp;#39;s gratifying and reassuring.  It&amp;#39;s the reason I&amp;#39;m speaking.  The soft &amp;ldquo;a-ha&amp;rdquo; speaks loudly. The support that I got that evening and the rest of the conference was amazing. Some went up to bat on behalf of me/PyLadies/women in tech.  Some simply asked how I was doing. Overall, I could not have asked for a better experience.  I met many prolific and awesome people in the Python community.  I&amp;#39;ve made friends that I know will last beyond the sunny days of Florence.  And I&amp;#39;ve made a pretty hard dent in my liver.  I&amp;#39;m looking forward to next year.&lt;/p&gt;
 </content>
         </entry>
         
@@ -2296,19 +2298,19 @@ to #pyladies, I called him out, addressed it with the EuroPython organizers, and
 
 &lt;p&gt;&lt;strong&gt;Side note:&lt;/strong&gt; Female attendance of EuroPython has &lt;strong&gt;doubled&lt;/strong&gt; since last year, from 4% to 8%, while the overall attendance has increased about 100 people, or about 15% from last year (a rough estimate from collected conversations).&lt;/p&gt;
 
-&lt;p&gt;Guido&amp;#39;s talk was very similar to his closing keynote at PyCon US this year, Not the State of the Union.  What I found more interesting was the moderated Q&amp;amp;A he did towards the end of the day.  More on that in a second...&lt;/p&gt;
+&lt;p&gt;Guido&amp;#39;s talk was very similar to his closing keynote at PyCon US this year, Not the State of the Union.  What I found more interesting was the moderated Q&amp;amp;A he did towards the end of the day.  More on that in a second&amp;hellip;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://ep2012.europython.eu/conference/p/alex-martelli&#34; title=&#34;Alex Martelli&#34;&gt;Alex Martelli&lt;/a&gt; did a talk on the fantastic subject of Ask for Forgiveness, not for Permission, inspired by Grace Hopper.  It was very awesome and heart-warming to hear the crowd on twitter really welcome and embrace that line of thought, both because it&amp;#39;s a great motto to live by (esp for engineers), as well as a very prominent and well-respected woman said it.  Only, he used Apple&amp;#39;s version of Comic Sans on his slides: Chalkboard.  Not that forgivable... (although I&amp;#39;ve committed that crime as well in my Python study group slides *hides head in shame*).&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://ep2012.europython.eu/conference/p/alex-martelli&#34; title=&#34;Alex Martelli&#34;&gt;Alex Martelli&lt;/a&gt; did a talk on the fantastic subject of Ask for Forgiveness, not for Permission, inspired by Grace Hopper.  It was very awesome and heart-warming to hear the crowd on twitter really welcome and embrace that line of thought, both because it&amp;#39;s a great motto to live by (esp for engineers), as well as a very prominent and well-respected woman said it.  Only, he used Apple&amp;#39;s version of Comic Sans on his slides: Chalkboard.  Not that forgivable&amp;hellip; (although I&amp;#39;ve committed that crime as well in my Python study group slides *hides head in shame*).&lt;/p&gt;
 
 &lt;p&gt;Also, I didn&amp;#39;t realize that Martelli was the author of Python in a Nutshell, and co-edited w/ this wife, Anna, the Python Cookbook. I should have lugged that door stopper to get it signed!&lt;/p&gt;
 
-&lt;p&gt;Next, &lt;a href=&#34;https://ep2012.europython.eu/conference/p/febo-cincotti&#34; title=&#34;febo Cincotti&#34;&gt;Febo Cincotti&lt;/a&gt; presented on the progression neuroscience has made in allowing those who have absolutely no way to communicate without the help of computers in his talk titled &amp;quot;Let your Brain talk to Computers.&amp;quot;  While not Python-centric, it was very inspirational and detailed on how far science has come with respect to helping those like Stephen Hawking in the &amp;#39;locked-in&amp;#39; state.&lt;/p&gt;
+&lt;p&gt;Next, &lt;a href=&#34;https://ep2012.europython.eu/conference/p/febo-cincotti&#34; title=&#34;febo Cincotti&#34;&gt;Febo Cincotti&lt;/a&gt; presented on the progression neuroscience has made in allowing those who have absolutely no way to communicate without the help of computers in his talk titled &amp;ldquo;Let your Brain talk to Computers.&amp;rdquo;  While not Python-centric, it was very inspirational and detailed on how far science has come with respect to helping those like Stephen Hawking in the &amp;#39;locked-in&amp;#39; state.&lt;/p&gt;
 
 &lt;p&gt;Naturally, it wouldn&amp;#39;t be a Python conference without a state of the PyPy endeavor and a GIL-less future by &lt;a href=&#34;https://ep2012.europython.eu/conference/p/armin-rigo&#34; title=&#34;Armin Rigo&#34;&gt;Armin Rigo&lt;/a&gt;, &lt;a href=&#34;https://ep2012.europython.eu/conference/p/antonio-cuni&#34; title=&#34;Antonio Cuni&#34;&gt;Antonio Cuni&lt;/a&gt;, and &lt;a href=&#34;https://ep2012.europython.eu/conference/p/maciej-fijalkowski&#34; title=&#34;Maciej Fijalkowski&#34;&gt;Maciej Fijalkowski&lt;/a&gt;.  I really enjoyed this talk mostly because these gentlemen had such a dorky, academic/scientist-like passion about the progression of PyPy.  Their story came off as very inspiring, honest, and enthusiastic about the massive undertaking of a project.  It was interesting that Armin even spent some time making his own Python interpreter (seriously, how passionate &amp;amp; dedicated is he?).  It will be great to see how these gentlemen progress with Transactional Memory &amp;amp; Automatic Mutual Exclusion.  Fascinating.&lt;/p&gt;
 
 &lt;p&gt;An unexpected highlight of the evening was the quality of some lightning talks.  Specifically, &lt;a href=&#34;https://twitter.com/#!/llanga&#34; title=&#34;Lukasz Langa&#34;&gt;Lukasz Langa&lt;/a&gt;&amp;#39;s &lt;a href=&#34;http://www.slideshare.net/lukaszlanga/i-regret-nothing&#34; title=&#34;I Regret Nothing&#34;&gt;I Regret Nothing, You can&amp;#39;t judge me&lt;/a&gt;.  Full of hilarious memes, fast-paced jokes, and honest confession of his horrible habits, Mr Llanga showed EuroPython just how lazy of a Python programmer he is.  From simplified and nearly unidentifiable variables, to multiple inheritance, to horrific monkey patching, he convinced the audience that a) he&amp;#39;s lazy, b) he doesn&amp;#39;t regret it and c) god bless your soul if you inherit his code.&lt;/p&gt;
 
-&lt;p&gt;To wrap up the evening, Guido van Rossum did a casual but well attended moderated Q&amp;amp;A.  He was quite frank in answering his questions, from &amp;quot;I just don&amp;#39;t know what this person is asking&amp;quot; to &amp;quot;I&amp;#39;m not going to waste my time answering this.&amp;quot;  My next post will be the loosely transcribed conversation, after I refactor it a bit to actually be readable.  But believe me when I say that while Guido is quite tired of the same question, &amp;quot;Looking back, what would you do differently&amp;quot;, he&amp;#39;s a fantastic sport that offers great dialogue for us in the Python community.  So stay tuned!&lt;/p&gt;
+&lt;p&gt;To wrap up the evening, Guido van Rossum did a casual but well attended moderated Q&amp;amp;A.  He was quite frank in answering his questions, from &amp;ldquo;I just don&amp;#39;t know what this person is asking&amp;rdquo; to &amp;ldquo;I&amp;#39;m not going to waste my time answering this.&amp;rdquo;  My next post will be the loosely transcribed conversation, after I refactor it a bit to actually be readable.  But believe me when I say that while Guido is quite tired of the same question, &amp;ldquo;Looking back, what would you do differently&amp;rdquo;, he&amp;#39;s a fantastic sport that offers great dialogue for us in the Python community.  So stay tuned!&lt;/p&gt;
 </content>
         </entry>
         
@@ -2456,13 +2458,13 @@ about. &lt;/p&gt;
 
 &lt;p&gt;I&amp;#39;ve had many folks, women and men, approach me asking how they can help out. What surprises me the most is someone hasn&amp;#39;t done this before; why no SF chapter until now?  We&amp;#39;re Silicon Valley! But I am so excited to be a part of this, to bring the Python community together in a big wave of support for women.  I found that folks in the Python community, in the CS/engineering community as a whole, recognizes that there is an imbalance of gender.  &lt;/p&gt;
 
-&lt;p&gt;It is partly a great thing because it is very easy to find resources to help women learn and grow.  But it&amp;#39;s also unfortunate because no one puts an active effort towards advancing women. The ladies I&amp;#39;ve met and worked with are extremely enthusiastic about learning.  It&amp;#39;s certainly difficult to pursue such an endeavor; coding is hard!  But it&amp;#39;s a lot easier to ask those &amp;quot;stupid&amp;quot;, naive questions in a non-competitive environment.  &lt;/p&gt;
+&lt;p&gt;It is partly a great thing because it is very easy to find resources to help women learn and grow.  But it&amp;#39;s also unfortunate because no one puts an active effort towards advancing women. The ladies I&amp;#39;ve met and worked with are extremely enthusiastic about learning.  It&amp;#39;s certainly difficult to pursue such an endeavor; coding is hard!  But it&amp;#39;s a lot easier to ask those &amp;ldquo;stupid&amp;rdquo;, naive questions in a non-competitive environment.  &lt;/p&gt;
 
 &lt;p&gt;Kaitlyn Trigger of Lovestagram had a &lt;a href=&#34;http://www.slideshare.net/katydint84/the-story-of-lovestagram&#34; title=&#34;Kaitlyn Trigger Lovestagram Slides&#34;&gt;great metaphor for programming&lt;/a&gt;:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://www.roguelynn.com/assets/images/building_furniture.png&#34; alt=&#34;Furniture&#34; title=&#34;Directions for Building Furniture&#34;&gt;&lt;/p&gt;
 
-&lt;p&gt;How in the h&amp;amp;ll do you get from step 1 to step 2?  Either a magic wand, or you are a carpenter by nature.  Similar with engineering: talk to development folks, ask for a product and it magically appears all constructed.  I had a hard time grasping how a for loop, classes, and methods can turn into an architecture for a cloud fileshare system, or a social networking site, or even a simple greedy change calculator. I found that having someone that also comes from this &amp;quot;what is this wizardry?!&amp;quot; point of view helps break down the steps to actually create a meaningful program. Enter: ME! I invite anyone who has an interest in Python to &lt;a href=&#34;http://www.meetup.com/pyladiessf&#34; title=&#34;PyLadiesSF Meetup&#34;&gt;come check us out&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;How in the h&amp;amp;ll do you get from step 1 to step 2?  Either a magic wand, or you are a carpenter by nature.  Similar with engineering: talk to development folks, ask for a product and it magically appears all constructed.  I had a hard time grasping how a for loop, classes, and methods can turn into an architecture for a cloud fileshare system, or a social networking site, or even a simple greedy change calculator. I found that having someone that also comes from this &amp;ldquo;what is this wizardry?!&amp;rdquo; point of view helps break down the steps to actually create a meaningful program. Enter: ME! I invite anyone who has an interest in Python to &lt;a href=&#34;http://www.meetup.com/pyladiessf&#34; title=&#34;PyLadiesSF Meetup&#34;&gt;come check us out&lt;/a&gt;.&lt;/p&gt;
 </content>
         </entry>
         
@@ -2484,7 +2486,7 @@ about. &lt;/p&gt;
 &lt;p&gt;I should post more so I don&amp;#39;t have to do such a digest of what&amp;#39;s been going on! :) It all started when I took my first CS class. Well, it sucked. Learning first in C, I thought, “Well, I know some of these words.” I [re]assure you, C does not come naturally to a (former) financial analyst.  I felt&lt;br&gt;
 I was drowning: I failed both exams.&lt;/p&gt;
 
-&lt;p&gt;I had the pleasure of attending Science Hack Day, where I was first exposed to Python.  Then it was all downhill from there... My final project was &lt;a href=&#34;http://inflatr.com&#34; title=&#34;InflatR&#34;&gt;inflatr.com&lt;/a&gt;, which used the awesomeness of Python and my undying interest in economics.  Python is actually an interesting language; it poses as an easy-to-learn language for beginner coders, but it more so leverages the coder to build programs and scripts efficiently by taking away a lot of the tediousness that other languages are known for and where beginners drown.&lt;/p&gt;
+&lt;p&gt;I had the pleasure of attending Science Hack Day, where I was first exposed to Python.  Then it was all downhill from there&amp;hellip; My final project was &lt;a href=&#34;http://inflatr.com&#34; title=&#34;InflatR&#34;&gt;inflatr.com&lt;/a&gt;, which used the awesomeness of Python and my undying interest in economics.  Python is actually an interesting language; it poses as an easy-to-learn language for beginner coders, but it more so leverages the coder to build programs and scripts efficiently by taking away a lot of the tediousness that other languages are known for and where beginners drown.&lt;/p&gt;
 
 &lt;p&gt;I then had the audacity to start up a study group for women wanting to learn Python.  Standing on the shoulders of the newly founded &lt;a href=&#34;http://www.meetup.com/women-who-code-sf&#34; title=&#34;Women Who Code meetup&#34;&gt;Women Who Code&lt;/a&gt; group (growing at a linear rate of 100 members a month without skipping a beat!).  Never had I organized a group like this before, but let me tell you: it was so easy, it begged to be done.  Within a few days of conceiving of the idea, I had gotten the &amp;#39;okay&amp;#39; from Women Who Code, found space at Dropbox who generously agreed to hosting the group for 8 weeks &lt;em&gt;and&lt;/em&gt; join them for dinner every meetup, and secured Guido van Rossum, the Benevolent Dictator of Life at Google, aka the founder and creator of Python, to kick off the first event. The first meetup guest list filled up within hours.&lt;/p&gt;
 
@@ -2512,17 +2514,17 @@ I was drowning: I failed both exams.&lt;/p&gt;
 &lt;p&gt;It was two &lt;strong&gt;full days&lt;/strong&gt;, so let me lay it out for you: &lt;strong&gt;about me:&lt;/strong&gt;programming &amp;amp; science n00b &lt;strong&gt;mission:&lt;/strong&gt;to make &amp;amp; hack things with SCIENCE &lt;strong&gt;vision:&lt;/strong&gt;to hack data from Switzerland&amp;#39;s Large Hadron Collider for better accessibility and understanding, esp for enthusiasts but n00bs like me. &lt;strong&gt;results:&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;  my knowledge of particle physics went from 0 to ... some? probably 1
-if it&amp;#39;s on a scale of ...100.&lt;/li&gt;
+&lt;li&gt;  my knowledge of particle physics went from 0 to &amp;hellip; some? probably 1
+if it&amp;#39;s on a scale of &amp;hellip;100.&lt;/li&gt;
 &lt;li&gt;  crash course in python and javascript programming&lt;/li&gt;
 &lt;li&gt;  +5lbs from bountiful free food and alcohol&lt;/li&gt;
 &lt;li&gt;  Increased tolerance to caffeine&lt;/li&gt;
 &lt;li&gt;  I made &lt;a href=&#34;http://www.mattbellis.com/index.php?title=LHC_Hack_Day/Mass_distributions&#34; title=&#34;Mass Distributions Viz&#34;&gt;THIS&lt;/a&gt;!&lt;/li&gt;
 &lt;li&gt;  The group collectively put &lt;a href=&#34;http://www.mattbellis.com/index.php?title=LHC_Data_Hack&#34; title=&#34;LHC Data Hack&#34;&gt;THIS&lt;/a&gt; website together!&lt;/li&gt;
-&lt;li&gt;  10 GBs of LHC data, out of the gazillion terabytes of data both available &amp;amp; unavailable to the &amp;quot;public&amp;quot; (I say with quotes because not exactly sure where I could even get the publicly released data...)&lt;/li&gt;
+&lt;li&gt;  10 GBs of LHC data, out of the gazillion terabytes of data both available &amp;amp; unavailable to the &amp;ldquo;public&amp;rdquo; (I say with quotes because not exactly sure where I could even get the publicly released data&amp;hellip;)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Note: If you&amp;#39;re interested in the source code, it can be found on GitHub under mattbellis. So, what those two graphs mean that I put together is [I THINK, IF I REMEMBER CORRECTLY] a reflection of two different ways to calculate mass of muons. Muons produce when two protons collide together, along with other particles, including mesons. The second graph (using Einstein&amp;#39;s equations/special relativity), you can see a second &amp;quot;hump&amp;quot;, signaling that there actually is a second meson existing that the first graph didn&amp;#39;t show. All &amp;#39;n all, thanks to my intro course to computer science, I was able to have somewhat of an understanding of what was going on, as well as built upon my skills (especially for my final project coming up!).   All I have to say for those n00bs to any new skill: Dive right in.  That&amp;#39;s the best, most fun way to learn! &lt;/p&gt;
+&lt;p&gt;Note: If you&amp;#39;re interested in the source code, it can be found on GitHub under mattbellis. So, what those two graphs mean that I put together is [I THINK, IF I REMEMBER CORRECTLY] a reflection of two different ways to calculate mass of muons. Muons produce when two protons collide together, along with other particles, including mesons. The second graph (using Einstein&amp;#39;s equations/special relativity), you can see a second &amp;ldquo;hump&amp;rdquo;, signaling that there actually is a second meson existing that the first graph didn&amp;#39;t show. All &amp;#39;n all, thanks to my intro course to computer science, I was able to have somewhat of an understanding of what was going on, as well as built upon my skills (especially for my final project coming up!).   All I have to say for those n00bs to any new skill: Dive right in.  That&amp;#39;s the best, most fun way to learn! &lt;/p&gt;
 </content>
         </entry>
         
@@ -2541,7 +2543,7 @@ if it&amp;#39;s on a scale of ...100.&lt;/li&gt;
             </author>
             <content type="html">&lt;p&gt;Has anyone else heard of BitCoin, and the incredible inflation it has seen? &lt;/p&gt;
 
-&lt;p&gt;This &lt;a href=&#34;http://falkvinge.net/2011/05/29/why-im-putting-all-my-savings-into-bitcoin/&#34; title=&#34;Why I&amp;#39;m Putting All my Savings into Bitcoin&#34;&gt;dude&lt;/a&gt; has put &lt;strong&gt;all&lt;/strong&gt;his money into BitCoin - not smart, I would say.  Especially when &lt;a href=&#34;http://www.dailytech.com/article.aspx?newsid=21877&#34; title=&#34;Run on Bitcoin&#34;&gt;news&lt;/a&gt; like a run on BitCoin hits. (If you have no clue on what BitCoin is, &lt;a href=&#34;http://en.wikipedia.org/wiki/Bitcoin&#34; title=&#34;Wiki: Bitcoin&#34;&gt;read&lt;/a&gt;.) So while I laugh at the guy who invested all his money that is now gone, I reflect back on a conversation I had with a friend a few years ago.  Can we use this virtual currency to study monetary economics?  BitCoin has the potential to provide us with an interesting avenue to understand another type of currency. But what I am imagining more is looking at virtual worlds and video games (disclaimer: I have no direct experience with video games) to build scenarios to &amp;quot;test&amp;quot; on live people interacting with the world/game.  Currently, there are trading simulators that follow the market where one can see how his/her virtual portfolio would fair in real life.  Add that aspect to a virtual economy and see how quantitative easing programs could affect it. Just an idea.&lt;/p&gt;
+&lt;p&gt;This &lt;a href=&#34;http://falkvinge.net/2011/05/29/why-im-putting-all-my-savings-into-bitcoin/&#34; title=&#34;Why I&amp;#39;m Putting All my Savings into Bitcoin&#34;&gt;dude&lt;/a&gt; has put &lt;strong&gt;all&lt;/strong&gt;his money into BitCoin - not smart, I would say.  Especially when &lt;a href=&#34;http://www.dailytech.com/article.aspx?newsid=21877&#34; title=&#34;Run on Bitcoin&#34;&gt;news&lt;/a&gt; like a run on BitCoin hits. (If you have no clue on what BitCoin is, &lt;a href=&#34;http://en.wikipedia.org/wiki/Bitcoin&#34; title=&#34;Wiki: Bitcoin&#34;&gt;read&lt;/a&gt;.) So while I laugh at the guy who invested all his money that is now gone, I reflect back on a conversation I had with a friend a few years ago.  Can we use this virtual currency to study monetary economics?  BitCoin has the potential to provide us with an interesting avenue to understand another type of currency. But what I am imagining more is looking at virtual worlds and video games (disclaimer: I have no direct experience with video games) to build scenarios to &amp;ldquo;test&amp;rdquo; on live people interacting with the world/game.  Currently, there are trading simulators that follow the market where one can see how his/her virtual portfolio would fair in real life.  Add that aspect to a virtual economy and see how quantitative easing programs could affect it. Just an idea.&lt;/p&gt;
 </content>
         </entry>
         
@@ -2560,13 +2562,13 @@ if it&amp;#39;s on a scale of ...100.&lt;/li&gt;
             </author>
             <content type="html">&lt;p&gt;I had the interesting experience of attending a Seattle tech talk with Facebook&amp;#39;s Mark Zuckerberg. Unfortunately I was too scared to ask him if he felt $70 billion was a fair value for the FB IPO estimate, or if he needed any analysts to help him justify such a number.&lt;/p&gt;
 
-&lt;p&gt;But what I though was interesting that he said, beyond all that geeky coding and infrastructure talk, was that he believes the rate of people &amp;quot;sharing&amp;quot; stuff via Facebook will double each year, so within 5 years people will be sharing 32x as many things compared to today.&lt;/p&gt;
+&lt;p&gt;But what I though was interesting that he said, beyond all that geeky coding and infrastructure talk, was that he believes the rate of people &amp;ldquo;sharing&amp;rdquo; stuff via Facebook will double each year, so within 5 years people will be sharing 32x as many things compared to today.&lt;/p&gt;
 
 &lt;p&gt;Is that even possible? ~1024 things/day being shared/liked/commented. We&amp;#39;d have to be FBing nearly every minute.&lt;/p&gt;
 
 &lt;p&gt;What I think is more accurate is an exponential growth of a person sharing, then as one gets older, the activity tapers, slows down, and maybe even fall to zero/very rare. What would be important would be to look at that age where exponential growth happens and see how that is growing.&lt;/p&gt;
 
-&lt;p&gt;Just quick thoughts post-talk. I enjoyed it, plus the free pizza &amp;amp; booze. Although I wish I could have gotten some free swag...  &lt;/p&gt;
+&lt;p&gt;Just quick thoughts post-talk. I enjoyed it, plus the free pizza &amp;amp; booze. Although I wish I could have gotten some free swag&amp;hellip;  &lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://www.roguelynn.com/assets/images/mark_zuckerberg.jpg&#34; alt=&#34;the Zuck&#34; title=&#34;Mark Zuckerberg&#34;&gt;&lt;/p&gt;
 </content>

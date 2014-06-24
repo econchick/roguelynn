@@ -10,14 +10,17 @@
 
 
         <!--Stylesheets-->
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="/assets/css/lightbox.css" media="screen" title="screen">
         <!--<link rel="stylesheet" href="/assets/css/pygments3.css" media="screen" title="screen">-->
-        <link rel="stylesheet" href="/assets/css/bootstrap.css" media="screen" title="screen">
-        <link rel="stylesheet" href="/assets/css/bootstrap-responsive.css" media="screen" title="screen">
-        <link rel="stylesheet" href="/assets/css/screen2.css" media="screen" title="screen">
-        <link rel="stylesheet" href="/assets/css/ipython.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/opensans.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/droidserif.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/bitter.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/main.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/font-awesome.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/rst.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/code.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/ipython.min.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/nikola_ipython.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/custom.css" media="screen" title="screen">
 
         <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -25,20 +28,26 @@
         
     </head>
     <body>
-    <div class="container">
-      <div class="row">
-        <div class="span2">
-          <div class="avatar-section">
-            <a id="avatar" href="/"></a>
-            <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/about">About</a></li>
-              <li><a href="/words">Words</a></li>
-              <li><a href="/talks">Talks</a></li>
-              <li><a href="/pyladies">PyLadies</a></li>
-            </ul>
-          </div>
-        </div>
+      <section class="social">
+          <ul>
+              <li><a href="/" title="Home"><i class="fa fa-home"></i></a></li>
+              <li><a href="/words/" title="Blog Posts"><i class="fa fa-quote-left"></i></a></li>
+              <li><a href="/talks/" title="Talks"><i class="fa fa-microphone"></i></a></li>
+              <li><a href="/about/" title="About"><i class="fa fa-user"></i></a></li>
+              <li><a href="/pages/" title="Pages"><i class="fa fa-coffee"></i></a></li>
+              <li id="break">–</li>
+              <li><a href="http://twitter.com/roguelynn" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="https://alpha.app.net/roguelynn" title="ADN"><i class="fa fa-adn"></i></a></li>
+              <li><a href="http://github.com/econchick" title="GitHub"><i class="fa fa-github"></i></a></li>
+              <li><a href="http://open.spotify.com/user/econchick" title="Spotify"><i class="fa fa-spotify"></i></a></li>
+              <li><a href="https://www.tripit.com/people/lynn.root" title="Where am I?"><i class="fa fa-plane"></i></a></li>
+              <li id="break">–</li>
+              <li><a href="archive.html" title="Archives"><i class="fa fa-archive"></i></a></li>
+              <li><a href="http://www.roguelynn.com/feed.xml" title="RSS"><i class="fa fa-rss"></i></a></li>
+          </ul>
+      </section>
+    <section class="page-content">
+      <div class="content" rel="main">
         <div class="span9">
             
 
@@ -67,7 +76,7 @@
 <li> Remember that a lot of engineers don&#39;t have the best people skills so some &#39;rude&#39; people are that way unintentionally.</li>
 <li> If they dont answer questions, it is most likely because they dont know the answers.</li>
 <li> Build relationships if possible. Never miss a happy hour type of thing.</li>
-<li> &quot;Where did you learn that?&quot; is an interesting question</li>
+<li> &ldquo;Where did you learn that?&rdquo; is an interesting question</li>
 <li> Figure out the ways in which you like to work- and others like to work- first.</li>
 <li> Many guys truly don&#39;t think that women can or should be coding as equals.</li>
 <li> At least 89% of the time, by the time I have really defined my question, I have figured out the answer.</li>
@@ -78,7 +87,7 @@
 <li> Thrown into code to fix a bug/patch/whatever</li>
 <li> Spend wayyyy too much time thinking over a trivial aspect of said bug/patch/whatever.</li>
 <li> Many naive questions from me, met with a poor/mean/unadjusted attitude, or worse, lack of any sort of emotional response (I&#39;d rather -know- I annoy you than wonder if you loathe my questions).</li>
-<li> I&#39;d be restricted from doing certain things; &quot;when you&#39;re ready for it&quot; aka &quot;when I&#39;m ready to give this piece of my job up and move on to something better.&quot;</li>
+<li> I&#39;d be restricted from doing certain things; &ldquo;when you&#39;re ready for it&rdquo; aka &ldquo;when I&#39;m ready to give this piece of my job up and move on to something better.&rdquo;</li>
 </ul>
 <h4 id="i-set-expectations-formyself-too">I set expectations for <em>myself</em> too:</h4>
 <ul>
@@ -104,17 +113,17 @@ Must be root to setup this server!<br>
 <li><p>These folks have a lot of patience for someone just learning like me.  Very comforting.</p></li>
 <li><p>People don&#39;t need free meals/fish deliveries/spousal salaries upon death to be happy to work somewhere.</p></li>
 <li><p>It is SO freaking nice not to worry about being in the office during the same time as your manager (precious &#39;face time&#39;); clocking every minute of every hour that has any relation to work.</p></li>
-<li><p>Engineers are so relaxed and fun to work with. I feel no pressure, and therefore no nerves when asking questions.  Little things like, &#39;here are the IRC channels we&#39;re in...&#39; and &#39;Thursday&#39;s the best because it&#39;s breakfast day.&#39;</p></li>
-<li><p>My manager flat out said &quot;I won&#39;t read it&quot; when I forwarded him <a href="/2012-10-21-community-ftw-kicking-of-the-pycarolinas-community" title="Community FTW">my post</a> about the community talk I gave at PyCarolinas (among other questions &amp; discussion points). Damn that guy is awesome. No nonsense, no bs, no coddling, very helpful, thinks outside the box, and brilliant.</p></li>
-<li><p>My manager also flat out said &quot;That&#39;s why we hired you&quot; when I asked him about being invited to speak at conferences. hellz yea.</p></li>
-<li><p>I can surprise a few people with the little Czech knowledge I&#39;ve retained.  <em>&quot;jedno velky pivo, prosim.&quot;</em></p></li>
+<li><p>Engineers are so relaxed and fun to work with. I feel no pressure, and therefore no nerves when asking questions.  Little things like, &#39;here are the IRC channels we&#39;re in&hellip;&#39; and &#39;Thursday&#39;s the best because it&#39;s breakfast day.&#39;</p></li>
+<li><p>My manager flat out said &ldquo;I won&#39;t read it&rdquo; when I forwarded him <a href="/2012-10-21-community-ftw-kicking-of-the-pycarolinas-community" title="Community FTW">my post</a> about the community talk I gave at PyCarolinas (among other questions &amp; discussion points). Damn that guy is awesome. No nonsense, no bs, no coddling, very helpful, thinks outside the box, and brilliant.</p></li>
+<li><p>My manager also flat out said &ldquo;That&#39;s why we hired you&rdquo; when I asked him about being invited to speak at conferences. hellz yea.</p></li>
+<li><p>I can surprise a few people with the little Czech knowledge I&#39;ve retained.  <em>&ldquo;jedno velky pivo, prosim.&rdquo;</em></p></li>
 <li><p>I was assigned 5 tickets on day #2 in Brno. This will probably be the only time I will be excited to be assigned tickets. They seem to be the types of tickets that are &#39;easy pickens&#39; but also give the challenge of making you dig through the whole freaking code base only to find the issue comes from an outside package. /phew </p></li>
 <li><p><a href="http://www.redhat.com/archives/freeipa-devel/2012-October/msg00556.html">I SUBMITTED MY FIRST PATCH</a> (day #3 in Brno. 8 days of learning terms/code/git/processes, ignoring travel days, orientation, blah). <em>Side note: that patch broke everything. I learned a lesson in tests the following day.</em></p></li>
 </ul>
 <h4 id="cultural-differences">Cultural Differences:</h4>
 <p>I was also <a href="https://twitter.com/juliaelman/status/262666318715707392%20" title="Julia Elman&#39;s tweet">asked</a> about what differences I&#39;ve seen in the engineering cultures, and the <a href="https://twitter.com/aesptux/status/262668691731263488" title="Adrian Espinosa&#39;s tweet">moving abroad experience</a> in general.  Immediately, my memory is refreshed on how hyper-sexualized women are dressed here.  I wear converse or pumas everyday -&gt; flag for &#39;I&#39;m not from here!&#39; as many women where heals (not crazy tall ones, although some do).  And hygiene can be an issue for some folks (lulz).  Also, while it&#39;s still relatively cheap in Czech Rep (2006: 22-24 Kc to 1 USD, now: 20 Kc to 1 USD), cost of living has gone up. Food is more expensive, housing, Ikea.</p>
 
-<p>Immediate engineering culture differences are hard to pick up right now, and I hope to be able to have a better PoV after 2 months.  Every so often, I get a surprised look when I ask a question, giving me the impression that I&#39;m not as much of a n00b as was thought.  I think that more comes from the reputation that preceded me, the discussions that were had before I arrived.  I don&#39;t read into this at all.  I mean - no one told me to read into the package code before arriving... but I did, and it&#39;s<br>
+<p>Immediate engineering culture differences are hard to pick up right now, and I hope to be able to have a better PoV after 2 months.  Every so often, I get a surprised look when I ask a question, giving me the impression that I&#39;m not as much of a n00b as was thought.  I think that more comes from the reputation that preceded me, the discussions that were had before I arrived.  I don&#39;t read into this at all.  I mean - no one told me to read into the package code before arriving&hellip; but I did, and it&#39;s<br>
 helped a lot.  I haven&#39;t been approached inappropriately, scoffed at, or met with impatience.</p>
 
 <p>All in all: this <em>job</em> lifestyle is utterly fantastic.  I got hired because I like to speak AND code AND continually learn. And I have expectations for myself to continue to speak AND code AND learn.  Look at that? all aligned! Just one drawback: I dream in test failures now.</p>
@@ -140,26 +149,17 @@ helped a lot.  I haven&#39;t been approached inappropriately, scoffed at, or me
 
         </div>
       </div>
-    </div>
-    <div class="footer-wrapper">
-        <footer id="bottom">
-            <ul class="social">
-                <li><a class="icon twitter" data-icon="&#62217;" href="http://twitter.com/roguelynn" title="Twitter"></a></li>
-                <li><a class="icon github" data-icon="&#62208;" href="http://github.com/econchick" title="GitHub"></a></li>
-                <li><a class="icon photos" data-icon="&#128247;" href="http://500px.com/roguelynn" title="500px"></a><li>
-                <li><a class="icon spotify" data-icon="&#62247;" href="http://open.spotify.com/user/econchick" title="Spotify"></a></li>
-                <li><a class="icon flattr" data-icon="&#62262;" href="https://flattr.com/profile/roguelynn" title="Flattr"></a></li>
-                <li><a class="icon email" data-icon="&#10002;" href="mailto:lynn+roguelynn@lynnroot.com?subject:Hello!" title="Email"></a></li>
-                <li><a class="icon airplane" data-icon="&#9992;" href="https://www.tripit.com/people/lynn.root" title="Tripit"></a></li>
-                <li><a class="icon rss" data-icon="&#59194;" href="http://www.roguelynn.com/feed.xml" title="RSS"></a></li>
-                <li><a class="icon ohours" data-icon="&#59168;" href="http://ohours.org/roguelynn"></a></li>
-                <li>© 2007–2014 Lynn Root. All Rights Reserved.</li>
-            </ul>
+      <div class="footer">
+        <footer id="footer" role="contentinfo">
+          <p>© 2007–2014 Lynn Root. All Rights Reserved.</p>
         </footer>
-    </div>
+      </div>
+    </section>
         
         <!--Javascript-->
-        <script src="/assets/js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/assets/js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/assets/js/jquery.timeago.js" type="text/javascript"></script>
+        <script src="/assets/js/toggle.js" type="text/javascript"></script>
         <!-- Start of StatCounter Code for Default Guide -->
         <script type="text/javascript">
         var sc_project=4334716;

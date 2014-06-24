@@ -10,14 +10,17 @@
 
 
         <!--Stylesheets-->
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="/assets/css/lightbox.css" media="screen" title="screen">
         <!--<link rel="stylesheet" href="/assets/css/pygments3.css" media="screen" title="screen">-->
-        <link rel="stylesheet" href="/assets/css/bootstrap.css" media="screen" title="screen">
-        <link rel="stylesheet" href="/assets/css/bootstrap-responsive.css" media="screen" title="screen">
-        <link rel="stylesheet" href="/assets/css/screen2.css" media="screen" title="screen">
-        <link rel="stylesheet" href="/assets/css/ipython.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/opensans.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/droidserif.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/bitter.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/main.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/font-awesome.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/rst.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/code.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/ipython.min.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/nikola_ipython.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/custom.css" media="screen" title="screen">
 
         <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -25,25 +28,30 @@
         
     </head>
     <body>
-    <div class="container">
-      <div class="row">
-        <div class="span2">
-          <div class="avatar-section">
-            <a id="avatar" href="/"></a>
-            <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/about">About</a></li>
-              <li><a href="/words">Words</a></li>
-              <li><a href="/talks">Talks</a></li>
-              <li><a href="/pyladies">PyLadies</a></li>
-            </ul>
-          </div>
-        </div>
+      <section class="social">
+          <ul>
+              <li><a href="/" title="Home"><i class="fa fa-home"></i></a></li>
+              <li><a href="/words/" title="Blog Posts"><i class="fa fa-quote-left"></i></a></li>
+              <li><a href="/talks/" title="Talks"><i class="fa fa-microphone"></i></a></li>
+              <li><a href="/about/" title="About"><i class="fa fa-user"></i></a></li>
+              <li><a href="/pages/" title="Pages"><i class="fa fa-coffee"></i></a></li>
+              <li id="break">–</li>
+              <li><a href="http://twitter.com/roguelynn" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="https://alpha.app.net/roguelynn" title="ADN"><i class="fa fa-adn"></i></a></li>
+              <li><a href="http://github.com/econchick" title="GitHub"><i class="fa fa-github"></i></a></li>
+              <li><a href="http://open.spotify.com/user/econchick" title="Spotify"><i class="fa fa-spotify"></i></a></li>
+              <li><a href="https://www.tripit.com/people/lynn.root" title="Where am I?"><i class="fa fa-plane"></i></a></li>
+              <li id="break">–</li>
+              <li><a href="archive.html" title="Archives"><i class="fa fa-archive"></i></a></li>
+              <li><a href="http://www.roguelynn.com/feed.xml" title="RSS"><i class="fa fa-rss"></i></a></li>
+          </ul>
+      </section>
+    <section class="page-content">
+      <div class="content" rel="main">
         <div class="span9">
             
     <h1>Words</h1>
     <div class="span10">
-        <ul class="posts">
             
             
         
@@ -52,10 +60,10 @@
             
         
             
-            <li>                
-                <a href="/prism/">PRISM-as-a-Service: Not Subject to American Law</a>
-                 &#187;&#32;<small>August 8th, 2013</small>
-            </li>
+        
+            
+                <p class="words"><a href="/prism/">PRISM-as-a-Service: Not Subject to American Law</a>
+                 &#187;&#32;<small class="words">August 8th, 2013</small></p>
             
         
             
@@ -63,17 +71,13 @@
             
         
             
-            <li>                
-                <a href="/words/joining-spotify/">Hanging my Red Hat for headphones</a>
-                 &#187;&#32;<small>September 17, 2013</small>
-            </li>
+                <p class="words"><a href="/words/joining-spotify/">Hanging my Red Hat for headphones</a>
+                 &#187;&#32;<small class="words">September 17, 2013</small></p>
             
         
             
-            <li>                
-                <a href="/words/karmawhore/">Karmawho.re: Your Reddit Comment Karma Visualized</a>
-                 &#187;&#32;<small>September 02, 2013</small>
-            </li>
+                <p class="words"><a href="/words/karmawhore/">Karmawho.re: Your Reddit Comment Karma Visualized</a>
+                 &#187;&#32;<small class="words">September 02, 2013</small></p>
             
         
             
@@ -87,26 +91,20 @@
             
         
             
-            <li>                
-                <a href="/words/apache-kerberos-for-django/">Part 2: Apache and Kerberos for Django Authentication + Authorization</a>
-                 &#187;&#32;<small>May 16, 2013</small>
-            </li>
+                <p class="words"><a href="/words/apache-kerberos-for-django/">Part 2: Apache and Kerberos for Django Authentication + Authorization</a>
+                 &#187;&#32;<small class="words">May 16, 2013</small></p>
             
         
             
-            <li>                
-                <a href="/words/django-custom-user-models/">Part 1: Django 1.5 Custom User Models</a>
-                 &#187;&#32;<small>May 16, 2013</small>
-            </li>
+                <p class="words"><a href="/words/django-custom-user-models/">Part 1: Django 1.5 Custom User Models</a>
+                 &#187;&#32;<small class="words">May 16, 2013</small></p>
             
         
             
         
             
-            <li>                
-                <a href="/words/setting-up-a-kerberos-test-environment/">Part 3: Setting up a Kerberos test environment</a>
-                 &#187;&#32;<small>May 16, 2013</small>
-            </li>
+                <p class="words"><a href="/words/setting-up-a-kerberos-test-environment/">Part 3: Setting up a Kerberos test environment</a>
+                 &#187;&#32;<small class="words">May 16, 2013</small></p>
             
         
             
@@ -138,33 +136,25 @@
             
         
             
-            <li>                
-                <a href="/words/explain-like-im-5-kerberos/">Explain like I’m 5: Kerberos</a>
-                 &#187;&#32;<small>April 02, 2013</small>
-            </li>
+                <p class="words"><a href="/words/explain-like-im-5-kerberos/">Explain like I’m 5: Kerberos</a>
+                 &#187;&#32;<small class="words">April 02, 2013</small></p>
             
         
             
-            <li>                
-                <a href="/words/The-New-Coder-A-path-to-Software-Engineering/">The New Coder: A Path to Software Engineering</a>
-                 &#187;&#32;<small>March 15, 2013</small>
-            </li>
+                <p class="words"><a href="/words/The-New-Coder-A-path-to-Software-Engineering/">The New Coder: A Path to Software Engineering</a>
+                 &#187;&#32;<small class="words">March 15, 2013</small></p>
             
         
             
         
             
-            <li>                
-                <a href="/words/soft-release-of-my-new-years-project/">Soft release of my New Year's project: Salarly</a>
-                 &#187;&#32;<small>January 26, 2013</small>
-            </li>
+                <p class="words"><a href="/words/soft-release-of-my-new-years-project/">Soft release of my New Year's project: Salarly</a>
+                 &#187;&#32;<small class="words">January 26, 2013</small></p>
             
         
             
-            <li>                
-                <a href="/words/avoid-drowning/">Avoid Drowning: Swim your way through a new code base</a>
-                 &#187;&#32;<small>January 10, 2013</small>
-            </li>
+                <p class="words"><a href="/words/avoid-drowning/">Avoid Drowning: Swim your way through a new code base</a>
+                 &#187;&#32;<small class="words">January 10, 2013</small></p>
             
         
             
@@ -172,56 +162,42 @@
             
         
             
-            <li>                
-                <a href="/words/my-new-years-theme/">My New Years Theme</a>
-                 &#187;&#32;<small>December 31, 2012</small>
-            </li>
+                <p class="words"><a href="/words/my-new-years-theme/">My New Years Theme</a>
+                 &#187;&#32;<small class="words">December 31, 2012</small></p>
             
         
             
         
             
-            <li>                
-                <a href="/words/reflection-of-my-time-in-brno/">Reflection of my time in Brno</a>
-                 &#187;&#32;<small>December 21, 2012</small>
-            </li>
+                <p class="words"><a href="/words/reflection-of-my-time-in-brno/">Reflection of my time in Brno</a>
+                 &#187;&#32;<small class="words">December 21, 2012</small></p>
             
         
             
-            <li>                
-                <a href="/words/crap-im-speaking/">CR@P I'M SPEAKING AT [insert conference here]! How do I prepare?</a>
-                 &#187;&#32;<small>December 03, 2012</small>
-            </li>
+                <p class="words"><a href="/words/crap-im-speaking/">CR@P I'M SPEAKING AT [insert conference here]! How do I prepare?</a>
+                 &#187;&#32;<small class="words">December 03, 2012</small></p>
             
         
             
-            <li>                
-                <a href="/words/from-email-setup-to-patch-submission-in-8-days/">From email setup to patch submission in 8 days.</a>
-                 &#187;&#32;<small>November 06, 2012</small>
-            </li>
+                <p class="words"><a href="/words/from-email-setup-to-patch-submission-in-8-days/">From email setup to patch submission in 8 days.</a>
+                 &#187;&#32;<small class="words">November 06, 2012</small></p>
             
         
             
         
             
-            <li>                
-                <a href="/words/netsec-for-n00bs-part-iii-simple-intro-public-key-crypto/">NetSec for n00bs, part III: Simple Intro Public Key Crypto</a>
-                 &#187;&#32;<small>October 15, 2012</small>
-            </li>
+                <p class="words"><a href="/words/netsec-for-n00bs-part-iii-simple-intro-public-key-crypto/">NetSec for n00bs, part III: Simple Intro Public Key Crypto</a>
+                 &#187;&#32;<small class="words">October 15, 2012</small></p>
             
         
             
-            <li>                
-                <a href="/words/netsec-for-n00bs-part-ii-ciphers-symmetric/">NetSec for n00bs, part II: Ciphers (symmetric)</a>
-                 &#187;&#32;<small>October 03, 2012</small>
-            </li>
+                <p class="words"><a href="/words/netsec-for-n00bs-part-ii-ciphers-symmetric/">NetSec for n00bs, part II: Ciphers (symmetric)</a>
+                 &#187;&#32;<small class="words">October 03, 2012</small></p>
             
         
             
-            <li>                
-                <a href="/words/netsec-for-n00bs-part-i-password-storage/">NetSec for n00bs, part I: Password Storage</a>
-                 &#187;&#32;<small>October 01, 2012</small>
-            </li>
+                <p class="words"><a href="/words/netsec-for-n00bs-part-i-password-storage/">NetSec for n00bs, part I: Password Storage</a>
+                 &#187;&#32;<small class="words">October 01, 2012</small></p>
             
         
             
@@ -229,17 +205,13 @@
             
         
             
-            <li>                
-                <a href="/words/operation-pycon-attendance/">Operation: PyCon attendance</a>
-                 &#187;&#32;<small>September 29, 2012</small>
-            </li>
+                <p class="words"><a href="/words/operation-pycon-attendance/">Operation: PyCon attendance</a>
+                 &#187;&#32;<small class="words">September 29, 2012</small></p>
             
         
             
-            <li>                
-                <a href="/words/from-n00b-to-engineer-in-one-year/">From n00b to Engineer in 1 year</a>
-                 &#187;&#32;<small>September 25, 2012</small>
-            </li>
+                <p class="words"><a href="/words/from-n00b-to-engineer-in-one-year/">From n00b to Engineer in 1 year</a>
+                 &#187;&#32;<small class="words">September 25, 2012</small></p>
             
         
             
@@ -247,167 +219,119 @@
             
         
             
-            <li>                
-                <a href="/words/brainstorm-writing-a-pycon-proposal/">Brainstorm: Writing a PyCon proposal</a>
-                 &#187;&#32;<small>August 27, 2012</small>
-            </li>
+                <p class="words"><a href="/words/brainstorm-writing-a-pycon-proposal/">Brainstorm: Writing a PyCon proposal</a>
+                 &#187;&#32;<small class="words">August 27, 2012</small></p>
             
         
             
-            <li>                
-                <a href="/words/pycon-proposal-brainstorming-via-google-hangout/">PyCon Proposal Brainstorming via Google Hangout</a>
-                 &#187;&#32;<small>August 25, 2012</small>
-            </li>
+                <p class="words"><a href="/words/pycon-proposal-brainstorming-via-google-hangout/">PyCon Proposal Brainstorming via Google Hangout</a>
+                 &#187;&#32;<small class="words">August 25, 2012</small></p>
             
         
             
-            <li>                
-                <a href="/words/sadistic-pleasure-technical-interviews/">Sadistic/Masochistic pleasure: Technical Interviews</a>
-                 &#187;&#32;<small>August 15, 2012</small>
-            </li>
+                <p class="words"><a href="/words/sadistic-pleasure-technical-interviews/">Sadistic/Masochistic pleasure: Technical Interviews</a>
+                 &#187;&#32;<small class="words">August 15, 2012</small></p>
             
         
             
         
             
-            <li>                
-                <a href="/words/our-generations-legos/">Our generation's Legos</a>
-                 &#187;&#32;<small>July 28, 2012</small>
-            </li>
+                <p class="words"><a href="/words/our-generations-legos/">Our generation's Legos</a>
+                 &#187;&#32;<small class="words">July 28, 2012</small></p>
             
         
             
-            <li>                
-                <a href="/words/moar-bookmarks/">Moar Bookmarks!</a>
-                 &#187;&#32;<small>July 27, 2012</small>
-            </li>
+                <p class="words"><a href="/words/moar-bookmarks/">Moar Bookmarks!</a>
+                 &#187;&#32;<small class="words">July 27, 2012</small></p>
             
         
             
-            <li>                
-                <a href="/words/pyladies-oscon/">PyLadies @ OSCON</a>
-                 &#187;&#32;<small>July 26, 2012</small>
-            </li>
+                <p class="words"><a href="/words/pyladies-oscon/">PyLadies @ OSCON</a>
+                 &#187;&#32;<small class="words">July 26, 2012</small></p>
             
         
             
-            <li>                
-                <a href="/words/moar-womenz-at-djangocon-us/">Moar Womenz at DjangoCon US!</a>
-                 &#187;&#32;<small>July 25, 2012</small>
-            </li>
+                <p class="words"><a href="/words/moar-womenz-at-djangocon-us/">Moar Womenz at DjangoCon US!</a>
+                 &#187;&#32;<small class="words">July 25, 2012</small></p>
             
         
             
-            <li>                
-                <a href="/words/a-memorable-europython-for-the-better/">A memorable EuroPython, for the better</a>
-                 &#187;&#32;<small>July 12, 2012</small>
-            </li>
+                <p class="words"><a href="/words/a-memorable-europython-for-the-better/">A memorable EuroPython, for the better</a>
+                 &#187;&#32;<small class="words">July 12, 2012</small></p>
             
         
             
-            <li>                
-                <a href="/words/really/">You ask why I need to talk about women in the Python community?</a>
-                 &#187;&#32;<small>July 05, 2012</small>
-            </li>
+                <p class="words"><a href="/words/really/">You ask why I need to talk about women in the Python community?</a>
+                 &#187;&#32;<small class="words">July 05, 2012</small></p>
             
         
             
-            <li>                
-                <a href="/words/europython-2012-day-1/">EuroPython 2012: Day 1</a>
-                 &#187;&#32;<small>July 03, 2012</small>
-            </li>
+                <p class="words"><a href="/words/europython-2012-day-1/">EuroPython 2012: Day 1</a>
+                 &#187;&#32;<small class="words">July 03, 2012</small></p>
             
         
             
         
             
-            <li>                
-                <a href="/words/my-un-talk-at-djangocon/">My un-talk at DjangoCon. Warning: rant.</a>
-                 &#187;&#32;<small>June 06, 2012</small>
-            </li>
+                <p class="words"><a href="/words/my-un-talk-at-djangocon/">My un-talk at DjangoCon. Warning: rant.</a>
+                 &#187;&#32;<small class="words">June 06, 2012</small></p>
             
         
             
-            <li>                
-                <a href="/words/gold-nuggets-my-bookmarks-collection/">Gold Nuggets: My Bookmarks Collection</a>
-                 &#187;&#32;<small>May 20, 2012</small>
-            </li>
+                <p class="words"><a href="/words/gold-nuggets-my-bookmarks-collection/">Gold Nuggets: My Bookmarks Collection</a>
+                 &#187;&#32;<small class="words">May 20, 2012</small></p>
             
         
             
-            <li>                
-                <a href="/words/pyladies-first-workshop-build-your-own-blog/">PyLadies First Workshop: Build your own Blog</a>
-                 &#187;&#32;<small>May 16, 2012</small>
-            </li>
+                <p class="words"><a href="/words/pyladies-first-workshop-build-your-own-blog/">PyLadies First Workshop: Build your own Blog</a>
+                 &#187;&#32;<small class="words">May 16, 2012</small></p>
             
         
             
-            <li>                
-                <a href="/words/update-pyladiessf-debut/">Update: PyLadiesSF Debut</a>
-                 &#187;&#32;<small>April 30, 2012</small>
-            </li>
+                <p class="words"><a href="/words/update-pyladiessf-debut/">Update: PyLadiesSF Debut</a>
+                 &#187;&#32;<small class="words">April 30, 2012</small></p>
             
         
             
-            <li>                
-                <a href="/words/debut-of-pyladiessf/">Debut of PyLadiesSF</a>
-                 &#187;&#32;<small>April 25, 2012</small>
-            </li>
+                <p class="words"><a href="/words/debut-of-pyladiessf/">Debut of PyLadiesSF</a>
+                 &#187;&#32;<small class="words">April 25, 2012</small></p>
             
         
             
-            <li>                
-                <a href="/words/o-hai-there/">O HAI THERE!</a>
-                 &#187;&#32;<small>March 22, 2012</small>
-            </li>
+                <p class="words"><a href="/words/o-hai-there/">O HAI THERE!</a>
+                 &#187;&#32;<small class="words">March 22, 2012</small></p>
             
         
             
-            <li>                
-                <a href="/words/its-for-science/">It's for SCIENCE</a>
-                 &#187;&#32;<small>November 14, 2011</small>
-            </li>
+                <p class="words"><a href="/words/its-for-science/">It's for SCIENCE</a>
+                 &#187;&#32;<small class="words">November 14, 2011</small></p>
             
         
             
-            <li>                
-                <a href="/words/studying-bitcoin/">Studying BitCoin</a>
-                 &#187;&#32;<small>July 07, 2011</small>
-            </li>
+                <p class="words"><a href="/words/studying-bitcoin/">Studying BitCoin</a>
+                 &#187;&#32;<small class="words">July 07, 2011</small></p>
             
         
             
-            <li>                
-                <a href="/words/seattle-tech-talk/">Seattle Tech Talk</a>
-                 &#187;&#32;<small>June 30, 2011</small>
-            </li>
+                <p class="words"><a href="/words/seattle-tech-talk/">Seattle Tech Talk</a>
+                 &#187;&#32;<small class="words">June 30, 2011</small></p>
             
         
-        </ul>
     </div>
 
         </div>
       </div>
-    </div>
-    <div class="footer-wrapper">
-        <footer id="bottom">
-            <ul class="social">
-                <li><a class="icon twitter" data-icon="&#62217;" href="http://twitter.com/roguelynn" title="Twitter"></a></li>
-                <li><a class="icon github" data-icon="&#62208;" href="http://github.com/econchick" title="GitHub"></a></li>
-                <li><a class="icon photos" data-icon="&#128247;" href="http://500px.com/roguelynn" title="500px"></a><li>
-                <li><a class="icon spotify" data-icon="&#62247;" href="http://open.spotify.com/user/econchick" title="Spotify"></a></li>
-                <li><a class="icon flattr" data-icon="&#62262;" href="https://flattr.com/profile/roguelynn" title="Flattr"></a></li>
-                <li><a class="icon email" data-icon="&#10002;" href="mailto:lynn+roguelynn@lynnroot.com?subject:Hello!" title="Email"></a></li>
-                <li><a class="icon airplane" data-icon="&#9992;" href="https://www.tripit.com/people/lynn.root" title="Tripit"></a></li>
-                <li><a class="icon rss" data-icon="&#59194;" href="http://www.roguelynn.com/feed.xml" title="RSS"></a></li>
-                <li><a class="icon ohours" data-icon="&#59168;" href="http://ohours.org/roguelynn"></a></li>
-                <li>© 2007–2014 Lynn Root. All Rights Reserved.</li>
-            </ul>
+      <div class="footer">
+        <footer id="footer" role="contentinfo">
+          <p>© 2007–2014 Lynn Root. All Rights Reserved.</p>
         </footer>
-    </div>
+      </div>
+    </section>
         
         <!--Javascript-->
-        <script src="/assets/js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/assets/js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/assets/js/jquery.timeago.js" type="text/javascript"></script>
+        <script src="/assets/js/toggle.js" type="text/javascript"></script>
         <!-- Start of StatCounter Code for Default Guide -->
         <script type="text/javascript">
         var sc_project=4334716;

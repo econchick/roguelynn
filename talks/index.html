@@ -4,35 +4,30 @@
     <section id="archive">
         <h1>Talks</h1>
             <article id="talks">
-                <h2 id="talklist">Upcoming</h2>
+                <h3 id="talklist">Upcoming</h3>
                 {% for post in posts %}
                     {% if 'upcoming talk' in post.tags %}
                     {% if not 'hidden' in post.tags %}
-                            <h3 id="upcoming">{{ post.location }}</h3>
-                            <h4><a href="{{ post.conf_url }}">{{ post.title }}</a></h4>
-                            <time id="talks">{{ post.talk_date }}</time>
+                            <h4 id="upcoming">{{ post.location }}&nbsp;<time>&#187;&#32;{{ post.talk_date }}</time></h4>
+                            <p><a href="{{ post.conf_url }}">{{ post.title }}</a></h4>
                             <p>{{ post.excerpt }}</p>
                     {% endif %}{% endif %}
                 {% endfor %}
-                <p id="footer">&#8275;</p>
-                <h2 id="talklist">Past</h2>
+                <h3 id="talklist">Past</h3>
                 {% for post in posts %}
                     {% if 'past talk' in post.tags %}
-                            <h4>{{ post.location }}</h4>
-                            <time id="talks">{{ post.talk_date }}</time>
-                            <p id="location">{{ post.title}}</p>
-                            <h5 id="talk-item">
+                            <h4>{{ post.title }}&nbsp;<time>&#187;&#32;{{ post.talk_date }}</time></h4>
+                            <p id="location">{{ post.location }}
                             {% if post.blog_post %}
-                            <a class="icon blog" data-icon="&#128213;"></a><a href="{{ post.blog_post}}">&nbsp;&nbsp;Blog Post</a>
+                            |&nbsp;&nbsp;<a href="{{ post.blog_post}}"><i class="fa fa-pencil-square"></i>&nbsp;&nbsp;Blog Post</a>&nbsp;&nbsp;
                             {% endif %}
-                            {% if post.video %}<a class="icon video" data-icon="&#127916;"></a><a href="{{ post.video }}">&nbsp;Video</a>
+                            {% if post.video %}|&nbsp;&nbsp;<a href="{{ post.video }}"><i class="fa fa-video-camera"></i>&nbsp;Video</a>&nbsp;&nbsp;
                             {% endif %}
-                            {% if post.slides %}<a class="icon link" data-icon="&#59212;"></a><a href="{{ post.slides }}">&nbsp;&nbsp;Slides</a>
+                            {% if post.slides %}|&nbsp;&nbsp;<a href="{{ post.slides }}"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Slides</a>&nbsp;&nbsp;
                             {% endif %}
-                            {% if post.code %}<a class="icon code" data-icon="&#128213;"></a><a href="{{ post.code }}">&nbsp;&nbsp;Demoed Code</a>
+                            {% if post.code %}|&nbsp;&nbsp;<a href="{{ post.code }}"><i class="fa fa-code"></i>&nbsp;&nbsp;Demoed Code</a>&nbsp;&nbsp;
                             {% endif %}
-                            </h5>
-                            <br/>
+                            </p>
                     {% endif %}
                 {% endfor %}
             </article>

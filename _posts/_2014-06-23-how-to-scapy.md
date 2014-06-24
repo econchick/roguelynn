@@ -7,52 +7,50 @@ date: December 11, 2013
 ---
 
 
-<div class="cell border-box-sizing code_cell vbox">
-    <div class="input hbox">
-        <div class="prompt input_prompt">
-        In&nbsp;[1]:
-        </div>
+<div class="input">
+    <div class="prompt input_prompt">
+    In&nbsp;[1]:
+    </div>
+    <div class="inner_cell">
         <div class="input_area box-flex1">
-            <div class="highlight-ipynb">
-                <pre class="ipynb"><span class="kn">from</span> <span class="nn">scapy.all</span> <span class="kn">import</span> <span class="o">*</span>  <span class="c"># this makes me cringe</span></pre>
+            <div class="highlight">
+                <pre><span class="kn">from</span> <span class="nn">scapy.all</span> <span class="kn">import</span> <span class="o">*</span>  <span class="c"># this makes me cringe</span></pre>
             </div>
         </div>
     </div>
 </div>
 
-<div class="cell border-box-sizing code_cell vbox">
-    <div class="input hbox">
-        <div class="prompt input_prompt">
-            In&nbsp;[2]:
-        </div>
+<div class="input">
+    <div class="prompt input_prompt">
+        In&nbsp;[2]:
+    </div>
+    <div class="inner_cell">
         <div class="input_area box-flex1">
-            <div class="highlight-ipynb">
-                <pre class="ipynb"><span class="n">a</span> <span class="o">=</span> <span class="n">sniff</span><span class="p">(</span><span class="n">iface</span><span class="o">=</span><span class="s">&quot;en0&quot;</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s">&quot;tcp and port 80&quot;</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span></pre>
+            <div class="highlight">
+                <pre><span class="n">a</span> <span class="o">=</span> <span class="n">sniff</span><span class="p">(</span><span class="n">iface</span><span class="o">=</span><span class="s">&quot;en0&quot;</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s">&quot;tcp and port 80&quot;</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span></pre>
             </div>
         </div>
     </div>
 </div>
 
-<div class="cell border-box-sizing code_cell vbox">
-    <div class="input hbox">
-       <div class="prompt input_prompt">
-            In&nbsp;[3]:
-        </div>
-        <div class="input_area box-flex1">
-            <div class="highlight-ipynb">
-                <pre class="ipynb"><span class="n">a</span></pre>
-            </div>
+<div class="input">
+   <div class="prompt input_prompt">
+        In&nbsp;[3]:
+    </div>
+    <div class="input_area box-flex1">
+        <div class="highlight">
+            <pre><span class="n">a</span></pre>
         </div>
     </div>
-    <div class="vbox output_wrapper">
-        <div class="output vbox">
-            <div class="hbox output_area">
-                <div class="prompt output_prompt">
-                    Out[3]:
-                </div>
-                <div class="box-flex1 output_subarea output_pyout">
-                    <pre class="ipynb">&lt;Sniffed: TCP:10 UDP:0 ICMP:0 Other:0&gt;</pre>
-                </div>
+</div>
+<div class="output_wrapper output_hidden">
+    <div class="output">
+        <div class="output_area">
+            <div class="prompt output_prompt">
+                Out[3]:
+            </div>
+            <div class="output_text output_subarea output_pyout">
+                <pre>&lt;Sniffed: TCP:10 UDP:0 ICMP:0 Other:0&gt;</pre>
             </div>
         </div>
     </div>

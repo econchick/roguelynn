@@ -10,14 +10,17 @@
 
 
         <!--Stylesheets-->
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="/assets/css/lightbox.css" media="screen" title="screen">
         <!--<link rel="stylesheet" href="/assets/css/pygments3.css" media="screen" title="screen">-->
-        <link rel="stylesheet" href="/assets/css/bootstrap.css" media="screen" title="screen">
-        <link rel="stylesheet" href="/assets/css/bootstrap-responsive.css" media="screen" title="screen">
-        <link rel="stylesheet" href="/assets/css/screen2.css" media="screen" title="screen">
-        <link rel="stylesheet" href="/assets/css/ipython.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/opensans.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/droidserif.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/bitter.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/main.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/font-awesome.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/rst.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/code.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/ipython.min.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/nikola_ipython.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/custom.css" media="screen" title="screen">
 
         <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -25,20 +28,26 @@
         
     </head>
     <body>
-    <div class="container">
-      <div class="row">
-        <div class="span2">
-          <div class="avatar-section">
-            <a id="avatar" href="/"></a>
-            <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/about">About</a></li>
-              <li><a href="/words">Words</a></li>
-              <li><a href="/talks">Talks</a></li>
-              <li><a href="/pyladies">PyLadies</a></li>
-            </ul>
-          </div>
-        </div>
+      <section class="social">
+          <ul>
+              <li><a href="/" title="Home"><i class="fa fa-home"></i></a></li>
+              <li><a href="/words/" title="Blog Posts"><i class="fa fa-quote-left"></i></a></li>
+              <li><a href="/talks/" title="Talks"><i class="fa fa-microphone"></i></a></li>
+              <li><a href="/about/" title="About"><i class="fa fa-user"></i></a></li>
+              <li><a href="/pages/" title="Pages"><i class="fa fa-coffee"></i></a></li>
+              <li id="break">–</li>
+              <li><a href="http://twitter.com/roguelynn" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="https://alpha.app.net/roguelynn" title="ADN"><i class="fa fa-adn"></i></a></li>
+              <li><a href="http://github.com/econchick" title="GitHub"><i class="fa fa-github"></i></a></li>
+              <li><a href="http://open.spotify.com/user/econchick" title="Spotify"><i class="fa fa-spotify"></i></a></li>
+              <li><a href="https://www.tripit.com/people/lynn.root" title="Where am I?"><i class="fa fa-plane"></i></a></li>
+              <li id="break">–</li>
+              <li><a href="archive.html" title="Archives"><i class="fa fa-archive"></i></a></li>
+              <li><a href="http://www.roguelynn.com/feed.xml" title="RSS"><i class="fa fa-rss"></i></a></li>
+          </ul>
+      </section>
+    <section class="page-content">
+      <div class="content" rel="main">
         <div class="span9">
             
 
@@ -64,7 +73,7 @@
 
 <p>Currently, it is expected that passwords are stored on systems not in plain text, known as hashes.  A <a href="http://en.wikipedia.org/wiki/Hash_function" title="Wiki: Hash Function">hash function</a> is used to produce a hash.  This type of function is considered &#39;one-way&#39;, where the hash algorithm will take a plain text phrase (e.g. a password, or anything like a name, social security number, etc) and put out a hash, but would not be able to reverse it - take the hash and put out the plain text.  If you put a hash into a hash function, you would get a new hash.  Common types of hash functions: <a href="http://en.wikipedia.org/wiki/MD5" title="wiki: md5">MD5</a>, <a href="http://en.wikipedia.org/wiki/SHA-1" title="Wiki: SHA-1">SHA-1</a>, [SHA-2][SHA2] </p>
 
-<p>MD5: &quot;Message Digest Algorithm&quot; produces a 128-bit hash.  While it is still widely used, since 1996 flaws have been discovered, making it very conceivable to break hashes. SHA-1: &quot;Secure Hash Algorithm&quot; produces a 160-bit hash.  Also widely used but also has security flaws in the algorithm itself (found around 2005). </p>
+<p>MD5: &ldquo;Message Digest Algorithm&rdquo; produces a 128-bit hash.  While it is still widely used, since 1996 flaws have been discovered, making it very conceivable to break hashes. SHA-1: &ldquo;Secure Hash Algorithm&rdquo; produces a 160-bit hash.  Also widely used but also has security flaws in the algorithm itself (found around 2005). </p>
 
 <p>SHA-2: consists of 4 hash functions producing 244, 256, 384 or 512 bit hashes. While no attacks have been successful on SHA-2, its algorithm is similar to SHA-1.  It&#39;s still considered safe, but time is ticking. </p>
 
@@ -77,7 +86,7 @@
 <h4 id="is-a-hash-enough">Is a hash enough?</h4>
 <p>No. Storing a hash of a password isn&#39;t enough.  If only a hash function is used to store a hash of plaintext, it&#39;d be pretty easy to break it. For instance, if your password was &#39;password&#39;, it would have the same hash value as someone else who also uses the same password.  If someone were to break into a database of hashed passwords, it&#39;d be very simple to do a quick frequency analysis, whichever hash is the most popular would probably be &#39;password&#39; or something like &#39;1234&#39;. This is essentially called a <a href="http://en.wikipedia.org/wiki/Rainbow_table" title="Wiki: Rainbow table">Rainbow Table</a>, a set of reverse-engineered hashed passwords.  It is reasonable (in the amount of time spent, aka brute force) to create a rainbow table of passwords up to about 8 characters in length. </p>
 <h4 id="so-then-what-now">So then what now?</h4>
-<p>In order to combat the ease of creating rainbow tables, a <a href="http://en.wikipedia.org/wiki/Salt_(cryptography)" title="Wiki: Salt">salt</a> is added to the password before it is hashed.  It is very important that this salt is used only once, and is unique per user/password. For instance, if you use &#39;password&#39; as your password, your salt could be (which would be decided behind the scenes) &#39;1\$0-1209-1!@fkjl&#39;, so the input for the hash algorithm would be &#39;password&#39;+&#39;1\$0-1209-1!@fkjl&#39;.  Your salt would not be used for anyone else&#39;s password.  So if someone else uses &#39;password&#39;, their salt would be something totally different, like &#39;sl;--90(d%&#39;, baring a different hash value for the same plaintext password. </p>
+<p>In order to combat the ease of creating rainbow tables, a <a href="http://en.wikipedia.org/wiki/Salt_(cryptography)" title="Wiki: Salt">salt</a> is added to the password before it is hashed.  It is very important that this salt is used only once, and is unique per user/password. For instance, if you use &#39;password&#39; as your password, your salt could be (which would be decided behind the scenes) &#39;1\$0-1209-1!@fkjl&#39;, so the input for the hash algorithm would be &#39;password&#39;+&#39;1\$0-1209-1!@fkjl&#39;.  Your salt would not be used for anyone else&#39;s password.  So if someone else uses &#39;password&#39;, their salt would be something totally different, like &#39;sl;&ndash;90(d%&#39;, baring a different hash value for the same plaintext password. </p>
 <h4 id="side-note">Side note</h4>
 <p>If you&#39;re interested in the history of cryptography, breaking passwords and frequency analysis as well as a great history on computing, I would highly suggest <a href="http://www.amazon.com/gp/product/B004IK8PLE/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B004IK8PLE&amp;linkCode=as2&amp;tag=roglyn-20" title="The Code Book">The Code Book: The Science of Secrecy from Ancient Egypt to Quantum Cryptography</a>. </p>
 
@@ -104,26 +113,17 @@
 
         </div>
       </div>
-    </div>
-    <div class="footer-wrapper">
-        <footer id="bottom">
-            <ul class="social">
-                <li><a class="icon twitter" data-icon="&#62217;" href="http://twitter.com/roguelynn" title="Twitter"></a></li>
-                <li><a class="icon github" data-icon="&#62208;" href="http://github.com/econchick" title="GitHub"></a></li>
-                <li><a class="icon photos" data-icon="&#128247;" href="http://500px.com/roguelynn" title="500px"></a><li>
-                <li><a class="icon spotify" data-icon="&#62247;" href="http://open.spotify.com/user/econchick" title="Spotify"></a></li>
-                <li><a class="icon flattr" data-icon="&#62262;" href="https://flattr.com/profile/roguelynn" title="Flattr"></a></li>
-                <li><a class="icon email" data-icon="&#10002;" href="mailto:lynn+roguelynn@lynnroot.com?subject:Hello!" title="Email"></a></li>
-                <li><a class="icon airplane" data-icon="&#9992;" href="https://www.tripit.com/people/lynn.root" title="Tripit"></a></li>
-                <li><a class="icon rss" data-icon="&#59194;" href="http://www.roguelynn.com/feed.xml" title="RSS"></a></li>
-                <li><a class="icon ohours" data-icon="&#59168;" href="http://ohours.org/roguelynn"></a></li>
-                <li>© 2007–2014 Lynn Root. All Rights Reserved.</li>
-            </ul>
+      <div class="footer">
+        <footer id="footer" role="contentinfo">
+          <p>© 2007–2014 Lynn Root. All Rights Reserved.</p>
         </footer>
-    </div>
+      </div>
+    </section>
         
         <!--Javascript-->
-        <script src="/assets/js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/assets/js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/assets/js/jquery.timeago.js" type="text/javascript"></script>
+        <script src="/assets/js/toggle.js" type="text/javascript"></script>
         <!-- Start of StatCounter Code for Default Guide -->
         <script type="text/javascript">
         var sc_project=4334716;

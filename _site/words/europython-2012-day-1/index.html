@@ -10,14 +10,17 @@
 
 
         <!--Stylesheets-->
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="/assets/css/lightbox.css" media="screen" title="screen">
         <!--<link rel="stylesheet" href="/assets/css/pygments3.css" media="screen" title="screen">-->
-        <link rel="stylesheet" href="/assets/css/bootstrap.css" media="screen" title="screen">
-        <link rel="stylesheet" href="/assets/css/bootstrap-responsive.css" media="screen" title="screen">
-        <link rel="stylesheet" href="/assets/css/screen2.css" media="screen" title="screen">
-        <link rel="stylesheet" href="/assets/css/ipython.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/opensans.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/droidserif.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/bitter.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/main.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/font-awesome.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/rst.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/code.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/ipython.min.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/nikola_ipython.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/custom.css" media="screen" title="screen">
 
         <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -25,20 +28,26 @@
         
     </head>
     <body>
-    <div class="container">
-      <div class="row">
-        <div class="span2">
-          <div class="avatar-section">
-            <a id="avatar" href="/"></a>
-            <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/about">About</a></li>
-              <li><a href="/words">Words</a></li>
-              <li><a href="/talks">Talks</a></li>
-              <li><a href="/pyladies">PyLadies</a></li>
-            </ul>
-          </div>
-        </div>
+      <section class="social">
+          <ul>
+              <li><a href="/" title="Home"><i class="fa fa-home"></i></a></li>
+              <li><a href="/words/" title="Blog Posts"><i class="fa fa-quote-left"></i></a></li>
+              <li><a href="/talks/" title="Talks"><i class="fa fa-microphone"></i></a></li>
+              <li><a href="/about/" title="About"><i class="fa fa-user"></i></a></li>
+              <li><a href="/pages/" title="Pages"><i class="fa fa-coffee"></i></a></li>
+              <li id="break">–</li>
+              <li><a href="http://twitter.com/roguelynn" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="https://alpha.app.net/roguelynn" title="ADN"><i class="fa fa-adn"></i></a></li>
+              <li><a href="http://github.com/econchick" title="GitHub"><i class="fa fa-github"></i></a></li>
+              <li><a href="http://open.spotify.com/user/econchick" title="Spotify"><i class="fa fa-spotify"></i></a></li>
+              <li><a href="https://www.tripit.com/people/lynn.root" title="Where am I?"><i class="fa fa-plane"></i></a></li>
+              <li id="break">–</li>
+              <li><a href="archive.html" title="Archives"><i class="fa fa-archive"></i></a></li>
+              <li><a href="http://www.roguelynn.com/feed.xml" title="RSS"><i class="fa fa-rss"></i></a></li>
+          </ul>
+      </section>
+    <section class="page-content">
+      <div class="content" rel="main">
         <div class="span9">
             
 
@@ -66,19 +75,19 @@
 
 <p><strong>Side note:</strong> Female attendance of EuroPython has <strong>doubled</strong> since last year, from 4% to 8%, while the overall attendance has increased about 100 people, or about 15% from last year (a rough estimate from collected conversations).</p>
 
-<p>Guido&#39;s talk was very similar to his closing keynote at PyCon US this year, Not the State of the Union.  What I found more interesting was the moderated Q&amp;A he did towards the end of the day.  More on that in a second...</p>
+<p>Guido&#39;s talk was very similar to his closing keynote at PyCon US this year, Not the State of the Union.  What I found more interesting was the moderated Q&amp;A he did towards the end of the day.  More on that in a second&hellip;</p>
 
-<p><a href="https://ep2012.europython.eu/conference/p/alex-martelli" title="Alex Martelli">Alex Martelli</a> did a talk on the fantastic subject of Ask for Forgiveness, not for Permission, inspired by Grace Hopper.  It was very awesome and heart-warming to hear the crowd on twitter really welcome and embrace that line of thought, both because it&#39;s a great motto to live by (esp for engineers), as well as a very prominent and well-respected woman said it.  Only, he used Apple&#39;s version of Comic Sans on his slides: Chalkboard.  Not that forgivable... (although I&#39;ve committed that crime as well in my Python study group slides *hides head in shame*).</p>
+<p><a href="https://ep2012.europython.eu/conference/p/alex-martelli" title="Alex Martelli">Alex Martelli</a> did a talk on the fantastic subject of Ask for Forgiveness, not for Permission, inspired by Grace Hopper.  It was very awesome and heart-warming to hear the crowd on twitter really welcome and embrace that line of thought, both because it&#39;s a great motto to live by (esp for engineers), as well as a very prominent and well-respected woman said it.  Only, he used Apple&#39;s version of Comic Sans on his slides: Chalkboard.  Not that forgivable&hellip; (although I&#39;ve committed that crime as well in my Python study group slides *hides head in shame*).</p>
 
 <p>Also, I didn&#39;t realize that Martelli was the author of Python in a Nutshell, and co-edited w/ this wife, Anna, the Python Cookbook. I should have lugged that door stopper to get it signed!</p>
 
-<p>Next, <a href="https://ep2012.europython.eu/conference/p/febo-cincotti" title="febo Cincotti">Febo Cincotti</a> presented on the progression neuroscience has made in allowing those who have absolutely no way to communicate without the help of computers in his talk titled &quot;Let your Brain talk to Computers.&quot;  While not Python-centric, it was very inspirational and detailed on how far science has come with respect to helping those like Stephen Hawking in the &#39;locked-in&#39; state.</p>
+<p>Next, <a href="https://ep2012.europython.eu/conference/p/febo-cincotti" title="febo Cincotti">Febo Cincotti</a> presented on the progression neuroscience has made in allowing those who have absolutely no way to communicate without the help of computers in his talk titled &ldquo;Let your Brain talk to Computers.&rdquo;  While not Python-centric, it was very inspirational and detailed on how far science has come with respect to helping those like Stephen Hawking in the &#39;locked-in&#39; state.</p>
 
 <p>Naturally, it wouldn&#39;t be a Python conference without a state of the PyPy endeavor and a GIL-less future by <a href="https://ep2012.europython.eu/conference/p/armin-rigo" title="Armin Rigo">Armin Rigo</a>, <a href="https://ep2012.europython.eu/conference/p/antonio-cuni" title="Antonio Cuni">Antonio Cuni</a>, and <a href="https://ep2012.europython.eu/conference/p/maciej-fijalkowski" title="Maciej Fijalkowski">Maciej Fijalkowski</a>.  I really enjoyed this talk mostly because these gentlemen had such a dorky, academic/scientist-like passion about the progression of PyPy.  Their story came off as very inspiring, honest, and enthusiastic about the massive undertaking of a project.  It was interesting that Armin even spent some time making his own Python interpreter (seriously, how passionate &amp; dedicated is he?).  It will be great to see how these gentlemen progress with Transactional Memory &amp; Automatic Mutual Exclusion.  Fascinating.</p>
 
 <p>An unexpected highlight of the evening was the quality of some lightning talks.  Specifically, <a href="https://twitter.com/#!/llanga" title="Lukasz Langa">Lukasz Langa</a>&#39;s <a href="http://www.slideshare.net/lukaszlanga/i-regret-nothing" title="I Regret Nothing">I Regret Nothing, You can&#39;t judge me</a>.  Full of hilarious memes, fast-paced jokes, and honest confession of his horrible habits, Mr Llanga showed EuroPython just how lazy of a Python programmer he is.  From simplified and nearly unidentifiable variables, to multiple inheritance, to horrific monkey patching, he convinced the audience that a) he&#39;s lazy, b) he doesn&#39;t regret it and c) god bless your soul if you inherit his code.</p>
 
-<p>To wrap up the evening, Guido van Rossum did a casual but well attended moderated Q&amp;A.  He was quite frank in answering his questions, from &quot;I just don&#39;t know what this person is asking&quot; to &quot;I&#39;m not going to waste my time answering this.&quot;  My next post will be the loosely transcribed conversation, after I refactor it a bit to actually be readable.  But believe me when I say that while Guido is quite tired of the same question, &quot;Looking back, what would you do differently&quot;, he&#39;s a fantastic sport that offers great dialogue for us in the Python community.  So stay tuned!</p>
+<p>To wrap up the evening, Guido van Rossum did a casual but well attended moderated Q&amp;A.  He was quite frank in answering his questions, from &ldquo;I just don&#39;t know what this person is asking&rdquo; to &ldquo;I&#39;m not going to waste my time answering this.&rdquo;  My next post will be the loosely transcribed conversation, after I refactor it a bit to actually be readable.  But believe me when I say that while Guido is quite tired of the same question, &ldquo;Looking back, what would you do differently&rdquo;, he&#39;s a fantastic sport that offers great dialogue for us in the Python community.  So stay tuned!</p>
 
     <p id="footer">&#8756;</p>
     <div id="disqus_thread"></div>
@@ -101,26 +110,17 @@
 
         </div>
       </div>
-    </div>
-    <div class="footer-wrapper">
-        <footer id="bottom">
-            <ul class="social">
-                <li><a class="icon twitter" data-icon="&#62217;" href="http://twitter.com/roguelynn" title="Twitter"></a></li>
-                <li><a class="icon github" data-icon="&#62208;" href="http://github.com/econchick" title="GitHub"></a></li>
-                <li><a class="icon photos" data-icon="&#128247;" href="http://500px.com/roguelynn" title="500px"></a><li>
-                <li><a class="icon spotify" data-icon="&#62247;" href="http://open.spotify.com/user/econchick" title="Spotify"></a></li>
-                <li><a class="icon flattr" data-icon="&#62262;" href="https://flattr.com/profile/roguelynn" title="Flattr"></a></li>
-                <li><a class="icon email" data-icon="&#10002;" href="mailto:lynn+roguelynn@lynnroot.com?subject:Hello!" title="Email"></a></li>
-                <li><a class="icon airplane" data-icon="&#9992;" href="https://www.tripit.com/people/lynn.root" title="Tripit"></a></li>
-                <li><a class="icon rss" data-icon="&#59194;" href="http://www.roguelynn.com/feed.xml" title="RSS"></a></li>
-                <li><a class="icon ohours" data-icon="&#59168;" href="http://ohours.org/roguelynn"></a></li>
-                <li>© 2007–2014 Lynn Root. All Rights Reserved.</li>
-            </ul>
+      <div class="footer">
+        <footer id="footer" role="contentinfo">
+          <p>© 2007–2014 Lynn Root. All Rights Reserved.</p>
         </footer>
-    </div>
+      </div>
+    </section>
         
         <!--Javascript-->
-        <script src="/assets/js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/assets/js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/assets/js/jquery.timeago.js" type="text/javascript"></script>
+        <script src="/assets/js/toggle.js" type="text/javascript"></script>
         <!-- Start of StatCounter Code for Default Guide -->
         <script type="text/javascript">
         var sc_project=4334716;

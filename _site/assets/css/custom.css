@@ -1,0 +1,162 @@
+.social .fa {
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+  font-size: 2em;
+}
+
+div.output_wrapper {
+    padding-top: 3px;
+}
+
+p {
+  font-size:18px;
+  line-height:32px;
+}
+
+/*[class*="span"] {
+  float: left;
+  min-height: 1px;
+  margin-left: 20px;
+}*/
+
+.span7 {
+  width: 700px;
+}
+
+.span10 {
+  width: 950px;
+}
+
+#splash h1{
+  padding-top: .5em;
+  padding-bottom: 1em;
+  display: block;
+  font-size: 3.5em;
+  line-height: 100%;
+  font-weight: 700;
+  margin-bottom: 0em;
+  width: 100%;
+  text-align: left;
+}
+
+#splash h2 {
+  font-size: 2em;
+  color: #414247;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 100%;
+  margin-top: .5em;
+  margin-bottom: .5em;}
+
+abbr[title],
+abbr[data-original-title] {
+  cursor: help;
+  border-bottom: 1px dotted #999999;
+}
+
+h2 abbr {
+    color: #38a5dd;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    font-size: 10px;
+    padding-bottom: 5px;
+    right: 5px;
+}
+
+footer p {
+  font-size: 12px;
+}
+
+.page-content {
+    margin-left: 80px;
+}
+
+.social .blank {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.displayed {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 3px solid #fff;
+  border-radius: 5px;
+}
+
+pre {
+  border-radius: 5px;
+  border: 1px solid #e1e1e8;
+  width: 750px;
+  overflow: auto;
+}
+
+td.linenos {
+  width: 0em;
+}
+
+.linenodiv pre {
+  width: 30px;
+}
+
+.words {
+  font-size: 20px;
+  line-height: 48px;
+  list-style: none;
+}
+
+.words small {
+  color: #7F808A;
+  font-style: italic;
+  font-size: 16px;
+}
+
+
+#date-header {
+  color:#7F808A;
+  font-style:italic;
+  margin-left: -10em;
+  text-align: left;
+  padding-left: 10em;
+  padding-bottom: 2em;
+  padding-top: 2em;
+}
+
+#article-content ul {
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+}
+
+ul li {
+  font-size: 18px;
+  line-height: 32px;
+}
+
+#break {
+  font-size: .05em;
+  margin: 0;
+  line-height: 24px;
+}
+
+
+#talks p {
+  padding-bottom:1.5em;
+}
+#talks time {
+  color:#7F808A;
+  font-style:italic;
+  margin-left: -10em;
+  text-align: left;
+  padding-left: 10em;
+  padding-bottom: 2em;
+  padding-top: 2em;
+  font-size:16px;
+}
+#talks {
+  width: 900px;
+}

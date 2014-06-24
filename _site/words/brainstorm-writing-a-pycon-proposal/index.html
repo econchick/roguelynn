@@ -10,14 +10,17 @@
 
 
         <!--Stylesheets-->
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="/assets/css/lightbox.css" media="screen" title="screen">
         <!--<link rel="stylesheet" href="/assets/css/pygments3.css" media="screen" title="screen">-->
-        <link rel="stylesheet" href="/assets/css/bootstrap.css" media="screen" title="screen">
-        <link rel="stylesheet" href="/assets/css/bootstrap-responsive.css" media="screen" title="screen">
-        <link rel="stylesheet" href="/assets/css/screen2.css" media="screen" title="screen">
-        <link rel="stylesheet" href="/assets/css/ipython.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/opensans.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/droidserif.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/bitter.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/main.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/font-awesome.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/rst.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/code.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/ipython.min.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/nikola_ipython.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/custom.css" media="screen" title="screen">
 
         <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -25,20 +28,26 @@
         
     </head>
     <body>
-    <div class="container">
-      <div class="row">
-        <div class="span2">
-          <div class="avatar-section">
-            <a id="avatar" href="/"></a>
-            <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/about">About</a></li>
-              <li><a href="/words">Words</a></li>
-              <li><a href="/talks">Talks</a></li>
-              <li><a href="/pyladies">PyLadies</a></li>
-            </ul>
-          </div>
-        </div>
+      <section class="social">
+          <ul>
+              <li><a href="/" title="Home"><i class="fa fa-home"></i></a></li>
+              <li><a href="/words/" title="Blog Posts"><i class="fa fa-quote-left"></i></a></li>
+              <li><a href="/talks/" title="Talks"><i class="fa fa-microphone"></i></a></li>
+              <li><a href="/about/" title="About"><i class="fa fa-user"></i></a></li>
+              <li><a href="/pages/" title="Pages"><i class="fa fa-coffee"></i></a></li>
+              <li id="break">–</li>
+              <li><a href="http://twitter.com/roguelynn" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="https://alpha.app.net/roguelynn" title="ADN"><i class="fa fa-adn"></i></a></li>
+              <li><a href="http://github.com/econchick" title="GitHub"><i class="fa fa-github"></i></a></li>
+              <li><a href="http://open.spotify.com/user/econchick" title="Spotify"><i class="fa fa-spotify"></i></a></li>
+              <li><a href="https://www.tripit.com/people/lynn.root" title="Where am I?"><i class="fa fa-plane"></i></a></li>
+              <li id="break">–</li>
+              <li><a href="archive.html" title="Archives"><i class="fa fa-archive"></i></a></li>
+              <li><a href="http://www.roguelynn.com/feed.xml" title="RSS"><i class="fa fa-rss"></i></a></li>
+          </ul>
+      </section>
+    <section class="page-content">
+      <div class="content" rel="main">
         <div class="span9">
             
 
@@ -56,15 +65,15 @@
   </div>
 
   <div class="ten columns" id="article-content">
-    <p>OH MAN PYCON IS SO MUCH FUN.  <em>Right? I know!</em>  I remember a tweet from <a href="http://www.twitter.com/hmason" title="Hilary Mason&#39;s twitter">Hilary Mason</a> that it should be &quot;PyCAAHHHNNN&quot; (imagine with a Boston accent while flashing \m/ upon entrance). </p>
+    <p>OH MAN PYCON IS SO MUCH FUN.  <em>Right? I know!</em>  I remember a tweet from <a href="http://www.twitter.com/hmason" title="Hilary Mason&#39;s twitter">Hilary Mason</a> that it should be &ldquo;PyCAAHHHNNN&rdquo; (imagine with a Boston accent while flashing \m/ upon entrance). </p>
 
-<p>Ever thought about submitting a proposal? <em>What? oh no, no no no.*Why not? *What would I talk about?  I have nothing to say!</em> (Oddly, when starting out submitting talks to conferences, I never had that dialogue or PoV.  It was more like &quot;I &lt;3 the Python community. How can I be more involved?&quot; and that&#39;s how my ideation process started) (PS I love the verb <em>to ideate</em>.  It&#39;s great.)</p>
+<p>Ever thought about submitting a proposal? <em>What? oh no, no no no.*Why not? *What would I talk about?  I have nothing to say!</em> (Oddly, when starting out submitting talks to conferences, I never had that dialogue or PoV.  It was more like &ldquo;I &lt;3 the Python community. How can I be more involved?&rdquo; and that&#39;s how my ideation process started) (PS I love the verb <em>to ideate</em>.  It&#39;s great.)</p>
 <h4 id="so-how-about-this"> So how about this:</h4>
 <p>Tell me what talks you went to at previous years&#39; PyCons that you found were pretty good (regardless of speaker performance)? What about: what would you like to see at PyCon <em>this</em> year? Ok.  You want to see those topics? Why don&#39;t <strong>you</strong> write the talk you want to see? Bam, you have an idea. (cheeky lil&#39; blogger, aren&#39;t I?) No seriously: if you want to see a talk, write it yourself.  </p>
 
 <p>Or: take what it is that you do with Python (professionally, hobby-wise, side-jobs, whatevs), and write a talk on it. </p>
 
-<p>There is <strong>significant</strong> interest in the &quot;<strong>Python in the Wild</strong>&quot; - such as, Python in corporations (product/services or used internally), <em>government</em>, <em>education</em> (CS degrees, high school programs, communities), and <em>science</em> (NASA, robotics). </p>
+<p>There is <strong>significant</strong> interest in the &ldquo;<strong>Python in the Wild</strong>&rdquo; - such as, Python in corporations (product/services or used internally), <em>government</em>, <em>education</em> (CS degrees, high school programs, communities), and <em>science</em> (NASA, robotics). </p>
 
 <p>There is <strong>always</strong> interest in popular topics, like deployment, big data, python packaging.  Not only do people have <strong>short memories</strong>, but every year, it will be many people&#39;s <strong>first PyCon</strong>.</p>
 
@@ -85,16 +94,16 @@
 <p>Note: it is <strong>not important</strong> that you haven&#39;t spoke at PyCon or another conference before.  But do prove that why you should now. Think <strong>posters</strong> might be a better option for your first time presenting something at PyCon?  With a talk, you have about 30 minutes.  You can plan out what you&#39;re going to say, how your talk might lead to certain questions (pro tip: leave some unanswered/unaddressed items from your talk, and look awesome when you know the answer if they&#39;re asked).  After the talk, for questions you don&#39;t know, you also have the forgiveness of the audience:</p>
 
 <blockquote>
-<p>&quot;Oh actually, hmm, that&#39;s a very good question.  I&#39;m not sure I can address that here right now, but catch me after the talk.&quot;</p>
+<p>&ldquo;Oh actually, hmm, that&#39;s a very good question.  I&#39;m not sure I can address that here right now, but catch me after the talk.&rdquo;</p>
 </blockquote>
 
-<p>(and then sprint away...:D) With a poster, you are defending your PhD thesis (practically), standing around for hours with some of the audience&#39;s expectation of:</p>
+<p>(and then sprint away&hellip;:D) With a poster, you are defending your PhD thesis (practically), standing around for hours with some of the audience&#39;s expectation of:</p>
 
 <blockquote>
-<p>&quot;You know everything about this talk and I&#39;m going to grill you because you&#39;re stuck here.&quot;</p>
+<p>&ldquo;You know everything about this talk and I&#39;m going to grill you because you&#39;re stuck here.&rdquo;</p>
 </blockquote>
 
-<p>It can be pretty demanding.  But it&#39;s why posters are great for in-depth and/or unconventional topics.  There also a second shot at doing something with PyCon if you&#39;re talk doesn&#39;t get accepted since they are due Jan 15th. I think these hangouts that <a href="http://www.roguelynn.com/2012/08/25/pycon-proposal-brainstorming-via-google-hangout/" title="PyCon Proposal Brainstorming via Google Hangout">PyLadies</a> did were productive; I got the feedback that they were helpful.  I also got the &quot;zomg such a good idea but I can&#39;t make it tonight.&quot;  I&#39;d like to see more, perhaps from the Program Committee itself (full disclosure, I am a part of the committee). We have 4 weeks until talk proposals are due.</p>
+<p>It can be pretty demanding.  But it&#39;s why posters are great for in-depth and/or unconventional topics.  There also a second shot at doing something with PyCon if you&#39;re talk doesn&#39;t get accepted since they are due Jan 15th. I think these hangouts that <a href="http://www.roguelynn.com/2012/08/25/pycon-proposal-brainstorming-via-google-hangout/" title="PyCon Proposal Brainstorming via Google Hangout">PyLadies</a> did were productive; I got the feedback that they were helpful.  I also got the &ldquo;zomg such a good idea but I can&#39;t make it tonight.&rdquo;  I&#39;d like to see more, perhaps from the Program Committee itself (full disclosure, I am a part of the committee). We have 4 weeks until talk proposals are due.</p>
 
 <p><strong> Let&#39;s help you give it your best shot. </strong></p>
 
@@ -119,26 +128,17 @@
 
         </div>
       </div>
-    </div>
-    <div class="footer-wrapper">
-        <footer id="bottom">
-            <ul class="social">
-                <li><a class="icon twitter" data-icon="&#62217;" href="http://twitter.com/roguelynn" title="Twitter"></a></li>
-                <li><a class="icon github" data-icon="&#62208;" href="http://github.com/econchick" title="GitHub"></a></li>
-                <li><a class="icon photos" data-icon="&#128247;" href="http://500px.com/roguelynn" title="500px"></a><li>
-                <li><a class="icon spotify" data-icon="&#62247;" href="http://open.spotify.com/user/econchick" title="Spotify"></a></li>
-                <li><a class="icon flattr" data-icon="&#62262;" href="https://flattr.com/profile/roguelynn" title="Flattr"></a></li>
-                <li><a class="icon email" data-icon="&#10002;" href="mailto:lynn+roguelynn@lynnroot.com?subject:Hello!" title="Email"></a></li>
-                <li><a class="icon airplane" data-icon="&#9992;" href="https://www.tripit.com/people/lynn.root" title="Tripit"></a></li>
-                <li><a class="icon rss" data-icon="&#59194;" href="http://www.roguelynn.com/feed.xml" title="RSS"></a></li>
-                <li><a class="icon ohours" data-icon="&#59168;" href="http://ohours.org/roguelynn"></a></li>
-                <li>© 2007–2014 Lynn Root. All Rights Reserved.</li>
-            </ul>
+      <div class="footer">
+        <footer id="footer" role="contentinfo">
+          <p>© 2007–2014 Lynn Root. All Rights Reserved.</p>
         </footer>
-    </div>
+      </div>
+    </section>
         
         <!--Javascript-->
-        <script src="/assets/js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/assets/js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/assets/js/jquery.timeago.js" type="text/javascript"></script>
+        <script src="/assets/js/toggle.js" type="text/javascript"></script>
         <!-- Start of StatCounter Code for Default Guide -->
         <script type="text/javascript">
         var sc_project=4334716;

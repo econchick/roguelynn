@@ -10,14 +10,17 @@
 
 
         <!--Stylesheets-->
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="/assets/css/lightbox.css" media="screen" title="screen">
         <!--<link rel="stylesheet" href="/assets/css/pygments3.css" media="screen" title="screen">-->
-        <link rel="stylesheet" href="/assets/css/bootstrap.css" media="screen" title="screen">
-        <link rel="stylesheet" href="/assets/css/bootstrap-responsive.css" media="screen" title="screen">
-        <link rel="stylesheet" href="/assets/css/screen2.css" media="screen" title="screen">
-        <link rel="stylesheet" href="/assets/css/ipython.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/opensans.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/droidserif.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/bitter.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/main.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/font-awesome.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/rst.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/code.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/ipython.min.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/nikola_ipython.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/custom.css" media="screen" title="screen">
 
         <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -25,28 +28,41 @@
         
     </head>
     <body>
-    <div class="container">
-      <div class="row">
-        <div class="span2">
-          <div class="avatar-section">
-            <a id="avatar" href="/"></a>
-            <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/about">About</a></li>
-              <li><a href="/words">Words</a></li>
-              <li><a href="/talks">Talks</a></li>
-              <li><a href="/pyladies">PyLadies</a></li>
-            </ul>
-          </div>
-        </div>
+      <section class="social">
+          <ul>
+              <li><a href="/" title="Home"><i class="fa fa-home"></i></a></li>
+              <li><a href="/words/" title="Blog Posts"><i class="fa fa-quote-left"></i></a></li>
+              <li><a href="/talks/" title="Talks"><i class="fa fa-microphone"></i></a></li>
+              <li><a href="/about/" title="About"><i class="fa fa-user"></i></a></li>
+              <li><a href="/pages/" title="Pages"><i class="fa fa-coffee"></i></a></li>
+              <li id="break">–</li>
+              <li><a href="http://twitter.com/roguelynn" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="https://alpha.app.net/roguelynn" title="ADN"><i class="fa fa-adn"></i></a></li>
+              <li><a href="http://github.com/econchick" title="GitHub"><i class="fa fa-github"></i></a></li>
+              <li><a href="http://open.spotify.com/user/econchick" title="Spotify"><i class="fa fa-spotify"></i></a></li>
+              <li><a href="https://www.tripit.com/people/lynn.root" title="Where am I?"><i class="fa fa-plane"></i></a></li>
+              <li id="break">–</li>
+              <li><a href="archive.html" title="Archives"><i class="fa fa-archive"></i></a></li>
+              <li><a href="http://www.roguelynn.com/feed.xml" title="RSS"><i class="fa fa-rss"></i></a></li>
+          </ul>
+      </section>
+    <section class="page-content">
+      <div class="content" rel="main">
         <div class="span9">
             
     <section id="archive">
         <h1>Talks</h1>
             <article id="talks">
-                <h2 id="talklist">Upcoming</h2>
+                <h3 id="talklist">Upcoming</h3>
                 
                     
+                    
+                            <h4 id="upcoming">EuroPython, Berlin&nbsp;<time>&#187;&#32;July, 2014</time></h4>
+                            <p><a href="https://ep2014.europython.eu/en/">For Lack of a Better Name(server): DNS Explained</a></h4>
+                            <p>You’ve deployed! But your friends can’t see it — what’s wrong? I’m betting DNS. Maybe you’ve fixed a couple of entries, point some records to hostnames, waited patiently for new domains to resolve only to notice your nameservers are incorrect. But what actually goes on with DNS?  </p>
+                    
+                
+                    
                 
                     
                 
@@ -194,83 +210,69 @@
                 
                     
                 
-                <p id="footer">&#8275;</p>
-                <h2 id="talklist">Past</h2>
+                <h3 id="talklist">Past</h3>
+                
+                    
                 
                     
-                            <h4>PyData Silicon Valley, 2014</h4>
-                            <time id="talks">May, 2014</time>
-                            <p id="location">How to Spy with Python</p>
-                            <h5 id="talk-item">
+                            <h4>How to Spy with Python&nbsp;<time>&#187;&#32;May, 2014</time></h4>
+                            <p id="location">PyData Silicon Valley, 2014
                             
                             
-                            <a class="icon link" data-icon="&#59212;"></a><a href="http://rogue.ly/spy">&nbsp;&nbsp;Slides</a>
+                            |&nbsp;&nbsp;<a href="http://rogue.ly/spy"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Slides</a>&nbsp;&nbsp;
                             
                             
-                            </h5>
-                            <br/>
+                            </p>
                     
                 
                     
-                            <h4>PyCon in Montreal</h4>
-                            <time id="talks">April, 2014</time>
-                            <p id="location">For Lack of a Better Name(server): DNS Explained</p>
-                            <h5 id="talk-item">
+                            <h4>For Lack of a Better Name(server): DNS Explained&nbsp;<time>&#187;&#32;April, 2014</time></h4>
+                            <p id="location">PyCon in Montreal
                             
-                            <a class="icon video" data-icon="&#127916;"></a><a href="https://www.youtube.com/watch?v=Xdd7c8t6ySA">&nbsp;Video</a>
+                            |&nbsp;&nbsp;<a href="https://www.youtube.com/watch?v=Xdd7c8t6ySA"><i class="fa fa-video-camera"></i>&nbsp;Video</a>&nbsp;&nbsp;
                             
-                            <a class="icon link" data-icon="&#59212;"></a><a href="https://speakerdeck.com/roguelynn/for-lack-of-a-better-name-server-dns-explained">&nbsp;&nbsp;Slides</a>
+                            |&nbsp;&nbsp;<a href="https://speakerdeck.com/roguelynn/for-lack-of-a-better-name-server-dns-explained"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Slides</a>&nbsp;&nbsp;
                             
                             
-                            </h5>
-                            <br/>
+                            </p>
                     
                 
                     
-                            <h4>Great Wide Open, Atlanta, Georgia</h4>
-                            <time id="talks">April, 2014</time>
-                            <p id="location">Python for the Enterprise</p>
-                            <h5 id="talk-item">
+                            <h4>Python for the Enterprise&nbsp;<time>&#187;&#32;April, 2014</time></h4>
+                            <p id="location">Great Wide Open, Atlanta, Georgia
                             
-                            <a class="icon blog" data-icon="&#128213;"></a><a href="http://www.roguelynn.com/words/spotify-and-python/">&nbsp;&nbsp;Blog Post</a>
+                            |&nbsp;&nbsp;<a href="http://www.roguelynn.com/words/spotify-and-python/"><i class="fa fa-pencil-square"></i>&nbsp;&nbsp;Blog Post</a>&nbsp;&nbsp;
                             
                             
-                            <a class="icon link" data-icon="&#59212;"></a><a href="http://rogue.ly/pfte">&nbsp;&nbsp;Slides</a>
+                            |&nbsp;&nbsp;<a href="http://rogue.ly/pfte"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Slides</a>&nbsp;&nbsp;
                             
                             
-                            </h5>
-                            <br/>
+                            </p>
                     
                 
                     
                 
                     
-                            <h4>PyCon, Ireland</h4>
-                            <time id="talks">October, 2013</time>
-                            <p id="location">Keynote - PRISM as a Service: Not Subject to American Law</p>
-                            <h5 id="talk-item">
+                            <h4>Keynote - PRISM as a Service: Not Subject to American Law&nbsp;<time>&#187;&#32;October, 2013</time></h4>
+                            <p id="location">PyCon, Ireland
                             
-                            <a class="icon blog" data-icon="&#128213;"></a><a href="http://www.roguelynn.com/prism">&nbsp;&nbsp;Blog Post</a>
+                            |&nbsp;&nbsp;<a href="http://www.roguelynn.com/prism"><i class="fa fa-pencil-square"></i>&nbsp;&nbsp;Blog Post</a>&nbsp;&nbsp;
                             
                             
-                            <a class="icon link" data-icon="&#59212;"></a><a href="https://speakerdeck.com/roguelynn/prism-as-a-service-not-subject-to-american-law">&nbsp;&nbsp;Slides</a>
+                            |&nbsp;&nbsp;<a href="https://speakerdeck.com/roguelynn/prism-as-a-service-not-subject-to-american-law"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Slides</a>&nbsp;&nbsp;
                             
                             
-                            </h5>
-                            <br/>
+                            </p>
                     
                 
                     
-                            <h4>PyCon, Finland</h4>
-                            <time id="talks">October, 2013</time>
-                            <p id="location">Keynote - Open Source your Education</p>
-                            <h5 id="talk-item">
+                            <h4>Keynote - Open Source your Education&nbsp;<time>&#187;&#32;October, 2013</time></h4>
+                            <p id="location">PyCon, Finland
                             
                             
                             
                             
-                            </h5>
-                            <br/>
+                            </p>
                     
                 
                     
@@ -278,71 +280,59 @@
                     
                 
                     
-                            <h4>PyCon Canada, Toronto</h4>
-                            <time id="talks">August, 2013</time>
-                            <p id="location">PRISM-as-a-Service: Not Subject to American Law</p>
-                            <h5 id="talk-item">
+                            <h4>PRISM-as-a-Service: Not Subject to American Law&nbsp;<time>&#187;&#32;August, 2013</time></h4>
+                            <p id="location">PyCon Canada, Toronto
                             
-                            <a class="icon blog" data-icon="&#128213;"></a><a href="http://www.roguelynn.com/prism">&nbsp;&nbsp;Blog Post</a>
+                            |&nbsp;&nbsp;<a href="http://www.roguelynn.com/prism"><i class="fa fa-pencil-square"></i>&nbsp;&nbsp;Blog Post</a>&nbsp;&nbsp;
                             
                             
-                            <a class="icon link" data-icon="&#59212;"></a><a href="https://speakerdeck.com/roguelynn/prism-as-a-service-not-subject-to-american-law">&nbsp;&nbsp;Slides</a>
+                            |&nbsp;&nbsp;<a href="https://speakerdeck.com/roguelynn/prism-as-a-service-not-subject-to-american-law"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Slides</a>&nbsp;&nbsp;
                             
                             
-                            </h5>
-                            <br/>
+                            </p>
                     
                 
                     
-                            <h4>EuroPython, Florence, Italy</h4>
-                            <time id="talks">July, 2013</time>
-                            <p id="location">Introduce Django to your old friends</p>
-                            <h5 id="talk-item">
+                            <h4>Introduce Django to your old friends&nbsp;<time>&#187;&#32;July, 2013</time></h4>
+                            <p id="location">EuroPython, Florence, Italy
                             
-                            <a class="icon blog" data-icon="&#128213;"></a><a href="http://roguelynn.com/kerberos">&nbsp;&nbsp;Blog Post</a>
+                            |&nbsp;&nbsp;<a href="http://roguelynn.com/kerberos"><i class="fa fa-pencil-square"></i>&nbsp;&nbsp;Blog Post</a>&nbsp;&nbsp;
                             
-                            <a class="icon video" data-icon="&#127916;"></a><a href="https://www.youtube.com/watch?v=FdeFQblT9V4">&nbsp;Video</a>
+                            |&nbsp;&nbsp;<a href="https://www.youtube.com/watch?v=FdeFQblT9V4"><i class="fa fa-video-camera"></i>&nbsp;Video</a>&nbsp;&nbsp;
                             
-                            <a class="icon link" data-icon="&#59212;"></a><a href="https://speakerdeck.com/roguelynn/europython-2013-introduce-django-to-your-old-friends">&nbsp;&nbsp;Slides</a>
+                            |&nbsp;&nbsp;<a href="https://speakerdeck.com/roguelynn/europython-2013-introduce-django-to-your-old-friends"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Slides</a>&nbsp;&nbsp;
                             
                             
-                            </h5>
-                            <br/>
+                            </p>
                     
                 
                     
-                            <h4>EuroPython, Florence, Italy</h4>
-                            <time id="talks">July, 2013</time>
-                            <p id="location">Sink or Swim: 5 Life Jackets to Throw to the New Coder</p>
-                            <h5 id="talk-item">
+                            <h4>Sink or Swim: 5 Life Jackets to Throw to the New Coder&nbsp;<time>&#187;&#32;July, 2013</time></h4>
+                            <p id="location">EuroPython, Florence, Italy
                             
-                            <a class="icon blog" data-icon="&#128213;"></a><a href="http://www.roguelynn.com/words/The-New-Coder-A-path-to-Software-Engineering/">&nbsp;&nbsp;Blog Post</a>
+                            |&nbsp;&nbsp;<a href="http://www.roguelynn.com/words/The-New-Coder-A-path-to-Software-Engineering/"><i class="fa fa-pencil-square"></i>&nbsp;&nbsp;Blog Post</a>&nbsp;&nbsp;
                             
-                            <a class="icon video" data-icon="&#127916;"></a><a href="https://www.youtube.com/watch?v=NLZKjYxJHk8">&nbsp;Video</a>
+                            |&nbsp;&nbsp;<a href="https://www.youtube.com/watch?v=NLZKjYxJHk8"><i class="fa fa-video-camera"></i>&nbsp;Video</a>&nbsp;&nbsp;
                             
-                            <a class="icon link" data-icon="&#59212;"></a><a href="https://speakerdeck.com/roguelynn/europython-2013-newcoder-dot-io">&nbsp;&nbsp;Slides</a>
+                            |&nbsp;&nbsp;<a href="https://speakerdeck.com/roguelynn/europython-2013-newcoder-dot-io"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Slides</a>&nbsp;&nbsp;
                             
                             
-                            </h5>
-                            <br/>
+                            </p>
                     
                 
                     
                 
                     
-                            <h4>DjangoCon Europe, Warsaw, Poland</h4>
-                            <time id="talks">May, 2013</time>
-                            <p id="location">Introduce Django to your old friends - Django and Kerberos Authentication</p>
-                            <h5 id="talk-item">
+                            <h4>Introduce Django to your old friends - Django and Kerberos Authentication&nbsp;<time>&#187;&#32;May, 2013</time></h4>
+                            <p id="location">DjangoCon Europe, Warsaw, Poland
                             
-                            <a class="icon blog" data-icon="&#128213;"></a><a href="/words/circus">&nbsp;&nbsp;Blog Post</a>
+                            |&nbsp;&nbsp;<a href="/words/circus"><i class="fa fa-pencil-square"></i>&nbsp;&nbsp;Blog Post</a>&nbsp;&nbsp;
                             
                             
-                            <a class="icon link" data-icon="&#59212;"></a><a href="https://speakerdeck.com/roguelynn/introduce-django-to-your-old-friends">&nbsp;&nbsp;Slides</a>
+                            |&nbsp;&nbsp;<a href="https://speakerdeck.com/roguelynn/introduce-django-to-your-old-friends"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Slides</a>&nbsp;&nbsp;
                             
                             
-                            </h5>
-                            <br/>
+                            </p>
                     
                 
                     
@@ -386,20 +376,17 @@
                     
                 
                     
-                            <h4>PyCon, Santa Clara</h4>
-                            <time id="talks">March, 2013</time>
-                            <p id="location">Sink or Swim: 5 Life Jackets to Throw to the New Coder</p>
-                            <h5 id="talk-item">
+                            <h4>Sink or Swim: 5 Life Jackets to Throw to the New Coder&nbsp;<time>&#187;&#32;March, 2013</time></h4>
+                            <p id="location">PyCon, Santa Clara
                             
-                            <a class="icon blog" data-icon="&#128213;"></a><a href="/words/The-New-Coder-A-path-to-Software-Engineering/">&nbsp;&nbsp;Blog Post</a>
+                            |&nbsp;&nbsp;<a href="/words/The-New-Coder-A-path-to-Software-Engineering/"><i class="fa fa-pencil-square"></i>&nbsp;&nbsp;Blog Post</a>&nbsp;&nbsp;
                             
-                            <a class="icon video" data-icon="&#127916;"></a><a href="https://www.youtube.com/watch?v=5hBMlTFfOJg">&nbsp;Video</a>
+                            |&nbsp;&nbsp;<a href="https://www.youtube.com/watch?v=5hBMlTFfOJg"><i class="fa fa-video-camera"></i>&nbsp;Video</a>&nbsp;&nbsp;
                             
-                            <a class="icon link" data-icon="&#59212;"></a><a href="https://speakerdeck.com/pyconslides/sink-or-swim-5-life-jackets-to-throw-to-the-new-coder-by-lynn-root">&nbsp;&nbsp;Slides</a>
+                            |&nbsp;&nbsp;<a href="https://speakerdeck.com/pyconslides/sink-or-swim-5-life-jackets-to-throw-to-the-new-coder-by-lynn-root"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Slides</a>&nbsp;&nbsp;
                             
                             
-                            </h5>
-                            <br/>
+                            </p>
                     
                 
                     
@@ -409,19 +396,16 @@
                     
                 
                     
-                            <h4>Women Who Code, San Francisco</h4>
-                            <time id="talks">January, 2013</time>
-                            <p id="location">Avoid Drowning: Swim your way through a new code base</p>
-                            <h5 id="talk-item">
+                            <h4>Avoid Drowning: Swim your way through a new code base&nbsp;<time>&#187;&#32;January, 2013</time></h4>
+                            <p id="location">Women Who Code, San Francisco
                             
-                            <a class="icon blog" data-icon="&#128213;"></a><a href="/words/avoid-drowning">&nbsp;&nbsp;Blog Post</a>
+                            |&nbsp;&nbsp;<a href="/words/avoid-drowning"><i class="fa fa-pencil-square"></i>&nbsp;&nbsp;Blog Post</a>&nbsp;&nbsp;
                             
                             
-                            <a class="icon link" data-icon="&#59212;"></a><a href="http://www.slideshare.net/roguelynn/avoid-drowning">&nbsp;&nbsp;Slides</a>
+                            |&nbsp;&nbsp;<a href="http://www.slideshare.net/roguelynn/avoid-drowning"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Slides</a>&nbsp;&nbsp;
                             
                             
-                            </h5>
-                            <br/>
+                            </p>
                     
                 
                     
@@ -443,33 +427,27 @@
                     
                 
                     
-                            <h4>RuPy, Brno, Czech Republic</h4>
-                            <time id="talks">October, 2012</time>
-                            <p id="location">Community FTW: How can we make it better?</p>
-                            <h5 id="talk-item">
+                            <h4>Community FTW: How can we make it better?&nbsp;<time>&#187;&#32;October, 2012</time></h4>
+                            <p id="location">RuPy, Brno, Czech Republic
                             
                             
-                            <a class="icon link" data-icon="&#59212;"></a><a href="https://speakerdeck.com/roguelynn/rupy">&nbsp;&nbsp;Slides</a>
+                            |&nbsp;&nbsp;<a href="https://speakerdeck.com/roguelynn/rupy"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Slides</a>&nbsp;&nbsp;
                             
                             
-                            </h5>
-                            <br/>
+                            </p>
                     
                 
                     
-                            <h4>PyCarolinas, Chapel Hill, NC</h4>
-                            <time id="talks">October, 2012</time>
-                            <p id="location">Keynote: Community FTW</p>
-                            <h5 id="talk-item">
+                            <h4>Keynote: Community FTW&nbsp;<time>&#187;&#32;October, 2012</time></h4>
+                            <p id="location">PyCarolinas, Chapel Hill, NC
                             
-                            <a class="icon blog" data-icon="&#128213;"></a><a href="/words/community-ftw-kicking-of-the-pycarolinas-community">&nbsp;&nbsp;Blog Post</a>
+                            |&nbsp;&nbsp;<a href="/words/community-ftw-kicking-of-the-pycarolinas-community"><i class="fa fa-pencil-square"></i>&nbsp;&nbsp;Blog Post</a>&nbsp;&nbsp;
                             
                             
-                            <a class="icon link" data-icon="&#59212;"></a><a href="http://www.slideshare.net/roguelynn/pycarolinas-keynote-community-ftw">&nbsp;&nbsp;Slides</a>
+                            |&nbsp;&nbsp;<a href="http://www.slideshare.net/roguelynn/pycarolinas-keynote-community-ftw"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Slides</a>&nbsp;&nbsp;
                             
                             
-                            </h5>
-                            <br/>
+                            </p>
                     
                 
                     
@@ -487,17 +465,14 @@
                     
                 
                     
-                            <h4>Girl Geek Dinners, San Francisco</h4>
-                            <time id="talks">August, 2012</time>
-                            <p id="location">Faking it til I'm Making it: How I'm Learning how to Code</p>
-                            <h5 id="talk-item">
+                            <h4>Faking it til I'm Making it: How I'm Learning how to Code&nbsp;<time>&#187;&#32;August, 2012</time></h4>
+                            <p id="location">Girl Geek Dinners, San Francisco
                             
-                            <a class="icon video" data-icon="&#127916;"></a><a href="http://www.youtube.com/watch?v=CrqLmtDw7K4&feature=g-like">&nbsp;Video</a>
+                            |&nbsp;&nbsp;<a href="http://www.youtube.com/watch?v=CrqLmtDw7K4&feature=g-like"><i class="fa fa-video-camera"></i>&nbsp;Video</a>&nbsp;&nbsp;
                             
                             
                             
-                            </h5>
-                            <br/>
+                            </p>
                     
                 
                     
@@ -515,20 +490,17 @@
                     
                 
                     
-                            <h4>EuroPython, Florence, Italy</h4>
-                            <time id="talks">July, 2012</time>
-                            <p id="location">Keynote: Python += Women: Increasing Engagement</p>
-                            <h5 id="talk-item">
+                            <h4>Keynote: Python += Women: Increasing Engagement&nbsp;<time>&#187;&#32;July, 2012</time></h4>
+                            <p id="location">EuroPython, Florence, Italy
                             
-                            <a class="icon blog" data-icon="&#128213;"></a><a href="/words/a-memorable-europython-for-the-better">&nbsp;&nbsp;Blog Post</a>
+                            |&nbsp;&nbsp;<a href="/words/a-memorable-europython-for-the-better"><i class="fa fa-pencil-square"></i>&nbsp;&nbsp;Blog Post</a>&nbsp;&nbsp;
                             
-                            <a class="icon video" data-icon="&#127916;"></a><a href="http://www.youtube.com/watch?v=l2PnVKQJg0I&feature=plcp">&nbsp;Video</a>
+                            |&nbsp;&nbsp;<a href="http://www.youtube.com/watch?v=l2PnVKQJg0I&feature=plcp"><i class="fa fa-video-camera"></i>&nbsp;Video</a>&nbsp;&nbsp;
                             
-                            <a class="icon link" data-icon="&#59212;"></a><a href="https://speakerdeck.com/roguelynn/python-plus-equals-women">&nbsp;&nbsp;Slides</a>
+                            |&nbsp;&nbsp;<a href="https://speakerdeck.com/roguelynn/python-plus-equals-women"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Slides</a>&nbsp;&nbsp;
                             
                             
-                            </h5>
-                            <br/>
+                            </p>
                     
                 
                     
@@ -554,26 +526,17 @@
 
         </div>
       </div>
-    </div>
-    <div class="footer-wrapper">
-        <footer id="bottom">
-            <ul class="social">
-                <li><a class="icon twitter" data-icon="&#62217;" href="http://twitter.com/roguelynn" title="Twitter"></a></li>
-                <li><a class="icon github" data-icon="&#62208;" href="http://github.com/econchick" title="GitHub"></a></li>
-                <li><a class="icon photos" data-icon="&#128247;" href="http://500px.com/roguelynn" title="500px"></a><li>
-                <li><a class="icon spotify" data-icon="&#62247;" href="http://open.spotify.com/user/econchick" title="Spotify"></a></li>
-                <li><a class="icon flattr" data-icon="&#62262;" href="https://flattr.com/profile/roguelynn" title="Flattr"></a></li>
-                <li><a class="icon email" data-icon="&#10002;" href="mailto:lynn+roguelynn@lynnroot.com?subject:Hello!" title="Email"></a></li>
-                <li><a class="icon airplane" data-icon="&#9992;" href="https://www.tripit.com/people/lynn.root" title="Tripit"></a></li>
-                <li><a class="icon rss" data-icon="&#59194;" href="http://www.roguelynn.com/feed.xml" title="RSS"></a></li>
-                <li><a class="icon ohours" data-icon="&#59168;" href="http://ohours.org/roguelynn"></a></li>
-                <li>© 2007–2014 Lynn Root. All Rights Reserved.</li>
-            </ul>
+      <div class="footer">
+        <footer id="footer" role="contentinfo">
+          <p>© 2007–2014 Lynn Root. All Rights Reserved.</p>
         </footer>
-    </div>
+      </div>
+    </section>
         
         <!--Javascript-->
-        <script src="/assets/js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/assets/js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/assets/js/jquery.timeago.js" type="text/javascript"></script>
+        <script src="/assets/js/toggle.js" type="text/javascript"></script>
         <!-- Start of StatCounter Code for Default Guide -->
         <script type="text/javascript">
         var sc_project=4334716;
