@@ -1,0 +1,1119 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+        <title>Explain like I’m 5: DNS — Lynn Root</title>
+        <meta name="description" content="Homepage and blog of Lynn Root. Python Engineer, PyLadiesSF Founder, Socializer in San Francisco." />
+        <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/ico" />
+        <link rel="alternate" type="application/atom+xml" title="Atom 1.0" href="http://www.roguelynn.com/feed.xml" />
+
+
+        <!--Stylesheets-->
+        <!--<link rel="stylesheet" href="/assets/css/pygments3.css" media="screen" title="screen">-->
+        <link rel="stylesheet" href="/assets/css/opensans.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/droidserif.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/bitter.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/main.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/font-awesome.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/rst.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/code.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/ipython.min.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/nikola_ipython.css" media="screen" title="screen">
+        <link rel="stylesheet" href="/assets/css/custom.css" media="screen" title="screen">
+
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        
+    </head>
+    <body>
+      <section class="social">
+          <ul>
+              <li><a href="/" title="Home"><i class="fa fa-home"></i></a></li>
+              <li><a href="/words/" title="Blog Posts"><i class="fa fa-quote-left"></i></a></li>
+              <li><a href="/talks/" title="Talks"><i class="fa fa-microphone"></i></a></li>
+              <li><a href="/about/" title="About"><i class="fa fa-user"></i></a></li>
+              <li><a href="/pages/" title="Pages"><i class="fa fa-coffee"></i></a></li>
+              <li id="break">–</li>
+              <li><a href="http://twitter.com/roguelynn" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="https://alpha.app.net/roguelynn" title="ADN"><i class="fa fa-adn"></i></a></li>
+              <li><a href="http://github.com/econchick" title="GitHub"><i class="fa fa-github"></i></a></li>
+              <li><a href="http://open.spotify.com/user/econchick" title="Spotify"><i class="fa fa-spotify"></i></a></li>
+              <li><a href="https://www.tripit.com/people/lynn.root" title="Where am I?"><i class="fa fa-plane"></i></a></li>
+              <li id="break">–</li>
+              <li><a href="archive.html" title="Archives"><i class="fa fa-archive"></i></a></li>
+              <li><a href="http://www.roguelynn.com/feed.xml" title="RSS"><i class="fa fa-rss"></i></a></li>
+          </ul>
+      </section>
+    <section class="page-content">
+      <div class="content" rel="main">
+        <div class="span9">
+            
+
+<article class='ten columns offset-by-four' id="article-content">
+  <header class="ten columns" id="article-header">
+    <h1>Explain like I’m 5: DNS</h1>
+  </header>
+
+  <div class='ten columns gray' id="date-header">
+    <p>
+      July 19, 2014
+  
+    </p>
+
+  </div>
+
+  <div class="ten columns" id="article-content">
+    <p>This post is an accompaniment to my <a href="%22http://roguelynn.com/words/2014-04-11-For-Lack-of-a-Better-Nameserver%22">PyCon 2014</a> and <a href="%22http://roguelynn.com/words/2014-06-24-EuroPython-DNS.md%22">EuroPython 2014</a> talk, For Lack of a Better Name(server): DNS Explained, that is a deep dive into DNS. </p>
+
+<p>I previously wrote a post <a href="%22http://roguelynn.com/words/2013-04-02-explain-like-im-5-kerberos%22">explaining Kerberos &ldquo;Like I&#39;m 5&rdquo;</a> that turns out to be one of my most visited pieces, so I figured an ELI5 version of my DNS talk would be beneficial to some.</p>
+
+<p><strong>DISCLAIMER:</strong> Not literally for 5-year-olds! As noted with the <a href="%22http://roguelynn.com/words/2013-04-02-explain-like-im-5-kerberos%22">kerberos writeup</a>, this post is <em>not</em> an attempt to explain to a child.  It&#39;s meant to bring the reader from an ephemeral understanding to more comfort when <strike>fucking up</strike> working with DNS.</p>
+
+<hr>
+<h3 id="wtf-where39s-my-website">WTF where&#39;s my website?</h3>
+<p>As a nerdy person who likes jetting up to a nearby hotel an hour away from my SF apartment for long weekend hacks with the significant other, I&#39;ve had many experiences setting up personal projects for deployment.  As I&#39;m sure you have all been through, nearly every time when one does the first <code>git push</code> to Heroku, it doesn&#39;t work.</p>
+
+<p><img class="displayed" alt="It's always DNS" src="/assets/images/devops_dns_issue.gif"/></p>
+
+<p>All else equal - e.g. Heroku is not down - I&#39;m betting DNS is the issue.  Who has set up DNS cleanly the first time? Be honest&hellip;  You follow the directions on your host&#39;s website to properly setup DNS records, but something still doesn&#39;t work.  We&#39;ve all been there.  And without a solid understanding of DNS, often times folks just fall into a &ldquo;oh, let&#39;s try this&rdquo;, guess-editing records, waiting for DNS to propagate to test if the guess was correct - the <code>print</code> statements of Python debugging (I&#39;m also guilty of this).  </p>
+
+<p>Naturally, curiosity got the best of me. It&#39;s common knowledge that DNS is the internet&#39;s phonebook.  Sure - it&#39;s the backbone of the internet; it&#39;s a safe assumption that the cloud itself is build on DNS and duct tape, but that&#39;s about it.</p>
+
+<p><img src="/assets/images/tweet_dns_duct_tape.png" alt="The Cloud: DNS and Duct tape"></p>
+<h3 id="why-dns">Why DNS?</h3>
+<p>So what exactly is the purpose of DNS?</p>
+
+<p>DNS is necessary for you to:</p>
+
+<ul>
+<li>visit productive websites like reddit.com</li>
+<li>receive critical emails from Groupon and Gilt</li>
+<li>deploy your one-of-a-kind TODO list application</li>
+<li>allow for your corporate meme generator to not be accessible by non-employees</li>
+</ul>
+
+<p>Truthful joking aside, DNS stands for Domain Name System, and is widely referred to being a phone book, translating human-readable names to computer-friendly addresses.</p>
+
+<p>The formal description of DNS is:</p>
+
+<blockquote>
+<p>&hellip; a distributed storage system for Resource Records (RR).  Each DNS resolver or authoritative server stores [these records] it its cache or local zone file.  A &hellip; record includes a label, class, type, and data.</p>
+</blockquote>
+
+<p><small>– <a href="%22https://www.cs.utexas.edu/%7Eshmat/shmat_securecomm10.pdf%22">source</a> (PDF)</small></p>
+
+<p>With the textbook definition out of the way, let&#39;s see it in action!  I always understood something better when I&#39;ve gotten my hands a bit dirty.</p>
+
+<p>Naturally, to play around, I used my latest Python crush, <a href="%22http://www.secdev.org/projects/scapy/%22">Scapy</a>.  Here, I am using Scapy to sniff my own DNS traffic as I am browsing the interwebs: </p>
+<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">scapy.all</span> <span class="kn">import</span> <span class="o">*</span>  <span class="c"># cringe</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">=</span><span class="n">sniff</span><span class="p">(</span><span class="nb">filter</span><span class="o">=</span><span class="s">&quot;udp and port 53&quot;</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span>
+<span class="o">&lt;</span><span class="n">Sniffed</span><span class="p">:</span> <span class="n">TCP</span><span class="p">:</span><span class="mi">0</span> <span class="n">UDP</span><span class="p">:</span><span class="mi">10</span> <span class="n">ICMP</span><span class="p">:</span><span class="mi">0</span> <span class="n">Other</span><span class="p">:</span><span class="mi">0</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="mo">0000</span> <span class="n">Ether</span> <span class="o">/</span> <span class="n">IP</span> <span class="o">/</span> <span class="n">UDP</span> <span class="o">/</span> <span class="n">DNS</span> <span class="n">Qry</span> <span class="s">&quot;www.google.com.&quot;</span> 
+<span class="mo">0001</span> <span class="n">Ether</span> <span class="o">/</span> <span class="n">IP</span> <span class="o">/</span> <span class="n">UDP</span> <span class="o">/</span> <span class="n">DNS</span> <span class="n">Qry</span> <span class="s">&quot;reddit.com.&quot;</span> 
+<span class="mo">0002</span> <span class="n">Ether</span> <span class="o">/</span> <span class="n">IP</span> <span class="o">/</span> <span class="n">UDP</span> <span class="o">/</span> <span class="n">DNS</span> <span class="n">Ans</span> <span class="s">&quot;74.125.239.144&quot;</span> 
+<span class="mo">0003</span> <span class="n">Ether</span> <span class="o">/</span> <span class="n">IP</span> <span class="o">/</span> <span class="n">UDP</span> <span class="o">/</span> <span class="n">DNS</span> <span class="n">Ans</span> <span class="s">&quot;96.17.109.11&quot;</span> 
+<span class="mo">0004</span> <span class="n">Ether</span> <span class="o">/</span> <span class="n">IP</span> <span class="o">/</span> <span class="n">UDP</span> <span class="o">/</span> <span class="n">DNS</span> <span class="n">Qry</span> <span class="s">&quot;roguelynn-spy.herokuapp.com.&quot;</span> 
+<span class="mo">0005</span> <span class="n">Ether</span> <span class="o">/</span> <span class="n">IP</span> <span class="o">/</span> <span class="n">UDP</span> <span class="o">/</span> <span class="n">DNS</span> <span class="n">Ans</span> <span class="s">&quot;us-east-1-a.route.herokuapp.com.&quot;</span> 
+<span class="mo">0006</span> <span class="n">Ether</span> <span class="o">/</span> <span class="n">IP</span> <span class="o">/</span> <span class="n">UDP</span> <span class="o">/</span> <span class="n">DNS</span> <span class="n">Qry</span> <span class="s">&quot;roguelynn.com.&quot;</span> 
+<span class="mo">0007</span> <span class="n">Ether</span> <span class="o">/</span> <span class="n">IP</span> <span class="o">/</span> <span class="n">UDP</span> <span class="o">/</span> <span class="n">DNS</span> <span class="n">Ans</span> <span class="s">&quot;81.28.232.189&quot;</span> 
+<span class="mo">000</span><span class="mi">8</span> <span class="n">Ether</span> <span class="o">/</span> <span class="n">IP</span> <span class="o">/</span> <span class="n">UDP</span> <span class="o">/</span> <span class="n">DNS</span> <span class="n">Qry</span> <span class="s">&quot;www.roguelynn.com.&quot;</span> 
+<span class="mo">000</span><span class="mi">9</span> <span class="n">Ether</span> <span class="o">/</span> <span class="n">IP</span> <span class="o">/</span> <span class="n">UDP</span> <span class="o">/</span> <span class="n">DNS</span> <span class="n">Ans</span> <span class="s">&quot;roguelynn.com.&quot;</span>
+</pre></div>
+</td></tr></table></div></div>
+<p>I am using Scapy&#39;s <a href="%22http://www.secdev.org/projects/scapy/doc/usage.html#sniffing%22">sniff</a> function to pick up my local traffic, filtering by the <a href="%22http://en.wikipedia.org/wiki/User_Datagram_Protocol%22">UDP</a> protocol on port 53 (the protocol and typical port for DNS traffic), and limiting to capturing only 10 packets (or, since it&#39;s UDP, <a href="%22https://twitter.com/glyph/status/414988975036571648%22">datagrams</a>).</p>
+
+<p>So as I let this sniff function run, I went to my browser to type in <code>roguelynn.com</code>.  </p>
+
+<p>What was pretty cool as I was typing this into Chrome&#39;s address bar, you can see a DNS query would take place for every autocomplete guess that Chrome took.  It first pings <code>www.google.com</code> because the address bar is also Google search.  Then, as I typed <code>r</code>, it autocompletes to <code>reddit.com</code> (one of my most visited sites, and therefore very natural to be guessed), and we can see the DNS query on the second line.  Then as I typed <code>ro</code>, Chrome guesses <code>roguelynn-spy.herokuapp.com</code> (which is my awesome How to Spy with Python presentation, and coincidently, I am giving that talk at PyData Berlin 2014), and we can see its related query.  Then it finds <code>roguelynn.com</code> once i typed <code>dog</code> and pressed enter with Chrome&#39;s autocompletion.  These autocompleted DNS queries seem more of a thing that Chrome does (and perhaps other browsers) to speed up navigation to frequented sites.</p>
+
+<p>But notice one thing here: all of these DNS querys have a dot at the end, e.g.: <code>0009 Ether / IP / UDP / DNS Ans &quot;roguelynn.com.&quot;</code>.  Perhaps many of you know that&#39;s &ldquo;how DNS does things&rdquo;, but why is it really there?</p>
+<h3 id="example.com-vs-example.com.">example.com vs example.com.</h3>
+<p>The difference between the trailing dot and the absence of such is the same difference between absolute file paths and relative file paths, e.g. <code>../static</code> versus <code>/Users/lynnroot/Dev/site/static</code>.</p>
+
+<p>Like relative filenames and directories, it can be mangled or mapped incorrectly.  Depending on how your local DNS is setup, in your <code>resolv.conf</code> file, if there&#39;s a line of <code>search example.net</code> and you navigated to <code>example.com</code>, the DNS search query would take the URL to not be fully qualified, and therefore would look up <code>example.com.example.net</code>.  If you navigated to <code>example.com.</code>, DNS would not apply the search path defined in <code>resolv.conf</code>.  </p>
+
+<p>Basically, if there is a dot at the end, it is the unambiguous, fully qualified domain name (FQDN), and not prone to search path spoofing.  When playing with Scapy&#39;s sniff function above, I didn&#39;t put a trailing dot while navigating to <code>roguelynn.com</code> in my browser.  Chrome&#39;s implementation just assumes the dot, as it&#39;s not really user friendly.</p>
+<h3 id="where-are-my-queries-going">Where are my queries going?</h3>
+<p>Continuing my curiosity, what is the route that my DNS query takes to finally get an answer for where <code>roguelynn.com</code> is hosted?</p>
+
+<p>This is actually not that easy to figure out; once the DNS query hits my wifi router, it&#39;s a bit of a black box where that query is forward to if it&#39;s not locally cached.  I know that my computer&#39;s DNS is set up to <code>192.168.1.1</code>, which is my router, and my router&#39;s DNS is set up to both <code>75.75.75.75</code> and <code>75.75.76.76</code> (found this out by logging into my router&#39;s admin page).</p>
+
+<p>If I do a <code>host</code> query on my router&#39;s DNS, I get the pointer to a <code>comcast.net</code> subdomain:</p>
+<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre>host 75.75.75.75
+75.75.75.75.in-addr.arpa domain name pointer cdns01.comcast.net.
+</pre></div>
+</td></tr></table></div></div>
+<p>Now if I do a <code>whois</code> on the IP, I can see that Comcast, my ISP provider, owns these IP addresses:</p>
+<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34</pre></div></td><td class="code"><div class="highlight"><pre><span class="nv">$ </span>whois 75.75.75.75
+<span class="c">#</span>
+<span class="c"># ARIN WHOIS data and services are subject to the Terms of Use</span>
+<span class="c"># available at: https://www.arin.net/whois_tou.html</span>
+<span class="c">#</span>
+<span class="c"># If you see inaccuracies in the results, please report at</span>
+<span class="c"># http://www.arin.net/public/whoisinaccuracy/index.xhtml</span>
+<span class="c">#</span>
+
+
+<span class="c">#</span>
+<span class="c"># Query terms are ambiguous.  The query is assumed to be:</span>
+<span class="c">#     &quot;n 75.75.75.75&quot;</span>
+<span class="c">#</span>
+<span class="c"># Use &quot;?&quot; to get help.</span>
+<span class="c">#</span>
+
+<span class="c">#</span>
+<span class="c"># The following results may also be obtained via:</span>
+<span class="c"># http://whois.arin.net/rest/nets;q=75.75.75.75?showDetails=true&amp;showARIN=false&amp;ext=netref2</span>
+<span class="c">#</span>
+
+Comcast Cable Communications Holdings, Inc CCCH-3-34 <span class="o">(</span>NET-75-64-0-0-1<span class="o">)</span> 75.64.0.0 - 75.75.191.255
+Comcast Cable Communications Holdings, Inc COMCAST-47 <span class="o">(</span>NET-75-75-72-0-1<span class="o">)</span> 75.75.72.0 - 75.75.79.255
+
+
+
+<span class="c">#</span>
+<span class="c"># ARIN WHOIS data and services are subject to the Terms of Use</span>
+<span class="c"># available at: https://www.arin.net/whois_tou.html</span>
+<span class="c">#</span>
+<span class="c"># If you see inaccuracies in the results, please report at</span>
+<span class="c"># http://www.arin.net/public/whoisinaccuracy/index.xhtml</span>
+<span class="c">#</span>
+</pre></div>
+</td></tr></table></div></div>
+<p>Beyond that, I do not know if Comcast&#39;s DNS has <code>roguelynn.com</code> cached, and if not, where the query got directed to after that.</p>
+
+<p>But DNS is hierarchical, and getting familiar with the <code>dig</code> command can help us understand at least how queries are resolved.</p>
+
+<p>The <code>dig</code> command has a <code>+trace</code> flag that makes &ldquo;iterative queries to resolve the name being looked up.  It will follow the root servers, showing the answer from each server that was used to resolve the lookup.&rdquo;<sup><a href="%22http://linux.die.net/man/1/dig%22">1</a></sup>  Let&#39;s try this out with <code>python.org</code>:</p>
+<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38</pre></div></td><td class="code"><div class="highlight"><pre><span class="nv">$ </span>dig +trace python.org
+; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; +trace python.org
+;; global options: +cmd
+.           12668   IN  NS  a.root-servers.net.
+.           12668   IN  NS  b.root-servers.net.
+.           12668   IN  NS  c.root-servers.net.
+.           12668   IN  NS  d.root-servers.net.
+.           12668   IN  NS  e.root-servers.net.
+.           12668   IN  NS  f.root-servers.net.
+.           12668   IN  NS  g.root-servers.net.
+.           12668   IN  NS  h.root-servers.net.
+.           12668   IN  NS  i.root-servers.net.
+.           12668   IN  NS  j.root-servers.net.
+.           12668   IN  NS  k.root-servers.net.
+.           12668   IN  NS  l.root-servers.net.
+.           12668   IN  NS  m.root-servers.net.
+;; Received 496 bytes from 192.168.1.1#53<span class="o">(</span>192.168.1.1<span class="o">)</span> in 221 ms
+
+org.            172800  IN  NS  a0.org.afilias-nst.info.
+org.            172800  IN  NS  a2.org.afilias-nst.info.
+org.            172800  IN  NS  b0.org.afilias-nst.org.
+org.            172800  IN  NS  b2.org.afilias-nst.org.
+org.            172800  IN  NS  c0.org.afilias-nst.info.
+org.            172800  IN  NS  d0.org.afilias-nst.org.
+;; Received 430 bytes from 202.12.27.33#53<span class="o">(</span>202.12.27.33<span class="o">)</span> in 469 ms
+
+python.org.     86400   IN  NS  ns1.p11.dynect.net.
+python.org.     86400   IN  NS  ns3.p11.dynect.net.
+python.org.     86400   IN  NS  ns2.p11.dynect.net.
+python.org.     86400   IN  NS  ns4.p11.dynect.net.
+;; Received 114 bytes from 199.19.53.1#53<span class="o">(</span>199.19.53.1<span class="o">)</span> in 141 ms
+
+python.org.     43200   IN  A   140.211.10.69
+python.org.     86400   IN  NS  ns4.p11.dynect.net.
+python.org.     86400   IN  NS  ns2.p11.dynect.net.
+python.org.     86400   IN  NS  ns3.p11.dynect.net.
+python.org.     86400   IN  NS  ns1.p11.dynect.net.
+;; Received 130 bytes from 208.78.71.11#53<span class="o">(</span>208.78.71.11<span class="o">)</span> in 13 ms
+</pre></div>
+</td></tr></table></div></div>
+<p>For the more visually inclined learner, let&#39;s look at this query pictorially:</p>
+
+<p>The <code>dig</code> query starts at my local DNS, <code>192.168.1.1</code>, where, if not cached, is based on to the root server:</p>
+
+<p><img src="/assets/images/dns-diagrams.002.jpg" alt="python.org DNS Query: local dns"></p>
+
+<p>The query from my local DNS for <code>python.org</code> first asks for the root name server (the <code>.</code>) who knows that one of these hosts should have the information, and so the name server responds with &ldquo;try one of these hosts&rdquo;, which cooresponds to the <code>.org</code> name server:</p>
+
+<p><img src="/assets/images/dns-diagrams.003.jpg" alt="python.org DNS Query: root dns"></p>
+
+<p>The <code>.org</code> name server receives the query, then says something like &ldquo;try one of these hosts&rdquo; which corresponds to the <code>python.org</code> name server:</p>
+
+<p><img src="/assets/images/dns-diagrams.004.jpg" alt="python.org DNS Query: org dns"></p>
+
+<p>The <code>python.org</code> name server says &ldquo;yep, we have the A record for python.org, and it&#39;s at address 140.211.10.69!&rdquo;</p>
+
+<p><img src="/assets/images/dns-diagrams.005.jpg" alt="python.org DNS Query: python.org dns"></p>
+
+<p>But if we wanted to know more about, say, <code>hg.python.org</code>, or others - doing a <code>dig hg.python.org</code>, we actually get that it is a CNAME record mapped to <code>pdf.osuosl.org</code>:</p>
+<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35</pre></div></td><td class="code"><div class="highlight"><pre>dig +trace hg.python.org
+
+; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; +trace hg.python.org
+;; global options: +cmd
+.           12170   IN  NS  g.root-servers.net.
+.           12170   IN  NS  h.root-servers.net.
+.           12170   IN  NS  a.root-servers.net.
+.           12170   IN  NS  b.root-servers.net.
+.           12170   IN  NS  k.root-servers.net.
+.           12170   IN  NS  i.root-servers.net.
+.           12170   IN  NS  e.root-servers.net.
+.           12170   IN  NS  f.root-servers.net.
+.           12170   IN  NS  j.root-servers.net.
+.           12170   IN  NS  c.root-servers.net.
+.           12170   IN  NS  d.root-servers.net.
+.           12170   IN  NS  m.root-servers.net.
+.           12170   IN  NS  l.root-servers.net.
+;; Received 228 bytes from 8.8.4.4#53<span class="o">(</span>8.8.4.4<span class="o">)</span> in 145 ms
+
+org.            172800  IN  NS  d0.org.afilias-nst.org.
+org.            172800  IN  NS  a2.org.afilias-nst.info.
+org.            172800  IN  NS  a0.org.afilias-nst.info.
+org.            172800  IN  NS  c0.org.afilias-nst.info.
+org.            172800  IN  NS  b0.org.afilias-nst.org.
+org.            172800  IN  NS  b2.org.afilias-nst.org.
+;; Received 433 bytes from 192.33.4.12#53<span class="o">(</span>192.33.4.12<span class="o">)</span> in 208 ms
+
+python.org.     86400   IN  NS  ns1.p11.dynect.net.
+python.org.     86400   IN  NS  ns2.p11.dynect.net.
+python.org.     86400   IN  NS  ns3.p11.dynect.net.
+python.org.     86400   IN  NS  ns4.p11.dynect.net.
+;; Received 117 bytes from 199.249.112.1#53<span class="o">(</span>199.249.112.1<span class="o">)</span> in 173 ms
+
+hg.python.org.      86400   IN  CNAME   virt-7yvsjn.psf.osuosl.org.
+;; Received 68 bytes from 208.78.71.11#53<span class="o">(</span>208.78.71.11<span class="o">)</span> in 213 ms
+</pre></div>
+</td></tr></table></div></div>
+<p><img src="/assets/images/dns-diagrams.006.jpg" alt="python.org DNS Query: hg.python.org dns"></p>
+<h3 id="other-resource-records">Other resource records</h3>
+<p>Now there are certainly more records attached to <code>python.org</code> besides a CNAME pointing to <code>hg.python.org,</code> or <code>blog.python.org</code>.  We can actually run the dig command against <code>python.org</code> with a few flags, particularly <code>-t ANY</code>:</p>
+<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre>dig +nocmd +noqr +nostats python.org -t ANY
+;; Got answer:
+;; -&gt;&gt;HEADER<span class="s">&lt;&lt;- opco</span>de: QUERY, status: NOERROR, id: 25949
+;; flags: qr rd ra; QUERY: 1, ANSWER: 8, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;python.org.            IN  ANY
+
+;; ANSWER SECTION:
+python.org.     21599   IN  SOA ns1.p11.dynect.net. infrastructure-staff.python.org. 2014052200 3600 600 604800 3600
+python.org.     21599   IN  NS  ns1.p11.dynect.net.
+python.org.     21599   IN  NS  ns2.p11.dynect.net.
+python.org.     21599   IN  NS  ns3.p11.dynect.net.
+python.org.     21599   IN  NS  ns4.p11.dynect.net.
+python.org.     21599   IN  A   140.211.10.69
+python.org.     21599   IN  MX  50 mail.python.org.
+python.org.     21599   IN  TXT <span class="s2">&quot;v=spf1 mx a:psf.upfronthosting.co.za a:mail.wooz.org ip4:82.94.164.166/32 ip6:2001:888:2000:d::a6 ~all&quot;</span>
+</pre></div>
+</td></tr></table></div></div>
+<p>Unfortunately, not much came back beyond <code>A</code>, <code>NS</code>, and an <code>MX</code> record.  If we look at <code>pyladies.com</code> it is a little bit more interesting, with SOA records pointing to name.com, MX records pointing to Google, and our A record pointing to our web host:</p>
+<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre>dig +nocmd +noqr +nostats pyladies.com -t ANY
+;; Got answer:
+;; -&gt;&gt;HEADER<span class="s">&lt;&lt;- opco</span>de: QUERY, status: NOERROR, id: 50779
+;; flags: qr rd ra; QUERY: 1, ANSWER: 7, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;pyladies.com.          IN  ANY
+
+;; ANSWER SECTION:
+pyladies.com.       299 IN  SOA ns1qsy.name.com. support.name.com. 1 10800 3600 604800 300
+pyladies.com.       299 IN  NS  ns4kpx.name.com.
+pyladies.com.       299 IN  NS  ns1qsy.name.com.
+pyladies.com.       299 IN  NS  ns2fkr.name.com.
+pyladies.com.       0   IN  A   81.28.232.189
+pyladies.com.       299 IN  NS  ns3jkl.name.com.
+pyladies.com.       299 IN  MX  10 ASPMX.L.GOOGLE.com.
+</pre></div>
+</td></tr></table></div></div>
+<p>What you won&#39;t get when using <code>ANY</code> with dig is the full zone file or DNS setup, like all available CNAMEs.  I&#39;ll go a bit more into that in a bit, but for now, we can easily see the resolve path DNS takes to lookup python.org and pyladies.com.  However, that is not the most efficient way that DNS can respond to queries</p>
+<h3 id="caching">Caching</h3>
+<p>Rather than inundating root and top-level name servers like <code>.</code> and <code>.org</code>, DNS can be set up to cache requests:</p>
+
+<blockquote>
+<p>When a DNS resolver or authoritative server receives a query, it searches its cache for a matching label.  If there is no matching label in the cache, the server may instead retrieve from the cache and return a referral response, containing [a resource record set] of the NS type whose label is &ldquo;closer&rdquo; to the domain which is the subject of the query.</p>
+
+<p>Instead of sending a referral response, the DNS resolver may also be configured to initiate the same query to an authoritative DNS server responsible for the domain name which is the subject of the query &hellip;</p>
+</blockquote>
+
+<p><small>– <a href="%22https://www.cs.utexas.edu/%7Eshmat/shmat_securecomm10.pdf%22">source</a> (PDF)</small></p>
+
+<p>The authoritative server can then respond with an answer, a referral, or a failed response.  After, </p>
+
+<blockquote>
+<p>the authoritative server&#39;s response &hellip; is accepted by the DNS resolver and stored in its cache only if the [resource record set] meets a set of certain conditions</p>
+</blockquote>
+
+<p>which is specific to each resolver implementation.<sup><a href="%22https://www.cs.utexas.edu/%7Eshmat/shmat_securecomm10.pdf%22">2</a></sup>  </p>
+
+<p>So if my local DNS server did not hold a cached record for <code>python.org</code>, it <em>could</em> send the DNS query to a root DNS server, and get pointed to go to the name servers that handle the <code>.org</code> domain.  But since I&#39;ve been to many <code>.org</code> sites, my DNS most likely has those name servers cached, so it can skip the first query.  And then it trickles down from there.</p>
+
+<p>DNS caching sounds all great and hunky-dory until you get to propagation.  Propagation is how long one has to wait for DNS changes to show effect, and is often the pain point many people feel when deploying The Awesome Unique TODO App™.</p>
+
+<p>DNS will hold a record for as long as its TTL - Time to Live - number, at which point it deletes it.  After it&#39;s deleted, if someone makes a new request that refers to that record, the DNS server will go through that process again, querying an authoritative server.  </p>
+
+<p>When setting up DNS records, perhaps your DNS host is awesome (I like <a href="https://www.name.com">name.com</a> and <a href="http://www.fastmail.es/?STKI=10893350">fastmail.fm</a>) and allows you to adjust the TTL within a decent range (1 second to 24 hours - tbh I&#39;m not sure if there&#39;s an upper limit?).  However, having too high of a number set for TTL and your local and ISP caches will last longer, and therefore your friend may not be able to see your Glorious TODO App™.  Likewise, having too low of a TTL may overload the server with the frequency of queries.  And while your your DNS host may be awesome allowing you to find the sweet spot for TTL, some ISPs may ignore it completely and set their own expiry for records. </p>
+
+<p>In addition to caching and propagation being web devs&#39; pain point with DNS, caching additionally opens up the ability to poison a DNS&#39;s cache.  This is <em>by far</em> not my area of expertise, but as I understand it, DNS cache poisoning works like so:</p>
+
+<p>If a server doesn&#39;t validate DNS responses (for example, via <a href="%22http://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions%22">DNSSEC</a>), someone could exploit that by essentially spoofing an IP address s/he owns for a given hostname, forcing visitors of that certain hostname to be directed elsewhere.  To be able to spoof a DNS entry, an attacker would have to create a response faster than that of a legitimate authoritative server.  Now, you can effectively DDoS a DNS caching server with probable non-cached entries, providing many attempts to send fake responses.  The random domains that are now cached aren&#39;t too useful then, but the attacker can also add to his/her response a name server for the desired domain to compromise.</p>
+
+<p>Again, I am no expert in the subject of DNSSEC, so I encourage folks to read <a href="%22https://www.cs.utexas.edu/%7Eshmat/shmat_securecomm10.pdf%22">this paper</a> (PDF) to get a better understanding of the different ways to poison a DNS&#39;s cache.</p>
+<h2 id="nerdy-things-i-learned">Nerdy things I learned</h2><h3 id="interesting-ways-to-interact-with-dns">Interesting ways to interact with DNS</h3><h4 id="dnsmap">dnsmap</h4>
+<p>Earlier, we did a few <code>dig</code> queries with the <code>-t ANY</code> flag, failing to see any CNAME records.  You could certainly run <code>dig www.pyladies.com -t ANY</code>, but it is a bit prohibitive to dig every subdomain to find information about CNAME records, especially for a site that you do not manage.  As well, being able to look up the full DNS zone file is rarely allowed.</p>
+
+<p>Certainly, there&#39;s a script for that!  There&#39;s this handy tool called <a href="%22https://code.google.com/p/dnsmap/%22">dnsmap</a> that literally brute-forces subdomain lookup:</p>
+<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span class="nv">$ </span>dnsmap pyladies.com
+dnsmap 0.30 - DNS Network Mapper by pagvac <span class="o">(</span>gnucitizen.org<span class="o">)</span>
+
+<span class="o">[</span>+<span class="o">]</span> searching <span class="o">(</span>sub<span class="o">)</span>domains <span class="k">for </span>pyladies.com using built-in wordlist
+<span class="o">[</span>+<span class="o">]</span> using maximum random delay of 10 millisecond<span class="o">(</span>s<span class="o">)</span> between requests
+
+dc.pyladies.com
+IP address <span class="c">#1: 81.28.232.189</span>
+
+sf.pyladies.com
+IP address <span class="c">#1: 81.28.232.189</span>
+
+tw.pyladies.com
+IP address <span class="c">#1: 23.23.245.47</span>
+
+www.pyladies.com
+IP address <span class="c">#1: 81.28.232.189</span>
+</pre></div>
+</td></tr></table></div></div>
+<p>Trying <code>dnsmap pyladies.com</code> only returns about 4 results even though - as one of the managers of the site - I know there&#39;s way over <a href="%22http://www.pyladies.com/locations%22">20</a>.  So don&#39;t exactly expect the results to be comprehensive, nor fast since it&#39;s literally searching based on a built-in or provided word list one at a time.  So this tool is limited to its built-in word list, which you can certainly supply on your own as well.  </p>
+
+<p>I ran dnsmap against spotify.net for funsies while running the earlier described sniff function from <a href="%22http://www.secdev.org/projects/scapy/%22">scapy</a>.  Here is a captured UDP datagram in which you can see dnsmap was querying for <code>zr.spotify.net</code>:</p>
+<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">###[ Ethernet ]###</span>
+  <span class="n">dst</span>       <span class="o">=</span> <span class="mo">04</span><span class="p">:</span><span class="n">a1</span><span class="p">:</span><span class="mi">51</span><span class="p">:</span><span class="mi">90</span><span class="p">:</span><span class="n">af</span><span class="p">:</span><span class="n">d4</span>
+  <span class="n">src</span>       <span class="o">=</span> <span class="mi">14</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">9</span><span class="n">f</span><span class="p">:</span><span class="n">e1</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">9</span><span class="n">b</span>
+  <span class="nb">type</span>      <span class="o">=</span> <span class="mh">0x800</span>
+<span class="c">###[ IP ]###</span>
+     <span class="n">ttl</span>       <span class="o">=</span> <span class="mi">255</span>
+     <span class="n">proto</span>     <span class="o">=</span> <span class="n">udp</span>
+     <span class="n">chksum</span>    <span class="o">=</span> <span class="mh">0x12ee</span>
+     <span class="n">src</span>       <span class="o">=</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.7</span>
+     <span class="n">dst</span>       <span class="o">=</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.1</span>
+<span class="c">###[ UDP ]###</span>
+        <span class="n">sport</span>     <span class="o">=</span> <span class="mi">54929</span>
+        <span class="n">dport</span>     <span class="o">=</span> <span class="n">domain</span>
+<span class="c">###[ DNS ]###</span>
+           <span class="nb">id</span>        <span class="o">=</span> <span class="mi">11102</span>
+          <span class="n">opcode</span>    <span class="o">=</span> <span class="n">QUERY</span>
+           <span class="n">rcode</span>     <span class="o">=</span> <span class="n">ok</span>
+           <span class="n">qdcount</span>   <span class="o">=</span> <span class="mi">1</span>
+           <span class="n">ancount</span>   <span class="o">=</span> <span class="mi">0</span>
+           <span class="n">nscount</span>   <span class="o">=</span> <span class="mi">0</span>
+           <span class="n">arcount</span>   <span class="o">=</span> <span class="mi">0</span>
+           \<span class="n">qd</span>        \
+            <span class="o">|</span><span class="c">###[ DNS Question Record ]###</span>
+            <span class="o">|</span>  <span class="n">qname</span>     <span class="o">=</span> <span class="s">&#39;zr.spotify.net.&#39;</span>
+            <span class="o">|</span>  <span class="n">qtype</span>     <span class="o">=</span> <span class="n">A</span>
+            <span class="o">|</span>  <span class="n">qclass</span>    <span class="o">=</span> <span class="n">IN</span>
+</pre></div>
+</td></tr></table></div></div>
+<p>You can easily see the Question Record - the name of the record, type, and class. </p>
+<h4 id="local-cache">local cache</h4>
+<p>When I was playing around with DNS, I wanted to figure out what&#39;s in my local DNS&#39;s cache.  At least for OS X, you can see what is cached by literally killing the process (it automatically starts up again) which flushes the cache and writes to the sys log:</p>
+<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81</pre></div></td><td class="code"><div class="highlight"><pre><span class="nv">$ </span>sudo killall -INFO mDNSResponder
+<span class="nv">$ </span>tail -n 500 /var/log/system.log | grep mDNSResponder
+
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>:   9     12229 -U-      CNAME   37 1-courier.push.apple.com. CNAME 1.courier-push-apple.com.akadns.net.
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>:  27 *    3029 -U-    - PTR      0 lb._dns-sd._udp.10.0.137.10.in-addr.arpa. PTR 
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>:  43      2869 lo0    + TXT     32 sudo<span class="se">\0</span>32make<span class="se">\0</span>32me<span class="se">\0</span>32a<span class="se">\0</span>32sammich._device-info._tcp.local. TXT <span class="nv">model</span><span class="o">=</span>MacBookPro10,1¦osxvers<span class="o">=</span>13
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>:  43      2869 en0    + TXT     32 sudo<span class="se">\0</span>32make<span class="se">\0</span>32me<span class="se">\0</span>32a<span class="se">\0</span>32sammich._device-info._tcp.local. TXT <span class="nv">model</span><span class="o">=</span>MacBookPro10,1¦osxvers<span class="o">=</span>13
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>:  49        70 -U-    - PTR      0 13.16.16.172.in-addr.arpa. PTR 
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>:  54    106364 -U-    - Addr     0 toezmncibr. Addr 
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>:  54    106364 -U-      SOA     64 . SOA a.root-servers.net. nstld.verisign-grs.com. 2014072100 1800 900 604800 86400
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>:  71    106364 -U-    - Addr     0 lszyeahwbnztqh. Addr 
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>:  71    106364 -U-      SOA     64 . SOA a.root-servers.net. nstld.verisign-grs.com. 2014072100 1800 900 604800 86400
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>:  74 *    3029 -U-    - PTR      0 lb._dns-sd._udp.0.0.16.172.in-addr.arpa. PTR 
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>:  92 *    3029 -U-    - PTR      0 b._dns-sd._udp.0.0.16.172.in-addr.arpa. PTR 
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>:  95        70 -U-      Addr     4 client-log.box.com. Addr 74.112.184.96
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>:  95        70 -U-      Addr     4 client-log.box.com. Addr 74.112.185.96
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 105        29 -U-      CNAME   34 evintl-ocsp.verisign.com. CNAME ocsp.ws.symantec.com.edgekey.net.
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 121       200 -U-      Addr     4 www3.l.google.com. Addr 173.194.41.130
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 121       200 -U-      Addr     4 www3.l.google.com. Addr 173.194.41.133
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 121       200 -U-      Addr     4 www3.l.google.com. Addr 173.194.41.134
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 121       200 -U-      Addr     4 www3.l.google.com. Addr 173.194.41.142
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 121       200 -U-      Addr     4 www3.l.google.com. Addr 173.194.41.129
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 121       200 -U-      Addr     4 www3.l.google.com. Addr 173.194.41.131
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 121       200 -U-      Addr     4 www3.l.google.com. Addr 173.194.41.132
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 121       200 -U-      Addr     4 www3.l.google.com. Addr 173.194.41.137
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 121       200 -U-      Addr     4 www3.l.google.com. Addr 173.194.41.136
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 121       200 -U-      Addr     4 www3.l.google.com. Addr 173.194.41.135
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 121       200 -U-      Addr     4 www3.l.google.com. Addr 173.194.41.128
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 171      1763 -U-      CNAME   24 s3.amazonaws.com. CNAME s3.a-geo.amazonaws.com.
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 208       865 -U-      CNAME   34 evsecure-ocsp.verisign.com. CNAME ocsp.ws.symantec.com.edgekey.net.
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 211      1586 -U-      Addr     4 apple.com. Addr 17.142.160.59
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 211      1586 -U-      Addr     4 apple.com. Addr 17.178.96.59
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 211      1586 -U-      Addr     4 apple.com. Addr 17.172.224.47
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 217     24143 -U-      CNAME   38 46-courier.push.apple.com. CNAME 46.courier-push-apple.com.akadns.net.
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 223    107696 -U-    - Addr     0 dnsmap. Addr 
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 223    107696 -U-      SOA     64 . SOA a.root-servers.net. nstld.verisign-grs.com. 2014072100 1800 900 604800 86400
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 233    107019 -U-    - Addr     0 dnssec. Addr 
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 233    107019 -U-      SOA     64 . SOA a.root-servers.net. nstld.verisign-grs.com. 2014072100 1800 900 604800 86400
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 240     25044 -U-      CNAME   37 p01-calendars.icloud.com. CNAME p01-calendars.icloud.com.akadns.net.
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 248       870 -U-      CNAME   34 sr.symcd.com. CNAME ocsp.ws.symantec.com.edgekey.net.
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 248 *    3029 -U-    - PTR      0 db._dns-sd._udp.10.0.137.10.in-addr.arpa. PTR 
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 267     25361 -U-      CNAME   19 talk.google.com. CNAME talk.l.google.com.
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 271      1271 -U-    - Addr     0 ns.iana.org. Addr 
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 271      1271 -U-      SOA     58 iana.org. SOA sns.dns.icann.org. noc.dns.icann.org. 2014052499 7200 3600 1209600 3600
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 275      1372 -U-      CNAME   24 api.facebook.com. CNAME star.c10r.facebook.com.
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 279      1179 -U-      Addr     4 www.evernote.com. Addr 204.154.94.81
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 298      1390 -U-      TXT     32 time.apple.com. TXT ntp minpoll 9 maxpoll 12 iburst
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 311     22633 -U-      CNAME   34 p15-caldav.icloud.com. CNAME p15-caldav.icloud.com.akadns.net.
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 335       345 -U-      CNAME   30 www.apple.com. CNAME www.isg-apple.com.akadns.net.
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 351 *    3029 -U-    - PTR      0 db._dns-sd._udp.0.0.16.172.in-addr.arpa. PTR 
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 359    106364 -U-    - Addr     0 yklgvieqhip. Addr 
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 359    106364 -U-      SOA     64 . SOA a.root-servers.net. nstld.verisign-grs.com. 2014072100 1800 900 604800 86400
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 366      3068 -U-      CNAME   24 wildcard.tripit.com.edgekey.net. CNAME e6320.b.akamaiedge.net.
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 366      1763 -U-      CNAME   20 s3.a-geo.amazonaws.com. CNAME s3-1.amazonaws.com.
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 371     24296 -U-      CNAME   25 ocsp.ws.symantec.com.edgekey.net. CNAME e8218.ce.akamaiedge.net.
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 390     25691 -U-      CNAME   35 ssl.google-analytics.com. CNAME ssl-google-analytics.l.google.com.
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 446 *    3029 -U-    - PTR      0 b._dns-sd._udp.10.0.137.10.in-addr.arpa. PTR 
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 488     25361 -U-      CNAME   19 calendar.google.com. CNAME www3.l.google.com.
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: 493        79 -U-      CNAME   17 d.dropbox.com. CNAME d.v.dropbox.com.
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: Cache currently contains 106 entities; 6 referenced by active questions
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: --------- Auth Records ---------
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>:     Int    Next  Expire   State
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>:       8       0       0     ALL   32 sudo<span class="se">\0</span>32make<span class="se">\0</span>32me<span class="se">\0</span>32a<span class="se">\0</span>32sammich._device-info._tcp.local. TXT <span class="nv">model</span><span class="o">=</span>MacBookPro10,1¦osxvers<span class="o">=</span>13
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>:       8       0       0     lo0   30 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.8.E.F.ip6.arpa. PTR sudo-make-me-a-sammich.local.
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>:       8       0       0     en0   30 13.16.16.172.in-addr.arpa. PTR sudo-make-me-a-sammich.local.
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>:       8       0       0     lo0   16 sudo-make-me-a-sammich.local. AAAA FE80:0000:0000:0000:0000:0000:0000:0001
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>:       8       0       0     en0    4 sudo-make-me-a-sammich.local. Addr 172.16.16.13
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: --------- LocalOnly, P2P Auth Records ---------
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>:   State       Interface
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>:  Verified        LO   36 sudo<span class="se">\0</span>32make<span class="se">\0</span>32me<span class="se">\0</span>32a<span class="se">\0</span>32sammich._whats-my-name._tcp.local. SRV 0 0 0 sudo-make-me-a-sammich.local.
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>:  Shared          LO    7 b._dns-sd._udp.local. PTR local.
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>:  Shared          LO    7 r._dns-sd._udp.local. PTR local.
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>:  KnownUnique     LO   11 1.0.0.127.in-addr.arpa. PTR localhost.
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>:  KnownUnique     LO   11 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.ip6.arpa. PTR localhost.
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>: --------- /etc/hosts ---------
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>:   State       Interface
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>:  KnownUnique     LO    4 localhost. Addr 127.0.0.1
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>:  KnownUnique     LO   16 localhost. AAAA 0000:0000:0000:0000:0000:0000:0000:0001
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>:  KnownUnique     1    16 localhost. AAAA FE80:0000:0000:0000:0000:0000:0000:0001
+Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</span>60<span class="o">]</span>:  KnownUnique     LO    4 broadcasthost. Addr 255.255.255.255
+<span class="c"># &lt;--snipped--&gt;</span>
+</pre></div>
+</td></tr></table></div></div>
+<p>We can see some familiar records; I see Facebook, Evernote, Apple, Tripit, Amazon - names I would expect since I use apps that all connect to those services.</p>
+
+<p>What is that I hear? Not enough Python? Well&hellip;</p>
+<h3 id="twisted">Twisted</h3>
+<p>Surely you knew this was coming - you can easily create your own DNS forwarder with <a href="%22https://twistedmatrix.com/trac/%22">Twisted</a>&#39;s <a href="%22http://twistedmatrix.com/trac/wiki/TwistedNames%22">names</a>.</p>
+
+<p>Below is a simple DNS server from Twisted&#39;s documentation.  We can run this, as well as fire up scapy, and run <code>dig</code> against the server:</p>
+<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">twisted.internet</span> <span class="kn">import</span> <span class="n">reactor</span>
+<span class="kn">from</span> <span class="nn">twisted.names</span> <span class="kn">import</span> <span class="n">client</span><span class="p">,</span> <span class="n">dns</span><span class="p">,</span> <span class="n">server</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Run the server.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">factory</span> <span class="o">=</span> <span class="n">server</span><span class="o">.</span><span class="n">DNSServerFactory</span><span class="p">(</span>
+        <span class="n">clients</span><span class="o">=</span><span class="p">[</span><span class="n">client</span><span class="o">.</span><span class="n">Resolver</span><span class="p">(</span><span class="n">resolv</span><span class="o">=</span><span class="err">‘</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">resolv</span><span class="o">.</span><span class="n">conf</span><span class="s">&#39;)]</span>
+    <span class="p">)</span>
+
+    <span class="n">protocol</span> <span class="o">=</span> <span class="n">dns</span><span class="o">.</span><span class="n">DNSDatagramProtocol</span><span class="p">(</span><span class="n">controller</span><span class="o">=</span><span class="n">factory</span><span class="p">)</span>
+
+    <span class="n">reactor</span><span class="o">.</span><span class="n">listenUDP</span><span class="p">(</span><span class="mi">10053</span><span class="p">,</span> <span class="n">protocol</span><span class="p">)</span>
+    <span class="n">reactor</span><span class="o">.</span><span class="n">listenTCP</span><span class="p">(</span><span class="mi">10053</span><span class="p">,</span> <span class="n">factory</span><span class="p">)</span>
+
+    <span class="n">reactor</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</td></tr></table></div></div>
+<p>Looking at the datagram picked up by scapy, we can see that the query - the Question - has a query name, type, and class:</p>
+<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">###[ Ethernet ]###</span>
+  <span class="n">dst</span>       <span class="o">=</span> <span class="mo">04</span><span class="p">:</span><span class="n">a1</span><span class="p">:</span><span class="mi">51</span><span class="p">:</span><span class="mi">90</span><span class="p">:</span><span class="n">af</span><span class="p">:</span><span class="n">d4</span>
+  <span class="n">src</span>       <span class="o">=</span> <span class="mi">14</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">9</span><span class="n">f</span><span class="p">:</span><span class="n">e1</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">9</span><span class="n">b</span>
+  <span class="nb">type</span>      <span class="o">=</span> <span class="mh">0x800</span>
+<span class="c">###[ IP ]###</span>
+     <span class="n">ttl</span>       <span class="o">=</span> <span class="mi">64</span>
+     <span class="n">proto</span>     <span class="o">=</span> <span class="n">udp</span>
+     <span class="n">chksum</span>    <span class="o">=</span> <span class="mh">0x4a0c</span>
+     <span class="n">src</span>       <span class="o">=</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.7</span>
+     <span class="n">dst</span>       <span class="o">=</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.1</span>
+     \<span class="n">options</span>   \
+<span class="c">###[ UDP ]###</span>
+        <span class="n">sport</span>     <span class="o">=</span> <span class="mi">33408</span>
+        <span class="n">dport</span>     <span class="o">=</span> <span class="n">domain</span>
+<span class="c">###[ DNS ]###</span>
+           <span class="n">opcode</span>    <span class="o">=</span> <span class="n">QUERY</span>
+           <span class="n">rcode</span>     <span class="o">=</span> <span class="n">ok</span>
+           \<span class="n">qd</span>        \
+            <span class="o">|</span><span class="c">###[ DNS Question Record ]###</span>
+            <span class="o">|</span>  <span class="n">qname</span>     <span class="o">=</span> <span class="s">&#39;python.org.&#39;</span>
+            <span class="o">|</span>  <span class="n">qtype</span>     <span class="o">=</span> <span class="n">A</span>
+            <span class="o">|</span>  <span class="n">qclass</span>    <span class="o">=</span> <span class="n">IN</span>
+</pre></div>
+</td></tr></table></div></div>
+<p>And now the corresponding response with the DNS resource record and data associated with it, include type of record, TTL, data, and resource record name: </p>
+<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">###[ Ethernet ]###</span>
+  <span class="n">dst</span>       <span class="o">=</span> <span class="mi">14</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">9</span><span class="n">f</span><span class="p">:</span><span class="n">e1</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">9</span><span class="n">b</span>
+  <span class="n">src</span>       <span class="o">=</span> <span class="mo">04</span><span class="p">:</span><span class="n">a1</span><span class="p">:</span><span class="mi">51</span><span class="p">:</span><span class="mi">90</span><span class="p">:</span><span class="n">af</span><span class="p">:</span><span class="n">d4</span>
+  <span class="nb">type</span>      <span class="o">=</span> <span class="mh">0x800</span>
+<span class="c">###[ IP ]###</span>
+     <span class="n">ttl</span>       <span class="o">=</span> <span class="mi">64</span>
+     <span class="n">proto</span>     <span class="o">=</span> <span class="n">udp</span>
+     <span class="n">chksum</span>    <span class="o">=</span> <span class="mh">0xb74c</span>
+     <span class="n">src</span>       <span class="o">=</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.1</span>
+     <span class="n">dst</span>       <span class="o">=</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.7</span>
+<span class="c">###[ UDP ]###</span>
+        <span class="n">sport</span>     <span class="o">=</span> <span class="n">domain</span>
+        <span class="n">dport</span>     <span class="o">=</span> <span class="mi">54438</span>
+<span class="c">###[ DNS ]###</span>
+           <span class="n">qr</span>        <span class="o">=</span> <span class="il">1L</span>
+           <span class="n">opcode</span>    <span class="o">=</span> <span class="n">QUERY</span>
+           \<span class="n">qd</span>        \
+            <span class="o">|</span><span class="c">###[ DNS Question Record ]###</span>
+            <span class="o">|</span>  <span class="n">qname</span>     <span class="o">=</span> <span class="s">&#39;python.org.&#39;</span>
+            <span class="o">|</span>  <span class="n">qtype</span>     <span class="o">=</span> <span class="n">A</span>
+            <span class="o">|</span>  <span class="n">qclass</span>    <span class="o">=</span> <span class="n">IN</span>
+           \<span class="n">an</span>        \
+            <span class="o">|</span><span class="c">###[ DNS Resource Record ]###</span>
+            <span class="o">|</span>  <span class="n">rrname</span>    <span class="o">=</span> <span class="s">&#39;python.org.&#39;</span>
+            <span class="o">|</span>  <span class="nb">type</span>      <span class="o">=</span> <span class="n">A</span>
+            <span class="o">|</span>  <span class="n">rclass</span>    <span class="o">=</span> <span class="n">IN</span>
+            <span class="o">|</span>  <span class="n">ttl</span>       <span class="o">=</span> <span class="mi">39777</span>
+            <span class="o">|</span>  <span class="n">rdlen</span>     <span class="o">=</span> <span class="mi">4</span>
+            <span class="o">|</span>  <span class="n">rdata</span>     <span class="o">=</span> <span class="s">&#39;140.211.10.69&#39;</span>
+</pre></div>
+</td></tr></table></div></div><h2 id="interesting-ways-to-use-dns">Interesting ways to use DNS</h2><h3 id="anycast">Anycast</h3>
+<p>You folks may know the types of IP network addressing methodology, including <a href="%22http://en.wikipedia.org/wiki/Unicast%22">unicast</a>, <a href="%22http://en.wikipedia.org/wiki/Multicast%22">multicast</a>, and <a href="%22http://en.wikipedia.org/wiki/Broadcasting_(computing)%22">broadcast</a>, or at least somewhat familiar with those terms when <strike>screwing</strike> setting up networking for a local VM (<a href="%22http://www.vagrantup.com/%22">vagrant</a> is so uber helpful to avoid these networking issues, btw!).  </p>
+
+<p><a href="%22http://en.wikipedia.org/wiki/Anycast%22">Anycast</a> is a fourth one where datagrams are sent via a single sender to a group of potential receivers all identified by the same address, referred to as a one-to-nearest association.  One of the keynotes at PuppetConf 2013 by Google&#39;s Gordon Rowell <a href="%22http://puppetlabs.com/presentations/keynote-why-did-we-think-large-scale-distributed-systems-would-be-easy%22">goes into great explanation</a> about how Google takes advantage of anycast.  Google uses it for its public DNS servers, the all familiar <code>8.8.8.8</code> and <code>8.8.4.4</code>, where someone&#39;s DNS lookup of <code>8.8.8.8</code> in Australia may be routed somewhere different than coming from the US, but still receives the same information.  Google configures their applications for Anycast, and it allows for folks in operations to take down one cluster and reroute traffic to another, leaving folks to not have to worry about getting the same data when looking up <code>8.8.8.8</code>.  TL;DR: It&#39;s great for load balancing.</p>
+<h3 id="dane">DANE</h3>
+<p><a href="%22http://en.wikipedia.org/wiki/DNS-based_Authentication_of_Named_Entities%22">DANE</a> stands for DNS-based Authentication of Named Entities.  It&#39;s a protocol for certificates to be bound to DNS names using <a href="%22http://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions%22">DNSSEC</a>.  It can be likened to two-factor authentication that we, as users, are familiar with.  Essentially, DANE is a <a href="%22http://tools.ietf.org/html/rfc6698%22">proposed</a> way to cross-verify the domain name and the CA-issued certificate. <sup><a href="%22https://community.infoblox.com/blogs/2014/04/14/dns-based-authentication-named-entities-dane%22">3</a></sup></p>
+
+<p>The issue that DANE solves is the inability to verify that the organization running the web server officially owns the domain name.  As well, the DNS record does not contain information regarding which Certificate Authority is preferred by this organization.  Exploits of this weakness was seen twice in 2011 with <a href="%22https://www.comodo.com/Comodo-Fraud-Incident-2011-03-23.html%22">Comodo</a> and the Dutch CA, <a href="%22http://en.wikipedia.org/wiki/Diginotar#Issuance_of_fraudulent_certificates%22">DigiNotar</a>, where false certificates were generated giving the attackers the ability to perform man-in-the-middle exploits.</p>
+
+<p>So again, what DANE does is provide a way to cross-verify the domain name information with the host&#39;s CA-issued certificate.  The pieces of authentication with respect to two-factor auth is:</p>
+
+<ol>
+<li>a DNSSEC-authenticated authoritative DNS entry about the valid certificate, and</li>
+<li>the actual certificate - or a hash of the certificate - with the valid fully-qualified domain name that can be validated by a trusted CA.</li>
+</ol>
+
+<p>DNSSEC is required to be configured on your authoritative DNS server for DANE to be set up properly.  With that, you just need to make a TLSA (TLS trust anchor) record with information on the type of certificate used, the hash of the certificate, and the hash function used, among <a href="%22http://tools.ietf.org/html/rfc6698#section-2.1%22">other things</a>, like so:</p>
+<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre>_443._tcp.www.example.com. IN TLSA <span class="o">(</span> 0 0 1 91751cee0a1ab8414400238a761411daa29643ab4b8243e9a91649e25be53ada <span class="o">)</span>
+</pre></div>
+</td></tr></table></div></div>
+<p>For funnies, let&#39;s take a look at one of the <a href="%22http://www.internetsociety.org/deploy360/resources/dane-test-sites/%22">available DANE test sites</a>:</p>
+<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre><span class="nv">$ </span>dig -t TLSA _443._tcp.www.fedoraproject.org
+
+; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; -t TLSA _443._tcp.www.fedoraproject.org
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER<span class="s">&lt;&lt;- opco</span>de: QUERY, status: NOERROR, id: 51776
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;_443._tcp.www.fedoraproject.org. IN    TLSA
+
+;; ANSWER SECTION:
+_443._tcp.www.fedoraproject.org. 299 IN TLSA    0 0 1 19400BE5B7A31FB733917700789D2F0A2471C0C9D506C0E504C06C16 D7CB17C0
+
+;; Query <span class="nb">time</span>: 115 msec
+;; SERVER: 8.8.8.8#53<span class="o">(</span>8.8.8.8<span class="o">)</span>
+;; WHEN: Mon Jul 21 14:26:39 2014
+;; MSG SIZE  rcvd: 96
+</pre></div>
+</td></tr></table></div></div>
+<p>As of writing this post, <a href="%22http://www.dnspython.org/%22">dnspython</a> supports DANE with the ability to <a href="%22https://github.com/rthalley/dnspython/commit/07426738e9491660214d3d7f39b1cda57284eaba#diff-02f0b547c2779d25cff89672135f20e3%22">create and manage TSLA resource records</a>, and <a href="%22https://twistedmatrix.com/trac/%22">Twisted</a> is <a href="%22http://twistedmatrix.com/pipermail/twisted-python/2013-November/027773.html%22">currently working</a> on EDNS and DNSSEC support, with the <a href="%22https://twistedmatrix.com/trac/wiki/EDNS0#DANE%22">goal of including DANE</a>.</p>
+<h3 id="service-discovery">Service Discovery</h3>
+<p>Another nerdy nugget of awesomeness that I uncovered during my deep dive into DNS is that it can be used for service discovery.</p>
+
+<p>There are a few ways and tools to implement service discovery, but it ultimately boils down to the question, &ldquo;What servers run this service?&rdquo;  As mentioned, one can leverage DNS to help us answer this question with the use of <code>SRV</code> records.  <code>SRV</code> records within DNS zones map canonical names, typically in the form of <code>_name._protocol.site</code>, to hostnames.</p>
+
+<p>For instance, Spotify leverages the service lookup ability. Each service has its own SRV record, with one record canonically named after the service itself.  When you spin up a Spotify client, it does an SRV lookup, similar to this <code>dig</code> command: </p>
+<div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre>dig +short _spotify-client._tcp.spotify.com SRV
+
+10 12 4070 AP1.spotify.com.
+10 12 4070 AP2.spotify.com.
+10 12 4070 AP3.spotify.com.
+10 12 4070 AP4.spotify.com.
+</pre></div>
+</td></tr></table></div></div>
+<p>The service look up continues on, since user clients connect to an access point, for example <code>AP1.spotify.com</code>, and then the access point resolves the service that the client is looking for, e.g. <code>user</code> service for the user&#39;s profile information:</p>
+
+<p><img src="/assets/images/dns-diagrams.001.jpg" alt="Spotify&#39;s Access Point Service Discovery"> </p>
+<h3 id="dht-ring">DHT Ring</h3>
+<p>The last little nugget I discovered is the ability to store a DHT ring within DNS.</p>
+
+<p><a href="%22http://en.wikipedia.org/wiki/Distributed_hash_table%22">DHT</a> stands for Distributed Hash Tale.  It basically gives you a dictionary-like interface, or a key-value store, but the data or nodes are distributed among a network.</p>
+
+<p>Looking at Spotify again, we store some service configuration data in a DHT ring within DNS TXT records.</p>
+
+<p>So for example, when you are on the Spotify client, and want to play a particular song named &ldquo;foobar&rdquo; (one that has not yet been locally cached on your machine), the client performs a lookup.  When it does, the song ID is hashed, which then becomes the key within the DHT ring.</p>
+
+<p><img src="/assets/images/dns-diagrams.007.jpg" alt="Spotify track hashed"></p>
+
+<p>So that particular key is then looked up within the DHT ring that is stored in DNS.  The value associated with that key is essentially the host location of the service where that song and/or its relevant information/metadata is located.  So in this case, Instance E owns (93, c1], which is where this particular Spotify track, foobar, lives, and is mapped to a particular hostname and port.</p>
+
+<p><img src="/assets/images/dns-diagrams.008.jpg" alt="Spotify track ring"></p>
+
+<p>And then Instance E is mapped to a hostname, for example <code>tracks.4301.lon-tracks-a1.lon.spotify.net</code> which would be the machine that houses data on the foobar track.  </p>
+
+<p><img src="/assets/images/dns-diagrams.009.jpg" alt="Spotify foobar track host"></p>
+
+<p>The dummy hostname, <code>tracks.4301.lon-tracks-a1.lon.spotify.net</code>, tells me that this machine hosts information on tracks, can be connected to via port 4301, is located in our London data centers, and is in pod a1. </p>
+
+<p>Confusing, I know – we&#39;re essentially using DNS for a DHT ring to leverage the distributed characteristic of a DNS system.</p>
+<h2 id="tldr-dns-is-hard">TL;DR DNS is hard</h2>
+<p>I threw a lot at you - DNS by no means is easy to get and understand in a single blog post.  And I definitely guarantee you, you will <em>still</em> screw up your deployment configuration again, because DNS is hard.  It’s a black box particularly because it’s not easy to debug.   It&#39;s not only hard to learn and debug, but it&#39;s hard to limit it to a <a href="%22https://ep2014.europython.eu/en/schedule/sessions/5/%22">30 minute talk</a>.  Hopefully this write up and <a href="%22http://pyvideo.org/video/2600/for-lack-of-a-better-nameserver-dns-explained%22">accompanied video</a> leaves a better understanding of DNS.  </p>
+
+    <p id="footer">&#8756;</p>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'roguelynn'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+  </div>
+</article>
+
+        </div>
+      </div>
+      <div class="footer">
+        <footer id="footer" role="contentinfo">
+          <p>© 2007–2014 Lynn Root. All Rights Reserved.</p>
+        </footer>
+      </div>
+    </section>
+        
+        <!--Javascript-->
+        <script src="/assets/js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/assets/js/jquery.timeago.js" type="text/javascript"></script>
+        <script src="/assets/js/toggle.js" type="text/javascript"></script>
+        <!-- Start of StatCounter Code for Default Guide -->
+        <script type="text/javascript">
+        var sc_project=4334716;
+        var sc_invisible=1;
+        var sc_security="d7034a4d";
+        </script>
+        <script type="text/javascript"
+        src="http://www.statcounter.com/counter/counter.js"></script>
+        <noscript><div class="statcounter"><a title="web stats"
+        href="http://statcounter.com/free-web-stats/"
+        target="_blank"><img class="statcounter"
+        src="http://c.statcounter.com/4334716/0/d7034a4d/1/"
+        alt="web stats"></a></div></noscript>
+        <!-- End of StatCounter Code for Default Guide -->
+        <script type="text/javascript">
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-6966504-1']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
+        </script>
+        <!-- Piwik -->
+        <script type="text/javascript">
+          var _paq = _paq || [];
+          _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+          _paq.push(["setCookieDomain", "*.roguelynn.com"]);
+          _paq.push(["setDomains", ["*.roguelynn.com"]]);
+          _paq.push(["trackPageView"]);
+          _paq.push(["enableLinkTracking"]);
+
+          (function() {
+            var u=(("https:" == document.location.protocol) ? "https" : "http") + "://stats.ox.cx/";
+            _paq.push(["setTrackerUrl", u+"piwik.php"]);
+            _paq.push(["setSiteId", "9"]);
+            var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+            g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+          })();
+        </script>
+        <noscript>
+            <!-- Piwik Image Tracker -->
+            <img src="http://stats.ox.cx/piwik.php?idsite=9&amp;rec=1&action_name=homepage" style="border:0" alt="" />
+            <!-- End Piwik -->
+        </noscript>
+        <!-- End Piwik Code -->
+    </body>
+</html>
