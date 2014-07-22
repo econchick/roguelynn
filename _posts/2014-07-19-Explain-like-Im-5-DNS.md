@@ -5,7 +5,7 @@ tags: [DNS, dnspython, twisted]
 category: [words]
 ---
 
-This post is an accompaniment to my [PyCon 2014][pycon2014] and [EuroPython 2014][ep2014] talk, For Lack of a Better Name(server): DNS Explained, that is a deep dive into DNS. 
+This post is an accompaniment to my [PyCon 2014][pycon2014] and [EuroPython 2014][ep2014] talk, For Lack of a Better Name(server): DNS Explained, that is a deep dive into DNS. Slides can be found [here][slides]
 
 I previously wrote a post [explaining Kerberos "Like I'm 5"][eli5kerberos] that turns out to be one of my most visited pieces, so I figured an ELI5 version of my DNS talk would be beneficial to some.
 
@@ -703,3 +703,4 @@ I threw a lot at you - DNS by no means is easy to get and understand in a single
 [pycon2014video]: "http://pyvideo.org/video/2600/for-lack-of-a-better-nameserver-dns-explained"
 [rfctsla]: "http://tools.ietf.org/html/rfc6698#section-2.1"
 [testdane]: "http://www.internetsociety.org/deploy360/resources/dane-test-sites/"
+[slides]: "https://speakerdeck.com/roguelynn/europython-2014-for-lack-of-a-better-name-server-dns-explained"
