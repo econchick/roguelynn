@@ -18,7 +18,7 @@ I previously wrote a post [explaining Kerberos "Like I'm 5"][eli5kerberos] that 
 
 As a nerdy person who likes jetting up to a nearby hotel an hour away from my SF apartment for long weekend hacks with the significant other, I've had many experiences setting up personal projects for deployment.  As I'm sure you have all been through, nearly every time when one does the first `git push` to Heroku, it doesn't work.
 
-<img class="displayed" alt="It's always DNS" src="{{ get_asset('/images/devops_dns_issue.gif') }}"/>
+<a href="http://devopsreactions.tumblr.com/post/39647674903/realizing-its-yet-another-dns-problem"><img class="displayed" alt="It's always DNS" src="{{ get_asset('/images/devops_dns_issue.gif') }}" /></a>
 
 All else equal - e.g. Heroku is not down - I'm betting DNS is the issue.  Who has set up DNS cleanly the first time? Be honest...  You follow the directions on your host's website to properly setup DNS records, but something still doesn't work.  We've all been there.  And without a solid understanding of DNS, often times folks just fall into a "oh, let's try this", guess-editing records, waiting for DNS to propagate to test if the guess was correct - the `print` statements of Python debugging (I'm also guilty of this).  
 
@@ -43,7 +43,7 @@ The formal description of DNS is:
 
 > ... a distributed storage system for Resource Records (RR).  Each DNS resolver or authoritative server stores [these records] it its cache or local zone file.  A ... record includes a label, class, type, and data.
 
-<small>– [source][source] (PDF)</small>
+<small>– [Sooel Son and Vitaly Shmatikov, University of Texas at Austin][source] (PDF)</small>
 
 With the textbook definition out of the way, let's see it in action!  I always understood something better when I've gotten my hands a bit dirty.
 
@@ -299,7 +299,7 @@ Rather than inundating root and top-level name servers like `.` and `.org`, DNS 
 
 > Instead of sending a referral response, the DNS resolver may also be configured to initiate the same query to an authoritative DNS server responsible for the domain name which is the subject of the query ...
 
-<small>– [source][source] (PDF)</small>
+<small>– [Sooel Son and Vitaly Shmatikov, University of Texas at Austin][source] (PDF)</small>
 
 The authoritative server can then respond with an answer, a referral, or a failed response.  After, 
 
@@ -652,7 +652,7 @@ So for example, when you are on the Spotify client, and want to play a particula
 
 ![Spotify track hashed]( {{ get_asset('/images/dns-diagrams.007.jpg') }})
 
-So that particular key is then looked up within the DHT ring that is stored in DNS.  The value associated with that key is essentially the host location of the service where that song and/or its relevant information/metadata is located.  So in this case, Instance E owns (93, c1], which is where this particular Spotify track, foobar, lives, and is mapped to a particular hostname and port.
+So that particular key is then looked up within the DHT ring that is stored in DNS.  The value associated with that key is essentially the host location of the service where that song and/or its relevant information/metadata is located.  So in this case, Instance E owns (9e, c1], which is where this particular Spotify track, foobar, lives, and is mapped to a particular hostname and port.
 
 ![Spotify track ring]( {{ get_asset('/images/dns-diagrams.008.jpg') }})
 
@@ -669,38 +669,38 @@ Confusing, I know – we're essentially using DNS for a DHT ring to leverage the
 I threw a lot at you - DNS by no means is easy to get and understand in a single blog post.  And I definitely guarantee you, you will _still_ screw up your deployment configuration again, because DNS is hard.  It’s a black box particularly because it’s not easy to debug.   It's not only hard to learn and debug, but it's hard to limit it to a [30 minute talk][europython].  Hopefully this write up and [accompanied video][pycon2014video] leaves a better understanding of DNS.  
 
 
-[pycon2014]: "http://roguelynn.com/words/2014-04-11-For-Lack-of-a-Better-Nameserver"
-[ep2014]: "http://roguelynn.com/words/2014-06-24-EuroPython-DNS.md"
-[eli5kerberos]:  "http://roguelynn.com/words/2013-04-02-explain-like-im-5-kerberos"
-[source]: "https://www.cs.utexas.edu/~shmat/shmat_securecomm10.pdf"
-[scapy]: "http://www.secdev.org/projects/scapy/"
-[sniff]: "http://www.secdev.org/projects/scapy/doc/usage.html#sniffing"
-[udp]: "http://en.wikipedia.org/wiki/User_Datagram_Protocol"
-[datagram]: "https://twitter.com/glyph/status/414988975036571648"
-[mandig]: "http://linux.die.net/man/1/dig"
-[DNSSEC]: "http://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions"
-[dnsmap]: "https://code.google.com/p/dnsmap/"
-[pyladieslocations]: "http://www.pyladies.com/locations"
-[twisted]: "https://twistedmatrix.com/trac/"
-[names]: "http://twistedmatrix.com/trac/wiki/TwistedNames"
-[unicast]: "http://en.wikipedia.org/wiki/Unicast"
-[multicast]: "http://en.wikipedia.org/wiki/Multicast"
-[broadcast]: "http://en.wikipedia.org/wiki/Broadcasting_(computing)"
-[vagrant]: "http://www.vagrantup.com/"
-[anycast]: "http://en.wikipedia.org/wiki/Anycast"
-[googleanycast]: "http://puppetlabs.com/presentations/keynote-why-did-we-think-large-scale-distributed-systems-would-be-easy"
-[dane]: "http://en.wikipedia.org/wiki/DNS-based_Authentication_of_Named_Entities"
-[danerfc]: "http://tools.ietf.org/html/rfc6698"
-[infoblox]: "https://community.infoblox.com/blogs/2014/04/14/dns-based-authentication-named-entities-dane"
-[comodo]: "https://www.comodo.com/Comodo-Fraud-Incident-2011-03-23.html"
-[diginotar]: "http://en.wikipedia.org/wiki/Diginotar#Issuance_of_fraudulent_certificates"
-[twistedemail]: "http://twistedmatrix.com/pipermail/twisted-python/2013-November/027773.html"
-[twisteddane]: "https://twistedmatrix.com/trac/wiki/EDNS0#DANE"
-[dnspython]: "http://www.dnspython.org/"
-[dnspythondane]: "https://github.com/rthalley/dnspython/commit/07426738e9491660214d3d7f39b1cda57284eaba#diff-02f0b547c2779d25cff89672135f20e3"
-[dht]: "http://en.wikipedia.org/wiki/Distributed_hash_table"
-[europython]: "https://ep2014.europython.eu/en/schedule/sessions/5/"
-[pycon2014video]: "http://pyvideo.org/video/2600/for-lack-of-a-better-nameserver-dns-explained"
-[rfctsla]: "http://tools.ietf.org/html/rfc6698#section-2.1"
-[testdane]: "http://www.internetsociety.org/deploy360/resources/dane-test-sites/"
-[slides]: "https://speakerdeck.com/roguelynn/europython-2014-for-lack-of-a-better-name-server-dns-explained"
+[pycon2014]: https://speakerdeck.com/roguelynn/for-lack-of-a-better-name-server-dns-explained
+[ep2014]: https://ep2014.europython.eu/en/
+[eli5kerberos]:  http://www.roguelynn.com/words/explain-like-im-5-kerberos/
+[source]: https://www.cs.utexas.edu/~shmat/shmat_securecomm10.pdf
+[scapy]: http://www.secdev.org/projects/scapy/
+[sniff]: http://www.secdev.org/projects/scapy/doc/usage.html#sniffing
+[udp]: http://en.wikipedia.org/wiki/User_Datagram_Protocol
+[datagram]: https://twitter.com/glyph/status/414988975036571648
+[mandig]: http://linux.die.net/man/1/dig
+[DNSSEC]: http://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions
+[dnsmap]: https://code.google.com/p/dnsmap/
+[pyladieslocations]: http://www.pyladies.com/locations
+[twisted]: https://twistedmatrix.com/trac/
+[names]: http://twistedmatrix.com/trac/wiki/TwistedNames
+[unicast]: http://en.wikipedia.org/wiki/Unicast
+[multicast]: http://en.wikipedia.org/wiki/Multicast
+[broadcast]: http://en.wikipedia.org/wiki/Broadcasting_(computing)
+[vagrant]: http://www.vagrantup.com/
+[anycast]: http://en.wikipedia.org/wiki/Anycast
+[googleanycast]: http://puppetlabs.com/presentations/keynote-why-did-we-think-large-scale-distributed-systems-would-be-easy
+[dane]: http://en.wikipedia.org/wiki/DNS-based_Authentication_of_Named_Entities
+[danerfc]: http://tools.ietf.org/html/rfc6698
+[infoblox]: https://community.infoblox.com/blogs/2014/04/14/dns-based-authentication-named-entities-dane
+[comodo]: https://www.comodo.com/Comodo-Fraud-Incident-2011-03-23.html
+[diginotar]: http://en.wikipedia.org/wiki/Diginotar#Issuance_of_fraudulent_certificates
+[twistedemail]: http://twistedmatrix.com/pipermail/twisted-python/2013-November/027773.html
+[twisteddane]: https://twistedmatrix.com/trac/wiki/EDNS0#DANE
+[dnspython]: http://www.dnspython.org/
+[dnspythondane]: https://github.com/rthalley/dnspython/commit/07426738e9491660214d3d7f39b1cda57284eaba#diff-02f0b547c2779d25cff89672135f20e3
+[dht]: http://en.wikipedia.org/wiki/Distributed_hash_table
+[europython]: https://ep2014.europython.eu/en/schedule/sessions/5/
+[pycon2014video]: http://pyvideo.org/video/2600/for-lack-of-a-better-nameserver-dns-explained
+[rfctsla]: http://tools.ietf.org/html/rfc6698#section-2.1
+[testdane]: http://www.internetsociety.org/deploy360/resources/dane-test-sites/
+[slides]: https://speakerdeck.com/roguelynn/europython-2014-for-lack-of-a-better-name-server-dns-explained

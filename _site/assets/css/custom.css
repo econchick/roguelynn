@@ -93,7 +93,16 @@ pre {
   border-radius: 5px;
   border: 1px solid #e1e1e8;
   width: 750px;
-  overflow: auto;
+  max-width: 800px;
+  overflow-x: scroll;
+  word-break: normal !important;
+  word-wrap: normal !important;
+  white-space: pre !important;
+}
+
+code {
+  padding: 0px;
+  background: #fff;
 }
 
 td.linenos {
@@ -116,6 +125,11 @@ td.linenos {
   font-size: 16px;
 }
 
+small {
+  color: #7F808A;
+  font-style: italic;
+  font-size: 16px;
+}
 
 #date-header {
   color:#7F808A;
@@ -159,4 +173,16 @@ ul li {
 }
 #talks {
   width: 900px;
+}
+
+#article-content p {
+  margin-top: 15px;
+}
+
+.social {
+  width: 90px;
+}
+
+.social ul li {
+  width: 80px;
 }
