@@ -73,13 +73,13 @@
 
 <hr>
 <h3 id="wtf-where39s-my-website">WTF where&#39;s my website?</h3>
-<p>As a nerdy person who likes jetting up to a nearby hotel an hour away from my SF apartment for long weekend hacks with the significant other, I&#39;ve had many experiences setting up personal projects for deployment.  As I&#39;m sure you have all been through, nearly every time when one does the first <code>git push</code> to Heroku, it doesn&#39;t work.</p>
+<p>As a nerdy person who has many side projects, I&#39;ve had many experiences setting up personal projects for deployment.  As I&#39;m sure you have all been through, nearly every time when one does the first <code>git push</code> to Heroku, it doesn&#39;t work.</p>
 
 <p><a href="http://devopsreactions.tumblr.com/post/39647674903/realizing-its-yet-another-dns-problem"><img class="displayed" alt="It's always DNS" src="/assets/images/devops_dns_issue.gif" /></a></p>
 
-<p>All else equal - e.g. Heroku is not down - I&#39;m betting DNS is the issue.  Who has set up DNS cleanly the first time? Be honest&hellip;  You follow the directions on your host&#39;s website to properly setup DNS records, but something still doesn&#39;t work.  We&#39;ve all been there.  And without a solid understanding of DNS, often times folks just fall into a &ldquo;oh, let&#39;s try this&rdquo;, guess-editing records, waiting for DNS to propagate to test if the guess was correct - the <code>print</code> statements of Python debugging (I&#39;m also guilty of this).  </p>
+<p>All else equal - e.g. Heroku is not down - I&#39;m betting DNS is the issue.  Who actually has set up DNS cleanly the first time?  You follow the directions on your host&#39;s website to properly setup DNS records, but something still doesn&#39;t work.  We&#39;ve all been there.  And without a solid understanding of DNS, often times folks just fall into a &ldquo;oh, let&#39;s try this&rdquo;, guess-editing records, waiting for DNS to propagate to test if the guess was correct - the <code>print</code> statements of Python debugging (I&#39;m also guilty of this).  </p>
 
-<p>Naturally, curiosity got the best of me. It&#39;s common knowledge that DNS is the internet&#39;s phonebook.  Sure - it&#39;s the backbone of the internet; it&#39;s a safe assumption that the cloud itself is build on DNS and duct tape, but that&#39;s about it.</p>
+<p>Naturally, curiosity got the best of me. It&#39;s common knowledge that DNS is the internet&#39;s phonebook.  Sure - it&#39;s the backbone of the internet; it&#39;s a safe assumption that the cloud itself is build on DNS and duct tape, but that&#39;s about all I knew.</p>
 
 <p><img src="/assets/images/tweet_dns_duct_tape.png" alt="The Cloud: DNS and Duct tape"></p>
 <h3 id="why-dns">Why DNS?</h3>
@@ -193,14 +193,7 @@
 24
 25
 26
-27
-28
-29
-30
-31
-32
-33
-34</pre></div></td><td class="code"><div class="highlight"><pre><span class="nv">$ </span>whois 75.75.75.75
+27</pre></div></td><td class="code"><div class="highlight"><pre><span class="nv">$ </span>whois 75.75.75.75
 <span class="c">#</span>
 <span class="c"># ARIN WHOIS data and services are subject to the Terms of Use</span>
 <span class="c"># available at: https://www.arin.net/whois_tou.html</span>
@@ -208,25 +201,18 @@
 <span class="c"># If you see inaccuracies in the results, please report at</span>
 <span class="c"># http://www.arin.net/public/whoisinaccuracy/index.xhtml</span>
 <span class="c">#</span>
-
-
 <span class="c">#</span>
 <span class="c"># Query terms are ambiguous.  The query is assumed to be:</span>
 <span class="c">#     &quot;n 75.75.75.75&quot;</span>
 <span class="c">#</span>
 <span class="c"># Use &quot;?&quot; to get help.</span>
 <span class="c">#</span>
-
 <span class="c">#</span>
 <span class="c"># The following results may also be obtained via:</span>
 <span class="c"># http://whois.arin.net/rest/nets;q=75.75.75.75?showDetails=true&amp;showARIN=false&amp;ext=netref2</span>
 <span class="c">#</span>
-
 Comcast Cable Communications Holdings, Inc CCCH-3-34 <span class="o">(</span>NET-75-64-0-0-1<span class="o">)</span> 75.64.0.0 - 75.75.191.255
 Comcast Cable Communications Holdings, Inc COMCAST-47 <span class="o">(</span>NET-75-75-72-0-1<span class="o">)</span> 75.75.72.0 - 75.75.79.255
-
-
-
 <span class="c">#</span>
 <span class="c"># ARIN WHOIS data and services are subject to the Terms of Use</span>
 <span class="c"># available at: https://www.arin.net/whois_tou.html</span>
@@ -552,7 +538,7 @@ www.pyladies.com
 IP address <span class="c">#1: 81.28.232.189</span>
 </pre></div>
 </td></tr></table></div></div>
-<p>Trying <code>dnsmap pyladies.com</code> only returns about 4 results even though - as one of the managers of the site - I know there&#39;s way over <a href="http://www.pyladies.com/locations">20</a>.  So don&#39;t exactly expect the results to be comprehensive, nor fast since it&#39;s literally searching based on a built-in or provided word list one at a time.  So this tool is limited to its built-in word list, which you can certainly supply on your own as well.  </p>
+<p>Trying <code>dnsmap pyladies.com</code> only returns about 4 results even though - as one of the managers of the site - I know there&#39;s way over <a href="http://www.pyladies.com/locations">20</a>.  So don&#39;t exactly expect the results to be comprehensive, nor fast since it&#39;s literally searching based on a built-in word list one at a time without multithreading.  So this tool is limited to its built-in word list, which you can certainly supply on your own as well.  </p>
 
 <p>I ran dnsmap against spotify.net for funsies while running the earlier described sniff function from <a href="http://www.secdev.org/projects/scapy/">scapy</a>.  Here is a captured UDP datagram in which you can see dnsmap was querying for <code>zr.spotify.net</code>:</p>
 <div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -608,7 +594,7 @@ IP address <span class="c">#1: 81.28.232.189</span>
             <span class="o">|</span>  <span class="n">qclass</span>    <span class="o">=</span> <span class="n">IN</span>
 </pre></div>
 </td></tr></table></div></div>
-<p>You can easily see the Question Record - the name of the record, type, and class. </p>
+<p>You can easily see the Question Record - the name of the record, type, and class.</p>
 <h4 id="local-cache">local cache</h4>
 <p>When I was playing around with DNS, I wanted to figure out what&#39;s in my local DNS&#39;s cache.  At least for OS X, you can see what is cached by literally killing the process (it automatically starts up again) which flushes the cache and writes to the sys log:</p>
 <div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -934,7 +920,9 @@ Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</spa
 <h3 id="dane">DANE</h3>
 <p><a href="http://en.wikipedia.org/wiki/DNS-based_Authentication_of_Named_Entities">DANE</a> stands for DNS-based Authentication of Named Entities.  It&#39;s a protocol for certificates to be bound to DNS names using <a href="http://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions">DNSSEC</a>.  It can be likened to two-factor authentication that we, as users, are familiar with.  Essentially, DANE is a <a href="http://tools.ietf.org/html/rfc6698">proposed</a> way to cross-verify the domain name and the CA-issued certificate. <sup><a href="https://community.infoblox.com/blogs/2014/04/14/dns-based-authentication-named-entities-dane">3</a></sup></p>
 
-<p>The issue that DANE solves is the inability to verify that the organization running the web server officially owns the domain name.  As well, the DNS record does not contain information regarding which Certificate Authority is preferred by this organization.  Exploits of this weakness was seen twice in 2011 with <a href="https://www.comodo.com/Comodo-Fraud-Incident-2011-03-23.html">Comodo</a> and the Dutch CA, <a href="http://en.wikipedia.org/wiki/Diginotar#Issuance_of_fraudulent_certificates">DigiNotar</a>, where false certificates were generated giving the attackers the ability to perform man-in-the-middle exploits.</p>
+<p>The issue that DANE solves is the inability to verify that the organization running the web server officially owns the domain name.  As well, the DNS record does not contain information regarding which Certificate Authority is preferred by this organization.  </p>
+
+<p>Exploits of this weakness was seen twice in 2011 with <a href="https://www.comodo.com/Comodo-Fraud-Incident-2011-03-23.html">Comodo</a> and the Dutch CA, <a href="http://en.wikipedia.org/wiki/Diginotar#Issuance_of_fraudulent_certificates">DigiNotar</a>, where false certificates were generated giving the attackers the ability to perform man-in-the-middle exploits.</p>
 
 <p>So again, what DANE does is provide a way to cross-verify the domain name information with the host&#39;s CA-issued certificate.  The pieces of authentication with respect to two-factor auth is:</p>
 
@@ -947,7 +935,7 @@ Jul 21 08:34:42 sudo-make-me-a-sammich.local mDNSResponder<span class="o">[</spa
 <div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre>_443._tcp.www.example.com. IN TLSA <span class="o">(</span> 0 0 1 91751cee0a1ab8414400238a761411daa29643ab4b8243e9a91649e25be53ada <span class="o">)</span>
 </pre></div>
 </td></tr></table></div></div>
-<p>For funnies, let&#39;s take a look at one of the <a href="http://www.internetsociety.org/deploy360/resources/dane-test-sites/">available DANE test sites</a>:</p>
+<p>For funsies, let&#39;s take a look at one of the <a href="http://www.internetsociety.org/deploy360/resources/dane-test-sites/">available DANE test sites</a>:</p>
 <div class="code"><div><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3

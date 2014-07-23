@@ -16,13 +16,13 @@ I previously wrote a post [explaining Kerberos "Like I'm 5"][eli5kerberos] that 
 
 ### WTF where's my website?
 
-As a nerdy person who likes jetting up to a nearby hotel an hour away from my SF apartment for long weekend hacks with the significant other, I've had many experiences setting up personal projects for deployment.  As I'm sure you have all been through, nearly every time when one does the first `git push` to Heroku, it doesn't work.
+As a nerdy person who has many side projects, I've had many experiences setting up personal projects for deployment.  As I'm sure you have all been through, nearly every time when one does the first `git push` to Heroku, it doesn't work.
 
 <a href="http://devopsreactions.tumblr.com/post/39647674903/realizing-its-yet-another-dns-problem"><img class="displayed" alt="It's always DNS" src="{{ get_asset('/images/devops_dns_issue.gif') }}" /></a>
 
-All else equal - e.g. Heroku is not down - I'm betting DNS is the issue.  Who has set up DNS cleanly the first time? Be honest...  You follow the directions on your host's website to properly setup DNS records, but something still doesn't work.  We've all been there.  And without a solid understanding of DNS, often times folks just fall into a "oh, let's try this", guess-editing records, waiting for DNS to propagate to test if the guess was correct - the `print` statements of Python debugging (I'm also guilty of this).  
+All else equal - e.g. Heroku is not down - I'm betting DNS is the issue.  Who actually has set up DNS cleanly the first time?  You follow the directions on your host's website to properly setup DNS records, but something still doesn't work.  We've all been there.  And without a solid understanding of DNS, often times folks just fall into a "oh, let's try this", guess-editing records, waiting for DNS to propagate to test if the guess was correct - the `print` statements of Python debugging (I'm also guilty of this).  
 
-Naturally, curiosity got the best of me. It's common knowledge that DNS is the internet's phonebook.  Sure - it's the backbone of the internet; it's a safe assumption that the cloud itself is build on DNS and duct tape, but that's about it.
+Naturally, curiosity got the best of me. It's common knowledge that DNS is the internet's phonebook.  Sure - it's the backbone of the internet; it's a safe assumption that the cloud itself is build on DNS and duct tape, but that's about all I knew.
 
 ![The Cloud: DNS and Duct tape]({{ get_asset('/images/tweet_dns_duct_tape.png') }})
 
@@ -109,25 +109,18 @@ $ whois 75.75.75.75
 # If you see inaccuracies in the results, please report at
 # http://www.arin.net/public/whoisinaccuracy/index.xhtml
 #
-
-
 #
 # Query terms are ambiguous.  The query is assumed to be:
 #     "n 75.75.75.75"
 #
 # Use "?" to get help.
 #
-
 #
 # The following results may also be obtained via:
 # http://whois.arin.net/rest/nets;q=75.75.75.75?showDetails=true&showARIN=false&ext=netref2
 #
-
 Comcast Cable Communications Holdings, Inc CCCH-3-34 (NET-75-64-0-0-1) 75.64.0.0 - 75.75.191.255
 Comcast Cable Communications Holdings, Inc COMCAST-47 (NET-75-75-72-0-1) 75.75.72.0 - 75.75.79.255
-
-
-
 #
 # ARIN WHOIS data and services are subject to the Terms of Use
 # available at: https://www.arin.net/whois_tou.html
@@ -351,7 +344,7 @@ www.pyladies.com
 IP address #1: 81.28.232.189
 ```
 
-Trying `dnsmap pyladies.com` only returns about 4 results even though - as one of the managers of the site - I know there's way over [20][pyladieslocations].  So don't exactly expect the results to be comprehensive, nor fast since it's literally searching based on a built-in or provided word list one at a time.  So this tool is limited to its built-in word list, which you can certainly supply on your own as well.  
+Trying `dnsmap pyladies.com` only returns about 4 results even though - as one of the managers of the site - I know there's way over [20][pyladieslocations].  So don't exactly expect the results to be comprehensive, nor fast since it's literally searching based on a built-in word list one at a time without multithreading.  So this tool is limited to its built-in word list, which you can certainly supply on your own as well.  
 
 I ran dnsmap against spotify.net for funsies while running the earlier described sniff function from [scapy][scapy].  Here is a captured UDP datagram in which you can see dnsmap was querying for `zr.spotify.net`:
 
@@ -384,7 +377,7 @@ I ran dnsmap against spotify.net for funsies while running the earlier described
             |  qclass    = IN
 ```
 
-You can easily see the Question Record - the name of the record, type, and class. 
+You can easily see the Question Record - the name of the record, type, and class.
 
 #### local cache
 
@@ -581,7 +574,9 @@ You folks may know the types of IP network addressing methodology, including [un
 
 [DANE][dane] stands for DNS-based Authentication of Named Entities.  It's a protocol for certificates to be bound to DNS names using [DNSSEC][DNSSEC].  It can be likened to two-factor authentication that we, as users, are familiar with.  Essentially, DANE is a [proposed][danerfc] way to cross-verify the domain name and the CA-issued certificate. <sup>[3][infoblox]</sup>
 
-The issue that DANE solves is the inability to verify that the organization running the web server officially owns the domain name.  As well, the DNS record does not contain information regarding which Certificate Authority is preferred by this organization.  Exploits of this weakness was seen twice in 2011 with [Comodo][comodo] and the Dutch CA, [DigiNotar][diginotar], where false certificates were generated giving the attackers the ability to perform man-in-the-middle exploits.
+The issue that DANE solves is the inability to verify that the organization running the web server officially owns the domain name.  As well, the DNS record does not contain information regarding which Certificate Authority is preferred by this organization.  
+
+Exploits of this weakness was seen twice in 2011 with [Comodo][comodo] and the Dutch CA, [DigiNotar][diginotar], where false certificates were generated giving the attackers the ability to perform man-in-the-middle exploits.
 
 So again, what DANE does is provide a way to cross-verify the domain name information with the host's CA-issued certificate.  The pieces of authentication with respect to two-factor auth is:
 
@@ -594,7 +589,7 @@ DNSSEC is required to be configured on your authoritative DNS server for DANE to
 _443._tcp.www.example.com. IN TLSA ( 0 0 1 91751cee0a1ab8414400238a761411daa29643ab4b8243e9a91649e25be53ada )
 ```
 
-For funnies, let's take a look at one of the [available DANE test sites][testdane]:
+For funsies, let's take a look at one of the [available DANE test sites][testdane]:
 
 ```bash
 $ dig -t TLSA _443._tcp.www.fedoraproject.org
