@@ -196,7 +196,7 @@ The `python.org` name server says "yep, we have the A record for python.org, and
 
 ![python.org DNS Query: python.org dns]( {{ get_asset('/images/dns-diagrams.005.jpg') }})
 
-But if we wanted to know more about, say, `hg.python.org`, or others - doing a `dig hg.python.org`, we actually get that it is a CNAME record mapped to `pdf.osuosl.org`:
+But if we wanted to know more about, say, `hg.python.org`, or others - doing a `dig hg.python.org`, we actually get that it is a CNAME record mapped to `virt-7yvsjn.psf.osuosl.org`:
 
 ```bash
 dig +trace hg.python.org
