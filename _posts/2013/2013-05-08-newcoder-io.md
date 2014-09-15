@@ -3,7 +3,7 @@ layout: post.html
 title: "newcoder.io"
 site_url: "http://newcoder.io"
 code_url: "https://github.com/econchick/new-coder"
-tags: [resume]
+tags: [resume, projects]
 category: [resume, projects]
 dateemp: "March 2013 - present"
 abs_url: http://www.roguelynn.com/projects/newcoder/

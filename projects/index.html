@@ -1,0 +1,17 @@
+{% extends "site.html" %}
+{% block title %}Projects{% endblock %}
+{% block content %}
+    <section id="archive">
+        <h1>Projects</h1>
+            <article id="talks">
+                <br/>
+                {% for post in posts %}
+                    {% if 'projects' in post.tags %}
+                    {% if not 'hidden' in post.tags %}
+                            <p><i class="fa fa-chevron-right"></i><a href="{{ post.conf_url }}"> {{ post.title }}</a></p>
+                            <p><span style="padding-left:30px;">{{ post.excerpt }}</span></p>
+                    {% endif %}{% endif %}
+                {% endfor %}
+            </article>
+    </section>
+{% endblock %}
