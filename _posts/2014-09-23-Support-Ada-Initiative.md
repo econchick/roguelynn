@@ -56,7 +56,7 @@ The Ada Initiative defines allies as:
 
 > Allies are people who are not themselves part of a particular group, but support people in that group. Allies are a crucial part of supporting women in open technology and culture. While this workshop is designed specially for allies, people of all genders are welcome to attend. The most successful workshops have about 50% male attendees.
 
-The workshop lasted about two hours long, and had about 20 folks attend (and surprisingly, only one other female attended). Valerie Aurora led the workshop, starting off with a few small but key definitions and principles:
+The workshop lasted about two hours long, and had about 20 folks attend (and surprisingly, only one other female attended). [Valerie Aurora][val] led the workshop, starting off with a few small but key definitions and principles:
 
 #### GENDER IDENTITY & INCLUSIVENESS
 Valerie started off with an important distinction with folks identifying with genders:
@@ -64,9 +64,9 @@ Valerie started off with an important distinction with folks identifying with ge
 * “cis” – gender you are born with and identify with
 * “trans” – gender you identify with but not born with
 
-_My own personal note:_ It’s important to understand these two groups in the perspective of a cooperative and comfortable professional environment – especially cis-gendered folks. By identifying with the gender you were born with, you already have a privilege that trans-gendered folks do not. There is a lot of subtle and overt discrimination against trans-folks which cis-gendered folks do not face and therefore do not have to “swim upstream” within society. Here is a great example of issues trans-gendered folks can face, and here is a great cis-gender programmer privilege checklist.
+_My own personal note:_ It’s important to understand these two groups in the perspective of a cooperative and comfortable professional environment – especially cis-gendered folks. By identifying with the gender you were born with, you already have a privilege that trans-gendered folks do not. There is a lot of subtle and overt discrimination against trans-folks which cis-gendered folks do not face and therefore do not have to “swim upstream” within society. [Here][1] is a great example of issues trans-gendered folks can face, and [here][2] is a great cis-gender programmer privilege checklist.
 
-Similarly, Valerie noted that men have a built-in advantage within the tech work place. This is generalizing – but she mentions that when a woman speaks up against any workplace issue she has, she is perceived as a complainer, as whiny, and as weak. However, when a man speaks up about something, he is seen as brave. A really great article on male privilege can be read here.
+Similarly, Valerie noted that men have a built-in advantage within the tech work place. This is generalizing – but she mentions that when a woman speaks up against any workplace issue she has, she is perceived as a complainer, as whiny, and as weak. However, when a man speaks up about something, he is seen as brave. A really great article on male privilege can be read [here][3].
 
 #### RESPONDING TO A SEXIST INCIDENT
 Valerie outline some basic principles when responding to a sexist incident:
@@ -100,7 +100,7 @@ _My thoughts:_ take into consideration the following elements:
 **3: Speaking up about casual sexism**
 Scenario: On a mailing list in your community, someone writes “How would you explain this [technical thing] to your girlfriend?” (e.g. using a woman as an example of a technically unsavvy person).
 
-_My thoughts:_ Since this is a public mailing list, address it publicly. But address it in a way that does not fault the person, but the behavior displayed. For instance, saying something like “I know you may have not meant it like this, but this sort of comment ostracizes women and pegs them as not being technical. This is not the environment this community wants to create.” A good article can be read here titled “Dick Jokes and Devops”.
+_My thoughts:_ Since this is a public mailing list, address it publicly. But address it in a way that does not fault the person, but the behavior displayed. For instance, saying something like “I know you may have not meant it like this, but this sort of comment ostracizes women and pegs them as not being technical. This is not the environment this community wants to create.” A good article can be read [here][4] titled “Dick Jokes and Devops”.
 
 **4: Speaking up about casual sexism**
 Scenario: At a meeting, a woman makes a suggestion but no one picks up on it. Later, a man makes the same suggestion and is given credit for it.
@@ -118,7 +118,7 @@ _My thoughts:_ In this scenario, because our company would have direct influence
 
 If we did not have any monetary influence like sponsorship, I personally have no issue calling companies out (e.g. Twitter), raising awareness of this issue.
 
-I’ve also personally pledged to Let’s Get Louder that I will only speak and attend conferences that have a code of conduct. Impact may be small, but if I refuse to speak at a conference without a CoC, I may have some influence (this happened with RuPy 2012 when I brought up the lack of CoC and mentioning not being able to speak unless there was one).
+I’ve also personally pledged to [Let’s Get Louder][5] that I will only speak and attend conferences that have a code of conduct. Impact may be small, but if I refuse to speak at a conference without a CoC, I may have some influence (this happened with RuPy 2012 when I brought up the lack of CoC and mentioning not being able to speak unless there was one).
 
 **6: Witnessing harassment of women**
 Scenario: Someone makes a sexist joke at a party. Everyone is holding a drink.
@@ -171,3 +171,9 @@ Again, what are you waiting for? [DONATE][donate].
 [jkm]: http://jacobian.org/writing/python4ada/
 [alex]: http://alexgaynor.net/
 [carl]: http://oddbird.net/authors/carl/
+[1]: http://lwn.net/Articles/252073/
+[2]: http://geekfeminism.wikia.com/wiki/Cisgender_Programmer_Privilege_Checklist
+[3]: http://www.doctornerdlove.com/2011/11/nerds-and-male-privilege/all/1/
+[4]: http://www.cryptocracy.com/blog/2013/11/23/dick-jokes-and-devops/
+[5]: http://www.letsgetlouder.com/
+[val]: http://adainitiative.org/about-us/founders-and-staff/#valerie
