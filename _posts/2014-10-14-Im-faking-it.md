@@ -1,6 +1,6 @@
 ---
 layout: post.html
-title: "I'm a fraud."
+title: "I’m a fraud."
 tags: [impostor syndrome, ada lovelace]
 category: [words]
 ---
@@ -9,7 +9,7 @@ In celebration for [Ada Lovelace Day][adaday], [Thoughtworks][thoughtworks] host
 
 I am totally faking it.
 
-## I'm not a "real" coder
+## I’m not a “real” coder
 
 The tl;dr of my [path][path] in life is that I am not a “real” coder.  I graduated college in 2008 with a degree in business focusing on econ and finance and went straight into banking as a [treasury analyst][bpb]. I was a bit restless and wanted to get an advance degree, eventually making my way through the industry to the Board of the [Federal Reserve Bank][frb], who makes economic policy decisions for the US.
 
@@ -111,7 +111,7 @@ Similarly, I saw this image over two years ago and it has been my internal mantr
 
 <img class="displayed" src="{{ get_asset('images/sucking.jpg') }}" width="400" alt="Super awesome sinusoidal graph of my process"/>
 
-## How I've "made" it
+## How I’ve “made” it
 
 I explained how I am not a “real” coder, and how I’ve been faking it. But how exactly have I made it?
 
@@ -136,7 +136,7 @@ And so as I was continuing my break-learn-break-cry-break cycle, the tide starte
 
 And so after a year at Red Hat, I left to [join Spotify][spotify] for a better opportunity.
 
-## I'm not the only faker
+## I’m not the only faker
 
 As I looked at my progress in the context of my faking it and seemingly making it, I could tell that others had to be sharing my secret.  I’m not the only faker.  Everyone else is a fraud, too.
 
