@@ -17,11 +17,11 @@ So I decided to set my sights for a [Financial Engineering masters degree][finen
 
 But no.
 
-I failed.  I failed both the mid terms. And not like “a B isn’t an A” sort of fail.  But “here’s a D, you should be thankful for the grading curve”.
+I failed.  I failed both the mid terms. And not like “a B isn’t an A” sort of fail.  But “here’s a D, you should be thankful for the grading curve.”
 
 I could not understand concepts that are core to programming, like memory allocation, pointers, and dereferencing.  I knew that sorting algorithms existed, but how to implement a simple Insertion Sort in C? Instant deer-in-the-headlights.
 
-So for the course’s final project, I decided to make a website built using Python.  I chose python because I saw my boyfriend writing it and thought “woah, I can actually read it, understand it!”  It was a little app - with really awful and repetitive code - that calculated a user’s personalized inflation rate over 10 years.  For example, based on income and purchase habits, a retiree experiences inflation different than one who is in a marriage with 3 kids, or a college kid.
+So for the course’s final project, I decided to make a website built using Python.  I chose Python because I saw my boyfriend writing it and thought “woah, I can actually read it, understand it!”  It was a little app - with really awful and repetitive code - that calculated a user’s personalized inflation rate over 10 years.  For example, based on income and purchase habits, a retiree experiences inflation different than one who is in a marriage with 3 kids, or a college kid.
 
 So because I made a *working* site, and learned Python & Django for it, I finished the course in December 2011 with an A-.  Not sure how that computes with two failed mid-terms, but I’ll take it.
 
@@ -31,13 +31,13 @@ I was hooked though - I want to code more.  Screw finance. Screw getting a maste
 
 So in January of 2012, I started a women-only, Python-centric [study group][studygroup] through the [Women Who Code][wwc] (WWC) Meetup - graciously hosted by Dropbox.  I did it through WWC because having attended previous events, it was a super supportive environment and I wanted to plug into that.
 
-I created my own sort of "course"; it was an 8-week series that I made a curriculum for, where each week would be a mini project for a few hours on Wednesday evenings.  I would digest the project, teach myself the week before, then “present” and work through it during the study group.
+I created my own sort of “course”; it was an 8-week series that I made a curriculum for, where each week would be a mini project for a few hours on Wednesday evenings.  I would digest the project, teach myself the week before, then “present” and work through it during the study group.
 
 _Side note_: My boyfriend and I had recently moved down to the Bay Area for his job.  It was wicked difficult to find employment in banking at that time (and I’m sure it still is), so suffice it to say I was unemployed with plenty of time on my hands to learn.
 
 I will have you know that I completely fumbled through that whole series.  The folks at Dropbox gave some solicited feedback that perhaps a more experienced Pythonista would have been better.  But I found the study group to be very successful.  Week over week, the group was at max attendance with about 40 women.  Sure, they may have come for the free dinner provided by our hosts, who can blame them.  But they stayed for some reason.
 
-Feedback from attendees that I received was great.  Rather than the environment setup with an experienced lecturer, being “here, I have the knowledge, and you are here to learn what I want you to learn”.  It was more of a “let’s fumble through this together”, eliminating the ego factor along with the competition that can happen in classic classrooms.
+Feedback from attendees that I received was great.  Rather than the environment setup with an experienced lecturer, being “here, I have the knowledge, and you are here to learn what I want you to learn.”  It was more of a “let’s fumble through this together,” eliminating the ego factor along with the competition that can happen in classic classrooms.
 
 Conveniently, [PyCon 2012][pycon12] was scheduled towards the end of the study group series right in Santa Clara.  I was able to get a few free tickets for the March conference along with sharing a ZipCar for a few study group’ers.
 
@@ -49,7 +49,7 @@ Naturally, my first thought was “wtf why isn’t it in SF already?”, followe
 
 ## How I fake it
 
-For some reason, women keep coming back to these events hosted through PyLadies.  So I must be doing something right.  So how exactly am I "faking" it?  Essentially, my process is:
+For some reason, women keep coming back to these events hosted through PyLadies.  So I must be doing something right.  So how exactly am I “faking” it?  Essentially, my process is:
 
 #### Step 1: Break everything.
 
@@ -59,7 +59,7 @@ First step - break everything.  Mind you, breaking shit isn’t intentional, but
 
 So then I ask for help, naturally.  I have my boyfriend, who is a very experienced software engineer.  But I also had Twitter, which I preferred.
 
-As you can imagine, the usual responses I got - though - was “Read the fucking manual”, or “let me Google that for you”.  Great, thanks for the helpful advice!
+As you can imagine, the usual responses I got - though - was “Read the fucking manual,” or “let me Google that for you.”  Great, thanks for the helpful advice!
 
 #### Step 3: Break more shit.
 
@@ -71,9 +71,9 @@ But then something would work!  My website could run locally! And I wouldn’t b
 
 #### Step 5: Break it again.
 
-And as soon as the boyfriend would come home, I'd be super excited to show him my success.  "ZOMG DOOD LOOK AT WHAT I DID!!11!one!"
+And as soon as the boyfriend would come home, I'd be super excited to show him my success.  “ZOMG DOOD LOOK AT WHAT I DID!!11!one!”
 
-And as you can imagine: it would not work. I broke it again.  (Learn version control the hard way, huh? :))
+And as you can imagine: it would not work. I broke it again.  (Learn version control the hard way, huh?)
 
 #### Step 6: Cry.
 
@@ -85,7 +85,7 @@ One of the reasons we cry - beyond tearing up from having a cold, being out in f
 
 A little [science fact][whywecry] actually: Tears that come from emotions have [higher levels of stress hormones][stresstears] versus tears from cutting an onion, allergies, etc.  They contain [ACTH][acth] - a hormone that regulates our adrenaline, as well as [Enkephalin][enkephalin] - one of the body's natural pain relievers. And crying is actually one of the body’s quickest ways to release that pent-up stress.
 
-Therefore, I do suggest frustrated new coders to allow themselves to cry.  Of course, folks may also mitigate stress via exercise, meditation, perhaps a class of wine or four.  But don’t be embarrassed if you want to cry - it’s a biological mechanism we have at our disposal.
+Therefore, I do suggest frustrated new coders to allow themselves to cry.  Of course, folks may also mitigate stress via exercise, meditation, perhaps a glass of wine or four.  But don’t be embarrassed if you want to cry - it’s a biological mechanism we have at our disposal.
 
 Likewise, in my experience, after a good cry, and maybe some time away from my computer, I am of course feeling physically better.  And then a big break through happens!  Now I don't know if it's scientifically provable, but I always seem to have a break through post-cry.  Whether I epically redeem myself at work after looking like an idiot, or finally deploying my dumbass little app, I have a win.  So I can trust that my need to cry is just the lowest point of the current break-learn-break cycle I’m going through.
 
@@ -105,7 +105,7 @@ Now how it actually looks like to everyone else is more like this:
 
 Where I make progress by breaking and learning, plateau from frustration, and continue on upwards.  I may relearn something from the past week or month, but I’m definitely more knowledgable than 3 months ago, 6 months, or a year.
 
-A saying that I find illustrates this comparison very well is to not compare your own “Behind the Scenes” takes to someone else's “highlight reel”.  People will only see your “highlights reel”.   It may seem like I am struggling on a constant level, but what folks see is upward progression.
+A saying that I find illustrates this comparison very well is to not compare your own “Behind the Scenes” takes to someone else's “highlight reel.”  People will only see your “highlights reel.” It may seem like I am struggling on a constant level, but what folks see is upward progression.
 
 Similarly, I saw this image over two years ago and it has been my internal mantra ever since:
 
@@ -127,7 +127,7 @@ Coincidently, my [second talk ever][ep2012] caught the eye of a Red Hat recruite
 While working at Red Hat, I:
 
 * Broke things;
-* Wrote up HOWTOs how not break to break things;
+* Wrote up HOWTOs how not to break things;
 * Moved on to break the next thing.
 
 #### Tidal Shift
@@ -160,7 +160,7 @@ When I was at the early stages of learning, I wanted to get interview practice t
 
 But I’d actually get called for interviews!  Apparently I was competent enough; perhaps these recruiters were scraping the bottom of the barrel, but at least my fake-coder experience surpassed whatever bar that my impostor syndrome artificially set.
 
-When I did a second round of interview practice about a year later, I certainly got much further, but the impostor feeling was still there.  Though yet again, because I'm faking it, and my “faking it” was acceptable for these companies, how could others not be as well?
+When I did a second round of interview practice about a year later, I certainly got much further, but the impostor feeling was still there.  Though yet again, because I’m faking it, and my “faking it” was acceptable for these companies, how could others not be as well?
 
 ## tl;dr: Continue faking.
 
@@ -168,7 +168,7 @@ Essentially, I’m saying that I don’t have a conventional education for my li
 
 But this community can make us feel that we should have read the 2000-page “How to be a software engineer” manual over the weekend - and be ready to implement TLS in like, Assembly code. That’s crap. Ain’t nobody got time for that.  The sheer progress I’ve made - [becoming an engineer in 1 year][path] - is evidence to me that I’m not alone.
 
-So I’m not writing this to pass on some huge, 24k golden nugget of advice on how to rid yourself of feeling fake.  No.  Shit, I haven’t figured that out.  But it's along the same lines of “becoming comfortable with making yourself uncomfortable”: become comfortable with being a fraud.  Embrace your fraudulent self.
+So I’m not writing this to pass on some huge, 24k golden nugget of advice on how to rid yourself of feeling fake.  No.  Shit, I haven’t figured that out.  But it’s along the same lines of “becoming comfortable with making yourself uncomfortable”: become comfortable with being a fraud.  Embrace your fraudulent self.
 
 My story here by far pales in comparison to Ms. Lovelace.  But it’s my story that barrels through impostor syndrome not to exactly get rid of it, but to celebrate it.  It is possible to fake it until you make it.
 
