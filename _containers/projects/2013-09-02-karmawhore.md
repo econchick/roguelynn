@@ -1,9 +1,9 @@
 ---
 title: "Karmawho.re: Your Reddit Comment Karma Visualized"
-layout: post.html
-tags: [d3.js, projects]
-category: [words]
-proj_url: http://karmawho.re
+layout: project.html
+tags: [d3.js, nvd3, wordcloud]
+category: [projects, resume]
+proj_url: http://www.karmawho.re
 ---
 
 Is a lot of your time wasted from [derping][derp] around on [Reddit][reddit]?  Do you find that you have to correct someone when they’re [**wrong** on the internet][wrong]?  Wish that your collected comment karma was worth something?

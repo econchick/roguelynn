@@ -13,5 +13,8 @@ jinja:
 misaka:
     render_flags:
         toc: true
-tag_layout: tag.html
-tags_url: /category/
+containers:
+    talks:
+        url: /talks/<slug>
+    projects:
+        url: /projects/<slug>

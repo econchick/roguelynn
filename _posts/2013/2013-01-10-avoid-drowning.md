@@ -82,7 +82,7 @@ Now it's time to figure out the flow of the project or product.
 Alright - git pull that code.
 
 ### File Hierarchy
-* Top-down approach again: how is this project organized? What files/modules depend on what? 
+* Top-down approach again: how is this project organized? What files/modules depend on what?
 * How does the file structure match up with the architecture you saw earlier?
 * Where is the documentation (both for developer and user/admin)? The source code/moving parts? The test suite? (Who tests the tests!?)
 * What modules are used? Look what's being used from the language's standard library, the modules defined in the package itself, and third-party packages.

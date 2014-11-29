@@ -2,7 +2,7 @@
 layout: post.html
 title: "I’m a fraud."
 tags: [impostor syndrome, ada lovelace]
-category: [words]
+category: [words, resources]
 ---
 
 In celebration for [Ada Lovelace Day][adaday], [Thoughtworks][thoughtworks] hosted a meetup featuring talks from many prominent local women.  I had the pleasure of speaking myself, in which I confessed publically:

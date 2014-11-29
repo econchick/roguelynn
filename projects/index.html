@@ -5,12 +5,9 @@
         <h1>Projects</h1>
             <article id="talks">
                 <br/>
-                {% for post in posts %}
-                    {% if 'projects' in post.tags %}
-                    {% if not 'hidden' in post.tags %}
-                            <p><i class="fa fa-chevron-right"></i><a href="{{ post.conf_url }}"> {{ post.title }}</a></p>
-                            <p><span style="padding-left:30px;">{{ post.excerpt }}</span></p>
-                    {% endif %}{% endif %}
+                {% for project in containers.projects %}
+                    <p><i class="fa fa-chevron-right"></i><a href="{{ project.proj_url }}"> {{ project.title }}</a></p>
+                    <p><span style="padding-left:30px;">{{ project.excerpt }} <a href="{{ project.url }}">→</a></span></p>
                 {% endfor %}
             </article>
     </section>
