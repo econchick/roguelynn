@@ -3,7 +3,7 @@ title: roguelynn
 author: roguelynn
 domain: www.roguelynn.com
 date_format: "%B %d, %Y"
-posts_url: /words/<title>/
+posts_url: /words/<slug>/
 social:
     github: econchick
     twitter: roguelynn
