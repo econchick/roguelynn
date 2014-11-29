@@ -5,27 +5,27 @@
         <h1>Talks</h1>
             <article id="talks">
                 <h3 id="talklist">Upcoming</h3>
-                {% for post in posts %}
-                    {% if 'upcoming talk' in post.tags %}
-                    {% if not 'hidden' in post.tags %}
-                            <h4 id="upcoming">{{ post.location }}&nbsp;<time>&#187;&#32;{{ post.talk_date }}</time></h4>
-                            <p><a href="{{ post.conf_url }}">{{ post.title }}</a></h4>
-                            <p>{{ post.excerpt }}</p>
+                {% for talk in containers.talks %}
+                    {% if 'upcoming talk' in talk.tags %}
+                    {% if not 'hidden' in talk.tags %}
+                            <h4 id="upcoming">{{ talk.location }}&nbsp;<time>&#187;&#32;{{ talk.talk_date }}</time></h4>
+                            <p><a href="{{ talk.conf_url }}">{{ talk.title }}</a></h4>
+                            <p>{{ talk.excerpt }}</p>
                     {% endif %}{% endif %}
                 {% endfor %}
                 <h3 id="talklist">Past</h3>
-                {% for post in posts %}
-                    {% if 'past talk' in post.tags %}
-                            <h4>{{ post.title }}&nbsp;<time>&#187;&#32;{{ post.talk_date }}</time></h4>
-                            <p id="location">{{ post.location }}
-                            {% if post.blog_post %}
-                            |&nbsp;&nbsp;<a href="{{ post.blog_post}}"><i class="fa fa-pencil-square"></i>&nbsp;&nbsp;Blog Post</a>&nbsp;&nbsp;
+                {% for talk in containers.talks %}
+                    {% if 'past talk' in talk.tags %}
+                            <h4>{{ talk.title }}&nbsp;<time>&#187;&#32;{{ talk.talk_date }}</time></h4>
+                            <p id="location">{{ talk.location }}
+                            {% if talk.blog_post %}
+                            |&nbsp;&nbsp;<a href="{{ talk.blog_post}}"><i class="fa fa-pencil-square"></i>&nbsp;&nbsp;Blog talk</a>&nbsp;&nbsp;
                             {% endif %}
-                            {% if post.video %}|&nbsp;&nbsp;<a href="{{ post.video }}"><i class="fa fa-video-camera"></i>&nbsp;Video</a>&nbsp;&nbsp;
+                            {% if talk.video %}|&nbsp;&nbsp;<a href="{{ talk.video }}"><i class="fa fa-video-camera"></i>&nbsp;Video</a>&nbsp;&nbsp;
                             {% endif %}
-                            {% if post.slides %}|&nbsp;&nbsp;<a href="{{ post.slides }}"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Slides</a>&nbsp;&nbsp;
+                            {% if talk.slides %}|&nbsp;&nbsp;<a href="{{ talk.slides }}"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Slides</a>&nbsp;&nbsp;
                             {% endif %}
-                            {% if post.code %}|&nbsp;&nbsp;<a href="{{ post.code }}"><i class="fa fa-code"></i>&nbsp;&nbsp;Demoed Code</a>&nbsp;&nbsp;
+                            {% if talk.code %}|&nbsp;&nbsp;<a href="{{ talk.code }}"><i class="fa fa-code"></i>&nbsp;&nbsp;Demoed Code</a>&nbsp;&nbsp;
                             {% endif %}
                             </p>
                     {% endif %}
