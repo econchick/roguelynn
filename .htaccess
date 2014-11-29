@@ -1,5 +1,13 @@
 RewriteEngine On
+RewriteBase /
+RewriteCond %{HTTP_HOST} !^www.roguelynn.com$ [NC]
+RewriteRule ^(.*)$ http://www.roguelynn.com/$1 [L,R=301]
+RewriteCond %{HTTP_USER_AGENT} !FeedValidator [NC]
+RewriteCond %{HTTP_USER_AGENT} !uri\.lv [NC]
+RewriteRule ^feed.xml$ http://feeds.uri.lv/roguelynn [R=302,NC,L]
+#RedirectMatch 301 /circus /kerberos
 
 # Rewrite wordpress URLs
-RedirectMatch permanent /\d{4}/\d{2}/(.+)/ /words/$1
-RedirectMatch permanent /feed /feed.xml
+RedirectMatch permanent /\d{4}/\d{2}/\d{2}/(.+)/ /words/$1
+
+ErrorDocument 404 /404.html
