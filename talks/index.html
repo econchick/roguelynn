@@ -10,7 +10,7 @@
                     {% if not 'hidden' in talk.tags %}
                             <h4 id="upcoming">{{ talk.location }}&nbsp;<time>&#187;&#32;{{ talk.talk_date }}</time></h4>
                             <p><a href="{{ talk.conf_url }}">{{ talk.title }}</a></h4>
-                            <p>{{ talk.excerpt }}</p>
+                            {% if talk.excerpt %}<p>{{ talk.excerpt }}</p>{% endif %}
                     {% endif %}{% endif %}
                 {% endfor %}
                 <h3 id="talklist">Past</h3>
