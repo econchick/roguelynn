@@ -15,6 +15,6 @@ misaka:
         toc: true
 containers:
     talks:
-        url: /talks/<slug>
+        url: /talks/<slug>/
     projects:
-        url: /projects/<slug>
+        url: /projects/<slug>/
