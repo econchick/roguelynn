@@ -3,7 +3,14 @@ layout: post.html
 title: "RAMLfications - Python package to parse RAML"
 tags: [RAML, REST API, OSS, Spotify]
 category: [words, projects]
+updated_at: "May 14, 2015"
 ---
+
+_Update_: I gave a presentation to the [SF Python][12] Meetup group about the new library, including why you'd use a descriptive language for your API, why RAML, and why Spotify chose RAML.
+
+If you're into IPython Notebooks, mine can be found [here][13], with [slides][14] generated from IPython [here][15].
+
+<hr>
 
 A few of us at Spotify are infatuated with [RAML][0] - a RESTful API Modeling Language described as “a simple and succinct way of describing practically-RESTful APIs”, extremely similar goal of [Swagger][1].
 
@@ -64,3 +71,7 @@ My next hack project is to also write a documentation generator based off of RAM
 [9]: https://github.com/spotify/ramlfications/issues?q=is%3Aopen+is%3Aissue+label%3Afeature
 [10]: https://github.com/spotify/ramlfications/issues
 [11]: http://www.roguelynn.com/projects/ramlfications
+[12]: http://www.meetup.com/sfpython/events/222323217/
+[13]: https://github.com/econchick/raml-ipynb/blob/master/ramlfications.ipynb
+[14]: http://ipython.org/ipython-doc/1/interactive/nbconvert.html
+[15]: http://ramlfications-sf.herokuapp.com

@@ -9,9 +9,12 @@
 
   <div class='ten columns gray' id="date-header">
     <p>
-      {{ item.date }}
+    Published {{ item.date }}
   {% if item.updated_at %}
-      – revised {{ item.updated_at }}
+    &#8226 Updated {{ item.updated_at }}
+  {% elif item.revised %}
+    &#8226 Revised {{ item.revised }}
+    {{ item.date }}
   {% endif %}
     </p>
 
