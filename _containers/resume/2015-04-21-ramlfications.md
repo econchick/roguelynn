@@ -1,10 +1,14 @@
 ---
 title: "RAMLfications"
 layout: project.html
-tags: [python, raml, REST API]
+tags: [Python, RAML, REST API, Travis CI]
 category: [projects, resume]
 proj_url: https://ramlfications.readthedocs.org
+released: "April 2015"
+link: http://www.roguelynn.com/projects/ramlfications
 ---
+
+Python reference implementation of [RAML][5]
 
 [RAMLfications][4] is a Python package that parses RAML and validates it based on the [specification][5] into Python objects.
 

@@ -10,7 +10,7 @@ social:
 jinja:
     extensions:
         - jinja2.ext.loopcontrols
-misaka:
+hoep:
     render_flags:
         toc: true
 containers:
@@ -18,3 +18,5 @@ containers:
         url: /talks/<slug>/
     projects:
         url: /projects/<slug>/
+    resume:
+        url: /resume/
