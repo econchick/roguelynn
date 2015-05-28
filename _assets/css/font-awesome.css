@@ -1564,3 +1564,7 @@
 .fa-bomb:before {
   content: "\f1e2";
 }
+
+.fa-copyright:before {
+  content: "\f1f9";
+}

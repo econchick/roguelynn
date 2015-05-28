@@ -1,3 +1,267 @@
+@font-face {
+  font-family: JosefinSansRegular;
+  src: url('/assets/fonts/JosefinSans/regular/JosefinSans-Regular-webfont.ttf') format('truetype'),
+       url('/assets/fonts/JosefinSans/regular/JosefinSans-Regular-webfont.eot') format('embedded-opentype'),
+       url('/assets/fonts/JosefinSans/regular/JosefinSans-Regular-webfont.svg') format('svg'),
+       url('/assets/fonts/JosefinSans/regular/JosefinSans-Regular-webfont.woff') format('woff'),
+       url('/assets/fonts/JosefinSans/regular/JosefinSans-Regular-webfont.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: JosefinSansLight;
+  src: url('/assets/fonts/JosefinSans/light/JosefinSans-Light-webfont.ttf') format('truetype'),
+       url('/assets/fonts/JosefinSans/light/JosefinSans-Light-webfont.eot') format('embedded-opentype'),
+       url('/assets/fonts/JosefinSans/light/JosefinSans-Light-webfont.svg') format('svg'),
+       url('/assets/fonts/JosefinSans/light/JosefinSans-Light-webfont.woff') format('woff'),
+       url('/assets/fonts/JosefinSans/light/JosefinSans-Light-webfont.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: JosefinSansThin;
+  src: url('/assets/fonts/JosefinSans/thin/JosefinSans-Thin-webfont.ttf') format('truetype'),
+       url('/assets/fonts/JosefinSans/thin/JosefinSans-Thin-webfont.eot') format('embedded-opentype'),
+       url('/assets/fonts/JosefinSans/thin/JosefinSans-Thin-webfont.svg') format('svg'),
+       url('/assets/fonts/JosefinSans/thin/JosefinSans-Thin-webfont.woff') format('woff'),
+       url('/assets/fonts/JosefinSans/thin/JosefinSans-Thin-webfont.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: JosefinSansSemiBold;
+  src: url('/assets/fonts/JosefinSans/semibold/JosefinSans-SemiBold-webfont.ttf') format('truetype'),
+       url('/assets/fonts/JosefinSans/semibold/JosefinSans-SemiBold-webfont.eot') format('embedded-opentype'),
+       url('/assets/fonts/JosefinSans/semibold/JosefinSans-SemiBold-webfont.svg') format('svg'),
+       url('/assets/fonts/JosefinSans/semibold/JosefinSans-SemiBold-webfont.woff') format('woff'),
+       url('/assets/fonts/JosefinSans/semibold/JosefinSans-SemiBold-webfont.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: JosefinSansBold;
+  src: url('/assets/fonts/JosefinSans/bold/JosefinSans-Bold-webfont.ttf') format('truetype'),
+       url('/assets/fonts/JosefinSans/bold/JosefinSans-Bold-webfont.eot') format('embedded-opentype'),
+       url('/assets/fonts/JosefinSans/bold/JosefinSans-Bold-webfont.svg') format('svg'),
+       url('/assets/fonts/JosefinSans/bold/JosefinSans-Bold-webfont.woff') format('woff'),
+       url('/assets/fonts/JosefinSans/bold/JosefinSans-Bold-webfont.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: JosefinSansItalic;
+  src: url('/assets/fonts/JosefinSans/italic/JosefinSans-Italic-webfont.ttf') format('truetype'),
+       url('/assets/fonts/JosefinSans/italic/JosefinSans-Italic-webfont.eot') format('embedded-opentype'),
+       url('/assets/fonts/JosefinSans/italic/JosefinSans-Italic-webfont.svg') format('svg'),
+       url('/assets/fonts/JosefinSans/italic/JosefinSans-Italic-webfont.woff') format('woff'),
+       url('/assets/fonts/JosefinSans/italic/JosefinSans-Italic-webfont.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: JosefinSansBoldItalic;
+  src: url('/assets/fonts/JosefinSans/bolditalic/JosefinSans-BoldItalic-webfont.ttf') format('truetype'),
+       url('/assets/fonts/JosefinSans/bolditalic/JosefinSans-BoldItalic-webfont.eot') format('embedded-opentype'),
+       url('/assets/fonts/JosefinSans/bolditalic/JosefinSans-BoldItalic-webfont.svg') format('svg'),
+       url('/assets/fonts/JosefinSans/bolditalic/JosefinSans-BoldItalic-webfont.woff') format('woff'),
+       url('/assets/fonts/JosefinSans/bolditalic/JosefinSans-BoldItalic-webfont.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: JosefinSansThinItalic;
+  src: url('/assets/fonts/JosefinSans/thinitalic/JosefinSans-ThinItalic-webfont.ttf') format('truetype'),
+       url('/assets/fonts/JosefinSans/thinitalic/JosefinSans-ThinItalic-webfont.eot') format('embedded-opentype'),
+       url('/assets/fonts/JosefinSans/thinitalic/JosefinSans-ThinItalic-webfont.svg') format('svg'),
+       url('/assets/fonts/JosefinSans/thinitalic/JosefinSans-ThinItalic-webfont.woff') format('woff'),
+       url('/assets/fonts/JosefinSans/thinitalic/JosefinSans-ThinItalic-webfont.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: JosefinSansSemiBoldItalic;
+  src: url('/assets/fonts/JosefinSans/semibolditalic/JosefinSans-SemiBoldItalic-webfont.ttf') format('truetype'),
+       url('/assets/fonts/JosefinSans/semibolditalic/JosefinSans-SemiBoldItalic-webfont.eot') format('embedded-opentype'),
+       url('/assets/fonts/JosefinSans/semibolditalic/JosefinSans-SemiBoldItalic-webfont.svg') format('svg'),
+       url('/assets/fonts/JosefinSans/semibolditalic/JosefinSans-SemiBoldItalic-webfont.woff') format('woff'),
+       url('/assets/fonts/JosefinSans/semibolditalic/JosefinSans-SemiBoldItalic-webfont.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: JosefinSansLightItalic;
+  src: url('/assets/fonts/JosefinSans/lightitalic/JosefinSans-LightItalic-webfont.ttf') format('truetype'),
+       url('/assets/fonts/JosefinSans/lightitalic/JosefinSans-LightItalic-webfont.eot') format('embedded-opentype'),
+       url('/assets/fonts/JosefinSans/lightitalic/JosefinSans-LightItalic-webfont.svg') format('svg'),
+       url('/assets/fonts/JosefinSans/lightitalic/JosefinSans-LightItalic-webfont.woff') format('woff'),
+       url('/assets/fonts/JosefinSans/lightitalic/JosefinSans-LightItalic-webfont.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: OpenSans;
+  src: url('/assets/fonts/OpenSans/regular/OpenSans-Regular-webfont.ttf') format('truetype'),
+       url('/assets/fonts/OpenSans/regular/OpenSans-Regular-webfont.eot') format('embedded-opentype'),
+       url('/assets/fonts/OpenSans/regular/OpenSans-Regular-webfont.svg') format('svg'),
+       url('/assets/fonts/OpenSans/regular/OpenSans-Regular-webfont.woff') format('woff'),
+       url('/assets/fonts/OpenSans/regular/OpenSans-Regular-webfont.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: '39_smoothregular';
+  src: url('/assets/fonts/39smooth/39smooth-webfont.eot');
+  src: url('/assets/fonts/39smooth/39smooth-webfont.eot?#iefix') format('embedded-opentype'),
+       url('/assets/fonts/39smooth/39smooth-webfont.woff2') format('woff2'),
+       url('/assets/fonts/39smooth/39smooth-webfont.woff') format('woff'),
+       url('/assets/fonts/39smooth/39smooth-webfont.ttf') format('truetype'),
+       url('/assets/fonts/39smooth/39smooth-webfont.svg#39_smoothregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+    font-family: cookieregular;
+    src: url('/assets/fonts/cookie/cookie-regular-webfont.eot');
+    src: url('/assets/fonts/cookie/cookie-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/assets/fonts/cookie/cookie-regular-webfont.woff2') format('woff2'),
+         url('/assets/fonts/cookie/cookie-regular-webfont.woff') format('woff'),
+         url('/assets/fonts/cookie/cookie-regular-webfont.ttf') format('truetype'),
+         url('/assets/fonts/cookie/cookie-regular-webfont.svg#cookieregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+  font-family: SourceCodePro;
+  src: url('/assets/fonts/source-code-pro/black/SourceCodePro-Black.ttf') format('truetype'),
+       url('/assets/fonts/source-code-pro/black/SourceCodePro-Black.eot') format('embedded-opentype'),
+       url('/assets/fonts/source-code-pro/black/SourceCodePro-Black.svg') format('svg'),
+       url('/assets/fonts/source-code-pro/black/SourceCodePro-Black.woff') format('woff'),
+       url('/assets/fonts/source-code-pro/black/SourceCodePro-Black.otf') format('opentype');
+  font-weight: @font-weight-black;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: SourceCodePro;
+  src: url('/assets/fonts/source-code-pro/bold/SourceCodePro-Bold.ttf') format('truetype'),
+       url('/assets/fonts/source-code-pro/bold/SourceCodePro-Bold.eot') format('embedded-opentype'),
+       url('/assets/fonts/source-code-pro/bold/SourceCodePro-Bold.svg') format('svg'),
+       url('/assets/fonts/source-code-pro/bold/SourceCodePro-Bold.woff') format('woff'),
+       url('/assets/fonts/source-code-pro/bold/SourceCodePro-Bold.otf') format('opentype');
+  font-weight: @font-weight-bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: SourceCodePro;
+  src: url('/assets/fonts/source-code-pro/extralight/SourceCodePro-ExtraLight.ttf') format('truetype'),
+       url('/assets/fonts/source-code-pro/extralight/SourceCodePro-ExtraLight.eot') format('embedded-opentype'),
+       url('/assets/fonts/source-code-pro/extralight/SourceCodePro-ExtraLight.svg') format('svg'),
+       url('/assets/fonts/source-code-pro/extralight/SourceCodePro-ExtraLight.woff') format('woff'),
+       url('/assets/fonts/source-code-pro/extralight/SourceCodePro-ExtraLight.otf') format('opentype');
+  font-weight: @font-weight-extralight;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: SourceCodePro;
+  src: url('/assets/fonts/source-code-pro/light/SourceCodePro-Light.ttf') format('truetype'),
+       url('/assets/fonts/source-code-pro/light/SourceCodePro-Light.eot') format('embedded-opentype'),
+       url('/assets/fonts/source-code-pro/light/SourceCodePro-Light.svg') format('svg'),
+       url('/assets/fonts/source-code-pro/light/SourceCodePro-Light.woff') format('woff'),
+       url('/assets/fonts/source-code-pro/light/SourceCodePro-Light.otf') format('opentype');
+  font-weight: @font-weight-light;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: SourceCodePro;
+  src: url('/assets/fonts/source-code-pro/medium/SourceCodePro-Medium.ttf') format('truetype'),
+       url('/assets/fonts/source-code-pro/medium/SourceCodePro-Medium.eot') format('embedded-opentype'),
+       url('/assets/fonts/source-code-pro/medium/SourceCodePro-Medium.svg') format('svg'),
+       url('/assets/fonts/source-code-pro/medium/SourceCodePro-Medium.woff') format('woff'),
+       url('/assets/fonts/source-code-pro/medium/SourceCodePro-Medium.otf') format('opentype');
+  font-weight: @font-weight-medium;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: SourceCodePro;
+  src: url('/assets/fonts/source-code-pro/regular/SourceCodePro-Regular.ttf') format('truetype'),
+       url('/assets/fonts/source-code-pro/regular/SourceCodePro-Regular.eot') format('embedded-opentype'),
+       url('/assets/fonts/source-code-pro/regular/SourceCodePro-Regular.svg') format('svg'),
+       url('/assets/fonts/source-code-pro/regular/SourceCodePro-Regular.woff') format('woff'),
+       url('/assets/fonts/source-code-pro/regular/SourceCodePro-Regular.otf') format('opentype');
+  font-weight: @font-weight-regular;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: SourceCodePro;
+  src: url('/assets/fonts/source-code-pro/semibold/SourceCodePro-Semibold.ttf') format('truetype'),
+       url('/assets/fonts/source-code-pro/semibold/SourceCodePro-Semibold.eot') format('embedded-opentype'),
+       url('/assets/fonts/source-code-pro/semibold/SourceCodePro-Semibold.svg') format('svg'),
+       url('/assets/fonts/source-code-pro/semibold/SourceCodePro-Semibold.woff') format('woff'),
+       url('/assets/fonts/source-code-pro/semibold/SourceCodePro-Semibold.otf') format('opentype');
+  font-weight: @font-weight-semibold;
+  font-style: normal;
+}
+
+body {
+  font-family: OpenSans, "Georgia", "Times New Roman", serif;
+  padding-top: 50px;
+  padding-bottom: 40px;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: JosefinSansBold;
+}
+
+h1 {
+  font-size: 42px;
+}
+
+h2 {
+  font-size: 36px;
+}
+
+h3 {
+  font-size: 32px;
+  padding-top: 10px;
+}
+
+h4 {
+  font-size: 28px;
+  padding-top: 10px;
+}
+
+h5 {
+  font-size: 24px;
+}
+
+h6 {
+  font-size: 20px;
+}
+
 .social .fa {
   -webkit-transition: opacity 0.5s;
   -moz-transition: opacity 0.5s;
@@ -13,13 +277,8 @@ div.output_wrapper {
 p {
   font-size:18px;
   line-height:32px;
+  font-weight: 400;
 }
-
-/*[class*="span"] {
-  float: left;
-  min-height: 1px;
-  margin-left: 20px;
-}*/
 
 .span7 {
   width: 700px;
@@ -29,7 +288,7 @@ p {
   width: 950px;
 }
 
-#splash h1{
+#rogue-splash h1{
   padding-top: .5em;
   padding-bottom: 1em;
   display: block;
@@ -41,10 +300,8 @@ p {
   text-align: left;
 }
 
-#splash h2 {
-  font-size: 2em;
+#rogue-splash h2 {
   color: #414247;
-  font-weight: 600;
   text-transform: uppercase;
   line-height: 100%;
   margin-top: .5em;
@@ -60,25 +317,103 @@ h2 abbr {
     color: #38a5dd;
 }
 
-footer {
-    position: fixed;
-    bottom: 0;
-    font-size: 10px;
-    padding-bottom: 5px;
-    right: 5px;
+#content-end {
+ color: #38a5dd;
 }
 
-footer p {
-  font-size: 12px;
+#footer {
+  position: fixed;
+  bottom: 0;
+  background-color: #F0F2F5;
+  width: 100%;
+  margin-top: 100px;
+  font-size: 25px;
 }
 
-.page-content {
-    margin-left: 80px;
+#footer .fa {
+  color: #313236;
 }
 
-.social .blank {
-    padding-top: 50px;
-    padding-bottom: 50px;
+.rogue-footer {
+  background-color: #F0F2F5;
+  font-size: 25px;
+  text-align: center;
+}
+
+.rogue-footer .fa {
+  color: #313236;
+
+}
+
+.rogue-navbar {
+  border-radius: 0;
+  background: #fff; /* Old browsers */
+  background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* IE10+ */
+  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+}
+
+.navbar {
+  margin-bottom: 0;
+  border: 0;
+  height: 35px;
+}
+
+.rogue-navbar .fa {
+  color: #313236;
+  font-size: 2em;
+}
+
+.navbar-brand:hover, .navbar-brand:focus {
+  text-shadow: 0 0 3px rgba(56, 165, 221, 0.8);
+  color: #38a5dd;
+  background-color: #fff;
+  text-decoration: none;
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+  text-shadow: 0 0 3px rgba(56, 165, 221, 0.8);
+  color: #38a5dd;
+  background-color: #fff;
+  text-decoration: none;
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+}
+
+.footer > a:hover, .footer > a:focus {
+  text-shadow: 0 0 10px rgba(56, 165, 221, 0.8);
+  color: #38a5dd;
+  text-decoration: none;
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+}
+
+.footer {
+}
+
+
+.roguenavcenter {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rogue-copyright {
+  font-size: 15px;
+  font-weight: 100;
+  color: #313236;
+}
+
+#footer .row {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .displayed {
@@ -87,22 +422,25 @@ footer p {
   margin-right: auto;
   border: 3px solid #fff;
   border-radius: 5px;
+  max-width: 700px;
 }
 
 pre {
   border-radius: 5px;
   border: 1px solid #e1e1e8;
-  width: 750px;
+  width: 700px;
   max-width: 800px;
   overflow-x: scroll;
   word-break: normal !important;
   word-wrap: normal !important;
   white-space: pre !important;
+  font-family: SourceCodePro;
 }
 
 code {
   padding: 0px;
-  background: #fff;
+  background: #F0F2F5;
+  font-family: SourceCodePro;
 }
 
 td.linenos {
@@ -141,11 +479,6 @@ small {
   padding-top: 2em;
 }
 
-#article-content ul {
-  padding-top: 1.5em;
-  padding-bottom: 1.5em;
-}
-
 ul li {
   font-size: 18px;
   line-height: 32px;
@@ -179,10 +512,32 @@ ul li {
   margin-top: 15px;
 }
 
-.social {
-  width: 90px;
+
+.rogue-content a {
+  text-decoration: none;
+  border-bottom: 1px dashed #337ab7;
 }
 
-.social ul li {
-  width: 80px;
+.rogue-content-block {
+  padding-top: 50px;
+}
+
+a:hover, a:focus {
+  text-decoration: none;
+}
+
+#break {
+  font-size: .05em;
+  content: "";
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.rogue-subnavbar {
+  margin-left: 13.3333%
+
+}
+
+.glyphicon {
+  font-size: 20px;
 }
