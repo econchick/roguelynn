@@ -1,6 +1,6 @@
 ---
 layout: post.html
-title: "RAMLfications - Python package to parse RAML"
+title: "RAMLfications – Python package to parse RAML"
 tags: [RAML, REST API, OSS, Spotify]
 category: [words, projects]
 updated_at: "May 14, 2015"

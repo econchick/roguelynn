@@ -1,7 +1,7 @@
 ---
 title: "How to spy with Python: so easy, the NSA can do it"
 layout: post.html
-tags: [prism, NSA, mass surveillance, python, scapy]
+tags: [prism, NSA, "mass surveillance", python, scapy]
 category: [talks, words]
 url: /spy/
 date: November 23rd, 2013
@@ -111,7 +111,7 @@ You will need to disable your SSL connection to the chat server.  Then just snif
 * [gist](https://gist.github.com/econchick/7589366)
 
 
-#### Other easy tricks 
+#### Other easy tricks
 
 * VoIP calls: protocol filter = SIP
 * Can easily read Chrome/Firefox/Skype sqlite databases once inside someone's machine
@@ -123,8 +123,8 @@ You will need to disable your SSL connection to the chat server.  Then just snif
 [billofrights]: http://www.archives.gov/exhibits/charters/bill_of_rights_transcript.html
 [pyconca]: http://pycon.ca
 [pyconie]: http://python.ie/pycon/2013/
-[scapy]: 
-[pygeoip]: 
+[scapy]:
+[pygeoip]:
 [geojson]:
 [python-nmap]:
 [pycones]:

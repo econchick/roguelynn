@@ -1,7 +1,7 @@
 ---
 title: "How to scapy"
 layout: post-ipynb.html
-tags: [prism, NSA, mass surveillance, python, scapy]
+tags: [prism, NSA, "mass surveillance", python, scapy]
 category: [talks, words]
 date: December 11, 2013
 ---

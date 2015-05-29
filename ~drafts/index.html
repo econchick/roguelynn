@@ -1,0 +1,10 @@
+{% extends "site.html" %}
+{% block title %}Words{% endblock %}
+{% block content %}
+  {% for post in containers.drafts %}
+    {% if 'words' in post.category %}
+        <p class="words"><a href="{{ post.url }}">{{ post.title }}</a>
+        &#187;&#32;<small class="words">{{ post.date }}</small></p>
+    {% endif %}
+  {% endfor %}
+{% endblock %}

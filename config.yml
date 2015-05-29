@@ -20,3 +20,5 @@ containers:
         url: /projects/<slug>/
     resume:
         url: /resume/
+    drafts:
+        url: /~drafts/

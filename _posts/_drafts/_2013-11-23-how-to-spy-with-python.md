@@ -1,7 +1,7 @@
 ---
 title: "How to spy with Python: so easy, the NSA can do it"
 layout: post.html
-tags: [prism, NSA, mass surveillance, python, scapy]
+tags: [prism, NSA, "mass surveillance", python, scapy]
 category: [talks, words]
 url: /spy/
 date: November 23rd, 2013
@@ -216,7 +216,7 @@ We start to see something a little bit more interesting.  I’m going to parse t
 Madrid
 ```
 
-Ha! I searched for Madrid!  Let’s check some other queries out: 
+Ha! I searched for Madrid!  Let’s check some other queries out:
 
 ```python
 >>> second_query = pkts[148].getlayer(Raw)
@@ -284,7 +284,7 @@ You will need to disable your SSL connection to the chat server.  Then just snif
 
 <iframe src="http://nbviewer.ipython.org/7589366" width="900" height="500"></iframe>
 
-#### Other easy tricks 
+#### Other easy tricks
 
 * VoIP calls: protocol filter = SIP
 * Can easily read Chrome/Firefox/Skype sqlite databases once inside someone's machine

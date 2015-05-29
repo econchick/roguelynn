@@ -1,7 +1,6 @@
 ---
 title: "PRISM-as-a-Service: Not Subject to American Law"
 layout: post.html
-tags: [prism, NSA, mass surveillance]
 category: [talks, words]
 url: /prism/
 date: August 8th, 2013

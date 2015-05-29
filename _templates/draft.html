@@ -2,7 +2,7 @@
 {% block title %}{{ item.title }}{% endblock %}
 {% block content %}
 
-<h1>{{ item.title }}</h1>
+<h1>DRAFT: {{ item.title }}</h1>
 <small>
   Published {{ item.date }}
   {% if item.updated_at %}
@@ -15,7 +15,7 @@
   {% if item.tags %}
   &nbsp;&nbsp;
     {% for tag in item.tags %}
-    {% set data = posts.tags[tag] %}
+    {% set data = containers.drafts.tags[tag] %}
       <span class="badge rogue-badge"><a href="{{ get_url(data.url) }}" alt="{{ tag }}">{{ tag }}</a></span>
     {% endfor %}
   {% endif %}

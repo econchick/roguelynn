@@ -1,5 +1,5 @@
 ---
-layout: project.html
+layout: resume.html
 title: PyLadies Kit
 proj_url: http://kit.pyladies.com
 tags: [python]

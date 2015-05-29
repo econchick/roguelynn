@@ -1,7 +1,6 @@
 ---
 title: "RAMLfications"
-layout: project.html
-tags: [python, raml, REST API]
+layout: post.html
 category: [projects, resume]
 proj_url: https://ramlfications.readthedocs.org
 ---

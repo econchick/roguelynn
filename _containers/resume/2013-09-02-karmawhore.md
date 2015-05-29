@@ -1,6 +1,6 @@
 ---
 title: "karmawho.re"
-layout: project.html
+layout: resume.html
 tags: [d3.js, nvd3, wordcloud]
 category: [projects, resume]
 proj_url: http://www.karmawho.re

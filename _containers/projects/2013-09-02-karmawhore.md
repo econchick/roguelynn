@@ -1,7 +1,6 @@
 ---
 title: "Karmawho.re: Your Reddit Comment Karma Visualized"
-layout: project.html
-tags: [d3.js, nvd3, wordcloud]
+layout: post.html
 category: [projects, resume]
 proj_url: http://www.karmawho.re
 ---

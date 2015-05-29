@@ -1,5 +1,5 @@
 ---
-layout: post.html
+layout: resume.html
 title: "Technical Talks"
 category: [resume, talks]
 talks:

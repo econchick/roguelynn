@@ -123,32 +123,6 @@
 }
 
 @font-face {
-  font-family: '39_smoothregular';
-  src: url('/assets/fonts/39smooth/39smooth-webfont.eot');
-  src: url('/assets/fonts/39smooth/39smooth-webfont.eot?#iefix') format('embedded-opentype'),
-       url('/assets/fonts/39smooth/39smooth-webfont.woff2') format('woff2'),
-       url('/assets/fonts/39smooth/39smooth-webfont.woff') format('woff'),
-       url('/assets/fonts/39smooth/39smooth-webfont.ttf') format('truetype'),
-       url('/assets/fonts/39smooth/39smooth-webfont.svg#39_smoothregular') format('svg');
-  font-weight: normal;
-  font-style: normal;
-
-}
-
-@font-face {
-    font-family: cookieregular;
-    src: url('/assets/fonts/cookie/cookie-regular-webfont.eot');
-    src: url('/assets/fonts/cookie/cookie-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/assets/fonts/cookie/cookie-regular-webfont.woff2') format('woff2'),
-         url('/assets/fonts/cookie/cookie-regular-webfont.woff') format('woff'),
-         url('/assets/fonts/cookie/cookie-regular-webfont.ttf') format('truetype'),
-         url('/assets/fonts/cookie/cookie-regular-webfont.svg#cookieregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
   font-family: SourceCodePro;
   src: url('/assets/fonts/source-code-pro/black/SourceCodePro-Black.ttf') format('truetype'),
        url('/assets/fonts/source-code-pro/black/SourceCodePro-Black.eot') format('embedded-opentype'),
@@ -226,7 +200,7 @@
 }
 
 body {
-  font-family: OpenSans, "Georgia", "Times New Roman", serif;
+  font-family: OpenSans, sans-serif;
   padding-top: 50px;
   padding-bottom: 40px;
 }
@@ -237,11 +211,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 42px;
+  font-size: 46px;
 }
 
 h2 {
-  font-size: 36px;
+  font-size: 40px;
 }
 
 h3 {
@@ -319,6 +293,9 @@ h2 abbr {
 
 #content-end {
  color: #38a5dd;
+ text-align: center;
+ padding-top: 30px;
+ padding-bottom: 30px;
 }
 
 #footer {
@@ -336,7 +313,7 @@ h2 abbr {
 
 .rogue-footer {
   background-color: #F0F2F5;
-  font-size: 25px;
+  font-size: 30px;
   text-align: center;
 }
 
@@ -348,14 +325,30 @@ h2 abbr {
 .rogue-navbar {
   border-radius: 0;
   background: #fff; /* Old browsers */
+  /*background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6+ */*/
+  /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */*/
+  /*background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);  Chrome10+,Safari5.1+*/
+  /*background: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */*/
+  /*background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* IE10+ */*/
+  /*background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* W3C */*/
+  /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */*/
+}
+
+.rogue-navbar-fade {
+  border-radius: 0;
+  background: #fff; /* Old browsers */
   background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
+  background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);  Chrome10+,Safari5.1+
   background: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
   background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* IE10+ */
   background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+  height: 30px;
+  border: 0;
+  margin-top: 15px;
 }
+
 
 .navbar {
   margin-bottom: 0;
@@ -394,9 +387,9 @@ h2 abbr {
   filter: alpha(opacity=90);
 }
 
-.footer {
+.rogue-subnav {
+  padding-left: 0px;
 }
-
 
 .roguenavcenter {
   width: 50%;
@@ -410,7 +403,7 @@ h2 abbr {
   color: #313236;
 }
 
-#footer .row {
+#footer .row, #roguenav .row {
   width: 50%;
   margin-left: auto;
   margin-right: auto;
@@ -423,6 +416,31 @@ h2 abbr {
   border: 3px solid #fff;
   border-radius: 5px;
   max-width: 700px;
+}
+
+blockquote.twitter-tweet {
+  display: inline-block;
+  padding: 16px;
+  margin: 10px 0;
+  max-width: 468px;
+  border: #ddd 1px solid;
+  border-top-color: #eee;
+  border-bottom-color: #bbb;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  font: bold 14px/18px Helvetica, Arial, sans-serif;
+  color: #000;
+}
+
+blockquote.twitter-tweet p {
+  font: normal 18px/24px Georgia, "Times New Roman", Palatino, serif;
+  margin: 0 5px 10px 0;
+}
+
+blockquote.twitter-tweet a[href^="https://twitter.com"] {
+  font-weight: normal;
+  color: #666;
+  font-size: 12px;
 }
 
 pre {
@@ -540,4 +558,26 @@ a:hover, a:focus {
 
 .glyphicon {
   font-size: 20px;
+}
+
+.rogue-badge {
+  font-weight: 200;
+  background-color: #337ab7;
+}
+
+.rogue-badge a {
+  color: #fff;
+}
+
+.rogue-badge a:hover, .rogue-badge a:focus {
+  color: #000;
+}
+
+.lead {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.rogue-hover {
+  border-bottom: 1px dotted #337ab7;
 }

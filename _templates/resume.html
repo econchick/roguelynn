@@ -13,10 +13,10 @@
   {% endif %}
 </small>
   {% if item.tags %}
-  &nbsp;&nbsp;
     {% for tag in item.tags %}
-    {% set data = posts.tags[tag] %}
+    {% set data = containers.resume.tags[tag] %}
       <span class="badge rogue-badge"><a href="{{ get_url(data.url) }}" alt="{{ tag }}">{{ tag }}</a></span>
+    }
     {% endfor %}
   {% endif %}
 <hr/>

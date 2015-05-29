@@ -1,5 +1,5 @@
 ---
-layout: post.html
+layout: resume.html
 title: "Harvard"
 employer: "Harvard University"
 employer_url: https://cs50.harvard.edu/

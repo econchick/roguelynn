@@ -1,5 +1,5 @@
 ---
-layout: post.html
+layout: resume.html
 title: "Past"
 employer: "Spotify"
 employer_url: https://www.spotify.com

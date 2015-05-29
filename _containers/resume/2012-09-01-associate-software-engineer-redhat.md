@@ -1,5 +1,5 @@
 ---
-layout: post.html
+layout: resume.html
 title: "Current"
 employer: "Red Hat, Inc"
 employer_url: https://www.freeipa.org/page/Main_Page
