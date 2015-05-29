@@ -92,6 +92,8 @@ We also created a few processes based on the questions above.  One process revie
 
 Another is to have goal targets at the start of every integration project we do (which may span multiple sprints).  For example, “we will know we’re successful when this integration brings us x-amount of users.”  It’s true this sort of goal line can only be judged based on historical user acquisition numbers, so we definitely have some work to do beforehand.  It will also feed into our retrospectives.
 
+We also have a few post-integration questions for business development folks to ask of external partners on behalf of the squad.  These questions include understanding our responsiveness, how are developer tools are, and if their company goals were met.  We may think an integration was super successful, but they may have some insight that we do not.
+
 
 
 ## The Big Picture
