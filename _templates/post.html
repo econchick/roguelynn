@@ -1,15 +1,21 @@
 {% extends "site.html" %}
 {% block title %}{{ item.title }}{% endblock %}
 {% block content %}
-
-<h1>{{ item.title }}</h1>
+<article class="hentry">
+<h1 class="entry-title">{{ item.title }}</h1>
 <small>
+  <time class="published" datetime="{{ item.date }}">
   Published {{ item.date }}
+  </time>
   {% if item.updated_at %}
+    <time class="updated" datetime="{{ item.updated_at }}">
     &#8226 Updated {{ item.updated_at }}
+    </time>
   {% elif item.revised %}
+    <time class="updated" datetime="{{ item.revised }}">
     &#8226 Revised {{ item.revised }}
     {{ item.date }}
+    </time>
   {% endif %}
 </small>
   {% if item.tags %}
@@ -20,10 +26,11 @@
     {% endfor %}
   {% endif %}
 <hr/>
-  <div class="rogue-content">
+  <div class="rogue-content entry-content">
     {{ item.content }}
     <p id="content-end">&#8756;</p>
   </div>
+  </article>
   <div id="disqus_thread"></div>
   <script type="text/javascript">
       var disqus_shortname = 'roguelynn';

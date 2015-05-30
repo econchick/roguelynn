@@ -7,11 +7,12 @@
       </button>
     </div>
     <div class="navbar-collapse bs-navbar-collapse collapse" role="navigation" style="height: 35px;">
-              <div class="rogue-subnav col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
-      <ul class="nav navbar-nav" style="height: 35px">
+      <div class="rogue-subnav col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
+      <ul class="nav navbar-nav hidden-xs" style="auto;">
         <li><a href="{{ get_url('/')}}" title="Home" class="navbar-brand"><i class="fa fa-home"></i></a></li>
       </ul>
-      <ul class="nav navbar-nav pull-right" style="height: 35px">
+      <ul class="nav navbar-nav pull-right">
+        <li><a href="{{ get_url('/')}}" title="Home" class="hidden-sm hidden-md hidden-lg"><i class="fa fa-home"></i></a></li>
         <li><a href="{{ get_url('/words/')}}" title="Blog Posts" alt="Blog Posts"><i class="fa fa-quote-left"></i></a></li>
         <li><a href="{{ get_url('/projects/')}}" title="Projects" alt="Projects"><i class="fa fa-terminal"></i></a></li>
         <li><a href="{{ get_url('/talks/')}}" title="Talks" alt="Talks"><i class="fa fa-microphone"></i></a></li>
@@ -21,5 +22,5 @@
       </div>
     </div>
   </div>
-  <div class="nav navbar rogue-navbar-fade"></div>
+  <div class="nav navbar rogue-navbar-fade hidden-xs"></div>
 </nav>

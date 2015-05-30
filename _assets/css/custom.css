@@ -205,36 +205,100 @@ body {
   padding-bottom: 40px;
 }
 
+p {
+  font-size:14px;
+  line-height:20px;
+  font-weight: 300;
+}
 
 h1, h2, h3, h4, h5, h6 {
   font-family: JosefinSansBold;
 }
 
 h1 {
-  font-size: 46px;
-}
-
-h2 {
   font-size: 40px;
 }
 
+h2 {
+  font-size: 34px;
+}
+
 h3 {
-  font-size: 32px;
+  font-size: 30px;
   padding-top: 10px;
 }
 
 h4 {
-  font-size: 28px;
+  font-size: 26px;
   padding-top: 10px;
 }
 
 h5 {
-  font-size: 24px;
+  font-size: 22px;
 }
 
 h6 {
-  font-size: 20px;
+  font-size: 18px;
 }
+
+.words small {
+  color: #7F808A;
+  font-style: italic;
+  font-size: 12px;
+}
+
+small {
+  color: #7F808A;
+  font-style: italic;
+  font-size: 12px;
+}
+
+
+@media (min-width: 768px) {
+  p {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 32px;
+  }
+  h1 {
+    font-size: 46px;
+  }
+
+  h2 {
+    font-size: 40px;
+  }
+
+  h3 {
+    font-size: 32px;
+    padding-top: 10px;
+  }
+
+  h4 {
+    font-size: 28px;
+    padding-top: 10px;
+  }
+
+  h5 {
+    font-size: 24px;
+  }
+
+  h6 {
+    font-size: 20px;
+  }
+  .words small {
+    color: #7F808A;
+    font-style: italic;
+    font-size: 16px;
+  }
+
+  small {
+    color: #7F808A;
+    font-style: italic;
+    font-size: 16px;
+  }
+
+}
+
 
 .social .fa {
   -webkit-transition: opacity 0.5s;
@@ -244,23 +308,6 @@ h6 {
   font-size: 2em;
 }
 
-div.output_wrapper {
-    padding-top: 3px;
-}
-
-p {
-  font-size:18px;
-  line-height:32px;
-  font-weight: 400;
-}
-
-.span7 {
-  width: 700px;
-}
-
-.span10 {
-  width: 950px;
-}
 
 #rogue-splash h1{
   padding-top: .5em;
@@ -346,7 +393,7 @@ h2 abbr {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
   height: 30px;
   border: 0;
-  margin-top: 15px;
+  margin-top: -2px;
 }
 
 
@@ -354,6 +401,14 @@ h2 abbr {
   margin-bottom: 0;
   border: 0;
   height: 35px;
+}
+
+.navbar-nav > li > a {
+  padding-bottom: 0px;
+}
+
+.nav > li > a {
+  padding 10px 15px 0px 15px;
 }
 
 .rogue-navbar .fa {
@@ -364,7 +419,7 @@ h2 abbr {
 .navbar-brand:hover, .navbar-brand:focus {
   text-shadow: 0 0 3px rgba(56, 165, 221, 0.8);
   color: #38a5dd;
-  background-color: #fff;
+  background-color: transparent;
   text-decoration: none;
   opacity: 0.9;
   filter: alpha(opacity=90);
@@ -373,10 +428,11 @@ h2 abbr {
 .nav > li > a:hover, .nav > li > a:focus {
   text-shadow: 0 0 3px rgba(56, 165, 221, 0.8);
   color: #38a5dd;
-  background-color: #fff;
+  background-color: transparent;
   text-decoration: none;
   opacity: 0.9;
   filter: alpha(opacity=90);
+  padding-bottom: 0px;
 }
 
 .footer > a:hover, .footer > a:focus {
@@ -446,7 +502,7 @@ blockquote.twitter-tweet a[href^="https://twitter.com"] {
 pre {
   border-radius: 5px;
   border: 1px solid #e1e1e8;
-  width: 700px;
+  width: inherit;
   max-width: 800px;
   overflow-x: scroll;
   word-break: normal !important;
@@ -461,6 +517,12 @@ code {
   font-family: SourceCodePro;
 }
 
+.code {
+  overflow-x: scroll;
+  width: 100%;
+}
+
+
 td.linenos {
   width: 0em;
 }
@@ -473,18 +535,6 @@ td.linenos {
   font-size: 20px;
   line-height: 48px;
   list-style: none;
-}
-
-.words small {
-  color: #7F808A;
-  font-style: italic;
-  font-size: 16px;
-}
-
-small {
-  color: #7F808A;
-  font-style: italic;
-  font-size: 16px;
 }
 
 #date-header {
