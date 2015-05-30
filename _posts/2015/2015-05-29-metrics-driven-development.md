@@ -5,7 +5,7 @@ tags: [Spotify, Metrics, Data]
 category: [words]
 ---
 
-This post is an accompaniment to my [Metrics-driven development talk][0] at [Open Data Science Conference][1] in Boston in May 2015.
+This post is an accompaniment to my [Metrics-driven development talk][0] at [Open Data Science Conference][1] in Boston in May 2015.  Slides [here][22] and video to be posted soon.
 
 ---
 
@@ -19,7 +19,7 @@ Engineers behind the platform watch usage rates of our Web APIs, login failure r
 
 We use various technologies related to data, including Hadoop, as well as Cassandra, Postgres, and [Elasticsearch][2]).  All of the user-generated data sits in Hadoop, with which we run jobs against using either Java, Python, or directly query with Hive (side note: we’ve open-sourced our [Python framework][3]!).  I’ve even discovered we have an IPython notebook server setup.
 
-For the backend side, some of our service activity gets parked in Elastic, where we have [Kibana][4] setup.  The rest/majority of said service activity is handled by a home-grown system, which includes our open-sourced [ffwd][5] (pronounced “fast forward”) written in Ruby.
+For the backend side, some of our service activity gets parked in Elasticsearch, where we have [Kibana][4] setup.  The rest/majority of said service activity is handled by a home-grown system, which includes our open-sourced [ffwd][5] (pronounced “fast forward”) written in Ruby.
 
 Yet with all this setup, all this technology, I am embarrassed to say my team did a lot of development in the dark.  We were not tracking anything; we didn’t know how successful our feature integrations were doing; we hadn’t a clue how our backend services we “maintained” were holding up.
 
@@ -179,3 +179,4 @@ $(function () {
 [19]: https://www.spotify.com/us/signup/
 [20]: https://www.mountaingoatsoftware.com/agile/scrum/sprint-retrospective
 [21]: https://codeascraft.com/2011/02/15/measure-anything-measure-everything/
+[22]: https://speakerdeck.com/roguelynn/metrics-driven-development-see-the-forest-for-the-trees
