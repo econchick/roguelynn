@@ -3,6 +3,9 @@ title: "RAMLfications"
 layout: post.html
 category: [projects, resume]
 proj_url: https://ramlfications.readthedocs.org
+code_url: https://github.com/spotify/ramlfications
+license_url: https://github.com/spotify/ramlfications/blob/master/LICENSE
+license: "Apache 2.0"
 ---
 
 [RAMLfications][4] is a Python package that parses RAML and validates it based on the [specification][5] into Python objects.

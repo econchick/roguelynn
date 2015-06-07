@@ -14,8 +14,13 @@ hoep:
     render_flags:
         toc: true
 containers:
-    talks:
+    past_talks:
         url: /talks/<slug>/
+    upcoming_talks:
+        url: /talks/<slug>/
+        order: asc
+    about:
+        url: /about/
     projects:
         url: /projects/<slug>/
     resume:

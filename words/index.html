@@ -1,10 +1,13 @@
 {% extends "site.html" %}
 {% block title %}Words{% endblock %}
 {% block content %}
+  <div class="page-header"><h1>Words</h1></div>
   {% for post in posts %}
     {% if 'words' in post.category %}
-        <p class="words"><a href="{{ post.url }}">{{ post.title }}</a>
-        &#187;&#32;<small class="words">{{ post.date }}</small></p>
+      <div class="dl-horizontal">
+        <dt><p id="blogpost-published">{{ post.timestamp|date('%b %d, %Y') }}</p></dt>
+        <dd><p><a class="blogpost-title-link" href="{{ post.url }}">{{ post.title }}</a></p></dd>
+      </div>
     {% endif %}
   {% endfor %}
 {% endblock %}

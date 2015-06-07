@@ -1,14 +1,8 @@
 {% extends "site.html" %}
 {% block title %}About{% endblock %}
 {% block content %}
-    <section id="archive">
-        <h1>About</h1>
-        <article id="about">
-                {% for post in posts %}
-                    {% if 'about' in post.category %}
-                            {{ post.content }}
-                    {% endif %}
-                {% endfor %}
-        </article>
-    </section>
+<div class="page-header"><h1>About</h1></div>
+  {% for post in containers.about %}
+    {{ post.content }}
+  {% endfor %}
 {% endblock %}

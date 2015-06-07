@@ -1,35 +1,31 @@
 {% extends "site.html" %}
 {% block title %}Talks{% endblock %}
 {% block content %}
-    <section id="archive">
-        <h1>Talks</h1>
-            <article id="talks">
-                <h3 id="talklist">Upcoming</h3>
-                {% for talk in containers.talks %}
-                    {% if 'upcoming talk' in talk.tags %}
-                    {% if not 'hidden' in talk.tags %}
-                            <h4 id="upcoming">{{ talk.location }}&nbsp;<time>&#187;&#32;{{ talk.talk_date }}</time></h4>
-                            <p><a href="{{ talk.conf_url }}">{{ talk.title }}</a></h4>
-                            {% if talk.excerpt %}<p>{{ talk.excerpt }}</p>{% endif %}
-                    {% endif %}{% endif %}
-                {% endfor %}
-                <h3 id="talklist">Past</h3>
-                {% for talk in containers.talks %}
-                    {% if 'past talk' in talk.tags %}
-                            <h4>{{ talk.title }}&nbsp;<time>&#187;&#32;{{ talk.talk_date }}</time></h4>
-                            <p id="location">{{ talk.location }}
-                            {% if talk.blog_post %}
-                            |&nbsp;&nbsp;<a href="{{ talk.blog_post}}"><i class="fa fa-pencil-square"></i>&nbsp;&nbsp;Blog talk</a>&nbsp;&nbsp;
-                            {% endif %}
-                            {% if talk.video %}|&nbsp;&nbsp;<a href="{{ talk.video }}"><i class="fa fa-video-camera"></i>&nbsp;Video</a>&nbsp;&nbsp;
-                            {% endif %}
-                            {% if talk.slides %}|&nbsp;&nbsp;<a href="{{ talk.slides }}"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Slides</a>&nbsp;&nbsp;
-                            {% endif %}
-                            {% if talk.code %}|&nbsp;&nbsp;<a href="{{ talk.code }}"><i class="fa fa-code"></i>&nbsp;&nbsp;Demoed Code</a>&nbsp;&nbsp;
-                            {% endif %}
-                            </p>
-                    {% endif %}
-                {% endfor %}
-            </article>
-    </section>
+  <div class="page-header"><h2 id="talklist">Upcoming Talks</h2></div>
+    {% for talk in containers.upcoming_talks %}
+        {% if not 'hidden' in talk.tags %}
+          <div class="talk-indent">
+            <h4 id="upcoming">{{ talk.location }}&nbsp;<small>{{ talk.talk_date }}</small></h4>
+            {% if talk.title %}<p>Talk: <a href="{{ talk.conf_url }}">{{ talk.title }}</a></h4></p>{% endif %}
+            {% if talk.tutorial %}<p>Tutorial: <a href="{{ talk.tutorial_url }}">{{ talk.tutorial }}</a></p>{% endif %}
+            {% if talk.excerpt %}<p>{{ talk.excerpt }}</p>{% endif %}
+          </div>
+        {% endif %}
+    {% endfor %}
+    <div class="page-header"><h2 id="talklist">Talks Given</h2></div>
+    {% for talk in containers.past_talks %}
+      <div class="dl-horizontal dl-horizontal-border">
+        <dt style="padding-top: 26px"><small>{{ talk.talk_date }}</small></dt>
+        <dd><h4>{{ talk.title }}</h4></dd>
+        <dt style="margin-top:5px;">
+          {% if talk.blog_post %}<a href="{{ talk.blog_post}}"><i class="icon-pencil"></i></a>{% endif %}
+          {% if talk.video %}<a href="{{ talk.video }}"><i class="icon-video"></i></a>{% endif %}
+          {% if talk.slides %}<a href="{{ talk.slides }}"><i class="icon-blackboard"></i></a>{% endif %}
+          {% if talk.code %}<a href="{{ talk.code }}"><i class="icon-code"></i></a>{% endif %}
+        </dt>
+
+        <dd><p id="location">{{ talk.location }}</p>
+        </dd>
+      </div>
+  {% endfor %}
 {% endblock %}

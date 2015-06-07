@@ -206,7 +206,7 @@ body {
 }
 
 p {
-  font-size:14px;
+  font-size:16px;
   line-height:20px;
   font-weight: 300;
 }
@@ -345,23 +345,12 @@ h2 abbr {
  padding-bottom: 30px;
 }
 
-#footer {
-  position: fixed;
-  bottom: 0;
-  background-color: #F0F2F5;
-  width: 100%;
-  margin-top: 100px;
-  font-size: 25px;
-}
-
-#footer .fa {
-  color: #313236;
-}
 
 .rogue-footer {
   background-color: #F0F2F5;
   font-size: 30px;
   text-align: center;
+  min-height: 40px;
 }
 
 .rogue-footer .fa {
@@ -413,7 +402,7 @@ h2 abbr {
 
 .rogue-navbar .fa {
   color: #313236;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 .navbar-brand:hover, .navbar-brand:focus {
@@ -531,10 +520,32 @@ td.linenos {
   width: 30px;
 }
 
-.words {
+/*.words {
   font-size: 20px;
   line-height: 48px;
   list-style: none;
+}*/
+
+#blogpost-published {
+  font-style: italic;
+  font-weight: 100;
+  font-size: 14px;
+  margin-top: 2px;
+  color: #7F808A;
+}
+
+a.blogpost-title-link {
+  color: #333;
+}
+
+a.blogpost-title-link:hover, a.blogpost-title-link:focus {
+  text-shadow: 0 0 1px rgba(56, 165, 221, 0.5);
+  color: #333;
+  background-color: transparent;
+  text-decoration: none;
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+  padding-bottom: 0px;
 }
 
 #date-header {
@@ -576,6 +587,23 @@ ul li {
   width: 900px;
 }
 
+#talk-separator {
+  border-top: 1px solid #cecece;
+}
+
+.talk-indent {
+  padding-left: 30px;
+}
+
+.project-indent {
+  padding-left: 30px;
+}
+
+.dl-horizontal-border {
+  border-bottom: 1px solid #eee;
+
+}
+
 #article-content p {
   margin-top: 15px;
 }
@@ -605,7 +633,6 @@ a:hover, a:focus {
   margin-left: 13.3333%
 
 }
-
 .glyphicon {
   font-size: 20px;
 }
@@ -630,4 +657,34 @@ a:hover, a:focus {
 
 .rogue-hover {
   border-bottom: 1px dotted #337ab7;
+}
+
+
+/* entypo icon adjustments */
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  color: #313236;
+  font-size: 140%;
+  margin-left: 0em;
+  margin-right: 0em;}
+
+[class^="icon-"]:hover, [class*=" icon-"]:hover, [class^="icon-"]:focus, [class*=" icon-"]:focus {
+  text-shadow: 0 0 3px rgba(56, 165, 221, 0.8);
+  color: #38a5dd;
+  background-color: transparent;
+  text-decoration: none;
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+  padding-bottom: 0px;
+}
+
+
+.footer [class^="icon-"]:before, .footer [class*=" icon-"]:before {
+  font-size: 100%;
+  margin-left: 0em;
+  margin-right: 0em;
+}
+
+.footer .fa {
+  font-size: 85%;
 }

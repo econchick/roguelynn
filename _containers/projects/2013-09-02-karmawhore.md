@@ -1,8 +1,9 @@
 ---
-title: "Karmawho.re: Your Reddit Comment Karma Visualized"
+title: "Karmawho.re"
 layout: post.html
 category: [projects, resume]
 proj_url: http://www.karmawho.re
+lead: "Your Reddit Comment Karma Visualized"
 ---
 
 Is a lot of your time wasted from [derping][derp] around on [Reddit][reddit]?  Do you find that you have to correct someone when they’re [**wrong** on the internet][wrong]?  Wish that your collected comment karma was worth something?
