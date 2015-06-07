@@ -383,6 +383,7 @@ h2 abbr {
   height: 30px;
   border: 0;
   margin-top: -2px;
+  pointer-events: none;
 }
 
 
@@ -394,8 +395,16 @@ h2 abbr {
 
 .navbar-nav > li > a {
   padding-bottom: 0px;
+  padding-right: 10px;
 }
 
+.navbar-collapse  {
+}
+
+#background {
+  background-color: #fff;
+
+}
 .nav > li > a {
   padding 10px 15px 0px 15px;
 }

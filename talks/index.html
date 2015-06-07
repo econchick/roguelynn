@@ -4,11 +4,9 @@
   <div class="page-header"><h2 id="talklist">Upcoming Talks</h2></div>
     {% for talk in containers.upcoming_talks %}
         {% if not 'hidden' in talk.tags %}
-          <div class="talk-indent">
-            <h4 id="upcoming">{{ talk.location }}&nbsp;<small>{{ talk.talk_date }}</small></h4>
-            {% if talk.title %}<p>Talk: <a href="{{ talk.conf_url }}">{{ talk.title }}</a></h4></p>{% endif %}
-            {% if talk.tutorial %}<p>Tutorial: <a href="{{ talk.tutorial_url }}">{{ talk.tutorial }}</a></p>{% endif %}
-            {% if talk.excerpt %}<p>{{ talk.excerpt }}</p>{% endif %}
+          <div class="dl-horizontal">
+            <dt style="padding-top: 26px"><small>{{ talk.talk_date }}</small></dt>
+            <dd><h4 id="upcoming">{{ talk.location }}</h4></dd>
           </div>
         {% endif %}
     {% endfor %}

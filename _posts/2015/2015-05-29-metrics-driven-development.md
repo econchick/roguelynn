@@ -120,7 +120,7 @@ When thinking about implementing various metrics for our feedback loops, I came 
 * How do we correctly measure what we care about?
 * We have many tools to help us create <span class="rogue-hover" data-toggle="tooltip" data-placement="top" title="# of registered users right now">gauges</span>, <span class="rogue-hover" data-toggle="tooltip" data-placement="top" title="# of open connections">counters</span>, <span class="rogue-hover" data-toggle="tooltip" data-placement="top" title="# of requests/second">meters</span>, <span class="rogue-hover" data-toggle="tooltip" data-placement="top" title="distribution of the # of registered users connected with Facebook">histograms</span>, and <span class="rogue-hover" data-toggle="tooltip" data-placement="top" title="latency: # of requests/sec over time">timers</span>.  But what representation is best for each question?
 
-<img class="displayed" src="{{ get_asset('images/metrics_facebook_service.png') }}" title="Incoming requests by service" alt="Incoming requests by service"/>
+<img class="img-responsive img-rounded" src="{{ get_asset('images/metrics_facebook_service.png') }}" title="Incoming requests by service" alt="Incoming requests by service"/>
 
 <small style="text-align: center;display:block;">Another metric displayed on our dashboard</small>
 
