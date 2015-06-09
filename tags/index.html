@@ -1,0 +1,11 @@
+{% extends "site.html" %}
+{% block title %}Tags{% endblock %}
+{% block content %}
+  <div class="page-header"><h1>Tags</h1></div>
+    <p>{% for tag in posts.tags %}
+      {% if tag != "resume" %}
+        {% set data = posts.tags[tag] %}
+         <span class="badge rogue-badge"><a href="{{ get_url(data.url) }}">{{ tag }} <span class="tag-count">({{ data.count }})</span></a></span>
+      {% endif %}
+    {% endfor %}</p>
+{% endblock %}

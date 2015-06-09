@@ -4,6 +4,8 @@ author: roguelynn
 domain: www.roguelynn.com
 date_format: "%B %d, %Y"
 posts_url: /words/<slug>/
+tags_url: /tags/
+tag_layout: tag.html
 social:
     github: econchick
     twitter: roguelynn
