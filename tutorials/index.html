@@ -1,0 +1,11 @@
+{% extends "site.html" %}
+{% block title %}Talks{% endblock %}
+{% block content %}
+  <div class="page-header"><h2>Tutorials</h2></div>
+    {% for tutorial in containers.tutorials %}
+      <div class="dl-horizontal">
+        <dt><p id="blogpost-published">{{ tutorial.published }}</p></dt>
+        <dd><p><a class="blogpost-title-link" href="{{ tutorial.url }}">{{ tutorial.title }}</a></p></dd>
+      </div>
+    {% endfor %}
+{% endblock %}
