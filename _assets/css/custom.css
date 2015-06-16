@@ -721,3 +721,14 @@ a:hover, a:focus {
 .footer .fa {
   font-size: 85%;
 }
+
+.disclaimer {
+  color: #7F808A;
+  font-size: 15px;
+  font-weight: 100;
+}
+
+.disclaimer strong {
+  font-weight: 700;
+  color: #313236;
+}

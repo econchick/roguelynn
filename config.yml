@@ -29,3 +29,6 @@ containers:
         url: /resume/
     drafts:
         url: /~drafts/
+    tutorials:
+        url: /tutorials/<slug>/
+        order: asc

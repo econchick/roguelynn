@@ -1,0 +1,15 @@
+{% extends "site.html" %}
+{% block title %}Tutorials{% endblock %}
+{% block content %}
+  <div class="page-header"><h2>PyCon SG: How to Spy Tutorial</h2></div>
+    {% for tutorial in containers.tutorials %}
+      {% if 'disclaimer' in tutorial.category %}
+        {{ tutorial.content }}
+      {% else %}
+      <div class="dl-horizontal">
+        <dt><p id="blogpost-published">{{ loop.index - 1 }}.</p></dt>
+        <dd><p><a class="blogpost-title-link" href="{{ tutorial.url }}">{{ tutorial.title }}</a></p></dd>
+      </div>
+      {% endif %}
+    {% endfor %}
+{% endblock %}
