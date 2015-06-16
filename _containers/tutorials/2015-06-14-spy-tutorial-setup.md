@@ -22,7 +22,7 @@ published: "June 16th, 2015"
 ##### Step 1
 
 ```bash
-$ brew install nmap tcpdump graphviz imagemagick gnuplot
+$ brew install nmap tcpdump graphviz imagemagick
 ```
 
 ##### Step 2
