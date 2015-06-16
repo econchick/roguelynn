@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /tutorials/
+Disallow: /~drafts/
+Disallow: /resume/

@@ -29,3 +29,4 @@ containers:
         url: /~drafts/
     tutorials:
         url: /tutorials/<slug>/
+        order: asc

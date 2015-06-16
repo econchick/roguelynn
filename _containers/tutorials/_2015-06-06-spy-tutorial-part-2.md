@@ -3,7 +3,7 @@ title: "How to Spy with Python - Part 2"
 layout: tutorial.html
 tags: [python, scapy, spy]
 category: [tutorial]
-url: /how-to-spy/
+url: "/how-to-spy/"
 given: "June 16th, 2015"
 published: "June 16th, 2015"
 ---
@@ -15,16 +15,16 @@ The following "spy tactics"/queries have been inspired by The Guardian's [articl
 
 **DISCLAIMER**
 
-We are *not* sniffing live traffic.  All traffic (in `cap` or `pcap` files) were either found in a [common repository](http://wiki.wireshark.org/SampleCaptures) for testing purposes or _my own traffic_ that I'm not shy to share.  
+We are *not* sniffing live traffic.  All traffic (in `cap` or `pcap` files) were either found in a [common repository](http://wiki.wireshark.org/SampleCaptures) for testing purposes or _my own traffic_ that I'm not shy to share.
 
 In no way is this tutorial teaching how one can capture live traffic from unknowing victims, nor is it storing such traffic.
 
-I am not condoning sitting in a cafe with free & unprotected wifi and [capturing your fellow coffee & free wifi lovers' traffic](https://wiki.wireshark.org/CaptureSetup/WLAN).  
+I am not condoning sitting in a cafe with free & unprotected wifi and [capturing your fellow coffee & free wifi lovers' traffic](https://wiki.wireshark.org/CaptureSetup/WLAN).
 
 ## 1. Show me "everyone" that has search for $X term
- 
+
 _Inspired by [page 13](http://www.theguardian.com/world/interactive/2013/jul/31/nsa-xkeyscore-program-full-presentation) of the XKeyscore presentation._
- 
+
 Notes:
 
 * This uses a pre-generated pcap file of Yahoo! search traffic that I generated, **TODO** where will the `cap` file be? already on the system or do they have to request it?
@@ -68,7 +68,7 @@ We can visualize all the 300 packets nicely with the `nsummary` method.  Here, w
 # <-- snipped -->
 ```
 
-I went through this myself and picked out my own search queries. I didn't go through each and every one.  
+I went through this myself and picked out my own search queries. I didn't go through each and every one.
 
 Looking at the `nsummary` print out helped a bit:
 
@@ -106,7 +106,7 @@ Server: ATS/4.0.1
 GIF89a����!�,D;
 ```
 
-Cool! 
+Cool!
 
 After the `ACK` of that packet is my first search query!  Let's take a look at the packet itself:
 
