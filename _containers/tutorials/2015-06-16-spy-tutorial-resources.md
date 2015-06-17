@@ -9,6 +9,12 @@ published: "June 16th, 2015"
 
 In absolutely no particular order of anything:
 
+## Tutorial Resources
+
+* [Slides]({{ get_asset("pdfs/spy-tutorial.pdf") }}) [PDF]
+* [IPython Notebooks](https://github.com/econchick/ipython-scapy)
+* [IPython Notebook Server Setup](https://github.com/econchick/scapy-tmpnb)
+
 ## Extra Scapy resources
 
 * [Source code](http://bb.secdev.org/scapy/wiki/Home) [hg]

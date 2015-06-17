@@ -7,6 +7,11 @@ given: "June 16th, 2015"
 published: "June 16th, 2015"
 ---
 
+# Overview
+
+* <input type="checkbox"></input> General Requirements
+* <input type="checkbox"></input> System-specific Setup: [Mac](#mac) | [Linux](#linux) | [Windows](#windows) | [Within your Browser](#within-your-browser) (last resort!)
+* <input type="checkbox"></input> Check your setup
 
 # Installation
 
@@ -60,7 +65,7 @@ If installing `ipython[all]` doesn't work for some reason, you can download each
 ##### Step 1
 
 ```bash
-$ sudo apt-get install python-dev nmap tcpdump gnuplot graphviz imagemagick libpcap libdnet
+$ sudo apt-get install python-dev graphviz python-crypto nmap tcpdump  imagemagick libpcap0.8-dev libdnet
 ```
 
 ##### Step 2
@@ -79,10 +84,12 @@ If installing `ipython[all]` doesn't work for some reason, you can download each
 
 #### Fedora/RHEL/CentOS
 
+*Caution* Not sure if this is the complete setup or if it works, sorry :-/
+
 ##### Step 1
 
 ```bash
-$ sudo yum install python-devel graphviz python-crypto sox gnuplot
+$ sudo yum install python-devel graphviz python-crypto libpcap-devel nmap tcpdump imagemagick libdnet
 ```
 
 ##### Step 2
@@ -107,11 +114,11 @@ To be honest, I am not at all familiar with the Python On Windows ecosystem - he
 
 [Scapy installation instructions](http://www.secdev.org/projects/scapy/doc/installation.html#windows) with the following packages (the rest we'll either pip install in a virtualenv, or do not need):
 
-* [ ] pywin32
-* [ ] WinPcap
-* [ ] libdnet
-* [ ] graphviz
-* [ ] nmap
+* <input type="checkbox"></input> pywin32
+* <input type="checkbox"></input> WinPcap
+* <input type="checkbox"></input> libdnet
+* <input type="checkbox"></input> graphviz
+* <input type="checkbox"></input> nmap
 
 
 ##### Step 2
@@ -128,11 +135,13 @@ If installing `ipython[all]` doesn't work for some reason, you can download each
 (env) $ pip ipython pyzmq jinja2 tornado mistune jsonschema pygments terminado functools32
 ```
 
-## Sh*t not installing?
+# Within your browser
+
+**Sh*t not installing?**
 
 If there is too much hassle, you can use my [tmpnb](https://github.com/jupyter/tmpnb) setup within your browser!
 
-1. Navigate to [http://rogue.ly/ipython-scapy-tutorial](http://rogue.ly/ipython-scapy-tutorial)
+1. Navigate to [rogue.ly/spy-tmpnb](http://rogue.ly/spy-tmpnb)
 2. Once you see your notebook (after tmpnb creates one for you) take note of the URL - that is unique to *you* and if you do not remember it, **YOUR NOTEBOOK IS LOST**.
 
 I will *not* be keeping this tmpnb website up after tutorial (Amazon costs $$!) but I will show you how you can save your notebooks (via git and exporting individual files).

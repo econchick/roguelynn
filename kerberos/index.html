@@ -1,4 +1,4 @@
-{% extends "site.html" %}
+{% extends "layout.html" %}
 {% block title %}Kerberos{% endblock %}
 {% block content %}
     <section id="archive">
@@ -16,7 +16,7 @@
   </div>
             <article>
                 <p>{{ post.content }}</p>
-                    
+
             </article>
             {% endif %}{% endif %}
                 {% endfor %}

@@ -11,15 +11,9 @@
   </head>
   <body>
     {% include "nav.general.html" %}
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-10 col-sm-8 col-md-8 col-lg-8 col-xs-offset-1 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
-          <div class="rogue-content-block">
-            {% block content %}{% endblock %}
-          </div>
-        </div>
-      </div>
-    </div>
+
+    {% block layout %}{% endblock %}
+
     <br/><br/>
     {% include "footer.html" %}
     {% include "scripts.html" %}
