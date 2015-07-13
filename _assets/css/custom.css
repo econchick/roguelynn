@@ -732,3 +732,31 @@ a:hover, a:focus {
   font-weight: 700;
   color: #313236;
 }
+
+
+.roguelynn-card {
+  border: 1px solid #eee;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.roguelynn-card-row {
+  padding-bottom: 15px;
+}
+
+.roguelynn-card > .rogue-badge {
+  font-weight: 200;
+  background-color: #7F808A;
+}
+
+
+.rogue-source {
+  font-style: italic;
+  font-size: 80%;
+}
+
+.rogue-source a {
+  color: #7F808A;
+  text-decoration: none;
+  border-bottom: 1px dashed #337ab7;
+}

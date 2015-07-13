@@ -32,3 +32,5 @@ containers:
     tutorials:
         url: /tutorials/<slug>/
         order: asc
+    fingerprints:
+        url: /fingerprints/<slug>/
