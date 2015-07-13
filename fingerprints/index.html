@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block title %}Fingerprints{% endblock %}
+{% block content %}
+    <div class="page-header">
+      <h2 id="talklist">Look, ma!</h2>
+      <small>Interwebby fingerprints of mine that you might have seen</small>
+    </div>
+    {% for item in containers.fingerprints %}
+      {% if loop.index == 0 %}
+        <div class="row roguelynn-card-row">
+      {% endif %}
+      {% if loop.index is divisibleby(2) %}
+        <div class="row roguelynn-card-row">
+      {% endif %}
+        <div class="col-sm-6 col-md-6 col-lg-6">
+          <div class="roguelynn-card">
+            <h5><a href="{{ item.link }}">{{ item.title }}</a></h5>
+            <small>{{ item.date }}&nbsp;&nbsp;</small>
+            {% if item.type %}
+              {% for t in item.type %}
+                <span class="badge rogue-badge">{{ t }}</span>
+              {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+      {% if loop.index is divisibleby(2) %}
+        </div>
+      {% endif %}
+  {% endfor %}
+{% endblock %}
