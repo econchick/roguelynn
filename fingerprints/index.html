@@ -1,30 +1,20 @@
 {% extends "layout.html" %}
-{% block title %}Fingerprints{% endblock %}
+{% block title %}As Seen On{% endblock %}
 {% block content %}
     <div class="page-header">
-      <h2 id="talklist">Look, ma!</h2>
-      <small>Interwebby fingerprints of mine that you might have seen</small>
+      <h2 id="talklist">As Seen On...</h2>
+      <small>Just a little humblebragging.</small>
     </div>
     {% for item in containers.fingerprints %}
-      {% if loop.index == 0 %}
-        <div class="row roguelynn-card-row">
-      {% endif %}
-      {% if loop.index is divisibleby(2) %}
-        <div class="row roguelynn-card-row">
-      {% endif %}
-        <div class="col-sm-6 col-md-6 col-lg-6">
-          <div class="roguelynn-card">
-            <h5><a href="{{ item.link }}">{{ item.title }}</a></h5>
-            <small>{{ item.date }}&nbsp;&nbsp;</small>
-            {% if item.type %}
-              {% for t in item.type %}
-                <span class="badge rogue-badge">{{ t }}</span>
-              {% endfor %}
-            {% endif %}
-          </div>
-        </div>
-      {% if loop.index is divisibleby(2) %}
-        </div>
-      {% endif %}
+      <div class="dl-horizontal dl-horizontal-border" style="padding-bottom: 10px;">
+        <dt style="padding-top: 26px"><small>{{ item.date }}</small></dt>
+        <dd><h4>{{ item.source }}</h4></dd>
+        <dt><p>{% for t in item.type %}<span title="{{ t[0] }}"><i class="icon-{{ t[1] }}"></i></span>{% endfor %}</p></dt>
+        <dd><p><a href="{{ item.link }}">{{ item.title }}</a></p></dd>
+        {% if item.content %}
+          <dt></dt>
+          <dd>{{ item.content }}</dd>
+        {% endif %}
+      </div>
   {% endfor %}
 {% endblock %}

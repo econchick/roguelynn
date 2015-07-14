@@ -748,3 +748,15 @@ a:hover, a:focus {
   font-weight: 200;
   background-color: #7F808A;
 }
+
+
+.rogue-source {
+  font-style: italic;
+  font-size: 80%;
+}
+
+.rogue-source a {
+  color: #7F808A;
+  text-decoration: none;
+  border-bottom: 1px dashed #337ab7;
+}
