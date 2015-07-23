@@ -7,7 +7,7 @@ category: [resources]
 
 I did some legwork for you.  Appreciate it? perhaps show it via [gratipay](https://gratipay.com/~roguelynn/)
 
-## Contents
+### Contents
 
 1. [Companies that have released their diversity numbers](#companies-that-have-released-their-diversity-numbers)
 2. [Books](#books)
