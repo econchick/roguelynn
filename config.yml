@@ -32,5 +32,7 @@ containers:
     tutorials:
         url: /tutorials/<slug>/
         order: asc
+    resources:
+        url: /lmgtfy/<slug>/
     fingerprints:
         url: /fingerprints/<slug>/
