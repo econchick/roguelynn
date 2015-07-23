@@ -39,6 +39,7 @@ I did some legwork for you.  Appreciate it? perhaps show it via [gratipay](https
 ### Other Resources:
 
 * **MUST READ:** [A primer on sexism in the tech industry][12]
+* [Straight White Male: the Lowest Difficulty Setting There Is][35]
 * [Geeks and privilege][13]
 * [Open Source Male Privilege Checklist][14]
 * [Misogyny][15]
@@ -47,6 +48,10 @@ I did some legwork for you.  Appreciate it? perhaps show it via [gratipay](https
 * [What Makes a Team Smarter? More Women][18]
 * [Interview stereotyping undermines women][19]
 * [The Myth of the Ideal Worker: Does Doing All the Right Things Really Get Women Ahead?][20] (PDF)
+* Freakonomics Podcast: [Women Are Not Men][31]
+* [Gender Differences in Competition][32] (PDF)
+* [How Facebook changed its icons subtly to empower women][33]
+* [How Does Biology Explain the Low Numbers of Women in CS][34]
 
 * Resources for writing job postings, recruiting women:
     * [Albeist Word Profile][21]
@@ -93,3 +98,8 @@ I did some legwork for you.  Appreciate it? perhaps show it via [gratipay](https
 [28]: https://kateheddleston.com/talk/ea142cd2-f026-4615-ab90-2170f06c739b
 [29]: http://podcastinit.com/episode-11-tracy-osborn-naomi-ceder-and-lynn-root-on-women-and-diversity-in-python.html
 [30]: https://www.youtube.com/watch?v=QrITN6GZDu4
+[31]: http://freakonomics.com/2014/03/20/women-are-not-men-full-transcript-2/
+[32]: http://rady.ucsd.edu/faculty/directory/gneezy/pub/docs/gender-differences-competition.pdf
+[33]: http://www.adweek.com/news/technology/how-one-facebook-designer-made-sites-icons-subtly-more-empowering-women-165791
+[34]: http://www.slideshare.net/terriko/how-does-biology-explain-the-low-numbers-of-women-in-cs-hint-it-doesnt
+[35]: http://whatever.scalzi.com/2012/05/15/straight-white-male-the-lowest-difficulty-setting-there-is/
