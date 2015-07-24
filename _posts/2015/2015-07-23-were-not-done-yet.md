@@ -308,7 +308,7 @@ Oh goodness - yes - the tech industry is hiring like crazy!
 
 What this means is that you don’t actually care enough to put thought in about diversity into your hiring process.  It’s as simple as that.   Do the work once to ensure that you have appropriate practices in place, diverse networks, maybe remove gender-identifying words in your application process; it certainly doesn’t take much effort to google for local communities to reach out.
 
-## The “Bad Guy” Falacy
+## The “Bad Guy” Fallacy
 
 This is all thinly-veiled bullshit.  I’m sure I’m not the only one to pick up on it either.
 
