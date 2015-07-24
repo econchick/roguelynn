@@ -5,7 +5,7 @@ tags: [past talk]
 talk_date: "May, 2013"
 location: "DjangoCon Europe, Warsaw, Poland"
 conf_url: "http://2013.djangocon.eu/talks/#5"
-blog_post: "/words/circus"
+blog_post: "/circus"
 slides: "https://speakerdeck.com/roguelynn/introduce-django-to-your-old-friends"
 category: [talks]
 ---
