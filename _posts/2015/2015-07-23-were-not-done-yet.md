@@ -10,7 +10,9 @@ This post is an accompaniment to my [Diversity: We're not done yet][0] at [EuroP
 
 ---
 
-I just recently <strike>nerded out</strike> saw the San Francisco Symphony [play the whole score][0] to the full screening of the 2009 Star Trek movie. It was ridiculously awesome.  It reminded me that [Gene Roddenberry][1] had some great comments on the TV series that are very on-point with regards to diversity:
+I just recently <strike>nerded out</strike> saw the San Francisco Symphony [play the whole score][0] to the full screening of the 2009 Star Trek movie. It was ridiculously awesome. _Side note: I love [this][spotify] rendition of The Next Generation theme by [Vitamin String Quartet][vitamin]._
+
+It reminded me that [Gene Roddenberry][1] had some great comments on the TV series that are very on-point with regards to diversity:
 
 
 > One obstacle to adulthood needs to be solved immediately:
@@ -20,11 +22,15 @@ I just recently <strike>nerded out</strike> saw the San Francisco Symphony [play
 > We will find it **impossible to fear diversity** and to enter into the future at the same time.
 > <small>Gene Roddenberry</small>
 
-It was so very comforting to hear this the first time from someone so prominent in “geek” culture.  I grew up with my father watching The Next Generation, Deep Space 9, and The Voyager (my favorite is The Next Generation and Captain Luc Picard).  My father is the the doppelgänger of Data - whom he dressed up as for one halloween.  I also loved the “Reboot” movies that have recently came out, and my heart died a little bit with Leonard Nimoy earlier this year.
+It was so very comforting to hear this the first time from someone so prominent in “geek” culture.  I grew up with my father watching The Next Generation, Deep Space 9, and The Voyager (my favorite is The Next Generation and Captain Luc Picard).  My [father][dad] is the the doppelgänger of [Data][data] - whom he dressed up as for one halloween.
 
 But I have a suspicion that having Star Trek in the background of my adolescence has subconsciously influenced me.  Looking at the TV series as an adult, its discourse is very diplomatic – something still very novel today.  The characters had very altruistic personal views, and applied them in difficult situations.  The whole premise of the Starfleet was purely humanitarian and peacekeeping.  The series itself was used to reflect current cultural issues including racism, sexism, class warfare, among many others. [Roddenberry himself even said][5] “[By creating] a new world with new rules, I could make statements about sex, religion, Vietnam, politics, and intercontinental missiles.”
 
-Perhaps you’re new to Python, or maybe this is your first Python conference - but to get everyone up to speed, the past few years there’s been a huge movement to improve this community’s diversity.  Four EuroPython’s ago, 2012 in Florence, I gave a [keynote][6] as a complete Python newbie about how I was working to help increase the amount of women within the Python community.  I found it only appropriate to give an “update” - but this may turn into a bit of an ass-kicking if anything.
+#### Some Background
+
+Perhaps you’re new to Python or not involved with the community very much - but to get everyone up to speed, the past few years there’s been a huge movement to improve this community’s diversity.  Four EuroPython’s ago, 2012 in Florence, I gave a [keynote][6] as a complete Python newbie about how I was working to help increase the amount of women within the Python community.  I found it only appropriate to give an “update” for this year's EuroPython.
+
+But this turns into a bit of an ass-kicking if anything.
 
 # Why it's a problem
 
@@ -338,19 +344,26 @@ Alright - after some self-education and some googling, there are micro actions t
 
 ### s/female/women/g
 
-First is super simple - programmers should like it.  Switch any use of the word “female” to the word “women”.   For example “female attendees” -> “women attendees”.
+First is super simple - programmers should like it.  Switch any use of the word “female” to the word “women”.   For example “female attendees” → “women attendees”.
 
 Why, you may ask?
 
-First, they mean different things.  “Female” is a scientific term that refers to the ability to produce offspring.  The term “woman” refers to a human, while “female” could refer to any species.
+The primary meaning of “female” can be seen more as a term for classification, like studying female lizards:
+
+> Female: Of or denoting the sex that can bear offspring or produce eggs, distinguished biologically by the production of gametes (ova) which can be fertilized by male gametes
+> [Oxford English Dictionary][OEDfemale]
+
+The term “woman” [refers specifically][OEDwoman] to a human, while “female” could refer to any species.
 
 Second reason is it’s dehumanizing.  To be reduced to my reproductive abilities, you ignore that I am a human.
 
-You also exclude folks that - while identify as a woman - may not have the physical ability to bare children.  Not all women are biologically female.
+Last, when used as a noun, it can imply inferiority.  It’s often used in a negative tone.  For example, simple search on Twitter, I found:
 
-Last, when used as a noun, it can imply inferiority.  It’s often used in a negative tone.  For example, a twitter example I found:
+<blockquote class="twitter-tweet" lang="en" style="display:block;margin-left:auto;margin-right:auto;"><p lang="en" dir="ltr">A lot of females should stop wearing makeup so we all know the truth</p>&mdash; MJ The Astronaut™ (@MJChillin) <a href="https://twitter.com/MJChillin/status/623893740944498688">July 22, 2015</a></blockquote>
 
-> females should just stop wearing makeup so we know the truth” or “I can’t trust females anymore.
+<blockquote class="twitter-tweet" lang="en" style="display:block;margin-left:auto;margin-right:auto;"><p lang="en" dir="ltr">females these days are to full of themselves confusing confidence with arrogance. where&#39;s the humble ones at? 👀</p>&mdash; Cogito Érgo Sum (@KXavierr) <a href="https://twitter.com/KXavierr/status/624493556548268032">July 24, 2015</a></blockquote>
+
+<blockquote class="twitter-tweet" lang="en" style="display:block;margin-left:auto;margin-right:auto;"><p lang="en" dir="ltr">I don&#39;t f with these new generation of females.</p>&mdash; IG: @emanhudson (@_kosher) <a href="https://twitter.com/_kosher/status/624072746004131840">July 23, 2015</a></blockquote>
 
 With the use of the word “females”, we are reduced to a species; we’re separate, we’re other-ed.
 
@@ -495,3 +508,9 @@ I’ll finish with yet another Star Trek quote – because there are so many awe
 [lmgtfy]: http://www.roguelynn.com/lmgtfy/
 [twitter]: https://twitter.com/search?q=females
 [donald]: https://twitter.com/dstufft
+[dad]: https://github.com/albadraco
+[spotify]: https://open.spotify.com/track/0aCxxrboiRsVhv0jSiWD6l
+[vitamin]: http://www.vitaminstringquartet.com/
+[OEDfemale]: http://www.oxforddictionaries.com/definition/english/female
+[OEDwoman]: http://www.oxforddictionaries.com/definition/english/woman
+[data]: {{ get_asset('images/diversity-not-done-yet/data.gif') }}
