@@ -10,9 +10,9 @@ This post is an accompaniment to my [Diversity: We're not done yet][0] at [EuroP
 
 ---
 
-I just recently <strike>nerded out</strike> saw the San Francisco Symphony [play the whole score][0] to the full screening of the 2009 Star Trek movie. It was ridiculously awesome. _Side note: I love [this][spotify] rendition of The Next Generation theme by [Vitamin String Quartet][vitamin]._
+I just recently <strike>nerded out</strike> saw the San Francisco Symphony [play the whole score][3] to the full screening of the 2009 Star Trek movie. It was ridiculously awesome. _Side note: I love [this][spotify] rendition of The Next Generation theme by [Vitamin String Quartet][vitamin]._
 
-It reminded me that [Gene Roddenberry][1] had some great comments on the TV series that are very on-point with regards to diversity:
+It reminded me that [Gene Roddenberry][4] had some great comments on the TV series that are very on-point with regards to diversity:
 
 
 > One obstacle to adulthood needs to be solved immediately:
@@ -83,7 +83,7 @@ I’ve been on the board of the PSF for 2 terms, and just started the 3rd term. 
 
 Just two board meetings ago - June 23rd - we [approved][13] 3 Django Girls funding requests, 2 grants to PyCon UK specifically targeted to getting kids and teachers to their conference, and 2 grants for workshops in low-economic areas, or areas that would have difficulty accessing a computer.  From some napkin calculations, we’ve given 19 grants to Django Girls, totaling over $22,000.
 
-We also are trying to be introspective too.  This past elections, we made a [call to the members list][14] pleading to take diversity into consideration when nominating.  Because of those efforts, out of 11 directors on the [current board][15], we have 7 women. That is up from 3 women on the [2013-2014][16] and 2 from the [2013-2014][17] term.
+We also are trying to be introspective too.  This past elections, we made a [call to the members list][14] pleading to take diversity into consideration when nominating.  Because of those efforts, out of 11 directors on the [current board][15], we have 7 women. That is up from 3 women on the [2014-2015][16] and 2 women on the [2013-2014][17] term.
 
 ## Conferences
 
