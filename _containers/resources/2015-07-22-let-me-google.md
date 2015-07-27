@@ -5,7 +5,7 @@ tags: [diversity]
 category: [resources]
 ---
 
-I did some legwork for you.  Appreciate it? perhaps show it via [gratipay](https://gratipay.com/~roguelynn/)
+I did some legwork for you.  Appreciate it? perhaps show it via [patreon](http://patreon.com/roguelynn).
 
 ### Contents
 
