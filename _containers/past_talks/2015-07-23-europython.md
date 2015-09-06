@@ -8,4 +8,6 @@ conf_url: "https://ep2015.europython.eu/conference/p/lynn-root"
 category: [talks]
 slides: https://speakerdeck.com/roguelynn/diversity-were-not-done-yet
 blog_post: http://www.roguelynn.com/words/were-not-done-yet/
+video: https://www.youtube.com/watch?v=xWLFiKfoOTA
+code: https://github.com/econchick/pyladies-data
 ---

@@ -3,10 +3,13 @@ layout: post.html
 title: "Diversity: We're Not Done Yet"
 tags: [diversity, talk, community]
 category: [words]
+updated_at: "September 6, 2015"
+---
+<i>Update on September 6th: Finally included the IPython notebooks!</i>
+
 ---
 
-
-This post is an accompaniment to my [Diversity: We're not done yet][0] at [EuroPython][1] in Bilbao, Spain in July 2015.  Slides [here][2] and video to be posted soon.
+This post is an accompaniment to my [Diversity: We're not done yet][0] first at [EuroPython][1] in Bilbao, Spain in July 2015, then as a [keynote for DjangoCon US](https://2015.djangocon.us/blog/2015/08/24/announcing-our-keynote-speakers/) in Austin, TX in September 2015.  Slides [here][2], video from EuroPython [here](https://www.youtube.com/watch?v=xWLFiKfoOTA), and the IPython notebooks for the data visualization [here](https://github.com/econchick/pyladies-data).
 
 ---
 
@@ -201,7 +204,7 @@ What’s interesting, when switching this to a line graph, you can see when PyLa
 
 I suspect it has something to do with the presence of alcohol and/or the environment that may not attract many PyLadies.
 
-Anyways - this was just me trying to quantify the regional effect of PyLadies on local meetups.  Once I can get a breather, I’ll release the IPython Notebooks that I used after they’re cleaned up a bit.
+Anyways - this was just me trying to quantify the regional effect of PyLadies on local meetups.  [Here are the IPython Notebooks](https://github.com/econchick/pyladies-data) to show the process of how I got the data.
 
 # What we're missing
 
