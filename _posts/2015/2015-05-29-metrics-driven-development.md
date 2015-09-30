@@ -17,9 +17,9 @@ We have data scientists and machine learning engineers analyzing listening behav
 
 Engineers behind the platform watch usage rates of our Web APIs, login failure rates, and feature usage.  This only scratches the surface of what data we collect.
 
-We use various technologies related to data, including Hadoop, as well as Cassandra, Postgres, and [Elasticsearch][2]).  All of the user-generated data sits in Hadoop, with which we run jobs against using either Java, Python, or directly query with Hive (side note: we’ve open-sourced our [Python framework][3]!).  I’ve even discovered we have an IPython notebook server setup.
+We use various technologies related to data, including Hadoop, as well as Cassandra, Postgres, and [Elasticsearch][2].  All of the user-generated data sits in Hadoop, with which we run jobs against using either Java, Python, or directly query with Hive (side note: we’ve open-sourced our [Python job-scheduler framework][3]!).  I’ve even discovered we have an IPython notebook server setup.
 
-For the backend side, some of our service activity gets parked in Elasticsearch, where we have [Kibana][4] setup.  The rest/majority of said service activity is handled by a home-grown system, which includes our open-sourced [ffwd][5] (pronounced “fast forward”) written in Ruby.
+For some devops events, like DNS changes, Puppet configuration changes, and deploy pipelines, get parked in Elasticsearch, where we have [Kibana][4] setup.  But the majority of service activity is handled by a home-grown system, which includes our open-sourced [ffwd][5] (pronounced “fast forward”) written in Ruby.
 
 Yet with all this setup, all this technology, I am embarrassed to say my team did a lot of development in the dark.  We were not tracking anything; we didn’t know how successful our feature integrations were doing; we hadn’t a clue how our backend services we “maintained” were holding up.
 
@@ -39,7 +39,7 @@ The first challenge was to find our target condition.  Where do we want to be?  
 
 A seemingly easy question, right?  Yet myself and the squad initially struggled to answer this right away.  It certainly wasn’t immediately on the tip of our tongues.
 
-So we looked at our past and listed out the integration projects we delivered and the services currently maintain.  It includes [Uber][11],  [Last.fm][13], [Yahoo!][14], [SoundHound][15], [Twitter #music][16], among others.  The most critical is certainly our [Facebook][12] login and new user registration as about 70% of our user base logs in via Facebook.
+So we looked at our past and listed out the integration projects we delivered and the services currently maintain.  It includes [Uber][11],  [Last.fm][13], [Yahoo!][14], [SoundHound][15], [Twitter #music][16], among others.  The most critical is certainly our [Facebook][12] login and new user registration as more than 50% of our user base has a Facebook-connected account.
 
 <small>Side note: there seems to be a misconception that one must sign up/log in via Facebook to use Spotify. [Not true][19]!</small>
 
@@ -50,7 +50,7 @@ Who actually defines our work? At Spotify, we believe the leadership is meant to
 
 With the many integrations we’ve done, we have a lot of external partners.  Thankfully, the squad is a bit shielded from direct communication.  But that makes our business development team another customer.
 
-But then who depends on us internally?  And who actually uses our work/product/service?  As I mentioned earlier, about 70% or so of users log in with Facebook.  It's a pretty integral system to the Spotify platform.  So we certainly have to not f*ck it up when Facebook makes breaking changes – announced or not – to their login protocol.  There’s also other teams within Spotify that plug into the system for social aspects, e.g. sharing from within the platform.
+But then who depends on us internally?  And who actually uses our work/product/service?  As I alluded to earlier, many users log in to Spotify via Facebook.  It's a pretty integral system to the Spotify platform.  So we certainly have to not f*ck it up when Facebook makes breaking changes – announced or not – to their login protocol.  There’s also other teams within Spotify that plug into the system for social aspects, e.g. sharing from within the platform.
 
 <p class="lead">Question 3: What are their expectations?</p>
 
