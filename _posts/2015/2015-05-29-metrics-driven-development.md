@@ -23,7 +23,7 @@ For some devops events, like DNS changes, Puppet configuration changes, and depl
 
 Yet with all this setup, all this technology, I am embarrassed to say my team did a lot of development in the dark.  We were not tracking anything; we didn’t know how successful our feature integrations were doing; we hadn’t a clue how our backend services we “maintained” were holding up.
 
-This is a story of “self-discovery” to become a better, more effective team.  And we did this by capitalizing on understanding our own data.  Not everyone can be data scientists, statisticians, econometricians; but everyone can grasp why it’s important that 70% of users can’t log in.  This is a story of a practical application of data science.
+This is a story of “self-discovery” to become a better, more effective team.  And we did this by capitalizing on understanding our own data.  Not everyone can be data scientists, statisticians, econometricians; but everyone can grasp why it’s important that more than half of users can’t log in.  This is a story of a practical application of data science.
 
 ## The Agile Approach
 
