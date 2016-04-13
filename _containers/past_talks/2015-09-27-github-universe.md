@@ -1,7 +1,7 @@
 ---
 layout: talk.html
-_title: "Metrics-Driven Development"
-tags: [upcoming talk]
+title: "Metrics-Driven Development"
+tags: [past talk]
 talk_date: "October, 2015"
 location: "GitHub Universe, San Francisco"
 conf_url: "http://githubuniverse.com/"

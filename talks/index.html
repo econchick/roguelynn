@@ -3,10 +3,21 @@
 {% block content %}
   <div class="page-header"><h2 id="talklist">Upcoming Talks</h2></div>
     {% for talk in containers.upcoming_talks %}
-        {% if not 'hidden' in talk.tags %}
+        {% if not 'repeat' in talk.tags %}
           <div class="dl-horizontal">
             <dt style="padding-top: 26px"><small>{{ talk.talk_date }}</small></dt>
-            <dd><h4 id="upcoming">{{ talk.location }}</h4></dd>
+            <dd><h4 id="upcoming">{{ talk.title }}</h4></dd>
+            <dd><p id=location>{% if talk.co_speaker %}Presented with <a href="{{ talk.co_speaker_link }}">{{ talk.co_speaker }}</a> @ {% endif %}<a href={{ talk.conf_url }}>{{ talk.location }}</a></p></dd>
+          </div>
+        {% endif %}
+        {% if 'repeat' in talk.tags %}
+          <div class="dl-horizontal">
+            <dd><h4 id="upcoming">{{ talk.title }}</h4></dd>
+            {% for date in talk.dates %}
+              {% set index = loop.index0 %}
+              <dt style="margin-top:7px"><small>{{ date }}</small></dt>
+              <dd><p id=location>{% if talk.co_speaker %}Presented with <a href="{{ talk.co_speaker_link }}">{{ talk.co_speaker }}</a> @ {% endif %}<a href={{ talk.conf_urls[index] }}>{{ talk.locations[index] }}</a></p></dd>
+            {% endfor %}
           </div>
         {% endif %}
     {% endfor %}
@@ -22,7 +33,8 @@
           {% if talk.code %}<a href="{{ talk.code }}"><i class="icon-code"></i></a>{% endif %}
         </dt>
 
-        <dd><p id="location">{{ talk.location }}</p>
+        <dd>
+          <p id="location">{% if talk.co_speaker %}Presented with <a href="{{ talk.co_speaker_link }}">{{ talk.co_speaker }}</a> @ {% endif %}{{ talk.location }}</p>
         </dd>
       </div>
   {% endfor %}
