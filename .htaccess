@@ -11,6 +11,3 @@ RedirectMatch 302 /archives /words
 RedirectMatch permanent /\d{4}/\d{2}/\d{2}/(.+)/ /words/$1
 
 ErrorDocument 404 /404.html
-
-# Rewrite html to directories
-RedirectMatch permanent /projects/(.*).html /projects/$1/

@@ -15,6 +15,9 @@ jinja:
 hoep:
     render_flags:
         toc: true
+include:
+    - robots.txt
+    - .htaccess
 containers:
     past_talks:
         url: /talks/<slug>/
