@@ -1,4 +1,4 @@
-{% extends 'site.html' %}
+{% extends 'layout.html' %}
 
 
 {% set title = 'Tag  &rsaquo; ' ~ tag.name %}
@@ -7,7 +7,7 @@
   <div class="page-header"><h1><a href="{{ get_url(site.tags_url) }}" class="tag-home">Tags</a> &rsaquo; {{ tag.name }}</h1></div>
   {% for post in tag %}
     <div class="dl-horizontal">
-      <dt><p id="blogpost-published">{{ post.timestamp|date('%b %d, %Y')}}</p></dt>
+      <dt style="padding-right:3px"><p id="blogpost-published">{{ post.timestamp|date('%b %d, %Y')}}</p></dt>
       <dd><p><a class="blogpost-title-link" href="{{ get_url(post.url) }}">{{ post.title }}</a></p></dd>
     </div>
   {% endfor %}
