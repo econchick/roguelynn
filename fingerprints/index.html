@@ -7,7 +7,7 @@
     </div>
     {% for item in containers.fingerprints %}
       <div class="dl-horizontal dl-horizontal-border" style="padding-bottom: 10px;">
-        <dt style="padding-top: 26px"><small>{{ item.date }}</small></dt>
+        <dt style="padding-top: 26px;padding-right:3px;"><small>{{ item.date }}</small></dt>
         <dd><h4>{{ item.source }}</h4></dd>
         <dt style="padding-top:5px;"><p>{% for t in item.type %}<span title="{{ t[0] }}"><i class="icon-{{ t[1] }}"></i></span>{% endfor %}</p></dt>
         <dd><p><a href="{{ item.link }}">{{ item.title }}</a></p></dd>

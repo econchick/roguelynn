@@ -5,7 +5,7 @@
     {% for talk in containers.upcoming_talks %}
         {% if not 'repeat' in talk.tags %}
           <div class="dl-horizontal">
-            <dt style="padding-top: 26px"><small>{{ talk.talk_date }}</small></dt>
+            <dt style="padding-top: 26px; padding-right:3px"><small>{{ talk.talk_date }}</small></dt>
             <dd><h4 id="upcoming">{{ talk.title }}</h4></dd>
             <dd><p id=location>{% if talk.co_speaker %}Presented with <a href="{{ talk.co_speaker_link }}">{{ talk.co_speaker }}</a> @ {% endif %}<a href={{ talk.conf_url }}>{{ talk.location }}</a></p></dd>
           </div>
@@ -24,7 +24,7 @@
     <div class="page-header"><h2 id="talklist">Talks Given</h2></div>
     {% for talk in containers.past_talks %}
       <div class="dl-horizontal dl-horizontal-border">
-        <dt style="padding-top: 26px"><small>{{ talk.talk_date }}</small></dt>
+        <dt style="padding-top: 26px; padding-right:3px"><small>{{ talk.talk_date }}</small></dt>
         <dd><h4>{{ talk.title }}</h4></dd>
         <dt style="margin-top:5px;">
           {% if talk.blog_post %}<a href="{{ talk.blog_post}}"><i class="icon-pencil"></i></a>{% endif %}

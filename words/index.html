@@ -5,7 +5,7 @@
   {% for post in posts %}
     {% if 'words' in post.category %}
       <div class="dl-horizontal">
-        <dt><p id="blogpost-published">{{ post.timestamp|date('%b %d, %Y') }}</p></dt>
+        <dt style="padding-right:3px;"><p id="blogpost-published">{{ post.timestamp|date('%b %d, %Y') }}</p></dt>
         <dd><p><a class="blogpost-title-link" href="{{ post.url }}">{{ post.title }}</a></p></dd>
       </div>
     {% endif %}
