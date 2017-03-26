@@ -9,7 +9,7 @@
 
     <author>
         <name>Lynn Root</name>
-        <email>lynn@lynnroot.com</email>
+        <email>lynn[at]lynnroot[dot]com</email>
         <uri>{{ get_url(absolute=true) }}</uri>
     </author>
 
@@ -23,7 +23,7 @@
 
             <author>
                 <name>Lynn Root</name>
-                <email>lynn@lynnroot.com</email>
+                <email>lynn[at]lynnroot[dot]com</email>
                 <uri>{{ get_url(absolute=true) }}</uri>
             </author>
             <content type="html">{{ post.content|absolutize|escape }}</content>
