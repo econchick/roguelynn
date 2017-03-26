@@ -14,5 +14,6 @@ RedirectMatch permanent /\d{4}-\d{2}-\d{2}-(.+)/ /words/$1
 # Moving pages around/reorg
 RedirectMatch 302 /pages /about
 RedirectMatch 302 /kerberos /circus
+RedirectMatch 302 /pyladies http://www.pyladies.com
 
 ErrorDocument 404 /404.html
