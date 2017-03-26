@@ -1,8 +1,26 @@
 {% extends "layout.html" %}
 {% block title %}About{% endblock %}
 {% block content %}
-<div class="page-header"><h1>About</h1></div>
+  <div class="page-header"><h1>About</h1></div>
   {% for post in containers.about %}
     {{ post.content }}
+  {% endfor %}
+
+  <hr/>
+
+  <h3>Tools Lynn Uses</h3>
+  {% for post in posts %}
+    {% if 'highlight' in post.category and 'tools' in post.category %}
+       {{ post.content }}
+    {% endif %}
+  {% endfor %}
+
+  <h3>Highlighted Posts</h3>
+  {% for post in posts %}
+    {% if 'highlight' in post.category and 'words' in post.category %}
+      <ul>
+        <li><a href="{{ get_url(post.url) }}">{{ post.title }}</a></li>
+      </ul>
+    {% endif %}
   {% endfor %}
 {% endblock %}

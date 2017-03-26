@@ -2,7 +2,7 @@
 layout: post.html
 title: "Diversity: We're Not Done Yet"
 tags: [diversity, talk, community]
-category: [words]
+category: [words, highlight]
 updated_at: "September 6, 2015"
 ---
 <i>Update on September 6th: Finally included the IPython notebooks!</i>

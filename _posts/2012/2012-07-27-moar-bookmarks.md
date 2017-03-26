@@ -2,7 +2,7 @@
 layout: post.html
 title: 'Moar Bookmarks!'
 tags: [git, libraries, sublime, twisted, links]
-category: [words, resources]
+category: [words, highlight]
 ---
 
 Seeing how my previous [bookmarks post]({{ get_url("2012-05-20-gold-nuggets-my-bookmarks-collection")}} "Gold Nuggets") was well-received, here is MOAR!  

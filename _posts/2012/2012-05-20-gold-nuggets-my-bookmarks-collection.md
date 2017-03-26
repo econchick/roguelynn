@@ -2,7 +2,7 @@
 layout: post.html
 title: 'Gold Nuggets: My Bookmarks Collection'
 tags: [Bash, Django, git, tutorials, Python, links]
-category: [words, resources]
+category: [words, highlight]
 ---
 
 I've collected many bookmarks related to Python, programming, computer science, etc.  
