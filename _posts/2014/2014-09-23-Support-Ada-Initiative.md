@@ -163,7 +163,7 @@ Again, what are you waiting for? [DONATE][donate].
 [ada]: http://adainitiative.org/
 [ally]: https://adainitiative.org/what-we-do/workshops-and-training/
 [tweet]: https://twitter.com/roguelynn
-[email]: mailto:lynn@lynnroot.com?subject=Ada%20Donation%20Matching
+[email]: mailto:lynn[at]lynnroot[dot]com?subject=Ada%20Donation%20Matching
 [donate]: https://supportada.org?campaign=python
 [geekfemallies]: http://geekfeminism.wikia.com/wiki/Resources_for_allies
 [geekfem]: http://geekfeminism.org/

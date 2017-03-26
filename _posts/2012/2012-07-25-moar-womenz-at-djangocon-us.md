@@ -17,6 +17,6 @@ The goal of this program is to bring new talent to the Djangosphere by supportin
 
 [DjangoCon]: http://www.djangocon.us/ "DjangoCon US 2012"
 [apply]: https://docs.google.com/spreadsheet/viewform?formkey=dDc1X2hrUGJVRGdEWnRjTklxR2tSNFE6MQ#gid=0 "FinAid"
-[email]: mailto:info@pyladies.com "Email to Info"
+[email]: mailto:info[at]pyladies[dot]com "Email to Info"
 [PSF]: http://python.org/psf "PSF"
-[sponsors]: mailto:sponsors@pyladies.com "Email to Sponsors"
+[sponsors]: mailto:sponsors[at]pyladies[dot]com "Email to Sponsors"
