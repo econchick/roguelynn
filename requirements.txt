@@ -6,7 +6,6 @@ gunicorn==0.16.1
 misaka==1.0.2
 mynt==0.3.1
 static==0.4
-watchdog==0.6.0
 wsgiref==0.1.2
 pathtools==0.1.2
 watchdog==0.8.2
