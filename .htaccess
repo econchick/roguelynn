@@ -10,4 +10,7 @@ RedirectMatch 302 /archives /words
 # Rewrite wordpress URLs
 RedirectMatch permanent /\d{4}/\d{2}/\d{2}/(.+)/ /words/$1
 
+# Moving pages around/reorg
+RedirectMatch 302 /pages /about
+
 ErrorDocument 404 /404.html
