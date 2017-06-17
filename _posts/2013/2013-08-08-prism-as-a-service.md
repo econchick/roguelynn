@@ -1,8 +1,7 @@
 ---
-title: "PRISM-as-a-Service: Not Subject to American Law"
 layout: post.html
+title: "PRISM-as-a-Service: Not Subject to American Law"
 category: [talks, words]
-url: /prism/
 orig_date: August 8th, 2013
 updated_at: October 7th, 2013
 talk_date: October, 2013
