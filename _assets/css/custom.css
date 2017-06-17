@@ -525,7 +525,6 @@ pre {
   border: 1px solid #e1e1e8;
   width: inherit;
   max-width: 800px;
-  overflow-x: scroll;
   word-break: normal !important;
   word-wrap: normal !important;
   white-space: pre !important;
@@ -539,7 +538,6 @@ code {
 }
 
 .code {
-  overflow-x: scroll;
   width: 100%;
 }
 

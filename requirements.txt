@@ -4,7 +4,7 @@ PyYAML==3.11
 Pygments==2.0.1
 gunicorn==0.16.1
 misaka==1.0.2
-mynt==0.3.1
+-e git+git@github.com:econchick/mynt.git@b86cc2b1838186c6dc67fdb6e8d844394c70f8c0#egg=mynt
 static==0.4
 wsgiref==0.1.2
 pathtools==0.1.2
