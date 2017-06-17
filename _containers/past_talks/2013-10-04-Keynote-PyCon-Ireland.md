@@ -7,6 +7,7 @@ location: "PyCon, Ireland"
 conf_url: "http://python.ie/pycon"
 slides: "https://speakerdeck.com/roguelynn/prism-as-a-service-not-subject-to-american-law"
 blog_post: "http://www.roguelynn.com/prism"
+video: https://vimeo.com/79394598
 category: [talks]
 ---
 

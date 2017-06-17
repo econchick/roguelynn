@@ -1,6 +1,6 @@
 ---
 layout: talk.html
-title: "Metrics Driven Development"
+title: "Metrics-Driven Development"
 tags: [past talk]
 talk_date: "July, 2015"
 location: "EuroPython, Bilbao, Spain"

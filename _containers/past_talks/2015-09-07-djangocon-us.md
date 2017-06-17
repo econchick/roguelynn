@@ -1,6 +1,6 @@
 ---
 layout: talk.html
-title: "Keynote: Diversity: We're not done yet"
+title: "Keynote: Diversity: We’re not done yet"
 tags: [past talk]
 talk_date: "September, 2015"
 location: "DjangoCon US"

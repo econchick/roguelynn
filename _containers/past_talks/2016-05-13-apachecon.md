@@ -1,6 +1,6 @@
 ---
 layout: talk.html
-title: "Why can't we be friends? Do Corporations and FOSS really mix?"
+title: "Why can’t we be friends? Do Corporations and FOSS really mix?"
 tags: ["repeat"]
 talk_date: "May, 2016"
 location: "ApacheCon, Vancouver, BC"
