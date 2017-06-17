@@ -8,13 +8,6 @@
 
   <hr/>
 
-  <h3>Tools Lynn Uses</h3>
-  {% for post in posts %}
-    {% if 'highlight' in post.category and 'tools' in post.category %}
-       {{ post.content }}
-    {% endif %}
-  {% endfor %}
-
   <h3>Highlighted Posts</h3>
   {% for post in posts %}
     {% if 'highlight' in post.category and 'words' in post.category %}
