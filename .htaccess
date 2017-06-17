@@ -12,7 +12,11 @@ RedirectMatch permanent /\d{4}/\d{2}/\d{2}/(.+)/ /words/$1
 RedirectMatch permanent /\d{4}-\d{2}-\d{2}-(.+)/ /words/$1
 
 # Moving pages around/reorg
-RedirectMatch 302 /pages /about
-RedirectMatch 302 /kerberos /circus
+RedirectMatch 301 /pages /about
+RedirectMatch 301 /resources /about
+RedirectMatch 301 /category /tags
+RedirectMatch 301 /kerberos /circus
+RedirectMatch 301 /prism /words/prism-as-a-service
+RedirectMatch 301 /pyladies http://pyladies.com
 
 ErrorDocument 404 /404.html
