@@ -206,30 +206,22 @@ small {
   font-size: 2em;
 }
 
-
-#rogue-splash h1{
-  padding-top: .5em;
-  padding-bottom: 1em;
-  display: block;
-  font-size: 3.5em;
-  line-height: 100%;
-  font-weight: 700;
-  margin-bottom: 0em;
-  width: 100%;
-  text-align: left;
-}
-
-#rogue-splash h2 {
-  color: #414247;
+#rogue-splash h1, h2 {
   text-transform: uppercase;
   line-height: 100%;
   margin-top: .5em;
-  margin-bottom: .5em;}
+  margin-bottom: .5em;
+}
+
+#rogue-splash h1 {
+  font-size: 6em;
+}
 
 abbr[title],
 abbr[data-original-title] {
   cursor: help;
-  border-bottom: 1px dotted #999999;
+  border-bottom: none;
+  text-decoration: none;
 }
 
 h2 abbr {
