@@ -28,8 +28,9 @@ Historically, we've been focused on machine-centric metrics, including system-le
 A workflow-centric approach allows us to understand relationships of components within an entire system. We can follow a request from beginning to end to understand bottlenecks, hone in on anomalistic paths, and figure out where we need to add more resources.<sup><a href="#footnotes" style="border-bottom: none;">1</a></sup>
 
 <img class="img-displayed" src="{{ get_asset('images/intro_tracing_flow.png') }}" title="Simplified Distributed System Example" alt="Simplified Distributed System Example"/>
+<figcaption>Over-simplified Distributed System Example, Lynn Root, [CC BY 4.0][66]</figcaption>
 
-Looking at this super simplified system, where we have a load balancer, a frontend, backend, a database, and maybe an external dependency to a third-party API, then add redundancy, it can get particularly confusing to follow a request. How do we debug a problem of a rare workflow? How do we know which component of this system is the bottleneck? Which function call is taking the longest? Is another app on my host causing distortion to machine-centric performance metrics ([noisy neighbors][5] - a growing concern as many move to the cloud).
+Looking at this super simplified system, where we have a load balancer, a frontend, backend, a database, and maybe an external dependency to a third-party API, then add redundancy, it can get particularly confusing to follow a request. How do we debug a problem of a rare workflow? How do we know which component of this system is the bottleneck? Which function call is taking the longest? Is another app on my host causing distortion to machine-centric performance metrics ([noisy neighbors][5] – a growing concern as many move to the cloud).
 
 With so many potential paths that a request can take, with the potential for issues at every node and every edge, this can be mind-numbingly difficult if we continue to be machine-centric. End-to-end tracing will allow us to get a better picture to address these concerns.
 
@@ -37,7 +38,7 @@ With so many potential paths that a request can take, with the potential for iss
 
 Real briefly – there are many reasons to trace a system. The one that inspired this post is performance analysis; this is trying to understand what happens at the 50th or 75th percentile, the "steady state" problems. This will help identify latencies, resource and capacity usages, and other performance issues. We are also able to answer questions like: "did this particular deploy of this service have an effect on latency of the whole system?"
 
-Tracing can also clue us on in anomalistic request flows - the 99.9 percentile. The issues can still be related to performance, or help identify problems with "correctness" like component failures or timeouts. 
+Tracing can also clue us on in anomalistic request flows – the 99.9 percentile. The issues can still be related to performance, or help identify problems with "correctness" like component failures or timeouts. 
 
 There is also profiling – very similar to the first – but here we're just interested in particular components or aspects of the system. We don't necessarily care about the full workflow.
 
@@ -46,7 +47,7 @@ Tracing can also answer the question of what a particular component depends on, 
 And finally, we're able to create models of our systems that allow us to ask what-if questions, like "what would happen to component A if we did a disaster recovery test on component B?"
 
 ## Approaches to Tracing
-
+<span></span>
 ### Manual
 
 There are simple things that can be added to a web service, especially one that does not have dependent/depending components that you don't own/have access to. You won't get any pretty visualizations or help with centralized collection beyond how you typically handle your logs, but it still can provide a lot of insight.
@@ -157,7 +158,7 @@ server {
 
 Blackbox tracing is tracing with no instrumentation across the components. It tries to infer workflows and relationships by correlating variables and timing within already-defined log messages. From there, relationship inference is done via statistical or regression analysis.
 
-It's easiest with centralized logging, and if there is a somewhat standardized schema to log messages that contain some sort of ID and timestamp<sup><a href="#footnotes" style="border-bottom: none;">3</a></sup>. It's particularly useful if instrumenting an entire system is too cumbersome (e.g. too much coordination with engineers) or can't otherwise instrument components you don't own. As such, it's quite portable and is very little-to-no overhead, but it does require a lot of data points in order to infer relationships. It also lacks accuracy with the absence of instrumenting components themselves, as well as the ability to attribute causality with asynchronous behavior and concurrency.
+It's easiest with centralized logging, and if there is a somewhat standardized schema to log messages that contain some sort of ID and timestamp.<sup><a href="#footnotes" style="border-bottom: none;">3</a></sup> It's particularly useful if instrumenting an entire system is too cumbersome (e.g. too much coordination with engineers) or can't otherwise instrument components you don't own. As such, it's quite portable and is very little-to-no overhead, but it does require a lot of data points in order to infer relationships. It also lacks accuracy with the absence of instrumenting components themselves, as well as the ability to attribute causality with asynchronous behavior and concurrency.
 
 Facebook and the University of Michigan wrote a very readable [academic paper][24] on assessing end-to-end performance employing this method.
 
@@ -171,33 +172,35 @@ Essentially, components are instrumented at particular trace points to follow ca
 
 <img class="img-displayed" src="{{ get_asset('images/metadata_propagation.png') }}" title="Metadata Propagation" alt="Metadata Propagation"/>
 
-<figcaption style="text-align:center;">Adapted from [_Dapper, a Large-Scale Distributed Systems Tracing Infrastructure_][9]</figcaption>
+<figcaption>Metadata Propagation, adapted from [Dapper, a Large-Scale Distributed Systems Tracing Infrastructure][9]</figcaption>
 
 
 Metadata that is tracked includes a trace ID – which represents one single trace or work flow – and a span ID for every point in a particular trace (e.g. request sent from client, request received by server, server responds, etc.) plus a span's start and end time. 
 
-This approach is best when the system itself is designed with tracing in mind (but who actually does that!?) and avoids the guesswork with inferring causal relationships. However, it can add a bit of overhead to response time and throughput, so the use of sampling traces limits the burden on the system and data point storage. Sampling as low as 0.01% requests is plenty to get an understanding of a system's performance<sup><a href="#footnotes" style="border-bottom: none;">4</a></sup>.
+This approach is best when the system itself is designed with tracing in mind (but who actually does that!?) and avoids the guesswork with inferring causal relationships. However, it can add a bit of overhead to response time and throughput, so the use of sampling traces limits the burden on the system and data point storage. Sampling as low as 0.01% requests is plenty to get an understanding of a system's performance.<sup><a href="#footnotes" style="border-bottom: none;">4</a></sup>
 
 ## Tracing at Scale
 
 When starting to have many microservices, and scale out with more resources, there are a few points in mind when instrumenting your system, particularly with the metadata propagation approach:
 
-* What relationships to track: essentially how to follow a trace and what is considered part of the workflow.
-* How to track them: constructing metadata to track causal relationships is particularly difficult; there are a few approaches, each with their own fortés and drawbacks.
-* How to sample and reduce overhead of tracking: the approach one chooses in sampling is largely defined by what questions you're trying to answer with your tracing; there may be a clear answer, but not without penalties.
-* What to visualize: The visualizations needed will also be informed by what we're trying to answer with tracing.
+* <span class="underline">What relationships to track:</span> essentially how to follow a trace and what is considered part of the workflow.
+* <span class="underline">How to track them:</span> constructing metadata to track causal relationships is particularly difficult; there are a few approaches, each with their own fortés and drawbacks.
+* <span class="underline">How to sample and reduce overhead of tracking:</span> the approach one chooses in sampling is largely defined by what questions you're trying to answer with your tracing; there may be a clear answer, but not without penalties.
+* <span class="underline">What to visualize:</span> The visualizations needed will also be informed by what we're trying to answer with tracing.
 
 ### What relationships to track
 
-When looking within a request, we can take two points of views: either the submitter PoV, or the Trigger<sup><a href="#footnotes" style="border-bottom: none;">5</a></sup>.
+When looking within a request, we can take two points of views: either the submitter PoV, or the Trigger.<sup><a href="#footnotes" style="border-bottom: none;">5</a></sup>
 
 <img class="img-displayed" src="{{ get_asset('images/submitter_flow_pov.png') }}" title="Submitter Flow Point of View" alt="Submitter Flow Point of View"/>
+<figcaption>Submitter PoV, adapted from "[So, you want to trace your distributed system][23]", p8</figcaption>
 
 The submitter follows or focuses on one complete request, and doesn't take into account if part of that request is caused by another request/action.  
 
 For instance, evicting cache that was actually triggered by request #2 is still attributed to request #1 since its data comes from #1.
 
 <img class="img-displayed" src="{{ get_asset('images/trigger_flow_pov.png') }}" title="Trigger Flow Point of View" alt="Trigger Flow Point of View"/>
+<figcaption>Trigger PoV, adapted from "[So, you want to trace your distributed system][23]", p8</figcaption>
 
 The trigger PoV focuses on the trigger that initiates action. Where in the same example, request #2 evicts cache from request #1, and therefore the eviction is included in request #2's trace.
 
@@ -213,17 +216,17 @@ What this boils down to is that it can be difficult to reliably track causal rel
 
 Using a random ID like UUID or the `X-Request-ID` header will identify causally-related activity. But then tracing implementations must then use an external clock to collate traces. 
 
-In the absence of a global synced clock, or to avoid issues such as clock skew, looking at network send and receive messages can then be used to construct causal relationships (you can't exactly receive a message before its sent)<sup><a href="#footnotes" style="border-bottom: none;">6</a></sup>.
+In the absence of a global synced clock, or to avoid issues such as clock skew, looking at network send and receive messages can then be used to construct causal relationships (you can't exactly receive a message before its sent).<sup><a href="#footnotes" style="border-bottom: none;">6</a></sup>
 
 However, this approach lacks in resiliency as there is potential for data loss from external systems, or inability to add trace points in components owned by others.
 
 #### Request ID + Logical Clock
 
-Tracing systems can also add a timestamp derived from a local, [logical clock][10] to the workflow ID, where it isn't exactly the local system's timestamp, but either a counter or sort of a randomized timestamp that is paired with the trace message as it flows through components<sup><a href="#footnotes" style="border-bottom: none;">6</a></sup>. With this approach, we don't need the tracing system to spend time on the ordering of traces it collects since its explicit in the clock data, but parallelization and concurrency can complicate the understanding of relationships.
+Tracing systems can also add a timestamp derived from a local, [logical clock][10] to the workflow ID, where it isn't exactly the local system's timestamp, but either a counter or sort of a randomized timestamp that is paired with the trace message as it flows through components.<sup><a href="#footnotes" style="border-bottom: none;">6</a></sup> With this approach, we don't need the tracing system to spend time on the ordering of traces it collects since its explicit in the clock data, but parallelization and concurrency can complicate the understanding of relationships.
 
 #### Request ID + Logical Clock + Previous Trace Points
 
-One can also add the previous trace points that have been executed within the metadata to understand all the forks and joins. It also allows the immediate availability of tracing data as soon as the workflow ends, as there is no need to spend time on trying to establish the ordering of causal relationships<sup><a href="#footnotes" style="border-bottom: none;">7</a></sup>. But, as you can imagine, the metadata will only grow in size as it follows a workflow, adding to the payload.
+One can also add the previous trace points that have been executed within the metadata to understand all the forks and joins. It also allows the immediate availability of tracing data as soon as the workflow ends, as there is no need to spend time on trying to establish the ordering of causal relationships.<sup><a href="#footnotes" style="border-bottom: none;">7</a></sup> But, as you can imagine, the metadata will only grow in size as it follows a workflow, adding to the payload.
 
 #### Trade-offs 
 
@@ -233,13 +236,13 @@ If you really care about the payload of the request, then a simple unique ID is 
 
 ### How to sample
 
-End-to-end tracing will have an effect on runtime and storage overhead no matter what you choose. For instance, if Google were to trace all web searches, despite its intelligent tracing implementation - Dapper - it would impose a 1.5% throughput penalty and add 16% to response time<sup><a href="#footnotes" style="border-bottom: none;">8</a></sup>.
+End-to-end tracing will have an effect on runtime and storage overhead no matter what you choose. For instance, if Google were to trace all web searches, despite its intelligent tracing implementation – Dapper – it would impose a 1.5% throughput penalty and add 16% to response time.<sup><a href="#footnotes" style="border-bottom: none;">8</a></sup>
 
 I won't go into detail, but there are essentially three basic approaches to sampling:
 
-* Head-based: a random sampling decision is made at the start of a workflow, and then follow it all the way through completion<sup><a href="#footnotes" style="border-bottom: none;">9</a></sup>.
-* Tail-based: the sampling decision is made at the end of a workflow, implying some caching going on. Tail-based sampling needs to be a bit more intelligent, but is particularly useful for tracing anomalistic behavior<sup><a href="#footnotes" style="border-bottom: none;">10</a></sup>.
-* Unitary: the sampling decision is made at the trace point itself (and therefore prevents the construction of a full workflow)<sup><a href="#footnotes" style="border-bottom: none;">10</a></sup>.
+* Head-based: a random sampling decision is made at the start of a workflow, and then follow it all the way through completion.<sup><a href="#footnotes" style="border-bottom: none;">9</a></sup>
+* Tail-based: the sampling decision is made at the end of a workflow, implying some caching going on. Tail-based sampling needs to be a bit more intelligent, but is particularly useful for tracing anomalistic behavior.<sup><a href="#footnotes" style="border-bottom: none;">10</a></sup>
+* Unitary: the sampling decision is made at the trace point itself (and therefore prevents the construction of a full workflow).<sup><a href="#footnotes" style="border-bottom: none;">10</a></sup>
 
 Head-based is the simplest and ideal for performance profiling, and both head based and unitary are most often seen in current tracing system implementations. I'm not sure if there's an open source tracing system that implements tail-based sampling.
 
@@ -250,18 +253,24 @@ What visualization you choose to look at depends on what you're trying to figure
 #### Gantt Charts
 
 <img class="img-responsive img-rounded" src="{{ get_asset('images/gantt_chart.jpeg') }}" title="Example of a Gantt Chart" alt="Example of a Gantt Chart"/>
+<figcaption>Example of Gantt Chart, Lynn Root, [CC BY 4.0][66]</figcaption>
+
 
 Gantt charts are popular and definitely appealing, but only show requests from a single trace. You've definitely seen this type if you've looked at the network tab of your browser's dev tools. Nearly all open source tracing tools provide this type of chart.
 
 #### Request Flow Graph
 
 <img class="img-responsive img-rounded" src="{{ get_asset('images/request_flow_chart.jpeg') }}" title="Example of a Request Flow Chart" alt="Example of a Request Flow Chart"/>
+<figcaption>Example of a Request Flow Chart, adapted from "[So, you want to trace your distributed system][23]", p15</figcaption>
 
-When trying to get a sense of where a system's bottlenecks are, a request flow graph (a.k.a .directed-acyclic graph) will show workflows as they are executed, and – unlike Gantt charts – can aggregate information of multiple requests of the same workflow.
+
+When trying to get a sense of where a system's bottlenecks are, a request flow graph (a.k.a. directed-acyclic graph) will show workflows as they are executed, and – unlike Gantt charts – can aggregate information of multiple requests of the same workflow.
 
 #### Context Calling Tree
 
 <img class="img-responsive img-rounded" src="{{ get_asset('images/context_calling_tree.jpeg') }}" title="Example of a Context Calling Tree" alt="Example of a Context Calling Tree"/>
+<figcaption>Example of a Context Calling Tree, adapted from "[So, you want to trace your distributed system][23]", p15</figcaption>
+
 
 Another useful representation is a calling context tree in order to visualize multiple requests of different workflows. This reveals valid (and invalid) paths requests can take, best for creating a general understanding of system behavior.
 
@@ -269,19 +278,19 @@ Another useful representation is a calling context tree in order to visualize mu
 
 What the take away here is there's a few things we need to consider when we trace a system:
 
-#### What do I want to know?
+##### What do I want to know?
 
 You should have an understanding of what you want to do. What questions are you trying to answer with tracing? 
 
-Certainly, there may be other realizations and questions that come from tracing - for example, with Dapper, Google is able to audit systems for security, asserting only authorized components are talking to sensitive services<sup><a href="#footnotes" style="border-bottom: none;">11</a></sup> - but without understanding what you're trying to figure out, you may end up approaching your instrumenting incorrectly.
+Certainly, there may be other realizations and questions that come from tracing – for example, with Dapper, Google is able to audit systems for security, asserting only authorized components are talking to sensitive services<sup><a href="#footnotes" style="border-bottom: none;">11</a></sup> – but without understanding what you're trying to figure out, you may end up approaching your instrumenting incorrectly.
 
-The answer to this question will help identify how to approach the causality - whether from the Trigger point of view, or submitter. 
+The answer to this question will help identify how to approach the causality – whether from the Trigger point of view, or submitter. 
 
-#### How much an I instrument?
+##### How much an I instrument?
 
 Another important question: how much time can you put into instrumenting your system? Or can you even instrument all parts? This will inform the approach you can use to tracing, be it blackbox or not. If you can instrument all the components, it then becomes a question of what data should you propagate through an entire flow.
 
-#### How much do I want to know?
+##### How much do I want to know?
 
 And finally, how much of the flows do you want to understand? Do you want to understand *all* requests? Then be prepared to take a performance penalty on the service itself. And have fun storing all that data. 
 
@@ -289,22 +298,34 @@ Is a percentage of flows okay? If so, then how to approach sampling is in your a
 
 You'll also need to think about whether or not you want to capture the full flow of the request, of if you want to focus on a subset of the system. This will also affect your sampling approach.
 
-### Suggested answers for performance analysis
+### Approach for performance analysis
 
 With performance or steady-state problems, you'll want to try and preserve the trigger causality rather than submitter as it shows the critical path to that bottleneck. Head-based sampling is fine as we don't need intelligent sampling, and even with low sampling rates, we're able to get a good idea of where our problem lies. And finally, a request flow graph here is ideal since we don't care about anomalistic behavior. We want information of the big picture rather than looking into particular, individual workflows.
 
-## Improving performance: Questions to ask yourself
+## Improving performance:
+### Questions to ask yourself
 
 Most often, once you're tracing a system, the problem will reveal itself, as will the solution. But not always, so I have a few questions to ask yourself with figuring out how to improve a service's performance. Of course, this isn't an exhaustive list; it's just to get you thinking.
 
-* Are you making multiple requests to the same service? Round trip network calls are expensive; perhaps there's a way to batch requests. Some helpful libraries: [django-batch-requests][34] (looks like limited to explicit v2.7 support, may work with 3.x), [flask snippet][35], and a [few pyramid approaches][36].
-* Can you make the switch from an Apache HTTP server to nginx? A [simple switch][32] may provide a boost, especially under heavy load.
-* Are there any [parallelization][33] opportunities? Perhaps your service doesn't need to be synchronous or it unnecessarily blocks. For example, if you're some big social network site, can you grab a user's profile photo at the same time as you pull up their timeline, while getting their messages?
-* Is it useful to add (or fix) caching? Is the same data being repeatedly requested but not cached? Or are you caching too much? or not the right data? Is the expiration too high or low?
-* What about your site's frontend assets: could they be ordered better to improve loading time? Can you minimize the amount of inline scripts? Maybe make your scripts async? Are there a lot of distinct domain lookups that adds time from DNS responses? How about decreasing the number of actual files referenced? or minify and compress them? Take a look at [webassets][45], or a particular package for your framework: [Flask-Assets][41] , [django-compressor][42], [django-htmlmin][43], and [pyramid-htmlmin][44].
-* Can you use chunked encoding when returning large amounts of data? Or can you otherwise have your services produce elements of the response as they are needed, rather than trying to produce all elements as fast as possible? Have a look at Flask's docs on [streaming responses][37], Django's [`StreamingHttpResponse`][38], peek at how Pyramid supports [streaming responses with `app_iter`][39], or get inspiration from [aiohttp's implementation][40].
+###### Batching Requests
+Are you making multiple requests to the same service? Round trip network calls are expensive; perhaps there's a way to batch requests. Some helpful libraries: [django-batch-requests][34] (looks like limited to explicit v2.7 support, may work with 3.x), [flask snippet][35], and a [few pyramid approaches][36].
 
-Mozilla has [some more tips][57] for you for fast-loading HTML pages.
+###### Server Choice
+Can you make the switch from an Apache HTTP server to nginx? A [simple switch][32] may provide a boost, especially under heavy load.
+
+###### Parallelization
+Are there any [parallelization][33] opportunities? Perhaps your service doesn't need to be synchronous or it unnecessarily blocks. For example, if you're some big social network site, can you grab a user's profile photo at the same time as you pull up their timeline, while getting their messages?
+
+###### Caching
+Is it useful to add (or fix) caching? Is the same data being repeatedly requested but not cached? Or are you caching too much? or not the right data? Is the expiration too high or low?
+
+###### Asset Handling
+What about your site's frontend assets: could they be ordered better to improve loading time? Can you minimize the amount of inline scripts? Maybe make your scripts async? Are there a lot of distinct domain lookups that adds time from DNS responses? How about decreasing the number of actual files referenced? or minify and compress them? 
+
+Take a look at [webassets][45], or a particular package for your framework: [Flask-Assets][41], [django-compressor][42], [django-htmlmin][43], and [pyramid-htmlmin][44]. Mozilla also has [more tips][57] for fast-loading HTML pages.
+
+###### Chunked Responses
+Can you use chunked encoding when returning large amounts of data? Or can you otherwise have your services produce elements of the response as they are needed, rather than trying to produce all elements as fast as possible? Have a look at Flask's docs on [streaming responses][37], peek at how Pyramid supports [streaming responses with `app_iter`][39] or Django's [`StreamingHttpResponse`][38], or get inspiration from [aiohttp's implementation][40].
 
 ## Tracing Systems & Services
 
@@ -322,10 +343,10 @@ And there are a few self hosted, popular solutions out there that support OpenTr
 
 #### Zipkin (Twitter)
 
-Probably the most widely used is [Zipkin][47], from Twitter, which has implementations in Java, Go, JavaScript, Ruby, and Scala. The architecture setup is basically the instrumented app sends data out of band to a remote collector that accepts a few different transport mechanisms, including HTTP, Kafka, and Scribe. With propagating data around, all of the current Python client libraries ([py_zipkin][48], [pyramid_zipkin][49], [swagger_zipkin][50], and [flask-zipkin][51]) only support HTTP - no RPC support.
+Probably the most widely used is [Zipkin][47], from Twitter, which has implementations in Java, Go, JavaScript, Ruby, and Scala. The architecture setup is basically the instrumented app sends data out of band to a remote collector that accepts a few different transport mechanisms, including HTTP, Kafka, and Scribe. With propagating data around, all of the current Python client libraries ([py_zipkin][48], [pyramid_zipkin][49], [swagger_zipkin][50], and [flask-zipkin][51]) only support HTTP – no RPC support.
 
 <img class="displayed" src="http://zipkin.io/public/img/json_zipkin_screenshot.png" title="Zipkin screenshot" alt="Zipkin screenshot of Gantt chart"/>
-<figcaption style="text-align:center;">Gantt chart from Zipkin's [documentation][52]</figcaption>
+<figcaption>Gantt chart from Zipkin's [documentation][52]</figcaption>
 
 And finally, Zipkin does provide a nice Gantt chart of individual traces, and you can view a tree of dependencies, but it's essentially only a context calling tree with no information as to latencies, status codes, or anything else. 
 
@@ -397,10 +418,10 @@ Using [`py_zipkin`][11], on which other libraries are based, you need to define 
 [Jaeger][14] is another self-hosted tracing system that supports the OpenTracing specification that comes from Uber. Rather than the application/client library reporting to a remote collector, it reports to a local agent via UDP, who then sends traces to a collector. Also unlike Zipkin, which supports Cassandra, ElasticSearch, and MySQL, Jaeger only supports Cassandra for its trace storage. 
 
 <img class="displayed" src="http://jaeger.readthedocs.io/en/latest/images/traces-ss.png" title="Jaeger: Traces list view example" alt="Jaeger: Traces list view example"/>
-<figcaption style="text-align:center;">Trace list view from Jaeger's [documentation][54]</figcaption>
+<figcaption>Trace list view from Jaeger's [documentation][54]</figcaption>
 
 <img class="displayed" src="http://jaeger.readthedocs.io/en/latest/images/trace-detail-ss.png" title="Jaeger: Trace detail view example" alt="Jaeger: Trace detail view example"/>
-<figcaption style="text-align:center;">Trace detail view from Jaeger's [documentation][54]</figcaption>
+<figcaption>Trace detail view from Jaeger's [documentation][54]</figcaption>
 
 
 However, the UI is very similar to Zipkin with pretty waterfall graphs and a dependency tree, but again, nothing that can easily help aggregate performance information.  Their [documentation][15] is also lacking; but they do have a pretty decent [tutorial][16] to walk through.
@@ -462,7 +483,7 @@ This is an adapted example from their [docs][17] that's made to use with a Flask
 
 But their usage of `time.sleep` for `yielding to IOLoop` is a bit of a head scratcher. It's docs also make mention of support for monkeypatching libraries like requests, and redis, and urllib2. So, all I can say is, use at your own risk.
 
-**_Update_**: Days after this talk was given at PyCon 2017, they have updated their README.md that [documents][13] the reason for `time.sleep`.
+**Update**: Days after this talk was given at PyCon 2017, they have updated their README.md that [documents][13] the reason for `time.sleep`.
 
 #### Honorable Mentions
 
@@ -479,9 +500,9 @@ There is Stackdriver Trace from Google (not to be confused with Stackdriver Logg
 But they also [support Zipkin traces][21], where you can setup a Google-flavored Zipkin server, either on their infrastructure or on yours, and have it forward traces to Stackdriver. They actually make it pretty easy: I was able to spin up [their Docker image][22] on Compute Engine and start viewing traces of my sample app within a couple of minutes.
 
 <img class="img-displayed" src="https://cloud.google.com/trace/images/trace-overview.png" title="Google's Stackdriver Trace Demo Overview"/>
-<figcaption style="text-align:center;">From Google's [Viewing Traces][31] Documentation</figcaption>
+<figcaption>Trace overview page, from Google's [Viewing Traces][31] Documentation</figcaption>
 
-One last thing that may be annoying is they have a storage limitation of 30 days - same with their Stackdriver logging. 
+A couple of annoyances: simple plots of response time over the past few hours and a list of all traces are automatically provided in Stackdriver's UI. However, you have to manually make "analysis reports" for each time period you're interested in to get fancy distribution graphs; they're not automatically generated. It also may be annoying that trace storage is limited to 30 days – same with their Stackdriver logging. 
 
 
 #### X-Ray (AWS)
@@ -493,8 +514,7 @@ What’s nice about X-Ray – despite it being proprietary and not OpenTracing c
 Almost redeemable are their visualizations. While there is the typical waterfall chart, they also have a request flow graph where you can see average latencies, captured traces per minute, and requests broken down by response status.
 
 <img class="img-displayed" src="http://docs.aws.amazon.com/xray/latest/devguide/images/scorekeep-gettingstarted-servicemap-after-github.png" title="AWS X-Ray: Service Map"/>
-
-<figcaption style="text-align:center;">From AWS's ["What is AWS X-Ray"][30] documentation</figcaption>
+<figcaption>Request Flow Chart ("Service Map") from AWS's [What is AWS X-Ray][30] documentation</figcaption>
 
 So, basically AWS seems pretty cool, probably the most useful, but will take some work in instrumenting a python app, and induces vendor lock-in.
 
@@ -508,7 +528,7 @@ You need this. If you run microservices, you should be tracing them. It's otherw
 
 However, good luck with that. Whether you choose a self- hosted solution or a provided service, documentation is all-around lacking. Granted, it's still a very young space, very much growing as the OpenTracing standard is developing.
 
-As I mentioned, Python support isn't 100%; and even if there is, there's a lack of configuration for relationship tracking, intelligent sampling, and available visualizations. But, there is an open spec that can be influenced, or use to implement your own - if you're so inclined.
+As I mentioned, Python support isn't 100%; and even if there is, there's a lack of configuration for relationship tracking, intelligent sampling, and available visualizations. But, there is an open spec that can be influenced, or use to implement your own – if you're so inclined.
 
 ## Further Reading
 
@@ -606,3 +626,4 @@ Posts from various companies:
 [63]: https://engineeringblog.yelp.com/2016/04/distributed-tracing-at-yelp.html
 [64]: https://engineering.linkedin.com/distributed-service-call-graph/real-time-distributed-tracing-website-performance-and-efficiency
 [65]: https://blog.twitter.com/engineering/en_us/a/2012/distributed-systems-tracing-with-zipkin.html
+[66]: https://creativecommons.org/licenses/by/4.0/

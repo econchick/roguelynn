@@ -6,6 +6,7 @@ date_format: "%B %d, %Y"
 posts_url: /words/<slug>/
 tags_url: /tags/
 tag_layout: tag.html
+pygmentize: true
 social:
     github: econchick
     twitter: roguelynn

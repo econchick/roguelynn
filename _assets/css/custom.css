@@ -1,117 +1,4 @@
 @font-face {
-  font-family: JosefinSansRegular;
-  src: url('/assets/fonts/JosefinSans/regular/JosefinSans-Regular-webfont.ttf') format('truetype'),
-       url('/assets/fonts/JosefinSans/regular/JosefinSans-Regular-webfont.eot') format('embedded-opentype'),
-       url('/assets/fonts/JosefinSans/regular/JosefinSans-Regular-webfont.svg') format('svg'),
-       url('/assets/fonts/JosefinSans/regular/JosefinSans-Regular-webfont.woff') format('woff'),
-       url('/assets/fonts/JosefinSans/regular/JosefinSans-Regular-webfont.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: JosefinSansLight;
-  src: url('/assets/fonts/JosefinSans/light/JosefinSans-Light-webfont.ttf') format('truetype'),
-       url('/assets/fonts/JosefinSans/light/JosefinSans-Light-webfont.eot') format('embedded-opentype'),
-       url('/assets/fonts/JosefinSans/light/JosefinSans-Light-webfont.svg') format('svg'),
-       url('/assets/fonts/JosefinSans/light/JosefinSans-Light-webfont.woff') format('woff'),
-       url('/assets/fonts/JosefinSans/light/JosefinSans-Light-webfont.woff2') format('woff2');
-  font-weight: 200;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: JosefinSansThin;
-  src: url('/assets/fonts/JosefinSans/thin/JosefinSans-Thin-webfont.ttf') format('truetype'),
-       url('/assets/fonts/JosefinSans/thin/JosefinSans-Thin-webfont.eot') format('embedded-opentype'),
-       url('/assets/fonts/JosefinSans/thin/JosefinSans-Thin-webfont.svg') format('svg'),
-       url('/assets/fonts/JosefinSans/thin/JosefinSans-Thin-webfont.woff') format('woff'),
-       url('/assets/fonts/JosefinSans/thin/JosefinSans-Thin-webfont.woff2') format('woff2');
-  font-weight: 100;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: JosefinSansSemiBold;
-  src: url('/assets/fonts/JosefinSans/semibold/JosefinSans-SemiBold-webfont.ttf') format('truetype'),
-       url('/assets/fonts/JosefinSans/semibold/JosefinSans-SemiBold-webfont.eot') format('embedded-opentype'),
-       url('/assets/fonts/JosefinSans/semibold/JosefinSans-SemiBold-webfont.svg') format('svg'),
-       url('/assets/fonts/JosefinSans/semibold/JosefinSans-SemiBold-webfont.woff') format('woff'),
-       url('/assets/fonts/JosefinSans/semibold/JosefinSans-SemiBold-webfont.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-}
-
-
-@font-face {
-  font-family: JosefinSansBold;
-  src: url('/assets/fonts/JosefinSans/bold/JosefinSans-Bold-webfont.ttf') format('truetype'),
-       url('/assets/fonts/JosefinSans/bold/JosefinSans-Bold-webfont.eot') format('embedded-opentype'),
-       url('/assets/fonts/JosefinSans/bold/JosefinSans-Bold-webfont.svg') format('svg'),
-       url('/assets/fonts/JosefinSans/bold/JosefinSans-Bold-webfont.woff') format('woff'),
-       url('/assets/fonts/JosefinSans/bold/JosefinSans-Bold-webfont.woff2') format('woff2');
-  font-weight: 800;
-  font-style: normal;
-}
-
-
-@font-face {
-  font-family: JosefinSansItalic;
-  src: url('/assets/fonts/JosefinSans/italic/JosefinSans-Italic-webfont.ttf') format('truetype'),
-       url('/assets/fonts/JosefinSans/italic/JosefinSans-Italic-webfont.eot') format('embedded-opentype'),
-       url('/assets/fonts/JosefinSans/italic/JosefinSans-Italic-webfont.svg') format('svg'),
-       url('/assets/fonts/JosefinSans/italic/JosefinSans-Italic-webfont.woff') format('woff'),
-       url('/assets/fonts/JosefinSans/italic/JosefinSans-Italic-webfont.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: JosefinSansBoldItalic;
-  src: url('/assets/fonts/JosefinSans/bolditalic/JosefinSans-BoldItalic-webfont.ttf') format('truetype'),
-       url('/assets/fonts/JosefinSans/bolditalic/JosefinSans-BoldItalic-webfont.eot') format('embedded-opentype'),
-       url('/assets/fonts/JosefinSans/bolditalic/JosefinSans-BoldItalic-webfont.svg') format('svg'),
-       url('/assets/fonts/JosefinSans/bolditalic/JosefinSans-BoldItalic-webfont.woff') format('woff'),
-       url('/assets/fonts/JosefinSans/bolditalic/JosefinSans-BoldItalic-webfont.woff2') format('woff2');
-  font-weight: 800;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: JosefinSansThinItalic;
-  src: url('/assets/fonts/JosefinSans/thinitalic/JosefinSans-ThinItalic-webfont.ttf') format('truetype'),
-       url('/assets/fonts/JosefinSans/thinitalic/JosefinSans-ThinItalic-webfont.eot') format('embedded-opentype'),
-       url('/assets/fonts/JosefinSans/thinitalic/JosefinSans-ThinItalic-webfont.svg') format('svg'),
-       url('/assets/fonts/JosefinSans/thinitalic/JosefinSans-ThinItalic-webfont.woff') format('woff'),
-       url('/assets/fonts/JosefinSans/thinitalic/JosefinSans-ThinItalic-webfont.woff2') format('woff2');
-  font-weight: 100;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: JosefinSansSemiBoldItalic;
-  src: url('/assets/fonts/JosefinSans/semibolditalic/JosefinSans-SemiBoldItalic-webfont.ttf') format('truetype'),
-       url('/assets/fonts/JosefinSans/semibolditalic/JosefinSans-SemiBoldItalic-webfont.eot') format('embedded-opentype'),
-       url('/assets/fonts/JosefinSans/semibolditalic/JosefinSans-SemiBoldItalic-webfont.svg') format('svg'),
-       url('/assets/fonts/JosefinSans/semibolditalic/JosefinSans-SemiBoldItalic-webfont.woff') format('woff'),
-       url('/assets/fonts/JosefinSans/semibolditalic/JosefinSans-SemiBoldItalic-webfont.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: JosefinSansLightItalic;
-  src: url('/assets/fonts/JosefinSans/lightitalic/JosefinSans-LightItalic-webfont.ttf') format('truetype'),
-       url('/assets/fonts/JosefinSans/lightitalic/JosefinSans-LightItalic-webfont.eot') format('embedded-opentype'),
-       url('/assets/fonts/JosefinSans/lightitalic/JosefinSans-LightItalic-webfont.svg') format('svg'),
-       url('/assets/fonts/JosefinSans/lightitalic/JosefinSans-LightItalic-webfont.woff') format('woff'),
-       url('/assets/fonts/JosefinSans/lightitalic/JosefinSans-LightItalic-webfont.woff2') format('woff2');
-  font-weight: 200;
-  font-style: normal;
-}
-
-
-@font-face {
   font-family: OpenSans;
   src: url('/assets/fonts/OpenSans/regular/OpenSans-Regular-webfont.ttf') format('truetype'),
        url('/assets/fonts/OpenSans/regular/OpenSans-Regular-webfont.eot') format('embedded-opentype'),
@@ -199,19 +86,8 @@
   font-style: normal;
 }
 
-@font-face {
-  font-family: MissionScript;
-  src: url('/assets/fonts/MissionScript/mission-script.ttf') format('truetype'),
-       url('/assets/fonts/MissionScript/mission-script.eot') format('embedded-opentype'),
-       url('/assets/fonts/MissionScript/mission-script.svg') format('svg'),
-       url('/assets/fonts/MissionScript/mission-script.woff') format('woff'),
-       url('/assets/fonts/MissionScript/mission-script.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-}
-
 body {
-  font-family: OpenSans, sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   padding-top: 50px;
   padding-bottom: 40px;
 }
@@ -222,31 +98,28 @@ p {
   font-weight: 300;
 }
 
-h1, h3, h4, h5, h6 {
-  font-family: JosefinSansBold;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Raleway', sans-serif;
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 55px;
 }
 
 h2 {
-  font-size: 34px;
-  font-family: JosefinSansSemiBold;
-  font-variant: small-caps;
-  text-transform: lowercase;
+  font-size: 46px;
 }
 
 h3 {
-  font-size: 28px;
+  font-size: 30px;
   padding-top: 10px;
 }
 
 h4 {
-  font-size: 24px;
+  font-size: 22px;
   padding-top: 10px;
   font-variant: small-caps;
-  text-transform: lowercase;
+  text-transform: uppercase;
 }
 
 h5 {
@@ -271,42 +144,44 @@ small {
   font-size: 12px;
 }
 
-b, strong {
-  font-family: JosefinSansBold;
-  font-size: 130%;
-}
 
 
 @media (min-width: 768px) {
   p {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 400;
     line-height: 32px;
   }
   h1 {
-    font-size: 46px;
+    font-size: 60px;
+    font-weight: 900;
   }
 
   h2 {
-    font-size: 40px;
+    font-size: 54px;
+    font-weight: 800;
   }
 
   h3 {
-    font-size: 32px;
-    padding-top: 10px;
+    font-size: 34px;
+    font-weight: 600;
   }
 
   h4 {
-    font-size: 28px;
+    font-size: 22px;
     padding-top: 10px;
+    font-weight: 800;
+    color: #555555; /* gray / hex3 */
   }
 
   h5 {
-    font-size: 24px;
+    font-size: 22px;
+    font-weight: 800;
   }
 
   h6 {
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: 800;
   }
   .words small {
     color: #7F808A;
@@ -521,7 +396,7 @@ blockquote.twitter-tweet a[href^="https://twitter.com"] {
 }
 
 pre {
-  border-radius: 5px;
+  border-radius: 0px;
   border: 1px solid #e1e1e8;
   width: inherit;
   max-width: 800px;
@@ -533,6 +408,8 @@ pre {
 
 code {
   padding: 0px;
+  padding-left: 4px;
+  padding-right: 4px;
   background: #F0F2F5;
   font-family: SourceCodePro;
 }
@@ -550,11 +427,11 @@ td.linenos {
   width: 30px;
 }
 
-/*.words {
+.words {
   font-size: 20px;
   line-height: 48px;
   list-style: none;
-}*/
+}
 
 #blogpost-published {
   font-style: italic;
@@ -604,7 +481,7 @@ a.tag-home:hover, a.tag-home:focus {
 }
 
 ul li {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 32px;
 }
 
@@ -656,7 +533,6 @@ ul li {
 
 .rogue-content a {
   text-decoration: none;
-  border-bottom: 1px dashed #337ab7;
 }
 
 .rogue-content-block {
@@ -821,4 +697,21 @@ a:hover, a:focus {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+figcaption {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+figcaption a {
+  border-bottom: 1px dashed #337ab7;
+}
+
+a > code {
+  color: #337ab7;
+}
+
+.underline {
+  border-bottom: 1px solid black;
 }
