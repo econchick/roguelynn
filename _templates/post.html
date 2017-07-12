@@ -7,10 +7,13 @@
       <meta name="keywords" content="{{ keywords }}">
   {% endif %}
   <meta name="og:title" content="{{ item.title }}">
+  <meta name="twitter:title" content="{{ item.title }}">
+
   <meta name="og:type" content="article">
   <meta name="og:url" content="{{ get_url(item.url, absolute=True) }}">
   {% if item.og_image %}
     <meta name="og:image" content="{{ get_url(get_asset(item.og_image), absolute=True) }}">
+    <meta name="twitter:image" content="{{ get_url(get_asset(item.og_image), absolute=True) }}">
   {% else %}
     <meta name="og:image" content="{{ get_url(get_asset('images/favicon/favicon.ico'), absolute=True) }}">
   {% endif %}
@@ -24,6 +27,7 @@
   {% endif %}
   {% if item.description %}
     <meta name="og:description" content="{{ item.description }}">
+    <meta name="twitter:description" content="{{ item.description }}">
   {% endif %}
   {% if item.tags %}
     {% for tag in item.tags %}
