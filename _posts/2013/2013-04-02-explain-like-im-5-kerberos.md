@@ -4,6 +4,7 @@ title: "Explain like I’m 5: Kerberos"
 tags: [kerberos]
 updated_at: "May 30, 2013"
 category: [words]
+og_image: "images/Kerb.004.jpg"
 ---
 
 Explain like I’m 5 years old: Kerberos – what is Kerberos, and why should I care?

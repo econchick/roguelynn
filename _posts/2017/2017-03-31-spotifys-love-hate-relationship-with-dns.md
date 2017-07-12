@@ -3,6 +3,8 @@ layout: post.html
 title: "Spotify’s Love/Hate Relationship with DNS"
 tags: [Spotify, DNS]
 category: [words]
+og_image: "images/spotify-dns/dns_architecture_no_srv.png"
+
 ---
 
 _**Nota Bene:** This post was written and first published on Spotify's [developer blog](https://labs.spotify.com/2017/03/31/spotifys-lovehate-relationship-with-dns/)._

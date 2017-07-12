@@ -4,6 +4,7 @@ title: "Diversity: We're Not Done Yet"
 tags: [diversity, talk, community]
 category: [words, highlight]
 updated_at: "September 6, 2015"
+og_image: "images/diversity-not-done-yet/pyladies-new-members-02.jpg"
 ---
 <i>Update on September 6th: Finally included the IPython notebooks!</i>
 
