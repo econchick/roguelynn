@@ -1,5 +1,13 @@
 {% extends "layout.html" %}
 {% block title %}Tags{% endblock %}
+{% block extrahead %}
+  <meta name="keywords" content="python pyladies infrastructure sre devops djangogirls">
+
+  <meta name="og:title" content="Tags">
+  <meta name="og:url" content="{{ get_url(absolute=True) }}tags">
+  <meta name="og:type" content="website">
+  <meta name="og:image" content="{{ get_url(get_asset('images/favicon/favicon.ico'), absolute=True) }}">
+{% endblock %}
 {% block content %}
   <div class="page-header"><h1>Tags</h1></div>
     <p>{% for tag in posts.tags %}

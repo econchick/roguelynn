@@ -1,5 +1,14 @@
 {% extends "layout.html" %}
 {% block title %}About{% endblock %}
+{% block extrahead %}
+  <meta name="keywords" content="python pyladies infrastructure sre devops djangogirls">
+
+  <meta name="og:title" content="About">
+  <meta name="og:url" content="{{ get_url(absolute=True) }}about">
+  <meta name="og:type" content="website">
+  <meta name="og:image" content="{{ get_url(get_asset('images/favicon/favicon.ico'), absolute=True) }}">
+  <meta name="og:description" content="About Lynn Root">
+{% endblock %}
 {% block content %}
   <div class="page-header"><h1>About</h1></div>
   {% for post in containers.about %}

@@ -1,5 +1,14 @@
 {% extends "layout.html" %}
 {% block title %}Home{% endblock %}
+{% block extrahead %}
+  <meta name="keywords" content="python pyladies infrastructure sre devops djangogirls">
+
+  <meta name="og:title" content="Home – Lynn Root">
+  <meta name="og:type" content="website">
+  <meta name="og:url" content="get_url(absolute=True)">
+  <meta name="og:image" content="{{ get_url(get_asset('images/favicon/favicon.ico'), absolute=True) }}">
+  <meta name="og:description" content="Homepage and blog of Lynn Root. SRE, Pythoneer, PyLadies Organizer, Flaneur in NYC.">
+{% endblock %}
 {% block content %}
 <div id="rogue-splash">
     <h1>OH HAI!</h1>

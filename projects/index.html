@@ -1,5 +1,13 @@
 {% extends "layout.html" %}
 {% block title %}Projects{% endblock %}
+{% block extrahead %}
+  <meta name="keywords" content="python pyladies raml infrastructure sre devops djangogirls">
+
+  <meta name="og:title" content="Projects">
+  <meta name="og:url" content="{{ get_url(absolute=True) }}projects">
+  <meta name="og:type" content="website">
+  <meta name="og:image" content="{{ get_url(get_asset('images/favicon/favicon.ico'), absolute=True) }}">
+{% endblock %}
 {% block content %}
 <div class="page-header"><h1>Projects</h1></div>
   {% for project in containers.projects %}

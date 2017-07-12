@@ -1,5 +1,14 @@
 {% extends "layout.html" %}
 {% block title %}As Seen On{% endblock %}
+{% block extrahead %}
+  <meta name="keywords" content="python pyladies infrastructure sre devops djangogirls">
+
+  <meta name="og:title" content="As Seen On">
+  <meta name="og:url" content="{{ get_url(absolute=True) }}fingerprints">
+  <meta name="og:type" content="website">
+  <meta name="og:image" content="{{ get_url(get_asset('images/favicon/favicon.ico'), absolute=True) }}">
+  <meta name="og:description" content="Just a little humblebragging">
+{% endblock %}
 {% block content %}
     <div class="page-header">
       <h2 id="talklist">As Seen On...</h2>
