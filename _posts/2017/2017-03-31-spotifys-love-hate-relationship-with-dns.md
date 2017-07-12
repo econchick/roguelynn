@@ -1,6 +1,6 @@
 ---
 layout: post.html
-title: "Spotify's Love/Hate Relationship with DNS"
+title: "Spotify’s Love/Hate Relationship with DNS"
 tags: [Spotify, DNS]
 category: [words]
 ---
