@@ -11,28 +11,31 @@
 {% block content %}
 <article class="hentry">
 <h1 class="entry-title">{{ item.title }}</h1>
-<small>
-  <time class="published" datetime="{{ item.date }}">
-  Published {{ item.date }}
-  </time>
-  {% if item.updated_at %}
-    <time class="updated" datetime="{{ item.updated_at }}">
-    &#8226 Updated {{ item.updated_at }}
-    </time>
-  {% elif item.revised %}
-    <time class="updated" datetime="{{ item.revised }}">
-    &#8226 Revised {{ item.revised }}
-    {{ item.date }}
-    </time>
-  {% endif %}
-</small>
+<div>
+    <small>
+      <time class="published" datetime="{{ item.date }}">
+      Published {{ item.date }}
+      </time>
+      {% if item.updated_at %}
+        <time class="updated" datetime="{{ item.updated_at }}">
+        &#8226 Updated {{ item.updated_at }}
+        </time>
+      {% elif item.revised %}
+        <time class="updated" datetime="{{ item.revised }}">
+        &#8226 Revised {{ item.revised }}
+        {{ item.date }}
+        </time>
+      {% endif %}
+    </small>
   {% if item.tags %}
-  &nbsp;&nbsp;
+    <span class="rogue-tags">
     {% for tag in item.tags %}
-    {% set data = posts.tags[tag] %}
-      <span class="badge rogue-badge"><a href="{{ get_url(data.url) }}" alt="{{ tag }}">{{ tag }}</a></span>
+      {% set data = posts.tags[tag] %}
+      <span class="rogue-tag"><a href="{{ get_url(data.url) }}" alt="{{ tag }}">{{ tag }}</a></span>
     {% endfor %}
+    </span>
   {% endif %}
+</div>
 <hr/>
   <div class="rogue-content entry-content">
     {{ item.content }}

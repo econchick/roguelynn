@@ -5,7 +5,7 @@
     <p>{% for tag in posts.tags %}
       {% if tag != "resume" %}
         {% set data = posts.tags[tag] %}
-         <span class="badge rogue-badge"><a href="{{ get_url(data.url) }}">{{ tag }} <span class="tag-count">({{ data.count }})</span></a></span>
+         <span class="rogue-tag"><a href="{{ get_url(data.url) }}">{{ tag }} <span class="tag-count">({{ data.count }})</span></a></span>
       {% endif %}
     {% endfor %}</p>
 {% endblock %}
