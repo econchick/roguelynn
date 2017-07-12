@@ -12,6 +12,7 @@
   <meta name="twitter:title" content="Talks">
   <meta name="twitter:description" content="Talks given by Lynn Root">
 {% endblock %}
+{% block me %}<li class="navbar-me"><a href="{{ get_url('/') }}" title="Home">lynn root</a></li>{% endblock %}
 {% block content %}
   <div class="page-header"><h2 id="talklist">Upcoming Talks</h2></div>
     {% for talk in containers.upcoming_talks %}

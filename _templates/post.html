@@ -39,25 +39,17 @@
   {% endif %}
 
 {% endblock %}
-
+{% block me %}<li class="navbar-me"><a href="{{ get_url('/') }}" title="Home">lynn root</a></li>{% endblock %}
 {% block content %}
 <article class="hentry">
 <h1 class="entry-title">{{ item.title }}</h1>
 <div>
     <small>
-      <time class="published" datetime="{{ item.date }}">
-      Published {{ item.date }}
-      </time>
+      <time class="published" datetime="{{ item.date }}">Published {{ item.date }}</time>
       {% if item.updated_at %}
-        <time class="updated" datetime="{{ item.updated_at }}">
-        &#8226 Updated {{ item.updated_at }}
-        </time>
-      {% elif item.revised %}
-        <time class="updated" datetime="{{ item.revised }}">
-        &#8226 Revised {{ item.revised }}
-        {{ item.date }}
-        </time>
+        <time class="updated" datetime="{{ item.updated_at }}">&#8226 Updated {{ item.updated_at }}</time>
       {% endif %}
+      <span class="show-author">by <a href="{{ get_url('/about/') }}">Lynn Root</a></span>
     </small>
   {% if item.tags %}
     <span class="rogue-tags">

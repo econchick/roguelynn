@@ -1,8 +1,19 @@
 {% extends 'layout.html' %}
 
-
 {% set title = 'Tag  &rsaquo; ' ~ tag.name %}
+{% block extrahead %}
+  <meta name="keywords" content="python pyladies infrastructure sre devops djangogirls {{ tag.name }}">
 
+  <meta name="og:title" content="{{ title }}">
+  <meta name="og:type" content="website">
+  <meta name="og:url" content="{{ get_url(tag.url, absolute=True)}}">
+  <meta name="og:image" content="{{ get_url(get_asset('images/favicon/favicon.ico'), absolute=True) }}">
+  <meta name="og:description" content="List of articles tagged {{ tag.name }}.">
+
+  <meta name="twitter:title" content="{{ title }}">
+  <meta name="twitter:description" content="List of articles tagged {{ tag.name }}.">
+{% endblock %}
+{% block me %}<li class="navbar-me"><a href="{{ get_url('/') }}" title="Home">lynn root</a></li>{% endblock %}
 {% block content %}
   <div class="page-header"><h1><a href="{{ get_url(site.tags_url) }}" class="tag-home">Tags</a> &rsaquo; {{ tag.name }}</h1></div>
   {% for post in tag %}

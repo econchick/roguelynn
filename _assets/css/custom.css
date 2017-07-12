@@ -227,9 +227,16 @@ h2 abbr {
   filter: alpha(opacity=90);
 }
 
+.navbar-nav > .navbar-me > a {
+  font-family: Raleway, sans-serif;
+  font-weight: 600;
+  padding-top: 20px;
+  padding-left: 3px;
+  color: rgb(51, 51, 51);
+}
+
 .nav > li > a:hover, .nav > li > a:focus {
   text-shadow: 0 0 3px rgba(56, 165, 221, 0.8);
-  color: #38a5dd;
   background-color: transparent;
   text-decoration: none;
   opacity: 0.9;
@@ -337,7 +344,12 @@ code {
 }
 
 @media all and (max-width: 768px) {
-    .rogue-tags {display:none;}
+  .rogue-tags {display:none;}
+  .show-author {display:block;}
+
+}
+@media all and (min-width: 768px) {
+  .show-author {display:none;}
 }
 
 .code {

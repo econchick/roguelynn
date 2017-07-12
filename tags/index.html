@@ -10,6 +10,7 @@
 
   <meta name="twitter:title" content="Tags">
 {% endblock %}
+{% block me %}<li class="navbar-me"><a href="{{ get_url('/') }}" title="Home">lynn root</a></li>{% endblock %}
 {% block content %}
   <div class="page-header"><h1>Tags</h1></div>
     <p>{% for tag in posts.tags %}

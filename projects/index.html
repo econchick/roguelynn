@@ -11,6 +11,7 @@
   <meta name="twitter:title" content="Projects">
   <meta name="twitter:description" content="Projects by Lynn Root">
 {% endblock %}
+{% block me %}<li class="navbar-me"><a href="{{ get_url('/') }}" title="Home">lynn root</a></li>{% endblock %}
 {% block content %}
 <div class="page-header"><h1>Projects</h1></div>
   {% for project in containers.projects %}

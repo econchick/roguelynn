@@ -12,6 +12,7 @@
   <meta name="twitter:description" content="Articles by Lynn Root">
 {% endblock %}
 {% block title %}Words{% endblock %}
+{% block me %}<li class="navbar-me"><a href="{{ get_url('/') }}" title="Home">lynn root</a></li>{% endblock %}
 {% block content %}
   <div class="page-header"><h1>Words</h1></div>
   {% for post in posts %}
