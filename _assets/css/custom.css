@@ -1,93 +1,7 @@
-@font-face {
-  font-family: OpenSans;
-  src: url('/assets/fonts/OpenSans/regular/OpenSans-Regular-webfont.ttf') format('truetype'),
-       url('/assets/fonts/OpenSans/regular/OpenSans-Regular-webfont.eot') format('embedded-opentype'),
-       url('/assets/fonts/OpenSans/regular/OpenSans-Regular-webfont.svg') format('svg'),
-       url('/assets/fonts/OpenSans/regular/OpenSans-Regular-webfont.woff') format('woff'),
-       url('/assets/fonts/OpenSans/regular/OpenSans-Regular-webfont.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: SourceCodePro;
-  src: url('/assets/fonts/source-code-pro/black/SourceCodePro-Black.ttf') format('truetype'),
-       url('/assets/fonts/source-code-pro/black/SourceCodePro-Black.eot') format('embedded-opentype'),
-       url('/assets/fonts/source-code-pro/black/SourceCodePro-Black.svg') format('svg'),
-       url('/assets/fonts/source-code-pro/black/SourceCodePro-Black.woff') format('woff'),
-       url('/assets/fonts/source-code-pro/black/SourceCodePro-Black.otf') format('opentype');
-  font-weight: @font-weight-black;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: SourceCodePro;
-  src: url('/assets/fonts/source-code-pro/bold/SourceCodePro-Bold.ttf') format('truetype'),
-       url('/assets/fonts/source-code-pro/bold/SourceCodePro-Bold.eot') format('embedded-opentype'),
-       url('/assets/fonts/source-code-pro/bold/SourceCodePro-Bold.svg') format('svg'),
-       url('/assets/fonts/source-code-pro/bold/SourceCodePro-Bold.woff') format('woff'),
-       url('/assets/fonts/source-code-pro/bold/SourceCodePro-Bold.otf') format('opentype');
-  font-weight: @font-weight-bold;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: SourceCodePro;
-  src: url('/assets/fonts/source-code-pro/extralight/SourceCodePro-ExtraLight.ttf') format('truetype'),
-       url('/assets/fonts/source-code-pro/extralight/SourceCodePro-ExtraLight.eot') format('embedded-opentype'),
-       url('/assets/fonts/source-code-pro/extralight/SourceCodePro-ExtraLight.svg') format('svg'),
-       url('/assets/fonts/source-code-pro/extralight/SourceCodePro-ExtraLight.woff') format('woff'),
-       url('/assets/fonts/source-code-pro/extralight/SourceCodePro-ExtraLight.otf') format('opentype');
-  font-weight: @font-weight-extralight;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: SourceCodePro;
-  src: url('/assets/fonts/source-code-pro/light/SourceCodePro-Light.ttf') format('truetype'),
-       url('/assets/fonts/source-code-pro/light/SourceCodePro-Light.eot') format('embedded-opentype'),
-       url('/assets/fonts/source-code-pro/light/SourceCodePro-Light.svg') format('svg'),
-       url('/assets/fonts/source-code-pro/light/SourceCodePro-Light.woff') format('woff'),
-       url('/assets/fonts/source-code-pro/light/SourceCodePro-Light.otf') format('opentype');
-  font-weight: @font-weight-light;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: SourceCodePro;
-  src: url('/assets/fonts/source-code-pro/medium/SourceCodePro-Medium.ttf') format('truetype'),
-       url('/assets/fonts/source-code-pro/medium/SourceCodePro-Medium.eot') format('embedded-opentype'),
-       url('/assets/fonts/source-code-pro/medium/SourceCodePro-Medium.svg') format('svg'),
-       url('/assets/fonts/source-code-pro/medium/SourceCodePro-Medium.woff') format('woff'),
-       url('/assets/fonts/source-code-pro/medium/SourceCodePro-Medium.otf') format('opentype');
-  font-weight: @font-weight-medium;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: SourceCodePro;
-  src: url('/assets/fonts/source-code-pro/regular/SourceCodePro-Regular.ttf') format('truetype'),
-       url('/assets/fonts/source-code-pro/regular/SourceCodePro-Regular.eot') format('embedded-opentype'),
-       url('/assets/fonts/source-code-pro/regular/SourceCodePro-Regular.svg') format('svg'),
-       url('/assets/fonts/source-code-pro/regular/SourceCodePro-Regular.woff') format('woff'),
-       url('/assets/fonts/source-code-pro/regular/SourceCodePro-Regular.otf') format('opentype');
-  font-weight: @font-weight-regular;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: SourceCodePro;
-  src: url('/assets/fonts/source-code-pro/semibold/SourceCodePro-Semibold.ttf') format('truetype'),
-       url('/assets/fonts/source-code-pro/semibold/SourceCodePro-Semibold.eot') format('embedded-opentype'),
-       url('/assets/fonts/source-code-pro/semibold/SourceCodePro-Semibold.svg') format('svg'),
-       url('/assets/fonts/source-code-pro/semibold/SourceCodePro-Semibold.woff') format('woff'),
-       url('/assets/fonts/source-code-pro/semibold/SourceCodePro-Semibold.otf') format('opentype');
-  font-weight: @font-weight-semibold;
-  font-style: normal;
-}
+@import 'fonts.css';
 
 body {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: SourceSansPro, sans-serif;
   padding-top: 50px;
   padding-bottom: 40px;
 }
@@ -99,7 +13,7 @@ p {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Raleway', sans-serif;
+  font-family: Raleway, sans-serif;
 }
 
 h1 {
@@ -395,7 +309,7 @@ pre {
   word-break: normal !important;
   word-wrap: normal !important;
   white-space: pre !important;
-  font-family: SourceCodePro;
+  font-family: SourceCodePro, monospace;
 }
 
 code {
@@ -403,7 +317,7 @@ code {
   padding-left: 4px;
   padding-right: 4px;
   background: #F0F2F5;
-  font-family: SourceCodePro;
+  font-family: SourceCodePro, monospace;
 }
 
 .code {
@@ -622,6 +536,7 @@ a:hover, a:focus {
   color: #313236;
 }
 
+/* TODO: fix so this is normal block quoting */
 .blockquote-highlight {
   font-family: 'Parisienne', cursive;
   background-color: #fff;
