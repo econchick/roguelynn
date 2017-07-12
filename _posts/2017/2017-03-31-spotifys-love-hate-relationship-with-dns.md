@@ -20,7 +20,8 @@ This post will walk through how we have designed and currently manage our own DN
 # Our infrastructure
 We run our own DNS infrastructure on-premise which might seem a bit unusual lately. We have a typical setup with what we call a single “stealth primary” (and a hot standby) running BIND (DNS server software), and its only job is essentially to compile zone files. We then have a bunch of authoritative nameservers (or “secondaries”), also running [BIND](https://en.wikipedia.org/wiki/BIND), with at least two per geographical location, and four of which are exposed to the public. When the stealth primary has finished re-compiling zones, a transfer happens to the nameservers. </span>
 
-<img class="img-responsive img-rounded" src="{{ get_asset('images/spotify-dns/dns_architecture_no_srv.png') }}" title="Spotify DNS Architecture Overview" alt="Spotify DNS Architecture Overview"/>
+<img class="displayed" src="{{ get_asset('images/spotify-dns/dns_architecture_no_srv.png') }}" title="Spotify DNS Architecture Overview" alt="Spotify DNS Architecture Overview"/>
+<figcaption>Spotify DNS Architecture Overview</figcaption>
 
 We then have a bunch more resolvers running [Unbound](https://en.wikipedia.org/wiki/Unbound_(DNS_server)) (caching and recursive DNS server software), with at least 2 resolvers per datacenter suite. Our resolvers are configured to talk to every one of our authoritative nameservers for redundancy.
 
@@ -82,7 +83,9 @@ After feeling too much pain with manual edits and deployments, in 2013 we made t
 #### Our automation in detail
 We have a pair of cron’ed scripts written in Python that are scheduled to run every 10 minutes (staggered from each other): one script generates records from our [physical fleet][managingfleet] via a service of ours called “ServerDB”; the other script talks to the [Google Compute][spotifygoogle] API for our cloud instances with deployed services.
 
-<img class="img-responsive img-rounded" src="{{ get_asset('images/spotify-dns/automated_rec_gen_deploy.gif') }}" title="Spotify DNS Automated Record Generation & Deployment" alt="Spotify DNS Automated Record Generation & Deployment"/>
+<img class="displayed" src="{{ get_asset('images/spotify-dns/automated_rec_gen_deploy.gif') }}" title="Spotify DNS Automated Record Generation & Deployment" alt="Spotify DNS Automated Record Generation & Deployment"/>
+<figcaption>Spotify DNS Automated Record Generation & Deployment</figcaption>
+
 
 That script takes about 4 minutes to get lists of instances for every service, and finally commit to our DNS data repository, which we consider our source of truth.
 
@@ -97,11 +100,14 @@ SRV records had also been hand-crafted. This, however, became problematic. Typic
 
 Earlier in the infrastructure overview, we have services locally running unbound, talking to our resolvers:
 
-<img class="img-responsive img-rounded" src="{{ get_asset('images/spotify-dns/service_discovery_intro.png') }}" title="Spotify Service Discovery Intro" alt="Spotify Service Discovery Intro" width="491" height="500" style="display:block;margin-right:auto;margin-left:auto;"/>
+<img class="displayed" src="{{ get_asset('images/spotify-dns/service_discovery_intro.png') }}" title="Spotify Service Discovery Intro" alt="Spotify Service Discovery Intro" width="491" height="500"/>
+<figcaption>Spotify Service Discovery Intro</figcaption>
 
 Since the then-current open source solutions did not address all of our needs, we built our own service discovery system called Nameless, supporting both SRV and A record lookups. It allows engineers to dynamically register and discover services, which made it easier to increase and decrease the number of instances of a particular service.
 
-<img class="img-responsive img-rounded" src="{{ get_asset('images/spotify-dns/service_discovery.png') }}" title="Nameless: Spotify Service Discovery" alt="Nameless: Spotify Service Discovery" width="509" height="500" style="display:block;margin-right:auto;margin-left:auto;"/>
+<img class="displayed" src="{{ get_asset('images/spotify-dns/service_discovery.png') }}" title="Nameless: Spotify Service Discovery" alt="Nameless: Spotify Service Discovery" width="509" height="500"/>
+<figcaption>Spotify Service Discovery</figcaption>
+
 
 To separate service discovery from regular internal DNS requests, Nameless owns the `services` subdomain, e.g. `services.lon6.spotify.net`.
 
@@ -116,23 +122,20 @@ lon6-metadataproxy-af00l.lon6.spotify.net.:1234  (UP since 2017-03-11 00:58:18, 
 ## Monitoring
 Historically, DNS has been quite stable, but nevertheless, sh!t happens. There are a few ways we monitor our DNS infrastructure. We collect metrics emitted by Unbound on our resolvers, including number of queries by record type, SERVFAILs, and net packets:
 
-<img class="img-responsive img-rounded" src="{{ get_asset('images/spotify-dns/monitor_servfails.png') }}" title="Monitoring: Spotify DNS Resolver Queries" alt="Monitoring: Spotify DNS Resolver Queries"/>
-
-<small style="text-align: center;display:block;">Queries per 5 minutes per resolver</small>
+<img class="displayed" src="{{ get_asset('images/spotify-dns/monitor_servfails.png') }}" title="Monitoring: Spotify DNS Resolver Queries" alt="Monitoring: Spotify DNS Resolver Queries"/>
+<figcaption>Queries per 5 minutes per resolver</figcaption>
 
 We also monitor our record generation jobs for gaps or spikes:
 
-<img class="img-responsive img-rounded" src="{{ get_asset('images/spotify-dns/monitor_rec_gen.png') }}" title="Monitoring: Spotify DNS Record Generation" alt="Monitoring: Spotify DNS Record Generation"/>
-
-<small style="text-align: center;display:block;"># of A, CNAME, and PTR records generated for physical hosts and GCP instances</small>
+<img class="displayed" src="{{ get_asset('images/spotify-dns/monitor_rec_gen.png') }}" title="Monitoring: Spotify DNS Record Generation" alt="Monitoring: Spotify DNS Record Generation"/>
+<figcaption># of A, CNAME, and PTR records generated for physical hosts and GCP instances</figcaption>
 
 Most recently, we built a tool that allows us to track response latency, availability and correctness for particularly important records, and deployment latency. For internal latency, availability, and correctness, we use [dnspython][dnspython] to query our resolvers and authoritative nameservers from their respective datacenter suites.
 
 For external latency, through Pingdom’s API, we grab the response latency from our public nameservers. While Pingdom’s monitoring is very valuable to us, we’ve found it difficult to tease out from where they send their queries to measure latency, as you can see in this pretty volatile graph:
 
-<img class="img-responsive img-rounded" src="{{ get_asset('images/spotify-dns/monitor_response_latency.png') }}" title="Monitoring: Spotify DNS Response Latency" alt="Monitoring: Spotify DNS Response Latency"/>
-
-<small style="text-align: center;display:block;">Response time per public nameserver, as reported by Pingdom</small>
+<img class="displayed" src="{{ get_asset('images/spotify-dns/monitor_response_latency.png') }}" title="Monitoring: Spotify DNS Response Latency" alt="Monitoring: Spotify DNS Response Latency"/>
+<figcaption>Response time per public nameserver, as reported by Pingdom</figcaption>
 
 # Our other DNS curiosities
 Beyond its typical uses, we leverage DNS in interesting ways.
@@ -140,22 +143,25 @@ Beyond its typical uses, we leverage DNS in interesting ways.
 ### Client Error Reporting
 There will always be clients that cannot connect to Spotify at all. In order to track the errors and number of users affected, and to circumvent any potentially restrictive firewalls, we introduced error reporting via DNS. The client would make a single DNS query to a specific subdomain, with all the relevant information needed in the query itself, and the queried DNS server then logs it. It’s then parsed, and tracked in this lovely Kibana graph:
 
-<img class="img-responsive img-rounded" src="{{ get_asset('images/spotify-dns/dnsparser_client_errors.png') }}" title="Spotify Client Error Reporting Graph" alt="Spotify Client Error Reporting Graph"/>
+<img class="displayed" src="{{ get_asset('images/spotify-dns/dnsparser_client_errors.png') }}" title="Spotify Client Error Reporting Graph" alt="Spotify Client Error Reporting Graph"/>
+<figcaption>Client errors by code</figcaption>
 
-<small style="text-align: center;display:block;">Client errors by code</small>
 
 ### DHT ring
 We also use DNS as a [DHT ring][dht] with TXT records as storage for some service configuration data. One implementation is for song lookup when it isn’t already locally cached. When the Spotify client lookups a requested song, the song ID itself is hashed, which is a key along the ring. 
 
-<img class="img-responsive img-rounded" src="{{ get_asset('images/spotify-dns/dht_ring_lookup.png') }}" title="Spotify DHT Ring: Host Lookup" alt="Spotify DHT Ring: Host Lookup" width="572" height="450" style="display:block;margin-right:auto;margin-left:auto;"/>
+<img class="displayed" src="{{ get_asset('images/spotify-dns/dht_ring_lookup.png') }}" title="Spotify DHT Ring: Host Lookup" alt="Spotify DHT Ring: Host Lookup" width="572" height="450"/>
+<figcaption>Spotify DHT Ring: Host Lookup</figcaption>
+
 
 The value associated with the key is essentially the host location where that song can be found. In this very simplified case, Instance E owns keys from `9e` to `c1`. Instance E actually points to a record, something like `tracks.1234.lon6-storage-a5678.lon6.spotify.net`:
 
-<img class="img-responsive img-rounded" src="{{ get_asset('images/spotify-dns/dht_ring_pointer.png') }}" title="Spotify DHT Ring: Host Pointer" alt="Spotify DHT Ring: Host Pointer" width="565" height="450" style="display:block;margin-right:auto;margin-left:auto;"/>
+<img class="displayed" src="{{ get_asset('images/spotify-dns/dht_ring_pointer.png') }}" title="Spotify DHT Ring: Host Pointer" alt="Spotify DHT Ring: Host Pointer" width="565" height="450"/>
+<figcaption>Spotify DHT Ring: Host Pointer</figcaption>
 
 This isn’t a real host, however. It just directs the client to query `lon6-storage-a5678.lon6.spotify.net` via port 1234 in order to find the song that has the ID “d34db33f”.
 
-<img class="img-responsive img-rounded" src="{{ get_asset('images/spotify-dns/dht_ring_host_lookup.png') }}" title="Spotify DHT Ring: Pointer to Host" alt="Spotify DHT Ring:  Pointer to Host" style="display:block;margin-right:auto;margin-left:auto;"/>
+<img class="displayed" src="{{ get_asset('images/spotify-dns/dht_ring_host_lookup.png') }}" title="Spotify DHT Ring: Pointer to Host" alt="Spotify DHT Ring:  Pointer to Host"/>
 
 ### Host naming conventions
 Not really a DNS-specific use, but relevant nonetheless: the current convention of our hostnames contains the datacenter suite location, the role of the machine, and the pool that it’s grouped with. As mentioned in [Managing Machines at Spotify][managingfleet], every machine typically has a single role assigned to it, where a “role” is Spotify-parlance for a microservice.
