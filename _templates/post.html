@@ -1,5 +1,13 @@
 {% extends "layout.html" %}
 {% block title %}{{ item.title }}{% endblock %}
+
+{% block extrahead %}
+  {% if item.meta %}
+    {% set keywords = item.meta|join(",") %}
+      <meta name="keywords" content="{{ keywords }}">
+  {% endif %}
+{% endblock %}
+
 {% block content %}
 <article class="hentry">
 <h1 class="entry-title">{{ item.title }}</h1>

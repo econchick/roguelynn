@@ -3,6 +3,7 @@ layout: post.html
 title: "Tracing, Fast and Slow"
 tags: [tracing, talks, performance, microservices]
 category: [words]
+meta: [microservices, distributed tracing, site reliability engineering]
 ---
 
 This post is an accompaniment to my [Tracing, Fast and Slow talk][0] at [PyCon][1] in Portland, OR in May 2017, and for [EuroPython][26] in Rimini, Italy in July 2017.  Slides [here][2] and video from PyCon [here][3].
