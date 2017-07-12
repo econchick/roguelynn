@@ -26,8 +26,11 @@
     <meta name="og:article:modified_time" content="{{ item.revised }}">
   {% endif %}
   {% if item.description %}
-    <meta name="og:description" content="{{ item.description }}">
-    <meta name="twitter:description" content="{{ item.description }}">
+    <meta name="og:description" content="{{ item.description|striptags|truncate(200, True) }}">
+    <meta name="twitter:description" content="{{ item.description|striptags|truncate(200, True) }}">
+  {% else %}
+    <meta name="og:description" content="{{ item.excerpt|striptags|truncate(200, True) }}">
+    <meta name="twitter:description" content="{{ item.excerpt|striptags|truncate(200, True) }}">
   {% endif %}
   {% if item.tags %}
     {% for tag in item.tags %}
