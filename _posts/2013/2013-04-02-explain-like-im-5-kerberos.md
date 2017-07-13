@@ -4,7 +4,7 @@ title: "Explain like I’m 5: Kerberos"
 tags: [kerberos]
 updated_at: "May 30, 2013"
 category: [words]
-og_image: "images/Kerb.004.jpg"
+og_image: "images/eli5-kerberos/Kerb.004.jpg"
 ---
 
 Explain like I’m 5 years old: Kerberos – what is Kerberos, and why should I care?
@@ -29,8 +29,8 @@ Your ticket is refreshed when you sign on to your computer, or when you `kinit U
 
 For the trivia-loving folks, Kerberos’ name comes from [Greek mythology](http://l.ynn.me/Zxcew1), the three-headed guard dog of [Hades](http://en.wikipedia.org/wiki/Hades). It’s pretty fitting since it takes a third-party (a Key Distribution Center) to authenticate between a client and a service or host machine.
 
-<img class="img-responsive img-rounded center-block" src="{{ get_asset('/images/Hades-et-Cerberus-III.jpg')}}" width="300" height="450"/>
-<p id="caption"><a href="http://en.wikipedia.org/wiki/File:Hades-et-Cerberus-III.jpg">Wikipedia</a></p>
+<img class="displayed" src="{{ get_asset('/images/eli5-kerberos/Hades-et-Cerberus-III.jpg')}}" width="300" height="450"/>
+<figcaption><a href="http://en.wikipedia.org/wiki/File:Hades-et-Cerberus-III.jpg">Wikipedia</a></figcaption>
 
 
 ### Kerberos Realm
@@ -39,7 +39,7 @@ Admins create realms – Kerberos realms – that will encompass all that is ava
 
 Your machine, the Client, lives within this realm, as well as the service or host you want to request and the Key Distribution Center, KDC (no, not the [KGB](http://en.wikipedia.org/wiki/KGB), although I always think of that, too).  In the following example, I separate out the Authentication Server and the Ticket Granting Server, but both are within the KDC.
 
-<img class="img-responsive img-rounded center-block" src="{{ get_asset('images/Kerb.001.jpg')}}" width="630" height="475" alt="Kerberos Realm"/>
+<img class="displayed" src="{{ get_asset('images/eli5-kerberos/Kerb.001.jpg')}}" width="630" height="475" title="Kerberos Realm" alt="Kerberos Realm"/>
 
 ### To keep in the back of your mind
 
@@ -76,11 +76,11 @@ You want to access an HTTP Service, but first you must introduce yourself to the
 
 and is sent to the Authentication Server.
 
-<img class="img-responsive img-rounded center-block" src="{{ get_asset('images/Kerb.002.jpg')}}" width="630" height="475" alt="Request to AS"/>
+<img class="displayed" src="{{ get_asset('images/eli5-kerberos/Kerb.002.jpg')}}" width="630" height="475" title="Request to AS" alt="Request to AS"/>
 
 The Authentication Server will check if you are in the KDC database. This check is only to see if you exist; no credentials are checked.
 
-<img class="img-responsive img-rounded center-block" src="{{ get_asset('images/Kerb.003.jpg')}}" width="630" height="475" alt="AS DB check"/>
+<img class="displayed" src="{{ get_asset('images/eli5-kerberos/Kerb.003.jpg')}}" width="630" height="475" title="AS DB check" alt="AS DB check"/>
 
 If there are no errors (e.g. user is not found), it will randomly generate a key called a <span id="tgs-session-key">session key</span> for use between you and the Ticket Granting Server (TGS).
 
@@ -102,11 +102,11 @@ and is encrypted with the <span id="tgs-secret-key">TGS Secret Key</span> . The 
 
 and is encrypted with your <span id="client-secret-key">Client Secret Key</span>.  Note that the <span id="tgs-session-key">TGS Session Key</span> is the shared key between you and the TGS.
 
-<img class="img-responsive img-rounded center-block" src="{{ get_asset('images/Kerb.004.jpg')}}" width="630" height="475" alt="AS Response to Client"/>
+<img class="displayed" src="{{ get_asset('images/eli5-kerberos/Kerb.004.jpg')}}" width="630" height="475" title="AS Response to Client" alt="AS Response to Client"/>
 
 Your <span id="client-secret-key">Client Secret Key</span> is determined by prompting you for your password, appending a salt (made up of `user@REALMNAME.COM`) and hashing the whole thing. Now you can use it for decrypting the second message in order to obtain the <span id="tgs-session-key">TGS Session Key</span>. If the password is incorrect, then you will not be able to decrypt the message. Please note that this is the step in which the password you enter is implicitly validated.
 
-<img class="img-responsive img-rounded center-block" src="{{ get_asset('images/Kerb.005.jpg')}}" width="630" height="475" alt="Client Decrypt Response"/>
+<img class="displayed" src="{{ get_asset('images/eli5-kerberos/Kerb.005.jpg')}}" width="630" height="475" title="Client Decrypt Response" alt="Client Decrypt Response"/>
 
 You can not, however, decrypt the TGT since you do not know the <span id="tgs-secret-key">TGS Secret Key</span>. The encrypted TGT is stored within your credential cache.
 
@@ -126,15 +126,15 @@ You send an unencrypted message that contains:
 
 along with the encrypted Authenticator and TGT to the Ticket Granting Server.
 
-<img class="img-responsive img-rounded center-block" src="{{ get_asset('images/Kerb.006.jpg')}}" width="630" height="475" alt="Client messages to TGS"/>
+<img class="displayed" src="{{ get_asset('images/eli5-kerberos/Kerb.006.jpg')}}" width="630" height="475" title="Client messages to TGS" alt="Client messages to TGS"/>
 
 The Ticket Granting Server will first check the KDC database to see if the HTTP Service exists.
 
-<img class="img-responsive img-rounded center-block" src="{{ get_asset('images/Kerb.007.jpg')}}" width="630" height="475" alt="TGS DB check"/>
+<img class="displayed" src="{{ get_asset('images/eli5-kerberos/Kerb.007.jpg')}}" width="630" height="475" title="TGS DB check" alt="TGS DB check"/>
 
 If so, the TGS decrypts the TGT with its <span id="secret-key">Secret Key</span> . Since the now-unencrypted TGT contains the <span id="tgs-session-key">TGS Session Key</span>, the TGS can decrypt the Authenticator you sent.
 
-<img class="img-responsive img-rounded center-block" src="{{ get_asset('images/Kerb.008.jpg')}}" width="630" height="475" alt="TGS Decrypts messages"/>
+<img class="displayed" src="{{ get_asset('images/eli5-kerberos/Kerb.008.jpg')}}" width="630" height="475" title="TGS Decrypts messages" alt="TGS Decrypts messages"/>
 
 The TGS will then do the following:
 
@@ -155,7 +155,7 @@ The Ticket Granting Server then randomly generates the <span id="http-session-ke
 
 and encrypts it with the <span id="http-secret-key">HTTP Service Secret Key</span>.
 
-<img class="img-responsive img-rounded center-block" src="{{ get_asset('images/Kerb.009.jpg')}}" width="630" height="475" alt="TGS responds to Client"/>
+<img class="displayed" src="{{ get_asset('images/eli5-kerberos/Kerb.009.jpg')}}" width="630" height="475" title="TGS responds to Client" alt="TGS responds to Client"/>
 
 Then the TGS sends you two messages. One is the encrypted HTTP Service Ticket; the other contains:
 
@@ -170,7 +170,7 @@ Your machine decrypts the latter message with the <span id="tgs-session-key">TGS
 
 Your machine can not, however, decrypt the HTTP Service Ticket since it’s encrypted with the <span id="http-secret-key">HTTP Service Secret Key</span>.
 
-<img class="img-responsive img-rounded center-block" src="{{ get_asset('images/Kerb.010.jpg')}}" width="630" height="475" alt="Client Decrypt TGS messages"/>
+<img class="displayed" src="{{ get_asset('images/eli5-kerberos/Kerb.010.jpg')}}" width="630" height="475" title="Client Decrypt TGS messages" alt="Client Decrypt TGS messages"/>
 
 
 ### You and the HTTP Service
@@ -182,11 +182,11 @@ To now access the HTTP Service, your machine prepares another Authenticator mess
 
 and is encrypted with the <span id="http-session-key">HTTP Service Session Key</span>.  Your machine then sends the Authenticator and the still-encrypted HTTP Service Ticket received from the TGS.
 
-<img class="img-responsive img-rounded center-block" src="{{ get_asset('images/Kerb.011.jpg')}}" width="630" height="475" alt="Client messages HTTP Service"/>
+<img class="displayed" src="{{ get_asset('images/eli5-kerberos/Kerb.011.jpg')}}" width="630" height="475" title="Client messages HTTP Service" alt="Client messages HTTP Service"/>
 
 The HTTP Service then decrypts the Ticket with its <span id="http-secret-key">Secret Key</span> to obtain the <span id="http-session-key">HTTP Service Session Key</span>.  It then uses that <span id="http-session-key">Session Key</span> to decrypt the Authenticator message you sent.
 
-<img class="img-responsive img-rounded center-block" src="{{ get_asset('images/Kerb.012.jpg')}}" width="630" height="475" alt="HTTP Decrypts messages"/>
+<img class="displayed" src="{{ get_asset('images/eli5-kerberos/Kerb.012.jpg')}}" width="630" height="475" title="HTTP Decrypts messages" alt="HTTP Decrypts messages"/>
 
 Similar to the TGS, the HTTP Server will then do the following:
 
@@ -198,17 +198,17 @@ Similar to the TGS, the HTTP Server will then do the following:
 
 The HTTP Service then sends an Authenticator message containing its ID and timestamp in order to confirm its identity to you and is encrypted with the <span id="http-session-key">HTTP Service Session Key</span>.
 
-<img class="img-responsive img-rounded center-block" src="{{ get_asset('images/Kerb.013.jpg')}}" width="630" height="475" alt="HTTP responds with Auth"/>
+<img class="displayed" src="{{ get_asset('images/eli5-kerberos/Kerb.013.jpg')}}" width="630" height="475" title="HTTP responds with Auth" alt="HTTP responds with Auth"/>
 
 Your machine reads the Authenticator message by decrypting with the cached <span id="http-session-key">HTTP Service Session Key</span>, and knows that it has to receive a message with the HTTP Service’s ID and timestamp.
 
-<img class="img-responsive img-rounded center-block" src="{{ get_asset('images/Kerb.014.jpg')}}" width="630" height="475" alt="Client Decrypt HTTP Auth"/>
+<img class="displayed" src="{{ get_asset('images/eli5-kerberos/Kerb.014.jpg')}}" width="630" height="475" title="Client Decrypt HTTP Auth" alt="Client Decrypt HTTP Auth"/>
 
 And now you have been authenticated to use the HTTP Service. Future requests use the cached HTTP Service Ticket, so long as it has not expired as defined within the lifetime attribute.
 
 While I will write on this later, the HTTP Service itself must be able to support Kerberos. As well, you must also have a browser that supports [SPNEGO/Negotiate](http://www.ietf.org/rfc/rfc4559.txt).
 
-<img class="img-responsive img-rounded center-block" src="{{ get_asset('images/Kerb.015.jpg')}}" width="630" height="475" alt="Authed"/>
+<img class="displayed" src="{{ get_asset('images/eli5-kerberos/Kerb.015.jpg')}}" width="630" height="475" title="Authed" alt="Authed"/>
 
 Perhaps re-read [the points](#to-keep-in-the-back-of-your-mind) previously outlined; check out [this](http://www.h5l.org/) or [this](http://www.gnu.org/software/shishi/) current implementation, especially [the one on which I am paid to work](http://freeipa.org) that communicates with [this popular implementation](http://technet.microsoft.com/en-us/library/bb742516.aspx); or review a [tutorial](http://www.kerberos.org/software/tutorial.html), [resource guide](http://content.hccfl.edu/pollock/AUnixSec/MoronsGuideToKerberos.htm), the go-to [video](http://www.youtube.com/watch?v=7-LjpO2nTJo) that was sent to me when I started learning about Kerberos, or the [RFC itself](http://www.ietf.org/rfc/rfc4120.txt).
 

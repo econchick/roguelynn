@@ -7,13 +7,13 @@ category: [words]
 
 This post contains all the sources and thoughts behind my PyCon 2013 talk launching [newcoder.io][newcoder]. The [video][PyCon] and [slides][slides] are available.
 
-<img class="displayed" src="{{ get_asset('images/SoS-slide1.png') }}" width="370" height="300")/> 
+<img class="displayed" src="{{ get_asset('images/new-coder/SoS-slide1.png') }}" width="370" height="300")/> 
 
 If the influx of [private][1], [independent][2] [schools][3] for learning how to [code][4] is any indication, the ever-growing [list][20] of [moocs][21], or the [financial][5] [smack][6] in the [face][7] is a tell-tale sign: software engineering as a career is having its 15 minutes of fame. Looking at the pace of its overall growth in terms of jobs and earnings, it’s not too far from [Moore's Law][8].
 
 But in the context of history, software engineering is merely just going through its industrial phase compared to other engineering fields. There’s no revolutionary way to build a bridge or a highway; we’ve perfected the assembly line; making a guitar or violin is now more of an art than a science. 
 
-<img class="displayed" src="{{ get_asset('images/SoS-writing-classes.png') }}" width="370" height="300")/> 
+<img class="displayed" src="{{ get_asset('images/new-coder/SoS-writing-classes.png') }}" width="370" height="300")/> 
 
 Yet we’re still [arguing][9] how best to [approach][10] software engineering problems and rapidly [developing][11] new [languages][12].
 
@@ -21,7 +21,7 @@ Yet we’re still [arguing][9] how best to [approach][10] software engineering p
 
 A textbook and a classroom is fine for learning more established engineering fields like architecture or manufacturing, but with revolutionary pace of software development, how best should we teach its principles? A four-year degree doesn’t merely grant you “l33t” status, certainly not by [researchers’ standards][13]: 
 
-<img class="displayed" src="{{ get_asset('images/SoS-10-years.png') }}" width="370" height="300")/> 
+<img class="displayed" src="{{ get_asset('images/new-coder/SoS-10-years.png') }}" width="370" height="300")/> 
 
 One predominant theme I am seeing is that gap from learning syntax to becoming a passable junior developer. You went through [Learn Python the Hard Way][18], uh, now what? Sure – a for-loop is easy to identify, to code when told exactly what to do, but that’s not real life.
 
@@ -44,7 +44,7 @@ So I ditched traditional academia and I’ve been learning to code through compl
 
 I've certainly belly flopped a few times.  I tend to find myself learning more through frustration than being simply told what or how to do it. It usually ends success but not without tears and wasted time. It may not be the best way to go about learning, but it certainly challenges me to push myself through the hard times; builds up my endurance for longer races.
 
-<img class="displayed" src="{{ get_asset('images/SoS-frustration.png') }}" width="370" height="300")/> 
+<img class="displayed" src="{{ get_asset('images/new-coder/SoS-frustration.png') }}" width="370" height="300")/> 
 
 But I see myself in a good position to teach what I’ve learned - I'm no olympic swimmer, I still have those fresh, n00b eyes when trying to understand a code base. Yet when I try to explain it to someone else, concepts do solidify – teaching others gives that personal meaning and understanding since I want to create that context that builds that cumulative learning.
 
@@ -58,7 +58,7 @@ So each has a purpose and a set of goals, ends on how these projects are used in
 
 There is some subtlety baked into these projects though. In particular, the language used and how topics are presented. I’ve written each tutorial with a set of side effects in mind – indirect learning – that eventually become the goals of future tutorials. So we play water polo for treading water, but it also builds endurance and strength indirectly.
 
-<img class="displayed" src="{{ get_asset('images/SoS-knowledge.png') }}" width="370" height="300")/> 
+<img class="displayed" src="{{ get_asset('images/new-coder/SoS-knowledge.png') }}" width="370" height="300")/> 
 
 I want guppies to learn by doing. We can't read how to swim. You have to feel the water against your hands to learn how to paddle through; you must accidently snort up water to learn how to breathe.
 
@@ -195,7 +195,7 @@ while indirectly being exposed to:
 
 So because we’re in software engineering’s industrial revolution, we need to have a revolutionary way of learning how to code. 
 
-<img class="displayed" src="{{ get_asset('images/SoS-lightbulb.png') }}" width="370" height="300")/> 
+<img class="displayed" src="{{ get_asset('images/new-coder/SoS-lightbulb.png') }}" width="370" height="300")/> 
 
 As the lifeguard and coach, I advise our Python guppies to not get discouraged.  The way we are learning to code leaves us on the edge of the pool expecting us to compete after reading a chapter on human hydrodynamics.  
 

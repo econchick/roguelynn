@@ -155,7 +155,7 @@ What you do online creates a nice [behavior profile](https://www.eff.org/issues/
 
 Even when you flip open an incognito tab with Chrome, it clearly states what information is not being hidden:
 
-<img class="displayed" src="{{ get_asset('/images/incognito.png')}}"/>
+<img class="displayed" title="Screenshot of incognito tab" alt="Screenshot of incognito tab" src="{{ get_asset('/images/prism-as-a-service/incognito.png')}}"/>
 
 One popular way to increase anonymity is using the [Tor](http://www.movements.org/how-to/entry/how-to-surf-the-internet-anonymously-with-tor/) project. Note, however, simply using Tor does not encrypt all of your internet activities.  However, there are [certain habits](https://www.torproject.org/download/download.html.en#Warning) that can be done to increase the effectiveness of Tor.
 

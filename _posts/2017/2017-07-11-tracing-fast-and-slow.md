@@ -4,7 +4,7 @@ title: "Tracing, Fast and Slow"
 tags: [tracing, talks, performance, microservices]
 category: [words]
 meta: [microservices, distributed tracing, site reliability engineering]
-og_image: "images/gantt_chart.jpeg"
+og_image: "images/tracing/gantt_chart.jpeg"
 ---
 
 This post is an accompaniment to my [Tracing, Fast and Slow talk][0] at [PyCon][1] in Portland, OR in May 2017, and for [EuroPython][26] in Rimini, Italy in July 2017.  Slides [here][2] and video from PyCon [here][3].
@@ -29,7 +29,7 @@ Historically, we've been focused on machine-centric metrics, including system-le
 
 A workflow-centric approach allows us to understand relationships of components within an entire system. We can follow a request from beginning to end to understand bottlenecks, hone in on anomalistic paths, and figure out where we need to add more resources.<sup><a href="#footnotes" style="border-bottom: none;">1</a></sup>
 
-<img class="img-displayed" src="{{ get_asset('images/intro_tracing_flow.png') }}" title="Simplified Distributed System Example" alt="Simplified Distributed System Example"/>
+<img class="img-displayed" src="{{ get_asset('images/tracing/intro_tracing_flow.png') }}" title="Simplified Distributed System Example" alt="Simplified Distributed System Example"/>
 <figcaption>Over-simplified Distributed System Example, Lynn Root, [CC BY 4.0][66]</figcaption>
 
 Looking at this super simplified system, where we have a load balancer, a frontend, backend, a database, and maybe an external dependency to a third-party API, then add redundancy, it can get particularly confusing to follow a request. How do we debug a problem of a rare workflow? How do we know which component of this system is the bottleneck? Which function call is taking the longest? Is another app on my host causing distortion to machine-centric performance metrics ([noisy neighbors][5] – a growing concern as many move to the cloud).
@@ -172,7 +172,7 @@ The final common type of tracing is through metadata propagation. It's the appro
 
 Essentially, components are instrumented at particular trace points to follow causality between functions, components, and systems; or even with common RPC libraries that will automatically add metadata to each call. 
 
-<img class="img-displayed" src="{{ get_asset('images/metadata_propagation.png') }}" title="Metadata Propagation" alt="Metadata Propagation"/>
+<img class="img-displayed" src="{{ get_asset('images/tracing/metadata_propagation.png') }}" title="Metadata Propagation" alt="Metadata Propagation"/>
 
 <figcaption>Metadata Propagation, adapted from [Dapper, a Large-Scale Distributed Systems Tracing Infrastructure][9]</figcaption>
 
@@ -194,14 +194,14 @@ When starting to have many microservices, and scale out with more resources, the
 
 When looking within a request, we can take two points of views: either the submitter PoV, or the Trigger.<sup><a href="#footnotes" style="border-bottom: none;">5</a></sup>
 
-<img class="img-displayed" src="{{ get_asset('images/submitter_flow_pov.png') }}" title="Submitter Flow Point of View" alt="Submitter Flow Point of View"/>
+<img class="img-displayed" src="{{ get_asset('images/tracing/submitter_flow_pov.png') }}" title="Submitter Flow Point of View" alt="Submitter Flow Point of View"/>
 <figcaption>Submitter PoV, adapted from "[So, you want to trace your distributed system][23]", p8</figcaption>
 
 The submitter follows or focuses on one complete request, and doesn't take into account if part of that request is caused by another request/action.  
 
 For instance, evicting cache that was actually triggered by request #2 is still attributed to request #1 since its data comes from #1.
 
-<img class="img-displayed" src="{{ get_asset('images/trigger_flow_pov.png') }}" title="Trigger Flow Point of View" alt="Trigger Flow Point of View"/>
+<img class="img-displayed" src="{{ get_asset('images/tracing/trigger_flow_pov.png') }}" title="Trigger Flow Point of View" alt="Trigger Flow Point of View"/>
 <figcaption>Trigger PoV, adapted from "[So, you want to trace your distributed system][23]", p8</figcaption>
 
 The trigger PoV focuses on the trigger that initiates action. Where in the same example, request #2 evicts cache from request #1, and therefore the eviction is included in request #2's trace.
@@ -254,7 +254,7 @@ What visualization you choose to look at depends on what you're trying to figure
 
 #### Gantt Charts
 
-<img class="img-responsive img-rounded" src="{{ get_asset('images/gantt_chart.jpeg') }}" title="Example of a Gantt Chart" alt="Example of a Gantt Chart"/>
+<img class="img-responsive img-rounded" src="{{ get_asset('images/tracing/gantt_chart.jpeg') }}" title="Example of a Gantt Chart" alt="Example of a Gantt Chart"/>
 <figcaption>Example of Gantt Chart, Lynn Root, [CC BY 4.0][66]</figcaption>
 
 
@@ -262,7 +262,7 @@ Gantt charts are popular and definitely appealing, but only show requests from a
 
 #### Request Flow Graph
 
-<img class="img-responsive img-rounded" src="{{ get_asset('images/request_flow_chart.jpeg') }}" title="Example of a Request Flow Chart" alt="Example of a Request Flow Chart"/>
+<img class="img-responsive img-rounded" src="{{ get_asset('images/tracing/request_flow_chart.jpeg') }}" title="Example of a Request Flow Chart" alt="Example of a Request Flow Chart"/>
 <figcaption>Example of a Request Flow Chart, adapted from "[So, you want to trace your distributed system][23]", p15</figcaption>
 
 
@@ -270,7 +270,7 @@ When trying to get a sense of where a system's bottlenecks are, a request flow g
 
 #### Context Calling Tree
 
-<img class="img-responsive img-rounded" src="{{ get_asset('images/context_calling_tree.jpeg') }}" title="Example of a Context Calling Tree" alt="Example of a Context Calling Tree"/>
+<img class="img-responsive img-rounded" src="{{ get_asset('images/tracing/context_calling_tree.jpeg') }}" title="Example of a Context Calling Tree" alt="Example of a Context Calling Tree"/>
 <figcaption>Example of a Context Calling Tree, adapted from "[So, you want to trace your distributed system][23]", p15</figcaption>
 
 
@@ -347,7 +347,7 @@ And there are a few self hosted, popular solutions out there that support OpenTr
 
 Probably the most widely used is [Zipkin][47], from Twitter, which has implementations in Java, Go, JavaScript, Ruby, and Scala. The architecture setup is basically the instrumented app sends data out of band to a remote collector that accepts a few different transport mechanisms, including HTTP, Kafka, and Scribe. With propagating data around, all of the current Python client libraries ([py_zipkin][48], [pyramid_zipkin][49], [swagger_zipkin][50], and [flask-zipkin][51]) only support HTTP – no RPC support.
 
-<img class="displayed" src="http://zipkin.io/public/img/json_zipkin_screenshot.png" title="Zipkin screenshot" alt="Zipkin screenshot of Gantt chart"/>
+<a href="http://zipkin.io/public/img/json_zipkin_screenshot.png"><img class="displayed" src="{{ get_asset('images/tracing/zipkin_gantt.png') }}" title="Zipkin screenshot" alt="Zipkin screenshot of Gantt chart"/></a>
 <figcaption>Gantt chart from Zipkin's [documentation][52]</figcaption>
 
 And finally, Zipkin does provide a nice Gantt chart of individual traces, and you can view a tree of dependencies, but it's essentially only a context calling tree with no information as to latencies, status codes, or anything else. 
@@ -419,10 +419,10 @@ Using [`py_zipkin`][11], on which other libraries are based, you need to define 
 
 [Jaeger][14] is another self-hosted tracing system that supports the OpenTracing specification that comes from Uber. Rather than the application/client library reporting to a remote collector, it reports to a local agent via UDP, who then sends traces to a collector. Also unlike Zipkin, which supports Cassandra, ElasticSearch, and MySQL, Jaeger only supports Cassandra for its trace storage. 
 
-<img class="displayed" src="http://jaeger.readthedocs.io/en/latest/images/traces-ss.png" title="Jaeger: Traces list view example" alt="Jaeger: Traces list view example"/>
+<a href="http://jaeger.readthedocs.io/en/latest/images/traces-ss.png"><img class="displayed" src="{{ get_asset('images/tracing/jaeger-trace-list.png') }}" title="Jaeger: Traces list view example" alt="Jaeger: Traces list view example"/></a>
 <figcaption>Trace list view from Jaeger's [documentation][54]</figcaption>
 
-<img class="displayed" src="http://jaeger.readthedocs.io/en/latest/images/trace-detail-ss.png" title="Jaeger: Trace detail view example" alt="Jaeger: Trace detail view example"/>
+<a href="http://jaeger.readthedocs.io/en/latest/images/trace-detail-ss.png"><img class="displayed" src="{{ get_asset('images/tracing/jaeger-trace-detail.png') }}" title="Jaeger: Trace detail view example" alt="Jaeger: Trace detail view example"/></a>
 <figcaption>Trace detail view from Jaeger's [documentation][54]</figcaption>
 
 
@@ -501,7 +501,7 @@ There is Stackdriver Trace from Google (not to be confused with Stackdriver Logg
 
 But they also [support Zipkin traces][21], where you can setup a Google-flavored Zipkin server, either on their infrastructure or on yours, and have it forward traces to Stackdriver. They actually make it pretty easy: I was able to spin up [their Docker image][22] on Compute Engine and start viewing traces of my sample app within a couple of minutes.
 
-<img class="img-displayed" src="https://cloud.google.com/trace/images/trace-overview.png" title="Google's Stackdriver Trace Demo Overview"/>
+<a href="https://cloud.google.com/trace/images/trace-overview.png"><img class="img-displayed" src="{{ get_asset('images/tracing/gcp-trace-overview.png') }}" title="Google's Stackdriver Trace Demo Overview" alt="Google's Stackdriver Trace Demo Overview"/></a>
 <figcaption>Trace overview page, from Google's [Viewing Traces][31] Documentation</figcaption>
 
 A couple of annoyances: simple plots of response time over the past few hours and a list of all traces are automatically provided in Stackdriver's UI. However, you have to manually make "analysis reports" for each time period you're interested in to get fancy distribution graphs; they're not automatically generated. It also may be annoying that trace storage is limited to 30 days – same with their Stackdriver logging. 
@@ -515,7 +515,7 @@ What’s nice about X-Ray – despite it being proprietary and not OpenTracing c
 
 Almost redeemable are their visualizations. While there is the typical waterfall chart, they also have a request flow graph where you can see average latencies, captured traces per minute, and requests broken down by response status.
 
-<img class="img-displayed" src="http://docs.aws.amazon.com/xray/latest/devguide/images/scorekeep-gettingstarted-servicemap-after-github.png" title="AWS X-Ray: Service Map"/>
+<a href="http://docs.aws.amazon.com/xray/latest/devguide/images/scorekeep-gettingstarted-servicemap-after-github.png"><img class="img-displayed" src="{{ get_asset('images/tracing/aws-xray-service-map.png') }}" title="AWS X-Ray: Service Map" alt="AWS X-Ray: Service Map"/></a>
 <figcaption>Request Flow Chart ("Service Map") from AWS's [What is AWS X-Ray][30] documentation</figcaption>
 
 So, basically AWS seems pretty cool, probably the most useful, but will take some work in instrumenting a python app, and induces vendor lock-in.

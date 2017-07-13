@@ -113,16 +113,15 @@ When thinking about implementing various metrics for our feedback loops, I came 
 <blockquote style="display:block;margin-left:auto;margin-right:auto;" class="twitter-tweet" lang="en"><p lang="en" dir="ltr">Switching my Spotify to private so that my Facebook friends can’t see me listening to Clay Aiken.</p>&mdash; BriiMonster (@BriiMonster) <a href="https://twitter.com/BriiMonster/status/604210734621282304">May 29, 2015</a></blockquote>
 
 
-<small style="text-align: center;display:block;">Putting a Twitter feed of “Spotify + Facebook” is certainly turning into noise.</small>
+<figcaption>Putting a Twitter feed of “Spotify + Facebook” is certainly turning into noise.</figcaption>
 
 <p class="lead">Representing metrics</p>
 
 * How do we correctly measure what we care about?
 * We have many tools to help us create <span class="rogue-hover" data-toggle="tooltip" data-placement="top" title="# of registered users right now">gauges</span>, <span class="rogue-hover" data-toggle="tooltip" data-placement="top" title="# of open connections">counters</span>, <span class="rogue-hover" data-toggle="tooltip" data-placement="top" title="# of requests/second">meters</span>, <span class="rogue-hover" data-toggle="tooltip" data-placement="top" title="distribution of the # of registered users connected with Facebook">histograms</span>, and <span class="rogue-hover" data-toggle="tooltip" data-placement="top" title="latency: # of requests/sec over time">timers</span>.  But what representation is best for each question?
 
-<img class="img-responsive img-rounded" src="{{ get_asset('images/metrics_facebook_service.png') }}" title="Incoming requests by service" alt="Incoming requests by service"/>
-
-<small style="text-align: center;display:block;">Another metric displayed on our dashboard</small>
+<img class="displayed" src="{{ get_asset('images/metrics-driven-dev/metrics_facebook_service.png') }}" title="Incoming requests by service" alt="Incoming requests by service"/>
+<figcaption>Another metric displayed on our dashboard</figcaption>
 
 <p class="lead">Consuming metrics</p>
 * How often do you check in on metrics?

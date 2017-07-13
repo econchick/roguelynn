@@ -22,7 +22,7 @@ This post will walk through how we have designed and currently manage our own DN
 # Our infrastructure
 We run our own DNS infrastructure on-premise which might seem a bit unusual lately. We have a typical setup with what we call a single “stealth primary” (and a hot standby) running BIND (DNS server software), and its only job is essentially to compile zone files. We then have a bunch of authoritative nameservers (or “secondaries”), also running [BIND](https://en.wikipedia.org/wiki/BIND), with at least two per geographical location, and four of which are exposed to the public. When the stealth primary has finished re-compiling zones, a transfer happens to the nameservers. </span>
 
-<img class="displayed" src="{{ get_asset('images/spotify-dns/dns_architecture_no_srv.png') }}" title="Spotify DNS Architecture Overview" alt="Spotify DNS Architecture Overview"/>
+<img class="img-displayed" src="{{ get_asset('images/spotify-dns/dns_architecture_no_srv.png') }}" title="Spotify DNS Architecture Overview" alt="Spotify DNS Architecture Overview"/>
 <figcaption>Spotify DNS Architecture Overview</figcaption>
 
 We then have a bunch more resolvers running [Unbound](https://en.wikipedia.org/wiki/Unbound_(DNS_server)) (caching and recursive DNS server software), with at least 2 resolvers per datacenter suite. Our resolvers are configured to talk to every one of our authoritative nameservers for redundancy.

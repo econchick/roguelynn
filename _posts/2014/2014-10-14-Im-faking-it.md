@@ -96,13 +96,13 @@ I pretty much went through this cycle of breaking stuff, some successes, got som
 
 To help illustrate - I made this super awesome graph of my process in faking it:
 
-<img class="displayed" src="{{ get_asset('images/fake-it-graph-1.jpg') }}" width="400" alt="Super awesome sinusoidal graph of my process"/>
+<img class="displayed" src="{{ get_asset('images/im-faking-it/fake-it-graph-1.jpg') }}" width="400" title="Super awesome sinusoidal graph of my process" alt="Super awesome sinusoidal graph of my process"/>
 
 I start off mediocre and fumbling, I break stuff, then have minor success.  I break more stuff and maybe have a bigger fall being so frustrated, then comes a bigger win.  That’s how it feels to me.
 
 Now how it actually looks like to everyone else is more like this:
 
-<img class="displayed" src="{{ get_asset('images/fake-it-graph-2.jpg') }}" width="400" alt="Super awesome sinusoidal graph of my process"/>
+<img class="displayed" src="{{ get_asset('images/im-faking-it/fake-it-graph-2.jpg') }}" width="400" title="Super awesome sinusoidal graph of my process" alt="Super awesome sinusoidal graph of my process"/>
 
 Where I make progress by breaking and learning, plateau from frustration, and continue on upwards.  I may relearn something from the past week or month, but I’m definitely more knowledgable than 3 months ago, 6 months, or a year.
 
@@ -110,7 +110,7 @@ A saying that I find illustrates this comparison very well is to not compare you
 
 Similarly, I saw this image over two years ago and it has been my internal mantra ever since:
 
-<img class="displayed" src="{{ get_asset('images/sucking.jpg') }}" width="400" alt="Super awesome sinusoidal graph of my process"/>
+<img class="displayed" src="{{ get_asset('images/im-faking-it/sucking.jpg') }}" width="400" title="Super awesome sinusoidal graph of my process" alt="Super awesome sinusoidal graph of my process"/>
 
 ## How I’ve “made” it
 

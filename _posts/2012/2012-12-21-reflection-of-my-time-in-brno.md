@@ -12,7 +12,8 @@ But I need to be honest: throughout 7 of the 8 weeks I spent in Brno, I felt com
 My job for the next year is to integrate freeIPA into [OpenShift][OpenShift], followed by a few more prominent OSS projects. During my one-on-one phone calls with my manager, he says, literally, "You need to develop a deep understanding of the freeIPA project," and "You need to figure out what you don't know, and learn it," without any further guidance other than that I need to accomplish by end of February: to have a proof of concept of integration of IPA -> OpenShift.
 
 In other words: 
-![no_idea_dog]({{ get_asset('images/no_idea_dog.png')}} 'I have no idea what I'm doing')
+
+<img class="displayed" src="{{ get_asset('images/reflection-brno/no_idea_dog.png')}}" title="I have no idea what I'm doing dog meme" alt="I have no idea what I'm doing dog meme"/>
 
 ### From email setup to patch submission in 8 days, then what?
 

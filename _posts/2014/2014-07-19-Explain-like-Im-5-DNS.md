@@ -18,13 +18,13 @@ I previously wrote a post [explaining Kerberos "Like I'm 5"][eli5kerberos] that 
 
 As a nerdy person who has many side projects, I've had many experiences setting up personal projects for deployment.  As I'm sure you have all been through, nearly every time when one does the first `git push` to Heroku, it doesn't work.
 
-<a href="http://devopsreactions.tumblr.com/post/39647674903/realizing-its-yet-another-dns-problem"><img class="displayed" alt="It's always DNS" src="{{ get_asset('/images/devops_dns_issue.gif') }}" /></a>
+<a href="http://devopsreactions.tumblr.com/post/39647674903/realizing-its-yet-another-dns-problem"><img class="displayed" title="It's always DNS" alt="It's always DNS" src="{{ get_asset('/images/eli5-dns/devops_dns_issue.gif') }}" /></a>
 
 All else equal - e.g. Heroku is not down - I'm betting DNS is the issue.  Who actually has set up DNS cleanly the first time?  You follow the directions on your host's website to properly setup DNS records, but something still doesn't work.  We've all been there.  And without a solid understanding of DNS, often times folks just fall into a "oh, let's try this", guess-editing records, waiting for DNS to propagate to test if the guess was correct - the `print` statements of Python debugging (I'm also guilty of this).
 
 Naturally, curiosity got the best of me. It's common knowledge that DNS is the internet's phonebook.  Sure - it's the backbone of the internet; it's a safe assumption that the cloud itself is build on DNS and duct tape, but that's about all I knew.
 
-<img class="displayed" alt="The Cloud: DNS and Duct tape" src="{{ get_asset('/images/tweet_dns_duct_tape.png') }}">
+<img class="displayed" title="The Cloud: DNS and Duct tape" alt="The Cloud: DNS and Duct tape" src="{{ get_asset('/images/eli5-dns/tweet_dns_duct_tape.png') }}">
 
 ### Why DNS?
 
@@ -182,19 +182,19 @@ For the more visually inclined learner, let's look at this query pictorially:
 
 The `dig` query starts at my local DNS, `192.168.1.1`, where, if not cached, is based on to the root server:
 
-<img class="displayed" alt="python.org DNS Query: local dns" src="{{ get_asset('/images/dns-diagrams.002.jpg') }}"/>
+<img class="displayed" title="python.org DNS Query: local dns" alt="python.org DNS Query: local dns" src="{{ get_asset('/images/eli5-dns/dns-diagrams.002.jpg') }}"/>
 
 The query from my local DNS for `python.org` first asks for the root name server (the `.`) who knows that one of these hosts should have the information, and so the name server responds with "try one of these hosts", which cooresponds to the `.org` name server:
 
-<img class="displayed" alt="python.org DNS Query: root dns" src="{{ get_asset('/images/dns-diagrams.003.jpg') }}"/>
+<img class="displayed" title="python.org DNS Query: root dns" alt="python.org DNS Query: root dns" src="{{ get_asset('/images/eli5-dns/dns-diagrams.003.jpg') }}"/>
 
 The `.org` name server receives the query, then says something like "try one of these hosts" which corresponds to the `python.org` name server:
 
-<img class="displayed" alt="python.org DNS Query: org dns" src="{{ get_asset('/images/dns-diagrams.004.jpg') }}"/>
+<img class="displayed" title="python.org DNS Query: org dns" alt="python.org DNS Query: org dns" src="{{ get_asset('/images/eli5-dns/dns-diagrams.004.jpg') }}"/>
 
 The `python.org` name server says "yep, we have the A record for python.org, and it's at address 140.211.10.69!"
 
-<img class="displayed" alt="python.org DNS Query: python.org dns" src="{{ get_asset('/images/dns-diagrams.005.jpg') }}"/>
+<img class="displayed" title="python.org DNS Query: python.org dns" alt="python.org DNS Query: python.org dns" src="{{ get_asset('/images/eli5-dns/dns-diagrams.005.jpg') }}"/>
 
 But if we wanted to know more about, say, `hg.python.org`, or others - doing a `dig hg.python.org`, we actually get that it is a CNAME record mapped to `virt-7yvsjn.psf.osuosl.org`:
 
@@ -235,7 +235,7 @@ python.org.		86400	IN	NS	ns4.p11.dynect.net.
 hg.python.org.		86400	IN	CNAME	virt-7yvsjn.psf.osuosl.org.
 ;; Received 68 bytes from 208.78.71.11#53(208.78.71.11) in 213 ms
 ```
-<img class="displayed" alt="python.org DNS Query: hg.python.org dns" src="{{ get_asset('/images/dns-diagrams.006.jpg') }}"/>
+<img class="displayed" title="python.org DNS Query: hg.python.org dns" alt="python.org DNS Query: hg.python.org dns" src="{{ get_asset('/images/eli5-dns/dns-diagrams.006.jpg') }}"/>
 
 ### Other resource records
 
@@ -633,7 +633,7 @@ dig +short _spotify-client._tcp.spotify.com SRV
 
 The service look up continues on, since user clients connect to an access point, for example `AP1.spotify.com`, and then the access point resolves the service that the client is looking for, e.g. `user` service for the user's profile information:
 
-<img class="displayed" alt="Spotify's Access Point Service Discovery" src="{{ get_asset('/images/dns-diagrams.001.jpg') }}"/>
+<img class="displayed" title="Spotify's Access Point Service Discovery" alt="Spotify's Access Point Service Discovery" src="{{ get_asset('/images/eli5-dns/dns-diagrams.001.jpg') }}"/>
 
 ### DHT Ring
 
@@ -645,15 +645,15 @@ Looking at Spotify again, we store some service configuration data in a DHT ring
 
 So for example, when you are on the Spotify client, and want to play a particular song named "foobar" (one that has not yet been locally cached on your machine), the client performs a lookup.  When it does, the song ID is hashed, which then becomes the key within the DHT ring.
 
-<img class="displayed" alt="Spotify track hashed" src="{{ get_asset('/images/dns-diagrams.007.jpg') }}"/>
+<img class="displayed" title="Spotify track hashed" alt="Spotify track hashed" src="{{ get_asset('/images/eli5-dns/dns-diagrams.007.jpg') }}"/>
 
 So that particular key is then looked up within the DHT ring that is stored in DNS.  The value associated with that key is essentially the host location of the service where that song and/or its relevant information/metadata is located.  So in this case, Instance E owns (9e, c1], which is where this particular Spotify track, foobar, lives, and is mapped to a particular hostname and port.
 
-<img class="displayed" alt="Spotify track ring" src="{{ get_asset('/images/dns-diagrams.008.jpg') }}"/>
+<img class="displayed" title="Spotify track ring" alt="Spotify track ring" src="{{ get_asset('/images/eli5-dns/dns-diagrams.008.jpg') }}"/>
 
 And then Instance E is mapped to a hostname, for example `tracks.4301.lon-tracks-a1.lon.spotify.net` which would be the machine that houses data on the foobar track.
 
-<img class="displayed" alt="Spotify foobar track host" src="{{ get_asset('/images/dns-diagrams.009.jpg') }}"/>
+<img class="displayed" title="Spotify foobar track host" alt="Spotify foobar track host" src="{{ get_asset('/images/eli5-dns/dns-diagrams.009.jpg') }}"/>
 
 The dummy hostname, `tracks.4301.lon-tracks-a1.lon.spotify.net`, tells me that this machine hosts information on tracks, can be connected to via port 4301, is located in our London data centers, and is in pod a1.
 

@@ -14,5 +14,5 @@ Is that even possible? \~1024 things/day being shared/liked/commented. We'd have
 What I think is more accurate is an exponential growth of a person sharing, then as one gets older, the activity tapers, slows down, and maybe even fall to zero/very rare. What would be important would be to look at that age where exponential growth happens and see how that is growing.
 
 Just quick thoughts post-talk. I enjoyed it, plus the free pizza & booze. Although I wish I could have gotten some free swag...  
-  
-![the Zuck]({{ get_asset("images/mark_zuckerberg.jpg")}} "Mark Zuckerberg")
+
+<img class="displayed" src="{{ get_asset('images/seattle-tech-talk/mark_zuckerberg.jpg') }}" title="Mark Zuckerberg @ Seattle Tech Talk" alt="Mark Zuckerberg @ Seattle Tech Talk"/>

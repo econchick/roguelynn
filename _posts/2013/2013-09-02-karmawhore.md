@@ -12,15 +12,15 @@ Well, I can’t trade you anything for your karma.  But I can provide you with a
 
 Check out [**www.karmawho.re**][karmawhore] to visualize your <strike>wasted time</strike> collected karma from comment posts.  Search via your Reddit user name, or click “I’m feeling creepy” to visualize comments of a random user.  Try plugging in a few of [these top comment posters][karmawhore.net] if you find that you don’t post enough on Reddit.
 
-<img class="displayed" src="{{ get_asset('images/karmawhore-start.png')}}" style="box-shadow: 0 1px 2px rgba(0,0,0,0.5);"/>
+<img class="displayed" src="{{ get_asset('images/karmawhore/karmawhore-start.png')}}" style="box-shadow: 0 1px 2px rgba(0,0,0,0.5);"/>
 
-<img class="displayed" src="{{ get_asset('images/karmawhore-time.png')}}"/>
+<img class="displayed" src="{{ get_asset('images/karmawhore/karmawhore-time.png')}}"/>
 
-<img class="displayed" src="{{ get_asset('images/karmawhore-totalkarma.png')}}"/>
+<img class="displayed" src="{{ get_asset('images/karmawhore/karmawhore-totalkarma.png')}}"/>
 
-<img class="displayed" src="{{ get_asset('images/karmawhore-wordcloud.png')}}"/>
+<img class="displayed" src="{{ get_asset('images/karmawhore/karmawhore-wordcloud.png')}}"/>
 
-<img class="displayed" src="{{ get_asset('images/karmawhore-buckets.png')}}"/>
+<img class="displayed" src="{{ get_asset('images/karmawhore/karmawhore-buckets.png')}}"/>
 
 
 Karmawhore was a labor day weekend project using [d3.js][d3], [nvd3][nvd3], and [d3 wordcloud] to bring you these awesome graphs.

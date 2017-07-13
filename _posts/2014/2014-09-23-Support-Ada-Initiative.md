@@ -2,13 +2,13 @@
 layout: post.html
 title: "Python for Ada!"
 tags: [ada, donate]
-category: [words]
+category: [none]
 ---
 
 **I want *you* - the Python community - to [donate][donate] to the [Ada Initiative!][ada]**
 
-<img class="displayed" src="{{ get_asset('images/guido-me-pycon-2013.jpg') }}" width="400" alt="Guido van Rossum & I at PyCon 2013 - on my birthday!"/>
-<small>Always a big PyLadies supporter, Guido van Rossum hacking with me on my 27th birthday at PyCon 2013!</small>
+<img class="displayed" src="{{ get_asset('images/python-for-ada/guido-me-pycon-2013.jpg') }}" width="400" alt="Guido van Rossum & I at PyCon 2013 - on my birthday!"/>
+<figcaption>Always a big PyLadies supporter, Guido van Rossum hacking with me on my 27th birthday at PyCon 2013!</figcaption>
 
 <hr>
 

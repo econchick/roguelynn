@@ -21,7 +21,7 @@ It is partly a great thing because it is very easy to find resources to help wom
 
 Kaitlyn Trigger of Lovestagram had a [great metaphor for programming][Lovestagram]:
 
-![Furniture]({{ get_asset("images/building_furniture.png")}} "Directions for Building Furniture")
+<img class="displayed" src="{{ get_asset('images/pyladiessf-debut/building_furniture.png') }}" title="Directions for Building Furniture" alt="Directions for Building Furniture"/>
 
 How in the h&ll do you get from step 1 to step 2?  Either a magic wand, or you are a carpenter by nature.  Similar with engineering: talk to development folks, ask for a product and it magically appears all constructed.  I had a hard time grasping how a for loop, classes, and methods can turn into an architecture for a cloud fileshare system, or a social networking site, or even a simple greedy change calculator. I found that having someone that also comes from this "what is this wizardry?!" point of view helps break down the steps to actually create a meaningful program. Enter: ME! I invite anyone who has an interest in Python to [come check us out][meetup].
 

@@ -13,7 +13,7 @@ Thought you couldn't be any more depressed?
 
 I present to you **[Salarly][Salarly]** - a way for you to browse all the internationally employed workers in the United States from 2011 - 2012.
 
-<p><a href="http://www.salar.ly/salaries?title=Financial+Engineer&company=&location=" alt="Financial Engineer H-1B salaries"><img src="{{ get_asset("/images/salarly.png")}}" height="318px" width="552px" /></a></p>
+<p><a href="http://www.salar.ly/salaries?title=Financial+Engineer&company=&location=" alt="Financial Engineer H-1B salaries"><img class="displayed" src="{{ get_asset("/images/salarly/salarly.png")}}" height="318px" width="552px" title="Financial Engineer H-1B salaries" alt="Financial Engineer H-1B salaries" /></a></p>
 
 Thought your salary was good? Take a look at what a [Financial Analyst][FA] can make on an H-1B visa.  Or maybe you're not convinced of the [wealth][wealth] that makes Silicon Valley so popular.  Thinking of moving somewhere? How about to where all the [engineers][engineers] are?
 

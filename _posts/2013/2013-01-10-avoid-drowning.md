@@ -14,7 +14,7 @@ Only on Tuesday did I find out I was actually on the bill to speak! Welp, here's
 Coming back from Brno, and having just started a new engineering position, I feel like I knew this topic well: how to swim your way through a new code base. There may be other/better advice, but this was my take away from my first three months at Red Hat.
 
 
-## N![no_diving]({{ get_asset("/images/no_diving_small.png")}} )  Diving!
+## N![no_diving]({{ get_asset("/images/avoid-drowning/no_diving_small.png")}} )  Diving!
 ---
 You might feel inclined to jump into the code base. FFS you're a coder! Why wouldn't you want to jump in?
 
@@ -23,7 +23,7 @@ As most lifeguards might say of pools with shallow depths: you'll break your nec
 Let's take a more holistic approach - I'll walk you through how I am fumbling through getting to know two (!) code bases with questions I asked myself. Mind you, not all these questions are relevant to your situation; it all depends on your code base, naturally.
 
 
-## T![droplet]({{ get_asset("/images/droplets_small.png")}} )  p-down approach
+## T![droplet]({{ get_asset("/images/avoid-drowning/droplets_small.png")}} )  p-down approach
 ---
 ### Overview
 - What is the purpose of this project or product?
@@ -45,14 +45,14 @@ Let's take a more holistic approach - I'll walk you through how I am fumbling th
 - How does it fit with another chunk(s)?
 
 
-## Lather, rinse, repe![repeat]({{ get_asset("/images/repeat_small.png")}} )t.
+## Lather, rinse, repe![repeat]({{ get_asset("/images/avoid-drowning/repeat_small.png")}} )t.
 ---
 Continue on until you drill down to the very lowest component, the lowest before you hit the code to answer your questions.
 
 You should be reviewing documentation and architecture diagrams & walk-throughs, talking to the architect of the product/project, and your team mates.
 
 
-## Go with the ![flow]({{ get_asset("/images/fish_small.png")}} ) flow ![flow]({{ get_asset("/images/fish_small.png")}} )
+## Go with the ![flow]({{ get_asset("/images/avoid-drowning/fish_small.png")}} ) flow ![flow]({{ get_asset("/images/avoid-drowning/fish_small.png")}} )
 ---
 Now it's time to figure out the flow of the project or product.
 
@@ -77,7 +77,7 @@ Now it's time to figure out the flow of the project or product.
 - Who are the go-to people for certain aspects of the project?
 
 
-## Ease in  ![ease]({{ get_asset("/images/ease_in_small.png")}} )  the water's a bit cold
+## Ease in  ![ease]({{ get_asset("/images/avoid-drowning/ease_in_small.png")}} )  the water's a bit cold
 ---
 Alright - git pull that code.
 
@@ -106,7 +106,7 @@ Alright - git pull that code.
 * Write more tests to increase test coverage.
 
 
-## Lifes![life]({{ get_asset("/images/life_preserver_small.png")}} )vers
+## Lifes![life]({{ get_asset("/images/avoid-drowning/life_preserver_small.png")}} )vers
 ---
 ### Mentors
 * Find an internal mentor to bug about package/product questions. It may be your lead, or someone who's been there for a while.
@@ -129,7 +129,7 @@ Alright - git pull that code.
 
 
 
-## Swim safely! ![scuba]({{ get_asset("/images/scuba_small.png")}} )
+## Swim safely! ![scuba]({{ get_asset("/images/avoid-drowning/scuba_small.png")}} )
 
 <br />
 
