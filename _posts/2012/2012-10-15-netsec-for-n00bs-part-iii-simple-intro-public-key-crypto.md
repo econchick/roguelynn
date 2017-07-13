@@ -3,6 +3,7 @@ layout: post.html
 title: 'NetSec for n00bs, part III: Simple Intro Public Key Crypto'
 tags: [cryptography, netsec, programming]
 category: [words]
+topic: netsec
 ---
 
 This is part 3 in a short intro series for netsec.  [Part I]({{ get_url("/words/2012-10-01-netsec-for-n00bs-part-i-password-storage")}} "Password Storage"), [Part II]({{ get_url("/words/2012-10-03-netsec-for-n00bs-part-ii-ciphers-symmetric") }} "Symmetric Ciphers"). [Riddle time][Riddle time]:

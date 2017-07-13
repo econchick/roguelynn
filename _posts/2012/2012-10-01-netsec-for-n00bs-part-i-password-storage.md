@@ -3,6 +3,7 @@ layout: post.html
 title: 'NetSec for n00bs, part I: Password Storage'
 tags: [netsec, programming]
 category: [words]
+topic: netsec
 ---
 
 In prepping for my interviews for my [newly acquired position]({{ get_url("/words/2012-09-25-from-n00b-to-engineer-in-one-year")}} "N00b to engineer") with Red Hat for the [FreeIPA][FreeIPA] project, I did my own crash course in studying net security/applied cryptography.  

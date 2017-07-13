@@ -3,6 +3,7 @@ layout: post.html
 title: "I’m a fraud."
 tags: [impostor syndrome, ada lovelace]
 category: [words, highlight]
+topic: story
 og_image: "images/sucking.jpg"
 ---
 

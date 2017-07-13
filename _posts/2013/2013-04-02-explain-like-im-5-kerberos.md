@@ -3,7 +3,8 @@ layout: post.html
 title: "Explain like I’m 5: Kerberos"
 tags: [kerberos]
 updated_at: "May 30, 2013"
-category: [words]
+category: [words, highlight]
+topic: kerberos
 og_image: "images/eli5-kerberos/Kerb.004.jpg"
 ---
 

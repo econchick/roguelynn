@@ -2,7 +2,7 @@
 layout: post.html
 title: 'PyCon Proposal Brainstorming via Google Hangout'
 tags: [conferences, PyCon]
-category: [words]
+category: []
 ---
 
 Ever thought about speaking? Want to give speaking at [PyCon][PyCon] a shot, but not sure what to talk about? Even if you have a tiny inkling that you'd want to speak, beginner level or advanced, come to our workshop to get help brainstorming ideas & learn what makes a good proposal! 

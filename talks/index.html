@@ -14,7 +14,7 @@
 {% endblock %}
 {% block me %}<li class="navbar-me"><a href="{{ get_url('/') }}" title="Home">lynn root</a></li>{% endblock %}
 {% block content %}
-  <div class="page-header"><h2 id="talklist">Upcoming Talks</h2></div>
+  <div class="page-header"><h1 id="talklist">Upcoming Talks</h1></div>
     {% for talk in containers.upcoming_talks %}
         {% if not 'repeat' in talk.tags %}
           <div class="dl-horizontal">
@@ -34,7 +34,7 @@
           </div>
         {% endif %}
     {% endfor %}
-    <div class="page-header"><h2 id="talklist">Talks Given</h2></div>
+    <div class="page-header"><h1 id="talklist">Talks Given</h1></div>
     {% for talk in containers.past_talks %}
       <div class="dl-horizontal dl-horizontal-border">
         <dt style="padding-top: 26px; padding-right:3px"><small>{{ talk.talk_date }}</small></dt>

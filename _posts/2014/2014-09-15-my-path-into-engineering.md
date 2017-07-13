@@ -2,7 +2,8 @@
 layout: post.html
 title: "My Path into Engineering"
 tags: [story, engineering, pyladies]
-category: [words]
+category: [words, highlight]
+topic: story
 ---
 
 More and more often, folks have been asking about how I became an engineer, what my "story" is.  So, in the effort to save time and breath, here it is.

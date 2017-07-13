@@ -3,6 +3,7 @@ layout: post.html
 title: 'Brainstorm: Writing a PyCon proposal'
 tags: [PyCon, PyLadies, devChix, Women2.0]
 category: [words]
+topic: speaking
 ---
 
 OH MAN PYCON IS SO MUCH FUN.  *Right? I know!*  I remember a tweet from [Hilary Mason][Hilary] that it should be "PyCAAHHHNNN" (imagine with a Boston accent while flashing \\m/ upon entrance). 

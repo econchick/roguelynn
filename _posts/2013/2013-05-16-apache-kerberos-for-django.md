@@ -3,6 +3,7 @@ layout: post.html
 title: "Part 2: Apache and Kerberos for Django Authentication + Authorization"
 tags: [django, djangcon, apache, kerberos, authentication, remote user]
 category: [talks, words, circus, kerberos]
+topic: kerberos
 ---
 
 This is part 2 of a series of posts on setting up Django to use external authentication.  This post explains how to setup Apache for Django to use a corporate/internal authentication environment.

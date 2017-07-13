@@ -2,7 +2,8 @@
 layout: post.html
 title: "Spotify’s Love/Hate Relationship with DNS"
 tags: [Spotify, DNS]
-category: [words]
+category: [words, highlight]
+topic: infrastructure
 og_image: "images/spotify-dns/dns_architecture_no_srv.png"
 
 ---

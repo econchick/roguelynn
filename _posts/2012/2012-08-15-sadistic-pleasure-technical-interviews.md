@@ -1,8 +1,9 @@
 ---
 layout: post.html
 title: 'Sadistic/Masochistic pleasure: Technical Interviews'
-tags: [algorithms, interviewing, pin]
-category: [words, highlight]
+tags: [algorithms, interviewing]
+category: [words]
+topic: interviewing
 ---
 
 When I was in high school, I was in "IB" math - the international equivalent to AP courses, except harder.  I really, really, *really* enjoyed math.  

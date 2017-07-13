@@ -2,7 +2,8 @@
 layout: post.html
 title: "Tracing, Fast and Slow"
 tags: [tracing, talks, performance, microservices]
-category: [words]
+category: [words, highlight]
+topic: infrastructure
 meta: [microservices, distributed tracing, site reliability engineering]
 og_image: "images/tracing/gantt_chart.jpeg"
 ---

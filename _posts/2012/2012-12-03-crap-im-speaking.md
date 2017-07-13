@@ -2,7 +2,8 @@
 layout: post.html
 title: "CR@P I'M SPEAKING AT [insert conference here]! How do I prepare?"
 tags: [conferences, PyCon]
-category: [words, highlight]
+category: [words]
+topic: speaking
 ---
 
 You just got a notice saying that your talk was accepted to [some huge freaking conference]. Awesome!

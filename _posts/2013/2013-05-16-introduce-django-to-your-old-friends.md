@@ -3,6 +3,7 @@ layout: post.html
 title: "Introduce Django to your old friends - or foes"
 tags: [django, djangocon, conference, kerberos, integration]
 category: [talks, circus, intro, kerberos]
+topic: kerberos
 ---
 
 How to set up your Django application for internal authentication:

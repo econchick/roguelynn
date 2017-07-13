@@ -2,7 +2,8 @@
 layout: post.html
 title: "Metrics-Driven Development: See the forest for the trees"
 tags: [Spotify, Metrics, Data]
-category: [words]
+topic: operations
+category: [words, highlight]
 ---
 
 This post is an accompaniment to my [Metrics-driven development talk][0] at [Open Data Science Conference][1] in Boston in May 2015.  Slides [here][22] and video to be posted soon.

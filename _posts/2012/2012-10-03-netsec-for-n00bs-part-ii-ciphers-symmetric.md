@@ -3,6 +3,7 @@ layout: post.html
 title: 'NetSec for n00bs, part II: Ciphers (symmetric)'
 tags: [cryptography, netsec, programming]
 category: [words]
+topic: netsec
 ---
 
 A continuation of [NetSec for n00bs, part I: Password Storage]({{ get_url("/words/2012-10-01-netsec-for-n00bs-part-i-password-storage")}} "Netsec for n00bs Part I") A cipher is basically an algorithm to perform encryption and decryption. 

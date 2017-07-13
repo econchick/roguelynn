@@ -3,6 +3,7 @@ title: "Hanging my Red Hat for headphones"
 layout: post.html
 tag: [spotify]
 category: [words]
+topic: story
 ---
 
 At the end of the month, I’ll be trading in my Red Hat for a pair of head phones: I’ll be joining [Spotify](http://open.spotify.com/user/econchick) in San Francisco as a Partner Engineer to work on third-party integration.

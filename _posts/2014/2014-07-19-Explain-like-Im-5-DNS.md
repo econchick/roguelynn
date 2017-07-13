@@ -2,7 +2,8 @@
 layout: post.html
 title: "Explain like I’m 5: DNS"
 tags: [DNS, dnspython, twisted]
-category: [words]
+category: [words, highlight]
+topic: infrastructure
 ---
 
 This post is an accompaniment to my [PyCon 2014][pycon2014] and [EuroPython 2014][ep2014] talk, For Lack of a Better Name(server): DNS Explained, that is a deep dive into DNS. Slides can be found [here][slides]
