@@ -289,7 +289,7 @@ Certainly, there may be other realizations and questions that come from tracing 
 
 The answer to this question will help identify how to approach the causality – whether from the Trigger point of view, or submitter. 
 
-##### How much an I instrument?
+##### How much can I instrument?
 
 Another important question: how much time can you put into instrumenting your system? Or can you even instrument all parts? This will inform the approach you can use to tracing, be it blackbox or not. If you can instrument all the components, it then becomes a question of what data should you propagate through an entire flow.
 
